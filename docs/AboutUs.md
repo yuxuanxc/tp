@@ -38,12 +38,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role:
 * Responsibilities:
 
-### Jean Doe
+### Robin Ho
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/robinho98.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/robinho98)]
+[[portfolio](team/robinho98.md)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
