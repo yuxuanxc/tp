@@ -291,9 +291,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+1.  The product should be able to hold up to 1000 tourist attractions without a noticeable sluggishness in performance for typical usage.
+2.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+3.  The user interface should be intuitive enough for users who are not IT-savvy.
+4.  The product is not required to recommend new tourist attractions which are not inputted by the user.
+5.  The product should be free to download and use.
+6.  The system should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+7.  The system should work on both 32-bit and 64-bit environments.
+8.  The system should respond within five seconds.
+9.  The project is expected to be a brown-field project.
+10.  The progress of the project is expected to adhere to the schedule provided on the module website.
 
 *{More to be added}*
 
