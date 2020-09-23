@@ -346,7 +346,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
       
-#### **Use case: Add a tourist attraction**
+**Use case: Add a tourist attraction**
 
 **MSS**
 
@@ -363,7 +363,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case resumes at step 1.
 
-#### **Use case: Delete a tourist attraction**
+**Use case: Delete a tourist attraction**
 
 **MSS**
 
@@ -390,7 +390,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case resumes at step 2.
       
-#### **Use case: Find a tourist attraction**
+**Use case: Find a tourist attraction**
 
 **MSS**
 
@@ -411,7 +411,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-#### **Use case: List all tourist attractions**
+**Use case: List all tourist attractions**
 
 **MSS**
 
@@ -427,7 +427,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   Use case ends.
  
 
-#### **Use case: Clear all tourist attractions**
+**Use case: Clear all tourist attractions**
 
 **MSS**
 
