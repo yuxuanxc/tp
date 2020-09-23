@@ -236,27 +236,108 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* travelholics who love traveling and keeping track of their trips
+* travelled to many different places before
+* plans to travel to other countries in the future
+* has a need to manage a significant number of tourist attractions
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
-
+**Value proposition**: 
+* manage information for trips and tourist attractions faster than a typical mouse/GUI driven app
+* keeps track of different tourist attractions visited by the user
+* allows creating an itinerary to track future travels
+* customisable shortcuts that the user can set for frequently used commands
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
+#### Planning
+
+| Priority | As a …​                     | I want to …​                                                                    | So that I can…​                                              |
+| -------- | ------------------------------ | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `* * *`  | person planning for my travel	| add tourist attractions	                                                         | keep track of tourist attractions I want to visit
+| `* * *`  | person planning for my travel	| delete tourist attractions	                                                     | remove tourist attractions that I might not want to visit
+| `* * *`  | person planning for my travel	| find tourist attractions from my list	                                             | quickly search for a specific tourist attraction
+| `* * *`  | person planning for my travel	| show list of all the tourist attractions	                                         | get a look of all the travel attractions at one go
+| `* * *`  | person planning for my travel  | clear all tourist attractions from my plan                                         | reset the list
+| `* * *`  | person planning for my travel	| add descriptions for tourist attractions	                                         | note down more information about it
+| `* * *`  | person planning for my travel	| add dates on which I will visit the tourist attractions	                         | know when I will visit the tourist attraction
+| `* * *`  | person planning for my travel	| label the country of the tourist attraction	                                     | sort the attractions by country
+| `* * *`  | person planning for my travel	| label the city of the tourist attraction	                                         | sort the attractions by city
+| `* * *`  | person planning for my travel	| tag tourist attractions in different categories like food, sightseeing, activities | distinguish between the different kinds of tourist attractions
+
+#### More informative list
+
+| Priority | As a …​                     | I want to …​                                   | So that I can…​                                                     |
+| -------- | ------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------- |
+| `* *`    | person planning for my travel	| add ratings for tourist attractions	            | keep track of which tourist attractions were enjoyable
+| `* *`    | person planning for my travel	| to add opening hours for tourist attractions  	| keep track of when each tourist attraction is open
+| `* *`    | person planning for my travel	| add price range for tourist attractions       	| estimate the costs of visiting the tourist attraction
+| `* *`    | person planning for my travel	| see the total expenditure range for the trip	    | understand the amount to bring for the trip or to adjust the budget
+| `* *`    | person planning for my travel	| prioritise the different tourist attractions	    | know which ones I would want to visit first if there is a lack of time
+| `* *`    | person planning for my travel	| add remarks about tourist attractions	            | keep track of important stuff to take note of
+| `* *`    | person planning for my travel	| sort the attractions by their various parameters	| easily skim the attractions I am interested in
+| `* *`    | person planning for my travel	| search attractions by tag                     	| easily skim the attractions I am interested in
+#### Advanced planning
+
+| Priority | As a …​                              | I want to …​                                                                          | So that I can…​                                     |
+| -------- | --------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| `* *`    | travelholic planning for my travel    	 | create multiple travel plans for different countries	                                    | separate my different travelling trips
+| `* *`    | forgetful person planning for my travel | add overall trip information such as flight and hotel details, essential country info	| ensure I have all the correct information in one place
+| `* *`    | forgetful person planning for my travel | create a checklist of things I want to pack	                                            | not forget the things I should bring when packing
+| `* *`    | person planning for my travel           | add the length of my trip                                                                | plan for the dates I can visit my tourist attractions
+
+#### Traveling
+
+| Priority | As a …​                 | I want to …​                                   | So that I can…​                                     |
+| -------- | -------------------------- | ------------------------------------------------- | ------------------------------------------------------ |
+| `* *`    | person currently traveling	| mark tourist attractions as visited / not visited | know which attractions I missed
+
+
+#### Budgeting
+
+| Priority | As a …​                     | I want to …​                                               | So that I can…​                        |
+| -------- | ------------------------------ | ------------------------------------------------------------- | ------------------------------------------|
+| `* *`    | person planning for my travel	| set a budget for each tourist attraction beforehand	        | carefully plan my budget beforehand
+| `* *`    | person currently travelling	| record how much I have spent at each tourist attraction   	| check if I am still within my budget
+| `* *`    | person currently travelling	| record how much money I spent in a day	                    | check if I am still within my budget
+| `* *`    | person currently travelling	| know how much money I can spend in my remaining days per day	| check if I am still within my budget
+
+#### The user is a beginner
+
+| Priority | As a …​                                 | I want to …​                | So that I can…​                                                     |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| `*`      | new user	| find the user guide easily	                                 | know what TrackPad is
+| `*`      | new user	| know the features of the app	                                 | know what I can do on TrackPad
+| `*`      | new user	| know what commands I can type in the app	                     | know what I can do on TrackPad
+| `*`      | new user	| know what is the expected outcome of the commands            	 | ensure that I am using the app correctly
+| `*`      | new user	| see the app with sample data	                                 | see what TrackPad is capable of doing
+
+#### The user is a seasoned expert
+
+| Priority | As a …​                                 | I want to …​                | So that I can…​                                                     |
+| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
+| `*`      | user who uses the app often	| have advanced time-saving features	| reduce time typing
+| `*`      | user who uses the app often	| store my data properly all the time	| keep track of everything I have added from the start
+
+#### Quality of life features
+
+| Priority | As a …​                                 | I want to …​                | So that I can…​                                                     |
+| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
+| `*`      | user that likes to customise how my apps look	| change the theme of the app between light and dark	| personalise the app to my liking
+| `*`      | user that often makes mistakes                 | when typing	quickly undo / redo things that I typed	| ensure the things I type are accurate
+| `*`      | user that often makes spelling mistakes	    | quickly correct my spelling	                        | ensure the things I type are accurate
+| `*`      | impatient user	                                | create shortcuts for commonly used commands	        | save time 
+| `*`      | fast typist	                                | use my keyboard only to input things into the program	| add items more efficiently
+| `*`      | lazy person	                                | I want auto complete feature	                        | save time 
+| `*`      | someone who is afraid of programs	            | I want to be guided for each step	                    | make sure that I am on the right track
+| `*`      | user with many tourist attractions in the app	| I want to search by multiple parameters at a time	    | quickly find the information I need
+| `*`      | user with many tourist attractions in the app	| I want to search by multiple tags at a time	        | quickly find the information I need
+| `*`      | user with many tourist attractions in the app	| I want to search by excluding certain parameters	    | quickly find the information I need
 
 *{More to be added}*
 
@@ -291,9 +372,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+1.  The product should be able to hold up to 1000 tourist attractions without a noticeable sluggishness in performance for typical usage.
+2.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+3.  The user interface should be intuitive enough for users who are not IT-savvy.
+4.  The product is not required to recommend new tourist attractions which are not inputted by the user.
+5.  The product should be free to download and use.
+6.  The system should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+7.  The system should work on both 32-bit and 64-bit environments.
+8.  The system should respond within five seconds.
+9.  The project is expected to be a brown-field project.
+10.  The progress of the project is expected to adhere to the schedule provided on the module website.
 
 *{More to be added}*
 
