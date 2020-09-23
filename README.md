@@ -2,7 +2,7 @@
 
 **TrackPad**
 
-![Ui](docs/images/UpdatedUi.png)
+![Ui](docs/images/Ui.png)
 
 
 **Introduction**
