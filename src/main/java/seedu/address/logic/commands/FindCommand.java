@@ -30,7 +30,7 @@ public class FindCommand extends Command {
         requireNonNull(model);
         model.updateFilteredAttractionList(predicate);
         return new CommandResult(
-                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredAttractionList().size()));
+                String.format(Messages.MESSAGE_ATTRACTIONS_LISTED_OVERVIEW, model.getFilteredAttractionList().size()));
     }
 
     @Override

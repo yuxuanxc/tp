@@ -49,7 +49,7 @@ class JsonSerializableTrackPad {
         TrackPad trackpad = new TrackPad();
         for (JsonAdaptedAttraction jsonAdaptedAttraction : attractions) {
             Attraction attraction = jsonAdaptedAttraction.toModelType();
-            if (addressBook.hasAttraction(attraction)) {
+            if (trackpad.hasAttraction(attraction)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_ATTRACTION);
             }
             trackpad.addAttraction(attraction);

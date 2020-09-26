@@ -5,14 +5,14 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.person.Person;
+import seedu.address.model.attraction.Attraction;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
-    Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    Predicate<Attraction> PREDICATE_SHOW_ALL_ATTRACTIONS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -35,53 +35,54 @@ public interface Model {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' track pad file path.
      */
-    Path getAddressBookFilePath();
+    Path getTrackPadFilePath();
 
     /**
-     * Sets the user prefs' address book file path.
+     * Sets the user prefs' track pad file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setTrackPadFilePath(Path trackPadFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces track pad data with the data in {@code trackPad}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setTrackPad(ReadOnlyTrackPad trackPad);
 
-    /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
+    /** Returns the TrackPad */
+    ReadOnlyTrackPad getTrackPad();
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if a attraction with the same identity as {@code attraction} exists in the track pad.
      */
-    boolean hasPerson(Person person);
+    boolean hasAttraction(Attraction attraction);
 
     /**
-     * Deletes the given person.
-     * The person must exist in the address book.
+     * Deletes the given attraction.
+     * The attraction must exist in the track pad.
      */
-    void deletePerson(Person target);
+    void deleteAttraction(Attraction target);
 
     /**
-     * Adds the given person.
-     * {@code person} must not already exist in the address book.
+     * Adds the given attraction.
+     * {@code attraction} must not already exist in the track pad.
      */
-    void addPerson(Person person);
+    void addAttraction(Attraction attraction);
 
     /**
-     * Replaces the given person {@code target} with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * Replaces the given attraction {@code target} with {@code editedAttraction}.
+     * {@code target} must exist in the track pad.
+     * The attraction identity of {@code editedAttraction} must not be the same as another existing attraction in 
+     * the track pad.
      */
-    void setPerson(Person target, Person editedPerson);
+    void setAttraction(Attraction target, Attraction editedAttraction);
 
-    /** Returns an unmodifiable view of the filtered person list */
-    ObservableList<Person> getFilteredPersonList();
+    /** Returns an unmodifiable view of the filtered attraction list */
+    ObservableList<Attraction> getFilteredAttractionList();
 
     /**
-     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered attraction list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredPersonList(Predicate<Person> predicate);
+    void updateFilteredAttractionList(Predicate<Attraction> predicate);
 }
