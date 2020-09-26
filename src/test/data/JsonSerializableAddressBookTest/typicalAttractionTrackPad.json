@@ -1,0 +1,46 @@
+{
+  "_comment": "TrackPad save file which contains the same Attraction values as in TypicalAttractions#getTypicalTrackPad()",
+  "attractions" : [ {
+    "name" : "Jurong Bird Park",
+    "phone" : "94351253",
+    "email" : "birdpark@example.com",
+    "address" : "123, Jurong West Ave 6, #08-111",
+    "tagged" : [ "animal" ]
+  }, {
+    "name" : "Night Safari",
+    "phone" : "98765432",
+    "email" : "nightsafari@example.com",
+    "address" : "311, Clementi Ave 2, #02-25",
+    "tagged" : [ "animal", "night" ]
+  }, {
+    "name" : "Singapore Zoo",
+    "phone" : "95352563",
+    "email" : "singaporezoo@example.com",
+    "address" : "wall street",
+    "tagged" : [ ]
+  }, {
+    "name" : "River Safari",
+    "phone" : "87652533",
+    "email" : "riversafari@example.com",
+    "address" : "10th street",
+    "tagged" : [ "panda" ]
+  }, {
+    "name" : "Orchard Road",
+    "phone" : "9482224",
+    "email" : "orchardroad@example.com",
+    "address" : "michegan ave",
+    "tagged" : [ ]
+  }, {
+    "name" : "Botanical Gardens",
+    "phone" : "9482427",
+    "email" : "botanicalgardens@example.com",
+    "address" : "little tokyo",
+    "tagged" : [ ]
+  }, {
+    "name" : "Jurong Lake",
+    "phone" : "9482442",
+    "email" : "juronglake@example.com",
+    "address" : "4th street",
+    "tagged" : [ ]
+  } ]
+}
