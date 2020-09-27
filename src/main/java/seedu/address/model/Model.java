@@ -72,7 +72,7 @@ public interface Model {
     /**
      * Replaces the given attraction {@code target} with {@code editedAttraction}.
      * {@code target} must exist in the track pad.
-     * The attraction identity of {@code editedAttraction} must not be the same as another existing attraction in 
+     * The attraction identity of {@code editedAttraction} must not be the same as another existing attraction in
      * the track pad.
      */
     void setAttraction(Attraction target, Attraction editedAttraction);

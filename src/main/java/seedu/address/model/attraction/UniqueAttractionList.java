@@ -8,15 +8,15 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.attraction.exceptions.DuplicateAttractionException;
 import seedu.address.model.attraction.exceptions.AttractionNotFoundException;
+import seedu.address.model.attraction.exceptions.DuplicateAttractionException;
 
 /**
  * A list of attractions that enforces uniqueness between its elements and does not allow nulls.
  * A attraction is considered unique by comparing using {@code Attraction#isSameAttraction(Attraction)}. As such,
  * adding and updating of attractions uses Attraction#isSameAttraction(Attraction) for equality so as to ensure that
- * the attraction being added or updated is unique in terms of identity in the UniqueAttractionList. However, the 
- * removal of a attraction uses Attraction#equals(Object) so as to ensure that the attraction with exactly the same 
+ * the attraction being added or updated is unique in terms of identity in the UniqueAttractionList. However, the
+ * removal of a attraction uses Attraction#equals(Object) so as to ensure that the attraction with exactly the same
  * fields will be removed.
  *
  * Supports a minimal set of list operations.
@@ -52,7 +52,8 @@ public class UniqueAttractionList implements Iterable<Attraction> {
     /**
      * Replaces the attraction {@code target} in the list with {@code editedAttraction}.
      * {@code target} must exist in the list.
-     * The attraction identity of {@code editedAttraction} must not be the same as another existing attraction in the list.
+     * The attraction identity of {@code editedAttraction} must not be the same as another existing attraction in
+     * the list.
      */
     public void setAttraction(Attraction target, Attraction editedAttraction) {
         requireAllNonNull(target, editedAttraction);

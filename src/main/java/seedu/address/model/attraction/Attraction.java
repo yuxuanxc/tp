@@ -116,5 +116,4 @@ public class Attraction {
         getTags().forEach(builder::append);
         return builder.toString();
     }
-
 }
