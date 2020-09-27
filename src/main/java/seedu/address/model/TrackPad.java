@@ -77,7 +77,8 @@ public class TrackPad implements ReadOnlyTrackPad {
     /**
      * Replaces the given attraction {@code target} in the list with {@code editedAttraction}.
      * {@code target} must exist in the track pad.
-     * The person identity of {@code editedAttraction} must not be the same as another existing attraction in the address book.
+     * The person identity of {@code editedAttraction} must not be the same as another existing
+     * attraction in the address book.
      */
     public void setAttraction(Attraction target, Attraction editedAttraction) {
         requireNonNull(editedAttraction);
