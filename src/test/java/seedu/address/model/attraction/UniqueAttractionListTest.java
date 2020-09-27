@@ -14,8 +14,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.attraction.exceptions.DuplicateAttractionException;
 import seedu.address.model.attraction.exceptions.AttractionNotFoundException;
+import seedu.address.model.attraction.exceptions.DuplicateAttractionException;
 import seedu.address.testutil.AttractionBuilder;
 
 public class UniqueAttractionListTest {
@@ -41,9 +41,9 @@ public class UniqueAttractionListTest {
     @Test
     public void contains_attractionWithSameIdentityFieldsInList_returnsTrue() {
         uniqueAttractionList.add(BOTANIC_GARDENS);
-        Attraction editedBOTANIC_GARDENS = new AttractionBuilder(BOTANIC_GARDENS).withAddress(VALID_ADDRESS_MBS).withTags(VALID_TAG_SIGHTSEEING)
-                .build();
-        assertTrue(uniqueAttractionList.contains(editedBOTANIC_GARDENS));
+        Attraction editedAttraction = new AttractionBuilder(BOTANIC_GARDENS)
+            .withAddress(VALID_ADDRESS_MBS).withTags(VALID_TAG_SIGHTSEEING).build();
+        assertTrue(uniqueAttractionList.contains(editedAttraction));
     }
 
     @Test
@@ -59,17 +59,20 @@ public class UniqueAttractionListTest {
 
     @Test
     public void setAttraction_nullTargetAttraction_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueAttractionList.setAttraction(null, BOTANIC_GARDENS));
+        assertThrows(NullPointerException.class, ()
+            -> uniqueAttractionList.setAttraction(null, BOTANIC_GARDENS));
     }
 
     @Test
     public void setAttraction_nullEditedAttraction_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueAttractionList.setAttraction(BOTANIC_GARDENS, null));
+        assertThrows(NullPointerException.class, ()
+            -> uniqueAttractionList.setAttraction(BOTANIC_GARDENS, null));
     }
 
     @Test
     public void setAttraction_targetAttractionNotInList_throwsAttractionNotFoundException() {
-        assertThrows(AttractionNotFoundException.class, () -> uniqueAttractionList.setAttraction(BOTANIC_GARDENS, BOTANIC_GARDENS));
+        assertThrows(AttractionNotFoundException.class, ()
+            -> uniqueAttractionList.setAttraction(BOTANIC_GARDENS, BOTANIC_GARDENS));
     }
 
     @Test
@@ -84,11 +87,11 @@ public class UniqueAttractionListTest {
     @Test
     public void setAttraction_editedAttractionHasSameIdentity_success() {
         uniqueAttractionList.add(BOTANIC_GARDENS);
-        Attraction editedBOTANIC_GARDENS = new AttractionBuilder(BOTANIC_GARDENS).withAddress(VALID_ADDRESS_MBS).withTags(VALID_TAG_SIGHTSEEING)
-                .build();
-        uniqueAttractionList.setAttraction(BOTANIC_GARDENS, editedBOTANIC_GARDENS);
+        Attraction editedAttraction = new AttractionBuilder(BOTANIC_GARDENS)
+            .withAddress(VALID_ADDRESS_MBS).withTags(VALID_TAG_SIGHTSEEING).build();
+        uniqueAttractionList.setAttraction(BOTANIC_GARDENS, editedAttraction);
         UniqueAttractionList expectedUniqueAttractionList = new UniqueAttractionList();
-        expectedUniqueAttractionList.add(editedBOTANIC_GARDENS);
+        expectedUniqueAttractionList.add(editedAttraction);
         assertEquals(expectedUniqueAttractionList, uniqueAttractionList);
     }
 
@@ -105,7 +108,8 @@ public class UniqueAttractionListTest {
     public void setAttraction_editedAttractionHasNonUniqueIdentity_throwsDuplicateAttractionException() {
         uniqueAttractionList.add(BOTANIC_GARDENS);
         uniqueAttractionList.add(SUNTEC);
-        assertThrows(DuplicateAttractionException.class, () -> uniqueAttractionList.setAttraction(BOTANIC_GARDENS, SUNTEC));
+        assertThrows(DuplicateAttractionException.class, ()
+            -> uniqueAttractionList.setAttraction(BOTANIC_GARDENS, SUNTEC));
     }
 
     @Test
@@ -128,7 +132,8 @@ public class UniqueAttractionListTest {
 
     @Test
     public void setAttractions_nullUniqueAttractionList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueAttractionList.setAttractions((UniqueAttractionList) null));
+        assertThrows(NullPointerException.class, ()
+            -> uniqueAttractionList.setAttractions((UniqueAttractionList) null));
     }
 
     @Test
@@ -158,8 +163,8 @@ public class UniqueAttractionListTest {
     @Test
     public void setAttractions_listWithDuplicateAttractions_throwsDuplicateAttractionException() {
         List<Attraction> listWithDuplicateAttractions = Arrays.asList(BOTANIC_GARDENS, BOTANIC_GARDENS);
-        assertThrows(DuplicateAttractionException.class, () 
-                -> uniqueAttractionList.setAttractions(listWithDuplicateAttractions));
+        assertThrows(DuplicateAttractionException.class, ()
+            -> uniqueAttractionList.setAttractions(listWithDuplicateAttractions));
     }
 
     @Test
