@@ -20,9 +20,9 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.attraction.Address;
+import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Name;
-import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.tag.Tag;
 
@@ -90,7 +90,8 @@ public class EditCommand extends Command {
      * Creates and returns a {@code Attraction} with the details of {@code attractionToEdit}
      * edited with {@code editAttractionDescriptor}.
      */
-    private static Attraction createEditedAttraction(Attraction attractionToEdit, EditAttractionDescriptor editAttractionDescriptor) {
+    private static Attraction createEditedAttraction(Attraction attractionToEdit,
+                                                     EditAttractionDescriptor editAttractionDescriptor) {
         assert attractionToEdit != null;
 
         Name updatedName = editAttractionDescriptor.getName().orElse(attractionToEdit.getName());
