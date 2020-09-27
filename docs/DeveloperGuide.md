@@ -282,6 +282,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | person planning for my travel	| add remarks about tourist attractions	            | keep track of important stuff to take note of
 | `* *`    | person planning for my travel	| sort the attractions by their various parameters	| easily skim the attractions I am interested in
 | `* *`    | person planning for my travel	| search attractions by tag                     	| easily skim the attractions I am interested in
+
 #### Advanced planning
 
 | Priority | As a …​                              | I want to …​                                                                          | So that I can…​                                     |
@@ -344,15 +345,94 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Use cases
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
-
-**Use case: Delete a person**
+      
+**Use case: Add a tourist attraction**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to add a tourist attraction
+2.  TrackPad adds the tourist attraction
+
+    Use case ends.
+      
+**Extensions**
+
+* 2a. The given format for tourist attraction is invalid.
+
+    * 2a1. TrackPad shows an error message.
+    
+      Use case resumes at step 1.
+
+**Use case: Delete a tourist attraction**
+
+**MSS**
+
+1.  User requests to list tourist attractions
+2.  TrackPad shows a list of tourist attractions
+3.  User requests to delete a specific tourist attraction in the list
+4.  TrackPad deletes the tourist attraction
+
+    Use case ends.
+    
+**Extensions**
+
+* 2a. The list is empty.
+      
+  Use case ends.
+      
+* 2b. The format is invalid. 
+      
+  Use case ends.
+  
+* 3a. The given index is invalid.
+
+    * 3a1. TrackPad shows an error message.
+    
+      Use case resumes at step 2.
+      
+**Use case: Find a tourist attraction**
+
+**MSS**
+
+1.  User requests to find a tourist attraction
+2.  TrackPad shows a list of tourist attractions matching the keyword entered
+
+    Use case ends.
+    
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+    
+* 3a. The given keyword is not found.
+
+    * 3a1. TrackPad shows an error.
+
+      Use case ends.
+
+**Use case: List all tourist attractions**
+
+**MSS**
+
+1.  User requests to list all tourist attractions
+2.  TrackPad shows a list of all tourist attractions
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+ 
+
+**Use case: Clear all tourist attractions**
+
+**MSS**
+
+1.  User requests to delete all tourist attractions in the list
+2.  TrackPad deletes all tourist attractions in the list
 
     Use case ends.
 
@@ -362,11 +442,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3a. The given index is invalid.
+* 3a. Error deleting list from storage
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. TrackPad shows an error.
 
-      Use case resumes at step 2.
+      Use case ends.
 
 *{More to be added}*
 
