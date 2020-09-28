@@ -3,7 +3,7 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.storage.JsonAdaptedAttraction.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalAttractions.ZOO; //BENSON
+import static seedu.address.testutil.TypicalAttractions.ZOO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +34,8 @@ public class JsonAdaptedAttractionTest {
 
     @Test
     public void toModelType_validAttractionDetails_returnsAttraction() throws Exception {
-        JsonAdaptedAttraction attraction = new JsonAdaptedAttraction(Zoo);
-        assertEquals(Zoo, attraction.toModelType());
+        JsonAdaptedAttraction attraction = new JsonAdaptedAttraction(ZOO);
+        assertEquals(ZOO, attraction.toModelType());
     }
 
     @Test

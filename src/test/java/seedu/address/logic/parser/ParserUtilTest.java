@@ -28,7 +28,7 @@ public class ParserUtilTest {
     private static final String INVALID_TAG = "#nature";
 
     private static final String VALID_NAME = "Botanic Gardens";
-    private static final String VALID_PHONE = "6471 7138";
+    private static final String VALID_PHONE = "64717138";
     private static final String VALID_ADDRESS = "1 Cluny Rd, 259569";
     private static final String VALID_EMAIL = "botanicgardens@example.com";
     private static final String VALID_TAG_1 = "nature";

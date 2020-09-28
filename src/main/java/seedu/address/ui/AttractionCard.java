@@ -46,7 +46,7 @@ public class AttractionCard extends UiPart<Region> {
      */
     public AttractionCard(Attraction attraction, int displayedIndex) {
         super(FXML);
-        this.address = attraction;
+        this.attraction = attraction;
         id.setText(displayedIndex + ". ");
         name.setText(attraction.getName().fullName);
         phone.setText(attraction.getPhone().value);

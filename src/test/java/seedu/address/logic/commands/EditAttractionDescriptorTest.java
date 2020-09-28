@@ -8,7 +8,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_MBS;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ACTIVITY;
 
 import org.junit.jupiter.api.Test;
 
@@ -36,23 +36,23 @@ public class EditAttractionDescriptorTest {
         assertFalse(DESC_ZOO.equals(DESC_MBS));
 
         // different name -> returns false
-        EditAttractionDescriptor editedAmy = new EditAttractionDescriptorBuilder(DESC_ZOO).withName(VALID_NAME_MBS).build();
-        assertFalse(DESC_ZOO.equals(editedAmy));
+        EditAttractionDescriptor editedZoo = new EditAttractionDescriptorBuilder(DESC_ZOO).withName(VALID_NAME_MBS).build();
+        assertFalse(DESC_ZOO.equals(editedZoo));
 
         // different phone -> returns false
-        editedAmy = new EditAttractionDescriptorBuilder(DESC_ZOO).withPhone(VALID_PHONE_MBS).build();
-        assertFalse(DESC_ZOO.equals(editedAmy));
+        editedZoo = new EditAttractionDescriptorBuilder(DESC_ZOO).withPhone(VALID_PHONE_MBS).build();
+        assertFalse(DESC_ZOO.equals(editedZoo));
 
         // different email -> returns false
-        editedAmy = new EditAttractionDescriptorBuilder(DESC_ZOO).withEmail(VALID_EMAIL_MBS).build();
-        assertFalse(DESC_ZOO.equals(editedAmy));
+        editedZoo = new EditAttractionDescriptorBuilder(DESC_ZOO).withEmail(VALID_EMAIL_MBS).build();
+        assertFalse(DESC_ZOO.equals(editedZoo));
 
         // different address -> returns false
-        editedAmy = new EditAttractionDescriptorBuilder(DESC_ZOO).withAddress(VALID_ADDRESS_MBS).build();
-        assertFalse(DESC_ZOO.equals(editedAmy));
+        editedZoo = new EditAttractionDescriptorBuilder(DESC_ZOO).withAddress(VALID_ADDRESS_MBS).build();
+        assertFalse(DESC_ZOO.equals(editedZoo));
 
         // different tags -> returns false
-        editedAmy = new EditAttractionDescriptorBuilder(DESC_ZOO).withTags(VALID_TAG_SIGHTSEEING).build();
-        assertFalse(DESC_ZOO.equals(editedAmy));
+        editedZoo = new EditAttractionDescriptorBuilder(DESC_ZOO).withTags(VALID_TAG_ACTIVITY).build();
+        assertFalse(DESC_ZOO.equals(editedZoo));
     }
 }

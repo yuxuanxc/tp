@@ -6,7 +6,7 @@ import java.util.Set;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Name;
-import seedu.address.model.attraction.Person;
+import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
@@ -17,7 +17,7 @@ import seedu.address.model.util.SampleDataUtil;
 public class AttractionBuilder {
 
     public static final String DEFAULT_NAME = "Singapore Zoo";
-    public static final String DEFAULT_PHONE = "6269 3411";
+    public static final String DEFAULT_PHONE = "62693411";
     public static final String DEFAULT_EMAIL = "zoo@example.com";
     public static final String DEFAULT_ADDRESS = "80 Mandai Lake Rd, 729826";
 

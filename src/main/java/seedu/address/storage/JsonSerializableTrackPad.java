@@ -9,8 +9,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.TrackPad;
 import seedu.address.model.ReadOnlyTrackPad;
+import seedu.address.model.TrackPad;
 import seedu.address.model.attraction.Attraction;
 
 /**
@@ -37,7 +37,8 @@ class JsonSerializableTrackPad {
      * @param source future changes to this will not affect the created {@code JsonSerializableTrackPad}.
      */
     public JsonSerializableTrackPad(ReadOnlyTrackPad source) {
-        attractions.addAll(source.getAttractionList().stream().map(JsonAdaptedAttraction::new).collect(Collectors.toList()));
+        attractions.addAll(source.getAttractionList().stream().map(JsonAdaptedAttraction::new)
+            .collect(Collectors.toList()));
     }
 
     /**
@@ -49,7 +50,7 @@ class JsonSerializableTrackPad {
         TrackPad trackpad = new TrackPad();
         for (JsonAdaptedAttraction jsonAdaptedAttraction : attractions) {
             Attraction attraction = jsonAdaptedAttraction.toModelType();
-            if (addressBook.hasAttraction(attraction)) {
+            if (trackpad.hasAttraction(attraction)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_ATTRACTION);
             }
             trackpad.addAttraction(attraction);

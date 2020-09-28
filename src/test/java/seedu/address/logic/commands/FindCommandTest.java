@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_ATTRACTIONS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalAttractions.CARL;
-import static seedu.address.testutil.TypicalAttractions.ELLE;
-import static seedu.address.testutil.TypicalAttractions.FIONA;
+import static seedu.address.testutil.TypicalAttractions.SINGAPORE_ZOO;
+import static seedu.address.testutil.TypicalAttractions.ORCHARD_ROAD;
+import static seedu.address.testutil.TypicalAttractions.BOTANIC_GARDENS;
 import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
 
 import java.util.Arrays;
@@ -67,11 +67,11 @@ public class FindCommandTest {
     @Test
     public void execute_multipleKeywords_multipleAttractionsFound() {
         String expectedMessage = String.format(MESSAGE_ATTRACTIONS_LISTED_OVERVIEW, 3);
-        NameContainsKeywordsPredicate predicate = preparePredicate("Kurz Elle Kunz");
+        NameContainsKeywordsPredicate predicate = preparePredicate("Zoo Orchard Gardens");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredAttractionList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredAttractionList());
+        assertEquals(Arrays.asList(SINGAPORE_ZOO, ORCHARD_ROAD, BOTANIC_GARDENS), model.getFilteredAttractionList());
     }
 
     /**

@@ -3,9 +3,9 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalAttractions.USS; //Alice
-import static seedu.address.testutil.TypicalAttractions.MBS; //Hoon
-import static seedu.address.testutil.TypicalAttractions.SENTOSA; //Ida
+import static seedu.address.testutil.TypicalAttractions.JURONG_BIRD_PARK;
+import static seedu.address.testutil.TypicalAttractions.MBS;
+import static seedu.address.testutil.TypicalAttractions.ZOO;
 import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
 
 import java.io.IOException;
@@ -73,13 +73,13 @@ public class JsonTrackPadStorageTest {
 
         // Modify data, overwrite exiting file, and read back
         original.addAttraction(MBS);
-        original.removeAttraction(USS);
+        original.removeAttraction(JURONG_BIRD_PARK);
         jsonTrackPadStorage.saveTrackPad(original, filePath);
         readBack = jsonTrackPadStorage.readTrackPad(filePath).get();
         assertEquals(original, new TrackPad(readBack));
 
         // Save and read without specifying file path
-        original.addAttraction(SENTOSA);
+        original.addAttraction(ZOO);
         jsonTrackPadStorage.saveTrackPad(original); // file path not specified
         readBack = jsonTrackPadStorage.readTrackPad().get(); // file path not specified
         assertEquals(original, new TrackPad(readBack));
