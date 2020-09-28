@@ -81,7 +81,10 @@ public class AddCommandParserTest {
         assertParseSuccess(parser, NAME_DESC_ZOO + PHONE_DESC_ZOO + EMAIL_DESC_ZOO + ADDRESS_DESC_ZOO,
                 new AddCommand(expectedAttraction));
 
-        // todo adds test case to check for optional field address
+        // No address field
+        Attraction expectedAttractionNoAddress = new AttractionBuilder(ZOO).withAddress().build();
+        assertParseSuccess(parser, NAME_DESC_ZOO + PHONE_DESC_ZOO + EMAIL_DESC_ZOO + TAG_DESC_ACTIVITY,
+                new AddCommand(expectedAttractionNoAddress));
     }
 
     @Test

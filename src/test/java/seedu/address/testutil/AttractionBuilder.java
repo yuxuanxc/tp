@@ -60,7 +60,7 @@ public class AttractionBuilder {
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Attraction} that we are building.
      */
-    public AttractionBuilder withTags(String ... tags) {
+    public AttractionBuilder withTags(String... tags) {
         this.tags = SampleDataUtil.getTagSet(tags);
         return this;
     }
@@ -70,6 +70,16 @@ public class AttractionBuilder {
      */
     public AttractionBuilder withAddress(String address) {
         this.address = new Address(address);
+        return this;
+    }
+
+
+    /**
+     * Sets the {@code Address} to empty string of the {@code Attraction} that we are building.
+     * Attraction did not utilise this address field.
+     */
+    public AttractionBuilder withAddress() {
+        this.address = new Address();
         return this;
     }
 
