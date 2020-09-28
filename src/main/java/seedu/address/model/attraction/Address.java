@@ -30,6 +30,15 @@ public class Address {
         value = address;
     }
 
+
+    /**
+     * Constructs an {@code Address} with an empty address value.
+     */
+    public Address() {
+        value = "";
+    }
+
+
     /**
      * Returns true if a given string is a valid address.
      */

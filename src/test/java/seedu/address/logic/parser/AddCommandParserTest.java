@@ -90,6 +90,11 @@ public class AddCommandParserTest {
         Attraction expectedAttraction = new AttractionBuilder(EIFFEL_TOWER).withTags().build();
         assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
                         + ADDRESS_DESC_EIFFEL + LOCATION_DESC_EIFFEL, new AddCommand(expectedAttraction));
+
+        // No address field
+        Attraction expectedAttractionNoAddress = new AttractionBuilder(EIFFEL_TOWER).withAddress().build();
+        assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
+                        + LOCATION_DESC_EIFFEL + TAG_DESC_ACTIVITY, new AddCommand(expectedAttractionNoAddress));
     }
 
     @Test
@@ -108,9 +113,10 @@ public class AddCommandParserTest {
         assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS + VALID_EMAIL_MBS + ADDRESS_DESC_MBS
                 + LOCATION_DESC_MBS, expectedMessage);
 
+        // todo delete check for missing address prefix since address is no longer compulsory
         // missing address prefix
-        assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + VALID_ADDRESS_MBS
-                + LOCATION_DESC_MBS, expectedMessage);
+        // assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + VALID_ADDRESS_MBS
+        //         + LOCATION_DESC_MBS, expectedMessage);
 
         // missing location prefix
         assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
