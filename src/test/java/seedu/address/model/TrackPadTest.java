@@ -46,9 +46,9 @@ public class TrackPadTest {
     @Test
     public void resetData_withDuplicateAttractions_throwsDuplicatePersonException() {
         // Two persons with the same identity fields
-        Attraction editedMBS = new AttractionBuilder(MBS).withAddress(VALID_ADDRESS_MBS).withTags(VALID_TAG_SIGHTSEEING)
+        Attraction editedMbs = new AttractionBuilder(MBS).withAddress(VALID_ADDRESS_MBS).withTags(VALID_TAG_SIGHTSEEING)
                 .build();
-        List<Attraction> newAttractions = Arrays.asList(MBS, editedMBS);
+        List<Attraction> newAttractions = Arrays.asList(MBS, editedMbs);
         TrackPadStub newData = new TrackPadStub(newAttractions);
 
         assertThrows(DuplicateAttractionException.class, () -> trackPad.resetData(newData));
@@ -73,9 +73,9 @@ public class TrackPadTest {
     @Test
     public void hasAttraction_attractionWithSameIdentityFieldsInTrackPad_returnsTrue() {
         trackPad.addAttraction(MBS);
-        Attraction editedMBS = new AttractionBuilder(MBS).withAddress(VALID_ADDRESS_MBS).withTags(VALID_TAG_SIGHTSEEING)
+        Attraction editedMbs = new AttractionBuilder(MBS).withAddress(VALID_ADDRESS_MBS).withTags(VALID_TAG_SIGHTSEEING)
                 .build();
-        assertTrue(trackPad.hasAttraction(editedMBS));
+        assertTrue(trackPad.hasAttraction(editedMbs));
     }
 
     @Test

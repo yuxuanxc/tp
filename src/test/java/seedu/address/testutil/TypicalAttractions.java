@@ -1,13 +1,13 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_MBS;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_ZOO;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_MBS;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_ZOO;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_MBS;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_ZOO;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ACTIVITY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING;
 
@@ -72,8 +72,8 @@ public class TypicalAttractions {
     public static final Attraction ZOO = new AttractionBuilder().withName(VALID_NAME_ZOO).withPhone(VALID_PHONE_ZOO)
             .withEmail(VALID_EMAIL_ZOO).withAddress(VALID_ADDRESS_ZOO).withTags(VALID_TAG_ACTIVITY).build();
     public static final Attraction MBS = new AttractionBuilder().withName(VALID_NAME_MBS).withPhone(VALID_PHONE_MBS)
-            .withEmail(VALID_EMAIL_MBS).withAddress(VALID_ADDRESS_MBS).withTags(VALID_TAG_SIGHTSEEING, VALID_TAG_ACTIVITY)
-            .build();
+            .withEmail(VALID_EMAIL_MBS).withAddress(VALID_ADDRESS_MBS)
+            .withTags(VALID_TAG_SIGHTSEEING, VALID_TAG_ACTIVITY).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
