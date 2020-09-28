@@ -26,20 +26,19 @@ public class AddCommand extends Command {
             + PREFIX_ADDRESS + "ADDRESS "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "John Doe "
+            + PREFIX_NAME + "Singapore Zoo "
             + PREFIX_PHONE + "98765432 "
-            + PREFIX_EMAIL + "johnd@example.com "
+            + PREFIX_EMAIL + "sgzoo@example.com "
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
-            + PREFIX_TAG + "friends "
-            + PREFIX_TAG + "owesMoney";
+            + PREFIX_TAG + "animal ";
 
     public static final String MESSAGE_SUCCESS = "New attraction added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This attraction already exists in TrackPad";
+    public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in TrackPad";
 
     private final Attraction toAdd;
 
     /**
-     * Creates an AddCommand to add the specified {@code Person}
+     * Creates an AddCommand to add the specified {@code Attraction}
      */
     public AddCommand(Attraction attraction) {
         requireNonNull(attraction);
@@ -51,7 +50,7 @@ public class AddCommand extends Command {
         requireNonNull(model);
 
         if (model.hasAttraction(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
         }
 
         model.addAttraction(toAdd);

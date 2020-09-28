@@ -4,43 +4,43 @@
     "name" : "Jurong Bird Park",
     "phone" : "94351253",
     "email" : "birdpark@example.com",
-    "address" : "123, Jurong West Ave 6, #08-111",
+    "address" : "2 Jurong Hill",
     "tagged" : [ "animal" ]
   }, {
     "name" : "Night Safari",
     "phone" : "98765432",
     "email" : "nightsafari@example.com",
-    "address" : "311, Clementi Ave 2, #02-25",
+    "address" : "Mandai Lake Rd",
     "tagged" : [ "animal", "night" ]
   }, {
     "name" : "Singapore Zoo",
     "phone" : "95352563",
     "email" : "singaporezoo@example.com",
-    "address" : "wall street",
+    "address" : "Mandai Lake Rd",
     "tagged" : [ ]
   }, {
     "name" : "River Safari",
     "phone" : "87652533",
     "email" : "riversafari@example.com",
-    "address" : "10th street",
+    "address" : "Mandai Lake Rd",
     "tagged" : [ "panda" ]
   }, {
     "name" : "Orchard Road",
     "phone" : "9482224",
     "email" : "orchardroad@example.com",
-    "address" : "michegan ave",
+    "address" : "Orchard Road",
     "tagged" : [ ]
   }, {
-    "name" : "Botanical Gardens",
+    "name" : "Botanic Gardens",
     "phone" : "9482427",
-    "email" : "botanicalgardens@example.com",
-    "address" : "little tokyo",
+    "email" : "botanicgardens@example.com",
+    "address" : "Cluny Rd",
     "tagged" : [ ]
   }, {
     "name" : "Jurong Lake",
     "phone" : "9482442",
     "email" : "juronglake@example.com",
-    "address" : "4th street",
+    "address" : "Jurong",
     "tagged" : [ ]
   } ]
 }

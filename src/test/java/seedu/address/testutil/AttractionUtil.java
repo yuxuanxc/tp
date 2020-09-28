@@ -43,7 +43,7 @@ public class AttractionUtil {
     /**
      * Returns the part of command string for the given {@code EditAttractionDescriptor}'s details.
      */
-    public static String getEditAttractionDescriptorDetails(EditPersonDescriptor descriptor) {
+    public static String getEditAttractionDescriptorDetails(EditAttractionDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
         descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));

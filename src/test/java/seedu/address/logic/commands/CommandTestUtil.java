@@ -28,13 +28,13 @@ public class CommandTestUtil {
 
     public static final String VALID_NAME_ZOO = "Singapore Zoo";
     public static final String VALID_NAME_MBS = "Marina Bay Sands";
-    public static final String VALID_PHONE_ZOO = "6269 3411";
-    public static final String VALID_PHONE_MBS = "6688 8888";
+    public static final String VALID_PHONE_ZOO = "62693411";
+    public static final String VALID_PHONE_MBS = "66888888";
     public static final String VALID_EMAIL_ZOO = "zoo@example.com";
     public static final String VALID_EMAIL_MBS = "mbs@example.com";
     public static final String VALID_ADDRESS_ZOO = "80 Mandai Lake Rd, 729826";
     public static final String VALID_ADDRESS_MBS = "10 Bayfront Ave, 018956";
-    public static final String VALID_TAG_SIGHTSEEING = "Sightseeing";
+    public static final String VALID_TAG_SIGHTSEEING = "sightseeing";
     public static final String VALID_TAG_ACTIVITY = "activity";
 
     public static final String NAME_DESC_ZOO = " " + PREFIX_NAME + VALID_NAME_ZOO;
