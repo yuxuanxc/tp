@@ -10,7 +10,7 @@ import java.util.Set;
 import seedu.address.model.tag.Tag;
 
 /**
- * Represents an Attraction in the address book.
+ * Represents an Attraction in TrackPad.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Attraction {
@@ -22,17 +22,19 @@ public class Attraction {
 
     // Data fields
     private final Address address;
+    private final Location location;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Attraction(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Attraction(Name name, Phone phone, Email email, Address address, Location location, Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, address, location, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.location = location;
         this.tags.addAll(tags);
     }
 
@@ -52,6 +54,10 @@ public class Attraction {
         return address;
     }
 
+    public Location getLocation() {
+        return location;
+    }
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -62,7 +68,7 @@ public class Attraction {
 
     /**
      * Returns true if both attractions of the same name have at least one other identity field that is the same.
-     * This defines a weaker notion of equality between two persons.
+     * This defines a weaker notion of equality between two attractions.
      */
     public boolean isSameAttraction(Attraction otherAttraction) {
         if (otherAttraction == this) {
@@ -93,13 +99,14 @@ public class Attraction {
                 && otherAttraction.getPhone().equals(getPhone())
                 && otherAttraction.getEmail().equals(getEmail())
                 && otherAttraction.getAddress().equals(getAddress())
+                && otherAttraction.getLocation().equals(getLocation())
                 && otherAttraction.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, location, tags);
     }
 
     @Override
@@ -112,6 +119,8 @@ public class Attraction {
                 .append(getEmail())
                 .append(" Address: ")
                 .append(getAddress())
+                .append(" Location: ")
+                .append(getLocation())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

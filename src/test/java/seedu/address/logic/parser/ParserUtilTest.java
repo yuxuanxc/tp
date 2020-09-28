@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Email;
+import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.Name;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.tag.Tag;
@@ -25,12 +26,14 @@ public class ParserUtilTest {
     private static final String INVALID_PHONE = "+6471 7138";
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
+    private static final String INVALID_LOCATION = " ";
     private static final String INVALID_TAG = "#nature";
 
     private static final String VALID_NAME = "Botanic Gardens";
     private static final String VALID_PHONE = "64717138";
     private static final String VALID_ADDRESS = "1 Cluny Rd, 259569";
     private static final String VALID_EMAIL = "botanicgardens@example.com";
+    private static final String VALID_LOCATION = "Singapore, Singapore";
     private static final String VALID_TAG_1 = "nature";
     private static final String VALID_TAG_2 = "sightseeing";
 
@@ -146,6 +149,29 @@ public class ParserUtilTest {
         String emailWithWhitespace = WHITESPACE + VALID_EMAIL + WHITESPACE;
         Email expectedEmail = new Email(VALID_EMAIL);
         assertEquals(expectedEmail, ParserUtil.parseEmail(emailWithWhitespace));
+    }
+
+    @Test
+    public void parseLocation_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseLocation((String) null));
+    }
+
+    @Test
+    public void parseLocation_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseLocation(INVALID_LOCATION));
+    }
+
+    @Test
+    public void parseLocation_validValueWithoutWhitespace_returnsLocation() throws Exception {
+        Location expectedLocation = new Location(VALID_LOCATION);
+        assertEquals(expectedLocation, ParserUtil.parseLocation(VALID_LOCATION));
+    }
+
+    @Test
+    public void parseLocation_validValueWithWhitespace_returnsTrimmedLocation() throws Exception {
+        String locationWithWhitespace = WHITESPACE + VALID_LOCATION + WHITESPACE;
+        Location expectedLocation = new Location(VALID_LOCATION);
+        assertEquals(expectedLocation, ParserUtil.parseLocation(locationWithWhitespace));
     }
 
     @Test

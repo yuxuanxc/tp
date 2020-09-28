@@ -2,10 +2,11 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_MBS;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_LOCATION_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ACTIVITY;
@@ -20,40 +21,44 @@ public class EditAttractionDescriptorTest {
     @Test
     public void equals() {
         // same values -> returns true
-        EditAttractionDescriptor descriptorWithSameValues = new EditAttractionDescriptor(DESC_ZOO);
-        assertTrue(DESC_ZOO.equals(descriptorWithSameValues));
+        EditAttractionDescriptor descriptorWithSameValues = new EditAttractionDescriptor(DESC_EIFFEL);
+        assertTrue(DESC_EIFFEL.equals(descriptorWithSameValues));
 
         // same object -> returns true
-        assertTrue(DESC_ZOO.equals(DESC_ZOO));
+        assertTrue(DESC_EIFFEL.equals(DESC_EIFFEL));
 
         // null -> returns false
-        assertFalse(DESC_ZOO.equals(null));
+        assertFalse(DESC_EIFFEL.equals(null));
 
         // different types -> returns false
-        assertFalse(DESC_ZOO.equals(5));
+        assertFalse(DESC_EIFFEL.equals(5));
 
         // different values -> returns false
-        assertFalse(DESC_ZOO.equals(DESC_MBS));
+        assertFalse(DESC_EIFFEL.equals(DESC_MBS));
 
         // different name -> returns false
-        EditAttractionDescriptor editedZoo = new EditAttractionDescriptorBuilder(DESC_ZOO)
+        EditAttractionDescriptor editedEiffel = new EditAttractionDescriptorBuilder(DESC_EIFFEL)
                 .withName(VALID_NAME_MBS).build();
-        assertFalse(DESC_ZOO.equals(editedZoo));
+        assertFalse(DESC_EIFFEL.equals(editedEiffel));
 
         // different phone -> returns false
-        editedZoo = new EditAttractionDescriptorBuilder(DESC_ZOO).withPhone(VALID_PHONE_MBS).build();
-        assertFalse(DESC_ZOO.equals(editedZoo));
+        editedEiffel = new EditAttractionDescriptorBuilder(DESC_EIFFEL).withPhone(VALID_PHONE_MBS).build();
+        assertFalse(DESC_EIFFEL.equals(editedEiffel));
 
         // different email -> returns false
-        editedZoo = new EditAttractionDescriptorBuilder(DESC_ZOO).withEmail(VALID_EMAIL_MBS).build();
-        assertFalse(DESC_ZOO.equals(editedZoo));
+        editedEiffel = new EditAttractionDescriptorBuilder(DESC_EIFFEL).withEmail(VALID_EMAIL_MBS).build();
+        assertFalse(DESC_EIFFEL.equals(editedEiffel));
 
         // different address -> returns false
-        editedZoo = new EditAttractionDescriptorBuilder(DESC_ZOO).withAddress(VALID_ADDRESS_MBS).build();
-        assertFalse(DESC_ZOO.equals(editedZoo));
+        editedEiffel = new EditAttractionDescriptorBuilder(DESC_EIFFEL).withAddress(VALID_ADDRESS_MBS).build();
+        assertFalse(DESC_EIFFEL.equals(editedEiffel));
+
+        // different location -> returns false
+        editedEiffel = new EditAttractionDescriptorBuilder(DESC_EIFFEL).withLocation(VALID_LOCATION_MBS).build();
+        assertFalse(DESC_EIFFEL.equals(editedEiffel));
 
         // different tags -> returns false
-        editedZoo = new EditAttractionDescriptorBuilder(DESC_ZOO).withTags(VALID_TAG_ACTIVITY).build();
-        assertFalse(DESC_ZOO.equals(editedZoo));
+        editedEiffel = new EditAttractionDescriptorBuilder(DESC_EIFFEL).withTags(VALID_TAG_ACTIVITY).build();
+        assertFalse(DESC_EIFFEL.equals(editedEiffel));
     }
 }

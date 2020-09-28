@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -26,25 +27,29 @@ import seedu.address.testutil.EditAttractionDescriptorBuilder;
  */
 public class CommandTestUtil {
 
-    public static final String VALID_NAME_ZOO = "Singapore Zoo";
+    public static final String VALID_NAME_EIFFEL = "Eiffel Tower";
     public static final String VALID_NAME_MBS = "Marina Bay Sands";
-    public static final String VALID_PHONE_ZOO = "62693411";
+    public static final String VALID_PHONE_EIFFEL = "33892701239";
     public static final String VALID_PHONE_MBS = "66888888";
-    public static final String VALID_EMAIL_ZOO = "zoo@example.com";
+    public static final String VALID_EMAIL_EIFFEL = "eiffel@example.com";
     public static final String VALID_EMAIL_MBS = "mbs@example.com";
-    public static final String VALID_ADDRESS_ZOO = "80 Mandai Lake Rd, 729826";
+    public static final String VALID_ADDRESS_EIFFEL = "Champ de Mars, 5 Avenue Anatole France, 75007";
     public static final String VALID_ADDRESS_MBS = "10 Bayfront Ave, 018956";
+    public static final String VALID_LOCATION_EIFFEL = "France, Paris";
+    public static final String VALID_LOCATION_MBS = "Singapore, Singapore";
     public static final String VALID_TAG_SIGHTSEEING = "sightseeing";
     public static final String VALID_TAG_ACTIVITY = "activity";
 
-    public static final String NAME_DESC_ZOO = " " + PREFIX_NAME + VALID_NAME_ZOO;
+    public static final String NAME_DESC_EIFFEL = " " + PREFIX_NAME + VALID_NAME_EIFFEL;
     public static final String NAME_DESC_MBS = " " + PREFIX_NAME + VALID_NAME_MBS;
-    public static final String PHONE_DESC_ZOO = " " + PREFIX_PHONE + VALID_PHONE_ZOO;
+    public static final String PHONE_DESC_EIFFEL = " " + PREFIX_PHONE + VALID_PHONE_EIFFEL;
     public static final String PHONE_DESC_MBS = " " + PREFIX_PHONE + VALID_PHONE_MBS;
-    public static final String EMAIL_DESC_ZOO = " " + PREFIX_EMAIL + VALID_EMAIL_ZOO;
+    public static final String EMAIL_DESC_EIFFEL = " " + PREFIX_EMAIL + VALID_EMAIL_EIFFEL;
     public static final String EMAIL_DESC_MBS = " " + PREFIX_EMAIL + VALID_EMAIL_MBS;
-    public static final String ADDRESS_DESC_ZOO = " " + PREFIX_ADDRESS + VALID_ADDRESS_ZOO;
+    public static final String ADDRESS_DESC_EIFFEL = " " + PREFIX_ADDRESS + VALID_ADDRESS_EIFFEL;
     public static final String ADDRESS_DESC_MBS = " " + PREFIX_ADDRESS + VALID_ADDRESS_MBS;
+    public static final String LOCATION_DESC_EIFFEL = " " + PREFIX_LOCATION + VALID_LOCATION_EIFFEL;
+    public static final String LOCATION_DESC_MBS = " " + PREFIX_LOCATION + VALID_LOCATION_MBS;
     public static final String TAG_DESC_SIGHTSEEING = " " + PREFIX_TAG + VALID_TAG_SIGHTSEEING;
     public static final String TAG_DESC_ACTIVITY = " " + PREFIX_TAG + VALID_TAG_ACTIVITY;
 
@@ -52,21 +57,22 @@ public class CommandTestUtil {
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "mbs!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
+    public static final String INVALID_LOCATION_DESC = " " + PREFIX_LOCATION; // empty string not allowed for locations
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "Sightseeing*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditAttractionDescriptor DESC_ZOO;
+    public static final EditCommand.EditAttractionDescriptor DESC_EIFFEL;
     public static final EditCommand.EditAttractionDescriptor DESC_MBS;
 
     static {
-        DESC_ZOO = new EditAttractionDescriptorBuilder().withName(VALID_NAME_ZOO)
-                .withPhone(VALID_PHONE_ZOO).withEmail(VALID_EMAIL_ZOO).withAddress(VALID_ADDRESS_ZOO)
-                .withTags(VALID_TAG_SIGHTSEEING).build();
+        DESC_EIFFEL = new EditAttractionDescriptorBuilder().withName(VALID_NAME_EIFFEL)
+                .withPhone(VALID_PHONE_EIFFEL).withEmail(VALID_EMAIL_EIFFEL).withAddress(VALID_ADDRESS_EIFFEL)
+                .withLocation(VALID_LOCATION_EIFFEL).withTags(VALID_TAG_SIGHTSEEING).build();
         DESC_MBS = new EditAttractionDescriptorBuilder().withName(VALID_NAME_MBS)
                 .withPhone(VALID_PHONE_MBS).withEmail(VALID_EMAIL_MBS).withAddress(VALID_ADDRESS_MBS)
-                .withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING).build();
+                .withLocation(VALID_LOCATION_MBS).withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING).build();
     }
 
     /**

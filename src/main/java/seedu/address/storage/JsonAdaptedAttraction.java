@@ -13,6 +13,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.Email;
+import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.Name;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.tag.Tag;
@@ -28,6 +29,7 @@ class JsonAdaptedAttraction {
     private final String phone;
     private final String email;
     private final String address;
+    private final String location;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
@@ -36,11 +38,12 @@ class JsonAdaptedAttraction {
     @JsonCreator
     public JsonAdaptedAttraction(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+            @JsonProperty("location") String location, @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.location = location;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -54,6 +57,7 @@ class JsonAdaptedAttraction {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        location = source.getLocation().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -102,8 +106,17 @@ class JsonAdaptedAttraction {
         }
         final Address modelAddress = new Address(address);
 
+        if (location == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Location.class.getSimpleName()));
+        }
+        if (!Location.isValidLocation(location)) {
+            throw new IllegalValueException(Location.MESSAGE_CONSTRAINTS);
+        }
+        final Location modelLocation = new Location(location);
+
         final Set<Tag> modelTags = new HashSet<>(attractionTags);
-        return new Attraction(modelName, modelPhone, modelEmail, modelAddress, modelTags);
+        return new Attraction(modelName, modelPhone, modelEmail, modelAddress, modelLocation, modelTags);
     }
 
 }

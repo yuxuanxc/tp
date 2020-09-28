@@ -8,6 +8,7 @@ import seedu.address.logic.commands.EditCommand.EditAttractionDescriptor;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.Email;
+import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.Name;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.tag.Tag;
@@ -68,6 +69,14 @@ public class EditAttractionDescriptorBuilder {
      */
     public EditAttractionDescriptorBuilder withAddress(String address) {
         descriptor.setAddress(new Address(address));
+        return this;
+    }
+
+    /**
+     * Sets the {@code Location} of the {@code EditAttractionDescriptor} that we are building.
+     */
+    public EditAttractionDescriptorBuilder withLocation(String location) {
+        descriptor.setLocation(new Location(location));
         return this;
     }
 

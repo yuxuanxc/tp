@@ -53,26 +53,26 @@ public class AddCommandTest {
 
     @Test
     public void equals() {
-        Attraction alice = new AttractionBuilder().withName("Alice").build();
-        Attraction bob = new AttractionBuilder().withName("Bob").build();
-        AddCommand addAliceCommand = new AddCommand(alice);
-        AddCommand addBobCommand = new AddCommand(bob);
+        Attraction singaporeZoo = new AttractionBuilder().withName("Singapore Zoo").build();
+        Attraction nightSafari = new AttractionBuilder().withName("Night Safari").build();
+        AddCommand addSingaporeZooCommand = new AddCommand(singaporeZoo);
+        AddCommand addNightSafariCommand = new AddCommand(nightSafari);
 
         // same object -> returns true
-        assertTrue(addAliceCommand.equals(addAliceCommand));
+        assertTrue(addSingaporeZooCommand.equals(addSingaporeZooCommand));
 
         // same values -> returns true
-        AddCommand addAliceCommandCopy = new AddCommand(alice);
-        assertTrue(addAliceCommand.equals(addAliceCommandCopy));
+        AddCommand addSingaporeZooCommandCopy = new AddCommand(singaporeZoo);
+        assertTrue(addSingaporeZooCommand.equals(addSingaporeZooCommandCopy));
 
         // different types -> returns false
-        assertFalse(addAliceCommand.equals(1));
+        assertFalse(addSingaporeZooCommand.equals(1));
 
         // null -> returns false
-        assertFalse(addAliceCommand.equals(null));
+        assertFalse(addSingaporeZooCommand.equals(null));
 
         // different attraction -> returns false
-        assertFalse(addAliceCommand.equals(addBobCommand));
+        assertFalse(addSingaporeZooCommand.equals(addNightSafariCommand));
     }
 
     /**
