@@ -23,9 +23,9 @@ public class AttractionListPanel extends UiPart<Region> {
     /**
      * Creates a {@code AttractionListPanel} with the given {@code ObservableList}.
      */
-    public AttractionListPanel(ObservableList<Attraction> personList) {
+    public AttractionListPanel(ObservableList<Attraction> attractionList) {
         super(FXML);
-        attractionListView.setItems(personList);
+        attractionListView.setItems(attractionList);
         attractionListView.setCellFactory(listView -> new AttractionListViewCell());
     }
 
