@@ -1,19 +1,19 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_MBS;
-import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_ZOO;
+import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_MBS;
-import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_ZOO;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_ACTIVITY;
@@ -26,16 +26,16 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ACTIVITY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalAttractions.ZOO;
 import static seedu.address.testutil.TypicalAttractions.MBS;
+import static seedu.address.testutil.TypicalAttractions.ZOO;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.model.attraction.Address;
+import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Name;
-import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.AttractionBuilder;
@@ -68,8 +68,8 @@ public class AddCommandParserTest {
                 + ADDRESS_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
 
         // multiple tags - all accepted
-        Attraction expectedAttractionMultipleTags = new AttractionBuilder(MBS).withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING)
-                .build();
+        Attraction expectedAttractionMultipleTags = new AttractionBuilder(MBS)
+                .withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING).build();
         assertParseSuccess(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
                 + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY, new AddCommand(expectedAttractionMultipleTags));
     }

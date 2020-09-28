@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showAttractionAtIndex;
+import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ATTRACTION;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_ATTRACTION;
-import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
 
 import org.junit.jupiter.api.Test;
 

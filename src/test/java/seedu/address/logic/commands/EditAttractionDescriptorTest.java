@@ -2,8 +2,8 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_MBS;
@@ -36,7 +36,8 @@ public class EditAttractionDescriptorTest {
         assertFalse(DESC_ZOO.equals(DESC_MBS));
 
         // different name -> returns false
-        EditAttractionDescriptor editedZoo = new EditAttractionDescriptorBuilder(DESC_ZOO).withName(VALID_NAME_MBS).build();
+        EditAttractionDescriptor editedZoo = new EditAttractionDescriptorBuilder(DESC_ZOO)
+                .withName(VALID_NAME_MBS).build();
         assertFalse(DESC_ZOO.equals(editedZoo));
 
         // different phone -> returns false

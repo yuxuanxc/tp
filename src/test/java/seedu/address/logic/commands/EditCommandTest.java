@@ -2,30 +2,30 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showAttractionAtIndex;
+import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ATTRACTION;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_ATTRACTION;
-import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand.EditAttractionDescriptor;
-import seedu.address.model.TrackPad;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.TrackPad;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.attraction.Attraction;
-import seedu.address.testutil.EditAttractionDescriptorBuilder;
 import seedu.address.testutil.AttractionBuilder;
+import seedu.address.testutil.EditAttractionDescriptorBuilder;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for EditCommand.
@@ -85,7 +85,8 @@ public class EditCommandTest {
     public void execute_filteredList_success() {
         showAttractionAtIndex(model, INDEX_FIRST_ATTRACTION);
 
-        Attraction attractionInFilteredList = model.getFilteredAttractionList().get(INDEX_FIRST_ATTRACTION.getZeroBased());
+        Attraction attractionInFilteredList = model.getFilteredAttractionList()
+                .get(INDEX_FIRST_ATTRACTION.getZeroBased());
         Attraction editedAttraction = new AttractionBuilder(attractionInFilteredList).withName(VALID_NAME_MBS).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_ATTRACTION,
                 new EditAttractionDescriptorBuilder().withName(VALID_NAME_MBS).build());
@@ -112,7 +113,8 @@ public class EditCommandTest {
         showAttractionAtIndex(model, INDEX_FIRST_ATTRACTION);
 
         // edit attraction in filtered list into a duplicate in TrackPad
-        Attraction attractionInList = model.getTrackPad().getAttractionList().get(INDEX_SECOND_ATTRACTION.getZeroBased());
+        Attraction attractionInList = model.getTrackPad()
+                .getAttractionList().get(INDEX_SECOND_ATTRACTION.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_ATTRACTION,
                 new EditAttractionDescriptorBuilder(attractionInList).build());
 
