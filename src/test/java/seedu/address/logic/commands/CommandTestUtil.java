@@ -15,10 +15,10 @@ import java.util.List;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.TrackPad;
 import seedu.address.model.Model;
-import seedu.address.model.attraction.NameContainsKeywordsPredicate;
+import seedu.address.model.TrackPad;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.attraction.NameContainsKeywordsPredicate;
 import seedu.address.testutil.EditAttractionDescriptorBuilder;
 
 /**

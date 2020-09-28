@@ -71,7 +71,7 @@ public class MainApp extends Application {
     /**
      * Returns a {@code ModelManager} with the data from {@code storage}'s trackpad and {@code userPrefs}. <br>
      * The data from the sample trackpad will be used instead if {@code storage}'s trackpad is not found,
-     * or an empty address book will be used instead if errors occur when reading {@code storage}'s trackpad.
+     * or an empty trackpad will be used instead if errors occur when reading {@code storage}'s trackpad.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         Optional<ReadOnlyTrackPad> trackPadOptional;

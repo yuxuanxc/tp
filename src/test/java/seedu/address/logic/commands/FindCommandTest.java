@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_ATTRACTIONS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalAttractions.SINGAPORE_ZOO;
-import static seedu.address.testutil.TypicalAttractions.ORCHARD_ROAD;
 import static seedu.address.testutil.TypicalAttractions.BOTANIC_GARDENS;
+import static seedu.address.testutil.TypicalAttractions.ORCHARD_ROAD;
+import static seedu.address.testutil.TypicalAttractions.SINGAPORE_ZOO;
 import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
 
 import java.util.Arrays;

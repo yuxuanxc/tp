@@ -23,11 +23,11 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.attraction.NameContainsKeywordsPredicate;
 import seedu.address.model.attraction.Attraction;
-import seedu.address.testutil.EditAttractionDescriptorBuilder;
+import seedu.address.model.attraction.NameContainsKeywordsPredicate;
 import seedu.address.testutil.AttractionBuilder;
 import seedu.address.testutil.AttractionUtil;
+import seedu.address.testutil.EditAttractionDescriptorBuilder;
 
 public class TrackPadParserTest {
 
@@ -58,7 +58,8 @@ public class TrackPadParserTest {
         Attraction attraction = new AttractionBuilder().build();
         EditAttractionDescriptor descriptor = new EditAttractionDescriptorBuilder(attraction).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_ATTRACTION.getOneBased() + " " + AttractionUtil.getEditAttractionDescriptorDetails(descriptor));
+                + INDEX_FIRST_ATTRACTION.getOneBased() + " "
+                + AttractionUtil.getEditAttractionDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_ATTRACTION, descriptor), command);
     }
 

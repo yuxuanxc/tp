@@ -1,27 +1,27 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_MBS;
-import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_ZOO;
+import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_ZOO;
-import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_ACTIVITY;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_SIGHTSEEING;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_MBS;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_ZOO;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_ZOO;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ACTIVITY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -173,8 +173,8 @@ public class EditCommandParserTest {
                 + PHONE_DESC_MBS + ADDRESS_DESC_MBS + EMAIL_DESC_MBS + TAG_DESC_SIGHTSEEING;
 
         EditAttractionDescriptor descriptor = new EditAttractionDescriptorBuilder().withPhone(VALID_PHONE_MBS)
-                .withEmail(VALID_EMAIL_MBS).withAddress(VALID_ADDRESS_MBS).withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING)
-                .build();
+                .withEmail(VALID_EMAIL_MBS).withAddress(VALID_ADDRESS_MBS)
+                .withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
