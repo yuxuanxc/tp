@@ -37,6 +37,7 @@ public class EditAttractionDescriptorBuilder {
         descriptor.setPhone(attraction.getPhone());
         descriptor.setEmail(attraction.getEmail());
         descriptor.setAddress(attraction.getAddress());
+        descriptor.setLocation(attraction.getLocation());
         descriptor.setTags(attraction.getTags());
     }
 
