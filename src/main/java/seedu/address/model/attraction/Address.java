@@ -30,6 +30,15 @@ public class Address {
         value = address;
     }
 
+
+    /**
+     * Constructs an address without value
+     */
+    public Address() {
+        value = "";
+    }
+
+
     /**
      * Returns true if a given string is a valid email.
      */
