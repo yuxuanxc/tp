@@ -1,6 +1,6 @@
 ---
 layout: page
-title: User Guide for TrackPad v1.1
+title: User Guide
 ---
 
 TrackPad (TP) is a **desktop app for planning and tracking attractions visited and recording of previous places that 
