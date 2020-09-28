@@ -2,10 +2,10 @@ package seedu.address.model.attraction;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_MBS;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_MBS;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_MBS;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_ZOO;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_ZOO;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_ZOO;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAttractions.MBS;
@@ -32,25 +32,25 @@ public class AttractionTest {
         assertFalse(MBS.isSameAttraction(null));
 
         // different phone and email -> returns false
-        Attraction editedMbs = new AttractionBuilder(MBS).withPhone(VALID_PHONE_MBS).withEmail(VALID_EMAIL_MBS).build();
+        Attraction editedMbs = new AttractionBuilder(MBS).withPhone(VALID_PHONE_ZOO).withEmail(VALID_EMAIL_ZOO).build();
         assertFalse(MBS.isSameAttraction(editedMbs));
 
         // different name -> returns false
-        editedMbs = new AttractionBuilder(MBS).withName(VALID_NAME_MBS).build();
+        editedMbs = new AttractionBuilder(MBS).withName(VALID_NAME_ZOO).build();
         assertFalse(MBS.isSameAttraction(editedMbs));
 
         // same name, same phone, different attributes -> returns true
-        editedMbs = new AttractionBuilder(MBS).withEmail(VALID_EMAIL_MBS).withAddress(VALID_ADDRESS_MBS)
+        editedMbs= new AttractionBuilder(MBS).withEmail(VALID_EMAIL_ZOO).withAddress(VALID_ADDRESS_ZOO)
                 .withTags(VALID_TAG_SIGHTSEEING).build();
         assertTrue(MBS.isSameAttraction(editedMbs));
 
         // same name, same email, different attributes -> returns true
-        editedMbs = new AttractionBuilder(MBS).withPhone(VALID_PHONE_MBS).withAddress(VALID_ADDRESS_MBS)
+        editedMbs = new AttractionBuilder(MBS).withPhone(VALID_PHONE_ZOO).withAddress(VALID_ADDRESS_ZOO)
                 .withTags(VALID_TAG_SIGHTSEEING).build();
         assertTrue(MBS.isSameAttraction(editedMbs));
 
         // same name, same phone, same email, different attributes -> returns true
-        editedMbs = new AttractionBuilder(MBS).withAddress(VALID_ADDRESS_MBS).withTags(VALID_TAG_SIGHTSEEING).build();
+        editedMbs = new AttractionBuilder(MBS).withAddress(VALID_ADDRESS_ZOO).withTags(VALID_TAG_SIGHTSEEING).build();
         assertTrue(MBS.isSameAttraction(editedMbs));
     }
 
@@ -73,23 +73,23 @@ public class AttractionTest {
         assertFalse(MBS.equals(SUNTEC));
 
         // different name -> returns false
-        Attraction editedSuntec = new AttractionBuilder().withName(VALID_NAME_MBS).build();
-        assertFalse(SUNTEC.equals(editedSuntec));
+        Attraction editedSUNTEC = new AttractionBuilder().withName(VALID_NAME_ZOO).build();
+        assertFalse(SUNTEC.equals(editedSUNTEC));
 
         // different phone -> returns false
-        editedSuntec = new AttractionBuilder(SUNTEC).withPhone(VALID_PHONE_MBS).build();
-        assertFalse(SUNTEC.equals(editedSuntec));
+        editedSUNTEC = new AttractionBuilder(SUNTEC).withPhone(VALID_PHONE_ZOO).build();
+        assertFalse(SUNTEC.equals(editedSUNTEC));
 
         // different email -> returns false
-        editedSuntec = new AttractionBuilder(SUNTEC).withEmail(VALID_EMAIL_MBS).build();
-        assertFalse(SUNTEC.equals(editedSuntec));
+        editedSUNTEC = new AttractionBuilder(SUNTEC).withEmail(VALID_EMAIL_ZOO).build();
+        assertFalse(SUNTEC.equals(editedSUNTEC));
 
         // different address -> returns false
-        editedSuntec = new AttractionBuilder(SUNTEC).withAddress(VALID_ADDRESS_MBS).build();
-        assertFalse(MBS.equals(editedSuntec));
+        editedSUNTEC = new AttractionBuilder(SUNTEC).withAddress(VALID_ADDRESS_ZOO).build();
+        assertFalse(MBS.equals(editedSUNTEC));
 
         // different tags -> returns false
-        editedSuntec = new AttractionBuilder(SUNTEC).withTags(VALID_TAG_SIGHTSEEING).build();
-        assertFalse(MBS.equals(editedSuntec));
+        editedSUNTEC = new AttractionBuilder(SUNTEC).withTags(VALID_TAG_SIGHTSEEING).build();
+        assertFalse(MBS.equals(editedSUNTEC));
     }
 }

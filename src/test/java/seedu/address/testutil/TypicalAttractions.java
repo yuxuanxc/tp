@@ -23,7 +23,7 @@ import seedu.address.model.attraction.Attraction;
  */
 public class TypicalAttractions {
 
-    public static final Attraction JURONG_BIRD_PARK = new AttractionBuilder().withName("Jurong Bird Park")
+    public static final Attraction JURONG_BIRD_PARK = new AttractionBuilder().withName("JurongBirdPark")
             .withAddress("2 Jurong Hill")
             .withEmail("birdpark@example.com")
             .withPhone("94351253")
