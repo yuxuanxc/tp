@@ -37,8 +37,8 @@ public class AddCommandParser implements Parser<AddCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
                         PREFIX_LOCATION, PREFIX_TAG);
 
-        // Since address is optional, no need to check for PREFIX_ADDRESS
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_LOCATION)
+        // No checks for PREFIX_ADDRESS, PREFIX_EMAIL
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE, PREFIX_LOCATION)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
@@ -47,15 +47,23 @@ public class AddCommandParser implements Parser<AddCommand> {
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         // Phone is not optional
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
+
         // Email is not optional
-        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-        // Address is optional
-        Address address = new Address();
-        if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
-            address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+        Email email;
+        if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
+            email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
+        } else {
+            email = new Email();
         }
 
-        // todo create test case for add command.
+        // Address is optional
+        Address address;
+        if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
+            address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+        } else {
+            address = new Address();
+        }
+
         // todo update the Ui to make add command optional.
 
         // Location is not optional
