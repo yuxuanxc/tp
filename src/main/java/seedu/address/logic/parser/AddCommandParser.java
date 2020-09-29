@@ -37,18 +37,24 @@ public class AddCommandParser implements Parser<AddCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
                         PREFIX_LOCATION, PREFIX_TAG);
 
-        // No checks for PREFIX_ADDRESS, PREFIX_EMAIL
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE, PREFIX_LOCATION)
+        // No checks for PREFIX_ADDRESS, PREFIX_EMAIL, PREFIX_PHONE
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_LOCATION)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
         // Name is not optional
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        // Phone is not optional
-        Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
 
-        // Email is not optional
+        // Phone is not optional
+        Phone phone;
+        if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
+            phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
+        } else {
+            phone = new Phone();
+        }
+
+        // Email is optional
         Email email;
         if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
             email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
@@ -64,7 +70,7 @@ public class AddCommandParser implements Parser<AddCommand> {
             address = new Address();
         }
 
-        // todo update the Ui to make add command optional.
+        // todo update the Ui for addCommand to show fields which are optional.
 
         // Location is not optional
         Location location = ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION).get());

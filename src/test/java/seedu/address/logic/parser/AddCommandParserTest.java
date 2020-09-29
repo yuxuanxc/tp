@@ -91,12 +91,17 @@ public class AddCommandParserTest {
         assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
                         + ADDRESS_DESC_EIFFEL + LOCATION_DESC_EIFFEL, new AddCommand(expectedAttraction));
 
-        // No email field
-        Attraction expectedAttractionNoEmail = new AttractionBuilder(EIFFEL_TOWER).withAddress().build();
-        assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
+        // No phone number given
+        Attraction expectedAttractionNoPhone = new AttractionBuilder(EIFFEL_TOWER).withPhone().build();
+        assertParseSuccess(parser, NAME_DESC_EIFFEL + EMAIL_DESC_EIFFEL + ADDRESS_DESC_EIFFEL
+                + LOCATION_DESC_EIFFEL + TAG_DESC_ACTIVITY, new AddCommand(expectedAttractionNoPhone));
+
+        // No email given
+        Attraction expectedAttractionNoEmail = new AttractionBuilder(EIFFEL_TOWER).withEmail().build();
+        assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + ADDRESS_DESC_EIFFEL
                 + LOCATION_DESC_EIFFEL + TAG_DESC_ACTIVITY, new AddCommand(expectedAttractionNoEmail));
 
-        // No address field
+        // No address given
         Attraction expectedAttractionNoAddress = new AttractionBuilder(EIFFEL_TOWER).withAddress().build();
         assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
                         + LOCATION_DESC_EIFFEL + TAG_DESC_ACTIVITY, new AddCommand(expectedAttractionNoAddress));
@@ -110,9 +115,10 @@ public class AddCommandParserTest {
         assertParseFailure(parser, VALID_NAME_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
                 + LOCATION_DESC_MBS, expectedMessage);
 
+        // todo delete before final version
         // missing phone prefix
-        assertParseFailure(parser, NAME_DESC_MBS + VALID_PHONE_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
-                + LOCATION_DESC_MBS, expectedMessage);
+        // assertParseFailure(parser, NAME_DESC_MBS + VALID_PHONE_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
+        //        + LOCATION_DESC_MBS, expectedMessage);
 
         // todo delete before final version
         // missing email prefix
