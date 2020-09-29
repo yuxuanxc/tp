@@ -3,8 +3,7 @@ layout: page
 title: User Guide
 ---
 
-TrackPad (TP) is a **desktop app for planning and tracking attractions visited and recording of previous places that 
-were travelled to, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a 
+TrackPad (TP) is a **desktop app for planning your trips and tracking tourist attractions, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a 
 Graphical User Interface (GUI). 
 If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
 
