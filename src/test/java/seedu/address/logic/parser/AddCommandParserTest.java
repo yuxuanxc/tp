@@ -80,6 +80,11 @@ public class AddCommandParserTest {
         Attraction expectedAttraction = new AttractionBuilder(ZOO).withTags().build();
         assertParseSuccess(parser, NAME_DESC_ZOO + PHONE_DESC_ZOO + EMAIL_DESC_ZOO + ADDRESS_DESC_ZOO,
                 new AddCommand(expectedAttraction));
+
+        // No address field
+        Attraction expectedAttractionNoAddress = new AttractionBuilder(ZOO).withAddress().build();
+        assertParseSuccess(parser, NAME_DESC_ZOO + PHONE_DESC_ZOO + EMAIL_DESC_ZOO + TAG_DESC_ACTIVITY,
+                new AddCommand(expectedAttractionNoAddress));
     }
 
     @Test
@@ -99,8 +104,8 @@ public class AddCommandParserTest {
                 expectedMessage);
 
         // missing address prefix
-        assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + VALID_ADDRESS_MBS,
-                expectedMessage);
+        // assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + VALID_ADDRESS_MBS,
+        //        expectedMessage);
 
         // all prefixes missing
         assertParseFailure(parser, VALID_NAME_MBS + VALID_PHONE_MBS + VALID_EMAIL_MBS + VALID_ADDRESS_MBS,
@@ -135,7 +140,7 @@ public class AddCommandParserTest {
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS
-                + ADDRESS_DESC_MBS + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY,
+                        + ADDRESS_DESC_MBS + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
     }
 }
