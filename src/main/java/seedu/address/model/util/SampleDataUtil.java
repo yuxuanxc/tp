@@ -9,6 +9,7 @@ import seedu.address.model.TrackPad;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.Email;
+import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.Name;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.tag.Tag;
@@ -19,24 +20,24 @@ import seedu.address.model.tag.Tag;
 public class SampleDataUtil {
     public static Attraction[] getSampleAttractions() {
         return new Attraction[] {
-            new Attraction(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
-                new Address("Blk 30 Geylang Street 29, #06-40"),
-                getTagSet("friends")),
-            new Attraction(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
-                new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
-                getTagSet("colleagues", "friends")),
-            new Attraction(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
-                new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
-                getTagSet("neighbours")),
-            new Attraction(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
-                new Address("Blk 436 Serangoon Gardens Street 26, #16-43"),
-                getTagSet("family")),
-            new Attraction(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
-                new Address("Blk 47 Tampines Street 20, #17-35"),
-                getTagSet("classmates")),
-            new Attraction(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
-                new Address("Blk 45 Aljunied Street 85, #11-31"),
-                getTagSet("colleagues"))
+            new Attraction(new Name("Jurong Bird Park"), new Phone("94351253"), new Email("birdpark@example.com"),
+                new Address("2 Jurong Hill"), new Location("Singapore, Singapore"),
+                getTagSet("animals")),
+            new Attraction(new Name("Night Safari"), new Phone("98765432"), new Email("nightsafari@example.com"),
+                new Address("80 Mandai Lake Rd"), new Location("Singapore, Singapore"),
+                    getTagSet("animals", "night")),
+            new Attraction(new Name("River Safari"), new Phone("93210283"), new Email("riversafari@example.com"),
+                new Address("80 Mandai Lake Rd"), new Location("Singapore, Singapore"),
+                getTagSet("animals", "panda")),
+            new Attraction(new Name("Orchard Road"), new Phone("91031282"), new Email("orchardroad@example.com"),
+                new Address("Orchard Road"), new Location("Singapore, Singapore"),
+                getTagSet("shopping")),
+            new Attraction(new Name("Botanic Gardens"), new Phone("92492021"), new Email("botanicgardens@example.com"),
+                new Address("1 Cluny Rd"), new Location("Singapore, Singapore"),
+                getTagSet("nature")),
+            new Attraction(new Name("Jurong Lake"), new Phone("92624417"), new Email("juronglake@example.com"),
+                new Address("Jurong"), new Location("Singapore, Singapore"),
+                getTagSet("nature"))
         };
     }
 

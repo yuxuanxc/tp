@@ -6,7 +6,7 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ATTRACTIONS;
 import seedu.address.model.Model;
 
 /**
- * Lists all attractions in the TrackPad to the user.
+ * Lists all attractions in TrackPad to the user.
  */
 public class ListCommand extends Command {
 

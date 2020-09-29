@@ -3,9 +3,9 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalAttractions.EIFFEL_TOWER;
 import static seedu.address.testutil.TypicalAttractions.JURONG_BIRD_PARK;
 import static seedu.address.testutil.TypicalAttractions.MBS;
-import static seedu.address.testutil.TypicalAttractions.ZOO;
 import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
 
 import java.io.IOException;
@@ -79,7 +79,7 @@ public class JsonTrackPadStorageTest {
         assertEquals(original, new TrackPad(readBack));
 
         // Save and read without specifying file path
-        original.addAttraction(ZOO);
+        original.addAttraction(EIFFEL_TOWER);
         jsonTrackPadStorage.saveTrackPad(original); // file path not specified
         readBack = jsonTrackPadStorage.readTrackPad().get(); // file path not specified
         assertEquals(original, new TrackPad(readBack));

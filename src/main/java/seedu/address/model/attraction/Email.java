@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Attraction's email in the address book.
+ * Represents a Attraction's email in TrackPad.
  * Guarantees: immutable; is valid as declared in {@link #isValidEmail(String)}
  */
 public class Email {
@@ -32,7 +32,7 @@ public class Email {
     /**
      * Constructs an {@code Email}.
      *
-     * @param email A valid email address.
+     * @param email A valid email.
      */
     public Email(String email) {
         requireNonNull(email);

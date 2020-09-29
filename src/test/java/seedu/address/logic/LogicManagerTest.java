@@ -3,12 +3,13 @@ package seedu.address.logic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_ZOO;
-import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_ZOO;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_ZOO;
-import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_ZOO;
+import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.LOCATION_DESC_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_EIFFEL;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalAttractions.ZOO;
+import static seedu.address.testutil.TypicalAttractions.EIFFEL_TOWER;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -79,9 +80,9 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage);
 
         // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_ZOO + PHONE_DESC_ZOO + EMAIL_DESC_ZOO
-                + ADDRESS_DESC_ZOO;
-        Attraction expectedAttraction = new AttractionBuilder(ZOO).withTags().build();
+        String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
+                + ADDRESS_DESC_EIFFEL + LOCATION_DESC_EIFFEL;
+        Attraction expectedAttraction = new AttractionBuilder(EIFFEL_TOWER).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addAttraction(expectedAttraction);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;

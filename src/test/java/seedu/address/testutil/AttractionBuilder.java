@@ -6,6 +6,7 @@ import java.util.Set;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.Email;
+import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.Name;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.tag.Tag;
@@ -20,11 +21,13 @@ public class AttractionBuilder {
     public static final String DEFAULT_PHONE = "62693411";
     public static final String DEFAULT_EMAIL = "zoo@example.com";
     public static final String DEFAULT_ADDRESS = "80 Mandai Lake Rd, 729826";
+    public static final String DEFAULT_LOCATION = "Singapore, Singapore";
 
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
+    private Location location;
     private Set<Tag> tags;
 
     /**
@@ -35,6 +38,7 @@ public class AttractionBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
+        location = new Location(DEFAULT_LOCATION);
         tags = new HashSet<>();
     }
 
@@ -46,6 +50,7 @@ public class AttractionBuilder {
         phone = attractionToCopy.getPhone();
         email = attractionToCopy.getEmail();
         address = attractionToCopy.getAddress();
+        location = attractionToCopy.getLocation();
         tags = new HashSet<>(attractionToCopy.getTags());
     }
 
@@ -73,10 +78,8 @@ public class AttractionBuilder {
         return this;
     }
 
-
     /**
-     * Sets the {@code Address} to empty string of the {@code Attraction} that we are building.
-     * Attraction did not utilise this address field.
+     * Sets the {@code Address} of the {@code Attraction} that we are building to be empty.
      */
     public AttractionBuilder withAddress() {
         this.address = new Address();
@@ -99,8 +102,16 @@ public class AttractionBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Location} of the {@code Attraction} that we are building.
+     */
+    public AttractionBuilder withLocation(String location) {
+        this.location = new Location(location);
+        return this;
+    }
+
     public Attraction build() {
-        return new Attraction(name, phone, email, address, tags);
+        return new Attraction(name, phone, email, address, location, tags);
     }
 
 }

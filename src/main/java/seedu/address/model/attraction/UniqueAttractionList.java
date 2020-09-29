@@ -13,7 +13,7 @@ import seedu.address.model.attraction.exceptions.DuplicateAttractionException;
 
 /**
  * A list of attractions that enforces uniqueness between its elements and does not allow nulls.
- * A attraction is considered unique by comparing using {@code Attraction#isSameAttraction(Attraction)}. As such,
+ * An attraction is considered unique by comparing using {@code Attraction#isSameAttraction(Attraction)}. As such,
  * adding and updating of attractions uses Attraction#isSameAttraction(Attraction) for equality so as to ensure that
  * the attraction being added or updated is unique in terms of identity in the UniqueAttractionList. However, the
  * removal of a attraction uses Attraction#equals(Object) so as to ensure that the attraction with exactly the same
@@ -30,7 +30,7 @@ public class UniqueAttractionList implements Iterable<Attraction> {
             FXCollections.unmodifiableObservableList(internalList);
 
     /**
-     * Returns true if the list contains an equivalent person as the given argument.
+     * Returns true if the list contains an equivalent attraction as the given argument.
      */
     public boolean contains(Attraction toCheck) {
         requireNonNull(toCheck);

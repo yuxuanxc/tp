@@ -6,7 +6,7 @@ import seedu.address.model.Model;
 import seedu.address.model.TrackPad;
 
 /**
- * Clears the TrackPad.
+ * Clears TrackPad.
  */
 public class ClearCommand extends Command {
 

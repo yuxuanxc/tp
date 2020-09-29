@@ -2,8 +2,8 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_MBS;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_ZOO;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING;
@@ -149,10 +149,10 @@ public class EditCommandTest {
 
     @Test
     public void equals() {
-        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_ATTRACTION, DESC_ZOO);
+        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_ATTRACTION, DESC_EIFFEL);
 
         // same values -> returns true
-        EditAttractionDescriptor copyDescriptor = new EditAttractionDescriptor(DESC_ZOO);
+        EditAttractionDescriptor copyDescriptor = new EditAttractionDescriptor(DESC_EIFFEL);
         EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_ATTRACTION, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
@@ -166,7 +166,7 @@ public class EditCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_ATTRACTION, DESC_ZOO)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_ATTRACTION, DESC_EIFFEL)));
 
         // different descriptor -> returns false
         assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_ATTRACTION, DESC_MBS)));
