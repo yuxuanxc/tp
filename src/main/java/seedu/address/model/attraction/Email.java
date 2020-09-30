@@ -41,6 +41,13 @@ public class Email {
     }
 
     /**
+     * Constructs an {@code Email} without value.
+     */
+    public Email() {
+        value = "";
+    }
+
+    /**
      * Returns if a given string is a valid email.
      */
     public static boolean isValidEmail(String test) {

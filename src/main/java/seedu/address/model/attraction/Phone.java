@@ -27,6 +27,13 @@ public class Phone {
     }
 
     /**
+     * Constructs a {@code Phone} without value.
+     */
+    public Phone() {
+        value = "";
+    }
+
+    /**
      * Returns true if a given string is a valid phone number.
      */
     public static boolean isValidPhone(String test) {

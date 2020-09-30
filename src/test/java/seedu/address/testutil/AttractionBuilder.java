@@ -79,7 +79,7 @@ public class AttractionBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code Attraction} that we are building to be empty.
+     * Sets the {@code Address} of the {@code Attraction} that we are building to empty string.
      */
     public AttractionBuilder withAddress() {
         this.address = new Address();
@@ -95,10 +95,27 @@ public class AttractionBuilder {
     }
 
     /**
+     * Sets the {@code Phone} of the {@code Attraction} that we are building to empty string.
+     */
+    public AttractionBuilder withPhone() {
+        this.phone = new Phone();
+        return this;
+    }
+
+
+    /**
      * Sets the {@code Email} of the {@code Attraction} that we are building.
      */
     public AttractionBuilder withEmail(String email) {
         this.email = new Email(email);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Email} of the {@code Attraction} that we are building to empty string.
+     */
+    public AttractionBuilder withEmail() {
+        this.email = new Email();
         return this;
     }
 
