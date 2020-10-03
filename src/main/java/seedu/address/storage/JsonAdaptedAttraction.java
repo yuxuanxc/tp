@@ -69,51 +69,69 @@ class JsonAdaptedAttraction {
      * @throws IllegalValueException if there were any data constraints violated in the adapted attraction.
      */
     public Attraction toModelType() throws IllegalValueException {
+        final Name modelName;
+        final Phone modelPhone;
+        final Email modelEmail;
+        final Address modelAddress;
+        final Location modelLocation;
         final List<Tag> attractionTags = new ArrayList<>();
+
         for (JsonAdaptedTag tag : tagged) {
             attractionTags.add(tag.toModelType());
         }
 
+        // Name is not optional
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
-        }
-        if (!Name.isValidName(name)) {
+        } else if (!Name.isValidName(name)) {
             throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+        } else {
+            modelName = new Name(name);
         }
-        final Name modelName = new Name(name);
 
+        // Phone is optional
         if (phone == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
-        }
-        if (!Phone.isValidPhone(phone)) {
+        } else if (phone.equals("")) {
+            modelPhone = new Phone();
+        } else if (!Phone.isValidPhone(phone)) {
             throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
+        } else {
+            modelPhone = new Phone(phone);
         }
-        final Phone modelPhone = new Phone(phone);
 
+        // Email is optional
         if (email == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
-        }
-        if (!Email.isValidEmail(email)) {
+        } else if (email.equals("")) {
+            modelEmail = new Email();
+        } else if (!Email.isValidEmail(email)) {
             throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+        } else {
+            modelEmail = new Email(email);
         }
-        final Email modelEmail = new Email(email);
 
+        // Address is optional
         if (address == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
-        }
-        if (!Address.isValidAddress(address)) {
+        } else if (address.equals("")) {
+            modelAddress = new Address();
+        } else if (!Address.isValidAddress(address)) {
             throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
+        } else {
+            modelAddress = new Address(address);
         }
-        final Address modelAddress = new Address(address);
 
+        // Location is not optional
         if (location == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Location.class.getSimpleName()));
         }
         if (!Location.isValidLocation(location)) {
             throw new IllegalValueException(Location.MESSAGE_CONSTRAINTS);
+        } else {
+            modelLocation = new Location(location);
         }
-        final Location modelLocation = new Location(location);
 
         final Set<Tag> modelTags = new HashSet<>(attractionTags);
         return new Attraction(modelName, modelPhone, modelEmail, modelAddress, modelLocation, modelTags);
