@@ -43,7 +43,7 @@ public class AttractionBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
-        description = new Description((DEFAULT_DESCRIPTION));
+        description = new Description(DEFAULT_DESCRIPTION);
         location = new Location(DEFAULT_LOCATION);
         tags = new HashSet<>();
     }

@@ -28,34 +28,33 @@ import seedu.address.model.attraction.Attraction;
 public class TypicalAttractions {
 
     public static final Attraction JURONG_BIRD_PARK = new AttractionBuilder().withName("JurongBirdPark")
-            .withPhone("94351253")
-            .withEmail("birdpark@example.com")
             .withAddress("2 Jurong Hill")
-            //.withDescription("The park offers a haven for close to 3500 birds across 400 species.")
+            .withEmail("birdpark@example.com")
+            .withPhone("94351253")
+            .withDescription("The park offers a haven for close to 3500 birds across 400 species.")
             .withLocation("Singapore, Singapore")
             .withTags("animals")
             .build();
     public static final Attraction NIGHT_SAFARI = new AttractionBuilder().withName("Night Safari")
-            .withPhone("98765432")
-            .withEmail("nightsafari@example.com")
             .withAddress("80 Mandai Lake Rd")
-            //.withDescription("The world's first nocturnal zoo.")
+            .withEmail("nightsafari@example.com")
+            .withPhone("98765432")
             .withLocation("Singapore, Singapore")
+            .withDescription("The world's first nocturnal zoo.")
             .withTags("animals", "night")
             .build();
     public static final Attraction SINGAPORE_ZOO = new AttractionBuilder().withName("Singapore Zoo")
             .withPhone("95352563")
             .withEmail("singaporezoo@example.com")
             .withAddress("80 Mandai Lake Rd")
-            //.withDescription("Set in a rainforest environment, Singapore Zoo offers the " +
-                    //"opportunity to experience and be inspired by the wonders of nature.")
+            .withDescription()
             .withLocation("Singapore, Singapore")
             .build();
     public static final Attraction RIVER_SAFARI = new AttractionBuilder().withName("River Safari")
             .withPhone("87652533")
             .withEmail("riversafari@example.com")
             .withAddress("80 Mandai Lake Rd")
-            //.withDescription("A river-themed zoo and aquarium in Singapore.")
+            .withDescription("A river-themed zoo and aquarium in Singapore.")
             .withLocation("Singapore, Singapore")
             .withTags("panda")
             .build();
@@ -63,21 +62,23 @@ public class TypicalAttractions {
             .withPhone("9482224")
             .withEmail("orchardroad@example.com")
             .withAddress("Orchard Road")
-            //.withDescription("Orchard Road is Singapore’s retail heart, with discount outlets, " +
-                   // "department stores and upscale boutiques, alongside luxury hotels.")
+            .withDescription("Orchard Road is Singapore’s retail heart, with discount outlets, "
+                    + "department stores and upscale boutiques, alongside luxury hotels.")
             .withLocation("Singapore, Singapore")
             .build();
     public static final Attraction BOTANIC_GARDENS = new AttractionBuilder().withName("Botanic Gardens")
             .withPhone("9482427")
             .withEmail("botanicgardens@example.com")
             .withAddress("1 Cluny Rd")
-            //.withDescription("The only tropical garden to be honoured as a UNESCO World Heritage Site.")
+            .withDescription("The only tropical garden to be honoured as a UNESCO World Heritage Site.")
             .withLocation("Singapore, Singapore")
             .build();
     public static final Attraction JURONG_LAKE = new AttractionBuilder().withName("Jurong Lake")
             .withPhone("9482442")
             .withEmail("juronglake@example.com")
             .withAddress("Jurong")
+            .withDescription("Sprawling park around a lake & swamp forest with a boardwalk, "
+                    + "playgrounds, a dog run & water sports.")
             .withLocation("Singapore, Singapore")
             .build();
 

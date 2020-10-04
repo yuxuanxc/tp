@@ -5,7 +5,7 @@
     "phone" : "94351253",
     "email" : "birdpark@example.com",
     "address" : "2 Jurong Hill",
-    "description" : "",
+    "description" : "The park offers a haven for close to 3500 birds across 400 species.",
     "location": "Singapore, Singapore",
     "tagged" : [ "animals" ]
   }, {
@@ -13,7 +13,7 @@
     "phone" : "98765432",
     "email" : "nightsafari@example.com",
     "address" : "80 Mandai Lake Rd",
-    "description" : "",
+    "description" : "The world's first nocturnal zoo.",
     "location": "Singapore, Singapore",
     "tagged" : [ "animals", "night" ]
   }, {
@@ -29,7 +29,7 @@
     "phone" : "87652533",
     "email" : "riversafari@example.com",
     "address" : "80 Mandai Lake Rd",
-    "description" : "",
+    "description" : "A river-themed zoo and aquarium in Singapore.",
     "location": "Singapore, Singapore",
     "tagged" : [ "panda" ]
   }, {
@@ -37,7 +37,7 @@
     "phone" : "9482224",
     "email" : "orchardroad@example.com",
     "address" : "Orchard Road",
-    "description" : "",
+    "description" : "Orchard Road is Singapore’s retail heart, with discount outlets, department stores and upscale boutiques, alongside luxury hotels.",
     "location": "Singapore, Singapore",
     "tagged" : [ ]
   }, {
@@ -45,7 +45,7 @@
     "phone" : "9482427",
     "email" : "botanicgardens@example.com",
     "address" : "1 Cluny Rd",
-    "description" : "",
+    "description" : "The only tropical garden to be honoured as a UNESCO World Heritage Site.",
     "location": "Singapore, Singapore",
     "tagged" : [ ]
   }, {
@@ -53,7 +53,7 @@
     "phone" : "9482442",
     "email" : "juronglake@example.com",
     "address" : "Jurong",
-    "description" : "",
+    "description" : "Sprawling park around a lake & swamp forest with a boardwalk, playgrounds, a dog run & water sports.",
     "location": "Singapore, Singapore",
     "tagged" : [ ]
   } ]
