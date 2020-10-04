@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -15,6 +16,7 @@ import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.attraction.Description;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.Name;
@@ -35,9 +37,9 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_LOCATION, PREFIX_TAG);
+                        PREFIX_DESCRIPTION, PREFIX_LOCATION, PREFIX_TAG);
 
-        // No checks for PREFIX_ADDRESS, PREFIX_EMAIL, PREFIX_PHONE
+        // No checks for PREFIX_ADDRESS, PREFIX_DESCRIPTION, PREFIX_EMAIL, PREFIX_PHONE, PREFIX_TAG
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_LOCATION)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
@@ -70,6 +72,14 @@ public class AddCommandParser implements Parser<AddCommand> {
             address = new Address();
         }
 
+        // Description is optional
+        Description description;
+        if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
+            description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
+        } else {
+            description = new Description();
+        }
+
         // todo update the Ui for addCommand to show fields which are optional.
 
         // Location is not optional
@@ -77,7 +87,7 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Attraction attraction = new Attraction(name, phone, email, address, location, tagList);
+        Attraction attraction = new Attraction(name, phone, email, address, description, location, tagList);
 
         return new AddCommand(attraction);
     }

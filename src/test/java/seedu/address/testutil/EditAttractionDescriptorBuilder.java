@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 import seedu.address.logic.commands.EditCommand.EditAttractionDescriptor;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.attraction.Description;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.Name;
@@ -37,6 +38,7 @@ public class EditAttractionDescriptorBuilder {
         descriptor.setPhone(attraction.getPhone());
         descriptor.setEmail(attraction.getEmail());
         descriptor.setAddress(attraction.getAddress());
+        descriptor.setDescription(attraction.getDescription());
         descriptor.setLocation(attraction.getLocation());
         descriptor.setTags(attraction.getTags());
     }
@@ -70,6 +72,14 @@ public class EditAttractionDescriptorBuilder {
      */
     public EditAttractionDescriptorBuilder withAddress(String address) {
         descriptor.setAddress(new Address(address));
+        return this;
+    }
+
+    /**
+     * Sets the {@code Description} of the {@code EditAttractionDescriptor} that we are building.
+     */
+    public EditAttractionDescriptorBuilder withDescription(String description) {
+        descriptor.setDescription(new Description(description));
         return this;
     }
 

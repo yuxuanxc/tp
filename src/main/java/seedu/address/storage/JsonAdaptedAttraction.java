@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.attraction.Description;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.Name;
@@ -29,6 +30,7 @@ class JsonAdaptedAttraction {
     private final String phone;
     private final String email;
     private final String address;
+    private final String description;
     private final String location;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
@@ -38,11 +40,13 @@ class JsonAdaptedAttraction {
     @JsonCreator
     public JsonAdaptedAttraction(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
+            @JsonProperty("description") String description,
             @JsonProperty("location") String location, @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.description = description;
         this.location = location;
         if (tagged != null) {
             this.tagged.addAll(tagged);
@@ -57,6 +61,7 @@ class JsonAdaptedAttraction {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        description = source.getDescription().value;
         location = source.getLocation().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
@@ -73,6 +78,7 @@ class JsonAdaptedAttraction {
         final Phone modelPhone;
         final Email modelEmail;
         final Address modelAddress;
+        final Description modelDescription;
         final Location modelLocation;
         final List<Tag> attractionTags = new ArrayList<>();
 
@@ -122,6 +128,17 @@ class JsonAdaptedAttraction {
             modelAddress = new Address(address);
         }
 
+        // Description is optional
+        if (description == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Description.class.getSimpleName()));
+        } else if (description.equals("")) {
+            modelDescription = new Description();
+        } else if (!Description.isValidDescription(description)) {
+            throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
+        } else {
+            modelDescription = new Description(description);
+        }
+
         // Location is not optional
         if (location == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -134,7 +151,7 @@ class JsonAdaptedAttraction {
         }
 
         final Set<Tag> modelTags = new HashSet<>(attractionTags);
-        return new Attraction(modelName, modelPhone, modelEmail, modelAddress, modelLocation, modelTags);
+        return new Attraction(modelName, modelPhone, modelEmail, modelAddress, modelDescription,
+                modelLocation, modelTags);
     }
-
 }

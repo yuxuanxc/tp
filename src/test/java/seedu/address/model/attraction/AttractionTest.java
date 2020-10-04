@@ -3,6 +3,7 @@ package seedu.address.model.attraction;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DESCRIPTION_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LOCATION_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_EIFFEL;
@@ -43,17 +44,19 @@ public class AttractionTest {
 
         // same name, same phone, different attributes -> returns true
         editedMbs = new AttractionBuilder(MBS).withEmail(VALID_EMAIL_EIFFEL).withAddress(VALID_ADDRESS_EIFFEL)
+                .withDescription(VALID_DESCRIPTION_EIFFEL)
                 .withTags(VALID_TAG_SIGHTSEEING).build();
         assertTrue(MBS.isSameAttraction(editedMbs));
 
         // same name, same email, different attributes -> returns true
         editedMbs = new AttractionBuilder(MBS).withPhone(VALID_PHONE_EIFFEL).withAddress(VALID_ADDRESS_EIFFEL)
+                .withDescription(VALID_DESCRIPTION_EIFFEL)
                 .withTags(VALID_TAG_SIGHTSEEING).build();
         assertTrue(MBS.isSameAttraction(editedMbs));
 
         // same name, same phone, same email, different attributes -> returns true
         editedMbs = new AttractionBuilder(MBS).withAddress(VALID_ADDRESS_EIFFEL).withTags(VALID_TAG_SIGHTSEEING)
-                .build();
+                .withDescription(VALID_DESCRIPTION_EIFFEL).build();
         assertTrue(MBS.isSameAttraction(editedMbs));
     }
 

@@ -4,6 +4,7 @@
     "phone": "94351253",
     "email": "sgzoo@example.com",
     "address": "123, Jurong West Ave 6, #08-111",
+    "description": "Rainforest environment",
     "location": "Singapore, Singapore",
     "tagged": [ "animals" ]
   }, {
@@ -11,6 +12,7 @@
     "phone": "94351253",
     "email": "wrs@example.com",
     "address": "4th street",
+    "description": "Rainforest environment",
     "location": "Singapore, Singapore"
   } ]
 }

@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -35,6 +36,10 @@ public class CommandTestUtil {
     public static final String VALID_EMAIL_MBS = "mbs@example.com";
     public static final String VALID_ADDRESS_EIFFEL = "Champ de Mars, 5 Avenue Anatole France, 75007";
     public static final String VALID_ADDRESS_MBS = "10 Bayfront Ave, 018956";
+    public static final String VALID_DESCRIPTION_EIFFEL = "Gustave Eiffel's iconic, " +
+            "wrought-iron 1889 tower, with steps and elevators to observation decks.";
+    public static final String VALID_DESCRIPTION_MBS = "The Marina Bay Sands is an integrated " +
+            "resort fronting Marina Bay within the Downtown Core district of Singapore.";
     public static final String VALID_LOCATION_EIFFEL = "France, Paris";
     public static final String VALID_LOCATION_MBS = "Singapore, Singapore";
     public static final String VALID_TAG_SIGHTSEEING = "sightseeing";
@@ -48,6 +53,8 @@ public class CommandTestUtil {
     public static final String EMAIL_DESC_MBS = " " + PREFIX_EMAIL + VALID_EMAIL_MBS;
     public static final String ADDRESS_DESC_EIFFEL = " " + PREFIX_ADDRESS + VALID_ADDRESS_EIFFEL;
     public static final String ADDRESS_DESC_MBS = " " + PREFIX_ADDRESS + VALID_ADDRESS_MBS;
+    public static final String DESCRIPTION_DESC_EIFFEL = " " + PREFIX_DESCRIPTION + VALID_DESCRIPTION_EIFFEL;
+    public static final String DESCRIPTION_DESC_MBS = " " + PREFIX_DESCRIPTION + VALID_DESCRIPTION_MBS;
     public static final String LOCATION_DESC_EIFFEL = " " + PREFIX_LOCATION + VALID_LOCATION_EIFFEL;
     public static final String LOCATION_DESC_MBS = " " + PREFIX_LOCATION + VALID_LOCATION_MBS;
     public static final String TAG_DESC_SIGHTSEEING = " " + PREFIX_TAG + VALID_TAG_SIGHTSEEING;
@@ -57,6 +64,7 @@ public class CommandTestUtil {
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "mbs!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
+    public static final String INVALID_DESCRIPTION_DESC = " " + PREFIX_DESCRIPTION; // empty string not allowed for descriptions
     public static final String INVALID_LOCATION_DESC = " " + PREFIX_LOCATION; // empty string not allowed for locations
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "Sightseeing*"; // '*' not allowed in tags
 
@@ -68,10 +76,12 @@ public class CommandTestUtil {
 
     static {
         DESC_EIFFEL = new EditAttractionDescriptorBuilder().withName(VALID_NAME_EIFFEL)
-                .withPhone(VALID_PHONE_EIFFEL).withEmail(VALID_EMAIL_EIFFEL).withAddress(VALID_ADDRESS_EIFFEL)
+                .withPhone(VALID_PHONE_EIFFEL).withEmail(VALID_EMAIL_EIFFEL)
+                .withAddress(VALID_ADDRESS_EIFFEL).withDescription(VALID_DESCRIPTION_EIFFEL)
                 .withLocation(VALID_LOCATION_EIFFEL).withTags(VALID_TAG_SIGHTSEEING).build();
         DESC_MBS = new EditAttractionDescriptorBuilder().withName(VALID_NAME_MBS)
-                .withPhone(VALID_PHONE_MBS).withEmail(VALID_EMAIL_MBS).withAddress(VALID_ADDRESS_MBS)
+                .withPhone(VALID_PHONE_MBS).withEmail(VALID_EMAIL_MBS)
+                .withAddress(VALID_ADDRESS_MBS).withDescription(VALID_DESCRIPTION_MBS)
                 .withLocation(VALID_LOCATION_MBS).withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING).build();
     }
 

@@ -22,18 +22,21 @@ public class Attraction {
 
     // Data fields
     private final Address address;
+    private final Description description;
     private final Location location;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Attraction(Name name, Phone phone, Email email, Address address, Location location, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, location, tags);
+    public Attraction(Name name, Phone phone, Email email, Address address, Description description,
+                      Location location, Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, address, description, location, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.description = description;
         this.location = location;
         this.tags.addAll(tags);
     }
@@ -52,6 +55,10 @@ public class Attraction {
 
     public Address getAddress() {
         return address;
+    }
+
+    public Description getDescription() {
+        return description;
     }
 
     public Location getLocation() {
@@ -99,6 +106,7 @@ public class Attraction {
                 && otherAttraction.getPhone().equals(getPhone())
                 && otherAttraction.getEmail().equals(getEmail())
                 && otherAttraction.getAddress().equals(getAddress())
+                && otherAttraction.getDescription().equals(getDescription())
                 && otherAttraction.getLocation().equals(getLocation())
                 && otherAttraction.getTags().equals(getTags());
     }
@@ -106,7 +114,7 @@ public class Attraction {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, location, tags);
+        return Objects.hash(name, phone, email, address, description, location, tags);
     }
 
     @Override
@@ -119,6 +127,8 @@ public class Attraction {
                 .append(getEmail())
                 .append(" Address: ")
                 .append(getAddress())
+                .append(" Description: ")
+                .append(getDescription())
                 .append(" Location: ")
                 .append(getLocation())
                 .append(" Tags: ");

@@ -2,6 +2,8 @@ package seedu.address.testutil;
 
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DESCRIPTION_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DESCRIPTION_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LOCATION_EIFFEL;
@@ -26,16 +28,18 @@ import seedu.address.model.attraction.Attraction;
 public class TypicalAttractions {
 
     public static final Attraction JURONG_BIRD_PARK = new AttractionBuilder().withName("JurongBirdPark")
-            .withAddress("2 Jurong Hill")
-            .withEmail("birdpark@example.com")
             .withPhone("94351253")
+            .withEmail("birdpark@example.com")
+            .withAddress("2 Jurong Hill")
+            //.withDescription("The park offers a haven for close to 3500 birds across 400 species.")
             .withLocation("Singapore, Singapore")
             .withTags("animals")
             .build();
     public static final Attraction NIGHT_SAFARI = new AttractionBuilder().withName("Night Safari")
-            .withAddress("80 Mandai Lake Rd")
-            .withEmail("nightsafari@example.com")
             .withPhone("98765432")
+            .withEmail("nightsafari@example.com")
+            .withAddress("80 Mandai Lake Rd")
+            //.withDescription("The world's first nocturnal zoo.")
             .withLocation("Singapore, Singapore")
             .withTags("animals", "night")
             .build();
@@ -43,12 +47,15 @@ public class TypicalAttractions {
             .withPhone("95352563")
             .withEmail("singaporezoo@example.com")
             .withAddress("80 Mandai Lake Rd")
+            //.withDescription("Set in a rainforest environment, Singapore Zoo offers the " +
+                    //"opportunity to experience and be inspired by the wonders of nature.")
             .withLocation("Singapore, Singapore")
             .build();
     public static final Attraction RIVER_SAFARI = new AttractionBuilder().withName("River Safari")
             .withPhone("87652533")
             .withEmail("riversafari@example.com")
             .withAddress("80 Mandai Lake Rd")
+            //.withDescription("A river-themed zoo and aquarium in Singapore.")
             .withLocation("Singapore, Singapore")
             .withTags("panda")
             .build();
@@ -56,12 +63,15 @@ public class TypicalAttractions {
             .withPhone("9482224")
             .withEmail("orchardroad@example.com")
             .withAddress("Orchard Road")
+            //.withDescription("Orchard Road is Singapore’s retail heart, with discount outlets, " +
+                   // "department stores and upscale boutiques, alongside luxury hotels.")
             .withLocation("Singapore, Singapore")
             .build();
     public static final Attraction BOTANIC_GARDENS = new AttractionBuilder().withName("Botanic Gardens")
             .withPhone("9482427")
             .withEmail("botanicgardens@example.com")
             .withAddress("1 Cluny Rd")
+            //.withDescription("The only tropical garden to be honoured as a UNESCO World Heritage Site.")
             .withLocation("Singapore, Singapore")
             .build();
     public static final Attraction JURONG_LAKE = new AttractionBuilder().withName("Jurong Lake")
@@ -72,18 +82,28 @@ public class TypicalAttractions {
             .build();
 
     // Manually added
-    public static final Attraction ESPLANADE = new AttractionBuilder().withName("Esplanade").withPhone("8482424")
-            .withEmail("esplanade@example.com").withAddress("1 Esplanade Dr").withLocation("Singapore, Singapore")
+    public static final Attraction ESPLANADE = new AttractionBuilder().withName("Esplanade")
+            .withPhone("8482424").withEmail("esplanade@example.com")
+            .withAddress("1 Esplanade Dr")
+            .withDescription("Esplanade – Theatres on the Bay is a performing arts centre " +
+                    "located in Downtown Core near the mouth of the Singapore River.")
+            .withLocation("Singapore, Singapore")
             .build();
-    public static final Attraction SUNTEC = new AttractionBuilder().withName("Suntec City").withPhone("8482131")
-            .withEmail("suntec@example.com").withAddress("3 Temasek Blvd").withLocation("Singapore, Singapore").build();
+    public static final Attraction SUNTEC = new AttractionBuilder().withName("Suntec City")
+            .withPhone("8482131").withEmail("suntec@example.com")
+            .withAddress("3 Temasek Blvd")
+            .withDescription("Suntec City is a major mixed-use development located in Marina " +
+                    "Centre, a subzone of the Downtown Core in Singapore.")
+            .withLocation("Singapore, Singapore").build();
 
     // Manually added - Attraction's details found in {@code CommandTestUtil}
     public static final Attraction EIFFEL_TOWER = new AttractionBuilder().withName(VALID_NAME_EIFFEL)
             .withPhone(VALID_PHONE_EIFFEL).withEmail(VALID_EMAIL_EIFFEL).withAddress(VALID_ADDRESS_EIFFEL)
-            .withLocation(VALID_LOCATION_EIFFEL).withTags(VALID_TAG_ACTIVITY).build();
+            .withDescription(VALID_DESCRIPTION_EIFFEL).withLocation(VALID_LOCATION_EIFFEL)
+            .withTags(VALID_TAG_ACTIVITY).build();
     public static final Attraction MBS = new AttractionBuilder().withName(VALID_NAME_MBS).withPhone(VALID_PHONE_MBS)
-            .withEmail(VALID_EMAIL_MBS).withAddress(VALID_ADDRESS_MBS).withLocation(VALID_LOCATION_MBS)
+            .withEmail(VALID_EMAIL_MBS).withAddress(VALID_ADDRESS_MBS)
+            .withDescription(VALID_DESCRIPTION_MBS).withLocation(VALID_LOCATION_MBS)
             .withTags(VALID_TAG_SIGHTSEEING, VALID_TAG_ACTIVITY).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER

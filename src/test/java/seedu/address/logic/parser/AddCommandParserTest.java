@@ -3,6 +3,8 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.DESCRIPTION_DESC_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.DESCRIPTION_DESC_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
@@ -53,34 +55,37 @@ public class AddCommandParserTest {
         Attraction expectedAttraction = new AttractionBuilder(MBS).withTags(VALID_TAG_ACTIVITY).build();
 
         // whitespace only preamble
-        assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS
-                + ADDRESS_DESC_MBS + LOCATION_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
+        assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_MBS +
+                PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS + DESCRIPTION_DESC_MBS +
+                LOCATION_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
 
         // multiple names - last name accepted
-        assertParseSuccess(parser, NAME_DESC_EIFFEL + NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS
-                + ADDRESS_DESC_MBS + LOCATION_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
+        assertParseSuccess(parser, NAME_DESC_EIFFEL + NAME_DESC_MBS + PHONE_DESC_MBS +
+                EMAIL_DESC_MBS + ADDRESS_DESC_MBS + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS +
+                TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
 
         // multiple phones - last phone accepted
-        assertParseSuccess(parser, NAME_DESC_MBS + PHONE_DESC_EIFFEL + PHONE_DESC_MBS + EMAIL_DESC_MBS
-                + ADDRESS_DESC_MBS + LOCATION_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
+        assertParseSuccess(parser, NAME_DESC_MBS + PHONE_DESC_EIFFEL + PHONE_DESC_MBS +
+                EMAIL_DESC_MBS + ADDRESS_DESC_MBS + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS +
+                TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
 
         // multiple emails - last email accepted
         assertParseSuccess(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_EIFFEL + EMAIL_DESC_MBS
-                + ADDRESS_DESC_MBS + LOCATION_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
+                + ADDRESS_DESC_MBS + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
 
         // multiple addresses - last address accepted
         assertParseSuccess(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_EIFFEL
-                + ADDRESS_DESC_MBS + LOCATION_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
+                + ADDRESS_DESC_MBS + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
 
         // multiple locations - last location accepted
         assertParseSuccess(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
-                + LOCATION_DESC_EIFFEL + LOCATION_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
+                + DESCRIPTION_DESC_MBS + LOCATION_DESC_EIFFEL + LOCATION_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
 
         // multiple tags - all accepted
         Attraction expectedAttractionMultipleTags = new AttractionBuilder(MBS)
                 .withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING).build();
         assertParseSuccess(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
-                + LOCATION_DESC_MBS + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY,
+                + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY,
                 new AddCommand(expectedAttractionMultipleTags));
     }
 
@@ -89,22 +94,26 @@ public class AddCommandParserTest {
         // zero tags
         Attraction expectedAttraction = new AttractionBuilder(EIFFEL_TOWER).withTags().build();
         assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
-                        + ADDRESS_DESC_EIFFEL + LOCATION_DESC_EIFFEL, new AddCommand(expectedAttraction));
+                + ADDRESS_DESC_EIFFEL + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL,
+                new AddCommand(expectedAttraction));
 
         // No phone number given
         Attraction expectedAttractionNoPhone = new AttractionBuilder(EIFFEL_TOWER).withPhone().build();
         assertParseSuccess(parser, NAME_DESC_EIFFEL + EMAIL_DESC_EIFFEL + ADDRESS_DESC_EIFFEL
-                + LOCATION_DESC_EIFFEL + TAG_DESC_ACTIVITY, new AddCommand(expectedAttractionNoPhone));
+                + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + TAG_DESC_ACTIVITY,
+                new AddCommand(expectedAttractionNoPhone));
 
         // No email given
         Attraction expectedAttractionNoEmail = new AttractionBuilder(EIFFEL_TOWER).withEmail().build();
         assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + ADDRESS_DESC_EIFFEL
-                + LOCATION_DESC_EIFFEL + TAG_DESC_ACTIVITY, new AddCommand(expectedAttractionNoEmail));
+                + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + TAG_DESC_ACTIVITY,
+                new AddCommand(expectedAttractionNoEmail));
 
         // No address given
         Attraction expectedAttractionNoAddress = new AttractionBuilder(EIFFEL_TOWER).withAddress().build();
         assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
-                        + LOCATION_DESC_EIFFEL + TAG_DESC_ACTIVITY, new AddCommand(expectedAttractionNoAddress));
+                + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + TAG_DESC_ACTIVITY,
+                new AddCommand(expectedAttractionNoAddress));
     }
 
     @Test
@@ -113,7 +122,7 @@ public class AddCommandParserTest {
 
         // missing name prefix
         assertParseFailure(parser, VALID_NAME_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
-                + LOCATION_DESC_MBS, expectedMessage);
+                + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS, expectedMessage);
 
         // todo delete before final version
         // missing phone prefix
@@ -142,36 +151,38 @@ public class AddCommandParserTest {
     @Test
     public void parse_invalidValue_failure() {
         // invalid name
-        assertParseFailure(parser, INVALID_NAME_DESC + PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
-                + LOCATION_DESC_MBS + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY, Name.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, INVALID_NAME_DESC + PHONE_DESC_MBS + EMAIL_DESC_MBS
+                + ADDRESS_DESC_MBS
+                + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS + TAG_DESC_SIGHTSEEING
+                + TAG_DESC_ACTIVITY, Name.MESSAGE_CONSTRAINTS);
 
         // invalid phone
         assertParseFailure(parser, NAME_DESC_MBS + INVALID_PHONE_DESC + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
-                + LOCATION_DESC_MBS + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY, Phone.MESSAGE_CONSTRAINTS);
+                + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY, Phone.MESSAGE_CONSTRAINTS);
 
         // invalid email
         assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS + INVALID_EMAIL_DESC + ADDRESS_DESC_MBS
-                + LOCATION_DESC_MBS + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY, Email.MESSAGE_CONSTRAINTS);
+                + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY, Email.MESSAGE_CONSTRAINTS);
 
         // invalid address
         assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + INVALID_ADDRESS_DESC
-                + LOCATION_DESC_MBS + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY, Address.MESSAGE_CONSTRAINTS);
+                + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY, Address.MESSAGE_CONSTRAINTS);
 
         // invalid location
         assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
-                + INVALID_LOCATION_DESC + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY, Location.MESSAGE_CONSTRAINTS);
+                + DESCRIPTION_DESC_MBS + INVALID_LOCATION_DESC + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY, Location.MESSAGE_CONSTRAINTS);
 
         // invalid tag
         assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
-                + LOCATION_DESC_MBS + INVALID_TAG_DESC + VALID_TAG_ACTIVITY, Tag.MESSAGE_CONSTRAINTS);
+                + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS + INVALID_TAG_DESC + VALID_TAG_ACTIVITY, Tag.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + PHONE_DESC_MBS + EMAIL_DESC_MBS + INVALID_ADDRESS_DESC
-                + LOCATION_DESC_MBS, Name.MESSAGE_CONSTRAINTS);
+                + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS, Name.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS
-                + ADDRESS_DESC_MBS + LOCATION_DESC_MBS + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY,
+                + ADDRESS_DESC_MBS + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
     }
 }
