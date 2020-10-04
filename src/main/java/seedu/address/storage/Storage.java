@@ -27,6 +27,6 @@ public interface Storage extends TrackPadStorage, UserPrefsStorage {
     Optional<ReadOnlyTrackPad> readTrackPad() throws DataConversionException, IOException;
 
     @Override
-    void saveTrackPad(ReadOnlyTrackPad addressBook) throws IOException;
+    void saveTrackPad(ReadOnlyTrackPad trackPad) throws IOException;
 
 }

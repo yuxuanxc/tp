@@ -46,7 +46,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         // Name is not optional
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
 
-        // Phone is not optional
+        // Phone is optional
         Phone phone;
         if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
             phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
