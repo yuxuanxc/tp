@@ -14,7 +14,10 @@ import seedu.address.model.attraction.Description;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.Name;
+import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
+import seedu.address.model.attraction.PriceRange;
+import seedu.address.model.attraction.Rating;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -125,6 +128,51 @@ public class ParserUtil {
             throw new ParseException(Location.MESSAGE_CONSTRAINTS);
         }
         return new Location(trimmedLocation);
+    }
+
+    /**
+     * Parses a {@code String openingHours} into an {@code OpeningHours}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code openingHours} is invalid.
+     */
+    public static OpeningHours parseOpeningHours(String openingHours) throws ParseException {
+        requireNonNull(openingHours);
+        String trimmedOpeningHours = openingHours.trim();
+        if (!OpeningHours.isValidOpeningHours(trimmedOpeningHours)) {
+            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+        }
+        return new OpeningHours(trimmedOpeningHours);
+    }
+
+    /**
+     * Parses a {@code String priceRange} into an {@code PriceRange}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code priceRange} is invalid.
+     */
+    public static PriceRange parsePriceRange(String priceRange) throws ParseException {
+        requireNonNull(priceRange);
+        String trimmedPriceRange = priceRange.trim();
+        if (!PriceRange.isValidPriceRange(trimmedPriceRange)) {
+            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+        }
+        return new PriceRange(trimmedPriceRange);
+    }
+
+    /**
+     * Parses a {@code String rating} into an {@code Rating}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code rating} is invalid.
+     */
+    public static Rating parseRating(String rating) throws ParseException {
+        requireNonNull(rating);
+        String trimmedRating = rating.trim();
+        if (!Address.isValidAddress(trimmedRating)) {
+            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+        }
+        return new Rating(trimmedRating);
     }
 
     /**

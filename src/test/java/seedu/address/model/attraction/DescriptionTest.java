@@ -31,6 +31,7 @@ public class DescriptionTest {
         // valid descriptions
         assertTrue(Description.isValidDescription("World's first Gudetama themed cafe."));
         assertTrue(Description.isValidDescription("-")); // one character
-        assertTrue(Description.isValidDescription("The park offers a haven for close to 3500 birds across 400 species.")); // long address
+        assertTrue(Description.isValidDescription(
+                "The park offers a haven for close to 3500 birds across 400 species.")); // long address
     }
 }

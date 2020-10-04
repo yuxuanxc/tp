@@ -7,6 +7,9 @@
     "address" : "2 Jurong Hill",
     "description" : "The park offers a haven for close to 3500 birds across 400 species.",
     "location": "Singapore, Singapore",
+    "openingHours": "1000-1800",
+    "priceRange": "",
+    "rating": "",
     "tagged" : [ "animals" ]
   }, {
     "name" : "Night Safari",
@@ -15,14 +18,20 @@
     "address" : "80 Mandai Lake Rd",
     "description" : "The world's first nocturnal zoo.",
     "location": "Singapore, Singapore",
+    "openingHours": "1800-2300",
+    "priceRange": "",
+    "rating": "",
     "tagged" : [ "animals", "night" ]
   }, {
     "name" : "Singapore Zoo",
     "phone" : "95352563",
     "email" : "singaporezoo@example.com",
     "address" : "80 Mandai Lake Rd",
-    "description" : "",
+    "description" : "1000-1800",
     "location": "Singapore, Singapore",
+    "openingHours": "1000-1800",
+    "priceRange": "",
+    "rating": "",
     "tagged" : [ ]
   }, {
     "name" : "River Safari",
@@ -31,6 +40,9 @@
     "address" : "80 Mandai Lake Rd",
     "description" : "A river-themed zoo and aquarium in Singapore.",
     "location": "Singapore, Singapore",
+    "openingHours": "1000-1800",
+    "priceRange": "",
+    "rating": "",
     "tagged" : [ "panda" ]
   }, {
     "name" : "Orchard Road",
@@ -39,6 +51,9 @@
     "address" : "Orchard Road",
     "description" : "Orchard Road is Singapore’s retail heart, with discount outlets, department stores and upscale boutiques, alongside luxury hotels.",
     "location": "Singapore, Singapore",
+    "openingHours": "",
+    "priceRange": "",
+    "rating": "",
     "tagged" : [ ]
   }, {
     "name" : "Botanic Gardens",
@@ -47,6 +62,9 @@
     "address" : "1 Cluny Rd",
     "description" : "The only tropical garden to be honoured as a UNESCO World Heritage Site.",
     "location": "Singapore, Singapore",
+    "openingHours": "",
+    "priceRange": "",
+    "rating": "",
     "tagged" : [ ]
   }, {
     "name" : "Jurong Lake",
@@ -55,6 +73,9 @@
     "address" : "Jurong",
     "description" : "Sprawling park around a lake & swamp forest with a boardwalk, playgrounds, a dog run & water sports.",
     "location": "Singapore, Singapore",
+    "openingHours": "",
+    "priceRange": "",
+    "rating": "",
     "tagged" : [ ]
   } ]
 }

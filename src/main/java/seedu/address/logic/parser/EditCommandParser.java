@@ -7,7 +7,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OPENING_HOURS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collection;
@@ -59,10 +62,23 @@ public class EditCommandParser implements Parser<EditCommand> {
             editAttractionDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
         }
         if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
-            editAttractionDescriptor.setDescription(ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get()));
+            editAttractionDescriptor.setDescription(ParserUtil.parseDescription(
+                    argMultimap.getValue(PREFIX_DESCRIPTION).get()));
         }
         if (argMultimap.getValue(PREFIX_LOCATION).isPresent()) {
             editAttractionDescriptor.setLocation(ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION).get()));
+        }
+        if (argMultimap.getValue(PREFIX_OPENING_HOURS).isPresent()) {
+            editAttractionDescriptor.setOpeningHours(ParserUtil.parseOpeningHours(
+                    argMultimap.getValue(PREFIX_OPENING_HOURS).get()));
+        }
+        if (argMultimap.getValue(PREFIX_PRICE_RANGE).isPresent()) {
+            editAttractionDescriptor.setPriceRange(ParserUtil.parsePriceRange(
+                    argMultimap.getValue(PREFIX_PRICE_RANGE).get()));
+        }
+        if (argMultimap.getValue(PREFIX_RATING).isPresent()) {
+            editAttractionDescriptor.setRating(ParserUtil.parseRating(
+                    argMultimap.getValue(PREFIX_RATING).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editAttractionDescriptor::setTags);
 

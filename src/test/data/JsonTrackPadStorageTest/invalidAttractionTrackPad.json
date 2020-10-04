@@ -5,6 +5,9 @@
     "email": "hans@example.com",
     "address": "4th street",
     "description" : "Rainforest environment",
-    "location": "Singapore, Singapore"
+    "location": "Singapore, Singapore",
+    "openingHours" : "1000-1800",
+    "priceRange": "MEDIUM",
+    "rating": "4.6"
   } ]
 }

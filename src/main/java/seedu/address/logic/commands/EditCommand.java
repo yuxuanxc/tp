@@ -26,7 +26,10 @@ import seedu.address.model.attraction.Description;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.Name;
+import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
+import seedu.address.model.attraction.PriceRange;
+import seedu.address.model.attraction.Rating;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -102,11 +105,19 @@ public class EditCommand extends Command {
         Phone updatedPhone = editAttractionDescriptor.getPhone().orElse(attractionToEdit.getPhone());
         Email updatedEmail = editAttractionDescriptor.getEmail().orElse(attractionToEdit.getEmail());
         Address updatedAddress = editAttractionDescriptor.getAddress().orElse(attractionToEdit.getAddress());
-        Description updatedDescription = editAttractionDescriptor.getDescription().orElse(attractionToEdit.getDescription());
+        Description updatedDescription = editAttractionDescriptor
+                .getDescription().orElse(attractionToEdit.getDescription());
         Location updatedLocation = editAttractionDescriptor.getLocation().orElse(attractionToEdit.getLocation());
+        OpeningHours updatedOpeningHours = editAttractionDescriptor
+                .getOpeningHours().orElse(attractionToEdit.getOpeningHours());
+        PriceRange updatedPriceRange = editAttractionDescriptor
+                .getPriceRange().orElse(attractionToEdit.getPriceRange());
+        Rating updatedRating = editAttractionDescriptor.getRating().orElse(attractionToEdit.getRating());
         Set<Tag> updatedTags = editAttractionDescriptor.getTags().orElse(attractionToEdit.getTags());
 
-        return new Attraction(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedDescription, updatedLocation, updatedTags);
+        return new Attraction(updatedName, updatedPhone, updatedEmail, updatedAddress,
+                updatedDescription, updatedLocation, updatedOpeningHours, updatedPriceRange,
+                updatedRating, updatedTags);
     }
 
     @Override
@@ -138,6 +149,9 @@ public class EditCommand extends Command {
         private Address address;
         private Description description;
         private Location location;
+        private OpeningHours openingHours;
+        private PriceRange priceRange;
+        private Rating rating;
         private Set<Tag> tags;
 
         public EditAttractionDescriptor() {}
@@ -153,6 +167,9 @@ public class EditCommand extends Command {
             setAddress(toCopy.address);
             setDescription(toCopy.description);
             setLocation(toCopy.location);
+            setOpeningHours(toCopy.openingHours);
+            setPriceRange(toCopy.priceRange);
+            setRating(toCopy.rating);
             setTags(toCopy.tags);
         }
 
@@ -160,7 +177,8 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, description, location, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, description,
+                    location, openingHours, priceRange, rating, tags);
         }
 
         public void setName(Name name) {
@@ -211,6 +229,30 @@ public class EditCommand extends Command {
             return Optional.ofNullable(location);
         }
 
+        public void setOpeningHours(OpeningHours openingHours) {
+            this.openingHours = openingHours;
+        }
+
+        public Optional<OpeningHours> getOpeningHours() {
+            return Optional.ofNullable(openingHours);
+        }
+
+        public void setPriceRange(PriceRange priceRange) {
+            this.priceRange = priceRange;
+        }
+
+        public Optional<PriceRange> getPriceRange() {
+            return Optional.ofNullable(priceRange);
+        }
+
+        public void setRating(Rating rating) {
+            this.rating = rating;
+        }
+
+        public Optional<Rating> getRating() {
+            return Optional.ofNullable(rating);
+        }
+
         /**
          * Sets {@code tags} to this object's {@code tags}.
          * A defensive copy of {@code tags} is used internally.
@@ -249,6 +291,9 @@ public class EditCommand extends Command {
                     && getAddress().equals(e.getAddress())
                     && getDescription().equals(e.getDescription())
                     && getLocation().equals(e.getLocation())
+                    && getOpeningHours().equals(e.getOpeningHours())
+                    && getPriceRange().equals(e.getPriceRange())
+                    && getRating().equals(e.getRating())
                     && getTags().equals(e.getTags());
         }
     }

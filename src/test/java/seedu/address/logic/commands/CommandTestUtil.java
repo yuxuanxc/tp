@@ -7,7 +7,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OPENING_HOURS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -36,12 +39,18 @@ public class CommandTestUtil {
     public static final String VALID_EMAIL_MBS = "mbs@example.com";
     public static final String VALID_ADDRESS_EIFFEL = "Champ de Mars, 5 Avenue Anatole France, 75007";
     public static final String VALID_ADDRESS_MBS = "10 Bayfront Ave, 018956";
-    public static final String VALID_DESCRIPTION_EIFFEL = "Gustave Eiffel's iconic, " +
-            "wrought-iron 1889 tower, with steps and elevators to observation decks.";
-    public static final String VALID_DESCRIPTION_MBS = "The Marina Bay Sands is an integrated " +
-            "resort fronting Marina Bay within the Downtown Core district of Singapore.";
+    public static final String VALID_DESCRIPTION_EIFFEL = "Gustave Eiffel's iconic, "
+            + "wrought-iron 1889 tower, with steps and elevators to observation decks.";
+    public static final String VALID_DESCRIPTION_MBS = "The Marina Bay Sands is an integrated "
+            + "resort fronting Marina Bay within the Downtown Core district of Singapore.";
     public static final String VALID_LOCATION_EIFFEL = "France, Paris";
     public static final String VALID_LOCATION_MBS = "Singapore, Singapore";
+    public static final String VALID_OPENING_HOURS_EIFFEL = "1000-2200";
+    public static final String VALID_OPENING_HOURS_MBS = "0000-2359";
+    public static final String VALID_PRICE_RANGE_EIFFEL = "HIGH";
+    public static final String VALID_PRICE_RANGE_MBS = "HIGH";
+    public static final String VALID_RATING_EIFFEL = "4.8";
+    public static final String VALID_RATING_MBS = "4.7";
     public static final String VALID_TAG_SIGHTSEEING = "sightseeing";
     public static final String VALID_TAG_ACTIVITY = "activity";
 
@@ -57,6 +66,12 @@ public class CommandTestUtil {
     public static final String DESCRIPTION_DESC_MBS = " " + PREFIX_DESCRIPTION + VALID_DESCRIPTION_MBS;
     public static final String LOCATION_DESC_EIFFEL = " " + PREFIX_LOCATION + VALID_LOCATION_EIFFEL;
     public static final String LOCATION_DESC_MBS = " " + PREFIX_LOCATION + VALID_LOCATION_MBS;
+    public static final String OPENING_HOURS_DESC_EIFFEL = " " + PREFIX_OPENING_HOURS + VALID_OPENING_HOURS_EIFFEL;
+    public static final String OPENING_HOURS_DESC_MBS = " " + PREFIX_OPENING_HOURS + VALID_OPENING_HOURS_MBS;
+    public static final String PRICE_RANGE_DESC_EIFFEL = " " + PREFIX_PRICE_RANGE + VALID_PRICE_RANGE_EIFFEL;
+    public static final String PRICE_RANGE_DESC_MBS = " " + PREFIX_PRICE_RANGE + VALID_PRICE_RANGE_MBS;
+    public static final String RATING_DESC_EIFFEL = " " + PREFIX_RATING + VALID_RATING_EIFFEL;
+    public static final String RATING_DESC_MBS = " " + PREFIX_RATING + VALID_RATING_MBS;
     public static final String TAG_DESC_SIGHTSEEING = " " + PREFIX_TAG + VALID_TAG_SIGHTSEEING;
     public static final String TAG_DESC_ACTIVITY = " " + PREFIX_TAG + VALID_TAG_ACTIVITY;
 
@@ -64,8 +79,11 @@ public class CommandTestUtil {
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "mbs!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
-    public static final String INVALID_DESCRIPTION_DESC = " " + PREFIX_DESCRIPTION; // empty string not allowed for descriptions
+    public static final String INVALID_DESCRIPTION_DESC = " " + PREFIX_DESCRIPTION;
     public static final String INVALID_LOCATION_DESC = " " + PREFIX_LOCATION; // empty string not allowed for locations
+    public static final String INVALID_OPENING_HOURS_DESC = " " + PREFIX_OPENING_HOURS;
+    public static final String INVALID_PRICE_RANGE_DESC = " " + PREFIX_PRICE_RANGE;
+    public static final String INVALID_RATING_DESC = " " + PREFIX_RATING;
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "Sightseeing*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
@@ -78,11 +96,15 @@ public class CommandTestUtil {
         DESC_EIFFEL = new EditAttractionDescriptorBuilder().withName(VALID_NAME_EIFFEL)
                 .withPhone(VALID_PHONE_EIFFEL).withEmail(VALID_EMAIL_EIFFEL)
                 .withAddress(VALID_ADDRESS_EIFFEL).withDescription(VALID_DESCRIPTION_EIFFEL)
-                .withLocation(VALID_LOCATION_EIFFEL).withTags(VALID_TAG_SIGHTSEEING).build();
+                .withLocation(VALID_LOCATION_EIFFEL).withOpeningHours(VALID_OPENING_HOURS_EIFFEL)
+                .withPriceRange(VALID_PRICE_RANGE_EIFFEL).withRating(VALID_RATING_EIFFEL)
+                .withTags(VALID_TAG_SIGHTSEEING).build();
         DESC_MBS = new EditAttractionDescriptorBuilder().withName(VALID_NAME_MBS)
                 .withPhone(VALID_PHONE_MBS).withEmail(VALID_EMAIL_MBS)
                 .withAddress(VALID_ADDRESS_MBS).withDescription(VALID_DESCRIPTION_MBS)
-                .withLocation(VALID_LOCATION_MBS).withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING).build();
+                .withLocation(VALID_LOCATION_MBS).withOpeningHours(VALID_OPENING_HOURS_MBS)
+                .withPriceRange(VALID_PRICE_RANGE_MBS).withRating(VALID_RATING_MBS)
+                .withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING).build();
     }
 
     /**

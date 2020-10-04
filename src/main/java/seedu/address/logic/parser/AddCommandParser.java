@@ -6,7 +6,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OPENING_HOURS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
@@ -20,7 +23,10 @@ import seedu.address.model.attraction.Description;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.Name;
+import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
+import seedu.address.model.attraction.PriceRange;
+import seedu.address.model.attraction.Rating;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -37,9 +43,11 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_DESCRIPTION, PREFIX_LOCATION, PREFIX_TAG);
+                        PREFIX_DESCRIPTION, PREFIX_LOCATION, PREFIX_OPENING_HOURS,
+                        PREFIX_PRICE_RANGE, PREFIX_RATING, PREFIX_TAG);
 
-        // No checks for PREFIX_ADDRESS, PREFIX_DESCRIPTION, PREFIX_EMAIL, PREFIX_PHONE, PREFIX_TAG
+        // No checks for PREFIX_ADDRESS, PREFIX_DESCRIPTION, PREFIX_EMAIL, PREFIX_PHONE,
+        // PREFIX_OPENING_HOURS, PREFIX_PRICE_RANGE, PREFIX_RATING, PREFIX_TAG
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_LOCATION)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
@@ -85,9 +93,34 @@ public class AddCommandParser implements Parser<AddCommand> {
         // Location is not optional
         Location location = ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION).get());
 
+        // Opening Hours is optional
+        OpeningHours openingHours;
+        if (argMultimap.getValue(PREFIX_OPENING_HOURS).isPresent()) {
+            openingHours = ParserUtil.parseOpeningHours(argMultimap.getValue(PREFIX_OPENING_HOURS).get());
+        } else {
+            openingHours = new OpeningHours();
+        }
+
+        // Price Range is optional
+        PriceRange priceRange;
+        if (argMultimap.getValue(PREFIX_PRICE_RANGE).isPresent()) {
+            priceRange = ParserUtil.parsePriceRange(argMultimap.getValue(PREFIX_PRICE_RANGE).get());
+        } else {
+            priceRange = new PriceRange();
+        }
+
+        // Rating is optional
+        Rating rating;
+        if (argMultimap.getValue(PREFIX_RATING).isPresent()) {
+            rating = ParserUtil.parseRating(argMultimap.getValue(PREFIX_RATING).get());
+        } else {
+            rating = new Rating();
+        }
+
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Attraction attraction = new Attraction(name, phone, email, address, description, location, tagList);
+        Attraction attraction = new Attraction(name, phone, email, address, description,
+                location, openingHours, priceRange, rating, tagList);
 
         return new AddCommand(attraction);
     }

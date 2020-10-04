@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAttractions.EIFFEL_TOWER;
-import static seedu.address.testutil.TypicalAttractions.NIGHT_SAFARI;
 import static seedu.address.testutil.TypicalAttractions.MBS;
+import static seedu.address.testutil.TypicalAttractions.NIGHT_SAFARI;
 import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
 
 import java.io.IOException;
