@@ -68,7 +68,7 @@ public class DeleteCommandTest {
         showAttractionAtIndex(model, INDEX_FIRST_ATTRACTION);
 
         Index outOfBoundIndex = INDEX_SECOND_ATTRACTION;
-        // ensures that outOfBoundIndex is still in bounds of address book list
+        // ensures that outOfBoundIndex is still in bounds of trackPad list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getTrackPad().getAttractionList().size());
 
         DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
