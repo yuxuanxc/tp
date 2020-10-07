@@ -60,12 +60,12 @@ public class TrackPadTest {
     }
 
     @Test
-    public void hasAttraction_attractionNotInAddressBook_returnsFalse() {
+    public void hasAttraction_attractionNotInTrackPad_returnsFalse() {
         assertFalse(trackPad.hasAttraction(MBS));
     }
 
     @Test
-    public void hasAttraction_attractionInAddressBook_returnsTrue() {
+    public void hasAttraction_attractionInTrackPad_returnsTrue() {
         trackPad.addAttraction(MBS);
         assertTrue(trackPad.hasAttraction(MBS));
     }
