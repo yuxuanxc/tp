@@ -37,7 +37,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
                         PREFIX_LOCATION, PREFIX_TAG);
 
-        // No checks for PREFIX_ADDRESS, PREFIX_EMAIL, PREFIX_PHONE
+        // No checks for PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_LOCATION)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
@@ -69,8 +69,6 @@ public class AddCommandParser implements Parser<AddCommand> {
         } else {
             address = new Address();
         }
-
-        // todo update the Ui for addCommand to show fields which are optional.
 
         // Location is not optional
         Location location = ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION).get());
