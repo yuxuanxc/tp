@@ -46,6 +46,11 @@ public class CommandResult {
         return exit;
     }
 
+    /**
+     * Overrides equal method to properly compare between 2 command results
+     * @param other command result to compare with
+     * @return true or false
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
