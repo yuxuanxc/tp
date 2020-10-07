@@ -14,7 +14,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.attraction.Attraction;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the trackPad data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
@@ -30,7 +30,7 @@ public class ModelManager implements Model {
         super();
         requireAllNonNull(trackPad, userPrefs);
 
-        logger.fine("Initializing with address book: " + trackPad + " and user prefs " + userPrefs);
+        logger.fine("Initializing with trackPad: " + trackPad + " and user prefs " + userPrefs);
 
         this.trackPad = new TrackPad(trackPad);
         this.userPrefs = new UserPrefs(userPrefs);
