@@ -15,10 +15,18 @@ public class NameContainsKeywordsPredicate implements Predicate<Attraction> {
         this.keywords = keywords;
     }
 
+
+    // todo add support for more fields
     @Override
     public boolean test(Attraction attraction) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(attraction.getName().fullName, keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(attraction.getName().fullName, keyword)
+                        || StringUtil.containsWordIgnoreCase(attraction.getPhone().value, keyword)
+                        || StringUtil.containsWordIgnoreCase(attraction.getEmail().value, keyword)
+                        || StringUtil.containsWordIgnoreCase(attraction.getAddress().value, keyword)
+                        || StringUtil.containsWordIgnoreCase(attraction.getLocation().value, keyword)
+                        || attraction.getTags().stream().anyMatch(tag -> tag.tagName.equals(keyword))
+                );
     }
 
     @Override
