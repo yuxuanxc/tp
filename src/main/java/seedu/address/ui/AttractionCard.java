@@ -42,6 +42,12 @@ public class AttractionCard extends UiPart<Region> {
     // For JavaFX, rename location to locale as location is a reserved keyword in JavaFX
     private Label locale;
     @FXML
+    private Label openingHours;
+    @FXML
+    private Label priceRange;
+    @FXML
+    private Label rating;
+    @FXML
     private FlowPane tags;
 
     /**
@@ -56,6 +62,9 @@ public class AttractionCard extends UiPart<Region> {
         address.setText(attraction.getAddress().value);
         email.setText(attraction.getEmail().value);
         locale.setText(attraction.getLocation().value);
+        openingHours.setText(attraction.getOpeningHours().value);
+        priceRange.setText(attraction.getPriceRange().value);
+        rating.setText(attraction.getRating().value);
         attraction.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
