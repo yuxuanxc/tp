@@ -56,8 +56,8 @@ public class PriceRange {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Rating // instanceof handles nulls
-                && value.equals(((Rating) other).value)); // state check
+                || (other instanceof  PriceRange // instanceof handles nulls
+                && value.equals(((PriceRange) other).value)); // state check
     }
 
     @Override
