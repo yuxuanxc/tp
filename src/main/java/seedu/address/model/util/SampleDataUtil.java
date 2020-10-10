@@ -29,15 +29,21 @@ public class SampleDataUtil {
             new Attraction(new Name("River Safari"), new Phone("93210283"), new Email("riversafari@example.com"),
                 new Address("80 Mandai Lake Rd"), new Location("Singapore, Singapore"),
                 getTagSet("animals", "panda")),
-            new Attraction(new Name("Orchard Road"), new Phone("91031282"), new Email("orchardroad@example.com"),
-                new Address("Orchard Road"), new Location("Singapore, Singapore"),
-                getTagSet("shopping")),
+            new Attraction(new Name("Singapore Zoo"), new Phone("62693411"), new Email("riversafari@example.com"),
+                    new Address("80 Mandai Lake Rd"), new Location("Singapore, Singapore"),
+                    getTagSet("animals", "tiger")),
             new Attraction(new Name("Botanic Gardens"), new Phone("92492021"), new Email("botanicgardens@example.com"),
                 new Address("1 Cluny Rd"), new Location("Singapore, Singapore"),
                 getTagSet("nature")),
-            new Attraction(new Name("Jurong Lake"), new Phone("92624417"), new Email("juronglake@example.com"),
-                new Address("Jurong"), new Location("Singapore, Singapore"),
-                getTagSet("nature"))
+            new Attraction(new Name("Universal Studios Singapore"), new Phone(), new Email(),
+                new Address("8 Sentosa Gateway, 098269"), new Location("Singapore, Singapore"),
+                getTagSet("activities")),
+            new Attraction(new Name("Snow City"), new Phone("65602306"), new Email(),
+                new Address("21 Jurong Town Hall Rd, 609433"), new Location("Singapore, Singapore"),
+                getTagSet("activities")),
+            new Attraction(new Name("Trick Eye Museum"), new Phone("67952371"), new Email(),
+                    new Address("26 Sentosa Gateway, 098138"), new Location("Singapore, Singapore"),
+                    getTagSet("activities")),
         };
     }
 
