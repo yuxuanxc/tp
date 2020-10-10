@@ -279,7 +279,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | person planning for my travel	| add price range for tourist attractions       	| estimate the costs of visiting the tourist attraction
 | `* *`    | person planning for my travel	| see the total expenditure range for the trip	    | understand the amount to bring for the trip or to adjust the budget
 | `* *`    | person planning for my travel	| prioritise the different tourist attractions	    | know which ones I would want to visit first if there is a lack of time
-| `* *`    | person planning for my travel	| add remarks about tourist attractions	            | keep track of important stuff to take note of
 | `* *`    | person planning for my travel	| sort the attractions by their various parameters	| easily skim the attractions I am interested in
 | `* *`    | person planning for my travel	| search attractions by tag                     	| easily skim the attractions I am interested in
 

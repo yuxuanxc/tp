@@ -46,8 +46,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                         PREFIX_DESCRIPTION, PREFIX_LOCATION, PREFIX_OPENING_HOURS,
                         PREFIX_PRICE_RANGE, PREFIX_RATING, PREFIX_TAG);
 
-        // No checks for PREFIX_ADDRESS, PREFIX_DESCRIPTION, PREFIX_EMAIL, PREFIX_PHONE,
-        // PREFIX_OPENING_HOURS, PREFIX_PRICE_RANGE, PREFIX_RATING, PREFIX_TAG
+        // No checks for PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_LOCATION)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
@@ -87,8 +86,6 @@ public class AddCommandParser implements Parser<AddCommand> {
         } else {
             description = new Description();
         }
-
-        // todo update the Ui for addCommand to show fields which are optional.
 
         // Location is not optional
         Location location = ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION).get());

@@ -59,7 +59,7 @@ public class TrackPad implements ReadOnlyTrackPad {
     //// attraction-level operations
 
     /**
-     * Returns true if a attraction with the same identity as {@code attraction} exists in the address book.
+     * Returns true if a attraction with the same identity as {@code attraction} exists in the trackPad.
      */
     public boolean hasAttraction(Attraction attraction) {
         requireNonNull(attraction);
@@ -67,8 +67,8 @@ public class TrackPad implements ReadOnlyTrackPad {
     }
 
     /**
-     * Adds a attraction to the address book.
-     * The attraction must not already exist in the address book.
+     * Adds a attraction to the trackPad.
+     * The attraction must not already exist in the trackPad.
      */
     public void addAttraction(Attraction a) {
         attractions.add(a);
@@ -76,9 +76,9 @@ public class TrackPad implements ReadOnlyTrackPad {
 
     /**
      * Replaces the given attraction {@code target} in the list with {@code editedAttraction}.
-     * {@code target} must exist in the track pad.
-     * The person identity of {@code editedAttraction} must not be the same as another existing
-     * attraction in the address book.
+     * {@code target} must exist in the trackPad.
+     * The attraction identity of {@code editedAttraction} must not be the same as another existing
+     * attraction in the trackPad.
      */
     public void setAttraction(Attraction target, Attraction editedAttraction) {
         requireNonNull(editedAttraction);
