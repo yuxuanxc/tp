@@ -15,6 +15,8 @@ public class NameContainsKeywordsPredicate implements Predicate<Attraction> {
         this.keywords = keywords;
     }
 
+
+    // todo add support for more fields
     @Override
     public boolean test(Attraction attraction) {
         return keywords.stream()
