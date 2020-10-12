@@ -137,6 +137,7 @@ public class AddCommandParserTest {
                 + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL
                 + PRICE_RANGE_DESC_EIFFEL + RATING_DESC_EIFFEL + TAG_DESC_ACTIVITY,
                 new AddCommand(expectedAttractionNoAddress));
+        // todo add testcase to check no description, opening hours, rating, price range should pass
     }
 
     @Test
@@ -146,21 +147,6 @@ public class AddCommandParserTest {
         // missing name prefix
         assertParseFailure(parser, VALID_NAME_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
                 + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS, expectedMessage);
-
-        // todo delete before final version
-        // missing phone prefix
-        // assertParseFailure(parser, NAME_DESC_MBS + VALID_PHONE_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
-        //        + LOCATION_DESC_MBS, expectedMessage);
-
-        // todo delete before final version
-        // missing email prefix
-        // assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS + VALID_EMAIL_MBS + ADDRESS_DESC_MBS
-        // + LOCATION_DESC_MBS, expectedMessage);
-
-        // todo delete check for missing address prefix since address is no longer compulsory
-        // missing address prefix
-        // assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + VALID_ADDRESS_MBS
-        //         + LOCATION_DESC_MBS, expectedMessage);
 
         // missing location prefix
         assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
