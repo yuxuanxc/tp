@@ -8,14 +8,10 @@ import seedu.address.model.ReadOnlyTrackPad;
 import seedu.address.model.TrackPad;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
-import seedu.address.model.attraction.Description;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.Name;
-import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
-import seedu.address.model.attraction.PriceRange;
-import seedu.address.model.attraction.Rating;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -25,10 +21,14 @@ public class SampleDataUtil {
     public static Attraction[] getSampleAttractions() {
         return new Attraction[] {
             new Attraction(new Name("Jurong Bird Park"), new Phone("94351253"), new Email("birdpark@example.com"),
-                    new Address("2 Jurong Hill"),
-                    new Description("The park offers a haven for close to 3500 birds across 400 species."),
-                    new Location("Singapore, Singapore"),
-                    new OpeningHours("1000-1800"), new PriceRange("MEDIUM")),
+                new Address("2 Jurong Hill"), new Location("Singapore, Singapore"),
+                getTagSet("animals")),
+            new Attraction(new Name("Night Safari"), new Phone("98765432"), new Email("nightsafari@example.com"),
+                new Address("80 Mandai Lake Rd"), new Location("Singapore, Singapore"),
+                    getTagSet("animals", "night")),
+            new Attraction(new Name("River Safari"), new Phone("93210283"), new Email("riversafari@example.com"),
+                new Address("80 Mandai Lake Rd"), new Location("Singapore, Singapore"),
+                getTagSet("animals", "panda")),
             new Attraction(new Name("Singapore Zoo"), new Phone("62693411"), new Email("riversafari@example.com"),
                     new Address("80 Mandai Lake Rd"), new Location("Singapore, Singapore"),
                     getTagSet("animals", "tiger")),
@@ -44,7 +44,6 @@ public class SampleDataUtil {
             new Attraction(new Name("Trick Eye Museum"), new Phone("67952371"), new Email(),
                     new Address("26 Sentosa Gateway, 098138"), new Location("Singapore, Singapore"),
                     getTagSet("activities")),
-
         };
     }
 
