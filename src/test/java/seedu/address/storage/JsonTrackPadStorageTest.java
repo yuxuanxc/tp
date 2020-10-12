@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAttractions.EIFFEL_TOWER;
-import static seedu.address.testutil.TypicalAttractions.JURONG_BIRD_PARK;
 import static seedu.address.testutil.TypicalAttractions.MBS;
+import static seedu.address.testutil.TypicalAttractions.NIGHT_SAFARI;
 import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
 
 import java.io.IOException;
@@ -73,7 +73,7 @@ public class JsonTrackPadStorageTest {
 
         // Modify data, overwrite exiting file, and read back
         original.addAttraction(MBS);
-        original.removeAttraction(JURONG_BIRD_PARK);
+        original.removeAttraction(NIGHT_SAFARI);
         jsonTrackPadStorage.saveTrackPad(original, filePath);
         readBack = jsonTrackPadStorage.readTrackPad(filePath).get();
         assertEquals(original, new TrackPad(readBack));

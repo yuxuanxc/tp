@@ -2,10 +2,14 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OPENING_HOURS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -26,13 +30,21 @@ public class AddCommand extends Command {
             + "[" + PREFIX_PHONE + "PHONE "
             + PREFIX_EMAIL + "EMAIL "
             + PREFIX_ADDRESS + "ADDRESS "
+            + PREFIX_DESCRIPTION + "DESCRIPTION "
+            + PREFIX_OPENING_HOURS + "OPENING HOURS "
+            + PREFIX_PRICE_RANGE + "PRICE RANGE "
+            + PREFIX_RATING + "RATING "
             + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "Singapore Zoo "
+            + PREFIX_LOCATION + "Singapore, Singapore "
             + PREFIX_PHONE + "62693411 "
             + PREFIX_EMAIL + "sgzoo@example.com "
             + PREFIX_ADDRESS + "80 Mandai Lake Rd, 729826 "
-            + PREFIX_LOCATION + "Singapore, Singapore "
+            + PREFIX_DESCRIPTION + "Home to over 2,800 animals. "
+            + PREFIX_OPENING_HOURS + "0830-1800 "
+            + PREFIX_PRICE_RANGE + "MEDIUM "
+            + PREFIX_RATING + "4.8 "
             + PREFIX_TAG + "animal ";
 
     public static final String MESSAGE_SUCCESS = "New attraction added: %1$s";
