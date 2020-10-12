@@ -2,10 +2,14 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OPENING_HOURS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ATTRACTIONS;
 
@@ -22,10 +26,14 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.attraction.Description;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.Name;
+import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
+import seedu.address.model.attraction.PriceRange;
+import seedu.address.model.attraction.Rating;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -44,6 +52,10 @@ public class EditCommand extends Command {
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_LOCATION + "LOCATION] "
+            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
+            + "[" + PREFIX_OPENING_HOURS + "OPENING HOURS] "
+            + "[" + PREFIX_PRICE_RANGE + "PRICE RANGE] "
+            + "[" + PREFIX_RATING + "RATING] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "62693411 "
@@ -101,10 +113,19 @@ public class EditCommand extends Command {
         Phone updatedPhone = editAttractionDescriptor.getPhone().orElse(attractionToEdit.getPhone());
         Email updatedEmail = editAttractionDescriptor.getEmail().orElse(attractionToEdit.getEmail());
         Address updatedAddress = editAttractionDescriptor.getAddress().orElse(attractionToEdit.getAddress());
+        Description updatedDescription = editAttractionDescriptor
+                .getDescription().orElse(attractionToEdit.getDescription());
         Location updatedLocation = editAttractionDescriptor.getLocation().orElse(attractionToEdit.getLocation());
+        OpeningHours updatedOpeningHours = editAttractionDescriptor
+                .getOpeningHours().orElse(attractionToEdit.getOpeningHours());
+        PriceRange updatedPriceRange = editAttractionDescriptor
+                .getPriceRange().orElse(attractionToEdit.getPriceRange());
+        Rating updatedRating = editAttractionDescriptor.getRating().orElse(attractionToEdit.getRating());
         Set<Tag> updatedTags = editAttractionDescriptor.getTags().orElse(attractionToEdit.getTags());
 
-        return new Attraction(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedLocation, updatedTags);
+        return new Attraction(updatedName, updatedPhone, updatedEmail, updatedAddress,
+                updatedDescription, updatedLocation, updatedOpeningHours, updatedPriceRange,
+                updatedRating, updatedTags);
     }
 
     @Override
@@ -134,7 +155,11 @@ public class EditCommand extends Command {
         private Phone phone;
         private Email email;
         private Address address;
+        private Description description;
         private Location location;
+        private OpeningHours openingHours;
+        private PriceRange priceRange;
+        private Rating rating;
         private Set<Tag> tags;
 
         public EditAttractionDescriptor() {}
@@ -148,7 +173,11 @@ public class EditCommand extends Command {
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
+            setDescription(toCopy.description);
             setLocation(toCopy.location);
+            setOpeningHours(toCopy.openingHours);
+            setPriceRange(toCopy.priceRange);
+            setRating(toCopy.rating);
             setTags(toCopy.tags);
         }
 
@@ -156,7 +185,8 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, location, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, description,
+                    location, openingHours, priceRange, rating, tags);
         }
 
         public void setName(Name name) {
@@ -191,12 +221,44 @@ public class EditCommand extends Command {
             return Optional.ofNullable(address);
         }
 
+        public void setDescription(Description description) {
+            this.description = description;
+        }
+
+        public Optional<Description> getDescription() {
+            return Optional.ofNullable(description);
+        }
+
         public void setLocation(Location location) {
             this.location = location;
         }
 
         public Optional<Location> getLocation() {
             return Optional.ofNullable(location);
+        }
+
+        public void setOpeningHours(OpeningHours openingHours) {
+            this.openingHours = openingHours;
+        }
+
+        public Optional<OpeningHours> getOpeningHours() {
+            return Optional.ofNullable(openingHours);
+        }
+
+        public void setPriceRange(PriceRange priceRange) {
+            this.priceRange = priceRange;
+        }
+
+        public Optional<PriceRange> getPriceRange() {
+            return Optional.ofNullable(priceRange);
+        }
+
+        public void setRating(Rating rating) {
+            this.rating = rating;
+        }
+
+        public Optional<Rating> getRating() {
+            return Optional.ofNullable(rating);
         }
 
         /**
@@ -235,7 +297,11 @@ public class EditCommand extends Command {
                     && getPhone().equals(e.getPhone())
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
+                    && getDescription().equals(e.getDescription())
                     && getLocation().equals(e.getLocation())
+                    && getOpeningHours().equals(e.getOpeningHours())
+                    && getPriceRange().equals(e.getPriceRange())
+                    && getRating().equals(e.getRating())
                     && getTags().equals(e.getTags());
         }
     }
