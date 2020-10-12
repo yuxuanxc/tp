@@ -6,9 +6,12 @@ import java.util.function.Predicate;
 import seedu.address.commons.util.StringUtil;
 
 /**
- * Tests that a {@code Attraction}'s {@code Name} matches any of the keywords given.
+ * Tests that a {@code Attraction}'s {@code Name, @code Address, ***@code Description*** (not working yet),
+ * @code Email, @code Location, @code OpeningHours, @code Phone, @code PriceRange, @code Rating}
+ * matches any of the keywords given.
  */
 public class NameContainsKeywordsPredicate implements Predicate<Attraction> {
+    // todo refactor the name of this class since it is no longer only looking for the name.
     private final List<String> keywords;
 
     public NameContainsKeywordsPredicate(List<String> keywords) {
@@ -16,7 +19,7 @@ public class NameContainsKeywordsPredicate implements Predicate<Attraction> {
     }
 
 
-    // todo description is causing test case to fail
+    // todo fix problem where description is causing test case to fail
     @Override
     public boolean test(Attraction attraction) {
         return keywords.stream()
