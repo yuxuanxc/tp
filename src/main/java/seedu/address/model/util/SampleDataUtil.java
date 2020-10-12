@@ -56,11 +56,11 @@ public class SampleDataUtil {
                     new Address("26 Sentosa Gateway, 098138"), new Location("Singapore, Singapore"),
                     getTagSet("activities")),
 // =======
-                    new Address("80 Mandai Lake Rd"),
-                    new Description("A river-themed zoo and aquarium in Singapore."),
-                    new Location("Singapore, Singapore"),
-                    new OpeningHours("1000-1800"), new PriceRange("MEDIUM"),
-                    new Rating("5.0"), getTagSet("animals", "panda")),
+//                     new Address("80 Mandai Lake Rd"),
+//                     new Description("A river-themed zoo and aquarium in Singapore."),
+//                     new Location("Singapore, Singapore"),
+//                     new OpeningHours("1000-1800"), new PriceRange("MEDIUM"),
+//                     new Rating("5.0"), getTagSet("animals", "panda")),
 //             new Attraction(new Name("Orchard Road"), new Phone("91031282"), new Email("orchardroad@example.com"),
 //                     new Address("Orchard Road"),
 //                     new Description("Orchard Road is Singapore’s retail heart, with discount outlets, "
@@ -74,13 +74,13 @@ public class SampleDataUtil {
 //                     new Location("Singapore, Singapore"),
 //                     new OpeningHours("1000-1800"), new PriceRange("MEDIUM"),
 //                     new Rating("5.0"), getTagSet("nature")),
-//             new Attraction(new Name("Jurong Lake"), new Phone("92624417"), new Email("juronglake@example.com"),
-//                     new Address("Jurong"),
-//                     new Description("Sprawling park around a lake & swamp forest with a boardwalk, "
-//                             + "playgrounds, a dog run & water sports."),
-//                     new Location("Singapore, Singapore"),
-//                     new OpeningHours("1000-1800"), new PriceRange("MEDIUM"),
-//                     new Rating("5.0"), getTagSet("nature"))
+            new Attraction(new Name("Jurong Lake"), new Phone("92624417"), new Email("juronglake@example.com"),
+                    new Address("Jurong"),
+                    new Description("Sprawling park around a lake & swamp forest with a boardwalk, "
+                            + "playgrounds, a dog run & water sports."),
+                    new Location("Singapore, Singapore"),
+                    new OpeningHours("1000-1800"), new PriceRange("MEDIUM"),
+                    new Rating("5.0"), getTagSet("nature"))
 // >>>>>>> master
         };
     }
