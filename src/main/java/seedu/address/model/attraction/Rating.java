@@ -45,7 +45,7 @@ public class Rating {
         if (value.isEmpty()) {
             return "";
         } else {
-            return value + "/5\u2605";
+            return value + "/5.0\u2605";
         }
     }
 
