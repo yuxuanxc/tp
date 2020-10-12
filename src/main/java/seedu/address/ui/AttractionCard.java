@@ -1,6 +1,5 @@
 package seedu.address.ui;
 
-import java.security.IdentityScope;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
