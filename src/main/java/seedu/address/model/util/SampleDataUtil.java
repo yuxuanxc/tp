@@ -28,17 +28,7 @@ public class SampleDataUtil {
                     new Address("2 Jurong Hill"),
                     new Description("The park offers a haven for close to 3500 birds across 400 species."),
                     new Location("Singapore, Singapore"),
-                    new OpeningHours("1000-1800"), new PriceRange("MEDIUM"),
-                    new Rating("5.0"), getTagSet("animals")),
-            new Attraction(new Name("Night Safari"), new Phone("98765432"), new Email("nightsafari@example.com"),
-                    new Address("80 Mandai Lake Rd"),
-                    new Description("The world's first nocturnal zoo."),
-                    new Location("Singapore, Singapore"),
-                    new OpeningHours("1000-1800"), new PriceRange("MEDIUM"),
-                    new Rating("5.0"), getTagSet("animals", "night")),
-            new Attraction(new Name("River Safari"), new Phone("93210283"), new Email("riversafari@example.com"),
-                new Address("80 Mandai Lake Rd"), new Location("Singapore, Singapore"),
-                getTagSet("animals", "panda")),
+                    new OpeningHours("1000-1800"), new PriceRange("MEDIUM")),
             new Attraction(new Name("Singapore Zoo"), new Phone("62693411"), new Email("riversafari@example.com"),
                     new Address("80 Mandai Lake Rd"), new Location("Singapore, Singapore"),
                     getTagSet("animals", "tiger")),
@@ -54,6 +44,7 @@ public class SampleDataUtil {
             new Attraction(new Name("Trick Eye Museum"), new Phone("67952371"), new Email(),
                     new Address("26 Sentosa Gateway, 098138"), new Location("Singapore, Singapore"),
                     getTagSet("activities")),
+
         };
     }
 
