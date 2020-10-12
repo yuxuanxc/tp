@@ -82,7 +82,7 @@ public class NameContainsKeywordsPredicateTest {
         assertTrue(predicate.test(new AttractionBuilder().withName("mAnDaI wAy").build()));
     }
 
-    // todo find out why this test case is failing
+    // todo find out why this new same test case won't work for description
     /*    @Test
     public void test_descriptionContainsKeywords_returnsTrue() {
         // One keyword
@@ -267,7 +267,7 @@ public class NameContainsKeywordsPredicateTest {
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("Mandai", "Drive"));
         assertFalse(predicate.test(new AttractionBuilder().withAddress("Marina Way").build()));
 
-        // todo find out why it's failing
+        // todo find out why this new test case won't work for description
         //predicate = new NameContainsKeywordsPredicate(Arrays.asList("This", "is", "The", "ZoO"));
         //assertFalse(predicate.test(new AttractionBuilder().withDescription("Big theme park").build()));
 
