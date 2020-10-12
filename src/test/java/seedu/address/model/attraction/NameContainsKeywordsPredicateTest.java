@@ -67,9 +67,16 @@ public class NameContainsKeywordsPredicateTest {
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("Carol"));
         assertFalse(predicate.test(new AttractionBuilder().withName("Alice Bob").build()));
 
+        // This test case would return true since any field that matches the keywords would return true.
         // Keywords match phone, email and address, but does not match name
-        predicate = new NameContainsKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
-        assertFalse(predicate.test(new AttractionBuilder().withName("Alice").withPhone("12345")
-                .withEmail("alice@email.com").withAddress("Main Street").build()));
+        // predicate = new NameContainsKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
+        // assertFalse(predicate.test(new AttractionBuilder().withName("Alice").withPhone("12345")
+        //        .withEmail("alice@email.com").withAddress("Main Street").build()));
     }
+
+
+    // todo include more testing after the additional fields are added.
+    // todo test find command with multiple matching keywords.
+    // todo test for keywords contained in a tag
+    // todo test find command with many keywords in tag
 }

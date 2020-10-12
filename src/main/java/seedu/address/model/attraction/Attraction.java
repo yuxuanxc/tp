@@ -22,19 +22,30 @@ public class Attraction {
 
     // Data fields
     private final Address address;
+    private final Description description;
     private final Location location;
+    private final OpeningHours openingHours;
+    private final PriceRange priceRange;
+    private final Rating rating;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Attraction(Name name, Phone phone, Email email, Address address, Location location, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, location, tags);
+    public Attraction(Name name, Phone phone, Email email, Address address, Description description,
+                      Location location, OpeningHours openingHours, PriceRange priceRange,
+                      Rating rating, Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, address, description, location, openingHours,
+                priceRange, rating, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.description = description;
         this.location = location;
+        this.openingHours = openingHours;
+        this.priceRange = priceRange;
+        this.rating = rating;
         this.tags.addAll(tags);
     }
 
@@ -54,8 +65,24 @@ public class Attraction {
         return address;
     }
 
+    public Description getDescription() {
+        return description;
+    }
+
     public Location getLocation() {
         return location;
+    }
+
+    public OpeningHours getOpeningHours() {
+        return openingHours;
+    }
+
+    public PriceRange getPriceRange() {
+        return priceRange;
+    }
+
+    public Rating getRating() {
+        return rating;
     }
 
     /**
@@ -99,14 +126,19 @@ public class Attraction {
                 && otherAttraction.getPhone().equals(getPhone())
                 && otherAttraction.getEmail().equals(getEmail())
                 && otherAttraction.getAddress().equals(getAddress())
+                && otherAttraction.getDescription().equals(getDescription())
                 && otherAttraction.getLocation().equals(getLocation())
+                && otherAttraction.getOpeningHours().equals(getOpeningHours())
+                && otherAttraction.getPriceRange().equals(getPriceRange())
+                && otherAttraction.getRating().equals(getRating())
                 && otherAttraction.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, location, tags);
+        return Objects.hash(name, phone, email, address, description, location,
+                openingHours, priceRange, rating, tags);
     }
 
     @Override
@@ -119,8 +151,16 @@ public class Attraction {
                 .append(getEmail())
                 .append(" Address: ")
                 .append(getAddress())
+                .append(" Description: ")
+                .append(getDescription())
                 .append(" Location: ")
                 .append(getLocation())
+                .append(" OpeningHours: ")
+                .append(getOpeningHours())
+                .append(" PriceRange: ")
+                .append(getPriceRange())
+                .append(" Rating: ")
+                .append(getRating())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

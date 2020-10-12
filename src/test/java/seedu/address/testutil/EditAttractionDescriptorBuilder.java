@@ -7,10 +7,14 @@ import java.util.stream.Stream;
 import seedu.address.logic.commands.EditCommand.EditAttractionDescriptor;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.attraction.Description;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.Name;
+import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
+import seedu.address.model.attraction.PriceRange;
+import seedu.address.model.attraction.Rating;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -37,7 +41,11 @@ public class EditAttractionDescriptorBuilder {
         descriptor.setPhone(attraction.getPhone());
         descriptor.setEmail(attraction.getEmail());
         descriptor.setAddress(attraction.getAddress());
+        descriptor.setDescription(attraction.getDescription());
         descriptor.setLocation(attraction.getLocation());
+        descriptor.setOpeningHours(attraction.getOpeningHours());
+        descriptor.setPriceRange(attraction.getPriceRange());
+        descriptor.setRating(attraction.getRating());
         descriptor.setTags(attraction.getTags());
     }
 
@@ -74,10 +82,42 @@ public class EditAttractionDescriptorBuilder {
     }
 
     /**
+     * Sets the {@code Description} of the {@code EditAttractionDescriptor} that we are building.
+     */
+    public EditAttractionDescriptorBuilder withDescription(String description) {
+        descriptor.setDescription(new Description(description));
+        return this;
+    }
+
+    /**
      * Sets the {@code Location} of the {@code EditAttractionDescriptor} that we are building.
      */
     public EditAttractionDescriptorBuilder withLocation(String location) {
         descriptor.setLocation(new Location(location));
+        return this;
+    }
+
+    /**
+     * Sets the {@code Opening Hours} of the {@code EditAttractionDescriptor} that we are building.
+     */
+    public EditAttractionDescriptorBuilder withOpeningHours(String openingHours) {
+        descriptor.setOpeningHours(new OpeningHours(openingHours));
+        return this;
+    }
+
+    /**
+     * Sets the {@code Price Range} of the {@code EditAttractionDescriptor} that we are building.
+     */
+    public EditAttractionDescriptorBuilder withPriceRange(String priceRange) {
+        descriptor.setPriceRange(new PriceRange(priceRange));
+        return this;
+    }
+
+    /**
+     * Sets the {@code Rating} of the {@code EditAttractionDescriptor} that we are building.
+     */
+    public EditAttractionDescriptorBuilder withRating(String rating) {
+        descriptor.setRating(new Rating(rating));
         return this;
     }
 

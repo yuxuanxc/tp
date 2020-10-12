@@ -12,10 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.attraction.Description;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.Name;
+import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
+import seedu.address.model.attraction.PriceRange;
+import seedu.address.model.attraction.Rating;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -29,21 +33,36 @@ class JsonAdaptedAttraction {
     private final String phone;
     private final String email;
     private final String address;
+    private final String description;
     private final String location;
+    private final String openingHours;
+    private final String priceRange;
+    private final String rating;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedAttraction} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedAttraction(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("location") String location, @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+    public JsonAdaptedAttraction(@JsonProperty("name") String name,
+                                 @JsonProperty("phone") String phone,
+                                 @JsonProperty("email") String email,
+                                 @JsonProperty("address") String address,
+                                 @JsonProperty("description") String description,
+                                 @JsonProperty("location") String location,
+                                 @JsonProperty("openingHours") String openingHours,
+                                 @JsonProperty("priceRange") String priceRange,
+                                 @JsonProperty("rating") String rating,
+                                 @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.description = description;
         this.location = location;
+        this.openingHours = openingHours;
+        this.priceRange = priceRange;
+        this.rating = rating;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -57,7 +76,11 @@ class JsonAdaptedAttraction {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        description = source.getDescription().value;
         location = source.getLocation().value;
+        openingHours = source.getOpeningHours().value;
+        priceRange = source.getPriceRange().value;
+        rating = source.getRating().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -73,7 +96,11 @@ class JsonAdaptedAttraction {
         final Phone modelPhone;
         final Email modelEmail;
         final Address modelAddress;
+        final Description modelDescription;
         final Location modelLocation;
+        final OpeningHours modelOpeningHours;
+        final PriceRange modelPriceRange;
+        final Rating modelRating;
         final List<Tag> attractionTags = new ArrayList<>();
 
         for (JsonAdaptedTag tag : tagged) {
@@ -122,6 +149,18 @@ class JsonAdaptedAttraction {
             modelAddress = new Address(address);
         }
 
+        // Description is optional
+        if (description == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Description.class.getSimpleName()));
+        } else if (description.equals("")) {
+            modelDescription = new Description();
+        } else if (!Description.isValidDescription(description)) {
+            throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
+        } else {
+            modelDescription = new Description(description);
+        }
+
         // Location is not optional
         if (location == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -133,8 +172,43 @@ class JsonAdaptedAttraction {
             modelLocation = new Location(location);
         }
 
-        final Set<Tag> modelTags = new HashSet<>(attractionTags);
-        return new Attraction(modelName, modelPhone, modelEmail, modelAddress, modelLocation, modelTags);
-    }
+        // OpeningHours is optional
+        if (openingHours == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    OpeningHours.class.getSimpleName()));
+        } else if (openingHours.equals("")) {
+            modelOpeningHours = new OpeningHours();
+        } else if (!OpeningHours.isValidOpeningHours(openingHours)) {
+            throw new IllegalValueException(OpeningHours.MESSAGE_CONSTRAINTS);
+        } else {
+            modelOpeningHours = new OpeningHours(openingHours);
+        }
 
+        // PriceRange is optional
+        if (priceRange == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    PriceRange.class.getSimpleName()));
+        } else if (priceRange.equals("")) {
+            modelPriceRange = new PriceRange();
+        } else if (!PriceRange.isValidPriceRange(priceRange)) {
+            throw new IllegalValueException(PriceRange.MESSAGE_CONSTRAINTS);
+        } else {
+            modelPriceRange = new PriceRange(priceRange);
+        }
+
+        // Rating is optional
+        if (rating == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Rating.class.getSimpleName()));
+        } else if (rating.equals("")) {
+            modelRating = new Rating();
+        } else if (!Rating.isValidRating(rating)) {
+            throw new IllegalValueException(Rating.MESSAGE_CONSTRAINTS);
+        } else {
+            modelRating = new Rating(rating);
+        }
+
+        final Set<Tag> modelTags = new HashSet<>(attractionTags);
+        return new Attraction(modelName, modelPhone, modelEmail, modelAddress, modelDescription,
+                modelLocation, modelOpeningHours, modelPriceRange, modelRating, modelTags);
+    }
 }
