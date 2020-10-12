@@ -37,7 +37,6 @@ public class SampleDataUtil {
                     new OpeningHours("1000-1800"), new PriceRange("MEDIUM"),
                     new Rating("5.0"), getTagSet("animals", "night")),
             new Attraction(new Name("River Safari"), new Phone("93210283"), new Email("riversafari@example.com"),
-// <<<<<<< branch-RediscoverSingapore
                 new Address("80 Mandai Lake Rd"), new Location("Singapore, Singapore"),
                 getTagSet("animals", "panda")),
             new Attraction(new Name("Singapore Zoo"), new Phone("62693411"), new Email("riversafari@example.com"),
@@ -55,33 +54,6 @@ public class SampleDataUtil {
             new Attraction(new Name("Trick Eye Museum"), new Phone("67952371"), new Email(),
                     new Address("26 Sentosa Gateway, 098138"), new Location("Singapore, Singapore"),
                     getTagSet("activities")),
-// =======
-//                     new Address("80 Mandai Lake Rd"),
-//                     new Description("A river-themed zoo and aquarium in Singapore."),
-//                     new Location("Singapore, Singapore"),
-//                     new OpeningHours("1000-1800"), new PriceRange("MEDIUM"),
-//                     new Rating("5.0"), getTagSet("animals", "panda")),
-//             new Attraction(new Name("Orchard Road"), new Phone("91031282"), new Email("orchardroad@example.com"),
-//                     new Address("Orchard Road"),
-//                     new Description("Orchard Road is Singapore’s retail heart, with discount outlets, "
-//                             + "department stores and upscale boutiques, alongside luxury hotels."),
-//                     new Location("Singapore, Singapore"),
-//                     new OpeningHours("1000-1800"), new PriceRange("MEDIUM"),
-//                     new Rating("5.0"), getTagSet("shopping")),
-//             new Attraction(new Name("Botanic Gardens"), new Phone("92492021"), new Email("botanicgardens@example.com"),
-//                     new Address("1 Cluny Rd"),
-//                     new Description("The only tropical garden to be honoured as a UNESCO World Heritage Site."),
-//                     new Location("Singapore, Singapore"),
-//                     new OpeningHours("1000-1800"), new PriceRange("MEDIUM"),
-//                     new Rating("5.0"), getTagSet("nature")),
-            new Attraction(new Name("Jurong Lake"), new Phone("92624417"), new Email("juronglake@example.com"),
-                    new Address("Jurong"),
-                    new Description("Sprawling park around a lake & swamp forest with a boardwalk, "
-                            + "playgrounds, a dog run & water sports."),
-                    new Location("Singapore, Singapore"),
-                    new OpeningHours("1000-1800"), new PriceRange("MEDIUM"),
-                    new Rating("5.0"), getTagSet("nature"))
-// >>>>>>> master
         };
     }
 
