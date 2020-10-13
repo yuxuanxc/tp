@@ -4,10 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.DESCRIPTION_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.LOCATION_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.OPENING_HOURS_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.PRICE_RANGE_DESC_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.RATING_DESC_EIFFEL;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAttractions.EIFFEL_TOWER;
 
@@ -86,8 +90,10 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage);
 
         // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
-                + ADDRESS_DESC_EIFFEL + LOCATION_DESC_EIFFEL;
+        String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_EIFFEL
+                + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL + ADDRESS_DESC_EIFFEL
+                + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL
+                + PRICE_RANGE_DESC_EIFFEL + RATING_DESC_EIFFEL;
         Attraction expectedAttraction = new AttractionBuilder(EIFFEL_TOWER).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addAttraction(expectedAttraction);
