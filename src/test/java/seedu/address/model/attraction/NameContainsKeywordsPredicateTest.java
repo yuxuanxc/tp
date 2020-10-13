@@ -82,7 +82,6 @@ public class NameContainsKeywordsPredicateTest {
         assertTrue(predicate.test(new AttractionBuilder().withName("mAnDaI wAy").build()));
     }
 
-    // todo find out why this new same test case won't work for description
     @Test
     public void test_descriptionContainsKeywords_returnsTrue() {
         // One keyword
