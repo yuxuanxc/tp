@@ -44,7 +44,7 @@ public class UniqueItineraryList implements Iterable<Itinerary> {
     public void add(Itinerary toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicateAttractionException();
+            throw new DuplicateItineraryException();
         }
         internalList.add(toAdd);
     }
@@ -60,11 +60,11 @@ public class UniqueItineraryList implements Iterable<Itinerary> {
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new AttractionNotFoundException();
+            throw new ItineraryNotFoundException();
         }
 
         if (!target.isSameItinerary(editedItinerary) && contains(editedItinerary)) {
-            throw new DuplicateAttractionException();
+            throw new DuplicateItineraryException();
         }
 
         internalList.set(index, editedItinerary);
@@ -77,7 +77,7 @@ public class UniqueItineraryList implements Iterable<Itinerary> {
     public void remove(Itinerary toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new AttractionNotFoundException();
+            throw new ItineraryNotFoundException();
         }
     }
 
@@ -93,7 +93,7 @@ public class UniqueItineraryList implements Iterable<Itinerary> {
     public void setItineraries(List<Itinerary> itineraries) {
         requireAllNonNull(itineraries);
         if (!itinerariesAreUnique(itineraries)) {
-            throw new DuplicateAttractionException();
+            throw new DuplicateItineraryException();
         }
 
         internalList.setAll(itineraries);

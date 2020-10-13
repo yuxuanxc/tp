@@ -81,11 +81,11 @@ public class Itinerary {
         requireNonNull(editedItineraryAttraction);
         int index = itineraryAttractions.indexOf(target);
         if (index == -1) {
-            throw new AttractionNotFoundException();
+            throw new ItineraryNotFoundException();
         }
 
         if (!target.isSameItineraryAttraction(editedItineraryAttraction) && contains(editedItineraryAttraction)) {
-            throw new DuplicateAttractionException();
+            throw new DuplicateItineraryException();
         }
 
         itineraryAttractions.set(index, editedItineraryAttraction);
