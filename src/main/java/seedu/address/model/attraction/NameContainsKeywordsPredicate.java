@@ -20,7 +20,6 @@ public class NameContainsKeywordsPredicate implements Predicate<Attraction> {
     }
 
 
-    // todo fix problem where description is causing test case to fail
     @Override
     public boolean test(Attraction attraction) {
         return keywords.stream()
