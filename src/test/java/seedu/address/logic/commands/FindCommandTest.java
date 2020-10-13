@@ -7,6 +7,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_ATTRACTIONS_LISTED_OVE
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalAttractions.BOTANIC_GARDENS;
 import static seedu.address.testutil.TypicalAttractions.ORCHARD_ROAD;
+import static seedu.address.testutil.TypicalAttractions.RIVER_SAFARI;
 import static seedu.address.testutil.TypicalAttractions.SINGAPORE_ZOO;
 import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
 
@@ -66,12 +67,13 @@ public class FindCommandTest {
 
     @Test
     public void execute_multipleKeywords_multipleAttractionsFound() {
-        String expectedMessage = String.format(MESSAGE_ATTRACTIONS_LISTED_OVERVIEW, 3);
+        String expectedMessage = String.format(MESSAGE_ATTRACTIONS_LISTED_OVERVIEW, 4);
         NameContainsKeywordsPredicate predicate = preparePredicate("Zoo Orchard Gardens");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredAttractionList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(SINGAPORE_ZOO, ORCHARD_ROAD, BOTANIC_GARDENS), model.getFilteredAttractionList());
+        assertEquals(Arrays.asList(SINGAPORE_ZOO, RIVER_SAFARI, ORCHARD_ROAD, BOTANIC_GARDENS),
+                model.getFilteredAttractionList());
     }
 
     /**
