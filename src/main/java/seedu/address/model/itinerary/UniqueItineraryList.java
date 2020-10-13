@@ -8,8 +8,8 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.attraction.exceptions.AttractionNotFoundException;
-import seedu.address.model.attraction.exceptions.DuplicateAttractionException;
+import seedu.address.model.itinerary.exceptions.DuplicateItineraryException;
+import seedu.address.model.itinerary.exceptions.ItineraryNotFoundException;
 
 /**
  * A list of itineraries that enforces uniqueness between its elements and does not allow nulls.

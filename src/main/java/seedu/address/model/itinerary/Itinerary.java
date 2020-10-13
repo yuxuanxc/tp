@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Objects;
 
 import seedu.address.model.attraction.Name;
-import seedu.address.model.attraction.exceptions.AttractionNotFoundException;
-import seedu.address.model.attraction.exceptions.DuplicateAttractionException;
+import seedu.address.model.itinerary.exceptions.DuplicateItineraryException;
+import seedu.address.model.itinerary.exceptions.ItineraryNotFoundException;
 
 /**
  * Represents an Itinerary in TrackPad.
