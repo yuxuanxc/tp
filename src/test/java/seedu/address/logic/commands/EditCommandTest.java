@@ -10,18 +10,20 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showAttractionAtIndex;
-import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
+import static seedu.address.testutil.TypicalAttractions.getTypicalAttractionList;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ATTRACTION;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_ATTRACTION;
+import static seedu.address.testutil.TypicalItineraries.getTypicalItineraryList;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand.EditAttractionDescriptor;
+import seedu.address.model.AttractionList;
+import seedu.address.model.ItineraryList;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.TrackPad;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.testutil.AttractionBuilder;
@@ -32,7 +34,7 @@ import seedu.address.testutil.EditAttractionDescriptorBuilder;
  */
 public class EditCommandTest {
 
-    private Model model = new ModelManager(getTypicalTrackPad(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAttractionList(), getTypicalItineraryList(), new UserPrefs());
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -42,7 +44,9 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_ATTRACTION_SUCCESS, editedAttraction);
 
-        Model expectedModel = new ModelManager(new TrackPad(model.getTrackPad()), new UserPrefs());
+        Model expectedModel = new ModelManager(new AttractionList(model.getAttractionList()),
+                new ItineraryList(model.getItineraryList()),
+                new UserPrefs());
         expectedModel.setAttraction(model.getFilteredAttractionList().get(0), editedAttraction);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -63,7 +67,9 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_ATTRACTION_SUCCESS, editedAttraction);
 
-        Model expectedModel = new ModelManager(new TrackPad(model.getTrackPad()), new UserPrefs());
+        Model expectedModel = new ModelManager(new AttractionList(model.getAttractionList()),
+                new ItineraryList(model.getItineraryList()),
+                new UserPrefs());
         expectedModel.setAttraction(lastAttraction, editedAttraction);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -76,7 +82,9 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_ATTRACTION_SUCCESS, editedAttraction);
 
-        Model expectedModel = new ModelManager(new TrackPad(model.getTrackPad()), new UserPrefs());
+        Model expectedModel = new ModelManager(new AttractionList(model.getAttractionList()),
+                new ItineraryList(model.getItineraryList()),
+                new UserPrefs());
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -93,7 +101,8 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_ATTRACTION_SUCCESS, editedAttraction);
 
-        Model expectedModel = new ModelManager(new TrackPad(model.getTrackPad()), new UserPrefs());
+        Model expectedModel = new ModelManager(new AttractionList(model.getAttractionList()), model.getItineraryList(),
+                new UserPrefs());
         expectedModel.setAttraction(model.getFilteredAttractionList().get(0), editedAttraction);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -112,8 +121,8 @@ public class EditCommandTest {
     public void execute_duplicateAttractionFilteredList_failure() {
         showAttractionAtIndex(model, INDEX_FIRST_ATTRACTION);
 
-        // edit attraction in filtered list into a duplicate in TrackPad
-        Attraction attractionInList = model.getTrackPad()
+        // edit attraction in filtered list into a duplicate in AttractionList
+        Attraction attractionInList = model.getAttractionList()
                 .getAttractionList().get(INDEX_SECOND_ATTRACTION.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_ATTRACTION,
                 new EditAttractionDescriptorBuilder(attractionInList).build());
@@ -132,14 +141,14 @@ public class EditCommandTest {
 
     /**
      * Edit filtered list where index is larger than size of filtered list,
-     * but smaller than size of TrackPad list
+     * but smaller than size of AttractionList list
      */
     @Test
     public void execute_invalidAttractionIndexFilteredList_failure() {
         showAttractionAtIndex(model, INDEX_FIRST_ATTRACTION);
         Index outOfBoundIndex = INDEX_SECOND_ATTRACTION;
-        // ensures that outOfBoundIndex is still in bounds of the TrackPad list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getTrackPad().getAttractionList().size());
+        // ensures that outOfBoundIndex is still in bounds of the AttractionList list
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getAttractionList().getAttractionList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,
                 new EditAttractionDescriptorBuilder().withName(VALID_NAME_MBS).build());

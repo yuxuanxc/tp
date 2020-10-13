@@ -12,33 +12,40 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.itinerary.Itinerary;
 
 /**
- * Represents the in-memory model of the trackPad data.
+ * Represents the in-memory model of the TrackPad data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final TrackPad trackPad;
+    private final AttractionList attractionList;
+    private final ItineraryList itineraryList;
     private final UserPrefs userPrefs;
     private final FilteredList<Attraction> filteredAttractions;
+    private final FilteredList<Itinerary> filteredItineraries;
 
     /**
-     * Initializes a ModelManager with the given trackPad and userPrefs.
+     * Initializes a ModelManager with the given attractionList, itineraryList and userPrefs.
      */
-    public ModelManager(ReadOnlyTrackPad trackPad, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyAttractionList attractionList, ReadOnlyItineraryList itineraryList,
+                        ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(trackPad, userPrefs);
+        requireAllNonNull(attractionList, itineraryList, userPrefs);
 
-        logger.fine("Initializing with trackPad: " + trackPad + " and user prefs " + userPrefs);
+        logger.fine("Initializing with attractionList: " + attractionList + " itineraryList: "
+                + itineraryList + " and user prefs " + userPrefs);
 
-        this.trackPad = new TrackPad(trackPad);
+        this.attractionList = new AttractionList(attractionList);
+        this.itineraryList = new ItineraryList(itineraryList);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredAttractions = new FilteredList<>(this.trackPad.getAttractionList());
+        filteredAttractions = new FilteredList<>(this.attractionList.getAttractionList());
+        filteredItineraries = new FilteredList<>(this.itineraryList.getItineraryList());
     }
 
     public ModelManager() {
-        this(new TrackPad(), new UserPrefs());
+        this(new AttractionList(), new ItineraryList(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -66,42 +73,52 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getTrackPadFilePath() {
-        return userPrefs.getTrackPadFilePath();
+    public Path getAttractionListFilePath() {
+        return userPrefs.getAttractionListFilePath();
     }
 
     @Override
-    public void setTrackPadFilePath(Path trackPadFilePath) {
-        requireNonNull(trackPadFilePath);
-        userPrefs.setTrackPadFilePath(trackPadFilePath);
-    }
-
-    //=========== TrackPad ================================================================================
-
-    @Override
-    public void setTrackPad(ReadOnlyTrackPad trackPad) {
-        this.trackPad.resetData(trackPad);
+    public void setAttractionListFilePath(Path attractionListFilePath) {
+        requireNonNull(attractionListFilePath);
+        userPrefs.setAttractionListFilePath(attractionListFilePath);
     }
 
     @Override
-    public ReadOnlyTrackPad getTrackPad() {
-        return trackPad;
+    public Path getItineraryListFilePath() {
+        return userPrefs.getItineraryListFilePath();
+    }
+
+    @Override
+    public void setItineraryListFilePath(Path itineraryListFilePath) {
+        requireNonNull(itineraryListFilePath);
+        userPrefs.setItineraryListFilePath(itineraryListFilePath);
+    }
+
+    //=========== AttractionList ================================================================================
+
+    public void setAttractionList(ReadOnlyAttractionList attractionList) {
+        this.attractionList.resetData(attractionList);
+    }
+
+    @Override
+    public ReadOnlyAttractionList getAttractionList() {
+        return attractionList;
     }
 
     @Override
     public boolean hasAttraction(Attraction attraction) {
         requireNonNull(attraction);
-        return trackPad.hasAttraction(attraction);
+        return attractionList.hasAttraction(attraction);
     }
 
     @Override
     public void deleteAttraction(Attraction target) {
-        trackPad.removeAttraction(target);
+        attractionList.removeAttraction(target);
     }
 
     @Override
     public void addAttraction(Attraction attraction) {
-        trackPad.addAttraction(attraction);
+        attractionList.addAttraction(attraction);
         updateFilteredAttractionList(PREDICATE_SHOW_ALL_ATTRACTIONS);
     }
 
@@ -109,7 +126,7 @@ public class ModelManager implements Model {
     public void setAttraction(Attraction target, Attraction editedAttraction) {
         requireAllNonNull(target, editedAttraction);
 
-        trackPad.setAttraction(target, editedAttraction);
+        attractionList.setAttraction(target, editedAttraction);
     }
 
     //=========== Filtered Attraction List Accessors =============================================================
@@ -129,6 +146,59 @@ public class ModelManager implements Model {
         filteredAttractions.setPredicate(predicate);
     }
 
+    //=========== ItineraryList ================================================================================
+
+    @Override
+    public void setItineraryList(ReadOnlyItineraryList itineraryList) {
+        this.itineraryList.resetData(itineraryList);
+    }
+
+    @Override
+    public ReadOnlyItineraryList getItineraryList() {
+        return itineraryList;
+    }
+
+    @Override
+    public boolean hasItinerary(Itinerary itinerary) {
+        requireNonNull(itinerary);
+        return itineraryList.hasItinerary(itinerary);
+    }
+
+    @Override
+    public void deleteItinerary(Itinerary target) {
+        itineraryList.removeItinerary(target);
+    }
+
+    @Override
+    public void addItinerary(Itinerary itinerary) {
+        itineraryList.addItinerary(itinerary);
+        updateFilteredItineraryList(PREDICATE_SHOW_ALL_ITINERARIES);
+    }
+
+    @Override
+    public void setItinerary(Itinerary target, Itinerary editedItinerary) {
+        requireAllNonNull(target, editedItinerary);
+
+        itineraryList.setItinerary(target, editedItinerary);
+    }
+
+    //=========== Filtered Itinerary List Accessors ==============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Itinerary} backed by the internal list of
+     * {@code versionedTrackPad}
+     */
+    @Override
+    public ObservableList<Itinerary> getFilteredItineraryList() {
+        return filteredItineraries;
+    }
+
+    @Override
+    public void updateFilteredItineraryList(Predicate<Itinerary> predicate) {
+        requireNonNull(predicate);
+        filteredItineraries.setPredicate(predicate);
+    }
+
     @Override
     public boolean equals(Object obj) {
         // short circuit if same object
@@ -143,9 +213,10 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return trackPad.equals(other.trackPad)
+        return attractionList.equals(other.attractionList)
                 && userPrefs.equals(other.userPrefs)
-                && filteredAttractions.equals(other.filteredAttractions);
+                && filteredAttractions.equals(other.filteredAttractions)
+                && filteredItineraries.equals(other.filteredItineraries);
     }
 
 }

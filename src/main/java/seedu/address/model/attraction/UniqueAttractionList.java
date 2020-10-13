@@ -16,7 +16,7 @@ import seedu.address.model.attraction.exceptions.DuplicateAttractionException;
  * An attraction is considered unique by comparing using {@code Attraction#isSameAttraction(Attraction)}. As such,
  * adding and updating of attractions uses Attraction#isSameAttraction(Attraction) for equality so as to ensure that
  * the attraction being added or updated is unique in terms of identity in the UniqueAttractionList. However, the
- * removal of a attraction uses Attraction#equals(Object) so as to ensure that the attraction with exactly the same
+ * removal of an attraction uses Attraction#equals(Object) so as to ensure that the attraction with exactly the same
  * fields will be removed.
  *
  * Supports a minimal set of list operations.

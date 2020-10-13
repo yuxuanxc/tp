@@ -25,10 +25,12 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.ReadOnlyTrackPad;
+import seedu.address.model.ReadOnlyAttractionList;
+import seedu.address.model.ReadOnlyItineraryList;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.attraction.Attraction;
-import seedu.address.storage.JsonTrackPadStorage;
+import seedu.address.storage.JsonAttractionListStorage;
+import seedu.address.storage.JsonItineraryListStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
 import seedu.address.testutil.AttractionBuilder;
@@ -44,10 +46,12 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonTrackPadStorage trackPadStorage =
-                new JsonTrackPadStorage(temporaryFolder.resolve("trackPad.json"));
+        JsonAttractionListStorage attractionListStorage =
+                new JsonAttractionListStorage(temporaryFolder.resolve("attractionlist.json"));
+        JsonItineraryListStorage itineraryListStorage =
+                new JsonItineraryListStorage(temporaryFolder.resolve("itinerarylist.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(trackPadStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(attractionListStorage, itineraryListStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -71,12 +75,14 @@ public class LogicManagerTest {
 
     @Test
     public void execute_storageThrowsIoException_throwsCommandException() {
-        // Setup LogicManager with JsonTrackPadIoExceptionThrowingStub
-        JsonTrackPadStorage trackPadStorage =
-                new JsonTrackPadIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionTrackPad.json"));
+        // Setup LogicManager with JsonAttractionListIoExceptionThrowingStub
+        JsonAttractionListStorage attractionListStorage =
+                new JsonAttractionListIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAttractions.json"));
+        JsonItineraryListStorage itineraryListStorage =
+                new JsonItineraryListIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionItineraries.json"));
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(trackPadStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(attractionListStorage, itineraryListStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
 
         // Execute add command
@@ -130,7 +136,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getTrackPad(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getAttractionList(), model.getItineraryList(), new UserPrefs());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -150,13 +156,27 @@ public class LogicManagerTest {
     /**
      * A stub class to throw an {@code IOException} when the save method is called.
      */
-    private static class JsonTrackPadIoExceptionThrowingStub extends JsonTrackPadStorage {
-        private JsonTrackPadIoExceptionThrowingStub(Path filePath) {
+    private static class JsonAttractionListIoExceptionThrowingStub extends JsonAttractionListStorage {
+        private JsonAttractionListIoExceptionThrowingStub(Path filePath) {
             super(filePath);
         }
 
         @Override
-        public void saveTrackPad(ReadOnlyTrackPad trackPad, Path filePath) throws IOException {
+        public void saveAttractionList(ReadOnlyAttractionList attractionList, Path filePath) throws IOException {
+            throw DUMMY_IO_EXCEPTION;
+        }
+    }
+
+    /**
+     * A stub class to throw an {@code IOException} when the save method is called.
+     */
+    private static class JsonItineraryListIoExceptionThrowingStub extends JsonItineraryListStorage {
+        private JsonItineraryListIoExceptionThrowingStub(Path filePath) {
+            super(filePath);
+        }
+
+        @Override
+        public void saveItineraryList(ReadOnlyItineraryList itineraryList, Path filePath) throws IOException {
             throw DUMMY_IO_EXCEPTION;
         }
     }

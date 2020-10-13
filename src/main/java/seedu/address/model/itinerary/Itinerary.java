@@ -3,99 +3,137 @@ package seedu.address.model.itinerary;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-import javafx.collections.ObservableList;
-import seedu.address.model.item.Item;
-import seedu.address.model.item.UniqueItemList;
+import seedu.address.model.attraction.Name;
+import seedu.address.model.attraction.exceptions.AttractionNotFoundException;
+import seedu.address.model.attraction.exceptions.DuplicateAttractionException;
 
 /**
  * Represents an Itinerary in TrackPad.
  */
-public class Itinerary implements Item {
-    private String name;
-    private final UniqueItemList<Item> itineraryItems;
+public class Itinerary {
+    //todo add more itinerary fields
+    // todo currently takes Name of Attraction
+    private Name name;
+    private final List<ItineraryAttraction> itineraryAttractions = new ArrayList<>();
 
     /**
      * Name must be present and not null.
      */
-    public Itinerary(String name) {
+    public Itinerary(Name name, List<ItineraryAttraction> itineraryAttractions) {
         requireAllNonNull(name);
         this.name = name;
-        this.itineraryItems = new UniqueItemList<>();
+        this.itineraryAttractions.addAll(itineraryAttractions);
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    public ObservableList<Item> getItineraryItems() {
-        return itineraryItems.asUnmodifiableObservableList();
+    public List<ItineraryAttraction> getItineraryAttractions() {
+        return itineraryAttractions;
+    }
+
+    /**
+     * Adds an itinerary attraction to the itinerary.
+     */
+    public void addItineraryAttraction(ItineraryAttraction toAdd) {
+        requireNonNull(toAdd);
+        itineraryAttractions.add(toAdd);
+    }
+
+    /**
+     * Removes the equivalent itinerary attraction from the itinerary.
+     * The itinerary attraction must exist in the list.
+     */
+    public void removeItineraryItem(ItineraryAttraction toRemove) {
+        itineraryAttractions.remove(toRemove);
+    }
+
+    /**
+     * Returns true if an itineraryAttraction in the itinerary list with the same identity as
+     * {@code itineraryAttraction} exists.
+     */
+    public boolean contains(ItineraryAttraction itineraryAttraction) {
+        requireNonNull(itineraryAttraction);
+        return itineraryAttractions.contains(itineraryAttraction);
     }
 
     /**
      * Replaces the contents of the itinerary list with {@code iteneraryItems}.
-     * {@code items} must not contain duplicate itinerary items.
+     * {@code itineraryAttractions} must not contain duplicate itineraryAttractions.
      */
-    public void setItineraryItems(List<Item> items) {
-        this.itineraryItems.setItems(items);
+    public void setItineraryAttractions(List<ItineraryAttraction> itineraryAttractions) {
+        this.itineraryAttractions.clear();
+        this.itineraryAttractions.addAll(itineraryAttractions);
     }
 
     /**
-     * Returns true if an item in the itinerary list with the same identity as {@code item} exists.
-     */
-    public boolean hasItineraryItem(Item item) {
-        requireNonNull(item);
-        return itineraryItems.contains(item);
-    }
-
-    /**
-     * Adds an item to the itinerary.
-     */
-    public void addItineraryItem(Item toAdd) {
-        itineraryItems.add(toAdd);
-    }
-
-    /**
-     * Replaces the given itinerary item {@code target} in the list with {@code editedItem}.
+     * Replaces the given itinerary item {@code target} in the list with {@code editedItineraryAttraction}.
      * {@code target} must exist in the itinerary.
-     * The itinerary item identity of {@code editedItem} must not be the same as another existing
-     * itinerary item in the trackPad.
+     * The itinerary item identity of {@code editedItineraryAttraction} must not be the same as another existing
+     * itinerary item in the itinerary.
      */
-    public void setItineraryItem(Item target, Item editedItem) {
-        requireNonNull(editedItem);
+    public void setItineraryAttraction(ItineraryAttraction target, ItineraryAttraction editedItineraryAttraction) {
+        requireNonNull(editedItineraryAttraction);
+        int index = itineraryAttractions.indexOf(target);
+        if (index == -1) {
+            throw new AttractionNotFoundException();
+        }
 
-        itineraryItems.setItem(target, editedItem);
+        if (!target.isSameItineraryAttraction(editedItineraryAttraction) && contains(editedItineraryAttraction)) {
+            throw new DuplicateAttractionException();
+        }
+
+        itineraryAttractions.set(index, editedItineraryAttraction);
     }
 
     /**
-     * Removes the equivalent item from the itinerary.
-     * The attraction must exist in the list.
+     * Returns true if both itineraries of the same name have at least one other identity field that is the same.
+     * This defines a weaker notion of equality between two itineraries.
      */
-    public void removeItineraryItem(Item toRemove) {
-        itineraryItems.remove(toRemove);
+    public boolean isSameItinerary(Itinerary otherItinerary) {
+        if (otherItinerary == this) {
+            return true;
+        }
+
+        return otherItinerary != null
+                && otherItinerary.getName().equals(getName());
+        //|| or other fields to be added e.g. description (See Attraction)
     }
 
-    @Override
-    public boolean isSame(Item otherItem) {
-        return false;
-    }
-
-    @Override
-    public String toString() {
-        return itineraryItems.asUnmodifiableObservableList().size() + " items in the itinerary";
-        // TODO: refine later
-    }
-
+    /**
+     * Returns true if both itineraries have the same identity and data fields.
+     * This defines a stronger notion of equality between two itineraries.
+     */
     @Override
     public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof Itinerary // instanceof handles nulls
-                && itineraryItems.equals(((Itinerary) other).itineraryItems));
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Itinerary)) {
+            return false;
+        }
+
+        Itinerary otherItinerary = (Itinerary) other;
+        return otherItinerary.getName().equals(getName());
+        // && and other fields to be added e.g. description (See Attraction)
     }
 
     @Override
     public int hashCode() {
-        return itineraryItems.hashCode();
+        // use this method for custom fields hashing instead of implementing your own
+        return Objects.hash(name, itineraryAttractions);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(getName());
+        return builder.toString();
     }
 }

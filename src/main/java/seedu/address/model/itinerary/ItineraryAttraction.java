@@ -4,16 +4,15 @@ import java.util.Objects;
 
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.Name;
-import seedu.address.model.item.Item;
 
 /**
- * Represents an item in an Itinerary.
+ * Wrapper class to contain attributes of an attraction specific to a particular Itinerary.
  */
-public class Item implements Item {
+public class ItineraryAttraction {
     private Attraction attraction;
-    //todo add start time, end time, budget etc.
+    //todo add start time, end time, budget etc. And also maybe extend from Attraction directly.
 
-    public Item(Attraction attraction) {
+    public ItineraryAttraction(Attraction attraction) {
         this.attraction = attraction;
     }
 
@@ -30,12 +29,13 @@ public class Item implements Item {
      * that is the same.
      * This defines a weaker notion of equality between two itinerary attractions.
      */
-    public boolean isSame(Item otherItem) {
-        if (otherItem == this) {
+    public boolean isSameItineraryAttraction(ItineraryAttraction otherItineraryAttraction) {
+        if (otherItineraryAttraction == this) {
             return true;
-        } else if (otherItem instanceof Item) {
-            Item item = (Item) otherItem;
-            return item.getAttraction().isSame(attraction);
+        } else if (otherItineraryAttraction instanceof ItineraryAttraction) {
+            ItineraryAttraction itineraryAttraction = (ItineraryAttraction) otherItineraryAttraction;
+            // todo add more fields
+            return itineraryAttraction.getAttraction().isSameAttraction(attraction);
         } else {
             return false;
         }
@@ -51,12 +51,13 @@ public class Item implements Item {
             return true;
         }
 
-        if (!(other instanceof Item)) {
+        if (!(other instanceof ItineraryAttraction)) {
             return false;
         }
 
-        Item otherItem = (Item) other;
-        return otherItem.getAttraction().equals(getAttraction());
+        ItineraryAttraction otherItineraryAttraction = (ItineraryAttraction) other;
+        // todo add more fields
+        return otherItineraryAttraction.getAttraction().equals(getAttraction());
     }
 
     @Override
@@ -68,5 +69,6 @@ public class Item implements Item {
     @Override
     public String toString() {
         return attraction.toString();
+        // todo add more fields
     }
 }

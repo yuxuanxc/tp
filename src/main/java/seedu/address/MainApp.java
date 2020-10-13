@@ -15,18 +15,22 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
+import seedu.address.model.AttractionList;
+import seedu.address.model.ItineraryList;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.ReadOnlyTrackPad;
+import seedu.address.model.ReadOnlyAttractionList;
+import seedu.address.model.ReadOnlyItineraryList;
 import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.TrackPad;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
-import seedu.address.storage.JsonTrackPadStorage;
+import seedu.address.storage.AttractionListStorage;
+import seedu.address.storage.ItineraryListStorage;
+import seedu.address.storage.JsonAttractionListStorage;
+import seedu.address.storage.JsonItineraryListStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
-import seedu.address.storage.TrackPadStorage;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
@@ -56,8 +60,11 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        TrackPadStorage trackPadStorage = new JsonTrackPadStorage(userPrefs.getTrackPadFilePath());
-        storage = new StorageManager(trackPadStorage, userPrefsStorage);
+        AttractionListStorage attractionListStorage =
+                new JsonAttractionListStorage(userPrefs.getAttractionListFilePath());
+        ItineraryListStorage itineraryListStorage =
+                new JsonItineraryListStorage(userPrefs.getItineraryListFilePath());
+        storage = new StorageManager(attractionListStorage, itineraryListStorage, userPrefsStorage);
 
         initLogging(config);
 
@@ -74,23 +81,37 @@ public class MainApp extends Application {
      * or an empty trackpad will be used instead if errors occur when reading {@code storage}'s trackpad.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        Optional<ReadOnlyTrackPad> trackPadOptional;
-        ReadOnlyTrackPad initialData;
+        Optional<ReadOnlyAttractionList> attractionListOptional;
+        ReadOnlyAttractionList initialAttractionList;
+        Optional<ReadOnlyItineraryList> itineraryListOptional;
+        ReadOnlyItineraryList initialItineraryList;
         try {
-            trackPadOptional = storage.readTrackPad();
-            if (!trackPadOptional.isPresent()) {
-                logger.info("Data file not found. Will be starting with a sample TrackPad");
+            // attraction list
+            attractionListOptional = storage.readAttractionList();
+            if (!attractionListOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with a sample AttractionList");
             }
-            initialData = trackPadOptional.orElseGet(SampleDataUtil::getSampleTrackPad);
+            initialAttractionList = attractionListOptional.orElseGet(SampleDataUtil::getSampleAttractionsList);
+
+            // itinerary list
+            itineraryListOptional = storage.readItineraryList();
+            if (!itineraryListOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with an empty ItineraryList");
+            }
+            initialItineraryList = itineraryListOptional.orElseGet(SampleDataUtil::getSampleItineraryList);
         } catch (DataConversionException e) {
-            logger.warning("Data file not in the correct format. Will be starting with an empty TrackPad");
-            initialData = new TrackPad();
+            logger.warning("Data file not in the correct format. Will be starting with an empty AttractionList"
+                    + " and empty ItineraryList");
+            initialAttractionList = new AttractionList();
+            initialItineraryList = new ItineraryList();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty TrackPad");
-            initialData = new TrackPad();
+            logger.warning("Problem while reading from the file. Will be starting with an empty AttractionList"
+                    + " and empty ItineraryList");
+            initialAttractionList = new AttractionList();
+            initialItineraryList = new ItineraryList();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        return new ModelManager(initialAttractionList, initialItineraryList, userPrefs);
     }
 
     private void initLogging(Config config) {
@@ -151,7 +172,8 @@ public class MainApp extends Application {
                     + "Using default user prefs");
             initializedPrefs = new UserPrefs();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty TrackPad");
+            logger.warning("Problem while reading from the file. Will be starting with an empty AttractionList"
+                    + " and empty ItineraryList");
             initializedPrefs = new UserPrefs();
         }
 

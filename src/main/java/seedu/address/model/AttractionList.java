@@ -9,10 +9,10 @@ import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.UniqueAttractionList;
 
 /**
- * Wraps all data at the trackpad level
+ * Wraps all data at trackPad's attraction list level
  * Duplicates are not allowed (by .isSameAttraction comparison)
  */
-public class TrackPad implements ReadOnlyTrackPad {
+public class AttractionList implements ReadOnlyAttractionList {
 
     private final UniqueAttractionList attractions;
 
@@ -27,12 +27,12 @@ public class TrackPad implements ReadOnlyTrackPad {
         attractions = new UniqueAttractionList();
     }
 
-    public TrackPad() {}
+    public AttractionList() {}
 
     /**
-     * Creates an TrackPad using the Attractions in the {@code toBeCopied}
+     * Creates an AttractionList using the Attractions in the {@code toBeCopied}
      */
-    public TrackPad(ReadOnlyTrackPad toBeCopied) {
+    public AttractionList(ReadOnlyAttractionList toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -48,9 +48,9 @@ public class TrackPad implements ReadOnlyTrackPad {
     }
 
     /**
-     * Resets the existing data of this {@code TrackPad} with {@code newData}.
+     * Resets the existing data of this {@code AttractionList} with {@code newData}.
      */
-    public void resetData(ReadOnlyTrackPad newData) {
+    public void resetData(ReadOnlyAttractionList newData) {
         requireNonNull(newData);
 
         setAttractions(newData.getAttractionList());
@@ -59,7 +59,7 @@ public class TrackPad implements ReadOnlyTrackPad {
     //// attraction-level operations
 
     /**
-     * Returns true if a attraction with the same identity as {@code attraction} exists in the trackPad.
+     * Returns true if a attraction with the same identity as {@code attraction} exists in the attraction list.
      */
     public boolean hasAttraction(Attraction attraction) {
         requireNonNull(attraction);
@@ -67,8 +67,8 @@ public class TrackPad implements ReadOnlyTrackPad {
     }
 
     /**
-     * Adds a attraction to the trackPad.
-     * The attraction must not already exist in the trackPad.
+     * Adds a attraction to the attraction list.
+     * The attraction must not already exist in the attraction list.
      */
     public void addAttraction(Attraction a) {
         attractions.add(a);
@@ -76,9 +76,9 @@ public class TrackPad implements ReadOnlyTrackPad {
 
     /**
      * Replaces the given attraction {@code target} in the list with {@code editedAttraction}.
-     * {@code target} must exist in the trackPad.
+     * {@code target} must exist in the attraction list.
      * The attraction identity of {@code editedAttraction} must not be the same as another existing
-     * attraction in the trackPad.
+     * attraction in the attraction list.
      */
     public void setAttraction(Attraction target, Attraction editedAttraction) {
         requireNonNull(editedAttraction);
@@ -87,8 +87,8 @@ public class TrackPad implements ReadOnlyTrackPad {
     }
 
     /**
-     * Removes {@code key} from this {@code TrackPad}.
-     * {@code key} must exist in the track pad.
+     * Removes {@code key} from this {@code AttractionList}.
+     * {@code key} must exist in the attraction list.
      */
     public void removeAttraction(Attraction key) {
         attractions.remove(key);
@@ -110,8 +110,8 @@ public class TrackPad implements ReadOnlyTrackPad {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof TrackPad // instanceof handles nulls
-                && attractions.equals(((TrackPad) other).attractions));
+                || (other instanceof AttractionList // instanceof handles nulls
+                && attractions.equals(((AttractionList) other).attractions));
     }
 
     @Override

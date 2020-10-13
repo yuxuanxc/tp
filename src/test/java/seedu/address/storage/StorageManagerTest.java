@@ -2,7 +2,7 @@ package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
+import static seedu.address.testutil.TypicalAttractions.getTypicalAttractionList;
 
 import java.nio.file.Path;
 
@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.ReadOnlyTrackPad;
-import seedu.address.model.TrackPad;
+import seedu.address.model.AttractionList;
+import seedu.address.model.ReadOnlyAttractionList;
 import seedu.address.model.UserPrefs;
 
 public class StorageManagerTest {
@@ -24,9 +24,10 @@ public class StorageManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonTrackPadStorage trackPadStorage = new JsonTrackPadStorage(getTempFilePath("tp"));
+        JsonAttractionListStorage attractionListStorage = new JsonAttractionListStorage(getTempFilePath("al"));
+        JsonItineraryListStorage itineraryListStorage = new JsonItineraryListStorage(getTempFilePath("il"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageManager = new StorageManager(trackPadStorage, userPrefsStorage);
+        storageManager = new StorageManager(attractionListStorage, itineraryListStorage, userPrefsStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -51,18 +52,18 @@ public class StorageManagerTest {
     public void trackPadReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
-         * {@link JsonTrackPadStorage} class.
-         * More extensive testing of UserPref saving/reading is done in {@link JsonTrackPadStorageTest} class.
+         * {@link JsonAttractionListStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonAttractionListStorageTest} class.
          */
-        TrackPad original = getTypicalTrackPad();
-        storageManager.saveTrackPad(original);
-        ReadOnlyTrackPad retrieved = storageManager.readTrackPad().get();
-        assertEquals(original, new TrackPad(retrieved));
+        AttractionList original = getTypicalAttractionList();
+        storageManager.saveAttractionList(original);
+        ReadOnlyAttractionList retrieved = storageManager.readAttractionList().get();
+        assertEquals(original, new AttractionList(retrieved));
     }
 
     @Test
     public void getTrackPadFilePath() {
-        assertNotNull(storageManager.getTrackPadFilePath());
+        assertNotNull(storageManager.getAttractionListFilePath());
     }
 
 }

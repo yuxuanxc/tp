@@ -33,7 +33,7 @@ class JsonAdaptedAttraction {
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonAdaptedAttraction} with the given person details.
+     * Constructs a {@code JsonAdaptedAttraction} with the given attraction details.
      */
     @JsonCreator
     public JsonAdaptedAttraction(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
@@ -64,7 +64,7 @@ class JsonAdaptedAttraction {
     }
 
     /**
-     * Converts this Jackson-friendly adapted person object into the model's {@code Attraction} object.
+     * Converts this Jackson-friendly adapted attraction object into the model's {@code Attraction} object.
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted attraction.
      */

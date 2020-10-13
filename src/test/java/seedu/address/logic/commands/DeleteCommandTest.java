@@ -5,9 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showAttractionAtIndex;
-import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
+import static seedu.address.testutil.TypicalAttractions.getTypicalAttractionList;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ATTRACTION;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_ATTRACTION;
+import static seedu.address.testutil.TypicalItineraries.getTypicalItineraryList;
 
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +25,7 @@ import seedu.address.model.attraction.Attraction;
  */
 public class DeleteCommandTest {
 
-    private Model model = new ModelManager(getTypicalTrackPad(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAttractionList(), getTypicalItineraryList(), new UserPrefs());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -33,7 +34,8 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_ATTRACTION_SUCCESS, attractionToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getTrackPad(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(model.getAttractionList(), model.getItineraryList(),
+                new UserPrefs());
         expectedModel.deleteAttraction(attractionToDelete);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
@@ -56,7 +58,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_ATTRACTION_SUCCESS, attractionToDelete);
 
-        Model expectedModel = new ModelManager(model.getTrackPad(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getAttractionList(), model.getItineraryList(), new UserPrefs());
         expectedModel.deleteAttraction(attractionToDelete);
         showNoAttraction(expectedModel);
 
@@ -69,7 +71,7 @@ public class DeleteCommandTest {
 
         Index outOfBoundIndex = INDEX_SECOND_ATTRACTION;
         // ensures that outOfBoundIndex is still in bounds of trackPad list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getTrackPad().getAttractionList().size());
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getAttractionList().getAttractionList().size());
 
         DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
 
