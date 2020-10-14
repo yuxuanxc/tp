@@ -70,7 +70,7 @@ public class AttractionCard extends UiPart<Region> {
         openingHours.setText(attraction.getOpeningHours().value);
         priceRange.setText(attraction.getPriceRange().toString());
         rating.setText(attraction.getRating().toString());
-        visited.setText(attraction.getVisited().toString()); /** Change Later */
+        visited.setText(attraction.getVisited().toString());
         attraction.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

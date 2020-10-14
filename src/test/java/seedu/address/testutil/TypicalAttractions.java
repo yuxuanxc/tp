@@ -18,10 +18,10 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_RANGE_EIF
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_RANGE_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RATING_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RATING_MBS;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_VISITED_EIFFEL;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_VISITED_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ACTIVITY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_VISITED_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_VISITED_MBS;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -152,7 +152,8 @@ public class TypicalAttractions {
             .withEmail(VALID_EMAIL_MBS).withAddress(VALID_ADDRESS_MBS)
             .withDescription(VALID_DESCRIPTION_MBS).withLocation(VALID_LOCATION_MBS)
             .withOpeningHours(VALID_OPENING_HOURS_MBS).withPriceRange(VALID_PRICE_RANGE_MBS)
-            .withRating(VALID_RATING_MBS).withVisited(VALID_VISITED_MBS).withTags(VALID_TAG_SIGHTSEEING, VALID_TAG_ACTIVITY).build();
+            .withRating(VALID_RATING_MBS).withVisited(VALID_VISITED_MBS)
+            .withTags(VALID_TAG_SIGHTSEEING, VALID_TAG_ACTIVITY).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
