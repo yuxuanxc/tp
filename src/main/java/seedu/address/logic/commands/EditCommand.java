@@ -39,7 +39,7 @@ import seedu.address.model.attraction.Visited;
 import seedu.address.model.tag.Tag;
 
 /**
- * Edits the details of an existing attraction in TrackPad.
+ * Edits the details of an existing attraction in the attractions list in TrackPad.
  */
 public class EditCommand extends Command {
 

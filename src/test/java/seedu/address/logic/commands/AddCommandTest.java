@@ -16,11 +16,13 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.AttractionList;
 import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyTrackPad;
+import seedu.address.model.ReadOnlyAttractionList;
+import seedu.address.model.ReadOnlyItineraryList;
 import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.TrackPad;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.itinerary.Itinerary;
 import seedu.address.testutil.AttractionBuilder;
 
 public class AddCommandTest {
@@ -100,12 +102,22 @@ public class AddCommandTest {
         }
 
         @Override
-        public Path getTrackPadFilePath() {
+        public Path getAttractionListFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setTrackPadFilePath(Path trackPadFilePath) {
+        public void setAttractionListFilePath(Path attractionListFilePath) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Path getItineraryListFilePath() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setItineraryListFilePath(Path itineraryListFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -115,12 +127,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void setTrackPad(ReadOnlyTrackPad newData) {
+        public void setAttractionList(ReadOnlyAttractionList newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyTrackPad getTrackPad() {
+        public ReadOnlyAttractionList getAttractionList() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -146,6 +158,46 @@ public class AddCommandTest {
 
         @Override
         public void updateFilteredAttractionList(Predicate<Attraction> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addItinerary(Itinerary itinerary) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setItineraryList(ReadOnlyItineraryList newData) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyItineraryList getItineraryList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasItinerary(Itinerary itinerary) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteItinerary(Itinerary target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setItinerary(Itinerary target, Itinerary editedItinerary) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Itinerary> getFilteredItineraryList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredItineraryList(Predicate<Itinerary> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }
@@ -187,8 +239,8 @@ public class AddCommandTest {
         }
 
         @Override
-        public ReadOnlyTrackPad getTrackPad() {
-            return new TrackPad();
+        public ReadOnlyAttractionList getAttractionList() {
+            return new AttractionList();
         }
     }
 

@@ -13,8 +13,10 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.TrackPadParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyTrackPad;
+import seedu.address.model.ReadOnlyAttractionList;
+import seedu.address.model.ReadOnlyItineraryList;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.itinerary.Itinerary;
 import seedu.address.storage.Storage;
 
 /**
@@ -46,7 +48,9 @@ public class LogicManager implements Logic {
         commandResult = command.execute(model);
 
         try {
-            storage.saveTrackPad(model.getTrackPad());
+            storage.saveAttractionList(model.getAttractionList());
+            storage.saveItineraryList(model.getItineraryList());
+            System.out.println(model.getItineraryListFilePath());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
@@ -54,9 +58,11 @@ public class LogicManager implements Logic {
         return commandResult;
     }
 
+    //=========== Attraction List ================================================================================
+
     @Override
-    public ReadOnlyTrackPad getTrackPad() {
-        return model.getTrackPad();
+    public ReadOnlyAttractionList getAttractionList() {
+        return model.getAttractionList();
     }
 
     @Override
@@ -65,9 +71,28 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public Path getTrackPadFilePath() {
-        return model.getTrackPadFilePath();
+    public Path getAttractionListFilePath() {
+        return model.getAttractionListFilePath();
     }
+
+    //=========== Itinerary List ================================================================================
+
+    @Override
+    public ReadOnlyItineraryList getItineraryList() {
+        return model.getItineraryList();
+    }
+
+    @Override
+    public ObservableList<Itinerary> getFilteredItineraryList() {
+        return model.getFilteredItineraryList();
+    }
+
+    @Override
+    public Path getItineraryListFilePath() {
+        return model.getItineraryListFilePath();
+    }
+
+    //=========== GUI Settings ==================================================================================
 
     @Override
     public GuiSettings getGuiSettings() {

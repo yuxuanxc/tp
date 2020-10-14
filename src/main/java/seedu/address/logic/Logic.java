@@ -7,8 +7,10 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ReadOnlyTrackPad;
+import seedu.address.model.ReadOnlyAttractionList;
+import seedu.address.model.ReadOnlyItineraryList;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.itinerary.Itinerary;
 
 /**
  * API of the Logic component
@@ -23,20 +25,41 @@ public interface Logic {
      */
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
+    //=========== Attraction List ================================================================================
+
     /**
-     * Returns the TrackPad.
+     * Returns the AttractionList.
      *
-     * @see seedu.address.model.Model#getTrackPad()
+     * @see seedu.address.model.Model#getAttractionList()
      */
-    ReadOnlyTrackPad getTrackPad();
+    ReadOnlyAttractionList getAttractionList();
 
     /** Returns an unmodifiable view of the filtered list of attractions */
     ObservableList<Attraction> getFilteredAttractionList();
 
     /**
-     * Returns the user prefs' TrackPad file path.
+     * Returns the user prefs' AttractionList file path.
      */
-    Path getTrackPadFilePath();
+    Path getAttractionListFilePath();
+
+    //=========== Itinerary List ================================================================================
+
+    /**
+     * Returns the ItineraryList.
+     *
+     * @see seedu.address.model.Model#getItineraryList()
+     */
+    ReadOnlyItineraryList getItineraryList();
+
+    /** Returns an unmodifiable view of the filtered list of itineraries */
+    ObservableList<Itinerary> getFilteredItineraryList();
+
+    /**
+     * Returns the user prefs' ItineraryList file path.
+     */
+    Path getItineraryListFilePath();
+
+    //=========== GUI Settings ==================================================================================
 
     /**
      * Returns the user prefs' GUI settings.

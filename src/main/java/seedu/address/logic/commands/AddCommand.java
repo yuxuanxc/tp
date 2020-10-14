@@ -18,7 +18,7 @@ import seedu.address.model.Model;
 import seedu.address.model.attraction.Attraction;
 
 /**
- * Adds an attraction to TrackPad.
+ * Adds an attraction to the attractions list in TrackPad.
  */
 public class AddCommand extends Command {
 

@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.address.model.ReadOnlyTrackPad;
-import seedu.address.model.TrackPad;
+import seedu.address.model.AttractionList;
+import seedu.address.model.ItineraryList;
+import seedu.address.model.ReadOnlyAttractionList;
+import seedu.address.model.ReadOnlyItineraryList;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.Description;
@@ -20,7 +22,7 @@ import seedu.address.model.attraction.Visited;
 import seedu.address.model.tag.Tag;
 
 /**
- * Contains utility methods for populating {@code TrackPad} with sample data.
+ * Contains utility methods for populating {@code AttractionList} with sample data.
  */
 public class SampleDataUtil {
     public static Attraction[] getSampleAttractions() {
@@ -72,12 +74,17 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyTrackPad getSampleTrackPad() {
-        TrackPad sampleTp = new TrackPad();
+    public static ReadOnlyAttractionList getSampleAttractionsList() {
+        AttractionList sampleAl = new AttractionList();
         for (Attraction sampleAttraction : getSampleAttractions()) {
-            sampleTp.addAttraction(sampleAttraction);
+            sampleAl.addAttraction(sampleAttraction);
         }
-        return sampleTp;
+        return sampleAl;
+    }
+
+    // todo Make non empty sample itinerary list.
+    public static ReadOnlyItineraryList getSampleItineraryList() {
+        return new ItineraryList();
     }
 
     /**

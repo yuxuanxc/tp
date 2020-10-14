@@ -9,7 +9,8 @@ import static seedu.address.testutil.TypicalAttractions.BOTANIC_GARDENS;
 import static seedu.address.testutil.TypicalAttractions.ORCHARD_ROAD;
 import static seedu.address.testutil.TypicalAttractions.RIVER_SAFARI;
 import static seedu.address.testutil.TypicalAttractions.SINGAPORE_ZOO;
-import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
+import static seedu.address.testutil.TypicalAttractions.getTypicalAttractionList;
+import static seedu.address.testutil.TypicalItineraries.getTypicalItineraryList;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -25,8 +26,9 @@ import seedu.address.model.attraction.NameContainsKeywordsPredicate;
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
  */
 public class FindCommandTest {
-    private Model model = new ModelManager(getTypicalTrackPad(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalTrackPad(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAttractionList(), getTypicalItineraryList(), new UserPrefs());
+    private Model expectedModel = new ModelManager(getTypicalAttractionList(), getTypicalItineraryList(),
+            new UserPrefs());
 
     @Test
     public void equals() {

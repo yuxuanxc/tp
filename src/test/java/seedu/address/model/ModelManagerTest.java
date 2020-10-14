@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.attraction.NameContainsKeywordsPredicate;
-import seedu.address.testutil.TrackPadBuilder;
+import seedu.address.testutil.AttractionListBuilder;
 
 public class ModelManagerTest {
 
@@ -26,7 +26,8 @@ public class ModelManagerTest {
     public void constructor() {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
-        assertEquals(new TrackPad(), new TrackPad(modelManager.getTrackPad()));
+        assertEquals(new AttractionList(), new AttractionList(modelManager.getAttractionList()));
+        assertEquals(new ItineraryList(), new ItineraryList(modelManager.getItineraryList()));
     }
 
     @Test
@@ -37,14 +38,16 @@ public class ModelManagerTest {
     @Test
     public void setUserPrefs_validUserPrefs_copiesUserPrefs() {
         UserPrefs userPrefs = new UserPrefs();
-        userPrefs.setTrackPadFilePath(Paths.get("track/pad/file/path"));
+        userPrefs.setAttractionListFilePath(Paths.get("track/pad/file/attraction"));
+        userPrefs.setItineraryListFilePath(Paths.get("track/pad/file/itinerary"));
         userPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));
         modelManager.setUserPrefs(userPrefs);
         assertEquals(userPrefs, modelManager.getUserPrefs());
 
         // Modifying userPrefs should not modify modelManager's userPrefs
         UserPrefs oldUserPrefs = new UserPrefs(userPrefs);
-        userPrefs.setTrackPadFilePath(Paths.get("new/track/pad/file/path"));
+        userPrefs.setAttractionListFilePath(Paths.get("new/track/pad/file/attraction"));
+        userPrefs.setItineraryListFilePath(Paths.get("new/track/pad/file/itinerary"));
         assertEquals(oldUserPrefs, modelManager.getUserPrefs());
     }
 
@@ -61,20 +64,20 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void setTrackPadFilePath_nullPath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> modelManager.setTrackPadFilePath(null));
+    public void setAttractionListFilePath_nullPath_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.setAttractionListFilePath(null));
     }
 
     @Test
-    public void setTrackPadFilePath_validPath_setsTrackPadFilePath() {
+    public void setAttractionListFilePath_validPath_setsAttractionListFilePath() {
         Path path = Paths.get("track/pad/file/path");
-        modelManager.setTrackPadFilePath(path);
-        assertEquals(path, modelManager.getTrackPadFilePath());
+        modelManager.setAttractionListFilePath(path);
+        assertEquals(path, modelManager.getAttractionListFilePath());
     }
 
     @Test
     public void hasAttraction_nullAttraction_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> modelManager.hasAttraction(null));
+        assertThrows(NullPointerException.class, () -> modelManager.hasItinerary(null));
     }
 
     @Test
@@ -95,13 +98,17 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        TrackPad trackPad = new TrackPadBuilder().withAttraction(MBS).withAttraction(SUNTEC).build();
-        TrackPad differentTrackPad = new TrackPad();
+        AttractionList attractionList = new AttractionListBuilder().withAttraction(MBS).withAttraction(SUNTEC).build();
+        AttractionList differentAttractionList = new AttractionList();
+        //todo make ItineraryListBuilder
+        //ItineraryList itineraryList = new ItineraryListBuilder().withAttraction(MBS).withAttraction(SUNTEC).build();
+        ItineraryList itineraryList = new ItineraryList(); //temporary until ItineraryListBuilder is up
+        ItineraryList differentItineraryList = new ItineraryList();
         UserPrefs userPrefs = new UserPrefs();
 
         // same values -> returns true
-        modelManager = new ModelManager(trackPad, userPrefs);
-        ModelManager modelManagerCopy = new ModelManager(trackPad, userPrefs);
+        modelManager = new ModelManager(attractionList, itineraryList, userPrefs);
+        ModelManager modelManagerCopy = new ModelManager(attractionList, itineraryList, userPrefs);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -113,20 +120,24 @@ public class ModelManagerTest {
         // different types -> returns false
         assertFalse(modelManager.equals(5));
 
-        // different trackPad -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentTrackPad, userPrefs)));
+        // different attractionList -> returns false
+        assertFalse(modelManager.equals(new ModelManager(differentAttractionList, itineraryList, userPrefs)));
+
+        //todo make Itinerarybuilder
+        // different itineraryList -> returns false
+        //assertFalse(modelManager.equals(new ModelManager(attractionList, differentItineraryList, userPrefs)));
 
         // different filteredList -> returns false
         String[] keywords = MBS.getName().fullName.split("\\s+");
         modelManager.updateFilteredAttractionList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(trackPad, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(attractionList, itineraryList, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredAttractionList(PREDICATE_SHOW_ALL_ATTRACTIONS);
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
-        differentUserPrefs.setTrackPadFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(trackPad, differentUserPrefs)));
+        differentUserPrefs.setAttractionListFilePath(Paths.get("differentFilePath"));
+        assertFalse(modelManager.equals(new ModelManager(attractionList, itineraryList, differentUserPrefs)));
     }
 }

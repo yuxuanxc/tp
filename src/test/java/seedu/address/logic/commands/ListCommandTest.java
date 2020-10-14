@@ -2,8 +2,9 @@ package seedu.address.logic.commands;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showAttractionAtIndex;
-import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
+import static seedu.address.testutil.TypicalAttractions.getTypicalAttractionList;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ATTRACTION;
+import static seedu.address.testutil.TypicalItineraries.getTypicalItineraryList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,8 +23,8 @@ public class ListCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(getTypicalTrackPad(), new UserPrefs());
-        expectedModel = new ModelManager(model.getTrackPad(), new UserPrefs());
+        model = new ModelManager(getTypicalAttractionList(), getTypicalItineraryList(), new UserPrefs());
+        expectedModel = new ModelManager(model.getAttractionList(), model.getItineraryList(), new UserPrefs());
     }
 
     @Test

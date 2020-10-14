@@ -21,8 +21,8 @@ import java.util.List;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.AttractionList;
 import seedu.address.model.Model;
-import seedu.address.model.TrackPad;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.NameContainsKeywordsPredicate;
 import seedu.address.testutil.EditAttractionDescriptorBuilder;
@@ -143,21 +143,21 @@ public class CommandTestUtil {
      * Executes the given {@code command}, confirms that <br>
      * - a {@code CommandException} is thrown <br>
      * - the CommandException message matches {@code expectedMessage} <br>
-     * - TrackPad, filtered attraction list and selected attraction in {@code actualModel} remain unchanged
+     * - AttractionList, filtered attraction list and selected attraction in {@code actualModel} remain unchanged
      */
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
-        TrackPad expectedTrackPad = new TrackPad(actualModel.getTrackPad());
+        AttractionList expectedAttractionList = new AttractionList(actualModel.getAttractionList());
         List<Attraction> expectedFilteredList = new ArrayList<>(actualModel.getFilteredAttractionList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
-        assertEquals(expectedTrackPad, actualModel.getTrackPad());
+        assertEquals(expectedAttractionList, actualModel.getAttractionList());
         assertEquals(expectedFilteredList, actualModel.getFilteredAttractionList());
     }
     /**
      * Updates {@code model}'s filtered list to show only the attraction at the given {@code targetIndex} in the
-     * {@code model}'s TrackPad.
+     * {@code model}'s AttractionList.
      */
     public static void showAttractionAtIndex(Model model, Index targetIndex) {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredAttractionList().size());

@@ -14,7 +14,8 @@ import seedu.address.commons.core.GuiSettings;
 public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
-    private Path trackPadFilePath = Paths.get("data" , "trackpad.json");
+    private Path attractionListFilePath = Paths.get("data" , "attractionlist.json");
+    private Path itineraryListFilePath = Paths.get("data" , "itinerarylist.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.
@@ -35,7 +36,8 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     public void resetData(ReadOnlyUserPrefs newUserPrefs) {
         requireNonNull(newUserPrefs);
         setGuiSettings(newUserPrefs.getGuiSettings());
-        setTrackPadFilePath(newUserPrefs.getTrackPadFilePath());
+        setAttractionListFilePath(newUserPrefs.getAttractionListFilePath());
+        setItineraryListFilePath(newUserPrefs.getItineraryListFilePath());
     }
 
     public GuiSettings getGuiSettings() {
@@ -47,13 +49,22 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         this.guiSettings = guiSettings;
     }
 
-    public Path getTrackPadFilePath() {
-        return trackPadFilePath;
+    public Path getAttractionListFilePath() {
+        return attractionListFilePath;
     }
 
-    public void setTrackPadFilePath(Path trackPadFilePath) {
-        requireNonNull(trackPadFilePath);
-        this.trackPadFilePath = trackPadFilePath;
+    public void setAttractionListFilePath(Path attractionListFilePath) {
+        requireNonNull(attractionListFilePath);
+        this.attractionListFilePath = attractionListFilePath;
+    }
+
+    public Path getItineraryListFilePath() {
+        return itineraryListFilePath;
+    }
+
+    public void setItineraryListFilePath(Path itineraryListFilePath) {
+        requireNonNull(itineraryListFilePath);
+        this.itineraryListFilePath = itineraryListFilePath;
     }
 
     @Override
@@ -68,19 +79,21 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         UserPrefs o = (UserPrefs) other;
 
         return guiSettings.equals(o.guiSettings)
-                && trackPadFilePath.equals(o.trackPadFilePath);
+                && attractionListFilePath.equals(o.attractionListFilePath)
+                && itineraryListFilePath.equals(o.itineraryListFilePath);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(guiSettings, trackPadFilePath);
+        return Objects.hash(guiSettings, attractionListFilePath, itineraryListFilePath);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Gui Settings : " + guiSettings);
-        sb.append("\nLocal data file location : " + trackPadFilePath);
+        sb.append("\nLocal attraction data file location : " + attractionListFilePath);
+        sb.append("\nLocal itinerary data file location : " + itineraryListFilePath);
         return sb.toString();
     }
 

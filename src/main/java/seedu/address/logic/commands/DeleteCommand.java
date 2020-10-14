@@ -11,7 +11,7 @@ import seedu.address.model.Model;
 import seedu.address.model.attraction.Attraction;
 
 /**
- * Deletes an attraction identified using it's displayed index from TrackPad.
+ * Deletes an attraction identified using it's displayed index from the attractions list in TrackPad.
  */
 public class DeleteCommand extends Command {
 

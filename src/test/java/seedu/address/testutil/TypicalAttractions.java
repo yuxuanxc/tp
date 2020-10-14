@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.TrackPad;
+import seedu.address.model.AttractionList;
 import seedu.address.model.attraction.Attraction;
 
 /**
@@ -160,14 +160,14 @@ public class TypicalAttractions {
     private TypicalAttractions() {} // prevents instantiation
 
     /**
-     * Returns an {@code TrackPad} with all the typical attractions.
+     * Returns an {@code AttractionList} with all the typical attractions.
      */
-    public static TrackPad getTypicalTrackPad() {
-        TrackPad tp = new TrackPad();
+    public static AttractionList getTypicalAttractionList() {
+        AttractionList al = new AttractionList();
         for (Attraction attraction : getTypicalAttractions()) {
-            tp.addAttraction(attraction);
+            al.addAttraction(attraction);
         }
-        return tp;
+        return al;
     }
 
     public static List<Attraction> getTypicalAttractions() {

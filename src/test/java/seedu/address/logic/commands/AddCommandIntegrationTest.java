@@ -2,7 +2,8 @@ package seedu.address.logic.commands;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalAttractions.getTypicalTrackPad;
+import static seedu.address.testutil.TypicalAttractions.getTypicalAttractionList;
+import static seedu.address.testutil.TypicalItineraries.getTypicalItineraryList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,14 +23,14 @@ public class AddCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(getTypicalTrackPad(), new UserPrefs());
+        model = new ModelManager(getTypicalAttractionList(), getTypicalItineraryList(), new UserPrefs());
     }
 
     @Test
     public void execute_newAttraction_success() {
         Attraction validAttraction = new AttractionBuilder().build();
 
-        Model expectedModel = new ModelManager(model.getTrackPad(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getAttractionList(), model.getItineraryList(), new UserPrefs());
         expectedModel.addAttraction(validAttraction);
 
         assertCommandSuccess(new AddCommand(validAttraction), model,
@@ -38,7 +39,7 @@ public class AddCommandIntegrationTest {
 
     @Test
     public void execute_duplicateAttraction_throwsCommandException() {
-        Attraction attractionInList = model.getTrackPad().getAttractionList().get(0);
+        Attraction attractionInList = model.getAttractionList().getAttractionList().get(0);
         assertCommandFailure(new AddCommand(attractionInList), model, AddCommand.MESSAGE_DUPLICATE_ATTRACTION);
     }
 
