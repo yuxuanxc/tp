@@ -27,8 +27,6 @@ import static seedu.address.logic.commands.CommandTestUtil.PRICE_RANGE_DESC_EIFF
 import static seedu.address.logic.commands.CommandTestUtil.PRICE_RANGE_DESC_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.RATING_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.RATING_DESC_MBS;
-import static seedu.address.logic.commands.CommandTestUtil.VISITED_DESC_EIFFEL;
-import static seedu.address.logic.commands.CommandTestUtil.VISITED_DESC_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_ACTIVITY;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_SIGHTSEEING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_MBS;
@@ -38,6 +36,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ACTIVITY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING;
+import static seedu.address.logic.commands.CommandTestUtil.VISITED_DESC_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.VISITED_DESC_MBS;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalAttractions.EIFFEL_TOWER;
@@ -130,14 +130,14 @@ public class AddCommandParserTest {
         assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + ADDRESS_DESC_EIFFEL
                         + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL
                         + OPENING_HOURS_DESC_EIFFEL + PRICE_RANGE_DESC_EIFFEL
-                        + RATING_DESC_EIFFEL + VISITED_DESC_EIFFEL +  TAG_DESC_ACTIVITY,
+                        + RATING_DESC_EIFFEL + VISITED_DESC_EIFFEL + TAG_DESC_ACTIVITY,
                 new AddCommand(expectedAttractionNoEmail));
 
         // No address given
         Attraction expectedAttractionNoAddress = new AttractionBuilder(EIFFEL_TOWER).withAddress().build();
         assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
                 + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL
-                + PRICE_RANGE_DESC_EIFFEL + RATING_DESC_EIFFEL + VISITED_DESC_EIFFEL +  TAG_DESC_ACTIVITY,
+                + PRICE_RANGE_DESC_EIFFEL + RATING_DESC_EIFFEL + VISITED_DESC_EIFFEL + TAG_DESC_ACTIVITY,
                 new AddCommand(expectedAttractionNoAddress));
         // todo add testcase to check no description, opening hours, rating, price range, visited should pass
     }
