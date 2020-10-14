@@ -42,13 +42,13 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private MenuItem helpMenuItem;
-    
+
     @FXML
     private SplitPane splitPane;
 
     @FXML
     private StackPane attractionListPanelPlaceholder;
-    
+
     // @FXML
     // private StackPane itineraryListPanelPlaceholder;
 
@@ -120,10 +120,9 @@ public class MainWindow extends UiPart<Stage> {
     void fillInnerParts() {
         attractionListPanel = new AttractionListPanel(logic.getFilteredAttractionList());
         attractionListPanelPlaceholder.getChildren().add(attractionListPanel.getRoot());
-        
-        // itineraryListPanel = new ItineraryListPanel(logic.getFilteredItineraryList());
-        // itineraryListPanelPlaceHolder.getChildren().add(itineraryListPanel.getRoot());
 
+        // itineraryListPanel = new ItineraryListPanel(logic.getFilteredItineraryList());
+        // itineraryListPanelPlaceholder.getChildren().add(itineraryListPanel.getRoot());
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
