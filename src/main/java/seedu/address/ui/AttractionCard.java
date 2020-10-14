@@ -46,12 +46,6 @@ public class AttractionCard extends UiPart<Region> {
     @FXML
     private Label openingHours;
     @FXML
-    private Label priceRange;
-    @FXML
-    private Label rating;
-    @FXML
-    private Label visited;
-    @FXML
     private FlowPane tags;
 
     /**
@@ -67,9 +61,7 @@ public class AttractionCard extends UiPart<Region> {
         email.setText(attraction.getEmail().value);
         locale.setText(attraction.getLocation().value);
         description.setText(attraction.getDescription().value);
-        openingHours.setText(attraction.getOpeningHours().value);
-        visited.setText(attraction.getVisited().toString());
-
+        openingHours.setText("Opening Hours: " + attraction.getOpeningHours().value);
         Label priceRange = new Label(attraction.getPriceRange().toString());
         priceRange.setStyle("-fx-background-color: #800;");
         Label rating = new Label(attraction.getRating().toString());
