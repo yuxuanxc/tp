@@ -1,13 +1,17 @@
 package seedu.address.ui;
 
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.attraction.Visited;
 
 /**
  * An UI component that displays information of a {@code Attraction}.
@@ -50,7 +54,7 @@ public class AttractionCard extends UiPart<Region> {
     @FXML
     private Label rating;
     @FXML
-    private Label visited;
+    private FlowPane visited;
     @FXML
     private FlowPane tags;
 
@@ -70,10 +74,20 @@ public class AttractionCard extends UiPart<Region> {
         openingHours.setText(attraction.getOpeningHours().value);
         priceRange.setText(attraction.getPriceRange().toString());
         rating.setText(attraction.getRating().toString());
-        visited.setText(attraction.getVisited().toString()); /** Change Later */
+//        visited.setText(attraction.getVisited().toString()); /** Change Later */
+
+//        Set<String> visited = new HashSet<>();
+//        visited.add(attraction.getVisited().toString());
+////
+//        visited.forEach((Label::new));
+
         attraction.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+
+        tags.getStyleClass().add("tags");
+        Node firstTag = tags.getChildren().get(0);
+        firstTag.getStyleClass().add("visited");
     }
 
     @Override

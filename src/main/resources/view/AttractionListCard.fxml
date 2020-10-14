@@ -27,7 +27,8 @@
         </Label>
         <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
       </HBox>
-      <FlowPane fx:id="tags" />
+      <FlowPane fx:id="visited" styleClass="'visited"/>
+      <FlowPane fx:id="tags" styleClass="'tags"/>
       <Label fx:id="locale" styleClass="cell_small_label" text="\$location" />
       <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
       <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
@@ -36,7 +37,6 @@
       <Label fx:id="openingHours" styleClass="cell_small_label" text="\$openingHours" />
       <Label fx:id="priceRange" styleClass="cell_small_label" text="\$priceRange" />
       <Label fx:id="rating" styleClass="cell_small_label" text="\$rating" />
-      <Label fx:id="visited" styleClass="cell_small_label" text="\$visited" />
     </VBox>
   </GridPane>
 </HBox>
