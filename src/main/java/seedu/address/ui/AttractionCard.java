@@ -68,9 +68,18 @@ public class AttractionCard extends UiPart<Region> {
         locale.setText(attraction.getLocation().value);
         description.setText(attraction.getDescription().value);
         openingHours.setText(attraction.getOpeningHours().value);
-        priceRange.setText(attraction.getPriceRange().toString());
-        rating.setText(attraction.getRating().toString());
         visited.setText(attraction.getVisited().toString());
+
+        Label priceRange = new Label(attraction.getPriceRange().toString());
+        priceRange.setStyle("-fx-background-color: #800;");
+        Label rating = new Label(attraction.getRating().toString());
+        rating.setStyle("-fx-background-color: #080;");
+        Label visited = new Label(attraction.getVisited().toString());
+        visited.setStyle("-fx-background-color: #9933ff;");
+        tags.getChildren().add(priceRange);
+        tags.getChildren().add(rating);
+        tags.getChildren().add(visited);
+
         attraction.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
