@@ -141,7 +141,7 @@ public class ParserUtil {
         requireNonNull(openingHours);
         String trimmedOpeningHours = openingHours.trim();
         if (!OpeningHours.isValidOpeningHours(trimmedOpeningHours)) {
-            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+            throw new ParseException(OpeningHours.MESSAGE_CONSTRAINTS);
         }
         return new OpeningHours(trimmedOpeningHours);
     }
@@ -156,7 +156,7 @@ public class ParserUtil {
         requireNonNull(priceRange);
         String trimmedPriceRange = priceRange.trim();
         if (!PriceRange.isValidPriceRange(trimmedPriceRange)) {
-            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+            throw new ParseException(PriceRange.MESSAGE_CONSTRAINTS);
         }
         return new PriceRange(trimmedPriceRange);
     }
@@ -171,7 +171,7 @@ public class ParserUtil {
         requireNonNull(rating);
         String trimmedRating = rating.trim();
         if (!Address.isValidAddress(trimmedRating)) {
-            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Rating.MESSAGE_CONSTRAINTS);
         }
         return new Rating(trimmedRating);
     }
@@ -186,7 +186,7 @@ public class ParserUtil {
         requireNonNull(visited);
         String trimmedVisited = visited.trim();
         if (!Address.isValidAddress(trimmedVisited)) {
-            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Visited.MESSAGE_CONSTRAINTS);
         }
         return new Visited(trimmedVisited);
     }

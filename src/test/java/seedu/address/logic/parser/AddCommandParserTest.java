@@ -8,10 +8,14 @@ import static seedu.address.logic.commands.CommandTestUtil.DESCRIPTION_DESC_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_LOCATION_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_OPENING_HOURS_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_PRICE_RANGE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_RATING_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.LOCATION_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.LOCATION_DESC_MBS;
@@ -48,10 +52,14 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.attraction.Description;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.Name;
+import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
+import seedu.address.model.attraction.PriceRange;
+import seedu.address.model.attraction.Rating;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.AttractionBuilder;
 
@@ -136,10 +144,42 @@ public class AddCommandParserTest {
         // No address given
         Attraction expectedAttractionNoAddress = new AttractionBuilder(EIFFEL_TOWER).withAddress().build();
         assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
-                + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL
-                + PRICE_RANGE_DESC_EIFFEL + RATING_DESC_EIFFEL + VISITED_DESC_EIFFEL + TAG_DESC_ACTIVITY,
+                        + VISITED_DESC_EIFFEL
+                        + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL
+                        + PRICE_RANGE_DESC_EIFFEL + RATING_DESC_EIFFEL + TAG_DESC_ACTIVITY,
                 new AddCommand(expectedAttractionNoAddress));
-        // todo add testcase to check no description, opening hours, rating, price range, visited should pass
+
+        // No description given
+        Attraction expectedAttractionNoDescription = new AttractionBuilder(EIFFEL_TOWER).withDescription().build();
+        assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
+                        + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL + ADDRESS_DESC_EIFFEL
+                        + VISITED_DESC_EIFFEL
+                        + PRICE_RANGE_DESC_EIFFEL + RATING_DESC_EIFFEL + TAG_DESC_ACTIVITY,
+                new AddCommand(expectedAttractionNoDescription));
+
+        // No opening hours given
+        Attraction expectedAttractionNoOpeningHours = new AttractionBuilder(EIFFEL_TOWER).withOpeningHours().build();
+        assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
+                        + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + ADDRESS_DESC_EIFFEL
+                        + VISITED_DESC_EIFFEL
+                        + PRICE_RANGE_DESC_EIFFEL + RATING_DESC_EIFFEL + TAG_DESC_ACTIVITY,
+                new AddCommand(expectedAttractionNoOpeningHours));
+
+        // No Price Range given
+        Attraction expectedAttractionNoPriceRange = new AttractionBuilder(EIFFEL_TOWER).withPriceRange().build();
+        assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
+                        + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL
+                        + VISITED_DESC_EIFFEL
+                        + RATING_DESC_EIFFEL + TAG_DESC_ACTIVITY + ADDRESS_DESC_EIFFEL,
+                new AddCommand(expectedAttractionNoPriceRange));
+
+        // No Rating given
+        Attraction expectedAttractionNoRating = new AttractionBuilder(EIFFEL_TOWER).withRating().build();
+        assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
+                        + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL
+                        + VISITED_DESC_EIFFEL
+                        + PRICE_RANGE_DESC_EIFFEL + TAG_DESC_ACTIVITY + ADDRESS_DESC_EIFFEL,
+                new AddCommand(expectedAttractionNoRating));
     }
 
     @Test
@@ -162,41 +202,145 @@ public class AddCommandParserTest {
     @Test
     public void parse_invalidValue_failure() {
         // invalid name
-        assertParseFailure(parser, INVALID_NAME_DESC + PHONE_DESC_MBS + EMAIL_DESC_MBS
-                + ADDRESS_DESC_MBS + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS
-                + OPENING_HOURS_DESC_MBS + PRICE_RANGE_DESC_MBS + RATING_DESC_MBS + VISITED_DESC_MBS
-                + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY, Name.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, INVALID_NAME_DESC
+                        + ADDRESS_DESC_MBS
+                        + DESCRIPTION_DESC_MBS
+                        + EMAIL_DESC_MBS
+                        + LOCATION_DESC_MBS
+                        + OPENING_HOURS_DESC_MBS
+                        + PHONE_DESC_MBS
+                        + PRICE_RANGE_DESC_MBS
+                        + RATING_DESC_MBS
+                        + TAG_DESC_SIGHTSEEING
+                        + TAG_DESC_ACTIVITY,
+                Name.MESSAGE_CONSTRAINTS);
 
         // invalid phone
-        assertParseFailure(parser, NAME_DESC_MBS + INVALID_PHONE_DESC + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
-                + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS + OPENING_HOURS_DESC_MBS
-                + PRICE_RANGE_DESC_MBS + RATING_DESC_MBS + VISITED_DESC_MBS + TAG_DESC_SIGHTSEEING
-                + TAG_DESC_ACTIVITY, Phone.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, NAME_DESC_MBS
+                        + ADDRESS_DESC_MBS
+                        + DESCRIPTION_DESC_MBS
+                        + EMAIL_DESC_MBS
+                        + LOCATION_DESC_MBS
+                        + OPENING_HOURS_DESC_MBS
+                        + INVALID_PHONE_DESC
+                        + PRICE_RANGE_DESC_MBS
+                        + RATING_DESC_MBS
+                        + TAG_DESC_SIGHTSEEING
+                        + TAG_DESC_ACTIVITY,
+                Phone.MESSAGE_CONSTRAINTS);
 
         // invalid email
-        assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS
-                + INVALID_EMAIL_DESC + ADDRESS_DESC_MBS + DESCRIPTION_DESC_MBS
-                + LOCATION_DESC_MBS + OPENING_HOURS_DESC_MBS + PRICE_RANGE_DESC_MBS
-                + RATING_DESC_MBS + VISITED_DESC_MBS + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY,
+        assertParseFailure(parser, NAME_DESC_MBS
+                        + ADDRESS_DESC_MBS
+                        + DESCRIPTION_DESC_MBS
+                        + INVALID_EMAIL_DESC
+                        + LOCATION_DESC_MBS
+                        + OPENING_HOURS_DESC_MBS
+                        + PHONE_DESC_MBS
+                        + PRICE_RANGE_DESC_MBS
+                        + RATING_DESC_MBS
+                        + TAG_DESC_SIGHTSEEING
+                        + TAG_DESC_ACTIVITY,
                 Email.MESSAGE_CONSTRAINTS);
 
         // invalid address
-        assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + INVALID_ADDRESS_DESC
-                + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS + OPENING_HOURS_DESC_MBS
-                + PRICE_RANGE_DESC_MBS + RATING_DESC_MBS + VISITED_DESC_MBS + TAG_DESC_SIGHTSEEING
-                + TAG_DESC_ACTIVITY, Address.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, NAME_DESC_MBS
+                        + INVALID_ADDRESS_DESC
+                        + DESCRIPTION_DESC_MBS
+                        + EMAIL_DESC_MBS
+                        + LOCATION_DESC_MBS
+                        + OPENING_HOURS_DESC_MBS
+                        + PHONE_DESC_MBS
+                        + PRICE_RANGE_DESC_MBS
+                        + RATING_DESC_MBS
+                        + TAG_DESC_SIGHTSEEING
+                        + TAG_DESC_ACTIVITY,
+                Address.MESSAGE_CONSTRAINTS);
 
         // invalid location
-        assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
-                + DESCRIPTION_DESC_MBS + INVALID_LOCATION_DESC + OPENING_HOURS_DESC_MBS
-                + PRICE_RANGE_DESC_MBS + RATING_DESC_MBS + VISITED_DESC_MBS + TAG_DESC_SIGHTSEEING
-                + TAG_DESC_ACTIVITY, Location.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, NAME_DESC_MBS
+                        + ADDRESS_DESC_MBS
+                        + DESCRIPTION_DESC_MBS
+                        + EMAIL_DESC_MBS
+                        + INVALID_LOCATION_DESC
+                        + OPENING_HOURS_DESC_MBS
+                        + PHONE_DESC_MBS
+                        + PRICE_RANGE_DESC_MBS
+                        + RATING_DESC_MBS
+                        + TAG_DESC_SIGHTSEEING
+                        + TAG_DESC_ACTIVITY,
+                Location.MESSAGE_CONSTRAINTS);
 
         // invalid tag
-        assertParseFailure(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
-                + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS + OPENING_HOURS_DESC_MBS
-                + PRICE_RANGE_DESC_MBS + RATING_DESC_MBS + VISITED_DESC_MBS + INVALID_TAG_DESC
-                + VALID_TAG_ACTIVITY, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, NAME_DESC_MBS
+                        + ADDRESS_DESC_MBS
+                        + DESCRIPTION_DESC_MBS
+                        + EMAIL_DESC_MBS
+                        + LOCATION_DESC_MBS
+                        + OPENING_HOURS_DESC_MBS
+                        + PHONE_DESC_MBS
+                        + PRICE_RANGE_DESC_MBS
+                        + RATING_DESC_MBS
+                        + INVALID_TAG_DESC
+                        + VALID_TAG_ACTIVITY,
+                Tag.MESSAGE_CONSTRAINTS);
+
+        // invalid Description
+        assertParseFailure(parser, NAME_DESC_MBS
+                        + ADDRESS_DESC_MBS
+                        + INVALID_DESCRIPTION_DESC
+                        + EMAIL_DESC_MBS
+                        + LOCATION_DESC_MBS
+                        + OPENING_HOURS_DESC_MBS
+                        + PHONE_DESC_MBS
+                        + PRICE_RANGE_DESC_MBS
+                        + RATING_DESC_MBS
+                        + TAG_DESC_SIGHTSEEING
+                        + TAG_DESC_ACTIVITY,
+                Description.MESSAGE_CONSTRAINTS);
+
+        // invalid Opening hours
+        assertParseFailure(parser, NAME_DESC_MBS
+                        + ADDRESS_DESC_MBS
+                        + DESCRIPTION_DESC_MBS
+                        + EMAIL_DESC_MBS
+                        + LOCATION_DESC_MBS
+                        + INVALID_OPENING_HOURS_DESC
+                        + PHONE_DESC_MBS
+                        + PRICE_RANGE_DESC_MBS
+                        + RATING_DESC_MBS
+                        + TAG_DESC_SIGHTSEEING
+                        + TAG_DESC_ACTIVITY,
+                OpeningHours.MESSAGE_CONSTRAINTS);
+
+        // invalid Price Range
+        assertParseFailure(parser, NAME_DESC_MBS
+                        + ADDRESS_DESC_MBS
+                        + DESCRIPTION_DESC_MBS
+                        + EMAIL_DESC_MBS
+                        + LOCATION_DESC_MBS
+                        + OPENING_HOURS_DESC_MBS
+                        + PHONE_DESC_MBS
+                        + INVALID_PRICE_RANGE_DESC
+                        + RATING_DESC_MBS
+                        + TAG_DESC_SIGHTSEEING
+                        + TAG_DESC_ACTIVITY,
+                PriceRange.MESSAGE_CONSTRAINTS);
+
+        // invalid Rating
+        assertParseFailure(parser, NAME_DESC_MBS
+                        + ADDRESS_DESC_MBS
+                        + DESCRIPTION_DESC_MBS
+                        + EMAIL_DESC_MBS
+                        + LOCATION_DESC_MBS
+                        + OPENING_HOURS_DESC_MBS
+                        + PHONE_DESC_MBS
+                        + PRICE_RANGE_DESC_MBS
+                        + INVALID_RATING_DESC
+                        + TAG_DESC_SIGHTSEEING
+                        + TAG_DESC_ACTIVITY,
+                Rating.MESSAGE_CONSTRAINTS);
+
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + PHONE_DESC_MBS + EMAIL_DESC_MBS + INVALID_ADDRESS_DESC
