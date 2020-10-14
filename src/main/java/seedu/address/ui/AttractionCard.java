@@ -8,6 +8,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.attraction.Visited;
 
 /**
  * An UI component that displays information of a {@code Attraction}.
@@ -66,7 +67,13 @@ public class AttractionCard extends UiPart<Region> {
         priceRange.setStyle("-fx-background-color: #800;");
         Label rating = new Label(attraction.getRating().toString());
         rating.setStyle("-fx-background-color: #080;");
+
         Label visited = new Label(attraction.getVisited().toString());
+        if (attraction.getVisited().equals(new Visited("TRUE"))) {
+            visited.setText(attraction.getVisited().toString());
+        } else {
+            visited.setText("Not Visited");
+        }
         visited.setStyle("-fx-background-color: #9933ff;");
         tags.getChildren().add(priceRange);
         tags.getChildren().add(rating);
