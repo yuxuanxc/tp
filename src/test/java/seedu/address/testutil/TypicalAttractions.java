@@ -133,7 +133,7 @@ public class TypicalAttractions {
     public static final Attraction SUNTEC = new AttractionBuilder().withName("Suntec City")
             .withPhone("8482131").withEmail("suntec@example.com")
             .withAddress("3 Temasek Blvd")
-            .withDescription("Suntec City is a major mixed-use development located in Marina "
+            .withDescription("Suntec City is a major mixed-use development located in  "
                     + "Centre, a subzone of the Downtown Core in Singapore.")
             .withLocation("Singapore, Singapore")
             .withOpeningHours("1000-2200")

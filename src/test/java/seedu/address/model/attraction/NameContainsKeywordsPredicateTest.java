@@ -82,8 +82,7 @@ public class NameContainsKeywordsPredicateTest {
         assertTrue(predicate.test(new AttractionBuilder().withName("mAnDaI wAy").build()));
     }
 
-    // todo find out why this new same test case won't work for description
-    /*    @Test
+    @Test
     public void test_descriptionContainsKeywords_returnsTrue() {
         // One keyword
         NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Collections.singletonList("Alice"));
@@ -100,7 +99,7 @@ public class NameContainsKeywordsPredicateTest {
         // Mixed-case keywords
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("aLIce", "WaY"));
         assertTrue(predicate.test(new AttractionBuilder().withDescription("Alice WaY").build()));
-    }*/
+    }
 
     @Test
     public void test_emailContainsKeywords_returnsTrue() {
@@ -267,9 +266,8 @@ public class NameContainsKeywordsPredicateTest {
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("Mandai", "Drive"));
         assertFalse(predicate.test(new AttractionBuilder().withAddress("Marina Way").build()));
 
-        // todo find out why this new test case won't work for description
-        //predicate = new NameContainsKeywordsPredicate(Arrays.asList("This", "is", "The", "ZoO"));
-        //assertFalse(predicate.test(new AttractionBuilder().withDescription("Big theme park").build()));
+        predicate = new NameContainsKeywordsPredicate(Arrays.asList("This", "is", "The"));
+        assertFalse(predicate.test(new AttractionBuilder().withDescription("Big theme park").build()));
 
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("zoo@gmail.com"));
         assertFalse(predicate.test(new AttractionBuilder().withEmail("USS@gmail.com").build()));
