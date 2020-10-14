@@ -54,7 +54,7 @@ public class AttractionCard extends UiPart<Region> {
     @FXML
     private Label rating;
     @FXML
-    private FlowPane visited;
+    private Label visited;
     @FXML
     private FlowPane tags;
 
@@ -74,7 +74,14 @@ public class AttractionCard extends UiPart<Region> {
         openingHours.setText(attraction.getOpeningHours().value);
         priceRange.setText(attraction.getPriceRange().toString());
         rating.setText(attraction.getRating().toString());
-//        visited.setText(attraction.getVisited().toString()); /** Change Later */
+
+        if (attraction.getVisited().equals(new Visited("TRUE"))) {
+            visited.setText(attraction.getVisited().toString());
+//            visited.getStyleClass().add("exists"); /** Change Later */
+        } else {
+            visited.setText("Not Visited");
+//            visited.getStyleClass().add("notexists");
+        }
 
 //        Set<String> visited = new HashSet<>();
 //        visited.add(attraction.getVisited().toString());
@@ -85,9 +92,9 @@ public class AttractionCard extends UiPart<Region> {
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
 
-        tags.getStyleClass().add("tags");
-        Node firstTag = tags.getChildren().get(0);
-        firstTag.getStyleClass().add("visited");
+//        tags.getStyleClass().add("tags");
+//        Node firstTag = tags.getChildren().get(0);
+//        firstTag.getStyleClass().add("visited");
     }
 
     @Override
