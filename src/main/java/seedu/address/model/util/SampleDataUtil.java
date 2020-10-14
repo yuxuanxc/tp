@@ -56,13 +56,15 @@ public class SampleDataUtil {
                     new Rating("3.6"), getTagSet("activities")),
             new Attraction(new Name("Trick Eye Museum"), new Phone("67952371"), new Email("trickeye@example.com"),
                     new Address("26 Sentosa Gateway, 098138"),
-                    new Description("Unique museum with a large array of 3-dimensional artwork for interactive optical illusions."),
+                    new Description("Unique museum with a large array of 3-dimensional "
+                            + "artwork for interactive optical illusions."),
                     new Location("Singapore, Singapore"),
                     new OpeningHours("1000-1800"), new PriceRange("LOW"),
                     new Rating("4.2"), getTagSet("activities")),
             new Attraction(new Name("Singapore Zoo"), new Phone("62693411"), new Email("riversafari@example.com"),
                     new Address("80 Mandai Lake Rd"),
-                    new Description("Singapore Zoo's world-famous \"Open Concept” offers the opportunity to experience and be inspired by the wonders of nature."),
+                    new Description("Singapore Zoo's world-famous \"Open Concept” offers the opportunity to "
+                            + "experience and be inspired by the wonders of nature."),
                     new Location("Singapore, Singapore"),
                     new OpeningHours("0830-1800"), new PriceRange("MEDIUM"),
                     new Rating("4.6"), getTagSet("animals", "tiger")),
