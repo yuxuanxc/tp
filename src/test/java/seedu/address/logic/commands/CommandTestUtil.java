@@ -12,6 +12,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -51,6 +52,8 @@ public class CommandTestUtil {
     public static final String VALID_PRICE_RANGE_MBS = "HIGH";
     public static final String VALID_RATING_EIFFEL = "4.8";
     public static final String VALID_RATING_MBS = "4.7";
+    public static final String VALID_VISITED_EIFFEL = "FALSE";
+    public static final String VALID_VISITED_MBS = "TRUE";
     public static final String VALID_TAG_SIGHTSEEING = "sightseeing";
     public static final String VALID_TAG_ACTIVITY = "activity";
 
@@ -72,6 +75,8 @@ public class CommandTestUtil {
     public static final String PRICE_RANGE_DESC_MBS = " " + PREFIX_PRICE_RANGE + VALID_PRICE_RANGE_MBS;
     public static final String RATING_DESC_EIFFEL = " " + PREFIX_RATING + VALID_RATING_EIFFEL;
     public static final String RATING_DESC_MBS = " " + PREFIX_RATING + VALID_RATING_MBS;
+    public static final String VISITED_DESC_EIFFEL = " " + PREFIX_VISITED + VALID_VISITED_EIFFEL;
+    public static final String VISITED_DESC_MBS = " " + PREFIX_VISITED + VALID_VISITED_MBS;
     public static final String TAG_DESC_SIGHTSEEING = " " + PREFIX_TAG + VALID_TAG_SIGHTSEEING;
     public static final String TAG_DESC_ACTIVITY = " " + PREFIX_TAG + VALID_TAG_ACTIVITY;
 
@@ -84,6 +89,7 @@ public class CommandTestUtil {
     public static final String INVALID_OPENING_HOURS_DESC = " " + PREFIX_OPENING_HOURS;
     public static final String INVALID_PRICE_RANGE_DESC = " " + PREFIX_PRICE_RANGE;
     public static final String INVALID_RATING_DESC = " " + PREFIX_RATING;
+    public static final String INVALID_VISITED_DESC = " " + PREFIX_VISITED + "True1"; // numbers not allowed in VISITED
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "Sightseeing*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
@@ -98,13 +104,13 @@ public class CommandTestUtil {
                 .withAddress(VALID_ADDRESS_EIFFEL).withDescription(VALID_DESCRIPTION_EIFFEL)
                 .withLocation(VALID_LOCATION_EIFFEL).withOpeningHours(VALID_OPENING_HOURS_EIFFEL)
                 .withPriceRange(VALID_PRICE_RANGE_EIFFEL).withRating(VALID_RATING_EIFFEL)
-                .withTags(VALID_TAG_SIGHTSEEING).build();
+                .withVisited(VALID_VISITED_EIFFEL).withTags(VALID_TAG_SIGHTSEEING).build();
         DESC_MBS = new EditAttractionDescriptorBuilder().withName(VALID_NAME_MBS)
                 .withPhone(VALID_PHONE_MBS).withEmail(VALID_EMAIL_MBS)
                 .withAddress(VALID_ADDRESS_MBS).withDescription(VALID_DESCRIPTION_MBS)
                 .withLocation(VALID_LOCATION_MBS).withOpeningHours(VALID_OPENING_HOURS_MBS)
                 .withPriceRange(VALID_PRICE_RANGE_MBS).withRating(VALID_RATING_MBS)
-                .withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING).build();
+                .withVisited(VALID_VISITED_MBS).withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING).build();
     }
 
     /**

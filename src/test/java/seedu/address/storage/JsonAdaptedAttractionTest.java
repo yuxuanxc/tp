@@ -29,6 +29,7 @@ public class JsonAdaptedAttractionTest {
     private static final String INVALID_OPENING_HOURS = " ";
     private static final String INVALID_PRICE_RANGE = " ";
     private static final String INVALID_RATING = " ";
+    private static final String INVALID_VISITED = " ";
     private static final String INVALID_TAG = "#friend";
 
     private static final String VALID_NAME = EIFFEL_TOWER.getName().toString();
@@ -40,6 +41,7 @@ public class JsonAdaptedAttractionTest {
     private static final String VALID_OPENING_HOURS = EIFFEL_TOWER.getOpeningHours().toString();
     private static final String VALID_PRICE_RANGE = EIFFEL_TOWER.getPriceRange().toString();
     private static final String VALID_RATING = EIFFEL_TOWER.getRating().toString();
+    private static final String VALID_VISITED = EIFFEL_TOWER.getVisited().toString();
     private static final List<JsonAdaptedTag> VALID_TAGS = EIFFEL_TOWER.getTags().stream()
             .map(JsonAdaptedTag::new)
             .collect(Collectors.toList());
@@ -55,7 +57,7 @@ public class JsonAdaptedAttractionTest {
         JsonAdaptedAttraction attraction =
                 new JsonAdaptedAttraction(INVALID_NAME, VALID_PHONE, VALID_EMAIL,
                         VALID_ADDRESS, VALID_DESCRIPTION, VALID_LOCATION,
-                        VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_TAGS);
+                        VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_VISITED, VALID_TAGS);
         String expectedMessage = Name.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, attraction::toModelType);
     }
@@ -64,7 +66,7 @@ public class JsonAdaptedAttractionTest {
     public void toModelType_nullName_throwsIllegalValueException() {
         JsonAdaptedAttraction attraction = new JsonAdaptedAttraction(null, VALID_PHONE,
                 VALID_EMAIL, VALID_ADDRESS, VALID_DESCRIPTION, VALID_LOCATION,
-                VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_TAGS);
+                VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_VISITED, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, attraction::toModelType);
     }
@@ -74,7 +76,7 @@ public class JsonAdaptedAttractionTest {
         JsonAdaptedAttraction attraction =
                 new JsonAdaptedAttraction(VALID_NAME, INVALID_PHONE, VALID_EMAIL,
                         VALID_ADDRESS, VALID_DESCRIPTION, VALID_LOCATION,
-                        VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_TAGS);
+                        VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_VISITED, VALID_TAGS);
         String expectedMessage = Phone.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, attraction::toModelType);
     }
@@ -83,7 +85,7 @@ public class JsonAdaptedAttractionTest {
     public void toModelType_nullPhone_throwsIllegalValueException() {
         JsonAdaptedAttraction attraction = new JsonAdaptedAttraction(VALID_NAME,
                 null, VALID_EMAIL, VALID_ADDRESS, VALID_DESCRIPTION, VALID_LOCATION,
-                VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_TAGS);
+                VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_VISITED, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, attraction::toModelType);
     }
@@ -93,7 +95,7 @@ public class JsonAdaptedAttractionTest {
         JsonAdaptedAttraction attraction =
                 new JsonAdaptedAttraction(VALID_NAME, VALID_PHONE, INVALID_EMAIL,
                         VALID_ADDRESS, VALID_DESCRIPTION, VALID_LOCATION,
-                        VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_TAGS);
+                        VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_VISITED, VALID_TAGS);
         String expectedMessage = Email.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, attraction::toModelType);
     }
@@ -102,7 +104,7 @@ public class JsonAdaptedAttractionTest {
     public void toModelType_nullEmail_throwsIllegalValueException() {
         JsonAdaptedAttraction attraction = new JsonAdaptedAttraction(VALID_NAME,
                 VALID_PHONE, null, VALID_ADDRESS, VALID_DESCRIPTION, VALID_LOCATION,
-                VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_TAGS);
+                VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_VISITED, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, attraction::toModelType);
     }
@@ -112,7 +114,7 @@ public class JsonAdaptedAttractionTest {
         JsonAdaptedAttraction attraction =
                 new JsonAdaptedAttraction(VALID_NAME, VALID_PHONE, VALID_EMAIL,
                         INVALID_ADDRESS, VALID_DESCRIPTION, VALID_LOCATION,
-                        VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_TAGS);
+                        VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_VISITED, VALID_TAGS);
         String expectedMessage = Address.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, attraction::toModelType);
     }
@@ -121,7 +123,7 @@ public class JsonAdaptedAttractionTest {
     public void toModelType_nullAddress_throwsIllegalValueException() {
         JsonAdaptedAttraction attraction = new JsonAdaptedAttraction(VALID_NAME,
                 VALID_PHONE, VALID_EMAIL, null, VALID_DESCRIPTION, VALID_LOCATION,
-                VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_TAGS);
+                VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_VISITED, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, attraction::toModelType);
     }
@@ -131,7 +133,7 @@ public class JsonAdaptedAttractionTest {
         JsonAdaptedAttraction attraction =
                 new JsonAdaptedAttraction(VALID_NAME, VALID_PHONE, VALID_EMAIL,
                         VALID_ADDRESS, INVALID_DESCRIPTION, VALID_LOCATION,
-                        VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_TAGS);
+                        VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_VISITED, VALID_TAGS);
         String expectedMessage = Description.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, attraction::toModelType);
     }
@@ -140,7 +142,7 @@ public class JsonAdaptedAttractionTest {
     public void toModelType_nullDescription_throwsIllegalValueException() {
         JsonAdaptedAttraction attraction = new JsonAdaptedAttraction(VALID_NAME,
                 VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, null, VALID_LOCATION,
-                VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_TAGS);
+                VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_VISITED, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Description.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, attraction::toModelType);
     }
@@ -150,7 +152,7 @@ public class JsonAdaptedAttractionTest {
         JsonAdaptedAttraction attraction =
                 new JsonAdaptedAttraction(VALID_NAME, VALID_PHONE, VALID_EMAIL,
                         VALID_ADDRESS, VALID_DESCRIPTION, INVALID_LOCATION,
-                        VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_TAGS);
+                        VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_VISITED, VALID_TAGS);
         String expectedMessage = Location.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, attraction::toModelType);
     }
@@ -159,7 +161,7 @@ public class JsonAdaptedAttractionTest {
     public void toModelType_nullLocation_throwsIllegalValueException() {
         JsonAdaptedAttraction attraction = new JsonAdaptedAttraction(VALID_NAME,
                 VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_DESCRIPTION, null,
-                VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_TAGS);
+                VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_VISITED, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Location.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, attraction::toModelType);
     }
@@ -171,7 +173,7 @@ public class JsonAdaptedAttractionTest {
         JsonAdaptedAttraction attraction =
                 new JsonAdaptedAttraction(VALID_NAME, VALID_PHONE, VALID_EMAIL,
                         VALID_ADDRESS, VALID_DESCRIPTION, VALID_LOCATION,
-                        VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, invalidTags);
+                        VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, VALID_VISITED, invalidTags);
         assertThrows(IllegalValueException.class, attraction::toModelType);
     }
 

@@ -10,6 +10,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
 
 import java.util.Set;
 
@@ -44,6 +45,7 @@ public class AttractionUtil {
         sb.append(PREFIX_OPENING_HOURS + attraction.getOpeningHours().value + " ");
         sb.append(PREFIX_PRICE_RANGE + attraction.getPriceRange().value + " ");
         sb.append(PREFIX_RATING + attraction.getRating().value + " ");
+        sb.append(PREFIX_VISITED + attraction.getVisited().value + " ");
         attraction.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
@@ -67,6 +69,7 @@ public class AttractionUtil {
         descriptor.getPriceRange().ifPresent(priceRange ->
                 sb.append(PREFIX_PRICE_RANGE).append(priceRange.value).append(" "));
         descriptor.getRating().ifPresent(rating -> sb.append(PREFIX_RATING).append(rating.value).append(" "));
+        descriptor.getVisited().ifPresent(visited -> sb.append(PREFIX_VISITED).append(visited.value).append(" "));
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {

@@ -12,6 +12,7 @@ import static seedu.address.logic.commands.CommandTestUtil.OPENING_HOURS_DESC_EI
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.PRICE_RANGE_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.RATING_DESC_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.VISITED_DESC_EIFFEL;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAttractions.EIFFEL_TOWER;
 
@@ -87,7 +88,7 @@ public class LogicManagerTest {
         String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_EIFFEL
                 + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL + ADDRESS_DESC_EIFFEL
                 + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL
-                + PRICE_RANGE_DESC_EIFFEL + RATING_DESC_EIFFEL;
+                + PRICE_RANGE_DESC_EIFFEL + RATING_DESC_EIFFEL + VISITED_DESC_EIFFEL;
         Attraction expectedAttraction = new AttractionBuilder(EIFFEL_TOWER).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addAttraction(expectedAttraction);

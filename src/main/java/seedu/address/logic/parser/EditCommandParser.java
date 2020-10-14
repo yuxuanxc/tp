@@ -12,6 +12,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -39,7 +40,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
                         PREFIX_DESCRIPTION, PREFIX_LOCATION, PREFIX_OPENING_HOURS,
-                        PREFIX_PRICE_RANGE, PREFIX_RATING, PREFIX_TAG);
+                        PREFIX_PRICE_RANGE, PREFIX_RATING, PREFIX_VISITED, PREFIX_TAG);
 
         Index index;
 
@@ -80,6 +81,10 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (argMultimap.getValue(PREFIX_RATING).isPresent()) {
             editAttractionDescriptor.setRating(ParserUtil.parseRating(
                     argMultimap.getValue(PREFIX_RATING).get()));
+        }
+        if (argMultimap.getValue(PREFIX_VISITED).isPresent()) {
+            editAttractionDescriptor.setVisited(ParserUtil.parseVisited(
+                    argMultimap.getValue(PREFIX_VISITED).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editAttractionDescriptor::setTags);
 

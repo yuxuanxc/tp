@@ -18,6 +18,7 @@ import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.attraction.PriceRange;
 import seedu.address.model.attraction.Rating;
+import seedu.address.model.attraction.Visited;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -173,6 +174,21 @@ public class ParserUtil {
             throw new ParseException(Address.MESSAGE_CONSTRAINTS);
         }
         return new Rating(trimmedRating);
+    }
+
+    /**
+     * Parses a {@code String visited} into an {@code Visited}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code visited} is invalid.
+     */
+    public static Visited parseVisited(String visited) throws ParseException {
+        requireNonNull(visited);
+        String trimmedVisited = visited.trim();
+        if (!Address.isValidAddress(trimmedVisited)) {
+            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+        }
+        return new Visited(trimmedVisited);
     }
 
     /**

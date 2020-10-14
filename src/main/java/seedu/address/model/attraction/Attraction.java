@@ -27,6 +27,7 @@ public class Attraction {
     private final OpeningHours openingHours;
     private final PriceRange priceRange;
     private final Rating rating;
+    private final Visited visited;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
@@ -34,9 +35,9 @@ public class Attraction {
      */
     public Attraction(Name name, Phone phone, Email email, Address address, Description description,
                       Location location, OpeningHours openingHours, PriceRange priceRange,
-                      Rating rating, Set<Tag> tags) {
+                      Rating rating, Visited visited, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, description, location, openingHours,
-                priceRange, rating, tags);
+                priceRange, rating, visited, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -46,6 +47,7 @@ public class Attraction {
         this.openingHours = openingHours;
         this.priceRange = priceRange;
         this.rating = rating;
+        this.visited = visited;
         this.tags.addAll(tags);
     }
 
@@ -83,6 +85,10 @@ public class Attraction {
 
     public Rating getRating() {
         return rating;
+    }
+
+    public Visited getVisited() {
+        return visited;
     }
 
     /**
@@ -131,6 +137,7 @@ public class Attraction {
                 && otherAttraction.getOpeningHours().equals(getOpeningHours())
                 && otherAttraction.getPriceRange().equals(getPriceRange())
                 && otherAttraction.getRating().equals(getRating())
+                && otherAttraction.getVisited().equals(getVisited())
                 && otherAttraction.getTags().equals(getTags());
     }
 
@@ -138,7 +145,7 @@ public class Attraction {
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(name, phone, email, address, description, location,
-                openingHours, priceRange, rating, tags);
+                openingHours, priceRange, rating, visited, tags);
     }
 
     @Override
@@ -161,6 +168,8 @@ public class Attraction {
                 .append(getPriceRange())
                 .append(" Rating: ")
                 .append(getRating())
+                .append(" Visited: ")
+                .append(getVisited())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

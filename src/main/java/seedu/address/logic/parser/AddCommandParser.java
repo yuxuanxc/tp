@@ -11,6 +11,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
 
 import java.util.Set;
 import java.util.stream.Stream;
@@ -27,6 +28,7 @@ import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.attraction.PriceRange;
 import seedu.address.model.attraction.Rating;
+import seedu.address.model.attraction.Visited;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -44,7 +46,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
                         PREFIX_DESCRIPTION, PREFIX_LOCATION, PREFIX_OPENING_HOURS,
-                        PREFIX_PRICE_RANGE, PREFIX_RATING, PREFIX_TAG);
+                        PREFIX_PRICE_RANGE, PREFIX_RATING, PREFIX_VISITED, PREFIX_TAG);
 
         // No checks for PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_LOCATION)
@@ -114,10 +116,18 @@ public class AddCommandParser implements Parser<AddCommand> {
             rating = new Rating();
         }
 
+        // Visited is optional
+        Visited visited;
+        if (argMultimap.getValue(PREFIX_VISITED).isPresent()) {
+            visited = ParserUtil.parseVisited(argMultimap.getValue(PREFIX_VISITED).get());
+        } else {
+            visited = new Visited();
+        }
+
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         Attraction attraction = new Attraction(name, phone, email, address, description,
-                location, openingHours, priceRange, rating, tagList);
+                location, openingHours, priceRange, rating, visited, tagList);
 
         return new AddCommand(attraction);
     }

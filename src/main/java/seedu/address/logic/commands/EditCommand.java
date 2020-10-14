@@ -10,6 +10,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_OPENING_HOURS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ATTRACTIONS;
 
@@ -34,6 +35,7 @@ import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.attraction.PriceRange;
 import seedu.address.model.attraction.Rating;
+import seedu.address.model.attraction.Visited;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -56,6 +58,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_OPENING_HOURS + "OPENING HOURS] "
             + "[" + PREFIX_PRICE_RANGE + "PRICE RANGE] "
             + "[" + PREFIX_RATING + "RATING] "
+            + "[" + PREFIX_VISITED + "VISITED] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "62693411 "
@@ -121,11 +124,12 @@ public class EditCommand extends Command {
         PriceRange updatedPriceRange = editAttractionDescriptor
                 .getPriceRange().orElse(attractionToEdit.getPriceRange());
         Rating updatedRating = editAttractionDescriptor.getRating().orElse(attractionToEdit.getRating());
+        Visited updatedVisited = editAttractionDescriptor.getVisited().orElse(attractionToEdit.getVisited());
         Set<Tag> updatedTags = editAttractionDescriptor.getTags().orElse(attractionToEdit.getTags());
 
         return new Attraction(updatedName, updatedPhone, updatedEmail, updatedAddress,
                 updatedDescription, updatedLocation, updatedOpeningHours, updatedPriceRange,
-                updatedRating, updatedTags);
+                updatedRating, updatedVisited, updatedTags);
     }
 
     @Override
@@ -160,6 +164,7 @@ public class EditCommand extends Command {
         private OpeningHours openingHours;
         private PriceRange priceRange;
         private Rating rating;
+        private Visited visited;
         private Set<Tag> tags;
 
         public EditAttractionDescriptor() {}
@@ -178,6 +183,7 @@ public class EditCommand extends Command {
             setOpeningHours(toCopy.openingHours);
             setPriceRange(toCopy.priceRange);
             setRating(toCopy.rating);
+            setVisited(toCopy.visited);
             setTags(toCopy.tags);
         }
 
@@ -186,7 +192,7 @@ public class EditCommand extends Command {
          */
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyNonNull(name, phone, email, address, description,
-                    location, openingHours, priceRange, rating, tags);
+                    location, openingHours, priceRange, rating, visited, tags);
         }
 
         public void setName(Name name) {
@@ -261,6 +267,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(rating);
         }
 
+        public void setVisited(Visited visited) {
+            this.visited = visited;
+        }
+
+        public Optional<Visited> getVisited() {
+            return Optional.ofNullable(visited);
+        }
+
         /**
          * Sets {@code tags} to this object's {@code tags}.
          * A defensive copy of {@code tags} is used internally.
@@ -302,6 +316,7 @@ public class EditCommand extends Command {
                     && getOpeningHours().equals(e.getOpeningHours())
                     && getPriceRange().equals(e.getPriceRange())
                     && getRating().equals(e.getRating())
+                    && getVisited().equals(e.getVisited())
                     && getTags().equals(e.getTags());
         }
     }
