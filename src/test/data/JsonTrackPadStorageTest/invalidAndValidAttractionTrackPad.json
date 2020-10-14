@@ -8,7 +8,8 @@
     "location": "Singapore, Singapore",
     "openingHours" : "1000-1800",
     "priceRange": "MEDIUM",
-    "rating": "4.6"
+    "rating": "4.6",
+    "visited": "TRUE"
   }, {
     "name": "Attraction With Invalid Phone Field",
     "phone": "948asdf2424",
@@ -18,6 +19,7 @@
     "location": "Singapore, Singapore",
     "openingHours" : "1000-1800",
     "priceRange": "MEDIUM",
-    "rating": "4.6"
+    "rating": "4.6",
+    "visited": "TRUE"
   } ]
 }

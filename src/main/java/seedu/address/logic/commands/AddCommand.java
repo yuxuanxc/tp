@@ -11,6 +11,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -34,6 +35,7 @@ public class AddCommand extends Command {
             + PREFIX_OPENING_HOURS + "OPENING HOURS "
             + PREFIX_PRICE_RANGE + "PRICE RANGE "
             + PREFIX_RATING + "RATING "
+            + PREFIX_VISITED + "VISITED "
             + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "Singapore Zoo "
@@ -45,6 +47,7 @@ public class AddCommand extends Command {
             + PREFIX_OPENING_HOURS + "0830-1800 "
             + PREFIX_PRICE_RANGE + "MEDIUM "
             + PREFIX_RATING + "4.8 "
+            + PREFIX_VISITED + "TRUE "
             + PREFIX_TAG + "animal ";
 
     public static final String MESSAGE_SUCCESS = "New attraction added: %1$s";

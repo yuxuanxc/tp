@@ -9,6 +9,7 @@
     "openingHours" : "1000-1800",
     "priceRange": "MEDIUM",
     "rating": "4.6",
+    "visited": "TRUE",
     "tagged": [ "animals" ]
   }, {
     "name": "Singapore Zoo",
@@ -19,6 +20,7 @@
     "openingHours" : "1000-1800",
     "priceRange": "MEDIUM",
     "rating": "4.6",
+    "visited": "TRUE",
     "location": "Singapore, Singapore"
   } ]
 }

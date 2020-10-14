@@ -20,6 +20,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_RATING_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RATING_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ACTIVITY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_VISITED_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_VISITED_MBS;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,6 +44,7 @@ public class TypicalAttractions {
             .withOpeningHours("1000-1800")
             .withPriceRange()
             .withRating()
+            .withVisited()
             .withTags("animals")
             .build();
     public static final Attraction NIGHT_SAFARI = new AttractionBuilder().withName("Night Safari")
@@ -53,6 +56,7 @@ public class TypicalAttractions {
             .withOpeningHours("1800-2300")
             .withPriceRange()
             .withRating()
+            .withVisited()
             .withTags("animals", "night")
             .build();
     public static final Attraction SINGAPORE_ZOO = new AttractionBuilder().withName("Singapore Zoo")
@@ -64,6 +68,7 @@ public class TypicalAttractions {
             .withOpeningHours("1000-1800")
             .withPriceRange()
             .withRating()
+            .withVisited()
             .build();
     public static final Attraction RIVER_SAFARI = new AttractionBuilder().withName("River Safari")
             .withPhone("87652533")
@@ -74,6 +79,7 @@ public class TypicalAttractions {
             .withOpeningHours("1000-1800")
             .withPriceRange()
             .withRating()
+            .withVisited()
             .withTags("panda")
             .build();
     public static final Attraction ORCHARD_ROAD = new AttractionBuilder().withName("Orchard Road")
@@ -86,6 +92,7 @@ public class TypicalAttractions {
             .withOpeningHours()
             .withPriceRange()
             .withRating()
+            .withVisited()
             .build();
     public static final Attraction BOTANIC_GARDENS = new AttractionBuilder().withName("Botanic Gardens")
             .withPhone("9482427")
@@ -96,6 +103,7 @@ public class TypicalAttractions {
             .withOpeningHours()
             .withPriceRange()
             .withRating()
+            .withVisited()
             .build();
     public static final Attraction JURONG_LAKE = new AttractionBuilder().withName("Jurong Lake")
             .withPhone("9482442")
@@ -107,6 +115,7 @@ public class TypicalAttractions {
             .withOpeningHours()
             .withPriceRange()
             .withRating()
+            .withVisited()
             .build();
 
     // Manually added
@@ -119,6 +128,7 @@ public class TypicalAttractions {
             .withOpeningHours("1000-2200")
             .withPriceRange("HIGH")
             .withRating("4.0")
+            .withVisited("TRUE")
             .build();
     public static final Attraction SUNTEC = new AttractionBuilder().withName("Suntec City")
             .withPhone("8482131").withEmail("suntec@example.com")
@@ -129,6 +139,7 @@ public class TypicalAttractions {
             .withOpeningHours("1000-2200")
             .withPriceRange("LOW")
             .withRating("4.5")
+            .withVisited("TRUE")
             .build();
 
     // Manually added - Attraction's details found in {@code CommandTestUtil}
@@ -136,12 +147,13 @@ public class TypicalAttractions {
             .withPhone(VALID_PHONE_EIFFEL).withEmail(VALID_EMAIL_EIFFEL).withAddress(VALID_ADDRESS_EIFFEL)
             .withDescription(VALID_DESCRIPTION_EIFFEL).withLocation(VALID_LOCATION_EIFFEL)
             .withOpeningHours(VALID_OPENING_HOURS_EIFFEL).withPriceRange(VALID_PRICE_RANGE_EIFFEL)
-            .withRating(VALID_RATING_EIFFEL).withTags(VALID_TAG_ACTIVITY).build();
+            .withRating(VALID_RATING_EIFFEL).withVisited(VALID_VISITED_EIFFEL).withTags(VALID_TAG_ACTIVITY).build();
     public static final Attraction MBS = new AttractionBuilder().withName(VALID_NAME_MBS).withPhone(VALID_PHONE_MBS)
             .withEmail(VALID_EMAIL_MBS).withAddress(VALID_ADDRESS_MBS)
             .withDescription(VALID_DESCRIPTION_MBS).withLocation(VALID_LOCATION_MBS)
             .withOpeningHours(VALID_OPENING_HOURS_MBS).withPriceRange(VALID_PRICE_RANGE_MBS)
-            .withRating(VALID_RATING_MBS).withTags(VALID_TAG_SIGHTSEEING, VALID_TAG_ACTIVITY).build();
+            .withRating(VALID_RATING_MBS).withVisited(VALID_VISITED_MBS)
+            .withTags(VALID_TAG_SIGHTSEEING, VALID_TAG_ACTIVITY).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
