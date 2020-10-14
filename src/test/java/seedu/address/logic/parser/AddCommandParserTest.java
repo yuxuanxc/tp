@@ -144,6 +144,7 @@ public class AddCommandParserTest {
         // No address given
         Attraction expectedAttractionNoAddress = new AttractionBuilder(EIFFEL_TOWER).withAddress().build();
         assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
+                        + VISITED_DESC_EIFFEL
                         + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL
                         + PRICE_RANGE_DESC_EIFFEL + RATING_DESC_EIFFEL + TAG_DESC_ACTIVITY,
                 new AddCommand(expectedAttractionNoAddress));
@@ -152,6 +153,7 @@ public class AddCommandParserTest {
         Attraction expectedAttractionNoDescription = new AttractionBuilder(EIFFEL_TOWER).withDescription().build();
         assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
                         + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL + ADDRESS_DESC_EIFFEL
+                        + VISITED_DESC_EIFFEL
                         + PRICE_RANGE_DESC_EIFFEL + RATING_DESC_EIFFEL + TAG_DESC_ACTIVITY,
                 new AddCommand(expectedAttractionNoDescription));
 
@@ -159,6 +161,7 @@ public class AddCommandParserTest {
         Attraction expectedAttractionNoOpeningHours = new AttractionBuilder(EIFFEL_TOWER).withOpeningHours().build();
         assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
                         + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + ADDRESS_DESC_EIFFEL
+                        + VISITED_DESC_EIFFEL
                         + PRICE_RANGE_DESC_EIFFEL + RATING_DESC_EIFFEL + TAG_DESC_ACTIVITY,
                 new AddCommand(expectedAttractionNoOpeningHours));
 
@@ -166,6 +169,7 @@ public class AddCommandParserTest {
         Attraction expectedAttractionNoPriceRange = new AttractionBuilder(EIFFEL_TOWER).withPriceRange().build();
         assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
                         + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL
+                        + VISITED_DESC_EIFFEL
                         + RATING_DESC_EIFFEL + TAG_DESC_ACTIVITY + ADDRESS_DESC_EIFFEL,
                 new AddCommand(expectedAttractionNoPriceRange));
 
@@ -173,6 +177,7 @@ public class AddCommandParserTest {
         Attraction expectedAttractionNoRating = new AttractionBuilder(EIFFEL_TOWER).withRating().build();
         assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
                         + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL
+                        + VISITED_DESC_EIFFEL
                         + PRICE_RANGE_DESC_EIFFEL + TAG_DESC_ACTIVITY + ADDRESS_DESC_EIFFEL,
                 new AddCommand(expectedAttractionNoRating));
     }

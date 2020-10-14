@@ -186,7 +186,7 @@ public class ParserUtil {
         requireNonNull(visited);
         String trimmedVisited = visited.trim();
         if (!Address.isValidAddress(trimmedVisited)) {
-            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Visited.MESSAGE_CONSTRAINTS);
         }
         return new Visited(trimmedVisited);
     }
