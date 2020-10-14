@@ -8,6 +8,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.attraction.Visited;
 
 /**
  * An UI component that displays information of a {@code Attraction}.
@@ -46,10 +47,6 @@ public class AttractionCard extends UiPart<Region> {
     @FXML
     private Label openingHours;
     @FXML
-    private Label priceRange;
-    @FXML
-    private Label rating;
-    @FXML
     private FlowPane tags;
 
     /**
@@ -65,9 +62,23 @@ public class AttractionCard extends UiPart<Region> {
         email.setText(attraction.getEmail().value);
         locale.setText(attraction.getLocation().value);
         description.setText(attraction.getDescription().value);
-        openingHours.setText(attraction.getOpeningHours().value);
-        priceRange.setText(attraction.getPriceRange().toString());
-        rating.setText(attraction.getRating().toString());
+        openingHours.setText("Opening Hours: " + attraction.getOpeningHours().value);
+        Label priceRange = new Label(attraction.getPriceRange().toString());
+        priceRange.setStyle("-fx-background-color: #800;");
+        Label rating = new Label(attraction.getRating().toString());
+        rating.setStyle("-fx-background-color: #080;");
+
+        Label visited = new Label(attraction.getVisited().toString());
+        if (attraction.getVisited().equals(new Visited("TRUE"))) {
+            visited.setText(attraction.getVisited().toString());
+        } else {
+            visited.setText("Not Visited");
+        }
+        visited.setStyle("-fx-background-color: #9933ff;");
+        tags.getChildren().add(priceRange);
+        tags.getChildren().add(rating);
+        tags.getChildren().add(visited);
+
         attraction.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

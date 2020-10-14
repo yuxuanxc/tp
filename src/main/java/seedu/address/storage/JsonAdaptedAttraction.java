@@ -20,6 +20,7 @@ import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.attraction.PriceRange;
 import seedu.address.model.attraction.Rating;
+import seedu.address.model.attraction.Visited;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -38,6 +39,7 @@ class JsonAdaptedAttraction {
     private final String openingHours;
     private final String priceRange;
     private final String rating;
+    private final String visited;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
@@ -53,6 +55,7 @@ class JsonAdaptedAttraction {
                                  @JsonProperty("openingHours") String openingHours,
                                  @JsonProperty("priceRange") String priceRange,
                                  @JsonProperty("rating") String rating,
+                                 @JsonProperty("visited") String visited,
                                  @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.name = name;
         this.phone = phone;
@@ -63,6 +66,7 @@ class JsonAdaptedAttraction {
         this.openingHours = openingHours;
         this.priceRange = priceRange;
         this.rating = rating;
+        this.visited = visited;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -81,6 +85,7 @@ class JsonAdaptedAttraction {
         openingHours = source.getOpeningHours().value;
         priceRange = source.getPriceRange().value;
         rating = source.getRating().value;
+        visited = source.getVisited().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -101,6 +106,7 @@ class JsonAdaptedAttraction {
         final OpeningHours modelOpeningHours;
         final PriceRange modelPriceRange;
         final Rating modelRating;
+        final Visited modelVisited;
         final List<Tag> attractionTags = new ArrayList<>();
 
         for (JsonAdaptedTag tag : tagged) {
@@ -207,8 +213,19 @@ class JsonAdaptedAttraction {
             modelRating = new Rating(rating);
         }
 
+        // Visited is optional
+        if (visited == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Visited.class.getSimpleName()));
+        } else if (visited.equals("")) {
+            modelVisited = new Visited();
+        } else if (!Visited.isValidVisited(visited)) {
+            throw new IllegalValueException(Visited.MESSAGE_CONSTRAINTS);
+        } else {
+            modelVisited = new Visited(visited);
+        }
+
         final Set<Tag> modelTags = new HashSet<>(attractionTags);
         return new Attraction(modelName, modelPhone, modelEmail, modelAddress, modelDescription,
-                modelLocation, modelOpeningHours, modelPriceRange, modelRating, modelTags);
+                modelLocation, modelOpeningHours, modelPriceRange, modelRating, modelVisited, modelTags);
     }
 }

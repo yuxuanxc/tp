@@ -13,6 +13,7 @@ import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.attraction.PriceRange;
 import seedu.address.model.attraction.Rating;
+import seedu.address.model.attraction.Visited;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -32,6 +33,7 @@ public class AttractionBuilder {
     public static final String DEFAULT_OPENING_HOURS = "1000-1800";
     public static final String DEFAULT_PRICE_RANGE = "MEDIUM";
     public static final String DEFAULT_RATING = "4.5";
+    public static final String DEFAULT_VISITED = "TRUE";
 
     private Name name;
     private Phone phone;
@@ -42,6 +44,7 @@ public class AttractionBuilder {
     private OpeningHours openingHours;
     private PriceRange priceRange;
     private Rating rating;
+    private Visited visited;
     private Set<Tag> tags;
 
     /**
@@ -57,6 +60,7 @@ public class AttractionBuilder {
         openingHours = new OpeningHours(DEFAULT_OPENING_HOURS);
         priceRange = new PriceRange(DEFAULT_PRICE_RANGE);
         rating = new Rating(DEFAULT_RATING);
+        visited = new Visited(DEFAULT_VISITED);
         tags = new HashSet<>();
     }
 
@@ -73,6 +77,7 @@ public class AttractionBuilder {
         openingHours = attractionToCopy.getOpeningHours();
         priceRange = attractionToCopy.getPriceRange();
         rating = attractionToCopy.getRating();
+        visited = attractionToCopy.getVisited();
         tags = new HashSet<>(attractionToCopy.getTags());
     }
 
@@ -204,6 +209,21 @@ public class AttractionBuilder {
         this.rating = new Rating();
         return this;
     }
+    /**
+     * Sets the {@code Visited} of the {@code Attraction} that we are building.
+     */
+    public AttractionBuilder withVisited(String visited) {
+        this.visited = new Visited(visited);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Visited} of the {@code Attraction} that we are building to empty string.
+     */
+    public AttractionBuilder withVisited() {
+        this.visited = new Visited();
+        return this;
+    }
 
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Attraction} that we are building.
@@ -220,7 +240,7 @@ public class AttractionBuilder {
      */
     public Attraction build() {
         return new Attraction(name, phone, email, address, description, location,
-                openingHours, priceRange, rating, tags);
+                openingHours, priceRange, rating, visited, tags);
     }
 
 }
