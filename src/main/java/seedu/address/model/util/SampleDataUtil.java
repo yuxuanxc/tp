@@ -68,7 +68,7 @@ public class SampleDataUtil {
                             + "experience and be inspired by the wonders of nature."),
                     new Location("Singapore, Singapore"),
                     new OpeningHours("0830-1800"), new PriceRange("MEDIUM"),
-                    new Rating("4.6"), new Visited("FALSE"), getTagSet("animals", "tiger")),
+                    new Rating("4.6"), new Visited("FALSE"), getTagSet("animals", "tiger"))
         };
     }
 
