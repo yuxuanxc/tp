@@ -49,7 +49,7 @@ public class CommandTestUtil {
     public static final String VALID_OPENING_HOURS_EIFFEL = "1000-2200";
     public static final String VALID_OPENING_HOURS_MBS = "0000-2359";
     public static final String VALID_PRICE_RANGE_EIFFEL = "HIGH";
-    public static final String VALID_PRICE_RANGE_MBS = "HIGH";
+    public static final String VALID_PRICE_RANGE_MBS = "MEDIUM";
     public static final String VALID_RATING_EIFFEL = "4.8";
     public static final String VALID_RATING_MBS = "4.7";
     public static final String VALID_VISITED_EIFFEL = "FALSE";
