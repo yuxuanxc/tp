@@ -34,7 +34,7 @@ public class AddiCommand extends Command {
 
     /**
      * @param attractionIndex of the attraction in the filtered attraction list to add
-     * @param itineraryIndex of the itinerary in the filtered itinerary list to add to
+     * @param itineraryIndex  of the itinerary in the filtered itinerary list to add to
      */
     public AddiCommand(Index attractionIndex, Index itineraryIndex) {
         this.attractionIndex = attractionIndex;
@@ -56,7 +56,8 @@ public class AddiCommand extends Command {
         }
 
         ItineraryAttraction itineraryAttractionToAdd =
-                new ItineraryAttraction(lastShownAttractionList.get(attractionIndex.getZeroBased()));
+                new ItineraryAttraction(lastShownAttractionList.get(attractionIndex.getZeroBased()),
+                        null, null, -1);
         Itinerary itineraryToAddTo = lastShownItineraryList.get(itineraryIndex.getZeroBased());
 
         if (itineraryToAddTo.contains(itineraryAttractionToAdd)) {
