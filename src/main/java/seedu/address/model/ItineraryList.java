@@ -97,12 +97,12 @@ public class ItineraryList implements ReadOnlyItineraryList {
 
     //// current Itinerary methods
 
-    public void setCurrentItinerary(Itinerary currentItinerary){
+    public void setCurrentItinerary(Itinerary currentItinerary) {
         this.currentItinerary = currentItinerary;
     }
 
     // todo throw error if current itinerary is not set
-    public Itinerary getCurrentItinerary(){
+    public Itinerary getCurrentItinerary() {
         return this.currentItinerary;
     }
 

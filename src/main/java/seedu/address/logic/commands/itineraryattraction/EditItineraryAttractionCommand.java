@@ -1,4 +1,24 @@
-package seedu.address.logic.commands.ItineraryAttractionCommand;
+package seedu.address.logic.commands.itineraryattraction;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OPENING_HOURS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ATTRACTIONS;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -20,25 +40,6 @@ import seedu.address.model.attraction.Rating;
 import seedu.address.model.attraction.Visited;
 import seedu.address.model.tag.Tag;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_OPENING_HOURS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ATTRACTIONS;
 
 /**
  * Edits the details of an existing attraction in the itinerary.
@@ -48,7 +49,8 @@ public class EditItineraryAttractionCommand extends Command {
     public static final String COMMAND_WORD = "edit itinerary attraction";
 
     // todo update the usage message
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the attraction identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the "
+            + "attraction identified "
             + "by the index number used in the displayed attraction list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
@@ -69,21 +71,25 @@ public class EditItineraryAttractionCommand extends Command {
 
     public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in Itinerary.";
+    public static final String MESSAGE_DUPLICATE_ATTRACTION =
+            "This attraction already exists in Itinerary.";
 
     private final Index index;
     private final EditItineraryAttractionDescriptor editItineraryAttractionDescriptor;
 
     /**
-     * @param index of the attraction in the filtered attraction list to edit
+     * @param index                             of the attraction in the filtered attraction list
+     *                                          to edit
      * @param editItineraryAttractionDescriptor details to edit the attraction with
      */
-    public EditItineraryAttractionCommand(Index index, EditItineraryAttractionDescriptor editItineraryAttractionDescriptor) {
+    public EditItineraryAttractionCommand(Index index,
+                                          EditItineraryAttractionDescriptor editItineraryAttractionDescriptor) {
         requireNonNull(index);
         requireNonNull(editItineraryAttractionDescriptor);
 
         this.index = index;
-        this.editItineraryAttractionDescriptor = new EditItineraryAttractionDescriptor(editItineraryAttractionDescriptor);
+        this.editItineraryAttractionDescriptor =
+                new EditItineraryAttractionDescriptor(editItineraryAttractionDescriptor);
     }
 
     @Override
@@ -96,7 +102,8 @@ public class EditItineraryAttractionCommand extends Command {
         }
 
         Attraction attractionToEdit = lastShownList.get(index.getZeroBased());
-        Attraction editedAttraction = createEditedAttraction(attractionToEdit, editItineraryAttractionDescriptor);
+        Attraction editedAttraction = createEditedAttraction(attractionToEdit,
+                editItineraryAttractionDescriptor);
 
         if (!attractionToEdit.isSameAttraction(editedAttraction) && model.hasAttraction(editedAttraction)) {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
@@ -112,23 +119,32 @@ public class EditItineraryAttractionCommand extends Command {
      * edited with {@code editItineraryAttractionDescriptor}.
      */
     private static Attraction createEditedAttraction(Attraction attractionToEdit,
-                                                     EditItineraryAttractionDescriptor editItineraryAttractionDescriptor) {
+                                                     EditItineraryAttractionDescriptor
+                                                             editItineraryAttractionDescriptor) {
         assert attractionToEdit != null;
 
-        Name updatedName = editItineraryAttractionDescriptor.getName().orElse(attractionToEdit.getName());
-        Phone updatedPhone = editItineraryAttractionDescriptor.getPhone().orElse(attractionToEdit.getPhone());
-        Email updatedEmail = editItineraryAttractionDescriptor.getEmail().orElse(attractionToEdit.getEmail());
-        Address updatedAddress = editItineraryAttractionDescriptor.getAddress().orElse(attractionToEdit.getAddress());
+        Name updatedName =
+                editItineraryAttractionDescriptor.getName().orElse(attractionToEdit.getName());
+        Phone updatedPhone =
+                editItineraryAttractionDescriptor.getPhone().orElse(attractionToEdit.getPhone());
+        Email updatedEmail =
+                editItineraryAttractionDescriptor.getEmail().orElse(attractionToEdit.getEmail());
+        Address updatedAddress =
+                editItineraryAttractionDescriptor.getAddress().orElse(attractionToEdit.getAddress());
         Description updatedDescription = editItineraryAttractionDescriptor
                 .getDescription().orElse(attractionToEdit.getDescription());
-        Location updatedLocation = editItineraryAttractionDescriptor.getLocation().orElse(attractionToEdit.getLocation());
+        Location updatedLocation =
+                editItineraryAttractionDescriptor.getLocation().orElse(attractionToEdit.getLocation());
         OpeningHours updatedOpeningHours = editItineraryAttractionDescriptor
                 .getOpeningHours().orElse(attractionToEdit.getOpeningHours());
         PriceRange updatedPriceRange = editItineraryAttractionDescriptor
                 .getPriceRange().orElse(attractionToEdit.getPriceRange());
-        Rating updatedRating = editItineraryAttractionDescriptor.getRating().orElse(attractionToEdit.getRating());
-        Visited updatedVisited = editItineraryAttractionDescriptor.getVisited().orElse(attractionToEdit.getVisited());
-        Set<Tag> updatedTags = editItineraryAttractionDescriptor.getTags().orElse(attractionToEdit.getTags());
+        Rating updatedRating =
+                editItineraryAttractionDescriptor.getRating().orElse(attractionToEdit.getRating());
+        Visited updatedVisited =
+                editItineraryAttractionDescriptor.getVisited().orElse(attractionToEdit.getVisited());
+        Set<Tag> updatedTags =
+                editItineraryAttractionDescriptor.getTags().orElse(attractionToEdit.getTags());
 
         return new Attraction(updatedName, updatedPhone, updatedEmail, updatedAddress,
                 updatedDescription, updatedLocation, updatedOpeningHours, updatedPriceRange,
@@ -170,7 +186,8 @@ public class EditItineraryAttractionCommand extends Command {
         private Visited visited;
         private Set<Tag> tags;
 
-        public EditItineraryAttractionDescriptor() {}
+        public EditItineraryAttractionDescriptor() {
+        }
 
         /**
          * Copy constructor.
@@ -292,7 +309,8 @@ public class EditItineraryAttractionCommand extends Command {
          * Returns {@code Optional#empty()} if {@code tags} is null.
          */
         public Optional<Set<Tag>> getTags() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags))
+                    : Optional.empty();
         }
 
         @Override

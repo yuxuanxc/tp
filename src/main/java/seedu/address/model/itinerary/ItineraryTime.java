@@ -20,6 +20,13 @@ public class ItineraryTime {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Checks if the given time is between the start and end time of the itinerary attraction.
+     *
+     * @param startTime time to visit the attraction
+     * @param endTime time to leave the attraction
+     * @return true if the
+     */
     public boolean isWithInTime(ItineraryTime startTime, ItineraryTime endTime) {
         // todo compare if the time is within the start/end time
         return false;

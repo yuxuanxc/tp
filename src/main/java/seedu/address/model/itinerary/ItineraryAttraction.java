@@ -22,6 +22,14 @@ public class ItineraryAttraction {
     // todo edit attraction from itinerary
     // todo delete attraction from itinerary
 
+    /**
+     * Constructs a Itinerary attraction.
+     *
+     * @param attraction attraction to visit.
+     * @param startTime time to visit the attraction.
+     * @param endTime time to leave the attraction.
+     * @param dayVisiting day in itinerary to visit the attraction.
+     */
     public ItineraryAttraction(Attraction attraction, ItineraryTime startTime, ItineraryTime endTime, int dayVisiting) {
         this.attraction = attraction;
         this.startTime = startTime;
@@ -29,19 +37,34 @@ public class ItineraryAttraction {
         this.dayVisiting = dayVisiting;
     }
 
+    /**
+     * Returns name of the attraction in this itinerary attraction.
+     */
     public Name getName() {
         return attraction.getName();
     }
 
+
+    /**
+     * @return the attraction stored in this class.
+     */
     public Attraction getAttraction() {
         return attraction;
     }
 
+    /**
+     * Returns true if both ItineraryAttraction has the same start and end time.
+     *
+     * @param otherItineraryAttraction the ItineraryAttraction to compare with.
+     */
     public boolean isSameTiming(ItineraryAttraction otherItineraryAttraction) {
         return this.startTime.equals(otherItineraryAttraction.startTime)
                 && this.endTime.equals(otherItineraryAttraction.endTime);
     }
 
+    /**
+     * Returns true if both ItineraryAttraction has the same visiting day.
+     */
     public boolean isSameVisitingDay(ItineraryAttraction otherItineraryAttraction) {
         return dayVisiting == otherItineraryAttraction.dayVisiting;
     }
@@ -49,17 +72,13 @@ public class ItineraryAttraction {
     /**
      * Returns true if both itinerary attractions are of the same name, have the same visiting timing.
      * This defines a weaker notion of equality between two itinerary attractions.
+     *
+     * @return otherItineraryAttraction the itineraryAttraction to compare with.
      */
     public boolean isSameItineraryAttraction(ItineraryAttraction otherItineraryAttraction) {
         if (otherItineraryAttraction == this) {
             return true;
         }
-        // else if (otherItineraryAttraction instanceof ItineraryAttraction) {
-        //     ItineraryAttraction itineraryAttraction = otherItineraryAttraction;
-        //     return itineraryAttraction.getAttraction().isSameAttraction(attraction);
-        // } else {
-        //     return false;
-        // }
 
         return attraction.isSameAttraction(otherItineraryAttraction.getAttraction())
                 && isSameTiming(otherItineraryAttraction);
