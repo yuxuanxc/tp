@@ -46,10 +46,31 @@ public class ItineraryAttraction {
 
 
     /**
-     * @return the attraction stored in this class.
+     * Returns the attraction in this itinerary attraction.
      */
     public Attraction getAttraction() {
         return attraction;
+    }
+
+    /**
+     * Returns the start time of this itinerary attraction.
+     */
+    public ItineraryTime getStartTime() {
+        return startTime;
+    }
+
+    /**
+     * Returns the end time of this itinerary attraction.
+     */
+    public ItineraryTime getEndTime() {
+        return endTime;
+    }
+
+    /**
+     * Returns the day visiting this itinerary attraction.
+     */
+    public int getDayVisiting() {
+        return dayVisiting;
     }
 
     /**

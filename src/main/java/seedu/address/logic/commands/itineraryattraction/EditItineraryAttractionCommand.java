@@ -1,24 +1,9 @@
 package seedu.address.logic.commands.itineraryattraction;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_OPENING_HOURS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ATTRACTIONS;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -27,19 +12,8 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.attraction.Address;
-import seedu.address.model.attraction.Attraction;
-import seedu.address.model.attraction.Description;
-import seedu.address.model.attraction.Email;
-import seedu.address.model.attraction.Location;
-import seedu.address.model.attraction.Name;
-import seedu.address.model.attraction.OpeningHours;
-import seedu.address.model.attraction.Phone;
-import seedu.address.model.attraction.PriceRange;
-import seedu.address.model.attraction.Rating;
-import seedu.address.model.attraction.Visited;
-import seedu.address.model.tag.Tag;
-
+import seedu.address.model.itinerary.ItineraryAttraction;
+import seedu.address.model.itinerary.ItineraryTime;
 
 /**
  * Edits the details of an existing attraction in the itinerary.
@@ -49,30 +23,10 @@ public class EditItineraryAttractionCommand extends Command {
     public static final String COMMAND_WORD = "edit itinerary attraction";
 
     // todo update the usage message
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the "
-            + "attraction identified "
-            + "by the index number used in the displayed attraction list. "
-            + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_PHONE + "PHONE] "
-            + "[" + PREFIX_EMAIL + "EMAIL] "
-            + "[" + PREFIX_ADDRESS + "ADDRESS] "
-            + "[" + PREFIX_LOCATION + "LOCATION] "
-            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
-            + "[" + PREFIX_OPENING_HOURS + "OPENING HOURS] "
-            + "[" + PREFIX_PRICE_RANGE + "PRICE RANGE] "
-            + "[" + PREFIX_RATING + "RATING] "
-            + "[" + PREFIX_VISITED + "VISITED] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
-            + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_PHONE + "62693411 "
-            + PREFIX_EMAIL + "sgzoo@example.com";
-
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": FIXME";
     public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_ATTRACTION =
-            "This attraction already exists in Itinerary.";
+    public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in Itinerary.";
 
     private final Index index;
     private final EditItineraryAttractionDescriptor editItineraryAttractionDescriptor;
@@ -95,60 +49,40 @@ public class EditItineraryAttractionCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Attraction> lastShownList = model.getFilteredAttractionList();
+
+        List<ItineraryAttraction> lastShownList = model.getCurrentItinerary().getItineraryAttractions();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX);
         }
 
-        Attraction attractionToEdit = lastShownList.get(index.getZeroBased());
-        Attraction editedAttraction = createEditedAttraction(attractionToEdit,
+        ItineraryAttraction itineraryAttractionToEdit = lastShownList.get(index.getZeroBased());
+        ItineraryAttraction editedItineraryAttraction = createEditedItineraryAttraction(itineraryAttractionToEdit,
                 editItineraryAttractionDescriptor);
 
-        if (!attractionToEdit.isSameAttraction(editedAttraction) && model.hasAttraction(editedAttraction)) {
+        if (!itineraryAttractionToEdit.isSameItineraryAttraction(editedItineraryAttraction)
+                && model.getCurrentItinerary().contains(editedItineraryAttraction)) {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
         }
 
-        model.setAttraction(attractionToEdit, editedAttraction);
-        model.updateFilteredAttractionList(PREDICATE_SHOW_ALL_ATTRACTIONS);
-        return new CommandResult(String.format(MESSAGE_EDIT_ATTRACTION_SUCCESS, editedAttraction));
+        model.getCurrentItinerary().setItineraryAttraction(itineraryAttractionToEdit, editedItineraryAttraction);
+        return new CommandResult(String.format(MESSAGE_EDIT_ATTRACTION_SUCCESS, editedItineraryAttraction));
     }
 
     /**
      * Creates and returns a {@code Attraction} with the details of {@code attractionToEdit}
      * edited with {@code editItineraryAttractionDescriptor}.
      */
-    private static Attraction createEditedAttraction(Attraction attractionToEdit,
-                                                     EditItineraryAttractionDescriptor
-                                                             editItineraryAttractionDescriptor) {
-        assert attractionToEdit != null;
+    private static ItineraryAttraction createEditedItineraryAttraction(ItineraryAttraction itineraryAttractionToEdit,
+                                                                       EditItineraryAttractionDescriptor
+                                                                               editItiAttrDesc) {
+        assert itineraryAttractionToEdit != null;
 
-        Name updatedName =
-                editItineraryAttractionDescriptor.getName().orElse(attractionToEdit.getName());
-        Phone updatedPhone =
-                editItineraryAttractionDescriptor.getPhone().orElse(attractionToEdit.getPhone());
-        Email updatedEmail =
-                editItineraryAttractionDescriptor.getEmail().orElse(attractionToEdit.getEmail());
-        Address updatedAddress =
-                editItineraryAttractionDescriptor.getAddress().orElse(attractionToEdit.getAddress());
-        Description updatedDescription = editItineraryAttractionDescriptor
-                .getDescription().orElse(attractionToEdit.getDescription());
-        Location updatedLocation =
-                editItineraryAttractionDescriptor.getLocation().orElse(attractionToEdit.getLocation());
-        OpeningHours updatedOpeningHours = editItineraryAttractionDescriptor
-                .getOpeningHours().orElse(attractionToEdit.getOpeningHours());
-        PriceRange updatedPriceRange = editItineraryAttractionDescriptor
-                .getPriceRange().orElse(attractionToEdit.getPriceRange());
-        Rating updatedRating =
-                editItineraryAttractionDescriptor.getRating().orElse(attractionToEdit.getRating());
-        Visited updatedVisited =
-                editItineraryAttractionDescriptor.getVisited().orElse(attractionToEdit.getVisited());
-        Set<Tag> updatedTags =
-                editItineraryAttractionDescriptor.getTags().orElse(attractionToEdit.getTags());
+        ItineraryTime startTime = editItiAttrDesc.getStartTime().orElse(itineraryAttractionToEdit.getStartTime());
+        ItineraryTime endTime = editItiAttrDesc.getEndTime().orElse(itineraryAttractionToEdit.getEndTime());
+        int dayVisiting = editItiAttrDesc.getDayVisiting().orElse(itineraryAttractionToEdit.getDayVisiting());
 
-        return new Attraction(updatedName, updatedPhone, updatedEmail, updatedAddress,
-                updatedDescription, updatedLocation, updatedOpeningHours, updatedPriceRange,
-                updatedRating, updatedVisited, updatedTags);
+        return new ItineraryAttraction(itineraryAttractionToEdit.getAttraction(), startTime, endTime, dayVisiting);
     }
 
     @Override
@@ -174,17 +108,9 @@ public class EditItineraryAttractionCommand extends Command {
      * corresponding field value of the attraction.
      */
     public static class EditItineraryAttractionDescriptor {
-        private Name name;
-        private Phone phone;
-        private Email email;
-        private Address address;
-        private Description description;
-        private Location location;
-        private OpeningHours openingHours;
-        private PriceRange priceRange;
-        private Rating rating;
-        private Visited visited;
-        private Set<Tag> tags;
+        private ItineraryTime startTime;
+        private ItineraryTime endTime;
+        private int dayVisiting;
 
         public EditItineraryAttractionDescriptor() {
         }
@@ -194,124 +120,42 @@ public class EditItineraryAttractionCommand extends Command {
          * A defensive copy of {@code tags} is used internally.
          */
         public EditItineraryAttractionDescriptor(EditItineraryAttractionDescriptor toCopy) {
-            setName(toCopy.name);
-            setPhone(toCopy.phone);
-            setEmail(toCopy.email);
-            setAddress(toCopy.address);
-            setDescription(toCopy.description);
-            setLocation(toCopy.location);
-            setOpeningHours(toCopy.openingHours);
-            setPriceRange(toCopy.priceRange);
-            setRating(toCopy.rating);
-            setVisited(toCopy.visited);
-            setTags(toCopy.tags);
+            setStartTime(toCopy.startTime);
+            setEndTime(toCopy.endTime);
+            setDayVisiting(toCopy.dayVisiting);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, description,
-                    location, openingHours, priceRange, rating, visited, tags);
+            return CollectionUtil.isAnyNonNull(startTime, endTime, dayVisiting);
         }
 
-        public void setName(Name name) {
-            this.name = name;
+        public void setStartTime(ItineraryTime startTime) {
+            this.startTime = startTime;
         }
 
-        public Optional<Name> getName() {
-            return Optional.ofNullable(name);
+        public Optional<ItineraryTime> getStartTime() {
+            return Optional.ofNullable(startTime);
         }
 
-        public void setPhone(Phone phone) {
-            this.phone = phone;
+        public void setEndTime(ItineraryTime endTime) {
+            this.endTime = endTime;
         }
 
-        public Optional<Phone> getPhone() {
-            return Optional.ofNullable(phone);
+        public Optional<ItineraryTime> getEndTime() {
+            return Optional.ofNullable(endTime);
         }
 
-        public void setEmail(Email email) {
-            this.email = email;
+        public void setDayVisiting(int dayVisiting) {
+            this.dayVisiting = dayVisiting;
         }
 
-        public Optional<Email> getEmail() {
-            return Optional.ofNullable(email);
+        public Optional<Integer> getDayVisiting() {
+            return Optional.ofNullable(dayVisiting);
         }
 
-        public void setAddress(Address address) {
-            this.address = address;
-        }
-
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
-        }
-
-        public void setDescription(Description description) {
-            this.description = description;
-        }
-
-        public Optional<Description> getDescription() {
-            return Optional.ofNullable(description);
-        }
-
-        public void setLocation(Location location) {
-            this.location = location;
-        }
-
-        public Optional<Location> getLocation() {
-            return Optional.ofNullable(location);
-        }
-
-        public void setOpeningHours(OpeningHours openingHours) {
-            this.openingHours = openingHours;
-        }
-
-        public Optional<OpeningHours> getOpeningHours() {
-            return Optional.ofNullable(openingHours);
-        }
-
-        public void setPriceRange(PriceRange priceRange) {
-            this.priceRange = priceRange;
-        }
-
-        public Optional<PriceRange> getPriceRange() {
-            return Optional.ofNullable(priceRange);
-        }
-
-        public void setRating(Rating rating) {
-            this.rating = rating;
-        }
-
-        public Optional<Rating> getRating() {
-            return Optional.ofNullable(rating);
-        }
-
-        public void setVisited(Visited visited) {
-            this.visited = visited;
-        }
-
-        public Optional<Visited> getVisited() {
-            return Optional.ofNullable(visited);
-        }
-
-        /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public void setTags(Set<Tag> tags) {
-            this.tags = (tags != null) ? new HashSet<>(tags) : null;
-        }
-
-        /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
-         * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
-         */
-        public Optional<Set<Tag>> getTags() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags))
-                    : Optional.empty();
-        }
 
         @Override
         public boolean equals(Object other) {
@@ -328,17 +172,10 @@ public class EditItineraryAttractionCommand extends Command {
             // state check
             EditItineraryAttractionDescriptor e = (EditItineraryAttractionDescriptor) other;
 
-            return getName().equals(e.getName())
-                    && getPhone().equals(e.getPhone())
-                    && getEmail().equals(e.getEmail())
-                    && getAddress().equals(e.getAddress())
-                    && getDescription().equals(e.getDescription())
-                    && getLocation().equals(e.getLocation())
-                    && getOpeningHours().equals(e.getOpeningHours())
-                    && getPriceRange().equals(e.getPriceRange())
-                    && getRating().equals(e.getRating())
-                    && getVisited().equals(e.getVisited())
-                    && getTags().equals(e.getTags());
+            return getStartTime().equals(e.getStartTime())
+                    && getEndTime().equals(e.getEndTime())
+                    && getDayVisiting().equals(e.getDayVisiting());
+
         }
     }
 }

@@ -1,5 +1,17 @@
 package seedu.address.logic.parser.itineraryattraction;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRACTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Optional;
+import java.util.Set;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand.EditItineraryAttractionDescriptor;
@@ -10,17 +22,6 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRACTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
 /**
  * Parses input arguments and creates a new EditItineraryAttractionCommand object
@@ -47,27 +48,25 @@ public class EditItineraryAttractionCommandParser implements Parser<EditItinerar
                     EditItineraryAttractionCommand.MESSAGE_USAGE), pe);
         }
 
-        EditItineraryAttractionDescriptor editItineraryAttractionDescriptor = new EditItineraryAttractionDescriptor();
+        EditItineraryAttractionDescriptor editItiAttrDesc = new EditItineraryAttractionDescriptor();
 
-        if (argMultimap.getValue(PREFIX_ATTRACTION).isPresent()) {
-            editItineraryAttractionDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_ATTRACTION).get()));
-        }
         if (argMultimap.getValue(PREFIX_START_TIME).isPresent()) {
-            editItineraryAttractionDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_START_TIME).get()));
+            editItiAttrDesc.setStartTime(ParserUtil.parseItineraryTime(argMultimap.getValue(PREFIX_START_TIME).get()));
         }
         if (argMultimap.getValue(PREFIX_END_TIME).isPresent()) {
-            editItineraryAttractionDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_END_TIME).get()));
+            editItiAttrDesc.setEndTime(ParserUtil.parseItineraryTime(argMultimap.getValue(PREFIX_END_TIME).get()));
         }
         if (argMultimap.getValue(PREFIX_DAY_VISITING).isPresent()) {
-            editItineraryAttractionDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_DAY_VISITING).get()));
+            editItiAttrDesc.setDayVisiting(ParserUtil.parseIndex(argMultimap.getValue(PREFIX_DAY_VISITING)
+                    .get()).getZeroBased());
         }
 
 
-        if (!editItineraryAttractionDescriptor.isAnyFieldEdited()) {
+        if (!editItiAttrDesc.isAnyFieldEdited()) {
             throw new ParseException(EditItineraryAttractionCommand.MESSAGE_NOT_EDITED);
         }
 
-        return new EditItineraryAttractionCommand(index, editItineraryAttractionDescriptor);
+        return new EditItineraryAttractionCommand(index, editItiAttrDesc);
     }
 
     /**
