@@ -170,7 +170,7 @@ public class ParserUtil {
     public static Rating parseRating(String rating) throws ParseException {
         requireNonNull(rating);
         String trimmedRating = rating.trim();
-        if (!Address.isValidAddress(trimmedRating)) {
+        if (!Rating.isValidRating(trimmedRating)) {
             throw new ParseException(Rating.MESSAGE_CONSTRAINTS);
         }
         return new Rating(trimmedRating);

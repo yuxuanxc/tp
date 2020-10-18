@@ -100,10 +100,34 @@ public class AddCommandParserTest {
                 + OPENING_HOURS_DESC_MBS + PRICE_RANGE_DESC_MBS + RATING_DESC_MBS
                 + VISITED_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
 
+        // multiple descriptions - last description accepted
+        assertParseSuccess(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS
+                + ADDRESS_DESC_MBS + DESCRIPTION_DESC_EIFFEL + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS
+                + OPENING_HOURS_DESC_MBS + PRICE_RANGE_DESC_MBS + RATING_DESC_MBS
+                + VISITED_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
+
         // multiple locations - last location accepted
         assertParseSuccess(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
                 + DESCRIPTION_DESC_MBS + LOCATION_DESC_EIFFEL + LOCATION_DESC_MBS
                 + OPENING_HOURS_DESC_MBS + PRICE_RANGE_DESC_MBS + RATING_DESC_MBS
+                + VISITED_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
+
+        // multiple opening hours - last opening hours accepted
+        assertParseSuccess(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS + ADDRESS_DESC_MBS
+                + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS + OPENING_HOURS_DESC_EIFFEL
+                + OPENING_HOURS_DESC_MBS + PRICE_RANGE_DESC_MBS + RATING_DESC_MBS
+                + VISITED_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
+
+        // multiple price ranges - last price range accepted
+        assertParseSuccess(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS
+                + ADDRESS_DESC_MBS + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS
+                + OPENING_HOURS_DESC_MBS + PRICE_RANGE_DESC_EIFFEL + PRICE_RANGE_DESC_MBS + RATING_DESC_MBS
+                + VISITED_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
+
+        // multiple ratings - last rating accepted
+        assertParseSuccess(parser, NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS
+                + ADDRESS_DESC_MBS + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS
+                + OPENING_HOURS_DESC_MBS + PRICE_RANGE_DESC_MBS + RATING_DESC_EIFFEL + RATING_DESC_MBS
                 + VISITED_DESC_MBS + TAG_DESC_ACTIVITY, new AddCommand(expectedAttraction));
 
         // multiple tags - all accepted
@@ -165,7 +189,7 @@ public class AddCommandParserTest {
                         + PRICE_RANGE_DESC_EIFFEL + RATING_DESC_EIFFEL + TAG_DESC_ACTIVITY,
                 new AddCommand(expectedAttractionNoOpeningHours));
 
-        // No Price Range given
+        // No price range given
         Attraction expectedAttractionNoPriceRange = new AttractionBuilder(EIFFEL_TOWER).withPriceRange().build();
         assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
                         + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL
@@ -173,7 +197,7 @@ public class AddCommandParserTest {
                         + RATING_DESC_EIFFEL + TAG_DESC_ACTIVITY + ADDRESS_DESC_EIFFEL,
                 new AddCommand(expectedAttractionNoPriceRange));
 
-        // No Rating given
+        // No rating given
         Attraction expectedAttractionNoRating = new AttractionBuilder(EIFFEL_TOWER).withRating().build();
         assertParseSuccess(parser, NAME_DESC_EIFFEL + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL
                         + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL
@@ -344,11 +368,13 @@ public class AddCommandParserTest {
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + PHONE_DESC_MBS + EMAIL_DESC_MBS + INVALID_ADDRESS_DESC
-                + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS, Name.MESSAGE_CONSTRAINTS);
+                + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS + OPENING_HOURS_DESC_MBS
+                + PRICE_RANGE_DESC_MBS + RATING_DESC_MBS, Name.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_MBS + PHONE_DESC_MBS + EMAIL_DESC_MBS
-                        + ADDRESS_DESC_MBS + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS
+                        + ADDRESS_DESC_MBS + DESCRIPTION_DESC_MBS + LOCATION_DESC_MBS + OPENING_HOURS_DESC_MBS
+                        + PRICE_RANGE_DESC_MBS + RATING_DESC_MBS
                         + TAG_DESC_SIGHTSEEING + TAG_DESC_ACTIVITY,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
     }
