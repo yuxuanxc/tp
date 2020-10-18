@@ -15,6 +15,7 @@ import seedu.address.model.itinerary.UniqueItineraryList;
 public class ItineraryList implements ReadOnlyItineraryList {
 
     private final UniqueItineraryList itineraries;
+    private Itinerary currentItinerary;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -92,6 +93,17 @@ public class ItineraryList implements ReadOnlyItineraryList {
      */
     public void removeItinerary(Itinerary key) {
         itineraries.remove(key);
+    }
+
+    //// current Itinerary methods
+
+    public void setCurrentItinerary(Itinerary currentItinerary){
+        this.currentItinerary = currentItinerary;
+    }
+
+    // todo throw error if current itinerary is not set
+    public Itinerary getCurrentItinerary(){
+        return this.currentItinerary;
     }
 
     //// util methods

@@ -144,4 +144,9 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredItineraryList(Predicate<Itinerary> predicate);
+
+    /**
+     * Returns the current itinerary.
+     */
+    Itinerary getCurrentItinerary();
 }

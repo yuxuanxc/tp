@@ -22,18 +22,6 @@ public class ItineraryAttraction {
     // todo edit attraction from itinerary
     // todo delete attraction from itinerary
 
-
-    //    // todo yeh put this somewhere
-    //    private static Itinerary SelectedItinerary = null;
-    //
-    //    public static void setSelectedItinerary (Itinerary selectedItinerary){
-    //        ItineraryList.SelectedItinerary = selectedItinerary;
-    //    }
-    //
-    //    public static Itinerary getSelectedItinerary(){
-    //        return ItineraryList.SelectedItinerary;
-    //    }
-
     public ItineraryAttraction(Attraction attraction, ItineraryTime startTime, ItineraryTime endTime, int dayVisiting) {
         this.attraction = attraction;
         this.startTime = startTime;
