@@ -29,7 +29,7 @@ import seedu.address.testutil.AttractionBuilder;
 import seedu.address.testutil.AttractionUtil;
 import seedu.address.testutil.EditAttractionDescriptorBuilder;
 
-public class AttractionListParserTest {
+public class TrackPadParserTest {
 
     private final TrackPadParser parser = new TrackPadParser();
 

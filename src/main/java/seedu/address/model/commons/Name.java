@@ -1,10 +1,10 @@
-package seedu.address.model.attraction;
+package seedu.address.model.commons;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Attraction's name in TrackPad.
+ * Represents an item's name in TrackPad.
  * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
  */
 public class Name {
