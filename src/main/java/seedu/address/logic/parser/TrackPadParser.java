@@ -21,6 +21,8 @@ import seedu.address.logic.commands.itineraryattraction.DeleteItineraryAttractio
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.itineraryattraction.AddItineraryAttractionCommandParser;
+import seedu.address.logic.parser.itineraryattraction.DeleteItineraryAttractionCommandParser;
+import seedu.address.logic.parser.itineraryattraction.EditItineraryAttractionCommandParser;
 
 /**
  * Parses user input.
@@ -82,8 +84,11 @@ public class TrackPadParser {
         case AddItineraryAttractionCommand.COMMAND_WORD:
             return new AddItineraryAttractionCommandParser().parse(arguments);
 
-        case DeleteItineraryAttractionCommand.COMMAND_WORD:
         case EditItineraryAttractionCommand.COMMAND_WORD:
+            return new EditItineraryAttractionCommandParser().parse(arguments);
+
+        case DeleteItineraryAttractionCommand.COMMAND_WORD:
+            return new DeleteItineraryAttractionCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
