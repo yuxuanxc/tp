@@ -49,7 +49,8 @@ class JsonAdaptedItineraryAttraction {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Attraction.class.getSimpleName()));
         } else {
-            return new ItineraryAttraction(attraction.toModelType());
+            // todo make these not null next time
+            return new ItineraryAttraction(attraction.toModelType(), null, null, -1);
         }
     }
 }
