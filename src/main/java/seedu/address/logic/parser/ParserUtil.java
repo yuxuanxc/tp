@@ -21,12 +21,9 @@ import seedu.address.model.attraction.Phone;
 import seedu.address.model.attraction.PriceRange;
 import seedu.address.model.attraction.Rating;
 import seedu.address.model.attraction.Visited;
-<<<<<<< HEAD
 import seedu.address.model.itinerary.ItineraryTime;
-=======
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
->>>>>>> 705639f0251b3128ab0ee4b164195b5386726cb5
 import seedu.address.model.tag.Tag;
 
 /**
