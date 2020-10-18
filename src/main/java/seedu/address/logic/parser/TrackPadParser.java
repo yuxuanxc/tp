@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.AddItineraryCommand;
-import seedu.address.logic.commands.AddiCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
@@ -17,17 +16,27 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.itineraryattraction.AddItineraryAttractionCommand;
+import seedu.address.logic.commands.itineraryattraction.DeleteItineraryAttractionCommand;
+import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.itineraryattraction.AddItineraryAttractionCommandParser;
+import seedu.address.logic.parser.itineraryattraction.DeleteItineraryAttractionCommandParser;
+import seedu.address.logic.parser.itineraryattraction.EditItineraryAttractionCommandParser;
 
 /**
  * Parses user input.
  */
 public class TrackPadParser {
 
-    /**
+    /*
      * Used for initial separation of command word and args.
+     * (?<commandWord>\S+) (?<arguments> splits it into 2 groups, commandWord and arguments
+     * (?<commandWord>\\S+) a grouping, will take 1 or none group that has no whitespace
+     * (?<arguments>.*)a second grouping, will take any char after
      */
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
+    // todo yeh change the grouping after the itinerary commands has be written to support 3 words command
 
     /**
      * Parses user input into command for execution.
@@ -41,7 +50,6 @@ public class TrackPadParser {
         if (!matcher.matches()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
-
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
@@ -73,8 +81,14 @@ public class TrackPadParser {
         case AddItineraryCommand.COMMAND_WORD:
             return new AddItineraryCommandParser().parse(arguments);
 
-        case AddiCommand.COMMAND_WORD:
-            return new AddiCommandParser().parse(arguments);
+        case AddItineraryAttractionCommand.COMMAND_WORD:
+            return new AddItineraryAttractionCommandParser().parse(arguments);
+
+        case EditItineraryAttractionCommand.COMMAND_WORD:
+            return new EditItineraryAttractionCommandParser().parse(arguments);
+
+        case DeleteItineraryAttractionCommand.COMMAND_WORD:
+            return new DeleteItineraryAttractionCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

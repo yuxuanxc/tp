@@ -48,7 +48,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                         PREFIX_DESCRIPTION, PREFIX_LOCATION, PREFIX_OPENING_HOURS,
                         PREFIX_PRICE_RANGE, PREFIX_RATING, PREFIX_VISITED, PREFIX_TAG);
 
-        // No checks for PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS
+        // Only check for name and location of the attraction, the rest are optional.
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_LOCATION)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));

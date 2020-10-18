@@ -182,6 +182,11 @@ public class ModelManager implements Model {
         itineraryList.setItinerary(target, editedItinerary);
     }
 
+    @Override
+    public Itinerary getCurrentItinerary() {
+        return itineraryList.getCurrentItinerary();
+    }
+
     //=========== Filtered Itinerary List Accessors ==============================================================
 
     /**

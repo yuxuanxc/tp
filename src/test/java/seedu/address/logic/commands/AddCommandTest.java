@@ -200,6 +200,11 @@ public class AddCommandTest {
         public void updateFilteredItineraryList(Predicate<Itinerary> predicate) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public Itinerary getCurrentItinerary() {
+            throw new AssertionError("This methods should not be called.");
+        }
     }
 
     /**

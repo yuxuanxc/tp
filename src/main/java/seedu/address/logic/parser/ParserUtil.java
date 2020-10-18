@@ -21,6 +21,7 @@ import seedu.address.model.attraction.Phone;
 import seedu.address.model.attraction.PriceRange;
 import seedu.address.model.attraction.Rating;
 import seedu.address.model.attraction.Visited;
+import seedu.address.model.itinerary.ItineraryTime;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
 import seedu.address.model.tag.Tag;
@@ -35,6 +36,7 @@ public class ParserUtil {
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     *
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
@@ -222,6 +224,25 @@ public class ParserUtil {
         return tagSet;
     }
 
+
+    // Parser for ItineraryAttraction--------------------------------------------------------------------
+
+    /**
+     * Parses a {@code String name} into a {@code Name}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static ItineraryTime parseItineraryTime(String time) throws ParseException {
+        requireNonNull(time);
+        String trimmedTime = time.trim();
+
+        if (!ItineraryTime.isValidItineraryTime(trimmedTime)) {
+            throw new ParseException(Visited.MESSAGE_CONSTRAINTS);
+        }
+        return new ItineraryTime(trimmedTime);
+
+    }
     /**
      * Parses {@code String date} into a {@code LocalDate}.
      */
