@@ -2,6 +2,10 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -185,7 +189,7 @@ public class ParserUtil {
     public static Visited parseVisited(String visited) throws ParseException {
         requireNonNull(visited);
         String trimmedVisited = visited.trim();
-        if (!Address.isValidAddress(trimmedVisited)) {
+        if (!Visited.isValidVisited(trimmedVisited)) {
             throw new ParseException(Visited.MESSAGE_CONSTRAINTS);
         }
         return new Visited(trimmedVisited);
@@ -216,5 +220,22 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses {@code String date} into a {@code LocalDate}.
+     */
+    public static LocalDate parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        try {
+            DateTimeFormatter dTF = new DateTimeFormatterBuilder()
+                    .parseCaseInsensitive()
+                    .appendPattern("dd-MM-yyyy")
+                    .toFormatter();
+            return LocalDate.parse(trimmedDate, dTF);
+        } catch (DateTimeParseException e) {
+            throw new ParseException("Date should be in the format dd-mm-yyyy");
+        }
     }
 }

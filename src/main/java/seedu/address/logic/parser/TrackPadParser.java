@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddItineraryCommand;
 import seedu.address.logic.commands.AddiCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
@@ -16,7 +17,6 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.commands.NewiCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -70,8 +70,8 @@ public class TrackPadParser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
-        case NewiCommand.COMMAND_WORD:
-            return new NewiCommandParser().parse(arguments);
+        case AddItineraryCommand.COMMAND_WORD:
+            return new AddItineraryCommandParser().parse(arguments);
 
         case AddiCommand.COMMAND_WORD:
             return new AddiCommandParser().parse(arguments);

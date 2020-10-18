@@ -171,8 +171,7 @@ class JsonAdaptedAttraction {
         if (location == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Location.class.getSimpleName()));
-        }
-        if (!Location.isValidLocation(location)) {
+        } else if (!Location.isValidLocation(location)) {
             throw new IllegalValueException(Location.MESSAGE_CONSTRAINTS);
         } else {
             modelLocation = new Location(location);
