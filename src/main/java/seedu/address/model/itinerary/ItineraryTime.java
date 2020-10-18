@@ -7,6 +7,7 @@ public class ItineraryTime {
     private static final String TIME_REGEX = "([01][0-9]|2[0-3])[0-5][0-9]";
     public static final String VALIDATION_REGEX = TIME_REGEX + "-" + TIME_REGEX;
 
+    // todo may need to change this to Time class instead of string to compare time.
     private final String time;
 
     public ItineraryTime(String time) {
