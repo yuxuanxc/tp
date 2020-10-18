@@ -6,6 +6,9 @@ package seedu.address.logic.parser;
 public class CliSyntax {
 
     /* Prefix definitions */
+    // todo make the syntax look nicer and more coherent
+
+    // Prefix for Attraction
     public static final Prefix PREFIX_NAME = new Prefix("n/");
     public static final Prefix PREFIX_PHONE = new Prefix("p/");
     public static final Prefix PREFIX_EMAIL = new Prefix("e/");
@@ -17,5 +20,14 @@ public class CliSyntax {
     public static final Prefix PREFIX_RATING = new Prefix("r/");
     public static final Prefix PREFIX_VISITED = new Prefix("v/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
+
+    // Prefix for ItineraryAttraction related
+    public static final Prefix PREFIX_ATTRACTION = new Prefix("attr/");
+    public static final Prefix PREFIX_START_TIME = new Prefix("st/");
+    public static final Prefix PREFIX_END_TIME = new Prefix("et/");
+    public static final Prefix PREFIX_DAY_VISITING = new Prefix("day/");
+
+    // Prefix for Itinerary related
+
 
 }
