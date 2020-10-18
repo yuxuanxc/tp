@@ -2,6 +2,7 @@ package seedu.address.model.itinerary;
 
 import java.util.Objects;
 
+import seedu.address.model.ItineraryList;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.Name;
 
@@ -11,6 +12,24 @@ import seedu.address.model.attraction.Name;
 public class ItineraryAttraction {
     private Attraction attraction;
     //todo add start time, end time, budget etc. And also maybe extend from Attraction directly.
+    // todo add a check to make sure the start time and end time don't clash with existing itinerary attractions.
+    // todo put new commands into ItineraryAttractionCommands
+    // todo put command parser into ItineraryAttractionCommandParser
+    // todo add attraction to itinerary
+    // todo edit attraction from itinerary
+    // todo delete attraction from itineary
+
+
+    //    // todo yeh put this somewhere
+    //    private static Itinerary SelectedItinerary = null;
+    //
+    //    public static void setSelectedItinerary (Itinerary selectedItinerary){
+    //        ItineraryList.SelectedItinerary = selectedItinerary;
+    //    }
+    //
+    //    public static Itinerary getSelectedItinerary(){
+    //        return ItineraryList.SelectedItinerary;
+    //    }
 
     public ItineraryAttraction(Attraction attraction) {
         this.attraction = attraction;
