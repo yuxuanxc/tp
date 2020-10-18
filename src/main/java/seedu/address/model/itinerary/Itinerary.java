@@ -38,7 +38,14 @@ public class Itinerary {
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.days.addAll(days);
+        if (!days.isEmpty()) {
+            this.days.addAll(days);
+        } else {
+            for (int i = 0; i < getNumberOfDays(); i++) {
+                this.days.add(new Day(Integer.toString(i + 1)));
+            }
+        }
+
     }
 
     public Name getName() {
@@ -86,7 +93,7 @@ public class Itinerary {
      */
     public void addItineraryAttraction(ItineraryAttraction toAdd, int day) {
         requireNonNull(toAdd);
-        checkArgument(day > 0 && (day <= getNumberOfDays()), "Day is not valid");
+        checkArgument(day > 0 && day <= getNumberOfDays(), "Day is not valid");
         days.get(day - 1).addItineraryAttraction(toAdd);
     }
 

@@ -3,6 +3,7 @@ package seedu.address.model.itinerary;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,6 +19,18 @@ public class Day {
     public static final String VALIDATION_REGEX = "^[1-9]\\d*$";
     public final String value;
     private final List<ItineraryAttraction> itineraryAttractions;
+
+    /**
+     * Constructs an empty {@code Day}.
+     *
+     * @param day A valid day.
+     */
+    public Day(String day) {
+        requireNonNull(day);
+        checkArgument(isValidDay(day), MESSAGE_CONSTRAINTS);
+        value = day;
+        this.itineraryAttractions = new ArrayList<>();
+    }
 
     /**
      * Constructs a {@code Day}.
