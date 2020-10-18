@@ -20,7 +20,7 @@ public class ItineraryAttraction {
     // todo put command parser into ItineraryAttractionCommandParser
     // todo add attraction to itinerary
     // todo edit attraction from itinerary
-    // todo delete attraction from itineary
+    // todo delete attraction from itinerary
 
 
     //    // todo yeh put this somewhere
@@ -49,26 +49,38 @@ public class ItineraryAttraction {
         return attraction;
     }
 
+    public boolean isSameTiming(ItineraryAttraction otherItineraryAttraction) {
+        return this.startTime.equals(otherItineraryAttraction.startTime)
+                && this.endTime.equals(otherItineraryAttraction.endTime);
+    }
+
+    public boolean isSameVisitingDay(ItineraryAttraction otherItineraryAttraction) {
+        return dayVisiting == otherItineraryAttraction.dayVisiting;
+    }
+
     /**
-     * Returns true if both itinerary attractions are of the same name have at least one other identity field
-     * that is the same.
+     * Returns true if both itinerary attractions are of the same name, have the same visiting timing.
      * This defines a weaker notion of equality between two itinerary attractions.
      */
     public boolean isSameItineraryAttraction(ItineraryAttraction otherItineraryAttraction) {
         if (otherItineraryAttraction == this) {
             return true;
-        } else if (otherItineraryAttraction instanceof ItineraryAttraction) {
-            ItineraryAttraction itineraryAttraction = (ItineraryAttraction) otherItineraryAttraction;
-            // todo add more fields
-            return itineraryAttraction.getAttraction().isSameAttraction(attraction);
-        } else {
-            return false;
         }
+        // else if (otherItineraryAttraction instanceof ItineraryAttraction) {
+        //     ItineraryAttraction itineraryAttraction = otherItineraryAttraction;
+        //     return itineraryAttraction.getAttraction().isSameAttraction(attraction);
+        // } else {
+        //     return false;
+        // }
+
+        return attraction.isSameAttraction(otherItineraryAttraction.getAttraction())
+                && isSameTiming(otherItineraryAttraction);
     }
 
     /**
      * Returns true if both itinerary attractions have the same identity and data fields.
      * This defines a stronger notion of equality between two itinerary attractions.
+     * Attraction, startTime, endTime, dayVisiting must be the same to return true.
      */
     @Override
     public boolean equals(Object other) {
@@ -81,8 +93,9 @@ public class ItineraryAttraction {
         }
 
         ItineraryAttraction otherItineraryAttraction = (ItineraryAttraction) other;
-        // todo add more fields
-        return otherItineraryAttraction.getAttraction().equals(getAttraction());
+        return otherItineraryAttraction.getAttraction().equals(getAttraction())
+                && isSameTiming(otherItineraryAttraction)
+                && isSameVisitingDay(otherItineraryAttraction);
     }
 
     @Override
