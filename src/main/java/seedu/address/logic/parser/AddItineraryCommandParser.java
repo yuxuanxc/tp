@@ -12,8 +12,8 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddItineraryCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.attraction.Description;
-import seedu.address.model.attraction.Name;
+import seedu.address.model.commons.Description;
+import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.Itinerary;
 

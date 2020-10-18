@@ -1,10 +1,12 @@
-package seedu.address.model.attraction;
+package seedu.address.model.commons;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
+
+import seedu.address.model.commons.Description;
 
 public class DescriptionTest {
 

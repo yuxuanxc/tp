@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import seedu.address.model.attraction.Description;
 import seedu.address.model.attraction.Location;
-import seedu.address.model.attraction.Name;
+import seedu.address.model.commons.Description;
+import seedu.address.model.commons.Name;
 
 /**
  * Represents an Itinerary in TrackPad.
