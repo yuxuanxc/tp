@@ -136,7 +136,7 @@ public class TypicalAttractions {
             .withDescription("Suntec City is a major mixed-use development located in  "
                     + "Centre, a subzone of the Downtown Core in Singapore.")
             .withLocation("Singapore, Singapore")
-            .withOpeningHours("1000-2200")
+            .withOpeningHours("1000-2000")
             .withPriceRange("LOW")
             .withRating("4.5")
             .withVisited("TRUE")

@@ -12,15 +12,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
-import seedu.address.model.attraction.Description;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
-import seedu.address.model.attraction.Name;
 import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.attraction.PriceRange;
 import seedu.address.model.attraction.Rating;
 import seedu.address.model.attraction.Visited;
+import seedu.address.model.commons.Description;
+import seedu.address.model.commons.Name;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -171,8 +171,7 @@ class JsonAdaptedAttraction {
         if (location == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Location.class.getSimpleName()));
-        }
-        if (!Location.isValidLocation(location)) {
+        } else if (!Location.isValidLocation(location)) {
             throw new IllegalValueException(Location.MESSAGE_CONSTRAINTS);
         } else {
             modelLocation = new Location(location);

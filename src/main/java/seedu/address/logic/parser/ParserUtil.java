@@ -2,6 +2,10 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,16 +14,19 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.attraction.Address;
-import seedu.address.model.attraction.Description;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
-import seedu.address.model.attraction.Name;
 import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.attraction.PriceRange;
 import seedu.address.model.attraction.Rating;
 import seedu.address.model.attraction.Visited;
+<<<<<<< HEAD
 import seedu.address.model.itinerary.ItineraryTime;
+=======
+import seedu.address.model.commons.Description;
+import seedu.address.model.commons.Name;
+>>>>>>> 705639f0251b3128ab0ee4b164195b5386726cb5
 import seedu.address.model.tag.Tag;
 
 /**
@@ -172,7 +179,7 @@ public class ParserUtil {
     public static Rating parseRating(String rating) throws ParseException {
         requireNonNull(rating);
         String trimmedRating = rating.trim();
-        if (!Address.isValidAddress(trimmedRating)) {
+        if (!Rating.isValidRating(trimmedRating)) {
             throw new ParseException(Rating.MESSAGE_CONSTRAINTS);
         }
         return new Rating(trimmedRating);
@@ -187,7 +194,7 @@ public class ParserUtil {
     public static Visited parseVisited(String visited) throws ParseException {
         requireNonNull(visited);
         String trimmedVisited = visited.trim();
-        if (!Address.isValidAddress(trimmedVisited)) {
+        if (!Visited.isValidVisited(trimmedVisited)) {
             throw new ParseException(Visited.MESSAGE_CONSTRAINTS);
         }
         return new Visited(trimmedVisited);
@@ -237,5 +244,22 @@ public class ParserUtil {
             throw new ParseException(Visited.MESSAGE_CONSTRAINTS);
         }
         return new ItineraryTime(trimmedTime);
+
+    }
+    /**
+     * Parses {@code String date} into a {@code LocalDate}.
+     */
+    public static LocalDate parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        try {
+            DateTimeFormatter dTF = new DateTimeFormatterBuilder()
+                    .parseCaseInsensitive()
+                    .appendPattern("dd-MM-yyyy")
+                    .toFormatter();
+            return LocalDate.parse(trimmedDate, dTF);
+        } catch (DateTimeParseException e) {
+            throw new ParseException("Date should be in the format dd-mm-yyyy");
+        }
     }
 }

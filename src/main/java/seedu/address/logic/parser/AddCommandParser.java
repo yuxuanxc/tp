@@ -20,15 +20,15 @@ import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
-import seedu.address.model.attraction.Description;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
-import seedu.address.model.attraction.Name;
 import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.attraction.PriceRange;
 import seedu.address.model.attraction.Rating;
 import seedu.address.model.attraction.Visited;
+import seedu.address.model.commons.Description;
+import seedu.address.model.commons.Name;
 import seedu.address.model.tag.Tag;
 
 /**

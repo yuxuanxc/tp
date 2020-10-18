@@ -3,7 +3,7 @@ package seedu.address.model.itinerary;
 import java.util.Objects;
 
 import seedu.address.model.attraction.Attraction;
-import seedu.address.model.attraction.Name;
+import seedu.address.model.commons.Name;
 
 /**
  * Wrapper class to contain attributes of an attraction specific to a particular Itinerary.

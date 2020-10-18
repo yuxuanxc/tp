@@ -7,7 +7,10 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_DESCRIPTION_EIF
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LOCATION_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_OPENING_HOURS_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_RANGE_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_RATING_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAttractions.MBS;
@@ -94,8 +97,24 @@ public class AttractionTest {
         editedSuntec = new AttractionBuilder(SUNTEC).withAddress(VALID_ADDRESS_EIFFEL).build();
         assertFalse(SUNTEC.equals(editedSuntec));
 
+        // different description -> returns false
+        editedSuntec = new AttractionBuilder(SUNTEC).withDescription(VALID_DESCRIPTION_EIFFEL).build();
+        assertFalse(SUNTEC.equals(editedSuntec));
+
         // different location -> returns false
         editedSuntec = new AttractionBuilder(SUNTEC).withLocation(VALID_LOCATION_EIFFEL).build();
+        assertFalse(SUNTEC.equals(editedSuntec));
+
+        // different opening hours -> returns false
+        editedSuntec = new AttractionBuilder(SUNTEC).withOpeningHours(VALID_OPENING_HOURS_EIFFEL).build();
+        assertFalse(SUNTEC.equals(editedSuntec));
+
+        // different price range -> returns false
+        editedSuntec = new AttractionBuilder(SUNTEC).withPriceRange(VALID_PRICE_RANGE_EIFFEL).build();
+        assertFalse(SUNTEC.equals(editedSuntec));
+
+        // different rating -> returns false
+        editedSuntec = new AttractionBuilder(SUNTEC).withRating(VALID_RATING_EIFFEL).build();
         assertFalse(SUNTEC.equals(editedSuntec));
 
         // different tags -> returns false

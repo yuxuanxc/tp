@@ -5,10 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DESCRIPTION_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LOCATION_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_OPENING_HOURS_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_RANGE_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_RATING_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ACTIVITY;
 
 import org.junit.jupiter.api.Test;
@@ -55,6 +59,23 @@ public class EditAttractionDescriptorTest {
 
         // different location -> returns false
         editedEiffel = new EditAttractionDescriptorBuilder(DESC_EIFFEL).withLocation(VALID_LOCATION_MBS).build();
+        assertFalse(DESC_EIFFEL.equals(editedEiffel));
+
+        // different description -> returns false
+        editedEiffel = new EditAttractionDescriptorBuilder(DESC_EIFFEL).withDescription(VALID_DESCRIPTION_MBS).build();
+        assertFalse(DESC_EIFFEL.equals(editedEiffel));
+
+        // different opening hours -> returns false
+        editedEiffel = new EditAttractionDescriptorBuilder(DESC_EIFFEL)
+                .withOpeningHours(VALID_OPENING_HOURS_MBS).build();
+        assertFalse(DESC_EIFFEL.equals(editedEiffel));
+
+        // different price range -> returns false
+        editedEiffel = new EditAttractionDescriptorBuilder(DESC_EIFFEL).withPriceRange(VALID_PRICE_RANGE_MBS).build();
+        assertFalse(DESC_EIFFEL.equals(editedEiffel));
+
+        // different rating -> returns false
+        editedEiffel = new EditAttractionDescriptorBuilder(DESC_EIFFEL).withRating(VALID_RATING_MBS).build();
         assertFalse(DESC_EIFFEL.equals(editedEiffel));
 
         // different tags -> returns false

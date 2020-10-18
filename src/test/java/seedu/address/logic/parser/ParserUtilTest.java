@@ -17,8 +17,12 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
-import seedu.address.model.attraction.Name;
+import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
+import seedu.address.model.attraction.PriceRange;
+import seedu.address.model.attraction.Rating;
+import seedu.address.model.commons.Description;
+import seedu.address.model.commons.Name;
 import seedu.address.model.tag.Tag;
 
 public class ParserUtilTest {
@@ -26,14 +30,22 @@ public class ParserUtilTest {
     private static final String INVALID_PHONE = "+6471 7138";
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
+    private static final String INVALID_DESCRIPTION = " ";
     private static final String INVALID_LOCATION = " ";
+    private static final String INVALID_OPENING_HOURS = "1-2";
+    private static final String INVALID_PRICE_RANGE = "low";
+    private static final String INVALID_RATING = "9";
     private static final String INVALID_TAG = "#nature";
 
     private static final String VALID_NAME = "Botanic Gardens";
     private static final String VALID_PHONE = "64717138";
     private static final String VALID_ADDRESS = "1 Cluny Rd, 259569";
     private static final String VALID_EMAIL = "botanicgardens@example.com";
+    private static final String VALID_DESCRIPTION = "First UNESCO Heritage Site in Singapore";
     private static final String VALID_LOCATION = "Singapore, Singapore";
+    private static final String VALID_OPENING_HOURS = "1000-1800";
+    private static final String VALID_PRICE_RANGE = "LOW";
+    private static final String VALID_RATING = "4.9";
     private static final String VALID_TAG_1 = "nature";
     private static final String VALID_TAG_2 = "sightseeing";
 
@@ -152,6 +164,29 @@ public class ParserUtilTest {
     }
 
     @Test
+    public void parseDescription_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseDescription((String) null));
+    }
+
+    @Test
+    public void parseDescription_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseDescription(INVALID_DESCRIPTION));
+    }
+
+    @Test
+    public void parseDescription_validValueWithoutWhitespace_returnsDescription() throws Exception {
+        Description expectedDescription = new Description(VALID_DESCRIPTION);
+        assertEquals(expectedDescription, ParserUtil.parseDescription(VALID_DESCRIPTION));
+    }
+
+    @Test
+    public void parseDescription_validValueWithWhitespace_returnsTrimmedDescription() throws Exception {
+        String descriptionWithWhitespace = WHITESPACE + VALID_DESCRIPTION + WHITESPACE;
+        Description expectedDescription = new Description(VALID_DESCRIPTION);
+        assertEquals(expectedDescription, ParserUtil.parseDescription(descriptionWithWhitespace));
+    }
+
+    @Test
     public void parseLocation_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> ParserUtil.parseLocation((String) null));
     }
@@ -173,6 +208,76 @@ public class ParserUtilTest {
         Location expectedLocation = new Location(VALID_LOCATION);
         assertEquals(expectedLocation, ParserUtil.parseLocation(locationWithWhitespace));
     }
+
+    @Test
+    public void parseOpeningHours_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseOpeningHours((String) null));
+    }
+
+    @Test
+    public void parseOpeningHours_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseOpeningHours(INVALID_OPENING_HOURS));
+    }
+
+    @Test
+    public void parseOpeningHours_validValueWithoutWhitespace_returnsOpeningHours() throws Exception {
+        OpeningHours expectedOpeningHours = new OpeningHours(VALID_OPENING_HOURS);
+        assertEquals(expectedOpeningHours, ParserUtil.parseOpeningHours(VALID_OPENING_HOURS));
+    }
+
+    @Test
+    public void parseOpeningHours_validValueWithWhitespace_returnsTrimmedOpeningHours() throws Exception {
+        String openingHoursWithWhitespace = WHITESPACE + VALID_OPENING_HOURS + WHITESPACE;
+        OpeningHours expectedOpeningHours = new OpeningHours(VALID_OPENING_HOURS);
+        assertEquals(expectedOpeningHours, ParserUtil.parseOpeningHours(openingHoursWithWhitespace));
+    }
+
+    @Test
+    public void parsePriceRange_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parsePriceRange((String) null));
+    }
+
+    @Test
+    public void parsePriceRange_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parsePriceRange(INVALID_PRICE_RANGE));
+    }
+
+    @Test
+    public void parsePriceRange_validValueWithoutWhitespace_returnsPriceRange() throws Exception {
+        PriceRange expectedPriceRange = new PriceRange(VALID_PRICE_RANGE);
+        assertEquals(expectedPriceRange, ParserUtil.parsePriceRange(VALID_PRICE_RANGE));
+    }
+
+    @Test
+    public void parsePriceRange_validValueWithWhitespace_returnsTrimmedPriceRange() throws Exception {
+        String priceRangeWithWhitespace = WHITESPACE + VALID_PRICE_RANGE + WHITESPACE;
+        PriceRange expectedPriceRange = new PriceRange(VALID_PRICE_RANGE);
+        assertEquals(expectedPriceRange, ParserUtil.parsePriceRange(priceRangeWithWhitespace));
+    }
+
+    @Test
+    public void parseRating_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseRating((String) null));
+    }
+
+    @Test
+    public void parseRating_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseRating(INVALID_RATING));
+    }
+
+    @Test
+    public void parseRating_validValueWithoutWhitespace_returnsRating() throws Exception {
+        Rating expectedRating = new Rating(VALID_RATING);
+        assertEquals(expectedRating, ParserUtil.parseRating(VALID_RATING));
+    }
+
+    @Test
+    public void parseRating_validValueWithWhitespace_returnsTrimmedRating() throws Exception {
+        String ratingWithWhitespace = WHITESPACE + VALID_RATING + WHITESPACE;
+        Rating expectedRating = new Rating(VALID_RATING);
+        assertEquals(expectedRating, ParserUtil.parseRating(ratingWithWhitespace));
+    }
+
 
     @Test
     public void parseTag_null_throwsNullPointerException() {
