@@ -2,7 +2,6 @@ package seedu.address.model.itinerary;
 
 import java.util.Objects;
 
-import seedu.address.model.ItineraryList;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.Name;
 
@@ -10,8 +9,12 @@ import seedu.address.model.attraction.Name;
  * Wrapper class to contain attributes of an attraction specific to a particular Itinerary.
  */
 public class ItineraryAttraction {
-    private Attraction attraction;
-    //todo add start time, end time, budget etc. And also maybe extend from Attraction directly.
+    // todo decide if inheritance or dependency for this attraction
+    private final Attraction attraction;
+    private final ItineraryTime startTime;
+    private final ItineraryTime endTime;
+    private final int dayVisiting;
+    // todo maybe extend from Attraction directly.
     // todo add a check to make sure the start time and end time don't clash with existing itinerary attractions.
     // todo put new commands into ItineraryAttractionCommands
     // todo put command parser into ItineraryAttractionCommandParser
@@ -31,8 +34,11 @@ public class ItineraryAttraction {
     //        return ItineraryList.SelectedItinerary;
     //    }
 
-    public ItineraryAttraction(Attraction attraction) {
+    public ItineraryAttraction(Attraction attraction, ItineraryTime startTime, ItineraryTime endTime, int dayVisiting) {
         this.attraction = attraction;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.dayVisiting = dayVisiting;
     }
 
     public Name getName() {
