@@ -1,16 +1,21 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.itinerary;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ENDDATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_STARTDATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.AddItineraryCommand;
+import seedu.address.logic.commands.itinerary.AddItineraryCommand;
+import seedu.address.logic.parser.ArgumentMultimap;
+import seedu.address.logic.parser.ArgumentTokenizer;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
@@ -29,10 +34,10 @@ public class AddItineraryCommandParser implements Parser<AddItineraryCommand> {
      */
     public AddItineraryCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_DESCRIPTION, PREFIX_STARTDATE,
-                        PREFIX_ENDDATE);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_DESCRIPTION, PREFIX_START_DATE,
+                        PREFIX_END_DATE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_STARTDATE, PREFIX_ENDDATE)
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_START_DATE, PREFIX_END_DATE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddItineraryCommand.MESSAGE_USAGE));
         }
@@ -49,10 +54,10 @@ public class AddItineraryCommandParser implements Parser<AddItineraryCommand> {
         }
 
         // Start date is not optional
-        LocalDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_STARTDATE).get());
+        LocalDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_START_DATE).get());
 
         // End date is not optional
-        LocalDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_ENDDATE).get());
+        LocalDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_END_DATE).get());
 
         Itinerary itinerary = new Itinerary(name, description, startDate, endDate, new ArrayList<Day>());
 
@@ -66,4 +71,5 @@ public class AddItineraryCommandParser implements Parser<AddItineraryCommand> {
     private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
+
 }

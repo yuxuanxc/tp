@@ -6,7 +6,7 @@ import seedu.address.model.attraction.Attraction;
 /**
  * A utility class to help with building AttractionList objects.
  * Example usage: <br>
- *     {@code AttractionList tp = new AttractionListBuilder().withAttraction("USS", "MBS").build();}
+ *     {@code AttractionList al = new AttractionListBuilder().withAttraction("USS", "MBS").build();}
  */
 public class AttractionListBuilder {
 

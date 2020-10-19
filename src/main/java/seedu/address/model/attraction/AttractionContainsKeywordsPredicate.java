@@ -6,16 +6,16 @@ import java.util.function.Predicate;
 import seedu.address.commons.util.StringUtil;
 
 /**
- * Tests that a {@code Attraction}'s {@code Name, @code Address, ***@code Description*** (not working yet),
+ * Tests that a {@code Attraction}'s {@code Name}, {@code Address}, ***@code Description*** (not working yet),
  *
- * @code Email, @code Location, @code OpeningHours, @code Phone, @code PriceRange, @code Rating}
+ * {@code Email}, {@code Location}, {@code OpeningHours}, {@code Phone}, {@code PriceRange}, {@code Rating}
  * matches any of the keywords given.
  */
-public class NameContainsKeywordsPredicate implements Predicate<Attraction> {
+public class AttractionContainsKeywordsPredicate implements Predicate<Attraction> {
     // todo refactor the name of this class since it is no longer only looking for the name.
     private final List<String> keywords;
 
-    public NameContainsKeywordsPredicate(List<String> keywords) {
+    public AttractionContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
     }
 
@@ -39,8 +39,8 @@ public class NameContainsKeywordsPredicate implements Predicate<Attraction> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof NameContainsKeywordsPredicate // instanceof handles nulls
-                && keywords.equals(((NameContainsKeywordsPredicate) other).keywords)); // state check
+                || (other instanceof AttractionContainsKeywordsPredicate // instanceof handles nulls
+                && keywords.equals(((AttractionContainsKeywordsPredicate) other).keywords)); // state check
     }
 
 }

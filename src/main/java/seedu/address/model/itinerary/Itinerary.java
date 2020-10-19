@@ -41,8 +41,8 @@ public class Itinerary {
         if (!days.isEmpty()) {
             this.days.addAll(days);
         } else {
-            for (int i = 0; i < getNumberOfDays(); i++) {
-                this.days.add(new Day(Integer.toString(i + 1)));
+            for (int i = 1; i <= getNumberOfDays(); i++) {
+                this.days.add(new Day(Integer.toString(i)));
             }
         }
 
@@ -86,6 +86,14 @@ public class Itinerary {
             }
         }
         return locations.stream().map(Object::toString).collect(Collectors.joining(", "));
+    }
+
+    public List<ItineraryAttraction> getItineraryAttractions() {
+        List<ItineraryAttraction> itineraryAttractions = new ArrayList<>();
+        for (Day day : days) {
+            itineraryAttractions.addAll(day.getItineraryAttractions());
+        }
+        return itineraryAttractions;
     }
 
     /**
