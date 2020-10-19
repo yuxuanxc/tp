@@ -7,11 +7,10 @@ public class ItineraryTime {
     private static final String TIME_REGEX = "([01][0-9]|2[0-3])[0-5][0-9]";
     public static final String VALIDATION_REGEX = TIME_REGEX + "-" + TIME_REGEX;
 
-    // todo may need to change this to Time class instead of string to compare time.
-    private final String time;
+    private final int time;
 
     public ItineraryTime(String time) {
-        this.time = time;
+        this.time = Integer.parseInt(time);
     }
 
     /**
@@ -22,31 +21,33 @@ public class ItineraryTime {
     }
 
     /**
-     * Checks if the given time is between the start and end time of the itinerary attraction.
-     *
-     * @param startTime time to visit the attraction
-     * @param endTime time to leave the attraction
-     * @return true if the
+     * Returns true if the time is earlier than time given.
      */
-    public boolean isWithInTime(ItineraryTime startTime, ItineraryTime endTime) {
-        // todo compare if the time is within the start/end time
-        return false;
+    public boolean isEarlierThan(ItineraryTime time) {
+        return this.time < time.time;
+    }
+
+    /**
+     * Returns ture if the time is later than the time given.
+     */
+    public boolean isLaterThan(ItineraryTime time) {
+        return this.time > time.time;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof ItineraryTime // instanceof handles nulls
-                && time.equals(((ItineraryTime) other).time)); // state check
+                && time == (((ItineraryTime) other).time)); // state check
     }
 
     @Override
     public String toString() {
-        return time;
+        return String.valueOf(time);
     }
 
     @Override
     public int hashCode() {
-        return time.hashCode();
+        return time * 103;
     }
 }

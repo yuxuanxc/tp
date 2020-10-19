@@ -1,6 +1,10 @@
 package seedu.address.logic.commands.itineraryattraction;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRACTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
 import java.util.Optional;
 
@@ -19,19 +23,23 @@ import seedu.address.model.itinerary.ItineraryTime;
  */
 public class EditItineraryAttractionCommand extends Command {
 
-    public static final String COMMAND_WORD = "edit itinerary attraction";
-
-    // todo update the usage message
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": FIXME";
+    public static final String COMMAND_WORD = "edit-itinerary-attraction";
     public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in Itinerary.";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the itinerary attraction "
+            + "identified by the name of the itinerary attraction displayed in the itinerary"
+            + "Parameters: " + PREFIX_ATTRACTION + "NAME " + "[" + PREFIX_ATTRACTION + "ATTRACTION NAME] "
+            + "[" + PREFIX_START_TIME + "START TIME] " + "[" + PREFIX_END_TIME + "END TIME] "
+            + "[" + PREFIX_DAY_VISITING + "DAY VISITING] \n"
+            + "Example: " + COMMAND_WORD + " Singapore Zoo " + PREFIX_START_TIME + "10000 " + PREFIX_DAY_VISITING + "4";
 
     private final String attractionName;
     private final EditItineraryAttractionDescriptor editItineraryAttractionDescriptor;
 
     /**
-     * @param editItineraryAttractionDescriptor details to edit the attraction with
+     * @param attractionName                    of the itinerary attraction to edit
+     * @param editItineraryAttractionDescriptor details to edit the itinerary attraction with
      */
     public EditItineraryAttractionCommand(String attractionName,
                                           EditItineraryAttractionDescriptor editItineraryAttractionDescriptor) {
