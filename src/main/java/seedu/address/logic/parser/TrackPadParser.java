@@ -36,7 +36,7 @@ public class TrackPadParser {
      * (?<arguments>.*)a second grouping, will take any char after
      */
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
-    // todo yeh change the grouping after the itinerary commands has be written to support 3 words command
+    // todo change the grouping after the itinerary commands has be written to support 3 words command
 
     /**
      * Parses user input into command for execution.
