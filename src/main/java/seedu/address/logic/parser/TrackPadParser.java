@@ -30,9 +30,9 @@ import seedu.address.logic.parser.itineraryattraction.EditItineraryAttractionCom
 public class TrackPadParser {
 
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
-    //private static final Pattern BASIC_COMMAND_FORMAT =
-    //      Pattern.compile("(?<commandWord>^[^/||[^\\D]]*)(?<arguments>.*)");
-    // todo change the grouping after the itinerary commands has be written to support 3 words command
+    // The first group, commandWord is words without / and numbers, but not working
+    // private static final Pattern BASIC_COMMAND_FORMAT =
+    //     Pattern.compile("(?<commandWord>^[^/||[^\\D]]*)(?<arguments>.*)");
 
     /**
      * Parses user input into command for execution.

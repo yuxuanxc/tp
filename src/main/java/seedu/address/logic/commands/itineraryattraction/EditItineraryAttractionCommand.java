@@ -23,7 +23,7 @@ import seedu.address.model.itinerary.ItineraryTime;
  */
 public class EditItineraryAttractionCommand extends Command {
 
-    public static final String COMMAND_WORD = "edit itinerary attraction";
+    public static final String COMMAND_WORD = "edit-itinerary-attraction";
     public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in Itinerary.";

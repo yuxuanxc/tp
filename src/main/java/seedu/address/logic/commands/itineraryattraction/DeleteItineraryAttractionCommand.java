@@ -17,7 +17,7 @@ import seedu.address.model.itinerary.ItineraryAttraction;
  */
 public class DeleteItineraryAttractionCommand extends Command {
 
-    public static final String COMMAND_WORD = "delete itinerary attraction";
+    public static final String COMMAND_WORD = "delete-itinerary-attraction";
     public static final String MESSAGE_DELETE_ATTRACTION_SUCCESS = "Deleted attraction: %1$s";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes the attraction identified by the name of the "
             + "attraction in the current itinerary.\nParameters: " + PREFIX_ATTRACTION + "ATTRACTION NAME \n"

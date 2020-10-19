@@ -24,7 +24,7 @@ import seedu.address.model.itinerary.ItineraryTime;
 public class AddItineraryAttractionCommand extends Command {
 
     // todo copy test case from AddCommand
-    public static final String COMMAND_WORD = "add itinerary attraction";
+    public static final String COMMAND_WORD = "add-itinerary-attraction";
     public static final String MESSAGE_ADD_ATTRACTION_SUCCESS = "Added Attraction: %1$s to Itinerary: %1$s";
     public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in the itinerary.";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an attraction identified by the index number used"
