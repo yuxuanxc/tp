@@ -5,6 +5,7 @@ import static seedu.address.testutil.TypicalAttractions.getTypicalAttractionList
 import static seedu.address.testutil.TypicalItineraries.getTypicalItineraryList;
 
 import org.junit.jupiter.api.Test;
+
 import seedu.address.model.ItineraryList;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;

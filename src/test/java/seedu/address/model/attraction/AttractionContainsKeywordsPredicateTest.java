@@ -18,14 +18,17 @@ public class AttractionContainsKeywordsPredicateTest {
         List<String> firstPredicateKeywordList = Collections.singletonList("first");
         List<String> secondPredicateKeywordList = Arrays.asList("first", "second");
 
-        AttractionContainsKeywordsPredicate firstPredicate = new AttractionContainsKeywordsPredicate(firstPredicateKeywordList);
-        AttractionContainsKeywordsPredicate secondPredicate = new AttractionContainsKeywordsPredicate(secondPredicateKeywordList);
+        AttractionContainsKeywordsPredicate firstPredicate =
+                new AttractionContainsKeywordsPredicate(firstPredicateKeywordList);
+        AttractionContainsKeywordsPredicate secondPredicate =
+                new AttractionContainsKeywordsPredicate(secondPredicateKeywordList);
 
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));
 
         // same values -> returns true
-        AttractionContainsKeywordsPredicate firstPredicateCopy = new AttractionContainsKeywordsPredicate(firstPredicateKeywordList);
+        AttractionContainsKeywordsPredicate firstPredicateCopy =
+                new AttractionContainsKeywordsPredicate(firstPredicateKeywordList);
         assertTrue(firstPredicate.equals(firstPredicateCopy));
 
         // different types -> returns false
@@ -41,7 +44,8 @@ public class AttractionContainsKeywordsPredicateTest {
     @Test
     public void test_nameContainsKeywords_returnsTrue() {
         // One keyword
-        AttractionContainsKeywordsPredicate predicate = new AttractionContainsKeywordsPredicate(Collections.singletonList("Alice"));
+        AttractionContainsKeywordsPredicate predicate =
+                new AttractionContainsKeywordsPredicate(Collections.singletonList("Alice"));
         assertTrue(predicate.test(new AttractionBuilder().withName("Alice Bob").build()));
 
         // Multiple keywords
@@ -57,7 +61,8 @@ public class AttractionContainsKeywordsPredicateTest {
         assertTrue(predicate.test(new AttractionBuilder().withName("Alice Bob").build()));
 
         // Keywords match phone, email and address, but does not match name
-        predicate = new AttractionContainsKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
+        predicate = new AttractionContainsKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main",
+                "Street"));
         assertTrue(predicate.test(new AttractionBuilder().withName("Alice").withPhone("12345")
                 .withEmail("alice@email.com").withAddress("Main Street").build()));
     }
@@ -85,7 +90,8 @@ public class AttractionContainsKeywordsPredicateTest {
     @Test
     public void test_descriptionContainsKeywords_returnsTrue() {
         // One keyword
-        AttractionContainsKeywordsPredicate predicate = new AttractionContainsKeywordsPredicate(Collections.singletonList("Alice"));
+        AttractionContainsKeywordsPredicate predicate =
+                new AttractionContainsKeywordsPredicate(Collections.singletonList("Alice"));
         assertTrue(predicate.test(new AttractionBuilder().withDescription("Alice Bob").build()));
 
         // Multiple keywords
@@ -104,7 +110,8 @@ public class AttractionContainsKeywordsPredicateTest {
     @Test
     public void test_emailContainsKeywords_returnsTrue() {
         // One keyword
-        AttractionContainsKeywordsPredicate predicate = new AttractionContainsKeywordsPredicate(Collections.singletonList("A@Bx"));
+        AttractionContainsKeywordsPredicate predicate =
+                new AttractionContainsKeywordsPredicate(Collections.singletonList("A@Bx"));
         assertTrue(predicate.test(new AttractionBuilder().withEmail("A@Bx").build()));
 
         // Multiple keywords
@@ -176,7 +183,8 @@ public class AttractionContainsKeywordsPredicateTest {
     @Test
     public void test_priceRangeContainsKeywords_returnsTrue() {
         // One keyword
-        AttractionContainsKeywordsPredicate predicate = new AttractionContainsKeywordsPredicate(Collections.singletonList("LOW"));
+        AttractionContainsKeywordsPredicate predicate =
+                new AttractionContainsKeywordsPredicate(Collections.singletonList("LOW"));
         assertTrue(predicate.test(new AttractionBuilder().withPriceRange("LOW").build()));
 
         // Multiple keywords
@@ -195,7 +203,8 @@ public class AttractionContainsKeywordsPredicateTest {
     @Test
     public void test_ratingContainsKeywords_returnsTrue() {
         // One keyword
-        AttractionContainsKeywordsPredicate predicate = new AttractionContainsKeywordsPredicate(Collections.singletonList("1.1"));
+        AttractionContainsKeywordsPredicate predicate =
+                new AttractionContainsKeywordsPredicate(Collections.singletonList("1.1"));
         assertTrue(predicate.test(new AttractionBuilder().withRating("1.1").build()));
 
         // Multiple keywords
@@ -210,7 +219,8 @@ public class AttractionContainsKeywordsPredicateTest {
     @Test
     public void test_tagContainsKeywords_returnsTrue() {
         // One keyword
-        AttractionContainsKeywordsPredicate predicate = new AttractionContainsKeywordsPredicate(Collections.singletonList("warm"));
+        AttractionContainsKeywordsPredicate predicate =
+                new AttractionContainsKeywordsPredicate(Collections.singletonList("warm"));
         String[] tags = {"warm", "cold"};
         assertTrue(predicate.test(new AttractionBuilder().withTags(tags).build()));
 
@@ -231,7 +241,8 @@ public class AttractionContainsKeywordsPredicateTest {
     @Test
     public void test_fieldDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
-        AttractionContainsKeywordsPredicate predicate = new AttractionContainsKeywordsPredicate(Collections.emptyList());
+        AttractionContainsKeywordsPredicate predicate =
+                new AttractionContainsKeywordsPredicate(Collections.emptyList());
         assertFalse(predicate.test(new AttractionBuilder().withName("Alice").build()));
 
         predicate = new AttractionContainsKeywordsPredicate(Collections.emptyList());

@@ -1,6 +1,9 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 
 import seedu.address.logic.commands.itinerary.AddItineraryCommand;
 import seedu.address.model.itinerary.Itinerary;
@@ -30,10 +33,12 @@ public class ItineraryUtil {
         return sb.toString();
     }
 
-    /**
-     * Returns the part of command string for the given {@code EditItineraryDescriptor}'s details.
-     */
+    // /**
+    // * Returns the part of command string for the given {@code EditItineraryDescriptor}'s details.
+    // */
     // todo add when edit itinerary command is up
-    //public static String getEditItineraryDescriptorDetails(EditCommand.EditDescriptor descriptor) {
+    // public static String getEditItineraryDescriptorDetails() {
+    //     return "";
+    // }
     //}
 }
