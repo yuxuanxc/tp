@@ -6,6 +6,9 @@ import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRACTION;
+
 import seedu.address.model.Model;
 import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.ItineraryAttraction;
@@ -18,11 +21,9 @@ public class DeleteItineraryAttractionCommand extends Command {
 
     public static final String COMMAND_WORD = "delete itinerary attraction";
 
-    // todo update usage message
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the attraction identified by the index number used in the current itinerary.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes the attraction identified by the name of the "
+            + "attraction in the current itinerary.\nParameters: " + PREFIX_ATTRACTION + "ATTRACTION NAME \n"
+            + "Example: " + COMMAND_WORD + " " + PREFIX_ATTRACTION + "Singapore Zoo";
 
     public static final String MESSAGE_DELETE_ATTRACTION_SUCCESS = "Deleted attraction: %1$s";
 
