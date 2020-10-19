@@ -12,7 +12,7 @@ import seedu.address.commons.util.StringUtil;
  * matches any of the keywords given.
  */
 public class NameContainsKeywordsPredicate implements Predicate<Attraction> {
-    // todo refactor the name of this class since it is no longer only looking for the name.
+    // to.do refactor the name of this class since it is no longer only looking for the name.
     private final List<String> keywords;
 
     public NameContainsKeywordsPredicate(List<String> keywords) {

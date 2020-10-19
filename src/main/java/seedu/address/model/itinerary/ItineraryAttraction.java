@@ -14,14 +14,13 @@ public class ItineraryAttraction {
     private final Attraction attraction;
     private final ItineraryTime startTime;
     private final ItineraryTime endTime;
-    // todo add a check to make sure the start time and end time don't clash with existing itinerary attractions.
 
     /**
      * Constructs a Itinerary attraction.
      *
-     * @param attraction attraction to visit.
-     * @param startTime time to visit the attraction.
-     * @param endTime time to leave the attraction.
+     * @param attraction  attraction to visit.
+     * @param startTime   time to visit the attraction.
+     * @param endTime     time to leave the attraction.
      * @param dayVisiting day in itinerary to visit the attraction.
      */
     public ItineraryAttraction(Attraction attraction, ItineraryTime startTime, ItineraryTime endTime, int dayVisiting) {
@@ -97,6 +96,15 @@ public class ItineraryAttraction {
 
         return attraction.isSameAttraction(otherItineraryAttraction.getAttraction())
                 && isSameTiming(otherItineraryAttraction);
+    }
+
+    /**
+     * Returns false if timing does not clash with this itinerary attraction.
+     */
+    public boolean isTimingClash(ItineraryAttraction itineraryAttraction) {
+        // Might make a mistake here with the ! due to De Morgan's law
+        return !this.getStartTime().isEarlierThan(itineraryAttraction.getStartTime())
+                && !this.getEndTime().isLaterThan(itineraryAttraction.getEndTime());
     }
 
     /**

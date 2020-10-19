@@ -6,7 +6,6 @@ package seedu.address.logic.parser;
 public class CliSyntax {
 
     /* Prefix definitions */
-    // todo make the syntax look nicer and more coherent
 
     // Prefix for Attraction
     public static final Prefix PREFIX_NAME = new Prefix("n/");

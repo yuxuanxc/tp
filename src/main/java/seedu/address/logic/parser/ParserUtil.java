@@ -248,7 +248,6 @@ public class ParserUtil {
     /**
      * Parses a {@code String name} into a {@code Name}.
      * Leading and trailing whitespaces will be trimmed.
-     * todo change to return attraction, currently no check if the attraction exist.
      *
      * @throws ParseException if the given {@code name} is invalid.
      */
