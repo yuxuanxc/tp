@@ -16,17 +16,17 @@ import seedu.address.model.itinerary.ItineraryAttraction;
  */
 public class JsonAdaptedDay {
 
-    private final String dayNumber;
+    private final String day;
     private final List<JsonAdaptedItineraryAttraction> itineraryAttractions = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedDay} with the given {@code tagName}.
      */
     @JsonCreator
-    public JsonAdaptedDay(String dayNumber,
+    public JsonAdaptedDay(@JsonProperty("day") String day,
                           @JsonProperty("itineraryAttractions")
                                   List<JsonAdaptedItineraryAttraction> itineraryAttractions) {
-        this.dayNumber = dayNumber;
+        this.day = day;
         if (itineraryAttractions != null) {
             this.itineraryAttractions.addAll(itineraryAttractions);
         }
@@ -36,7 +36,7 @@ public class JsonAdaptedDay {
      * Converts a given {@code Day} into this class for Jackson use.
      */
     public JsonAdaptedDay(Day source) {
-        dayNumber = source.value;
+        day = source.value;
         itineraryAttractions.addAll(source.getItineraryAttractions().stream()
                 .map(JsonAdaptedItineraryAttraction::new)
                 .collect(Collectors.toList()));
@@ -50,7 +50,7 @@ public class JsonAdaptedDay {
     public Day toModelType() throws IllegalValueException {
         final List<ItineraryAttraction> modelItineraryAttractions = new ArrayList<>();
 
-        if (!Day.isValidDay(dayNumber)) {
+        if (!Day.isValidDay(day)) {
             throw new IllegalValueException(Day.MESSAGE_CONSTRAINTS);
         }
 
@@ -58,6 +58,6 @@ public class JsonAdaptedDay {
             modelItineraryAttractions.add(itineraryAttraction.toModelType());
         }
 
-        return new Day(dayNumber, modelItineraryAttractions);
+        return new Day(day, modelItineraryAttractions);
     }
 }

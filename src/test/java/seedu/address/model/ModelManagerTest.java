@@ -15,7 +15,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.attraction.NameContainsKeywordsPredicate;
+import seedu.address.model.attraction.AttractionContainsKeywordsPredicate;
 import seedu.address.testutil.AttractionListBuilder;
 
 public class ModelManagerTest {
@@ -129,7 +129,7 @@ public class ModelManagerTest {
 
         // different filteredList -> returns false
         String[] keywords = MBS.getName().fullName.split("\\s+");
-        modelManager.updateFilteredAttractionList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
+        modelManager.updateFilteredAttractionList(new AttractionContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(attractionList, itineraryList, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests

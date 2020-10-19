@@ -24,7 +24,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AttractionList;
 import seedu.address.model.Model;
 import seedu.address.model.attraction.Attraction;
-import seedu.address.model.attraction.NameContainsKeywordsPredicate;
+import seedu.address.model.attraction.AttractionContainsKeywordsPredicate;
+import seedu.address.model.itinerary.Itinerary;
+import seedu.address.model.itinerary.ItineraryContainsKeywordsPredicate;
 import seedu.address.testutil.EditAttractionDescriptorBuilder;
 
 /**
@@ -155,6 +157,7 @@ public class CommandTestUtil {
         assertEquals(expectedAttractionList, actualModel.getAttractionList());
         assertEquals(expectedFilteredList, actualModel.getFilteredAttractionList());
     }
+
     /**
      * Updates {@code model}'s filtered list to show only the attraction at the given {@code targetIndex} in the
      * {@code model}'s AttractionList.
@@ -164,9 +167,23 @@ public class CommandTestUtil {
 
         Attraction attraction = model.getFilteredAttractionList().get(targetIndex.getZeroBased());
         final String[] splitName = attraction.getName().fullName.split("\\s+");
-        model.updateFilteredAttractionList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        model.updateFilteredAttractionList(new AttractionContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredAttractionList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the itinerary at the given {@code targetIndex} in the
+     * {@code model}'s ItineraryList.
+     */
+    public static void showItineraryAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredItineraryList().size());
+
+        Itinerary itinerary = model.getFilteredItineraryList().get(targetIndex.getZeroBased());
+        final String[] splitName = itinerary.getName().fullName.split("\\s+");
+        model.updateFilteredItineraryList(new ItineraryContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+
+        assertEquals(1, model.getFilteredItineraryList().size());
     }
 
 }

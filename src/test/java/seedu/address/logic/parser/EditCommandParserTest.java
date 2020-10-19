@@ -48,9 +48,9 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ATTRACTION;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_ATTRACTION;
-import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_ATTRACTION;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD;
 
 import org.junit.jupiter.api.Test;
 
@@ -142,7 +142,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_allFieldsSpecified_success() {
-        Index targetIndex = INDEX_SECOND_ATTRACTION;
+        Index targetIndex = INDEX_SECOND;
         String userInput = targetIndex.getOneBased() + PHONE_DESC_EIFFEL + TAG_DESC_SIGHTSEEING
                 + EMAIL_DESC_EIFFEL + ADDRESS_DESC_EIFFEL + NAME_DESC_EIFFEL + DESCRIPTION_DESC_EIFFEL
                 + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL + PRICE_RANGE_DESC_EIFFEL
@@ -160,7 +160,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_someFieldsSpecified_success() {
-        Index targetIndex = INDEX_FIRST_ATTRACTION;
+        Index targetIndex = INDEX_FIRST;
         String userInput = targetIndex.getOneBased() + PHONE_DESC_MBS + EMAIL_DESC_EIFFEL;
 
         EditAttractionDescriptor descriptor = new EditAttractionDescriptorBuilder().withPhone(VALID_PHONE_MBS)
@@ -173,7 +173,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_oneFieldSpecified_success() {
         // name
-        Index targetIndex = INDEX_THIRD_ATTRACTION;
+        Index targetIndex = INDEX_THIRD;
         String userInput = targetIndex.getOneBased() + NAME_DESC_EIFFEL;
         EditAttractionDescriptor descriptor = new EditAttractionDescriptorBuilder().withName(VALID_NAME_EIFFEL).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
@@ -236,7 +236,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
-        Index targetIndex = INDEX_FIRST_ATTRACTION;
+        Index targetIndex = INDEX_FIRST;
         String userInput = targetIndex.getOneBased() + PHONE_DESC_EIFFEL + ADDRESS_DESC_EIFFEL + EMAIL_DESC_EIFFEL
                 + LOCATION_DESC_EIFFEL + TAG_DESC_ACTIVITY + PHONE_DESC_EIFFEL + ADDRESS_DESC_EIFFEL + EMAIL_DESC_EIFFEL
                 + TAG_DESC_ACTIVITY + PHONE_DESC_MBS + ADDRESS_DESC_MBS + EMAIL_DESC_MBS + LOCATION_DESC_MBS
@@ -253,7 +253,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_invalidValueFollowedByValidValue_success() {
         // no other valid values specified
-        Index targetIndex = INDEX_FIRST_ATTRACTION;
+        Index targetIndex = INDEX_FIRST;
         String userInput = targetIndex.getOneBased() + INVALID_PHONE_DESC + PHONE_DESC_MBS;
         EditAttractionDescriptor descriptor = new EditAttractionDescriptorBuilder().withPhone(VALID_PHONE_MBS).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
@@ -271,7 +271,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_resetTags_success() {
-        Index targetIndex = INDEX_THIRD_ATTRACTION;
+        Index targetIndex = INDEX_THIRD;
         String userInput = targetIndex.getOneBased() + TAG_EMPTY;
 
         EditAttractionDescriptor descriptor = new EditAttractionDescriptorBuilder().withTags().build();

@@ -20,7 +20,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.attraction.NameContainsKeywordsPredicate;
+import seedu.address.model.attraction.AttractionContainsKeywordsPredicate;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
@@ -32,10 +32,10 @@ public class FindCommandTest {
 
     @Test
     public void equals() {
-        NameContainsKeywordsPredicate firstPredicate =
-                new NameContainsKeywordsPredicate(Collections.singletonList("first"));
-        NameContainsKeywordsPredicate secondPredicate =
-                new NameContainsKeywordsPredicate(Collections.singletonList("second"));
+        AttractionContainsKeywordsPredicate firstPredicate =
+                new AttractionContainsKeywordsPredicate(Collections.singletonList("first"));
+        AttractionContainsKeywordsPredicate secondPredicate =
+                new AttractionContainsKeywordsPredicate(Collections.singletonList("second"));
 
         FindCommand findFirstCommand = new FindCommand(firstPredicate);
         FindCommand findSecondCommand = new FindCommand(secondPredicate);
@@ -60,7 +60,7 @@ public class FindCommandTest {
     @Test
     public void execute_zeroKeywords_noAttractionFound() {
         String expectedMessage = String.format(MESSAGE_ATTRACTIONS_LISTED_OVERVIEW, 0);
-        NameContainsKeywordsPredicate predicate = preparePredicate(" ");
+        AttractionContainsKeywordsPredicate predicate = preparePredicate(" ");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredAttractionList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -70,7 +70,7 @@ public class FindCommandTest {
     @Test
     public void execute_multipleKeywords_multipleAttractionsFound() {
         String expectedMessage = String.format(MESSAGE_ATTRACTIONS_LISTED_OVERVIEW, 4);
-        NameContainsKeywordsPredicate predicate = preparePredicate("Zoo Orchard Gardens");
+        AttractionContainsKeywordsPredicate predicate = preparePredicate("Zoo Orchard Gardens");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredAttractionList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -79,9 +79,9 @@ public class FindCommandTest {
     }
 
     /**
-     * Parses {@code userInput} into a {@code NameContainsKeywordsPredicate}.
+     * Parses {@code userInput} into a {@code AttractionContainsKeywordsPredicate}.
      */
-    private NameContainsKeywordsPredicate preparePredicate(String userInput) {
-        return new NameContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
+    private AttractionContainsKeywordsPredicate preparePredicate(String userInput) {
+        return new AttractionContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
     }
 }

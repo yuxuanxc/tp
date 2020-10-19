@@ -11,8 +11,8 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showAttractionAtIndex;
 import static seedu.address.testutil.TypicalAttractions.getTypicalAttractionList;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ATTRACTION;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_ATTRACTION;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.TypicalItineraries.getTypicalItineraryList;
 
 import org.junit.jupiter.api.Test;
@@ -40,7 +40,7 @@ public class EditCommandTest {
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         Attraction editedAttraction = new AttractionBuilder().build();
         EditAttractionDescriptor descriptor = new EditAttractionDescriptorBuilder(editedAttraction).build();
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_ATTRACTION, descriptor);
+        EditCommand editCommand = new EditCommand(INDEX_FIRST, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_ATTRACTION_SUCCESS, editedAttraction);
 
@@ -77,8 +77,8 @@ public class EditCommandTest {
 
     @Test
     public void execute_noFieldSpecifiedUnfilteredList_success() {
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_ATTRACTION, new EditAttractionDescriptor());
-        Attraction editedAttraction = model.getFilteredAttractionList().get(INDEX_FIRST_ATTRACTION.getZeroBased());
+        EditCommand editCommand = new EditCommand(INDEX_FIRST, new EditAttractionDescriptor());
+        Attraction editedAttraction = model.getFilteredAttractionList().get(INDEX_FIRST.getZeroBased());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_ATTRACTION_SUCCESS, editedAttraction);
 
@@ -91,12 +91,12 @@ public class EditCommandTest {
 
     @Test
     public void execute_filteredList_success() {
-        showAttractionAtIndex(model, INDEX_FIRST_ATTRACTION);
+        showAttractionAtIndex(model, INDEX_FIRST);
 
         Attraction attractionInFilteredList = model.getFilteredAttractionList()
-                .get(INDEX_FIRST_ATTRACTION.getZeroBased());
+                .get(INDEX_FIRST.getZeroBased());
         Attraction editedAttraction = new AttractionBuilder(attractionInFilteredList).withName(VALID_NAME_MBS).build();
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_ATTRACTION,
+        EditCommand editCommand = new EditCommand(INDEX_FIRST,
                 new EditAttractionDescriptorBuilder().withName(VALID_NAME_MBS).build());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_ATTRACTION_SUCCESS, editedAttraction);
@@ -110,21 +110,21 @@ public class EditCommandTest {
 
     @Test
     public void execute_duplicateAttractionUnfilteredList_failure() {
-        Attraction firstAttraction = model.getFilteredAttractionList().get(INDEX_FIRST_ATTRACTION.getZeroBased());
+        Attraction firstAttraction = model.getFilteredAttractionList().get(INDEX_FIRST.getZeroBased());
         EditAttractionDescriptor descriptor = new EditAttractionDescriptorBuilder(firstAttraction).build();
-        EditCommand editCommand = new EditCommand(INDEX_SECOND_ATTRACTION, descriptor);
+        EditCommand editCommand = new EditCommand(INDEX_SECOND, descriptor);
 
         assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_ATTRACTION);
     }
 
     @Test
     public void execute_duplicateAttractionFilteredList_failure() {
-        showAttractionAtIndex(model, INDEX_FIRST_ATTRACTION);
+        showAttractionAtIndex(model, INDEX_FIRST);
 
         // edit attraction in filtered list into a duplicate in AttractionList
         Attraction attractionInList = model.getAttractionList()
-                .getAttractionList().get(INDEX_SECOND_ATTRACTION.getZeroBased());
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_ATTRACTION,
+                .getAttractionList().get(INDEX_SECOND.getZeroBased());
+        EditCommand editCommand = new EditCommand(INDEX_FIRST,
                 new EditAttractionDescriptorBuilder(attractionInList).build());
 
         assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_ATTRACTION);
@@ -145,8 +145,8 @@ public class EditCommandTest {
      */
     @Test
     public void execute_invalidAttractionIndexFilteredList_failure() {
-        showAttractionAtIndex(model, INDEX_FIRST_ATTRACTION);
-        Index outOfBoundIndex = INDEX_SECOND_ATTRACTION;
+        showAttractionAtIndex(model, INDEX_FIRST);
+        Index outOfBoundIndex = INDEX_SECOND;
         // ensures that outOfBoundIndex is still in bounds of the AttractionList list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAttractionList().getAttractionList().size());
 
@@ -158,11 +158,11 @@ public class EditCommandTest {
 
     @Test
     public void equals() {
-        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_ATTRACTION, DESC_EIFFEL);
+        final EditCommand standardCommand = new EditCommand(INDEX_FIRST, DESC_EIFFEL);
 
         // same values -> returns true
         EditAttractionDescriptor copyDescriptor = new EditAttractionDescriptor(DESC_EIFFEL);
-        EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_ATTRACTION, copyDescriptor);
+        EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> returns true
@@ -175,10 +175,10 @@ public class EditCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_ATTRACTION, DESC_EIFFEL)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND, DESC_EIFFEL)));
 
         // different descriptor -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_ATTRACTION, DESC_MBS)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST, DESC_MBS)));
     }
 
 }
