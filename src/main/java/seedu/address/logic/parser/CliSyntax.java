@@ -24,7 +24,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_ENDDATE = new Prefix("ed/");
 
     // Prefix for ItineraryAttraction related
-    public static final Prefix PREFIX_ATTRACTION = new Prefix("attr/");
+    public static final Prefix PREFIX_ATTRACTION = new Prefix("att/");
     public static final Prefix PREFIX_START_TIME = new Prefix("st/");
     public static final Prefix PREFIX_END_TIME = new Prefix("et/");
     public static final Prefix PREFIX_DAY_VISITING = new Prefix("day/");

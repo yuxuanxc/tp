@@ -12,6 +12,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.ItineraryAttraction;
 import seedu.address.model.itinerary.ItineraryTime;
 
@@ -28,20 +29,18 @@ public class EditItineraryAttractionCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in Itinerary.";
 
-    private final Index index;
+    private final String attractionName;
     private final EditItineraryAttractionDescriptor editItineraryAttractionDescriptor;
 
     /**
-     * @param index                             of the attraction in the filtered attraction list
-     *                                          to edit
      * @param editItineraryAttractionDescriptor details to edit the attraction with
      */
-    public EditItineraryAttractionCommand(Index index,
+    public EditItineraryAttractionCommand(String attractionName,
                                           EditItineraryAttractionDescriptor editItineraryAttractionDescriptor) {
-        requireNonNull(index);
+        requireNonNull(attractionName);
         requireNonNull(editItineraryAttractionDescriptor);
 
-        this.index = index;
+        this.attractionName = attractionName;
         this.editItineraryAttractionDescriptor =
                 new EditItineraryAttractionDescriptor(editItineraryAttractionDescriptor);
     }
@@ -50,13 +49,22 @@ public class EditItineraryAttractionCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        List<ItineraryAttraction> lastShownList = model.getCurrentItinerary().getItineraryAttractions();
+        ItineraryAttraction itineraryAttractionToEdit = null;
 
-        if (index.getZeroBased() >= lastShownList.size()) {
+        // todo decide if the looping should be done here.
+        for (Day d : model.getCurrentItinerary().getDays()) {
+            for (ItineraryAttraction ia : d.getItineraryAttractions()) {
+                if (ia.getName().fullName.equals(attractionName)) {
+                    itineraryAttractionToEdit = ia;
+                    break;
+                }
+            }
+        }
+
+        if (itineraryAttractionToEdit == null) {
             throw new CommandException(Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX);
         }
 
-        ItineraryAttraction itineraryAttractionToEdit = lastShownList.get(index.getZeroBased());
         ItineraryAttraction editedItineraryAttraction = createEditedItineraryAttraction(itineraryAttractionToEdit,
                 editItineraryAttractionDescriptor);
 
@@ -65,7 +73,9 @@ public class EditItineraryAttractionCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
         }
 
-        model.getCurrentItinerary().setItineraryAttraction(itineraryAttractionToEdit, editedItineraryAttraction);
+        // Calls editItineraryAttraction with the updated day visiting it, if it changes
+        model.getCurrentItinerary().editItineraryAttraction(itineraryAttractionToEdit, editedItineraryAttraction,
+                editedItineraryAttraction.getDayVisiting());
         return new CommandResult(String.format(MESSAGE_EDIT_ATTRACTION_SUCCESS, editedItineraryAttraction));
     }
 
@@ -99,7 +109,7 @@ public class EditItineraryAttractionCommand extends Command {
 
         // state check
         EditItineraryAttractionCommand e = (EditItineraryAttractionCommand) other;
-        return index.equals(e.index)
+        return attractionName.equals(e.attractionName)
                 && editItineraryAttractionDescriptor.equals(e.editItineraryAttractionDescriptor);
     }
 

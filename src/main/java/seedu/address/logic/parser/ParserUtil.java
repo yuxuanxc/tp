@@ -243,6 +243,18 @@ public class ParserUtil {
         return new ItineraryTime(trimmedTime);
 
     }
+
+    /**
+     * Parses a {@code String name} into a {@code Name}.
+     * Leading and trailing whitespaces will be trimmed.
+     * todo change to return attraction, currently no check if the attraction exist.
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static String parseAttractionName(String attractionName) throws ParseException {
+        requireNonNull(attractionName);
+        return attractionName.trim();
+    }
+
     /**
      * Parses {@code String date} into a {@code LocalDate}.
      */
