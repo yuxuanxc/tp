@@ -66,7 +66,10 @@ public class EditItineraryAttractionCommandParser implements Parser<EditItinerar
             throw new ParseException(EditItineraryAttractionCommand.MESSAGE_NOT_EDITED);
         }
 
-        return new EditItineraryAttractionCommand(index, editItiAttrDesc);
+
+        String itineraryAttractionName = ParserUtil.parseAttractionName(argMultimap.getValue(PREFIX_START_TIME).get());
+
+        return new EditItineraryAttractionCommand(itineraryAttractionName, editItiAttrDesc);
     }
 
     /**

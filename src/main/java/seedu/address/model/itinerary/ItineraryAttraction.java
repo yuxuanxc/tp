@@ -9,18 +9,12 @@ import seedu.address.model.commons.Name;
  * Wrapper class to contain attributes of an attraction specific to a particular Itinerary.
  */
 public class ItineraryAttraction {
-    // todo decide if inheritance or dependency for this attraction
+    // todo decide if inheritance or dependency for this attraction, maybe extend from Attraction directly.
+    private final int dayVisiting;
     private final Attraction attraction;
     private final ItineraryTime startTime;
     private final ItineraryTime endTime;
-    private final int dayVisiting;
-    // todo maybe extend from Attraction directly.
     // todo add a check to make sure the start time and end time don't clash with existing itinerary attractions.
-    // todo put new commands into ItineraryAttractionCommands
-    // todo put command parser into ItineraryAttractionCommandParser
-    // todo add attraction to itinerary
-    // todo edit attraction from itinerary
-    // todo delete attraction from itinerary
 
     /**
      * Constructs a Itinerary attraction.

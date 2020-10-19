@@ -2,14 +2,12 @@ package seedu.address.logic.commands.itineraryattraction;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.List;
-
 import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.ItineraryAttraction;
 
 
@@ -28,25 +26,38 @@ public class DeleteItineraryAttractionCommand extends Command {
 
     public static final String MESSAGE_DELETE_ATTRACTION_SUCCESS = "Deleted attraction: %1$s";
 
-    private final Index targetIndex;
+    private final String attractionName;
 
-    public DeleteItineraryAttractionCommand(Index targetIndex) {
-        this.targetIndex = targetIndex;
+    public DeleteItineraryAttractionCommand(String attractionName) {
+        this.attractionName = attractionName;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        List<ItineraryAttraction> lastShownList = model.getCurrentItinerary().getItineraryAttractions();
+        ItineraryAttraction itineraryAttractionToDelete = null;
+        int targetIndex = 0;
 
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX);
+        // todo decide if the looping should be done here.
+        for (Day d : model.getCurrentItinerary().getDays()) {
+            for (ItineraryAttraction ia : d.getItineraryAttractions()) {
+                if (ia.getName().fullName.equals(attractionName)) {
+                    itineraryAttractionToDelete = ia;
+                    targetIndex++;
+                    break;
+                }
+            }
+            // change this index nonsense later
+            targetIndex = 0;
         }
 
-        ItineraryAttraction itineraryAttractionToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.getCurrentItinerary().removeItineraryItem(itineraryAttractionToDelete);
+        if (itineraryAttractionToDelete == null) {
+            throw new CommandException(Messages.MESSAGE_INVALID_ATTRACTION_NAME_GIVEN);
+        }
 
+        model.getCurrentItinerary().deleteItineraryAttraction(targetIndex,
+                itineraryAttractionToDelete.getDayVisiting());
         return new CommandResult(String.format(MESSAGE_DELETE_ATTRACTION_SUCCESS, itineraryAttractionToDelete));
     }
 
@@ -54,6 +65,6 @@ public class DeleteItineraryAttractionCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof DeleteItineraryAttractionCommand // instanceof handles nulls
-                && targetIndex.equals(((DeleteItineraryAttractionCommand) other).targetIndex)); // state check
+                && attractionName.equals(((DeleteItineraryAttractionCommand) other).attractionName)); // state check
     }
 }

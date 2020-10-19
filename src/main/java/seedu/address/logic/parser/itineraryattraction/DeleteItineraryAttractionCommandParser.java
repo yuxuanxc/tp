@@ -2,7 +2,6 @@ package seedu.address.logic.parser.itineraryattraction;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
-import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.itineraryattraction.DeleteItineraryAttractionCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
@@ -21,8 +20,8 @@ public class DeleteItineraryAttractionCommandParser implements Parser<DeleteItin
      */
     public DeleteItineraryAttractionCommand parse(String args) throws ParseException {
         try {
-            Index index = ParserUtil.parseIndex(args);
-            return new DeleteItineraryAttractionCommand(index);
+            String attractionName = ParserUtil.parseAttractionName(args);
+            return new DeleteItineraryAttractionCommand(attractionName);
         } catch (ParseException pe) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteItineraryAttractionCommand.MESSAGE_USAGE), pe);

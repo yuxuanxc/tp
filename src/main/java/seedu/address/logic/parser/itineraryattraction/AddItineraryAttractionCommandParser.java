@@ -39,6 +39,8 @@ public class AddItineraryAttractionCommandParser implements Parser<AddItineraryA
                         AddItineraryAttractionCommand.MESSAGE_USAGE));
             }
 
+
+            // todo PREFIX_ATTRACTION should return a string or smth instead
             Index attractionIndex = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_ATTRACTION).get());
             ItineraryTime startTime = ParserUtil.parseItineraryTime(argMultimap.getValue(PREFIX_START_TIME).get());
             ItineraryTime endTime = ParserUtil.parseItineraryTime(argMultimap.getValue(PREFIX_END_TIME).get());

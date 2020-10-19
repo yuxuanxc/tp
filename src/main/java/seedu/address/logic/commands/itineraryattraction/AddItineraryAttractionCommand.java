@@ -66,7 +66,8 @@ public class AddItineraryAttractionCommand extends Command {
                 new ItineraryAttraction(lastShownAttractionList.get(attractionIndex.getZeroBased()), startTime,
                         endTime, dayVisited.getZeroBased());
 
-        model.getCurrentItinerary().addItineraryAttraction(itineraryAttractionToAdd);
+        model.getCurrentItinerary().addItineraryAttraction(itineraryAttractionToAdd,
+                itineraryAttractionToAdd.getDayVisiting());
         return new CommandResult(String.format(MESSAGE_ADD_ATTRACTION_SUCCESS, itineraryAttractionToAdd));
     }
 
