@@ -29,13 +29,9 @@ import seedu.address.logic.parser.itineraryattraction.EditItineraryAttractionCom
  */
 public class TrackPadParser {
 
-    /*
-     * Used for initial separation of command word and args.
-     * (?<commandWord>\S+) (?<arguments> splits it into 2 groups, commandWord and arguments
-     * (?<commandWord>\\S+) a grouping, will take 1 or none group that has no whitespace
-     * (?<arguments>.*)a second grouping, will take any char after
-     */
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
+    //private static final Pattern BASIC_COMMAND_FORMAT =
+    //      Pattern.compile("(?<commandWord>^[^/||[^\\D]]*)(?<arguments>.*)");
     // todo change the grouping after the itinerary commands has be written to support 3 words command
 
     /**

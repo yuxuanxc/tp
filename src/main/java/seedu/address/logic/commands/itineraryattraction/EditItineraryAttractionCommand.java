@@ -1,21 +1,10 @@
 package seedu.address.logic.commands.itineraryattraction;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRACTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_OPENING_HOURS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
 
 import java.util.Optional;
 
@@ -38,8 +27,8 @@ public class EditItineraryAttractionCommand extends Command {
     public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in Itinerary.";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the itinerary attraction " +
-            "identified by the name of the itinerary attraction displayed in the itinerary"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the itinerary attraction "
+            + "identified by the name of the itinerary attraction displayed in the itinerary"
             + "Parameters: " + PREFIX_ATTRACTION + "NAME " + "[" + PREFIX_ATTRACTION + "ATTRACTION NAME] "
             + "[" + PREFIX_START_TIME + "START TIME] " + "[" + PREFIX_END_TIME + "END TIME] "
             + "[" + PREFIX_DAY_VISITING + "DAY VISITING] \n"
