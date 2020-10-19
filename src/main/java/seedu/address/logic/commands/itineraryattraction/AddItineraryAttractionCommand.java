@@ -1,6 +1,10 @@
 package seedu.address.logic.commands.itineraryattraction;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRACTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
 import java.util.List;
 
@@ -11,6 +15,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.ItineraryAttraction;
 import seedu.address.model.itinerary.ItineraryTime;
 
@@ -23,17 +28,18 @@ public class AddItineraryAttractionCommand extends Command {
     public static final String COMMAND_WORD = "add itinerary attraction";
 
     // todo copy test case from AddCommand
-    // todo update the usage message
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an attraction identified by the index number used"
             + " in the displayed attraction list to the itinerary identified by the the index number used in the"
             + " displayed itinerary list.\n "
-            + "Parameters: ATTRACTIONINDEX ITINERARYINDEX (must be a positive integer) "
-            + "Example: " + COMMAND_WORD + " 1 1";
+            + "Parameters: " + PREFIX_ATTRACTION + "ATTRACTION " + PREFIX_START_TIME + "START TIME "
+            + PREFIX_END_TIME + "END TIME " + PREFIX_DAY_VISITING + "DAY VISITING "
+            + "Example: " + COMMAND_WORD + " " + PREFIX_ATTRACTION + "Singapore Zoo " + PREFIX_START_TIME + "1000 "
+            + PREFIX_END_TIME + "1600 " + PREFIX_DAY_VISITING + "3";
 
     public static final String MESSAGE_ADD_ATTRACTION_SUCCESS = "Added Attraction: %1$s to Itinerary: %1$s";
     public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in the itinerary.";
 
-    private final Index attractionIndex;
+    private final String attractionName;
     private final ItineraryTime startTime;
     private final ItineraryTime endTime;
     private final Index dayVisited;
@@ -41,13 +47,13 @@ public class AddItineraryAttractionCommand extends Command {
     /**
      * Creates an AddCommand to add the specified {@code Attraction}
      */
-    public AddItineraryAttractionCommand(Index attractionIndex, ItineraryTime startTime, ItineraryTime endTime,
+    public AddItineraryAttractionCommand(String attractionName, ItineraryTime startTime, ItineraryTime endTime,
                                          Index dayVisited) {
-        assert attractionIndex != null;
+        assert attractionName != null;
         assert startTime != null;
         assert endTime != null;
         assert dayVisited != null;
-        this.attractionIndex = attractionIndex;
+        this.attractionName = attractionName;
         this.startTime = startTime;
         this.endTime = endTime;
         this.dayVisited = dayVisited;
@@ -56,15 +62,31 @@ public class AddItineraryAttractionCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Attraction> lastShownAttractionList = model.getFilteredAttractionList();
 
-        if (attractionIndex.getZeroBased() >= lastShownAttractionList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX);
+        Attraction attractionToAdd = null;
+        // decide a location for looping
+        for (Attraction a : model.getFilteredAttractionList()) {
+            if (a.getName().equals(attractionName)) {
+                attractionToAdd = a;
+                break;
+            }
         }
 
-        ItineraryAttraction itineraryAttractionToAdd =
-                new ItineraryAttraction(lastShownAttractionList.get(attractionIndex.getZeroBased()), startTime,
-                        endTime, dayVisited.getZeroBased());
+        if (attractionToAdd == null) {
+            throw new CommandException(Messages.MESSAGE_INVALID_ATTRACTION_NAME_GIVEN);
+        }
+
+        ItineraryAttraction itineraryAttractionToAdd = new ItineraryAttraction(attractionToAdd, startTime, endTime,
+                dayVisited.getZeroBased());
+
+        // todo decide if the looping should be done here.
+        for (Day d : model.getCurrentItinerary().getDays()) {
+            for (ItineraryAttraction ia : d.getItineraryAttractions()) {
+                if (ia.isSameItineraryAttraction(itineraryAttractionToAdd)) {
+                    throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
+                }
+            }
+        }
 
         model.getCurrentItinerary().addItineraryAttraction(itineraryAttractionToAdd,
                 itineraryAttractionToAdd.getDayVisiting());
@@ -75,7 +97,7 @@ public class AddItineraryAttractionCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddItineraryAttractionCommand // instanceof handles nulls
-                && attractionIndex.equals(((AddItineraryAttractionCommand) other).attractionIndex)
+                && attractionName.equals(((AddItineraryAttractionCommand) other).attractionName)
                 && startTime.equals(((AddItineraryAttractionCommand) other).startTime)
                 && endTime.equals(((AddItineraryAttractionCommand) other).endTime)
                 && dayVisited.equals(((AddItineraryAttractionCommand) other).dayVisited));
