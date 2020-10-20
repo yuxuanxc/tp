@@ -8,12 +8,39 @@ Graphical User Interface (GUI).
 If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
 
 
-* Table of Contents
-{:toc}
+## Table of Contents
+- [1. Target User](#1-target-user)
+- [2. Quick start](#2-quick-start)
+- [3. Features](#3-features)
+  * [3.1 General](#31-general)
+    + [3.1.1 Viewing help : `help`](#311-viewing-help----help-)
+    + [3.1.2 Exiting the program : `exit`](#312-exiting-the-program----exit-)
+    + [3.1.3 Saving the data](#313-saving-the-data)
+  * [3.2 Attraction Features](#32-attraction-features)
+    + [3.2.1 Adding a tourist attraction: `add`](#321-adding-a-tourist-attraction---add-)
+    + [3.2.2 Listing all tourist attractions : `list`](#322-listing-all-tourist-attractions----list-)
+    + [3.2.3 Editing an attraction : `edit`](#323-editing-an-attraction----edit-)
+    + [3.2.4 Finding a tourist attraction: `find`](#324-finding-a-tourist-attraction---find-)
+    + [3.2.5 Deleting a tourist attraction : `delete`](#325-deleting-a-tourist-attraction----delete-)
+  * [3.2.6 Editing a tourist attraction: `edit`](#326-editing-a-tourist-attraction---edit-)
+    + [3.2.7 Clearing all attractions : `clear`](#327-clearing-all-attractions----clear-)
+  * [3.3 Itinerary Features](#33-itinerary-features)
+    + [3.3.1 Adding a new itinerary: `add-itinerary`](#331-adding-a-new-itinerary---add-itinerary-)
+    + [3.3.2 Deleting an itinerary: `delete-itinerary`](#332-deleting-an-itinerary---delete-itinerary-)
+    + [3.3.3 Clearing all itineraries : `clear-itinerary`](#333-clearing-all-itineraries----clear-itinerary-)
+  * [3.4 Itinerary Attraction Features](#34-itinerary-attraction-features)
+    + [3.4.1 Adding a new itinerary attraction: `add-itinerary-attraction`](#341-adding-a-new-itinerary-attraction---add-itinerary-attraction-)
+    + [3.4.2 Deleting an itinerary attraction: `delete-itinerary-attraction`](#342-deleting-an-itinerary-attraction---delete-itinerary-attraction-)
+    + [3.4.3 Editing an itinerary attraction : `edit-itinerary-attraction`](#343-editing-an-itinerary-attraction----edit-itinerary-attraction-)
+- [4. Command summary](#4-command-summary)
+  * [4.1 General Commands](#41-general-commands)
+  * [4.2 Attraction-related Commands](#42-attraction-related-commands)
+  * [4.3 Itinerary-related Commands](#43-itinerary-related-commands)
+  * [4.4 Itinerary-attraction-related Commands](#44-itinerary-attraction-related-commands)
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Target User
+## 1. Target User
 Travelholics, wanderlust
 - Loves traveling
 - Travelled to many places
@@ -21,7 +48,7 @@ Travelholics, wanderlust
 
 
 
-## Quick start
+## 2. Quick start
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -55,7 +82,7 @@ Travelholics, wanderlust
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
+## 3. Features
 
 <div markdown="block" class="alert alert-info">
 
@@ -75,9 +102,9 @@ Travelholics, wanderlust
 
 </div>
 
-### General
+### 3.1 General
 
-#### Viewing help : `help`
+#### 3.1.1 Viewing help : `help`
 
 Shows a message explaining how to access the help page.
 
@@ -85,20 +112,20 @@ Shows a message explaining how to access the help page.
 
 Format: `help`
 
-#### Exiting the program : `exit`
+#### 3.1.2 Exiting the program : `exit`
 
 Exits the program.
 
 Format: `exit`
 
-#### Saving the data
+#### 3.1.3 Saving the data
 
 TrackPad data will be saved in the storage automatically after any command that changes the data. 
 There is no need to save manually.
 
-### Attraction Features
+### 3.2 Attraction Features
 
-#### Adding a tourist attraction: `add`
+#### 3.2.1 Adding a tourist attraction: `add`
 
 Adds a tourist attraction to the current list.
 
@@ -125,13 +152,13 @@ Examples:
 * `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore, e/singaporezoo@gmail.com
 op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`
 
-#### Listing all tourist attractions : `list`
+#### 3.2.2 Listing all tourist attractions : `list`
 
 Shows a list of all tourist attractions in TrackPad.
 
 Format: `list`
 
-#### Editing an attraction : `edit`
+#### 3.2.3 Editing an attraction : `edit`
 
 Edits an existing attraction in TrackPad.
 
@@ -148,7 +175,7 @@ Examples:
 *  `edit 1 p/91234567 e/sgzoo@example.com` Edits the phone number and email address of the 1st attraction to be `91234567` and `sgzoo@example.com` respectively.
 *  `edit 2 n/River Safari t/` Edits the name of the 2nd attraction to be `River Safari` and clears all existing tags.
 
-#### Finding a tourist attraction: `find`
+#### 3.2.4 Finding a tourist attraction: `find`
 
 Finds tourist attraction which contains the keyword in their names.
 
@@ -163,7 +190,7 @@ Examples:
 * `find Singapore` returns `Singapore Zoo` and `Singpoare Stadium`<br>
   ![result for 'find Singapore'](images/findAlexDavidResult.png) // todo attach real image
 
-#### Deleting a tourist attraction : `delete`
+#### 3.2.5 Deleting a tourist attraction : `delete`
 
 Deletes a tourist attraction from the current list.
 
@@ -177,7 +204,7 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd attraction in the TrackPad.
 * `find USS` followed by `delete 1` deletes the 1st tourist attraction in the results of the `find` command.
 
-### Editing a tourist attraction: `edit`
+### 3.2.6 Editing a tourist attraction: `edit`
 
 Edits a tourist attraction in the current list.
 
@@ -197,15 +224,15 @@ Format: `edit INDEX [n/ATTRACTION_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [
 
 
 
-#### Clearing all attractions : `clear`
+#### 3.2.7 Clearing all attractions : `clear`
 
 Clears all tourist attractions from the TrackPad.
 
 Format: `clear`
 
-### Itinerary Features
+### 3.3 Itinerary Features
 
-#### Adding a new itinerary: `add-itinerary`
+#### 3.3.1 Adding a new itinerary: `add-itinerary`
 
 Adds a new itinerary to the current list.
 
@@ -219,7 +246,7 @@ Examples:
 * `add n/Europe Trip sd/01-12-2020 ed/20-12-2020`
 * `add n/Japan holiday d/with friends sd/15-01-2019 ed/30-01-2019`
 
-#### Deleting an itinerary: `delete-itinerary`
+#### 3.3.2 Deleting an itinerary: `delete-itinerary`
 
 Deletes an itinerary from the current list.
 
@@ -232,16 +259,16 @@ Format: `delete-itinerary INDEX`
 Examples:
 * `list-itinerary` followed by `delete 2` deletes the 2nd itinerary in the TrackPad.
 
-#### Clearing all itineraries : `clear-itinerary`
+#### 3.3.3 Clearing all itineraries : `clear-itinerary`
 
 Clears all itineraries from the TrackPad.
 
 Format: `clear-itinerary`
 
-### Itinerary Attraction Features
+### 3.4 Itinerary Attraction Features
 A attraction is an itinerary attraction when it is added into a itinerary.
 
-#### Adding a new itinerary attraction: `add-itinerary-attraction`
+#### 3.4.1 Adding a new itinerary attraction: `add-itinerary-attraction`
 
 Adds a new itinerary attraction to the selected itinerary.
 
@@ -258,7 +285,7 @@ Examples:
 The itinerary attraction will be added into the itinerary displayed on the right.
 </div>
 
-#### Deleting an itinerary attraction: `delete-itinerary-attraction`
+#### 3.4.2 Deleting an itinerary attraction: `delete-itinerary-attraction`
 
 Deletes an itinerary attraction from the itinerary.
 
@@ -270,7 +297,7 @@ Format: `delete-itinerary att/ATTRACTION_NAME`
 Examples:
 * `delete-itinerary-attraction att/Singapore Zoo` deletes attraction `Singapore Zoo` from current itinerary.
 
-#### Editing an itinerary attraction : `edit-itinerary-attraction`
+#### 3.4.3 Editing an itinerary attraction : `edit-itinerary-attraction`
 
 Edits an existing itinerary attraction in itinerary.
 
@@ -304,16 +331,16 @@ _{explain the feature here}_
 -->
 
 
-## Command summary
+## 4. Command summary
 
-### General Commands
+### 4.1 General Commands
 
 Action | Format, Examples
 --------|------------------
 **Help** | `help`
 **Exit** | `exit`
 
-### Attraction-related Commands
+### 4.2 Attraction-related Commands
 
 Action | Format, Examples
 --------|------------------
@@ -324,7 +351,7 @@ Action | Format, Examples
 **Find attraction** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Zoo`
 **List attractions** | `list`
 
-### Itinerary-related Commands
+### 4.3 Itinerary-related Commands
 
 Action | Format, Examples
 --------|------------------
@@ -335,7 +362,7 @@ Action | Format, Examples
 **Find itinerary** | `find-itinerary KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-itinerary Korea`
 **List itineraries** | `list-itinerary`
 
-### Itinerary-attraction-related Commands
+### 4.4 Itinerary-attraction-related Commands
 
 Action | Format, Examples
 --------|------------------
