@@ -215,6 +215,53 @@ Clears all itineraries from the TrackPad.
 
 Format: `clear-itinerary`
 
+### Itinerary Attraction Features
+A attraction is an itinerary attraction when it is added into a itinerary.
+
+#### Adding a new itinerary attraction: `add-itinerary-attraction`
+
+Adds a new itinerary attraction to the selected itinerary.
+
+Format: `add-itinerary-attraction att/ATTRACTION_NAME st/START_TIME et/END_TIME day/DAY_VISITING`
+
+* The name of attraction, start time, end time and day visiting fields must be filled in.
+* The start time and end time fields take in time of the 24H format `HH-MM`.
+
+Examples:
+* `add-itinerary-attraction att/Singapore Zoo st/1000 et/1600 day/3`
+* `add-itinerary-attraction att/Mt Fuji st/0900 et/1200 day/2`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+The itinerary attraction will be added into the itinerary displayed on the right.
+</div>
+
+#### Deleting an itinerary attraction: `delete-itinerary-attraction`
+
+Deletes an itinerary attraction from the itinerary.
+
+Format: `delete-itinerary att/ATTRACTION_NAME`
+
+* Deletes the itinerary attraction specified by the name.
+* Only deletes items in the selected itinerary.
+
+Examples:
+* `delete-itinerary-attraction att/Singapore Zoo` deletes attraction `Singapore Zoo` from current itinerary.
+
+#### Editing an itinerary attraction : `edit-itinerary-attraction`
+
+Edits an existing itinerary attraction in itinerary.
+
+Format: `edit-itinerary-attraction att/ATTRACTION_NAME [st/START_TIME] [et/END_TIME] [day/DAY_VISITING]`
+
+* Edits the itinerary attraction specified by the name.
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+
+Examples:
+*  `edit-itinerary-attraction att/Singapore Zoo day/2` Edits the day visiting to day 2 in the itinerary.
+*  `edit-itinerary-attraction att/Sentosa st/1500 et/1800` Edits the start time and end time to be `1500` and `1800` respectively.
+
+
 <!--
 ### Archiving data files `[coming in v2.0]`
 
@@ -254,13 +301,21 @@ Action | Format, Examples
 **Find attraction** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Zoo`
 **List attractions** | `list`
 
-###Itinerary-related Commands
+### Itinerary-related Commands
 
 Action | Format, Examples
 --------|------------------
-**Add itinerary** | `add-itinerary n/ITINERARY [d/DESCRIPTION] sd/START_DATE ed/END_DATE` <br> e.g., `add n/Japan holiday d/with friends sd/15-01-2019 ed/30-01-2019`
+**Add itinerary** | `add-itinerary n/ITINERARY [d/DESCRIPTION] sd/START_DATE ed/END_DATE` <br> e.g., `add-itinerary n/Japan holiday d/with friends sd/15-01-2019 ed/30-01-2019`
 **Clear all itineraries** | `clear-itinerary`
-**Delete itinerary** | `delete-itinerary INDEX`<br> e.g., `delete 3`
-**Edit itinerary** | `edit-itinerary INDEX [n/NAME] [d/DESCRIPTION] [sd/START_DATE] [ed/END_DATE]`<br> e.g.,`edit 2 n/Singapore journey sd/05-06-2019`
-**Find itinerary** | `find-itinerary KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Korea`
+**Delete itinerary** | `delete-itinerary INDEX`<br> e.g., `delete-itinerary 3`
+**Edit itinerary** | `edit-itinerary INDEX [n/NAME] [d/DESCRIPTION] [sd/START_DATE] [ed/END_DATE]`<br> e.g.,`edit-itinerary 2 n/Singapore journey sd/05-06-2019`
+**Find itinerary** | `find-itinerary KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-itinerary Korea`
 **List itineraries** | `list-itinerary`
+
+### Itinerary-attraction-related Commands
+
+Action | Format, Examples
+--------|------------------
+**Add itinerary attraction** | `add-itinerary-attraction att/ATTRACTION_NAME st/START_TIME et/END_TIME day/DAY_VISITING ` <br> e.g., `add-itinerary-attraction att/London Eye st/1400 et/1500 day/5`
+**Delete itinerary attraction** | `delete-itinerary-attraction att/ATTRACTION_NAME`<br> e.g., `delete-itinerary-attraction att/London Eye`
+**Edit itinerary attraction** | `edit-itinerary-attraction att/ATTRACTION_NAME [st/START_TIME] [et/END_TIME] [day/DAY_VISITING] ` <br> e.g.,`edit-itinerary-attraction att/London Eye st/0900 et/1000 day/2`

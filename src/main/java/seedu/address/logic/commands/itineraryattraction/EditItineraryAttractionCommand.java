@@ -29,9 +29,9 @@ public class EditItineraryAttractionCommand extends Command {
     public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in Itinerary.";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the itinerary attraction "
             + "identified by the name of the itinerary attraction displayed in the itinerary"
-            + "Parameters: " + PREFIX_ATTRACTION + "NAME " + "[" + PREFIX_ATTRACTION + "ATTRACTION NAME] "
-            + "[" + PREFIX_START_TIME + "START TIME] " + "[" + PREFIX_END_TIME + "END TIME] "
-            + "[" + PREFIX_DAY_VISITING + "DAY VISITING] \n"
+            + "Parameters: " + PREFIX_ATTRACTION + "NAME " + "[" + PREFIX_ATTRACTION + "ATTRACTION_NAME] "
+            + "[" + PREFIX_START_TIME + "START_TIME] " + "[" + PREFIX_END_TIME + "END_TIME] "
+            + "[" + PREFIX_DAY_VISITING + "DAY_VISITING] \n"
             + "Example: " + COMMAND_WORD + " Singapore Zoo " + PREFIX_START_TIME + "10000 " + PREFIX_DAY_VISITING + "4";
 
     private final String attractionName;
