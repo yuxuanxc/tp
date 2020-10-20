@@ -17,7 +17,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ### 2.1 Architecture
 
-![Architecture Class Diagram](images/ArchitectureDiagram.png)
+<img align="center">![Architecture Class Diagram](images/ArchitectureDiagram.png)</img>
 <div align="center"><sup>Figure 2.1.1 Architecture Class Diagram</sup></div>
 
 Figure 2.1.1 explains the high-level design of the App. Given below is a quick overview of each component.
@@ -46,7 +46,7 @@ Each of the four components,
 * defines its *API* in an `interface` with the same name as the Component.
 * exposes its functionality using a concrete `{Component Name}Manager` class (which implements the corresponding API `interface` mentioned in the previous point.
 
-![Class Diagram of the Logic Component](images/LogicClassDiagram.png)
+<img align="center">![Class Diagram of the Logic Component](images/LogicClassDiagram.png)</img>
 <div align="center"><sup>Figure 2.1.2 Class Diagram of the Logic Component</sup></div>
 
 For example, the `Logic` component (seen from Figure 2.1.2) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
