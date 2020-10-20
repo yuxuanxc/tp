@@ -30,8 +30,8 @@ public class AddItineraryAttractionCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an attraction identified by the index number used"
             + " in the displayed attraction list to the itinerary identified by the the index number used in the"
             + " displayed itinerary list.\n "
-            + "Parameters: " + PREFIX_ATTRACTION + "ATTRACTION " + PREFIX_START_TIME + "START TIME "
-            + PREFIX_END_TIME + "END TIME " + PREFIX_DAY_VISITING + "DAY VISITING "
+            + "Parameters: " + PREFIX_ATTRACTION + "ATTRACTION_NAME " + PREFIX_START_TIME + "START_TIME "
+            + PREFIX_END_TIME + "END_TIME " + PREFIX_DAY_VISITING + "DAY_VISITING "
             + "Example: " + COMMAND_WORD + " " + PREFIX_ATTRACTION + "Singapore Zoo " + PREFIX_START_TIME + "1000 "
             + PREFIX_END_TIME + "1600 " + PREFIX_DAY_VISITING + "3";
 
