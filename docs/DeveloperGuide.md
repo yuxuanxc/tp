@@ -102,8 +102,9 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 The `Model`,
 
 * stores a `UserPref` object that represents the user’s preferences.
-* stores the TrackPad data.
-* exposes an unmodifiable `ObservableList<Attraction>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores an `AttractionList` object that is a list of all the attractions in TrackPad.
+* stores an `ItineraryList` object that is a list of all the itineraries in TrackPad.
+* exposes two unmodifiable `ObservableList<Attraction>` and `ObservableList<Itinerary>` that can be 'observed' e.g. the UI can be bound to the lists so that the UI automatically updates when the data in the lists change.
 * does not depend on any of the other three components.
 
 
