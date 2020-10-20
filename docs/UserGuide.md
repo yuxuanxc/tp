@@ -43,6 +43,9 @@ Travelholics, wanderlust
    Adds an attraction named `Singapore Zoo` to TrackPad.
 
    * **`delete`**`3` : Deletes the 3rd attraction shown in the current list.
+   
+   **`edit`**`3 pr/HIGH` : Edits the 3rd attraction shown in the current list, changing its original
+    price range to HIGH.
 
    * **`clear`** : Deletes all attractions.
 
@@ -162,6 +165,24 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd attraction in the TrackPad.
 * `find USS` followed by `delete 1` deletes the 1st tourist attraction in the results of the `find` command.
 
+### Editing a tourist attraction: `edit`
+
+Edits a tourist attraction in the current list.
+
+Format: `edit INDEX [n/ATTRACTION_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [l/LOCATION] [op/OPENING_HOURS]
+ [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
+ 
+* Edits the attraction at the specified `INDEX`.
+* The index refers to the index number shown in the displayed tourist attraction list.
+* The index **must be a positive integer** 1, 2, 3, …​
+* Field entries are the same as the `add` command.
+* Any field can be changed by inputting its corresponding prefix in the command.
+    * Example: `add n/MBS l/Singapore, Singapore r/4.3` in an attraction list followed by 
+    `edit 1 r/4.6` changes the rating of the 1st attraction in the list from `4.3` to `4.6`
+* New fields can be added to current attractions 
+    * Example: `add n/Singapore Zoo l/Singapore, Singapore` in an attraction list followed by 
+    `edit 1 pr/MEDIUM t/animals` adds the price range of the Singapore Zoo as `MEDIUM` and adds an `animals` tag
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the TrackPad.
@@ -203,11 +224,11 @@ _{explain the feature here}_
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/ATTRACTION p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
+**Add** | `add n/ATTRACTION_NAME [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] l/LOCATION [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​` <br> e.g., `add n/Singapore Zoo l/Singapore, Singapore t/animals`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
+**Edit** | `edit INDEX [n/ATTRACTION_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [l/LOCATION] [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​` <br> e.g., `edit 3 p/91234567 op/1000-1700`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Zoo`
 **List** | `list`
 **Help** | `help`
-
-<!--**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`-->
+**Exit** | `exit`
