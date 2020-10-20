@@ -177,7 +177,6 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd attraction in the TrackPad.
 * `find USS` followed by `delete 1` deletes the 1st tourist attraction in the results of the `find` command.
 
-<<<<<<< HEAD
 ### Editing a tourist attraction: `edit`
 
 Edits a tourist attraction in the current list.
@@ -196,10 +195,9 @@ Format: `edit INDEX [n/ATTRACTION_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [
     * Example: `add n/Singapore Zoo l/Singapore, Singapore` in an attraction list followed by 
     `edit 1 pr/MEDIUM t/animals` adds the price range of the Singapore Zoo as `MEDIUM` and adds an `animals` tag
 
-### Clearing all entries : `clear`
-=======
+
+
 #### Clearing all attractions : `clear`
->>>>>>> 9bfc5cc8ede9d20039dca9d8da50772d8af2f28d
 
 Clears all tourist attractions from the TrackPad.
 
