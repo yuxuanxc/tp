@@ -72,7 +72,9 @@ Travelholics, wanderlust
 
 </div>
 
-### Viewing help : `help`
+### General
+
+#### Viewing help : `help`
 
 Shows a message explaining how to access the help page.
 
@@ -80,8 +82,20 @@ Shows a message explaining how to access the help page.
 
 Format: `help`
 
+#### Exiting the program : `exit`
 
-### Adding a tourist attraction: `add`
+Exits the program.
+
+Format: `exit`
+
+#### Saving the data
+
+TrackPad data will be saved in the storage automatically after any command that changes the data. 
+There is no need to save manually.
+
+### Attraction Features
+
+#### Adding a tourist attraction: `add`
 
 Adds a tourist attraction to the current list.
 
@@ -95,14 +109,13 @@ Examples:
 * `add n/USS a/8 Sentosa Gateway, 098269`
 * `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
 
-### Listing all tourist attractions : `list`
+#### Listing all tourist attractions : `list`
 
 Shows a list of all tourist attractions in TrackPad.
 
 Format: `list`
 
-<!---
-### Editing an attraction : `edit`
+#### Editing an attraction : `edit`
 
 Edits an existing attraction in TrackPad.
 
@@ -118,9 +131,8 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 Examples:
 *  `edit 1 p/91234567 e/sgzoo@example.com` Edits the phone number and email address of the 1st attraction to be `91234567` and `sgzoo@example.com` respectively.
 *  `edit 2 n/River Safari t/` Edits the name of the 2nd attraction to be `River Safari` and clears all existing tags.
--->
 
-### Finding a tourist attraction: `find`
+#### Finding a tourist attraction: `find`
 
 Finds tourist attraction which contains the keyword in their names.
 
@@ -135,7 +147,7 @@ Examples:
 * `find Singapore` returns `Singapore Zoo` and `Singpoare Stadium`<br>
   ![result for 'find Singapore'](images/findAlexDavidResult.png) // todo attach real image
 
-### Deleting a tourist attraction : `delete`
+#### Deleting a tourist attraction : `delete`
 
 Deletes a tourist attraction from the current list.
 
@@ -149,23 +161,46 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd attraction in the TrackPad.
 * `find USS` followed by `delete 1` deletes the 1st tourist attraction in the results of the `find` command.
 
-### Clearing all entries : `clear`
+#### Clearing all attractions : `clear`
 
-Clears all entries from the TrackPad.
+Clears all tourist attractions from the TrackPad.
 
 Format: `clear`
 
-### Exiting the program : `exit`
+### Itinerary Features
 
-Exits the program.
+#### Adding a new itinerary: `add-itinerary`
 
-Format: `exit`
+Adds a new itinerary to the current list.
 
-### Saving the data
+Format: `add-itinerary n/ITINERARY [d/DESCRIPTION] sd/START_DATE ed/END_DATE`
 
-TrackPad data will be saved in the storage automatically after any command that changes the data. 
-There is no need to save manually.
+* The name, start date and end date fields must be filled in.
+* The description field is optional.
+* The start date and end date fields take in dates of the format `dd-mm-yyyy`.
 
+Examples:
+* `add n/Europe Trip sd/01-12-2020 ed/20-12-2020`
+* `add n/Japan holiday d/with friends sd/15-01-2019 ed/30-01-2019`
+
+#### Deleting an itinerary: `delete-itinerary`
+
+Deletes an itinerary from the current list.
+
+Format: `delete-itinerary INDEX`
+
+* Deletes the itinerary at the specified `INDEX`.
+* The index refers to the index number shown in the displayed itinerary list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list-itinerary` followed by `delete 2` deletes the 2nd itinerary in the TrackPad.
+
+#### Clearing all itineraries : `clear-itinerary`
+
+Clears all itineraries from the TrackPad.
+
+Format: `clear-itinerary`
 
 <!--
 ### Archiving data files `[coming in v2.0]`
@@ -188,13 +223,31 @@ _{explain the feature here}_
 
 ## Command summary
 
+### General Commands
+
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/ATTRACTION p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Zoo`
-**List** | `list`
 **Help** | `help`
+**Exit** | `exit`
 
-<!--**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`-->
+### Attraction-related Commands
+
+Action | Format, Examples
+--------|------------------
+**Add attraction** | `add n/ATTRACTION p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
+**Clear all attractions** | `clear`
+**Delete attraction** | `delete INDEX`<br> e.g., `delete 3`
+**Edit attraction** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/Singapore Zoo e/zoo@example.com`
+**Find attraction** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Zoo`
+**List attractions** | `list`
+
+###Itinerary-related Commands
+
+Action | Format, Examples
+--------|------------------
+**Add itinerary** | `add-itinerary n/ITINERARY [d/DESCRIPTION] sd/START_DATE ed/END_DATE` <br> e.g., `add n/Japan holiday d/with friends sd/15-01-2019 ed/30-01-2019`
+**Clear all itineraries** | `clear-itinerary`
+**Delete itinerary** | `delete-itinerary INDEX`<br> e.g., `delete 3`
+**Edit itinerary** | `edit-itinerary INDEX [n/NAME] [d/DESCRIPTION] [sd/START_DATE] [ed/END_DATE]`<br> e.g.,`edit 2 n/Singapore journey sd/05-06-2019`
+**Find itinerary** | `find-itinerary KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Korea`
+**List itineraries** | `list-itinerary`
