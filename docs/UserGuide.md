@@ -75,7 +75,9 @@ Travelholics, wanderlust
 
 </div>
 
-### Viewing help : `help`
+### General
+
+#### Viewing help : `help`
 
 Shows a message explaining how to access the help page.
 
@@ -83,8 +85,20 @@ Shows a message explaining how to access the help page.
 
 Format: `help`
 
+#### Exiting the program : `exit`
 
-### Adding a tourist attraction: `add`
+Exits the program.
+
+Format: `exit`
+
+#### Saving the data
+
+TrackPad data will be saved in the storage automatically after any command that changes the data. 
+There is no need to save manually.
+
+### Attraction Features
+
+#### Adding a tourist attraction: `add`
 
 Adds a tourist attraction to the current list.
 
@@ -111,14 +125,13 @@ Examples:
 * `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore, e/singaporezoo@gmail.com
 op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`
 
-### Listing all tourist attractions : `list`
+#### Listing all tourist attractions : `list`
 
 Shows a list of all tourist attractions in TrackPad.
 
 Format: `list`
 
-<!---
-### Editing an attraction : `edit`
+#### Editing an attraction : `edit`
 
 Edits an existing attraction in TrackPad.
 
@@ -134,9 +147,8 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 Examples:
 *  `edit 1 p/91234567 e/sgzoo@example.com` Edits the phone number and email address of the 1st attraction to be `91234567` and `sgzoo@example.com` respectively.
 *  `edit 2 n/River Safari t/` Edits the name of the 2nd attraction to be `River Safari` and clears all existing tags.
--->
 
-### Finding a tourist attraction: `find`
+#### Finding a tourist attraction: `find`
 
 Finds tourist attraction which contains the keyword in their names.
 
@@ -151,7 +163,7 @@ Examples:
 * `find Singapore` returns `Singapore Zoo` and `Singpoare Stadium`<br>
   ![result for 'find Singapore'](images/findAlexDavidResult.png) // todo attach real image
 
-### Deleting a tourist attraction : `delete`
+#### Deleting a tourist attraction : `delete`
 
 Deletes a tourist attraction from the current list.
 
@@ -164,6 +176,7 @@ Format: `delete INDEX`
 Examples:
 * `list` followed by `delete 2` deletes the 2nd attraction in the TrackPad.
 * `find USS` followed by `delete 1` deletes the 1st tourist attraction in the results of the `find` command.
+
 
 ### Editing a tourist attraction: `edit`
 
@@ -183,22 +196,93 @@ Format: `edit INDEX [n/ATTRACTION_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [
     * Example: `add n/Singapore Zoo l/Singapore, Singapore` in an attraction list followed by 
     `edit 1 pr/MEDIUM t/animals` adds the price range of the Singapore Zoo as `MEDIUM` and adds an `animals` tag
 
-### Clearing all entries : `clear`
 
-Clears all entries from the TrackPad.
+#### Clearing all attractions : `clear`
+
+Clears all tourist attractions from the TrackPad.
 
 Format: `clear`
 
-### Exiting the program : `exit`
+### Itinerary Features
 
-Exits the program.
+#### Adding a new itinerary: `add-itinerary`
 
-Format: `exit`
+Adds a new itinerary to the current list.
 
-### Saving the data
+Format: `add-itinerary n/ITINERARY [d/DESCRIPTION] sd/START_DATE ed/END_DATE`
 
-TrackPad data will be saved in the storage automatically after any command that changes the data. 
-There is no need to save manually.
+* The name, start date and end date fields must be filled in.
+* The description field is optional.
+* The start date and end date fields take in dates of the format `dd-mm-yyyy`.
+
+Examples:
+* `add n/Europe Trip sd/01-12-2020 ed/20-12-2020`
+* `add n/Japan holiday d/with friends sd/15-01-2019 ed/30-01-2019`
+
+#### Deleting an itinerary: `delete-itinerary`
+
+Deletes an itinerary from the current list.
+
+Format: `delete-itinerary INDEX`
+
+* Deletes the itinerary at the specified `INDEX`.
+* The index refers to the index number shown in the displayed itinerary list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list-itinerary` followed by `delete 2` deletes the 2nd itinerary in the TrackPad.
+
+#### Clearing all itineraries : `clear-itinerary`
+
+Clears all itineraries from the TrackPad.
+
+Format: `clear-itinerary`
+
+### Itinerary Attraction Features
+A attraction is an itinerary attraction when it is added into a itinerary.
+
+#### Adding a new itinerary attraction: `add-itinerary-attraction`
+
+Adds a new itinerary attraction to the selected itinerary.
+
+Format: `add-itinerary-attraction att/ATTRACTION_NAME st/START_TIME et/END_TIME day/DAY_VISITING`
+
+* The name of attraction, start time, end time and day visiting fields must be filled in.
+* The start time and end time fields take in time of the 24H format `HH-MM`.
+
+Examples:
+* `add-itinerary-attraction att/Singapore Zoo st/1000 et/1600 day/3`
+* `add-itinerary-attraction att/Mt Fuji st/0900 et/1200 day/2`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+The itinerary attraction will be added into the itinerary displayed on the right.
+</div>
+
+#### Deleting an itinerary attraction: `delete-itinerary-attraction`
+
+Deletes an itinerary attraction from the itinerary.
+
+Format: `delete-itinerary att/ATTRACTION_NAME`
+
+* Deletes the itinerary attraction specified by the name.
+* Only deletes items in the selected itinerary.
+
+Examples:
+* `delete-itinerary-attraction att/Singapore Zoo` deletes attraction `Singapore Zoo` from current itinerary.
+
+#### Editing an itinerary attraction : `edit-itinerary-attraction`
+
+Edits an existing itinerary attraction in itinerary.
+
+Format: `edit-itinerary-attraction att/ATTRACTION_NAME [st/START_TIME] [et/END_TIME] [day/DAY_VISITING]`
+
+* Edits the itinerary attraction specified by the name.
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+
+Examples:
+*  `edit-itinerary-attraction att/Singapore Zoo day/2` Edits the day visiting to day 2 in the itinerary.
+*  `edit-itinerary-attraction att/Sentosa st/1500 et/1800` Edits the start time and end time to be `1500` and `1800` respectively.
 
 
 <!--
@@ -222,13 +306,39 @@ _{explain the feature here}_
 
 ## Command summary
 
+### General Commands
+
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/ATTRACTION_NAME [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] l/LOCATION [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​` <br> e.g., `add n/Singapore Zoo l/Singapore, Singapore t/animals`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/ATTRACTION_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [l/LOCATION] [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​` <br> e.g., `edit 3 p/91234567 op/1000-1700`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Zoo`
-**List** | `list`
 **Help** | `help`
 **Exit** | `exit`
+
+### Attraction-related Commands
+
+Action | Format, Examples
+--------|------------------
+**Add attraction** | `add n/ATTRACTION p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
+**Clear all attractions** | `clear`
+**Delete attraction** | `delete INDEX`<br> e.g., `delete 3`
+**Edit attraction** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/Singapore Zoo e/zoo@example.com`
+**Find attraction** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Zoo`
+**List attractions** | `list`
+
+### Itinerary-related Commands
+
+Action | Format, Examples
+--------|------------------
+**Add itinerary** | `add-itinerary n/ITINERARY [d/DESCRIPTION] sd/START_DATE ed/END_DATE` <br> e.g., `add-itinerary n/Japan holiday d/with friends sd/15-01-2019 ed/30-01-2019`
+**Clear all itineraries** | `clear-itinerary`
+**Delete itinerary** | `delete-itinerary INDEX`<br> e.g., `delete-itinerary 3`
+**Edit itinerary** | `edit-itinerary INDEX [n/NAME] [d/DESCRIPTION] [sd/START_DATE] [ed/END_DATE]`<br> e.g.,`edit-itinerary 2 n/Singapore journey sd/05-06-2019`
+**Find itinerary** | `find-itinerary KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-itinerary Korea`
+**List itineraries** | `list-itinerary`
+
+### Itinerary-attraction-related Commands
+
+Action | Format, Examples
+--------|------------------
+**Add itinerary attraction** | `add-itinerary-attraction att/ATTRACTION_NAME st/START_TIME et/END_TIME day/DAY_VISITING ` <br> e.g., `add-itinerary-attraction att/London Eye st/1400 et/1500 day/5`
+**Delete itinerary attraction** | `delete-itinerary-attraction att/ATTRACTION_NAME`<br> e.g., `delete-itinerary-attraction att/London Eye`
+**Edit itinerary attraction** | `edit-itinerary-attraction att/ATTRACTION_NAME [st/START_TIME] [et/END_TIME] [day/DAY_VISITING] ` <br> e.g.,`edit-itinerary-attraction att/London Eye st/0900 et/1000 day/2`
