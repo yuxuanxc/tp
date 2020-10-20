@@ -85,15 +85,28 @@ Format: `help`
 
 Adds a tourist attraction to the current list.
 
-Format: `add n/ATTRACTION p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `add n/ATTRACTION_NAME [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] l/LOCATION [op/OPENING_HOURS]
+ [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
+ 
+* ATTRACTION_NAME: Name of Attraction 
+* PHONE_NUMBER: Phone number should only contain numbers and be at least 3 digits long, no spaces
+* EMAIL: Emails should be of the format: `local-part@domain`
+* ADDRESS: Address of Attraction, can take in any value
+* LOCATION: City followed by Country
+* OPENING_HOURS: Opening Hours should be of the format: `opening time - closing time` (both in 24h format)
+* PRICE_RANGE: Price Range can only take in 3 values: `LOW`, `MEDIUM` or `HIGH`
+* RATING: Rating should only contain a number between `0.0` to `5.0` (inclusive), to 1 decimal place
+* VISITED: Visited can only take in 2 values: `TRUE` or `FALSE`
+* TAG: Tag name should be alphanumeric
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 An attraction can have any number of tags (including 0)
 </div>
 
 Examples:
-* `add n/USS a/8 Sentosa Gateway, 098269`
-* `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
+* `add n/USS a/8 Sentosa Gateway, 098269 l/Singapore, Singapore`
+* `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore, e/singaporezoo@gmail.com
+op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`
 
 ### Listing all tourist attractions : `list`
 
