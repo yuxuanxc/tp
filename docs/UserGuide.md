@@ -9,33 +9,7 @@ If you can type fast, TP can get your itinerary planned faster than traditional 
 
 
 ## Table of Contents
-- [1. Target User](#1-target-user)
-- [2. Quick start](#2-quick-start)
-- [3. Features](#3-features)
-  * [3.1 General](#31-general)
-    + [3.1.1 Viewing help : `help`](#311-viewing-help----help-)
-    + [3.1.2 Exiting the program : `exit`](#312-exiting-the-program----exit-)
-    + [3.1.3 Saving the data](#313-saving-the-data)
-  * [3.2 Attraction Features](#32-attraction-features)
-    + [3.2.1 Adding a tourist attraction: `add`](#321-adding-a-tourist-attraction---add-)
-    + [3.2.2 Listing all tourist attractions : `list`](#322-listing-all-tourist-attractions----list-)
-    + [3.2.3 Finding a tourist attraction: `find`](#324-finding-a-tourist-attraction---find-)
-    + [3.2.4 Deleting a tourist attraction : `delete`](#325-deleting-a-tourist-attraction----delete-)
-    + [3.2.5 Editing a tourist attraction: `edit`](#326-editing-a-tourist-attraction---edit-)
-    + [3.2.6 Clearing all attractions : `clear`](#327-clearing-all-attractions----clear-)
-  * [3.3 Itinerary Features](#33-itinerary-features)
-    + [3.3.1 Adding a new itinerary: `add-itinerary`](#331-adding-a-new-itinerary---add-itinerary-)
-    + [3.3.2 Deleting an itinerary: `delete-itinerary`](#332-deleting-an-itinerary---delete-itinerary-)
-    + [3.3.3 Clearing all itineraries : `clear-itinerary`](#333-clearing-all-itineraries----clear-itinerary-)
-  * [3.4 Itinerary Attraction Features](#34-itinerary-attraction-features)
-    + [3.4.1 Adding a new itinerary attraction: `add-itinerary-attraction`](#341-adding-a-new-itinerary-attraction---add-itinerary-attraction-)
-    + [3.4.2 Deleting an itinerary attraction: `delete-itinerary-attraction`](#342-deleting-an-itinerary-attraction---delete-itinerary-attraction-)
-    + [3.4.3 Editing an itinerary attraction : `edit-itinerary-attraction`](#343-editing-an-itinerary-attraction----edit-itinerary-attraction-)
-- [4. Command summary](#4-command-summary)
-  * [4.1 General Commands](#41-general-commands)
-  * [4.2 Attraction-related Commands](#42-attraction-related-commands)
-  * [4.3 Itinerary-related Commands](#43-itinerary-related-commands)
-  * [4.4 Itinerary-attraction-related Commands](#44-itinerary-attraction-related-commands)
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 

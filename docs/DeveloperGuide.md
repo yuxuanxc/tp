@@ -3,39 +3,7 @@ layout: page
 title: Developer Guide
 ---
 ## Table of Contents
-- [**1. Setting up, getting started**](#--1-setting-up--getting-started--)
-- [**2. Design**](#--2-design--)
-  * [2.1 Architecture](#21-architecture)
-  * [2.2 UI component](#22-ui-component)
-  * [2.3 Logic component](#23-logic-component)
-  * [2.4 Model component](#24-model-component)
-  * [2.5 Storage component](#25-storage-component)
-  * [2.6 Common classes](#26-common-classes)
-- [**3. Implementation**](#--3-implementation--)
-  * [3.1 \[Proposed\] Undo/redo feature](#31---proposed---undo-redo-feature)
-    + [3.1.1 Proposed Implementation](#311-proposed-implementation)
-    + [3.1.2 Design consideration:](#312-design-consideration-)
-  * [3.2 \[Proposed\] Data archiving](#32---proposed---data-archiving)
-- [**4. Documentation, logging, testing, configuration, dev-ops**](#--4-documentation--logging--testing--configuration--dev-ops--)
-- [**5. Appendix: Requirements**](#--5-appendix--requirements--)
-  * [5.1 Product scope](#51-product-scope)
-  * [5.2 User stories](#52-user-stories)
-    + [5.2.1 Planning](#521-planning)
-    + [5.2.2 More informative list](#522-more-informative-list)
-    + [5.2.3 Advanced planning](#523-advanced-planning)
-    + [5.2.4 Traveling](#524-traveling)
-    + [5.2.5 Budgeting](#525-budgeting)
-    + [5.2.6 The user is a beginner](#526-the-user-is-a-beginner)
-    + [5.2.7 The user is a seasoned expert](#527-the-user-is-a-seasoned-expert)
-    + [5.2.8 Quality of life features](#528-quality-of-life-features)
-  * [5.3 Use cases](#53-use-cases)
-  * [5.4 Non-Functional Requirements](#54-non-functional-requirements)
-  * [5.5 Glossary](#55-glossary)
-- [**6. Appendix: Instructions for manual testing**](#--6-appendix--instructions-for-manual-testing--)
-  * [6.1 Launch and shutdown](#61-launch-and-shutdown)
-  * [6.2 Deleting an attraction](#62-deleting-an-attraction)
-  * [6.3 Saving data](#63-saving-data)
-
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -238,7 +206,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 ![CommitActivityDiagram](images/CommitActivityDiagram.png)
 
-#### 3.1.2 Design consideration:
+#### 3.1.2 Design consideration
 
 ##### 3.1.2.1 Aspect: How undo & redo executes
 
