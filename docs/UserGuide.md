@@ -223,7 +223,7 @@ Clears all itineraries from the current list of itineraries.
 
 Format: `clear-itinerary`
 
-#### Editing an itinerary: `edit-itinerary`
+#### 3.3.4 Editing an itinerary: `edit-itinerary`
 
 Edits an itinerary from the current list.
 
@@ -237,7 +237,7 @@ Format: `edit-itinerary INDEX [n/NAME] [d/DESCRIPTION] [sd/START_DATE] [ed/END_D
       * Example: `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020` in an itinerary list followed by 
       `edit-itinerary 1 sd/06-12-2020` changes the start date of the 1st itinerary in the list from `01-12-2020` to `06-12-2020`
 
-#### Finding an itinerary: `find-itinerary`
+#### 3.3.5 Finding an itinerary: `find-itinerary`
 
 Finds an itinerary from the current list which contains the keyword in their names.
 
@@ -252,7 +252,7 @@ Examples:
 * `find-itinerary Japan` returns `Japan Okinawa` and `Japan Tokyo`<br>
    // todo attach real image
 
-#### Showing an itinerary: `show-itinerary`
+#### 3.3.6 Showing an itinerary: `show-itinerary`
 
 Shows an itinerary from the current list.
 
@@ -265,20 +265,11 @@ Format: `show-itinerary INDEX`
 Examples:
 * `show-itinerary 3` returns the 3rd itinerary in the TrackPad.
 
-#### Listing all itineraries: `list-itinerary`
+#### 3.3.7 Listing all itineraries: `list-itinerary`
 
 Shows all itineraries in the TrackPad.
 
 Format: `list-itinerary`
-
-### Itinerary Attraction Features
-A attraction is an itinerary attraction when it is added into a itinerary.
-=======
-#### 3.3.4 Editing an itinerary : `edit-itinerary`
-
-#### 3.3.5 Finding an itinerary : `find-itinerary`
-
-#### 3.3.6 Listing all itineraries : `list-itinerary`
 
 ### 3.4 Itinerary Attraction Features
 An attraction is an itinerary attraction when it is added into an itinerary.
