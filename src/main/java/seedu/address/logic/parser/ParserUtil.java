@@ -23,6 +23,7 @@ import seedu.address.model.attraction.Rating;
 import seedu.address.model.attraction.Visited;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
+import seedu.address.model.itinerary.Budget;
 import seedu.address.model.itinerary.ItineraryTime;
 import seedu.address.model.tag.Tag;
 
@@ -271,5 +272,17 @@ public class ParserUtil {
         } catch (DateTimeParseException e) {
             throw new ParseException("Date should be in the format dd-mm-yyyy");
         }
+    }
+
+    /**
+     * Parses {@code String date} into a {@code Budget}.
+     */
+    public static Budget parseBudget(String budget) throws ParseException {
+        requireNonNull(budget);
+        String trimmedBudget = budget.trim();
+        if (!Visited.isValidVisited(trimmedBudget)) {
+            throw new ParseException(Budget.MESSAGE_CONSTRAINTS);
+        }
+        return new Budget(trimmedBudget);
     }
 }

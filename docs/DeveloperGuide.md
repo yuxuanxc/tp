@@ -63,6 +63,7 @@ The sections below give more details of each component.
 ### 2.2 UI component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
+<div><sup>Figure 2.2.1 Structure of the Ui Component, Ui Class Diagram</sup></div><br>
 
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)

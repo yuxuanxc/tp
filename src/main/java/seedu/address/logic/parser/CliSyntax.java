@@ -25,6 +25,7 @@ public class CliSyntax {
     // Prefixes for Itinerary fields
     public static final Prefix PREFIX_START_DATE = new Prefix("sd/");
     public static final Prefix PREFIX_END_DATE = new Prefix("ed/");
+    public static final Prefix PREFIX_BUDGET = new Prefix("/b");
 
     // Prefixes for ItineraryAttraction fields
     public static final Prefix PREFIX_ATTRACTION = new Prefix("att/");

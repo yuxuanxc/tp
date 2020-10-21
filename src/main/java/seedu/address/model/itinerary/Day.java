@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -48,8 +49,24 @@ public class Day {
         return itineraryAttractions;
     }
 
+    /**
+     * Adds an itinerary attraction and sorts them based on their start times.
+     */
     public void addItineraryAttraction(ItineraryAttraction toAdd) {
         itineraryAttractions.add(toAdd);
+        itineraryAttractions.sort(new Comparator<ItineraryAttraction>() {
+            @Override
+            public int compare(ItineraryAttraction first, ItineraryAttraction second) {
+                if (first.getStartTime().isEarlierThan(second.getStartTime())) {
+                    return -1;
+                } else if (first.getStartTime().isLaterThan(second.getStartTime())) {
+                    return 1;
+                } else {
+                    assert false; // There cannot be 2 itinerary attractions with same start time in a day
+                    return 0;
+                }
+            }
+        });
     }
 
     public void deleteItineraryAttraction(int index) {
