@@ -49,13 +49,14 @@ Each of the four components,
 ![Class Diagram of the Logic Component](images/LogicClassDiagram.png)
 <div><sup>Figure 2.1.2 Class Diagram of the Logic Component</sup></div>
 
-For example, the `Logic` component (seen from Figure 2.1.2) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
+For example, the `Logic` component (seen from Figure 2.1.2 above) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+![Sequence Diagram of the Various Components](images/ArchitectureSequenceDiagram.png)
+<div><sup>Figure 2.1.3 Sequence Diagram of the various components</sup></div>
 
-<img src="images/ArchitectureSequenceDiagram.png" width="574" />
+Figure 2.1.3 above shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
 
 The sections below give more details of each component.
 
