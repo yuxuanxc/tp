@@ -19,6 +19,7 @@ import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.attraction.PriceRange;
 import seedu.address.model.attraction.Rating;
+import seedu.address.model.attraction.Visited;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
 
@@ -230,7 +231,7 @@ public class JsonAdaptedAttractionTest {
                 new JsonAdaptedAttraction(VALID_NAME, VALID_PHONE, VALID_EMAIL,
                         VALID_ADDRESS, VALID_DESCRIPTION, VALID_LOCATION,
                         VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, INVALID_VISITED, VALID_TAGS);
-        String expectedMessage = Rating.MESSAGE_CONSTRAINTS;
+        String expectedMessage = Visited.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, attraction::toModelType);
     }
 
@@ -239,7 +240,7 @@ public class JsonAdaptedAttractionTest {
         JsonAdaptedAttraction attraction = new JsonAdaptedAttraction(VALID_NAME,
                 VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_DESCRIPTION, VALID_LOCATION,
                 VALID_OPENING_HOURS, VALID_PRICE_RANGE, VALID_RATING, null, VALID_TAGS);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Rating.class.getSimpleName());
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Visited.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, attraction::toModelType);
     }
     @Test
