@@ -59,7 +59,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 The sections below give more details of each component.
 
-### UI component
+### 2.2 UI component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
@@ -85,26 +85,26 @@ The `UI` component,
 
 1. `Logic` in Figure 2.3.1 uses the `TrackPadParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
-1. The command execution can affect the `Model` (e.g. adding a attraction).
+1. The command execution can affect the `Model` (e.g. adding an attraction).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete-attraction 1")` API call.
 
 ![Interactions Inside the Logic Component for the `delete-attraction 1` Command](images/DeleteSequenceDiagram.png)
-<div><sup>Figure 2.3.2 Interactions Inside the Logic Component for the `delete-attraction 1` Command</sup></div><br>
+<div><sup>Figure 2.3.2 Interactions inside the Logic Component for the `delete-attraction 1` Command</sup></div><br>
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
 
-### Model component
+### 2.4 Model component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
+<div><sup>Figure 2.4.1 Structure of the Model Component, Model Class Diagram</sup></div><br>
 
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
-The `Model`,
-
+The `Model` component shown in Figure 2.4.1,
 * stores a `UserPref` object that represents the user’s preferences.
 * stores an `AttractionList` object that is a list of all the attractions in TrackPad.
 * stores an `ItineraryList` object that is a list of all the itineraries in TrackPad.
@@ -114,34 +114,36 @@ The `Model`,
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.<br>
 ![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
+<div><sup>Figure 2.4.2 Structure of an alternative Model Component, Alternative Model Class Diagram</sup></div><br>
 
 </div>
 
 
-### Storage component
+### 2.5 Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
+<div><sup>Figure 2.5.1 Structure of the Storage Component, Storage Class Diagram</sup></div><br>
 
 **API** : [`Storage.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
-The `Storage` component,
+The `Storage` component shown in Figure 2.5.1,
 * saves `UserPref` objects containing user preferences in json format and read it back.
 * saves `AttractionList` objects containing attraction data in json format and read it back.
 * saves `ItineraryList` objects containing itinerary data in json format and read it back.
 
-### Common classes
+### 2.6 Common classes
 
 Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## **3. Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### \[Proposed\] Undo/redo feature
+### 3.1 \[Proposed\] Undo/redo feature
 
-#### Proposed Implementation
+#### 3.1.1 Proposed Implementation
 
 The proposed undo/redo mechanism is facilitated by `VersionedTrackPad`. It extends `TrackPad` with an undo/redo history, stored internally as an `trackPadStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
@@ -204,9 +206,9 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 ![CommitActivityDiagram](images/CommitActivityDiagram.png)
 
-#### Design consideration:
+#### 3.1.2 Design consideration:
 
-##### Aspect: How undo & redo executes
+##### 3.1.2.1 Aspect: How undo & redo executes
 
 * **Alternative 1 (current choice):** Saves the entire TrackPad.
   * Pros: Easy to implement.
@@ -219,14 +221,14 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 _{more aspects and alternatives to be added}_
 
-### \[Proposed\] Data archiving
+### 3.2 \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
 
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## **4. Documentation, logging, testing, configuration, dev-ops**
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -236,9 +238,9 @@ _{Explain here how the data archiving feature will be implemented}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
+## **5. Appendix: Requirements**
 
-### Product scope
+### 5.1 Product scope
 
 **Target user profile**:
 
@@ -257,11 +259,11 @@ _{Explain here how the data archiving feature will be implemented}_
 * allows creating an itinerary to track future travels
 * customisable shortcuts that the user can set for frequently used commands
 
-### User stories
+### 5.2 User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-#### Planning
+#### 5.2.1 Planning
 
 | Priority | As a …​                     | I want to …​                                                                    | So that I can…​                                              |
 | -------- | ------------------------------ | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- |
@@ -276,7 +278,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | person planning for my travel	| label the city of the tourist attraction	                                         | sort the attractions by city
 | `* * *`  | person planning for my travel	| tag tourist attractions in different categories like food, sightseeing, activities | distinguish between the different kinds of tourist attractions
 
-#### More informative list
+#### 5.2.2 More informative list
 
 | Priority | As a …​                     | I want to …​                                   | So that I can…​                                                     |
 | -------- | ------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------- |
@@ -288,7 +290,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | person planning for my travel	| sort the attractions by their various parameters	| easily skim the attractions I am interested in
 | `* *`    | person planning for my travel	| search attractions by tag                     	| easily skim the attractions I am interested in
 
-#### Advanced planning
+#### 5.2.3 Advanced planning
 
 | Priority | As a …​                              | I want to …​                                                                          | So that I can…​                                     |
 | -------- | --------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------ |
@@ -297,14 +299,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | forgetful person planning for my travel | create a checklist of things I want to pack	                                            | not forget the things I should bring when packing
 | `* *`    | person planning for my travel           | add the length of my trip                                                                | plan for the dates I can visit my tourist attractions
 
-#### Traveling
+#### 5.3.4 Traveling
 
 | Priority | As a …​                 | I want to …​                                   | So that I can…​                                     |
 | -------- | -------------------------- | ------------------------------------------------- | ------------------------------------------------------ |
 | `* *`    | person currently traveling	| mark tourist attractions as visited / not visited | know which attractions I missed
 
 
-#### Budgeting
+#### 5.2.5 Budgeting
 
 | Priority | As a …​                     | I want to …​                                               | So that I can…​                        |
 | -------- | ------------------------------ | ------------------------------------------------------------- | ------------------------------------------|
@@ -313,7 +315,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | person currently travelling	| record how much money I spent in a day	                    | check if I am still within my budget
 | `* *`    | person currently travelling	| know how much money I can spend in my remaining days per day	| check if I am still within my budget
 
-#### The user is a beginner
+#### 5.2.6 The user is a beginner
 
 | Priority | As a …​                                 | I want to …​                | So that I can…​                                                     |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
@@ -323,14 +325,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | new user	| know what is the expected outcome of the commands            	 | ensure that I am using the app correctly
 | `*`      | new user	| see the app with sample data	                                 | see what TrackPad is capable of doing
 
-#### The user is a seasoned expert
+#### 5.2.7 The user is a seasoned expert
 
 | Priority | As a …​                                 | I want to …​                | So that I can…​                                                     |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
 | `*`      | user who uses the app often	| have advanced time-saving features	| reduce time typing
 | `*`      | user who uses the app often	| store my data properly all the time	| keep track of everything I have added from the start
 
-#### Quality of life features
+#### 5.2.8 Quality of life features
 
 | Priority | As a …​                                 | I want to …​                | So that I can…​                                                     |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
@@ -347,7 +349,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-### Use cases
+### 5.3 Use cases
 
 (For all use cases below, the **System** is the `TrackPad` and the **Actor** is the `user`, unless specified otherwise)
       
@@ -455,7 +457,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-### Non-Functional Requirements
+### 5.4 Non-Functional Requirements
 
 1.  The product should be able to hold up to 1000 tourist attractions without a noticeable sluggishness in performance for typical usage.
 2.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
@@ -470,14 +472,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-### Glossary
+### 5.5 Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+## **6. Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
@@ -486,7 +488,7 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-### Launch and shutdown
+### 6.1 Launch and shutdown
 
 1. Initial launch
 
@@ -503,7 +505,7 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Deleting an attraction
+### 6.2 Deleting an attraction
 
 1. Deleting an attraction while all attractions are being shown
 
@@ -520,7 +522,7 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Saving data
+### 6.3 Saving data
 
 1. Dealing with missing/corrupted data files
 
