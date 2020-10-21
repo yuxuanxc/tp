@@ -18,28 +18,28 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 ### 2.1 Architecture
 
 ![Architecture Class Diagram](images/ArchitectureDiagram.png)
-<div><sup>Figure 2.1.1 Architecture Class Diagram</sup></div>
+<div><sup>Figure 2.1.1 Architecture Class Diagram</sup></div><br>
 
 Figure 2.1.1 explains the high-level design of the App. Given below is a quick overview of each component.
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 
 </div>
 
-**`Main`** has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
+**`Main`** has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
-[**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
+[**`Commons`**](#26-common-classes) represents a collection of classes used by multiple other components.
 
 The rest of the App consists of four components.
 
-* [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+* [**`UI`**](#22-ui-component): The UI of the App.
+* [**`Logic`**](#23-logic-component): The command executor.
+* [**`Model`**](#24-model-component): Holds the data of the App in memory.
+* [**`Storage`**](#25-storage-component): Reads data from, and writes data to, the hard disk.
 
 Each of the four components,
 
@@ -47,14 +47,14 @@ Each of the four components,
 * exposes its functionality using a concrete `{Component Name}Manager` class (which implements the corresponding API `interface` mentioned in the previous point.
 
 ![Class Diagram of the Logic Component](images/LogicClassDiagram.png)
-<div><sup>Figure 2.1.2 Class Diagram of the Logic Component</sup></div>
+<div><sup>Figure 2.1.2 Class Diagram of the Logic Component</sup></div><br>
 
 For example, the `Logic` component (seen from Figure 2.1.2 above) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
 
 **How the architecture components interact with each other**
 
 ![Sequence Diagram of the Various Components](images/ArchitectureSequenceDiagram.png)
-<div><sup>Figure 2.1.3 Sequence Diagram of the various components</sup></div>
+<div><sup>Figure 2.1.3 Sequence Diagram of the various components</sup></div><br>
 
 Figure 2.1.3 above shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
 
@@ -84,7 +84,7 @@ This design is similar to the Architectural design of TrackPad, whereby differen
 <div><sup>Figure 2.3.1 Structure of the Logic Component, Logic Class Diagram</sup></div><br>
 
 **API** :
-[`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+[`Logic.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 1. `Logic` in Figure 2.3.1 uses the `TrackPadParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
@@ -105,7 +105,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 <div><sup>Figure 2.4.1 Structure of the Model Component, Model Class Diagram</sup></div><br>
 
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 The `Model` component shown in Figure 2.4.1,
 * stores a `UserPref` object that represents the user’s preferences.
@@ -137,12 +137,14 @@ The `Storage` component shown in Figure 2.5.1,
 Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
-
 ## **3. Implementation**
+*To be added*
 
+<!--
 This section describes some noteworthy details on how certain features are implemented.
 
 ### 3.1 \[Proposed\] Undo/redo feature
+
 
 #### 3.1.1 Proposed Implementation
 
@@ -226,7 +228,7 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
-
+-->
 --------------------------------------------------------------------------------------------------------------------
 
 ## **4. Documentation, logging, testing, configuration, dev-ops**
@@ -348,7 +350,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | user with many tourist attractions in the app	| I want to search by multiple tags at a time	        | quickly find the information I need
 | `*`      | user with many tourist attractions in the app	| I want to search by excluding certain parameters	    | quickly find the information I need
 
-*{More to be added}*
 
 ### 5.3 Use cases
 
@@ -456,7 +457,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-*{More to be added}*
 
 ### 5.4 Non-Functional Requirements
 
@@ -470,8 +470,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 8.  The system should respond within five seconds.
 9.  The project is expected to be a brown-field project.
 10.  The progress of the project is expected to adhere to the schedule provided on the module website.
-
-*{More to be added}*
 
 ### 5.5 Glossary
 
@@ -503,7 +501,6 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
 
 ### 6.2 Deleting an attraction
 
@@ -520,14 +517,9 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
-
 ### 6.3 Saving data
 
 1. Dealing with missing/corrupted data files
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
-
 
