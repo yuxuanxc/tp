@@ -223,7 +223,6 @@ Clears all itineraries from the current list of itineraries.
 
 Format: `clear-itinerary`
 
-<<<<<<< HEAD
 #### Editing an itinerary: `edit-itinerary`
 
 Edits an itinerary from the current list.
@@ -283,7 +282,6 @@ A attraction is an itinerary attraction when it is added into a itinerary.
 
 ### 3.4 Itinerary Attraction Features
 An attraction is an itinerary attraction when it is added into an itinerary.
->>>>>>> efb74bbfd0b8f44d146f90fb5c321a755846d129
 
 #### 3.4.1 Adding a new itinerary attraction: `add-itinerary-attraction`
 
