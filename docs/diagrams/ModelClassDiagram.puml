@@ -5,23 +5,39 @@ skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
 Package Model <<Rectangle>>{
-Interface ReadOnlyAddressBook <<Interface>>
+Interface ReadOnlyAttractionList <<Interface>>
+Interface ReadOnlyItineraryList <<Interface>>
 Interface Model <<Interface>>
 Interface ObservableList <<Interface>>
-Class AddressBook
-Class ReadOnlyAddressBook
+Class AttractionList
+Class ItineraryList
 Class Model
 Class ModelManager
 Class UserPrefs
 Class ReadOnlyUserPrefs
 
-Package Person {
-Class Person
+Package Attraction {
+Class Attraction
 Class Address
 Class Email
 Class Name
 Class Phone
-Class UniquePersonList
+Class Location
+Class Description
+Class OpeningHours
+Class PriceRange
+Class Rating
+Class Visited
+Class UniqueAttractionList
+}
+
+Package Itinerary {
+Class Itinerary
+Class Name
+Class Description
+Class LocalDate
+Class Days
+Class UniqueItineraryList
 }
 
 Package Tag {
@@ -32,25 +48,37 @@ Class Tag
 Class HiddenOutside #FFFFFF
 HiddenOutside ..> Model
 
-AddressBook .up.|> ReadOnlyAddressBook
+AttractionList .up.|> ReadOnlyAttractionList
+ItineraryList .up.|> ReadOnlyItineraryList
 
 ModelManager .up.|> Model
 Model .right.> ObservableList
-ModelManager o--> "1" AddressBook
+ModelManager o--> "1" AttractionList
+ModelManager o--> "1" ItineraryList
 ModelManager o-left-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
-AddressBook *--> "1" UniquePersonList
-UniquePersonList o--> "*" Person
-Person *--> Name
-Person *--> Phone
-Person *--> Email
-Person *--> Address
-Person *--> "*" Tag
+AttractionList *--> "1" UniqueAttractionList
+UniqueAttractionList o--> "*" Attraction
+Attraction *--> "1" Name
+Attraction *--> "1" Location
+Attraction *--> "0..1" Phone
+Attraction *--> "0..1" Email
+Attraction *--> "0..1" Address
+Attraction *--> "0..1" Description
+Attraction *--> "0..1" OpeningHours
+Attraction *--> "0..1" PriceRange
+Attraction *--> "0..1" Rating
+Attraction *--> "0..1" Visited
+Attraction *--> "*" Tag
 
-Name -[hidden]right-> Phone
-Phone -[hidden]right-> Address
-Address -[hidden]right-> Email
+ItineraryList *--> "1" UniqueItineraryList
+UniqueItineraryList o--> "*" Itinerary
+Itinerary *--> "1" Name
+Itinerary *--> "0..1" Description
+Itinerary *--> "2" LocalDate
+Itinerary *--> "*" Days
 
-ModelManager -->"1" Person : filtered list
+ModelManager -->"1" Attraction : filtered attraction list
+ModelManager -->"1" Itinerary : filtered itinerary list
 @enduml
