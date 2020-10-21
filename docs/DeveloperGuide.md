@@ -75,6 +75,8 @@ The `UI` component,
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
+This design is similar to the Architectural design of TrackPad, whereby different UiParts are encapsulated in the MainWindow java controller class. This allows the Logic to minimise interaction with the UI, since the MainWindow manages the changes to any UiPart classes that result from the execution in the Logic component.
+
 ### 2.3 Logic component
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
