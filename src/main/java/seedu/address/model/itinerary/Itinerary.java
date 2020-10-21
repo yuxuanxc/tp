@@ -68,6 +68,10 @@ public class Itinerary {
         return days;
     }
 
+    public Day getDay(int day){
+        return this.days.get(day);
+    }
+
     public int getNumberOfDays() {
         return (int) (ChronoUnit.DAYS.between(startDate, endDate) + 1);
     }

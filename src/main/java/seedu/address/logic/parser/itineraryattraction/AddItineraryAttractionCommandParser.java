@@ -40,12 +40,12 @@ public class AddItineraryAttractionCommandParser implements Parser<AddItineraryA
             }
 
 
-            String attractionName = ParserUtil.parseAttractionName(argMultimap.getValue(PREFIX_ATTRACTION).get());
+            Index index = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_ATTRACTION).get());
             ItineraryTime startTime = ParserUtil.parseItineraryTime(argMultimap.getValue(PREFIX_START_TIME).get());
             ItineraryTime endTime = ParserUtil.parseItineraryTime(argMultimap.getValue(PREFIX_END_TIME).get());
             Index dayVisiting = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_DAY_VISITING).get());
 
-            return new AddItineraryAttractionCommand(attractionName, startTime, endTime, dayVisiting);
+            return new AddItineraryAttractionCommand(index, startTime, endTime, dayVisiting);
         } catch (ParseException pe) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddItineraryAttractionCommand.MESSAGE_USAGE), pe);

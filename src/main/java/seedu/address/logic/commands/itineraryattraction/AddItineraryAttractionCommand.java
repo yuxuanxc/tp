@@ -17,6 +17,8 @@ import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.ItineraryAttraction;
 import seedu.address.model.itinerary.ItineraryTime;
 
+import java.util.List;
+
 
 /**
  * Adds an attraction to the attractions list in TrackPad.
@@ -35,7 +37,7 @@ public class AddItineraryAttractionCommand extends Command {
             + "Example: " + COMMAND_WORD + " " + PREFIX_ATTRACTION + "Singapore Zoo " + PREFIX_START_TIME + "1000 "
             + PREFIX_END_TIME + "1600 " + PREFIX_DAY_VISITING + "3";
 
-    private final String attractionName;
+    private final Index index;
     private final ItineraryTime startTime;
     private final ItineraryTime endTime;
     private final Index dayVisited;
@@ -43,13 +45,13 @@ public class AddItineraryAttractionCommand extends Command {
     /**
      * Creates an AddCommand to add the specified {@code Attraction}
      */
-    public AddItineraryAttractionCommand(String attractionName, ItineraryTime startTime, ItineraryTime endTime,
+    public AddItineraryAttractionCommand(Index index, ItineraryTime startTime, ItineraryTime endTime,
                                          Index dayVisited) {
-        assert attractionName != null;
+        assert index != null;
         assert startTime != null;
         assert endTime != null;
         assert dayVisited != null;
-        this.attractionName = attractionName;
+        this.index = index;
         this.startTime = startTime;
         this.endTime = endTime;
         this.dayVisited = dayVisited;
@@ -58,34 +60,16 @@ public class AddItineraryAttractionCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        List<Attraction> lastShownList = model.getFilteredAttractionList();
 
-        Attraction attractionToAdd = null;
-        // decide a location for looping
-        for (Attraction a : model.getFilteredAttractionList()) {
-            if (a.getName().equals(attractionName)) {
-                attractionToAdd = a;
-                break;
-            }
+        if (index.getZeroBased() >= lastShownList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX);
         }
 
-        if (attractionToAdd == null) {
-            throw new CommandException(Messages.MESSAGE_INVALID_ATTRACTION_NAME_GIVEN);
-        }
+        Attraction attractionToAdd = lastShownList.get(index.getZeroBased());
 
-        ItineraryAttraction itineraryAttractionToAdd = new ItineraryAttraction(attractionToAdd, startTime, endTime,
-                dayVisited.getZeroBased());
-
-        // todo decide if the looping should be done here.
-        for (Day d : model.getCurrentItinerary().getDays()) {
-            for (ItineraryAttraction ia : d.getItineraryAttractions()) {
-                if (ia.isSameItineraryAttraction(itineraryAttractionToAdd)) {
-                    throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
-                }
-            }
-        }
-
-        model.getCurrentItinerary().addItineraryAttraction(itineraryAttractionToAdd,
-                itineraryAttractionToAdd.getDayVisiting());
+        ItineraryAttraction itineraryAttractionToAdd = new ItineraryAttraction(attractionToAdd, startTime, endTime);
+        model.getCurrentItinerary().addItineraryAttraction(itineraryAttractionToAdd, dayVisited.getOneBased());
         return new CommandResult(String.format(MESSAGE_ADD_ATTRACTION_SUCCESS, itineraryAttractionToAdd));
     }
 
@@ -93,7 +77,7 @@ public class AddItineraryAttractionCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddItineraryAttractionCommand // instanceof handles nulls
-                && attractionName.equals(((AddItineraryAttractionCommand) other).attractionName)
+                && index.equals(((AddItineraryAttractionCommand) other).index)
                 && startTime.equals(((AddItineraryAttractionCommand) other).startTime)
                 && endTime.equals(((AddItineraryAttractionCommand) other).endTime)
                 && dayVisited.equals(((AddItineraryAttractionCommand) other).dayVisited));
