@@ -270,51 +270,60 @@ Clears all itineraries from the current list of itineraries.
 Format: `clear-itinerary`
 
 ### 3.4 Itinerary Attraction Features
-An attraction is an itinerary attraction when it is added into an itinerary.
+Adding an attraction in an Itinerary becomes Itinerary Attraction.
+The same attraction can be added to the same Itinerary if the start/end time is different. 
 
 #### 3.4.1 Adding a new itinerary attraction: `add-itinerary-attraction`
 
 Adds a new itinerary attraction to the selected itinerary.
 
-Format: `add-itinerary-attraction att/ATTRACTION_NAME st/START_TIME et/END_TIME day/DAY_VISITING`
+Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING`
 
-* The name of attraction, start time, end time and day visiting fields must be filled in.
-* The start time and end time fields take in time of the 24H format `HH-MM`.
+* INDEX: Name of the itinerary.
+* START_TIME: Start time to visit the attraction, time fields take in time of the 24H format `HH-MM`.
+* END_TIME: End time to visit the attraction, time fields take in time of the 24H format `HH-MM`.
+* DAY_VISITING: The day you plan to visit the attraction in the itinerary.
+
+* The start time and end time cannot overlap with existing itinerary attraction in the lists.
+* Non of the field can be left blank
 
 Examples:
-* `add-itinerary-attraction att/Singapore Zoo st/1000 et/1600 day/3`
-* `add-itinerary-attraction att/Mt Fuji st/0900 et/1200 day/2`
+* `add-itinerary-attraction 2 st/1000 et/1600 day/3`
+* `add-itinerary-attraction 1 st/0900 et/1200 day/2`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-The itinerary attraction will be added into the itinerary displayed on the right.
+The itinerary attraction will be added into the current itinerary shown.
 </div>
 
-#### 3.4.2 Deleting an itinerary attraction: `delete-itinerary-attraction`
-
-Deletes an itinerary attraction from the itinerary.
-
-Format: `delete-itinerary att/ATTRACTION_NAME`
-
-* Deletes the itinerary attraction specified by the name.
-* Only deletes items in the selected itinerary.
-
-Examples:
-* `delete-itinerary-attraction att/Singapore Zoo` deletes attraction `Singapore Zoo` from current itinerary.
-
-#### 3.4.3 Editing an itinerary attraction : `edit-itinerary-attraction`
+#### 3.4.2 Editing an itinerary attraction : `edit-itinerary-attraction`
 
 Edits an existing itinerary attraction in itinerary.
 
-Format: `edit-itinerary-attraction att/ATTRACTION_NAME [st/START_TIME] [et/END_TIME] [day/DAY_VISITING]`
+Format: `edit-itinerary-attraction INDEX [st/START_TIME] [et/END_TIME] [day/DAY_VISITING]`
 
-* Edits the itinerary attraction specified by the name.
+* Edits the itinerary attraction specified by the `INDEX`.
+* The index refers to the index number shown in the current itinerary shown.
+* The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 
 Examples:
-*  `edit-itinerary-attraction att/Singapore Zoo day/2` Edits the day visiting to day 2 in the itinerary.
-*  `edit-itinerary-attraction att/Sentosa st/1500 et/1800` Edits the start time and end time to be `1500` and `1800` respectively.
+*  `edit-itinerary-attraction 3 day/2` Edits the day visiting to day 2 in the itinerary.
+*  `edit-itinerary-attraction 1 st/1500 et/1800` Edits the start time and end time to be `1500` and `1800` respectively.
 
+#### 3.4.3 Deleting an itinerary attraction: `delete-itinerary-attraction`
+
+Deletes an itinerary attraction from the itinerary.
+
+Format: `delete-itinerary INDEX`
+
+* Deletes the itinerary attraction specified by the `INDEX`.
+* The index refers to the index number shown in the itinerary shown.
+* The index **must be a positive integer** 1, 2, 3, …​
+* Only deletes itinerary attraction in the itinerary shown.
+
+Examples:
+* `delete-itinerary-attraction 2` deletes attraction `Singapore Zoo` from itinerary shown.
 
 <!--
 ### Archiving data files `[coming in v2.0]`
@@ -371,7 +380,7 @@ Action | Format, Examples
 
 Action | Format, Examples
 --------|------------------
-**Add itinerary attraction** | `add-itinerary-attraction att/ATTRACTION_NAME st/START_TIME et/END_TIME day/DAY_VISITING ` <br> e.g., `add-itinerary-attraction att/London Eye st/1400 et/1500 day/5`
-**Delete itinerary attraction** | `delete-itinerary-attraction att/ATTRACTION_NAME`<br> e.g., `delete-itinerary-attraction att/London Eye`
-**Edit itinerary attraction** | `edit-itinerary-attraction att/ATTRACTION_NAME [st/START_TIME] [et/END_TIME] [day/DAY_VISITING] ` <br> e.g.,`edit-itinerary-attraction att/London Eye st/0900 et/1000 day/2`
+**Add itinerary attraction** | `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING ` <br> e.g., `add-itinerary-attraction 1 st/1400 et/1500 day/5`
+**Edit itinerary attraction** | `edit-itinerary-attraction INDEX [st/START_TIME] [et/END_TIME] [day/DAY_VISITING] ` <br> e.g.,`edit-itinerary-attraction 1 st/0900 et/1000 day/2`
+**Delete itinerary attraction** | `delete-itinerary-attraction INDEX`<br> e.g., `delete-itinerary-attraction 1`
 
