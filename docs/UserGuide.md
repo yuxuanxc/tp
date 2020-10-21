@@ -298,12 +298,12 @@ Action | Format, Examples
 
 Action | Format, Examples
 --------|------------------
-**Add attraction** | `add n/ATTRACTION p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
-**Clear all attractions** | `clear`
-**Delete attraction** | `delete INDEX`<br> e.g., `delete 3`
-**Edit attraction** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/Singapore Zoo e/zoo@example.com`
-**Find attraction** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Zoo`
-**List attractions** | `list`
+**Add attraction** | `add-attraction n/ATTRACTION p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
+**Clear all attractions** | `clear-attraction`
+**Delete attraction** | `delete-attraction INDEX`<br> e.g., `delete 3`
+**Edit attraction** | `edit-attraction INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/Singapore Zoo e/zoo@example.com`
+**Find attraction** | `find-attration KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Zoo`
+**List attractions** | `list-attraction`
 
 ### Itinerary-related Commands
 
