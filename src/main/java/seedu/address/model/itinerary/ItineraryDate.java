@@ -40,9 +40,9 @@ public class ItineraryDate {
      * Returns if a given string is an valid budget.
      */
     public static boolean isValidDate(String test) {
+        //todo work in progress
         try {
-
-            System.out.println( LocalDate.parse(test, DTF));
+            LocalDate.parse(test, DTF);
             return true;
         } catch (DateTimeParseException e) {
             return false;
