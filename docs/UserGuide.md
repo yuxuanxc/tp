@@ -8,7 +8,7 @@ Graphical User Interface (GUI).
 If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
 
 
-* Table of Contents
+## Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
@@ -37,17 +37,17 @@ Travelholics, wanderlust
     e.g. typing **`help`** and pressing Enter will open the help window.<br>
     Some example commands you can try:
 
-   * **`list`** : Lists all tourist attractions added.
+   * **`list-attraction`** : Lists all tourist attractions added.
 
-   * **`add`**`n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826` : 
+   * **`add-attraction`**`n/Singapore Zoo l/Singapore, Singapore p/62693411 t/hot a/80 Mandai Lake Rd, 729826` : 
    Adds an attraction named `Singapore Zoo` to TrackPad.
 
-   * **`delete`**`3` : Deletes the 3rd attraction shown in the current list.
+   * **`delete-attraction`**`3` : Deletes the 3rd attraction shown in the current list.
    
-   **`edit`**`3 pr/HIGH` : Edits the 3rd attraction shown in the current list, changing its original
+   * **`edit-attraction`**`3 pr/HIGH` : Edits the 3rd attraction shown in the current list, changing its original
     price range to HIGH.
 
-   * **`clear`** : Deletes all attractions.
+   * **`clear-attraction`** : Deletes all attractions.
 
    * **`exit`** : Exits the app.
 
@@ -62,7 +62,7 @@ Travelholics, wanderlust
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/ATTRACTION`, `ATTRACTION` is a parameter which can be used as `add n/USS`.
+  e.g. in `add-attraction n/ATTRACTION`, `ATTRACTION` is a parameter which can be used as `add-attraction n/USS`.
 
 * Items in square brackets are optional.<br>
   e.g `n/ATTRACTION [t/TAG]` can be used as `n/USS t/28 OCT` or as `n/USS`.
@@ -102,19 +102,20 @@ There is no need to save manually.
 
 Adds a tourist attraction to the current list of attractions.
 
-Format: `add-attraction n/ATTRACTION_NAME [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] l/LOCATION [op/OPENING_HOURS]
- [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
+Format: `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] 
+[op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
  
-* ATTRACTION_NAME: Name of Attraction 
-* PHONE_NUMBER: Phone number should only contain numbers and be at least 3 digits long, no spaces
-* EMAIL: Emails should be of the format: `local-part@domain`
-* ADDRESS: Address of Attraction, can take in any value
-* LOCATION: City followed by Country
-* OPENING_HOURS: Opening Hours should be of the format: `opening time - closing time` (both in 24h format)
-* PRICE_RANGE: Price Range can only take in 3 values: `LOW`, `MEDIUM` or `HIGH`
-* RATING: Rating should only contain a number between `0.0` to `5.0` (inclusive), to 1 decimal place
-* VISITED: Visited can only take in 2 values: `TRUE` or `FALSE`
-* TAG: Tag name should be alphanumeric
+* ATTRACTION_NAME: Name of Attraction. 
+* LOCATION: City followed by Country.
+* DESCRIPTION: Description of Attraction, can take in any value.
+* PHONE_NUMBER: Phone number should only contain numbers and be at least 3 digits long, no spaces.
+* EMAIL: Emails should be of the format: `local-part@domain`.
+* ADDRESS: Address of Attraction, can take in any value.
+* OPENING_HOURS: Opening Hours should be of the format: `opening time - closing time` (both in 24h format).
+* PRICE_RANGE: Price Range can only take in 3 values: `LOW`, `MEDIUM` or `HIGH`.
+* RATING: Rating should only contain a number between `0.0` to `5.0` (inclusive), to 1 decimal place.
+* VISITED: Visited can only take in 2 values: `TRUE` or `FALSE`.
+* TAG: Tag name should be alphanumeric.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 An attraction can have any number of tags (including 0)
@@ -125,28 +126,13 @@ Examples:
 * `add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore, e/singaporezoo@gmail.com
 op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`
 
-#### 3.2.2 Listing all tourist attractions : `list-attraction`
+#### 3.2.2 Clearing all attractions : `clear-attraction`
 
-Shows a list of all tourist attractions in TrackPad.
+Clears all tourist attractions from the current list of attractions.
 
-Format: `list-attraction`
+Format: `clear-attraction`
 
-#### 3.2.3 Finding a tourist attraction: `find-attraction`
-
-Finds tourist attraction which contains the keyword in their names.
-
-Format: `find-attraction KEYWORD [MORE_KEYWORDS]`
-
-* The search is case-insensitive. e.g `singapore zoo` will match `Singapore Zoo`
-* The order of the keywords does not matter. e.g. `Zoo Singapore` will match `Singapore Zoo`
-* Only the attractions in the list of attractions will be searched.
-* Only full words will be matched e.g. `Sento` will not match `Sentosa`
-
-Examples:
-* `find-attraction jurong` returns `Jurong Bird Park` and `Snow City`<br>
-  ![result for 'find jurong'](images/findJurongResult.png)
-
-#### 3.2.4 Deleting a tourist attraction : `delete-attraction`
+#### 3.2.3 Deleting a tourist attraction : `delete-attraction`
 
 Deletes a tourist attraction from the current list of attractions.
 
@@ -160,12 +146,12 @@ Examples:
 * `list-attraction` followed by `delete-attraction 2` deletes the 2nd attraction in the TrackPad.
 * `find-attraction USS` followed by `delete 1` deletes the 1st tourist attraction in the results of the `find-attraction` command.
 
-#### 3.2.5 Editing a tourist attraction: `edit-attraction`
+#### 3.2.4 Editing a tourist attraction: `edit-attraction`
 
 Edits a tourist attraction in the current list of attractions.
 
-Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [l/LOCATION] [op/OPENING_HOURS]
- [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
+Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS]
+[op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
  
 * Edits the attraction at the specified `INDEX`.
 * The index refers to the index number shown in the displayed tourist attraction list.
@@ -178,11 +164,28 @@ Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a
     * Example: `add-attraction n/Singapore Zoo l/Singapore, Singapore` in an attraction list followed by 
     `edit-attraction 1 pr/MEDIUM t/animals` adds the price range of the Singapore Zoo as `MEDIUM` and adds an `animals` tag.
 
-#### 3.2.6 Clearing all attractions : `clear-attraction`
+#### 3.2.5 Finding a tourist attraction: `find-attraction`
 
-Clears all tourist attractions from the current list of attractions.
+Finds tourist attraction which contains the keyword in their names.
 
-Format: `clear-attraction`
+Format: `find-attraction KEYWORD [MORE_KEYWORDS]`
+
+#### 3.2.6 Listing all tourist attractions : `list-attraction`
+
+Shows a list of all tourist attractions in TrackPad.
+
+Format: `list-attraction`
+
+* The search is case-insensitive. e.g `singapore zoo` will match `Singapore Zoo`.
+* The order of the keywords does not matter. e.g. `Zoo Singapore` will match `Singapore Zoo`.
+* Only the attractions in the list of attractions will be searched.
+* Only full words will be matched e.g. `Sento` will not match `Sentosa`.
+
+Examples:
+* `find-attraction jurong` returns `Jurong Bird Park` and `Snow City`<br>
+  ![result for 'find jurong'](images/findJurongResult.png)
+
+
 
 ### 3.3 Itinerary Features
 
@@ -190,11 +193,12 @@ Format: `clear-attraction`
 
 Adds a new itinerary to the current list of itineraries.
 
-Format: `add-itinerary n/ITINERARY [d/DESCRIPTION] sd/START_DATE ed/END_DATE`
+Format: `add-itinerary n/ITINERARY_NAME sd/START_DATE ed/END_DATE [d/DESCRIPTION]`
 
-* The name, start date and end date fields must be filled in.
-* The description field is optional.
-* The start date and end date fields take in dates of the format `dd-mm-yyyy`.
+* ITINERARY_NAME: Name of the itinerary.
+* START_DATE: Start date of the itinerary in the format `dd-mm-yyyy`.
+* END_DATE: End date of the itinerary in the format `dd-mm-yyyy`.
+* DESCRIPTION: Description of the itinerary, can take in any value.
 
 Examples:
 * `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020`
@@ -218,6 +222,12 @@ Examples:
 Clears all itineraries from the current list of itineraries.
 
 Format: `clear-itinerary`
+
+#### 3.3.4 Editing an itinerary : `edit-itinerary`
+
+#### 3.3.5 Finding an itinerary : `find-itinerary`
+
+#### 3.3.6 Listing all itineraries : `list-itinerary`
 
 ### 3.4 Itinerary Attraction Features
 An attraction is an itinerary attraction when it is added into an itinerary.
@@ -298,7 +308,7 @@ Action | Format, Examples
 
 Action | Format, Examples
 --------|------------------
-**Add attraction** | `add-attraction n/ATTRACTION p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
+**Add attraction** | `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​` <br> e.g., `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
 **Clear all attractions** | `clear-attraction`
 **Delete attraction** | `delete-attraction INDEX`<br> e.g., `delete 3`
 **Edit attraction** | `edit-attraction INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/Singapore Zoo e/zoo@example.com`
@@ -309,7 +319,7 @@ Action | Format, Examples
 
 Action | Format, Examples
 --------|------------------
-**Add itinerary** | `add-itinerary n/ITINERARY [d/DESCRIPTION] sd/START_DATE ed/END_DATE` <br> e.g., `add-itinerary n/Japan holiday d/with friends sd/15-01-2019 ed/30-01-2019`
+**Add itinerary** | `add-itinerary n/ITINERARY sd/START_DATE ed/END_DATE [d/DESCRIPTION]` <br> e.g., `add-itinerary n/Japan holiday d/with friends sd/15-01-2019 ed/30-01-2019`
 **Clear all itineraries** | `clear-itinerary`
 **Delete itinerary** | `delete-itinerary INDEX`<br> e.g., `delete-itinerary 3`
 **Edit itinerary** | `edit-itinerary INDEX [n/NAME] [d/DESCRIPTION] [sd/START_DATE] [ed/END_DATE]`<br> e.g.,`edit-itinerary 2 n/Singapore journey sd/05-06-2019`
