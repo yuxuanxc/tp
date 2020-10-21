@@ -374,7 +374,7 @@ Action | Format, Examples
 
 Action | Format, Examples
 --------|------------------
-**Add itinerary attraction** | `add-itinerary-attraction att/ATTRACTION_NAME st/START_TIME et/END_TIME day/DAY_VISITING ` <br> e.g., `add-itinerary-attraction att/London Eye st/1400 et/1500 day/5`
-**Delete itinerary attraction** | `delete-itinerary-attraction att/ATTRACTION_NAME`<br> e.g., `delete-itinerary-attraction att/London Eye`
-**Edit itinerary attraction** | `edit-itinerary-attraction att/ATTRACTION_NAME [st/START_TIME] [et/END_TIME] [day/DAY_VISITING] ` <br> e.g.,`edit-itinerary-attraction att/London Eye st/0900 et/1000 day/2`
+**Add itinerary attraction** | `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING ` <br> e.g., `add-itinerary-attraction 1 st/1400 et/1500 day/5`
+**Edit itinerary attraction** | `edit-itinerary-attraction INDEX [st/START_TIME] [et/END_TIME] [day/DAY_VISITING] ` <br> e.g.,`edit-itinerary-attraction 1 st/0900 et/1000 day/2`
+**Delete itinerary attraction** | `delete-itinerary-attraction INDEX`<br> e.g., `delete-itinerary-attraction 1`
 

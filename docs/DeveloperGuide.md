@@ -86,7 +86,8 @@ This design is similar to the Architectural design of TrackPad, whereby differen
 **API** :
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
-1. `Logic` in Figure 2.3.1 uses the `TrackPadParser` class to parse the user command.
+1. `Logic` in Figure 2.3.1 receives the user command.
+1. It uses the `TrackPadParser` class to parse the command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
 1. The command execution can affect the `Model` (e.g. adding an attraction).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
