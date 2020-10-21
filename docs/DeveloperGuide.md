@@ -117,14 +117,14 @@ The `UI` component,
 
 1. `Logic` in Figure 2.3.1 uses the `TrackPadParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
-1. The command execution can affect the `Model` (e.g. adding a attraction).
+1. The command execution can affect the `Model` (e.g. adding an attraction).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete-attraction 1")` API call.
 
 ![Interactions Inside the Logic Component for the `delete-attraction 1` Command](images/DeleteSequenceDiagram.png)
-<div><sup>Figure 2.3.2 Interactions Inside the Logic Component for the `delete-attraction 1` Command</sup></div><br>
+<div><sup>Figure 2.3.2 Interactions inside the Logic Component for the `delete-attraction 1` Command</sup></div><br>
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
@@ -132,19 +132,21 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 ### 2.4 Model component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
+<div><sup>Figure 2.4.1 Structure of the Model Component, Model Class Diagram</sup></div><br>
 
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
-The `Model`,
-
+The `Model` component shown in Figure 2.4.1,
 * stores a `UserPref` object that represents the user’s preferences.
-* stores the TrackPad data.
-* exposes an unmodifiable `ObservableList<Attraction>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores an `AttractionList` object that is a list of all the attractions in TrackPad.
+* stores an `ItineraryList` object that is a list of all the itineraries in TrackPad.
+* exposes two unmodifiable `ObservableList<Attraction>` and `ObservableList<Itinerary>` that can be 'observed' e.g. the UI can be bound to the lists so that the UI automatically updates when the data in the lists change.
 * does not depend on any of the other three components.
 
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.<br>
 ![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
+<div><sup>Figure 2.4.2 Structure of an alternative Model Component, Alternative Model Class Diagram</sup></div><br>
 
 </div>
 
@@ -152,10 +154,11 @@ The `Model`,
 ### 2.5 Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
+<div><sup>Figure 2.5.1 Structure of the Storage Component, Storage Class Diagram</sup></div><br>
 
 **API** : [`Storage.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
-The `Storage` component,
+The `Storage` component shown in Figure 2.5.1,
 * saves `UserPref` objects containing user preferences in json format and read it back.
 * saves `AttractionList` objects containing attraction data in json format and read it back.
 * saves `ItineraryList` objects containing itinerary data in json format and read it back.
@@ -237,7 +240,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 #### 3.1.2 Design consideration:
 
-##### Aspect: How undo & redo executes
+##### 3.1.2.1 Aspect: How undo & redo executes
 
 * **Alternative 1 (current choice):** Saves the entire TrackPad.
   * Pros: Easy to implement.
