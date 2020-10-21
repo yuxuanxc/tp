@@ -31,7 +31,7 @@ Travelholics, wanderlust
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. 
     Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png) // todo update this image later on
+   ![Ui](images/Ui.PNG)
 
 1. Type the command in the command box and press Enter to execute it. 
     e.g. typing **`help`** and pressing Enter will open the help window.<br>
@@ -128,18 +128,9 @@ op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`
 
 #### 3.2.2 Listing all tourist attractions : `list-attraction`
 
-Shows a list of all tourist attractions in TrackPad.
+Shows a list of all the tourist attractions in TrackPad.
 
 Format: `list-attraction`
-
-* The search is case-insensitive. e.g `singapore zoo` will match `Singapore Zoo`.
-* The order of the keywords does not matter. e.g. `Zoo Singapore` will match `Singapore Zoo`.
-* Only the attractions in the list of attractions will be searched.
-* Only full words will be matched e.g. `Sento` will not match `Sentosa`.
-
-Examples:
-* `find-attraction jurong` returns `Jurong Bird Park` and `Snow City`<br>
-  ![result for 'find jurong'](images/findJurongResult.png)
 
 #### 3.2.3 Editing a tourist attraction: `edit-attraction`
 
@@ -172,7 +163,7 @@ Format: `find-attraction KEYWORD [MORE_KEYWORDS]`
 
 Examples:
 * `find-attraction jurong` returns `Jurong Bird Park` and `Snow City`<br>
-  ![result for 'find jurong'](images/findJurongResult.png)
+  ![result for 'find jurong'](images/findJurongResult.PNG)
   
 #### 3.2.5 Deleting a tourist attraction : `delete-attraction`
 
