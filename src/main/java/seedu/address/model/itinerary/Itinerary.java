@@ -24,13 +24,15 @@ public class Itinerary {
     private final Description description;
     private final LocalDate startDate;
     private final LocalDate endDate;
+    private final Budget budget;
     private final List<Day> days = new ArrayList<>();
 
     /**
      * Name must be present and not null.
      */
-    public Itinerary(Name name, Description description, LocalDate startDate, LocalDate endDate, List<Day> days) {
-        requireAllNonNull(name, description, startDate, endDate, days);
+    public Itinerary(Name name, Description description, LocalDate startDate, LocalDate endDate, Budget budget,
+                     List<Day> days) {
+        requireAllNonNull(name, description, startDate, endDate, budget, days);
 
         checkArgument(startDate.isBefore(endDate), "Start date should come before end date");
 
@@ -38,6 +40,7 @@ public class Itinerary {
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.budget = budget;
         if (!days.isEmpty()) {
             this.days.addAll(days);
         } else {
@@ -62,6 +65,10 @@ public class Itinerary {
 
     public LocalDate getEndDate() {
         return endDate;
+    }
+
+    public Budget getBudget() {
+        return budget;
     }
 
     public List<Day> getDays() {
