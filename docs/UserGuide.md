@@ -20,7 +20,7 @@ Travelholics, wanderlust
 - Travelled to many places
 - Plans to travel to other countries in the future
 
-
+--------------------------------------------------------------------------------------------------------------------
 
 ## 2. Quick start
 
@@ -32,7 +32,7 @@ Travelholics, wanderlust
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. 
     Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+   ![Ui](images/Ui.PNG)
    <div><sup>Figure 2.1 The Ui of TrackPad</sup></div><br>
 
 
