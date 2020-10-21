@@ -238,6 +238,54 @@ Clears all itineraries from the TrackPad.
 
 Format: `clear-itinerary`
 
+#### Editing an itinerary: `edit-itinerary`
+
+Edits an itinerary from the current list.
+
+Format: `edit-itinerary INDEX [n/NAME] [d/DESCRIPTION] [sd/START_DATE] [ed/END_DATE]`
+
+* Edits the itinerary at the specified `INDEX`.
+* The index refers to the index number shown in the displayed itinerary list.
+* The index **must be a positive integer** 1, 2, 3, …​
+* Field entries are the same as the `add` command.
+* Any field can be changed by inputting its corresponding prefix in the command.
+      * Example: `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020` in an itinerary list followed by 
+      `edit-itinerary 1 sd/06-12-2020` changes the start date of the 1st itinerary in the list from `01-12-2020` to `06-12-2020`
+
+#### Finding an itinerary: `find-itinerary`
+
+Finds an itinerary from the current list which contains the keyword in their names.
+
+Format: `find-itinerary KEYWORD [MORE_KEYWORDS]`
+
+* The search is case-insensitive. e.g `japan` will match `Japan`
+* The order of the keywords does not matter. e.g. `Okinawa Japan` will match `Japan Okinawa`
+* Only the name of the itinerary will be searched.
+* Only full words will be matched e.g. `Jap` will not match `Japan`
+
+Examples:
+* `find-itinerary Japan` returns `Japan Okinawa` and `Japan Tokyo`<br>
+   // todo attach real image
+
+#### Showing an itinerary: `show-itinerary`
+
+Shows an itinerary from the current list.
+
+Format: `show-itinerary INDEX`
+
+* Shows the itinerary at the specified `INDEX`.
+* The index refers to the index number shown in the displayed itinerary list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `show-itinerary 3` returns the 3rd itinerary in the TrackPad.
+
+#### Listing all itineraries: `list-itinerary`
+
+Shows all itineraries in the TrackPad.
+
+Format: `list-itinerary`
+
 ### Itinerary Attraction Features
 A attraction is an itinerary attraction when it is added into a itinerary.
 
@@ -333,6 +381,7 @@ Action | Format, Examples
 **Delete itinerary** | `delete-itinerary INDEX`<br> e.g., `delete-itinerary 3`
 **Edit itinerary** | `edit-itinerary INDEX [n/NAME] [d/DESCRIPTION] [sd/START_DATE] [ed/END_DATE]`<br> e.g.,`edit-itinerary 2 n/Singapore journey sd/05-06-2019`
 **Find itinerary** | `find-itinerary KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-itinerary Korea`
+**Show itinerary** | `show-itinerary INDEX`<br> e.g., `show-itinerary 3`
 **List itineraries** | `list-itinerary`
 
 ### Itinerary-attraction-related Commands
