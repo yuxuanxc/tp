@@ -98,11 +98,11 @@ There is no need to save manually.
 
 ### Attraction Features
 
-#### Adding a tourist attraction: `add`
+#### Adding a tourist attraction: `add-attraction`
 
-Adds a tourist attraction to the current list.
+Adds a tourist attraction to the current list of attractions.
 
-Format: `add n/ATTRACTION_NAME [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] l/LOCATION [op/OPENING_HOURS]
+Format: `add-attraction n/ATTRACTION_NAME [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] l/LOCATION [op/OPENING_HOURS]
  [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
  
 * ATTRACTION_NAME: Name of Attraction 
@@ -121,67 +121,50 @@ An attraction can have any number of tags (including 0)
 </div>
 
 Examples:
-* `add n/USS a/8 Sentosa Gateway, 098269 l/Singapore, Singapore`
-* `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore, e/singaporezoo@gmail.com
+* `add-attraction n/USS a/8 Sentosa Gateway, 098269 l/Singapore, Singapore`
+* `add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore, e/singaporezoo@gmail.com
 op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`
 
-#### Listing all tourist attractions : `list`
+#### Listing all tourist attractions : `list-attraction`
 
 Shows a list of all tourist attractions in TrackPad.
 
-Format: `list`
+Format: `list-attraction`
 
-#### Editing an attraction : `edit`
-
-Edits an existing attraction in TrackPad.
-
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
-
-* Edits the attraction at the specified `INDEX`. The index refers to the index number shown in the displayed attraction list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the attraction will be removed i.e adding of tags is not cumulative.
-* You can remove all the attraction’s tags by typing `t/` without
-    specifying any tags after it.
-
-Examples:
-*  `edit 1 p/91234567 e/sgzoo@example.com` Edits the phone number and email address of the 1st attraction to be `91234567` and `sgzoo@example.com` respectively.
-*  `edit 2 n/River Safari t/` Edits the name of the 2nd attraction to be `River Safari` and clears all existing tags.
-
-#### Finding a tourist attraction: `find`
+#### Finding a tourist attraction: `find-attraction`
 
 Finds tourist attraction which contains the keyword in their names.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find-attraction KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g `singapore zoo` will match `Singapore Zoo`
 * The order of the keywords does not matter. e.g. `Zoo Singapore` will match `Singapore Zoo`
-* Only the tourist attraction will be searched.
+* Only the attractions in the list of attractions will be searched.
 * Only full words will be matched e.g. `Sento` will not match `Sentosa`
 
 Examples:
-* `find Singapore` returns `Singapore Zoo` and `Singpoare Stadium`<br>
-  ![result for 'find Singapore'](images/findAlexDavidResult.png) // todo attach real image
+* `find-attraction jurong` returns `Jurong Bird Park` and `Snow City`<br>
+  ![result for 'find jurong'](images/findJurongResult.png)
 
-#### Deleting a tourist attraction : `delete`
+#### Deleting a tourist attraction : `delete-attraction`
 
-Deletes a tourist attraction from the current list.
+Deletes a tourist attraction from the current list of attractions.
 
-Format: `delete INDEX`
+Format: `delete-attraction INDEX`
 
 * Deletes the attraction at the specified `INDEX`.
 * The index refers to the index number shown in the displayed tourist attraction list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd attraction in the TrackPad.
-* `find USS` followed by `delete 1` deletes the 1st tourist attraction in the results of the `find` command.
+* `list-attraction` followed by `delete-attraction 2` deletes the 2nd attraction in the TrackPad.
+* `find-attraction USS` followed by `delete 1` deletes the 1st tourist attraction in the results of the `find-attraction` command.
 
-### Editing a tourist attraction: `edit`
+#### Editing a tourist attraction: `edit-attraction`
 
-Edits a tourist attraction in the current list.
+Edits a tourist attraction in the current list of attractions.
 
-Format: `edit INDEX [n/ATTRACTION_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [l/LOCATION] [op/OPENING_HOURS]
+Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [l/LOCATION] [op/OPENING_HOURS]
  [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
  
 * Edits the attraction at the specified `INDEX`.
@@ -189,25 +172,23 @@ Format: `edit INDEX [n/ATTRACTION_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [
 * The index **must be a positive integer** 1, 2, 3, …​
 * Field entries are the same as the `add` command.
 * Any field can be changed by inputting its corresponding prefix in the command.
-    * Example: `add n/MBS l/Singapore, Singapore r/4.3` in an attraction list followed by 
-    `edit 1 r/4.6` changes the rating of the 1st attraction in the list from `4.3` to `4.6`
-* New fields can be added to current attractions 
-    * Example: `add n/Singapore Zoo l/Singapore, Singapore` in an attraction list followed by 
-    `edit 1 pr/MEDIUM t/animals` adds the price range of the Singapore Zoo as `MEDIUM` and adds an `animals` tag
+    * Example: `add-attraction n/MBS l/Singapore, Singapore r/4.3` in an attraction list followed by 
+    `edit-attraction 1 r/4.6` changes the rating of the 1st attraction in the list from `4.3` to `4.6`.
+* New fields can be added to current attractions.
+    * Example: `add-attraction n/Singapore Zoo l/Singapore, Singapore` in an attraction list followed by 
+    `edit-attraction 1 pr/MEDIUM t/animals` adds the price range of the Singapore Zoo as `MEDIUM` and adds an `animals` tag.
 
+#### Clearing all attractions : `clear-attraction`
 
+Clears all tourist attractions from the current list of attractions.
 
-#### Clearing all attractions : `clear`
-
-Clears all tourist attractions from the TrackPad.
-
-Format: `clear`
+Format: `clear-attraction`
 
 ### Itinerary Features
 
 #### Adding a new itinerary: `add-itinerary`
 
-Adds a new itinerary to the current list.
+Adds a new itinerary to the current list of itineraries.
 
 Format: `add-itinerary n/ITINERARY [d/DESCRIPTION] sd/START_DATE ed/END_DATE`
 
@@ -216,12 +197,12 @@ Format: `add-itinerary n/ITINERARY [d/DESCRIPTION] sd/START_DATE ed/END_DATE`
 * The start date and end date fields take in dates of the format `dd-mm-yyyy`.
 
 Examples:
-* `add n/Europe Trip sd/01-12-2020 ed/20-12-2020`
-* `add n/Japan holiday d/with friends sd/15-01-2019 ed/30-01-2019`
+* `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020`
+* `add-itinerary n/Japan holiday d/with friends sd/15-01-2019 ed/30-01-2019`
 
 #### Deleting an itinerary: `delete-itinerary`
 
-Deletes an itinerary from the current list.
+Deletes an itinerary from the current list of itineraries.
 
 Format: `delete-itinerary INDEX`
 
@@ -234,12 +215,12 @@ Examples:
 
 #### Clearing all itineraries : `clear-itinerary`
 
-Clears all itineraries from the TrackPad.
+Clears all itineraries from the current list of itineraries.
 
 Format: `clear-itinerary`
 
 ### Itinerary Attraction Features
-A attraction is an itinerary attraction when it is added into a itinerary.
+An attraction is an itinerary attraction when it is added into an itinerary.
 
 #### Adding a new itinerary attraction: `add-itinerary-attraction`
 
@@ -317,12 +298,12 @@ Action | Format, Examples
 
 Action | Format, Examples
 --------|------------------
-**Add attraction** | `add n/ATTRACTION p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
-**Clear all attractions** | `clear`
-**Delete attraction** | `delete INDEX`<br> e.g., `delete 3`
-**Edit attraction** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/Singapore Zoo e/zoo@example.com`
-**Find attraction** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Zoo`
-**List attractions** | `list`
+**Add attraction** | `add-attraction n/ATTRACTION p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
+**Clear all attractions** | `clear-attraction`
+**Delete attraction** | `delete-attraction INDEX`<br> e.g., `delete 3`
+**Edit attraction** | `edit-attraction INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/Singapore Zoo e/zoo@example.com`
+**Find attraction** | `find-attration KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Zoo`
+**List attractions** | `list-attraction`
 
 ### Itinerary-related Commands
 
