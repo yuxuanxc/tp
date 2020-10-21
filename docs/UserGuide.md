@@ -8,7 +8,7 @@ Graphical User Interface (GUI).
 If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
 
 
-## Table of Contents
+* Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
