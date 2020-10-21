@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.attraction.Location;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
@@ -68,8 +69,8 @@ public class Itinerary {
         return days;
     }
 
-    public Day getDay(int day){
-        return this.days.get(day);
+    public Day getDay(Index day) {
+        return this.days.get(day.getZeroBased());
     }
 
     public int getNumberOfDays() {

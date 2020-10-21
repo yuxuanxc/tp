@@ -36,7 +36,8 @@
 //
 //        CommandResult commandResult = new AddItineraryAttractionCommand(validItineraryAttraction).execute(modelStub);
 //
-//        assertEquals(String.format(AddItineraryAttractionCommand.MESSAGE_ADD_ATTRACTION_SUCCESS, validItineraryAttraction), commandResult.getFeedbackToUser());
+//        assertEquals(String.format(AddItineraryAttractionCommand.MESSAGE_ADD_ATTRACTION_SUCCESS,
+//        validItineraryAttraction), commandResult.getFeedbackToUser());
 //        assertEquals(Arrays.asList(validItineraryAttraction), modelStub.itineraryAttractionsAdded);
 //    }
 //
@@ -144,7 +145,8 @@
 //        }
 //
 //        @Override
-//        public void setItineraryAttraction(ItineraryAttraction target, ItineraryAttraction editedItineraryAttraction) {
+//        public void setItineraryAttraction(ItineraryAttraction target,
+//        ItineraryAttraction editedItineraryAttraction) {
 //            throw new AssertionError("This method should not be called.");
 //        }
 //

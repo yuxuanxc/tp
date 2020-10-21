@@ -8,7 +8,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.itineraryattraction.AddItineraryAttractionCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;

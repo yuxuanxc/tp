@@ -49,7 +49,7 @@ public class EditItineraryAttractionCommandParser implements Parser<EditItinerar
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        int dayVisiting = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_DAY_VISITING).get()).getOneBased();
+        Index dayVisiting = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_DAY_VISITING).get());
 
         EditItineraryAttractionDescriptor editItiAttrDesc = new EditItineraryAttractionDescriptor();
 
