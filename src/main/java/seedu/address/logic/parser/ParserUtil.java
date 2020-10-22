@@ -2,10 +2,6 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,6 +20,7 @@ import seedu.address.model.attraction.Visited;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Budget;
+import seedu.address.model.itinerary.ItineraryDate;
 import seedu.address.model.itinerary.ItineraryTime;
 import seedu.address.model.tag.Tag;
 
@@ -63,6 +60,23 @@ public class ParserUtil {
         }
         return new Name(trimmedName);
     }
+
+    /**
+     * Parses a {@code String description} into an {@code Description}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code description} is invalid.
+     */
+    public static Description parseDescription(String description) throws ParseException {
+        requireNonNull(description);
+        String trimmedDescription = description.trim();
+        if (!Description.isValidDescription(trimmedDescription)) {
+            throw new ParseException(Description.MESSAGE_CONSTRAINTS);
+        }
+        return new Description(trimmedDescription);
+    }
+
+    // Parsers for Attraction-----------------------------------------------------------------------------
 
     /**
      * Parses a {@code String phone} into a {@code Phone}.
@@ -107,21 +121,6 @@ public class ParserUtil {
             throw new ParseException(Address.MESSAGE_CONSTRAINTS);
         }
         return new Address(trimmedAddress);
-    }
-
-    /**
-     * Parses a {@code String description} into an {@code Description}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code description} is invalid.
-     */
-    public static Description parseDescription(String description) throws ParseException {
-        requireNonNull(description);
-        String trimmedDescription = description.trim();
-        if (!Description.isValidDescription(trimmedDescription)) {
-            throw new ParseException(Description.MESSAGE_CONSTRAINTS);
-        }
-        return new Description(trimmedDescription);
     }
 
     /**
@@ -226,8 +225,33 @@ public class ParserUtil {
         return tagSet;
     }
 
+    // Parsers for Itinerary------------------------------------------------------------------------------
 
-    // Parser for ItineraryAttraction--------------------------------------------------------------------
+    /**
+     * Parses {@code String date} into a {@code ItineraryDate}.
+     */
+    public static ItineraryDate parseItineraryDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        if (!ItineraryDate.isValidDate(trimmedDate)) {
+            throw new ParseException(ItineraryDate.MESSAGE_CONSTRAINTS);
+        }
+        return new ItineraryDate(trimmedDate);
+    }
+
+    /**
+     * Parses {@code String budget} into a {@code Budget}.
+     */
+    public static Budget parseBudget(String budget) throws ParseException {
+        requireNonNull(budget);
+        String trimmedBudget = budget.trim();
+        if (!Budget.isValidBudget(trimmedBudget)) {
+            throw new ParseException(Budget.MESSAGE_CONSTRAINTS);
+        }
+        return new Budget(trimmedBudget);
+    }
+
+    // Parsers for ItineraryAttraction--------------------------------------------------------------------
 
     /**
      * Parses a {@code String name} into a {@code Name}.
@@ -255,34 +279,5 @@ public class ParserUtil {
     public static String parseAttractionName(String attractionName) throws ParseException {
         requireNonNull(attractionName);
         return attractionName.trim();
-    }
-
-    /**
-     * Parses {@code String date} into a {@code LocalDate}.
-     */
-    public static LocalDate parseDate(String date) throws ParseException {
-        requireNonNull(date);
-        String trimmedDate = date.trim();
-        try {
-            DateTimeFormatter dTF = new DateTimeFormatterBuilder()
-                    .parseCaseInsensitive()
-                    .appendPattern("dd-MM-yyyy")
-                    .toFormatter();
-            return LocalDate.parse(trimmedDate, dTF);
-        } catch (DateTimeParseException e) {
-            throw new ParseException("Date should be in the format dd-mm-yyyy");
-        }
-    }
-
-    /**
-     * Parses {@code String date} into a {@code Budget}.
-     */
-    public static Budget parseBudget(String budget) throws ParseException {
-        requireNonNull(budget);
-        String trimmedBudget = budget.trim();
-        if (!Visited.isValidVisited(trimmedBudget)) {
-            throw new ParseException(Budget.MESSAGE_CONSTRAINTS);
-        }
-        return new Budget(trimmedBudget);
     }
 }

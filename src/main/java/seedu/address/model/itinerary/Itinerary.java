@@ -4,8 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -19,19 +17,18 @@ import seedu.address.model.commons.Name;
  * Represents an Itinerary in TrackPad.
  */
 public class Itinerary {
-    //todo add budget
     private final Name name;
     private final Description description;
-    private final LocalDate startDate;
-    private final LocalDate endDate;
+    private final ItineraryDate startDate;
+    private final ItineraryDate endDate;
     private final Budget budget;
     private final List<Day> days = new ArrayList<>();
 
     /**
      * Name must be present and not null.
      */
-    public Itinerary(Name name, Description description, LocalDate startDate, LocalDate endDate, Budget budget,
-                     List<Day> days) {
+    public Itinerary(Name name, Description description, ItineraryDate startDate, ItineraryDate endDate,
+                     Budget budget, List<Day> days) {
         requireAllNonNull(name, description, startDate, endDate, budget, days);
 
         checkArgument(startDate.isBefore(endDate), "Start date should come before end date");
@@ -41,14 +38,13 @@ public class Itinerary {
         this.startDate = startDate;
         this.endDate = endDate;
         this.budget = budget;
-        if (!days.isEmpty()) {
-            this.days.addAll(days);
-        } else {
-            for (int i = 1; i <= getNumberOfDays(); i++) {
-                this.days.add(new Day(Integer.toString(i)));
+        for (int i = 0; i < getNumberOfDays(); i++) {
+            if (days.get(i) != null) {
+                this.days.add(days.get(i));
+            } else {
+                this.days.add(new Day(Integer.toString(i + 1)));
             }
         }
-
     }
 
     public Name getName() {
@@ -59,11 +55,11 @@ public class Itinerary {
         return description;
     }
 
-    public LocalDate getStartDate() {
+    public ItineraryDate getStartDate() {
         return startDate;
     }
 
-    public LocalDate getEndDate() {
+    public ItineraryDate getEndDate() {
         return endDate;
     }
 
@@ -76,7 +72,8 @@ public class Itinerary {
     }
 
     public int getNumberOfDays() {
-        return (int) (ChronoUnit.DAYS.between(startDate, endDate) + 1);
+        assert startDate.isBefore(endDate);
+        return ItineraryDate.daysBetween(startDate, endDate);
     }
 
     /**
@@ -92,7 +89,7 @@ public class Itinerary {
                 }
             }
         }
-        return locations.stream().map(Object::toString).collect(Collectors.joining(", "));
+        return locations.stream().map(Object::toString).collect(Collectors.joining("-> "));
     }
 
     public List<ItineraryAttraction> getItineraryAttractions() {

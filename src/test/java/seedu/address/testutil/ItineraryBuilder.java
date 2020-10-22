@@ -1,12 +1,11 @@
 package seedu.address.testutil;
 
-import java.time.LocalDate;
-
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Budget;
+import seedu.address.model.itinerary.ItineraryDate;
 
 /**
  * A utility class to help with building Itinerary objects.
@@ -20,8 +19,8 @@ public class ItineraryBuilder {
 
     private Name name;
     private Description description;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private ItineraryDate startDate;
+    private ItineraryDate endDate;
     private Budget budget;
 
     /**
@@ -32,8 +31,8 @@ public class ItineraryBuilder {
         description = new Description(DEFAULT_DESCRIPTION);
         try {
             //todo remove when wrapper class for date is up
-            startDate = ParserUtil.parseDate(DEFAULT_START_DATE);
-            endDate = ParserUtil.parseDate(DEFAULT_END_DATE);
+            startDate = ParserUtil.parseItineraryDate(DEFAULT_START_DATE);
+            endDate = ParserUtil.parseItineraryDate(DEFAULT_END_DATE);
         } catch (ParseException e) {
             throw e;
         }
