@@ -26,6 +26,7 @@ public class AddItineraryAttractionCommand extends Command {
     public static final String COMMAND_WORD = "add-itinerary-attraction";
     public static final String MESSAGE_ADD_ATTRACTION_SUCCESS = "Added Attraction: %1$s to Itinerary: %1$s";
     public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in the itinerary.";
+    public static final String MESSAGE_INVALID_START_TIME = "The start time cannot be later than end time.";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an attraction identified by the index number used"
             + " in the displayed attraction list to the itinerary identified by the the index number used in the"
             + " displayed itinerary list.\n "
@@ -44,10 +45,10 @@ public class AddItineraryAttractionCommand extends Command {
      */
     public AddItineraryAttractionCommand(Index index, ItineraryTime startTime, ItineraryTime endTime,
                                          Index dayVisited) {
-        assert index != null;
-        assert startTime != null;
-        assert endTime != null;
-        assert dayVisited != null;
+        requireNonNull(index);
+        requireNonNull(startTime);
+        requireNonNull(endTime);
+        requireNonNull(dayVisited);
         this.index = index;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -64,8 +65,12 @@ public class AddItineraryAttractionCommand extends Command {
         }
 
         Attraction attractionToAdd = lastShownList.get(index.getZeroBased());
-
         ItineraryAttraction itineraryAttractionToAdd = new ItineraryAttraction(attractionToAdd, startTime, endTime);
+
+        if (model.getCurrentItinerary().getDay(dayVisited).contains(itineraryAttractionToAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
+        }
+
         model.getCurrentItinerary().addItineraryAttraction(itineraryAttractionToAdd, dayVisited.getOneBased());
         return new CommandResult(String.format(MESSAGE_ADD_ATTRACTION_SUCCESS, itineraryAttractionToAdd));
     }
