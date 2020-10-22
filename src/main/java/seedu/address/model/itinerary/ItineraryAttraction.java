@@ -10,7 +10,6 @@ import seedu.address.model.commons.Name;
  */
 public class ItineraryAttraction {
     // todo decide if inheritance or dependency for this attraction, maybe extend from Attraction directly.
-    private final int dayVisiting;
     private final Attraction attraction;
     private final ItineraryTime startTime;
     private final ItineraryTime endTime;
@@ -18,16 +17,14 @@ public class ItineraryAttraction {
     /**
      * Constructs a Itinerary attraction.
      *
-     * @param attraction  attraction to visit.
-     * @param startTime   time to visit the attraction.
-     * @param endTime     time to leave the attraction.
-     * @param dayVisiting day in itinerary to visit the attraction.
+     * @param attraction attraction to visit.
+     * @param startTime  time to visit the attraction.
+     * @param endTime    time to leave the attraction.
      */
-    public ItineraryAttraction(Attraction attraction, ItineraryTime startTime, ItineraryTime endTime, int dayVisiting) {
+    public ItineraryAttraction(Attraction attraction, ItineraryTime startTime, ItineraryTime endTime) {
         this.attraction = attraction;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.dayVisiting = dayVisiting;
     }
 
     /**
@@ -60,13 +57,6 @@ public class ItineraryAttraction {
     }
 
     /**
-     * Returns the day visiting this itinerary attraction.
-     */
-    public int getDayVisiting() {
-        return dayVisiting;
-    }
-
-    /**
      * Returns true if both ItineraryAttraction has the same start and end time.
      *
      * @param otherItineraryAttraction the ItineraryAttraction to compare with.
@@ -74,13 +64,6 @@ public class ItineraryAttraction {
     public boolean isSameTiming(ItineraryAttraction otherItineraryAttraction) {
         return this.startTime.equals(otherItineraryAttraction.startTime)
                 && this.endTime.equals(otherItineraryAttraction.endTime);
-    }
-
-    /**
-     * Returns true if both ItineraryAttraction has the same visiting day.
-     */
-    public boolean isSameVisitingDay(ItineraryAttraction otherItineraryAttraction) {
-        return dayVisiting == otherItineraryAttraction.dayVisiting;
     }
 
     /**
@@ -124,8 +107,7 @@ public class ItineraryAttraction {
 
         ItineraryAttraction otherItineraryAttraction = (ItineraryAttraction) other;
         return otherItineraryAttraction.getAttraction().equals(getAttraction())
-                && isSameTiming(otherItineraryAttraction)
-                && isSameVisitingDay(otherItineraryAttraction);
+                && isSameTiming(otherItineraryAttraction);
     }
 
     @Override
