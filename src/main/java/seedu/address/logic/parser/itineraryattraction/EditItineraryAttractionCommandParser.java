@@ -9,7 +9,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand.EditItineraryAttractionDescriptor;
 import seedu.address.logic.parser.ArgumentMultimap;
@@ -46,7 +45,8 @@ public class EditItineraryAttractionCommandParser implements Parser<EditItinerar
 
         if (!arePrefixesPresent(argMultimap, PREFIX_DAY_VISITING)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    EditItineraryAttractionCommand.MESSAGE_USAGE));
         }
 
         Index dayVisiting = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_DAY_VISITING).get());
