@@ -87,7 +87,6 @@ public class AddItineraryAttractionCommandTest {
         addIaCommand = new AddItineraryAttractionCommand(index, startTime, endTime, day);
         assertNotEquals(addIaCommand, addIaCommand2);
 
-        // todo test non equal start/end time commands
         startTime = new ItineraryTime("1159");
         addIaCommand = new AddItineraryAttractionCommand(index, startTime, endTime, day);
         assertNotEquals(addIaCommand, addIaCommand2);
