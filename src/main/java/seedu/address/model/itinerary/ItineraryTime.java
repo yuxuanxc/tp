@@ -23,7 +23,7 @@ public class ItineraryTime {
     /**
      * Returns if a given start time is earlier than end time.
      */
-    public boolean isValidStartTime(ItineraryTime endTime){
+    public boolean isValidStartTime(ItineraryTime endTime) {
         return this.time < endTime.time;
     }
 
