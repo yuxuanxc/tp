@@ -50,7 +50,7 @@ class JsonAdaptedItineraryAttraction {
                     Attraction.class.getSimpleName()));
         } else {
             // todo make these not null next time
-            return new ItineraryAttraction(attraction.toModelType(), null, null, -1);
+            return new ItineraryAttraction(attraction.toModelType(), null, null);
         }
     }
 }

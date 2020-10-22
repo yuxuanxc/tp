@@ -21,6 +21,13 @@ public class ItineraryTime {
     }
 
     /**
+     * Returns if a given start time is earlier than end time.
+     */
+    public boolean isValidStartTime(ItineraryTime endTime) {
+        return this.time < endTime.time;
+    }
+
+    /**
      * Returns true if the time is earlier than time given.
      */
     public boolean isEarlierThan(ItineraryTime time) {

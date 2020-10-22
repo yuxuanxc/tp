@@ -267,17 +267,6 @@ public class ParserUtil {
             throw new ParseException(Visited.MESSAGE_CONSTRAINTS);
         }
         return new ItineraryTime(trimmedTime);
-
     }
-
-    /**
-     * Parses a {@code String name} into a {@code Name}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code name} is invalid.
-     */
-    public static String parseAttractionName(String attractionName) throws ParseException {
-        requireNonNull(attractionName);
-        return attractionName.trim();
-    }
+    
 }

@@ -2,15 +2,11 @@ package seedu.address.logic.parser.itineraryattraction;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRACTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
+import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand;
@@ -19,9 +15,8 @@ import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.tag.Tag;
-
 
 /**
  * Parses input arguments and creates a new EditItineraryAttractionCommand object
@@ -36,8 +31,8 @@ public class EditItineraryAttractionCommandParser implements Parser<EditItinerar
      */
     public EditItineraryAttractionCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_ATTRACTION, PREFIX_START_TIME,
-                PREFIX_END_TIME, PREFIX_DAY_VISITING);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_START_TIME, PREFIX_END_TIME,
+                PREFIX_DAY_VISITING);
 
         Index index;
 
@@ -48,6 +43,14 @@ public class EditItineraryAttractionCommandParser implements Parser<EditItinerar
                     EditItineraryAttractionCommand.MESSAGE_USAGE), pe);
         }
 
+        if (!arePrefixesPresent(argMultimap, PREFIX_DAY_VISITING)
+                || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    EditItineraryAttractionCommand.MESSAGE_USAGE));
+        }
+
+        Index dayVisiting = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_DAY_VISITING).get());
+
         EditItineraryAttractionDescriptor editItiAttrDesc = new EditItineraryAttractionDescriptor();
 
         if (argMultimap.getValue(PREFIX_START_TIME).isPresent()) {
@@ -56,35 +59,20 @@ public class EditItineraryAttractionCommandParser implements Parser<EditItinerar
         if (argMultimap.getValue(PREFIX_END_TIME).isPresent()) {
             editItiAttrDesc.setEndTime(ParserUtil.parseItineraryTime(argMultimap.getValue(PREFIX_END_TIME).get()));
         }
-        if (argMultimap.getValue(PREFIX_DAY_VISITING).isPresent()) {
-            editItiAttrDesc.setDayVisiting(ParserUtil.parseIndex(argMultimap.getValue(PREFIX_DAY_VISITING)
-                    .get()).getZeroBased());
-        }
-
 
         if (!editItiAttrDesc.isAnyFieldEdited()) {
             throw new ParseException(EditItineraryAttractionCommand.MESSAGE_NOT_EDITED);
         }
 
-
-        String itineraryAttractionName = ParserUtil.parseAttractionName(argMultimap.getValue(PREFIX_START_TIME).get());
-
-        return new EditItineraryAttractionCommand(itineraryAttractionName, editItiAttrDesc);
+        return new EditItineraryAttractionCommand(index, dayVisiting, editItiAttrDesc);
     }
 
     /**
-     * Parses {@code Collection<String> tags} into a {@code Set<Tag>} if {@code tags} is non-empty.
-     * If {@code tags} contain only one element which is an empty string, it will be parsed into a
-     * {@code Set<Tag>} containing zero tags.
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
      */
-    private Optional<Set<Tag>> parseTagsForEdit(Collection<String> tags) throws ParseException {
-        assert tags != null;
-
-        if (tags.isEmpty()) {
-            return Optional.empty();
-        }
-        Collection<String> tagSet = tags.size() == 1 && tags.contains("") ? Collections.emptySet() : tags;
-        return Optional.of(ParserUtil.parseTags(tagSet));
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 
 }
