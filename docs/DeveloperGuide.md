@@ -25,7 +25,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ### 3.1 Architecture
 
-<div align='center'>![Architecture Class Diagram](images/ArchitectureDiagram.png)</div>
+<<span style="display:block;text-align:center">>![Architecture Class Diagram](images/ArchitectureDiagram.png)</span>
 <div align='center'><sup>Figure 2.1.1 Architecture Class Diagram</sup></div><br>
 
 Figure 2.1.1 explains the high-level design of the App. Given below is a quick overview of each component.
@@ -126,7 +126,7 @@ The `Model` component shown in Figure 2.4.1,
 
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.</div><br>
-<div align='center'>![BetterModelClassDiagram](images/BetterModelClassDiagram.png)</div>
+<span style="display:block;text-align:center">![BetterModelClassDiagram](images/BetterModelClassDiagram.png)</span>
 <div align='center'><sup>Figure 2.4.2 Structure of an alternative Model Component, Alternative Model Class Diagram</sup></div><br>
 
 
