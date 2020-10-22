@@ -13,15 +13,15 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditCommand.EditAttractionDescriptor;
 import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.attraction.AddAttractionCommand;
+import seedu.address.logic.commands.attraction.ClearAttractionCommand;
+import seedu.address.logic.commands.attraction.DeleteAttractionCommand;
+import seedu.address.logic.commands.attraction.EditAttractionCommand;
+import seedu.address.logic.commands.attraction.EditAttractionCommand.EditAttractionDescriptor;
+import seedu.address.logic.commands.attraction.FindAttractionCommand;
+import seedu.address.logic.commands.attraction.ListAttractionCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.AttractionContainsKeywordsPredicate;
@@ -36,31 +36,33 @@ public class TrackPadParserTest {
     @Test
     public void parseCommand_add() throws Exception {
         Attraction attraction = new AttractionBuilder().build();
-        AddCommand command = (AddCommand) parser.parseCommand(AttractionUtil.getAddCommand(attraction));
-        assertEquals(new AddCommand(attraction), command);
+        AddAttractionCommand command = (AddAttractionCommand) parser.parseCommand(
+                AttractionUtil.getAddCommand(attraction));
+        assertEquals(new AddAttractionCommand(attraction), command);
     }
 
     @Test
     public void parseCommand_clear() throws Exception {
-        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);
-        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
+        assertTrue(parser.parseCommand(ClearAttractionCommand.COMMAND_WORD) instanceof ClearAttractionCommand);
+        assertTrue(parser.parseCommand(ClearAttractionCommand.COMMAND_WORD + " 3") instanceof ClearAttractionCommand);
     }
 
     @Test
     public void parseCommand_delete() throws Exception {
-        DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST.getOneBased());
-        assertEquals(new DeleteCommand(INDEX_FIRST), command);
+        DeleteAttractionCommand command = (DeleteAttractionCommand) parser.parseCommand(
+                DeleteAttractionCommand.COMMAND_WORD + " " + INDEX_FIRST.getOneBased());
+        assertEquals(new DeleteAttractionCommand(INDEX_FIRST), command);
     }
 
     @Test
     public void parseCommand_edit() throws Exception {
         Attraction attraction = new AttractionBuilder().build();
         EditAttractionDescriptor descriptor = new EditAttractionDescriptorBuilder(attraction).build();
-        EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
+        EditAttractionCommand command = (EditAttractionCommand) parser.parseCommand(
+                EditAttractionCommand.COMMAND_WORD + " "
                 + INDEX_FIRST.getOneBased() + " "
                 + AttractionUtil.getEditAttractionDescriptorDetails(descriptor));
-        assertEquals(new EditCommand(INDEX_FIRST, descriptor), command);
+        assertEquals(new EditAttractionCommand(INDEX_FIRST, descriptor), command);
     }
 
     @Test
@@ -72,9 +74,9 @@ public class TrackPadParserTest {
     @Test
     public void parseCommand_find() throws Exception {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
-        FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new AttractionContainsKeywordsPredicate(keywords)), command);
+        FindAttractionCommand command = (FindAttractionCommand) parser.parseCommand(
+                FindAttractionCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
+        assertEquals(new FindAttractionCommand(new AttractionContainsKeywordsPredicate(keywords)), command);
     }
 
     @Test
@@ -85,8 +87,8 @@ public class TrackPadParserTest {
 
     @Test
     public void parseCommand_list() throws Exception {
-        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
-        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+        assertTrue(parser.parseCommand(ListAttractionCommand.COMMAND_WORD) instanceof ListAttractionCommand);
+        assertTrue(parser.parseCommand(ListAttractionCommand.COMMAND_WORD + " 3") instanceof ListAttractionCommand);
     }
 
     @Test

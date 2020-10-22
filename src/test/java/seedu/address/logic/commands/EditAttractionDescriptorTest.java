@@ -17,7 +17,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ACTIVITY;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.EditCommand.EditAttractionDescriptor;
+import seedu.address.logic.commands.attraction.EditAttractionCommand.EditAttractionDescriptor;
 import seedu.address.testutil.EditAttractionDescriptorBuilder;
 
 public class EditAttractionDescriptorTest {

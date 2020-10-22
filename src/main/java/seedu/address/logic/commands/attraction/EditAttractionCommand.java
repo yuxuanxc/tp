@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.attraction;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
@@ -23,6 +23,8 @@ import java.util.Set;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.attraction.Address;
@@ -41,9 +43,9 @@ import seedu.address.model.tag.Tag;
 /**
  * Edits the details of an existing attraction in the attractions list in TrackPad.
  */
-public class EditCommand extends Command {
+public class EditAttractionCommand extends Command {
 
-    public static final String COMMAND_WORD = "edit";
+    public static final String COMMAND_WORD = "edit-attraction";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the attraction identified "
             + "by the index number used in the displayed attraction list. "
@@ -75,7 +77,7 @@ public class EditCommand extends Command {
      * @param index of the attraction in the filtered attraction list to edit
      * @param editAttractionDescriptor details to edit the attraction with
      */
-    public EditCommand(Index index, EditAttractionDescriptor editAttractionDescriptor) {
+    public EditAttractionCommand(Index index, EditAttractionDescriptor editAttractionDescriptor) {
         requireNonNull(index);
         requireNonNull(editAttractionDescriptor);
 
@@ -140,12 +142,12 @@ public class EditCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof EditCommand)) {
+        if (!(other instanceof EditAttractionCommand)) {
             return false;
         }
 
         // state check
-        EditCommand e = (EditCommand) other;
+        EditAttractionCommand e = (EditAttractionCommand) other;
         return index.equals(e.index)
                 && editAttractionDescriptor.equals(e.editAttractionDescriptor);
     }

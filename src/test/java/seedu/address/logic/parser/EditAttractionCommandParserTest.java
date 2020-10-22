@@ -55,8 +55,9 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditCommand.EditAttractionDescriptor;
+import seedu.address.logic.commands.attraction.EditAttractionCommand;
+import seedu.address.logic.commands.attraction.EditAttractionCommand.EditAttractionDescriptor;
+import seedu.address.logic.parser.attraction.EditAttractionCommandParser;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
@@ -69,14 +70,14 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.EditAttractionDescriptorBuilder;
 
-public class EditCommandParserTest {
+public class EditAttractionCommandParserTest {
 
     private static final String TAG_EMPTY = " " + PREFIX_TAG;
 
     private static final String MESSAGE_INVALID_FORMAT =
-            String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditAttractionCommand.MESSAGE_USAGE);
 
-    private EditCommandParser parser = new EditCommandParser();
+    private EditAttractionCommandParser parser = new EditAttractionCommandParser();
 
     @Test
     public void parse_missingParts_failure() {
@@ -84,7 +85,7 @@ public class EditCommandParserTest {
         assertParseFailure(parser, VALID_NAME_EIFFEL, MESSAGE_INVALID_FORMAT);
 
         // no field specified
-        assertParseFailure(parser, "1", EditCommand.MESSAGE_NOT_EDITED);
+        assertParseFailure(parser, "1", EditAttractionCommand.MESSAGE_NOT_EDITED);
 
         // no index and no field specified
         assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);
@@ -153,7 +154,7 @@ public class EditCommandParserTest {
                 .withDescription(VALID_DESCRIPTION_EIFFEL).withLocation(VALID_LOCATION_EIFFEL)
                 .withOpeningHours(VALID_OPENING_HOURS_EIFFEL).withPriceRange(VALID_PRICE_RANGE_EIFFEL)
                 .withRating(VALID_RATING_EIFFEL).withTags(VALID_TAG_SIGHTSEEING, VALID_TAG_ACTIVITY).build();
-        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+        EditAttractionCommand expectedCommand = new EditAttractionCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
     }
@@ -165,7 +166,7 @@ public class EditCommandParserTest {
 
         EditAttractionDescriptor descriptor = new EditAttractionDescriptorBuilder().withPhone(VALID_PHONE_MBS)
                 .withEmail(VALID_EMAIL_EIFFEL).build();
-        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+        EditAttractionCommand expectedCommand = new EditAttractionCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
     }
@@ -176,61 +177,61 @@ public class EditCommandParserTest {
         Index targetIndex = INDEX_THIRD;
         String userInput = targetIndex.getOneBased() + NAME_DESC_EIFFEL;
         EditAttractionDescriptor descriptor = new EditAttractionDescriptorBuilder().withName(VALID_NAME_EIFFEL).build();
-        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+        EditAttractionCommand expectedCommand = new EditAttractionCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // phone
         userInput = targetIndex.getOneBased() + PHONE_DESC_EIFFEL;
         descriptor = new EditAttractionDescriptorBuilder().withPhone(VALID_PHONE_EIFFEL).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
+        expectedCommand = new EditAttractionCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // email
         userInput = targetIndex.getOneBased() + EMAIL_DESC_EIFFEL;
         descriptor = new EditAttractionDescriptorBuilder().withEmail(VALID_EMAIL_EIFFEL).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
+        expectedCommand = new EditAttractionCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // address
         userInput = targetIndex.getOneBased() + ADDRESS_DESC_EIFFEL;
         descriptor = new EditAttractionDescriptorBuilder().withAddress(VALID_ADDRESS_EIFFEL).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
+        expectedCommand = new EditAttractionCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // description
         userInput = targetIndex.getOneBased() + DESCRIPTION_DESC_EIFFEL;
         descriptor = new EditAttractionDescriptorBuilder().withDescription(VALID_DESCRIPTION_EIFFEL).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
+        expectedCommand = new EditAttractionCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // location
         userInput = targetIndex.getOneBased() + LOCATION_DESC_EIFFEL;
         descriptor = new EditAttractionDescriptorBuilder().withLocation(VALID_LOCATION_EIFFEL).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
+        expectedCommand = new EditAttractionCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // opening hours
         userInput = targetIndex.getOneBased() + OPENING_HOURS_DESC_EIFFEL;
         descriptor = new EditAttractionDescriptorBuilder().withOpeningHours(VALID_OPENING_HOURS_EIFFEL).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
+        expectedCommand = new EditAttractionCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // price range
         userInput = targetIndex.getOneBased() + PRICE_RANGE_DESC_EIFFEL;
         descriptor = new EditAttractionDescriptorBuilder().withPriceRange(VALID_PRICE_RANGE_EIFFEL).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
+        expectedCommand = new EditAttractionCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // rating
         userInput = targetIndex.getOneBased() + RATING_DESC_EIFFEL;
         descriptor = new EditAttractionDescriptorBuilder().withRating(VALID_RATING_EIFFEL).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
+        expectedCommand = new EditAttractionCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // tags
         userInput = targetIndex.getOneBased() + TAG_DESC_ACTIVITY;
         descriptor = new EditAttractionDescriptorBuilder().withTags(VALID_TAG_ACTIVITY).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
+        expectedCommand = new EditAttractionCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
@@ -245,7 +246,7 @@ public class EditCommandParserTest {
         EditAttractionDescriptor descriptor = new EditAttractionDescriptorBuilder().withPhone(VALID_PHONE_MBS)
                 .withEmail(VALID_EMAIL_MBS).withAddress(VALID_ADDRESS_MBS)
                 .withLocation(VALID_LOCATION_MBS).withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING).build();
-        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+        EditAttractionCommand expectedCommand = new EditAttractionCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
     }
@@ -256,7 +257,7 @@ public class EditCommandParserTest {
         Index targetIndex = INDEX_FIRST;
         String userInput = targetIndex.getOneBased() + INVALID_PHONE_DESC + PHONE_DESC_MBS;
         EditAttractionDescriptor descriptor = new EditAttractionDescriptorBuilder().withPhone(VALID_PHONE_MBS).build();
-        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+        EditAttractionCommand expectedCommand = new EditAttractionCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // other valid values specified
@@ -265,7 +266,7 @@ public class EditCommandParserTest {
         descriptor = new EditAttractionDescriptorBuilder().withPhone(VALID_PHONE_MBS).withEmail(VALID_EMAIL_MBS)
                 .withAddress(VALID_ADDRESS_MBS).withDescription(VALID_DESCRIPTION_MBS)
                 .withLocation(VALID_LOCATION_MBS).withOpeningHours(VALID_OPENING_HOURS_MBS).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
+        expectedCommand = new EditAttractionCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
@@ -275,7 +276,7 @@ public class EditCommandParserTest {
         String userInput = targetIndex.getOneBased() + TAG_EMPTY;
 
         EditAttractionDescriptor descriptor = new EditAttractionDescriptorBuilder().withTags().build();
-        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+        EditAttractionCommand expectedCommand = new EditAttractionCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
     }

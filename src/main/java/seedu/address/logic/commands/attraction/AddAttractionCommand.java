@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.attraction;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
@@ -13,6 +13,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
 
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.attraction.Attraction;
@@ -20,9 +22,9 @@ import seedu.address.model.attraction.Attraction;
 /**
  * Adds an attraction to the attractions list in TrackPad.
  */
-public class AddCommand extends Command {
+public class AddAttractionCommand extends Command {
 
-    public static final String COMMAND_WORD = "add";
+    public static final String COMMAND_WORD = "add-attraction";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an attraction to TrackPad. "
             + "Parameters: "
@@ -56,9 +58,9 @@ public class AddCommand extends Command {
     private final Attraction toAdd;
 
     /**
-     * Creates an AddCommand to add the specified {@code Attraction}
+     * Creates an AddAttractionCommand to add the specified {@code Attraction}
      */
-    public AddCommand(Attraction attraction) {
+    public AddAttractionCommand(Attraction attraction) {
         requireNonNull(attraction);
         toAdd = attraction;
     }
@@ -78,7 +80,7 @@ public class AddCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddCommand // instanceof handles nulls
-                && toAdd.equals(((AddCommand) other).toAdd));
+                || (other instanceof AddAttractionCommand // instanceof handles nulls
+                && toAdd.equals(((AddAttractionCommand) other).toAdd));
     }
 }

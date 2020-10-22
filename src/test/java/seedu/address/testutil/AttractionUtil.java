@@ -14,8 +14,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
 
 import java.util.Set;
 
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.EditCommand.EditAttractionDescriptor;
+import seedu.address.logic.commands.attraction.AddAttractionCommand;
+import seedu.address.logic.commands.attraction.EditAttractionCommand.EditAttractionDescriptor;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.tag.Tag;
 
@@ -28,7 +28,7 @@ public class AttractionUtil {
      * Returns an add command string for adding the {@code attraction}.
      */
     public static String getAddCommand(Attraction attraction) {
-        return AddCommand.COMMAND_WORD + " " + getAttractionDetails(attraction);
+        return AddAttractionCommand.COMMAND_WORD + " " + getAttractionDetails(attraction);
     }
 
     /**
