@@ -23,9 +23,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.attraction.AddAttractionCommand;
+import seedu.address.logic.commands.attraction.ListAttractionCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
@@ -68,14 +68,14 @@ public class LogicManagerTest {
 
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
-        String deleteCommand = "delete 9";
-        assertCommandException(deleteCommand, MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX);
+        String deleteAttractionCommand = "delete-attraction 9";
+        assertCommandException(deleteAttractionCommand, MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX);
     }
 
     @Test
     public void execute_validCommand_success() throws Exception {
-        String listCommand = ListCommand.COMMAND_WORD;
-        assertCommandSuccess(listCommand, ListCommand.MESSAGE_SUCCESS, model);
+        String listAttractionCommand = ListAttractionCommand.COMMAND_WORD;
+        assertCommandSuccess(listAttractionCommand, ListAttractionCommand.MESSAGE_SUCCESS, model);
     }
 
     @Test
@@ -91,7 +91,7 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage);
 
         // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_EIFFEL
+        String addAttractionCommand = AddAttractionCommand.COMMAND_WORD + NAME_DESC_EIFFEL
                 + PHONE_DESC_EIFFEL + EMAIL_DESC_EIFFEL + ADDRESS_DESC_EIFFEL
                 + DESCRIPTION_DESC_EIFFEL + LOCATION_DESC_EIFFEL + OPENING_HOURS_DESC_EIFFEL
                 + PRICE_RANGE_DESC_EIFFEL + RATING_DESC_EIFFEL + VISITED_DESC_EIFFEL;
@@ -99,7 +99,7 @@ public class LogicManagerTest {
         ModelManager expectedModel = new ModelManager();
         expectedModel.addAttraction(expectedAttraction);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
-        assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
+        assertCommandFailure(addAttractionCommand, CommandException.class, expectedMessage, expectedModel);
     }
 
     @Test

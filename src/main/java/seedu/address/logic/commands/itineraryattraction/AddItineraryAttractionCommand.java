@@ -40,7 +40,7 @@ public class AddItineraryAttractionCommand extends Command {
     private final Index dayVisited;
 
     /**
-     * Creates an AddCommand to add the specified {@code Attraction}
+     * Creates an AddAttractionCommand to add the specified {@code Attraction}
      */
     public AddItineraryAttractionCommand(Index index, ItineraryTime startTime, ItineraryTime endTime,
                                          Index dayVisited) {

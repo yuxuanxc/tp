@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
+import seedu.address.model.itinerary.Budget;
 import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.Itinerary;
 
@@ -26,6 +27,7 @@ class JsonAdaptedItinerary {
     private final String description;
     private final String startDate;
     private final String endDate;
+    private final String budget;
     private final List<JsonAdaptedDay> days = new ArrayList<>();
 
     /**
@@ -36,11 +38,13 @@ class JsonAdaptedItinerary {
                                 @JsonProperty("description") String description,
                                 @JsonProperty("startDate") String startDate,
                                 @JsonProperty("endDate") String endDate,
+                                @JsonProperty("budget") String budget,
                                 @JsonProperty("days") List<JsonAdaptedDay> days) {
         this.name = name;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.budget = budget;
         if (days != null) {
             this.days.addAll(days);
         }
@@ -54,6 +58,7 @@ class JsonAdaptedItinerary {
         description = source.getDescription().value;
         startDate = source.getStartDate().toString();
         endDate = source.getEndDate().toString();
+        budget = source.getBudget().value;
         days.addAll(source.getDays().stream()
                 .map(JsonAdaptedDay::new)
                 .collect(Collectors.toList()));
@@ -69,6 +74,7 @@ class JsonAdaptedItinerary {
         final Description modelDescription;
         final LocalDate modelStartDate;
         final LocalDate modelEndDate;
+        final Budget modelBudget;
         final List<Day> modelDays = new ArrayList<>();
 
         for (JsonAdaptedDay day : days) {
@@ -120,7 +126,19 @@ class JsonAdaptedItinerary {
             }
         }
 
-        return new Itinerary(modelName, modelDescription, modelStartDate, modelEndDate, modelDays);
+        // Budget is optional
+        if (description == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Budget.class.getSimpleName()));
+        } else if (budget.equals("")) {
+            modelBudget = new Budget();
+        } else if (!Budget.isValidBudget(budget)) {
+            throw new IllegalValueException(Budget.MESSAGE_CONSTRAINTS);
+        } else {
+            modelBudget = new Budget(budget);
+        }
+
+        return new Itinerary(modelName, modelDescription, modelStartDate, modelEndDate, modelBudget, modelDays);
     }
 
 }

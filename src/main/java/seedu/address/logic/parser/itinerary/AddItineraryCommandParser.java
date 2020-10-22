@@ -1,6 +1,7 @@
 package seedu.address.logic.parser.itinerary;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_BUDGET;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -19,6 +20,7 @@ import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
+import seedu.address.model.itinerary.Budget;
 import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.Itinerary;
 
@@ -35,7 +37,7 @@ public class AddItineraryCommandParser implements Parser<AddItineraryCommand> {
     public AddItineraryCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_DESCRIPTION, PREFIX_START_DATE,
-                        PREFIX_END_DATE);
+                        PREFIX_END_DATE, PREFIX_BUDGET);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_START_DATE, PREFIX_END_DATE)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -59,7 +61,15 @@ public class AddItineraryCommandParser implements Parser<AddItineraryCommand> {
         // End date is not optional
         LocalDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_END_DATE).get());
 
-        Itinerary itinerary = new Itinerary(name, description, startDate, endDate, new ArrayList<Day>());
+        // Budget is optional
+        Budget budget;
+        if (argMultimap.getValue(PREFIX_BUDGET).isPresent()) {
+            budget = ParserUtil.parseBudget(argMultimap.getValue(PREFIX_BUDGET).get());
+        } else {
+            budget = new Budget();
+        }
+
+        Itinerary itinerary = new Itinerary(name, description, startDate, endDate, budget, new ArrayList<Day>());
 
         return new AddItineraryCommand(itinerary);
     }

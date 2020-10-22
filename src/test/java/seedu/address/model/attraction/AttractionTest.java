@@ -12,6 +12,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_RANGE_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RATING_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_VISITED_EIFFEL;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAttractions.MBS;
 import static seedu.address.testutil.TypicalAttractions.SUNTEC;
@@ -115,6 +116,10 @@ public class AttractionTest {
 
         // different rating -> returns false
         editedSuntec = new AttractionBuilder(SUNTEC).withRating(VALID_RATING_EIFFEL).build();
+        assertFalse(SUNTEC.equals(editedSuntec));
+
+        // different visited -> returns false
+        editedSuntec = new AttractionBuilder(SUNTEC).withVisited(VALID_VISITED_EIFFEL).build();
         assertFalse(SUNTEC.equals(editedSuntec));
 
         // different tags -> returns false

@@ -14,10 +14,11 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_RANGE_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RATING_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ACTIVITY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_VISITED_MBS;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.EditCommand.EditAttractionDescriptor;
+import seedu.address.logic.commands.attraction.EditAttractionCommand.EditAttractionDescriptor;
 import seedu.address.testutil.EditAttractionDescriptorBuilder;
 
 public class EditAttractionDescriptorTest {
@@ -76,6 +77,10 @@ public class EditAttractionDescriptorTest {
 
         // different rating -> returns false
         editedEiffel = new EditAttractionDescriptorBuilder(DESC_EIFFEL).withRating(VALID_RATING_MBS).build();
+        assertFalse(DESC_EIFFEL.equals(editedEiffel));
+
+        // different visited -> returns false
+        editedEiffel = new EditAttractionDescriptorBuilder(DESC_EIFFEL).withVisited(VALID_VISITED_MBS).build();
         assertFalse(DESC_EIFFEL.equals(editedEiffel));
 
         // different tags -> returns false
