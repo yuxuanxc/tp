@@ -6,21 +6,25 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.attraction.AddAttractionCommand;
+import seedu.address.logic.commands.attraction.ClearAttractionCommand;
+import seedu.address.logic.commands.attraction.DeleteAttractionCommand;
+import seedu.address.logic.commands.attraction.EditAttractionCommand;
+import seedu.address.logic.commands.attraction.FindAttractionCommand;
+import seedu.address.logic.commands.attraction.ListAttractionCommand;
 import seedu.address.logic.commands.itinerary.AddItineraryCommand;
 import seedu.address.logic.commands.itinerary.ClearItineraryCommand;
 import seedu.address.logic.commands.itinerary.DeleteItineraryCommand;
 import seedu.address.logic.commands.itineraryattraction.AddItineraryAttractionCommand;
 import seedu.address.logic.commands.itineraryattraction.DeleteItineraryAttractionCommand;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand;
+import seedu.address.logic.parser.attraction.AddAttractionCommandParser;
+import seedu.address.logic.parser.attraction.DeleteAttractionCommandParser;
+import seedu.address.logic.parser.attraction.EditAttractionCommandParser;
+import seedu.address.logic.parser.attraction.FindAttractionCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.itinerary.AddItineraryCommandParser;
 import seedu.address.logic.parser.itinerary.DeleteItineraryCommandParser;
@@ -54,23 +58,23 @@ public class TrackPadParser {
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
 
-        case AddCommand.COMMAND_WORD:
-            return new AddCommandParser().parse(arguments);
+        case AddAttractionCommand.COMMAND_WORD:
+            return new AddAttractionCommandParser().parse(arguments);
 
-        case EditCommand.COMMAND_WORD:
-            return new EditCommandParser().parse(arguments);
+        case EditAttractionCommand.COMMAND_WORD:
+            return new EditAttractionCommandParser().parse(arguments);
 
-        case DeleteCommand.COMMAND_WORD:
-            return new DeleteCommandParser().parse(arguments);
+        case DeleteAttractionCommand.COMMAND_WORD:
+            return new DeleteAttractionCommandParser().parse(arguments);
 
-        case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
+        case ClearAttractionCommand.COMMAND_WORD:
+            return new ClearAttractionCommand();
 
-        case FindCommand.COMMAND_WORD:
-            return new FindCommandParser().parse(arguments);
+        case FindAttractionCommand.COMMAND_WORD:
+            return new FindAttractionCommandParser().parse(arguments);
 
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+        case ListAttractionCommand.COMMAND_WORD:
+            return new ListAttractionCommand();
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
