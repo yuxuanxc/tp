@@ -21,6 +21,7 @@ import seedu.address.model.attraction.OpeningHours;
 import seedu.address.model.attraction.Phone;
 import seedu.address.model.attraction.PriceRange;
 import seedu.address.model.attraction.Rating;
+import seedu.address.model.attraction.Visited;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
 import seedu.address.model.tag.Tag;
@@ -35,6 +36,7 @@ public class ParserUtilTest {
     private static final String INVALID_OPENING_HOURS = "1-2";
     private static final String INVALID_PRICE_RANGE = "low";
     private static final String INVALID_RATING = "9";
+    private static final String INVALID_VISITED = "FaLse";
     private static final String INVALID_TAG = "#nature";
 
     private static final String VALID_NAME = "Botanic Gardens";
@@ -46,6 +48,7 @@ public class ParserUtilTest {
     private static final String VALID_OPENING_HOURS = "1000-1800";
     private static final String VALID_PRICE_RANGE = "LOW";
     private static final String VALID_RATING = "4.9";
+    private static final String VALID_VISITED = "FALSE";
     private static final String VALID_TAG_1 = "nature";
     private static final String VALID_TAG_2 = "sightseeing";
 
@@ -278,6 +281,28 @@ public class ParserUtilTest {
         assertEquals(expectedRating, ParserUtil.parseRating(ratingWithWhitespace));
     }
 
+    @Test
+    public void parseVisited_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseVisited((String) null));
+    }
+
+    @Test
+    public void parseVisited_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseVisited(INVALID_VISITED));
+    }
+
+    @Test
+    public void parseVisited_validValueWithoutWhitespace_returnsVisited() throws Exception {
+        Visited expectedVisited = new Visited(VALID_VISITED);
+        assertEquals(expectedVisited, ParserUtil.parseVisited(VALID_VISITED));
+    }
+
+    @Test
+    public void parseVisited_validValueWithWhitespace_returnsTrimmedVisited() throws Exception {
+        String visitedWithWhitespace = WHITESPACE + VALID_VISITED + WHITESPACE;
+        Visited expectedVisited = new Visited(VALID_VISITED);
+        assertEquals(expectedVisited, ParserUtil.parseVisited(visitedWithWhitespace));
+    }
 
     @Test
     public void parseTag_null_throwsNullPointerException() {
