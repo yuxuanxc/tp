@@ -1,4 +1,4 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.attraction;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
@@ -16,7 +16,12 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.attraction.AddAttractionCommand;
+import seedu.address.logic.parser.ArgumentMultimap;
+import seedu.address.logic.parser.ArgumentTokenizer;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
@@ -32,17 +37,17 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.tag.Tag;
 
 /**
- * Parses input arguments and creates a new AddCommand object
+ * Parses input arguments and creates a new AddAttractionCommand object
  */
-public class AddCommandParser implements Parser<AddCommand> {
+public class AddAttractionCommandParser implements Parser<AddAttractionCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the AddCommand
-     * and returns an AddCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the AddAttractionCommand
+     * and returns an AddAttractionCommand object for execution.
      *
      * @throws ParseException if the user input does not conform the expected format
      */
-    public AddCommand parse(String args) throws ParseException {
+    public AddAttractionCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
                         PREFIX_DESCRIPTION, PREFIX_LOCATION, PREFIX_OPENING_HOURS,
@@ -51,7 +56,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         // Only check for name and location of the attraction, the rest are optional.
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_LOCATION)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddAttractionCommand.MESSAGE_USAGE));
         }
 
         // Name is not optional
@@ -129,7 +134,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Attraction attraction = new Attraction(name, phone, email, address, description,
                 location, openingHours, priceRange, rating, visited, tagList);
 
-        return new AddCommand(attraction);
+        return new AddAttractionCommand(attraction);
     }
 
     /**

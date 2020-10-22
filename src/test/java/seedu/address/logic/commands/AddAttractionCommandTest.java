@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.logic.commands.attraction.AddAttractionCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AttractionList;
 import seedu.address.model.Model;
@@ -25,11 +26,11 @@ import seedu.address.model.attraction.Attraction;
 import seedu.address.model.itinerary.Itinerary;
 import seedu.address.testutil.AttractionBuilder;
 
-public class AddCommandTest {
+public class AddAttractionCommandTest {
 
     @Test
     public void constructor_nullAttraction_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddCommand(null));
+        assertThrows(NullPointerException.class, () -> new AddAttractionCommand(null));
     }
 
     @Test
@@ -37,34 +38,35 @@ public class AddCommandTest {
         ModelStubAcceptingAttractionAdded modelStub = new ModelStubAcceptingAttractionAdded();
         Attraction validAttraction = new AttractionBuilder().build();
 
-        CommandResult commandResult = new AddCommand(validAttraction).execute(modelStub);
+        CommandResult commandResult = new AddAttractionCommand(validAttraction).execute(modelStub);
 
-        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validAttraction), commandResult.getFeedbackToUser());
+        assertEquals(String.format(AddAttractionCommand.MESSAGE_SUCCESS, validAttraction),
+                commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validAttraction), modelStub.attractionsAdded);
     }
 
     @Test
     public void execute_duplicateAttraction_throwsCommandException() {
         Attraction validAttraction = new AttractionBuilder().build();
-        AddCommand addCommand = new AddCommand(validAttraction);
+        AddAttractionCommand addAttractionCommand = new AddAttractionCommand(validAttraction);
         ModelStub modelStub = new ModelStubWithAttraction(validAttraction);
 
         assertThrows(CommandException.class,
-                AddCommand.MESSAGE_DUPLICATE_ATTRACTION, () -> addCommand.execute(modelStub));
+                AddAttractionCommand.MESSAGE_DUPLICATE_ATTRACTION, () -> addAttractionCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
         Attraction singaporeZoo = new AttractionBuilder().withName("Singapore Zoo").build();
         Attraction nightSafari = new AttractionBuilder().withName("Night Safari").build();
-        AddCommand addSingaporeZooCommand = new AddCommand(singaporeZoo);
-        AddCommand addNightSafariCommand = new AddCommand(nightSafari);
+        AddAttractionCommand addSingaporeZooCommand = new AddAttractionCommand(singaporeZoo);
+        AddAttractionCommand addNightSafariCommand = new AddAttractionCommand(nightSafari);
 
         // same object -> returns true
         assertTrue(addSingaporeZooCommand.equals(addSingaporeZooCommand));
 
         // same values -> returns true
-        AddCommand addSingaporeZooCommandCopy = new AddCommand(singaporeZoo);
+        AddAttractionCommand addSingaporeZooCommandCopy = new AddAttractionCommand(singaporeZoo);
         assertTrue(addSingaporeZooCommand.equals(addSingaporeZooCommandCopy));
 
         // different types -> returns false

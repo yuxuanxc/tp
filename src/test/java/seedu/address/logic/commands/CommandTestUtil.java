@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.attraction.EditAttractionCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AttractionList;
 import seedu.address.model.Model;
@@ -97,8 +98,8 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditAttractionDescriptor DESC_EIFFEL;
-    public static final EditCommand.EditAttractionDescriptor DESC_MBS;
+    public static final EditAttractionCommand.EditAttractionDescriptor DESC_EIFFEL;
+    public static final EditAttractionCommand.EditAttractionDescriptor DESC_MBS;
 
     static {
         DESC_EIFFEL = new EditAttractionDescriptorBuilder().withName(VALID_NAME_EIFFEL)

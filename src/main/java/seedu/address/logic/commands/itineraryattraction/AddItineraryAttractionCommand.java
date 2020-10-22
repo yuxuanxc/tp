@@ -23,7 +23,7 @@ import seedu.address.model.itinerary.ItineraryTime;
  */
 public class AddItineraryAttractionCommand extends Command {
 
-    // todo copy test case from AddCommand
+    // todo copy test case from AddAttractionCommand
     public static final String COMMAND_WORD = "add-itinerary-attraction";
     public static final String MESSAGE_ADD_ATTRACTION_SUCCESS = "Added Attraction: %1$s to Itinerary: %1$s";
     public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in the itinerary.";
@@ -41,7 +41,7 @@ public class AddItineraryAttractionCommand extends Command {
     private final Index dayVisited;
 
     /**
-     * Creates an AddCommand to add the specified {@code Attraction}
+     * Creates an AddAttractionCommand to add the specified {@code Attraction}
      */
     public AddItineraryAttractionCommand(String attractionName, ItineraryTime startTime, ItineraryTime endTime,
                                          Index dayVisited) {
