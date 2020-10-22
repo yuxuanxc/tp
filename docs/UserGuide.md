@@ -287,7 +287,7 @@ Itinerary attractions are attractions added to an itinerary,
 but with the added start/end time field.
 These commands deal with attractions that are found in an itinerary.
 
-<img align="center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.png)</img>
+<img align="center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.PNG)</img>
 <div align='center'><sup>Figure X Diagram simulating the attractions found in an itinerary</sup></div><br>
 
 In the figure X above, you have selected Itinerary 1 with `show-itinerary 1` command, shown with a yellow border. 
