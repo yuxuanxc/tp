@@ -22,7 +22,7 @@ public class ClearItineraryCommandTest {
     }
 
     @Test
-    public void execute_nonEmptyTrackPad_success() {
+    public void execute_nonEmptyItineraryList_success() {
         Model model = new ModelManager(getTypicalAttractionList(), getTypicalItineraryList(), new UserPrefs());
         Model expectedModel = new ModelManager(getTypicalAttractionList(), getTypicalItineraryList(), new UserPrefs());
         expectedModel.setItineraryList(new ItineraryList());

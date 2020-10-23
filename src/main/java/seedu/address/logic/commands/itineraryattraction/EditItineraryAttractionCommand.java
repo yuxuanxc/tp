@@ -76,8 +76,7 @@ public class EditItineraryAttractionCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
         }
 
-        itinerary.editItineraryAttraction(itineraryAttractionToEdit, editedItineraryAttraction,
-                dayVisiting.getOneBased());
+        itinerary.editItineraryAttraction(itineraryAttractionToEdit, editedItineraryAttraction, dayVisiting);
 
 
         return new CommandResult(String.format(MESSAGE_EDIT_ATTRACTION_SUCCESS, editedItineraryAttraction));

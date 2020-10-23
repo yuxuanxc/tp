@@ -7,7 +7,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
@@ -23,6 +22,7 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Budget;
 import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.Itinerary;
+import seedu.address.model.itinerary.ItineraryDate;
 
 /**
  * Parses input arguments and creates a new AddItineraryCommand object
@@ -56,10 +56,10 @@ public class AddItineraryCommandParser implements Parser<AddItineraryCommand> {
         }
 
         // Start date is not optional
-        LocalDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_START_DATE).get());
+        ItineraryDate startDate = ParserUtil.parseItineraryDate(argMultimap.getValue(PREFIX_START_DATE).get());
 
         // End date is not optional
-        LocalDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_END_DATE).get());
+        ItineraryDate endDate = ParserUtil.parseItineraryDate(argMultimap.getValue(PREFIX_END_DATE).get());
 
         // Budget is optional
         Budget budget;
