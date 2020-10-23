@@ -51,7 +51,6 @@ import static seedu.address.testutil.TypicalAttractions.MBS;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.attraction.AddAttractionCommand;
-import seedu.address.logic.parser.attraction.AddAttractionCommandParser;
 import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.Email;

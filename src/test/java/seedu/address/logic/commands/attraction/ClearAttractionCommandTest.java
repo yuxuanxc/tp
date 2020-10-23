@@ -6,7 +6,6 @@ import static seedu.address.testutil.TypicalItineraries.getTypicalItineraryList;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.attraction.ClearAttractionCommand;
 import seedu.address.model.AttractionList;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;

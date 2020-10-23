@@ -9,7 +9,6 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.attraction.FindAttractionCommand;
-import seedu.address.logic.parser.attraction.FindAttractionCommandParser;
 import seedu.address.model.attraction.AttractionContainsKeywordsPredicate;
 
 public class FindAttractionCommandParserTest {

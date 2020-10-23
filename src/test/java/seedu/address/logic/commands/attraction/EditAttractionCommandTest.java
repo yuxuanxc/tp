@@ -19,8 +19,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.attraction.ClearAttractionCommand;
-import seedu.address.logic.commands.attraction.EditAttractionCommand;
 import seedu.address.logic.commands.attraction.EditAttractionCommand.EditAttractionDescriptor;
 import seedu.address.model.AttractionList;
 import seedu.address.model.ItineraryList;
