@@ -3,6 +3,7 @@ package seedu.address.testutil;
 import java.util.ArrayList;
 import java.util.List;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Budget;
@@ -37,7 +38,10 @@ public class ItineraryBuilder {
         startDate = new ItineraryDate(DEFAULT_START_DATE);
         endDate = new ItineraryDate(DEFAULT_END_DATE);
         budget = new Budget(DEFAULT_BUDGET);
-        days = new ArrayList<>(ItineraryDate.daysBetween(startDate, endDate));
+        days = new ArrayList<>();
+        for (int i = 1; i <= ItineraryDate.daysBetween(startDate, endDate); i++) {
+            days.add(new Day(Integer.toString(i)));
+        }
     }
 
     /**
@@ -131,8 +135,8 @@ public class ItineraryBuilder {
     /**
      * Adds an {@code itineraryAttraction} to the {@code Itinerary} that we are building.
      */
-    public ItineraryBuilder withItineraryAttraction(ItineraryAttraction itineraryAttraction, int day) {
-        this.days.get(day - 1).addItineraryAttraction(itineraryAttraction);
+    public ItineraryBuilder withItineraryAttraction(ItineraryAttraction itineraryAttraction, Index day) {
+        this.days.get(day.getZeroBased()).addItineraryAttraction(itineraryAttraction);
         return this;
     }
 
