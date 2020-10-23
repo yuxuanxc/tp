@@ -268,5 +268,5 @@ public class ParserUtil {
         }
         return new ItineraryTime(trimmedTime);
     }
-    
+
 }

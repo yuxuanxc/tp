@@ -3,6 +3,8 @@ package seedu.address.logic.commands.itinerary;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.CommandTestUtil.showItineraryAtIndex;
 import static seedu.address.testutil.TypicalAttractions.getTypicalAttractionList;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
@@ -15,6 +17,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.itinerary.Itinerary;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
@@ -26,18 +29,17 @@ public class DeleteItineraryCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        // todo uncomment when typical itineraries is up
-    //    Itinerary itineraryToDelete = model.getFilteredItineraryList().get(INDEX_FIRST.getZeroBased());
-    //    DeleteItineraryCommand deleteItineraryCommand = new DeleteItineraryCommand(INDEX_FIRST);
+        Itinerary itineraryToDelete = model.getFilteredItineraryList().get(INDEX_FIRST.getZeroBased());
+        DeleteItineraryCommand deleteItineraryCommand = new DeleteItineraryCommand(INDEX_FIRST);
 
-    //    String expectedMessage = String.format(DeleteItineraryCommand.MESSAGE_DELETE_ITINERARY_SUCCESS,
-    //            itineraryToDelete);
+        String expectedMessage = String.format(DeleteItineraryCommand.MESSAGE_DELETE_ITINERARY_SUCCESS,
+                itineraryToDelete);
 
-    //    ModelManager expectedModel = new ModelManager(model.getAttractionList(), model.getItineraryList(),
-    //            new UserPrefs());
-    //    expectedModel.deleteItinerary(itineraryToDelete);
+        ModelManager expectedModel = new ModelManager(model.getAttractionList(), model.getItineraryList(),
+                new UserPrefs());
+        expectedModel.deleteItinerary(itineraryToDelete);
 
-    //    assertCommandSuccess(deleteItineraryCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(deleteItineraryCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
@@ -50,34 +52,32 @@ public class DeleteItineraryCommandTest {
 
     @Test
     public void execute_validIndexFilteredList_success() {
-        // todo uncomment when typical itineraries is up
-    //    showItineraryAtIndex(model, INDEX_FIRST);
+        showItineraryAtIndex(model, INDEX_FIRST);
 
-    //    Itinerary itineraryToDelete = model.getFilteredItineraryList().get(INDEX_FIRST.getZeroBased());
-    //    DeleteItineraryCommand deleteItineraryCommand = new DeleteItineraryCommand(INDEX_FIRST);
+        Itinerary itineraryToDelete = model.getFilteredItineraryList().get(INDEX_FIRST.getZeroBased());
+        DeleteItineraryCommand deleteItineraryCommand = new DeleteItineraryCommand(INDEX_FIRST);
 
-    //    String expectedMessage = String.format(DeleteItineraryCommand.MESSAGE_DELETE_ITINERARY_SUCCESS,
-    //            itineraryToDelete);
+        String expectedMessage = String.format(DeleteItineraryCommand.MESSAGE_DELETE_ITINERARY_SUCCESS,
+                itineraryToDelete);
 
-    //    Model expectedModel = new ModelManager(model.getAttractionList(), model.getItineraryList(), new UserPrefs());
-    //    expectedModel.deleteItinerary(itineraryToDelete);
-    //    showNoItinerary(expectedModel);
+        Model expectedModel = new ModelManager(model.getAttractionList(), model.getItineraryList(), new UserPrefs());
+        expectedModel.deleteItinerary(itineraryToDelete);
+        showNoItinerary(expectedModel);
 
-    //    assertCommandSuccess(deleteItineraryCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(deleteItineraryCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_invalidIndexFilteredList_throwsCommandException() {
-        // todo uncomment when typical itineraries is up
-    //    showItineraryAtIndex(model, INDEX_FIRST);
+        showItineraryAtIndex(model, INDEX_FIRST);
 
-    //    Index outOfBoundIndex = INDEX_SECOND;
-    //    // ensures that outOfBoundIndex is still in bounds of trackPad list
-    //    assertTrue(outOfBoundIndex.getZeroBased() < model.getItineraryList().getItineraryList().size());
+        Index outOfBoundIndex = INDEX_SECOND;
+        // ensures that outOfBoundIndex is still in bounds of trackPad list
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getItineraryList().getItineraryList().size());
 
-    //    DeleteItineraryCommand deleteItineraryCommand = new DeleteItineraryCommand(outOfBoundIndex);
+        DeleteItineraryCommand deleteItineraryCommand = new DeleteItineraryCommand(outOfBoundIndex);
 
-    //    assertCommandFailure(deleteItineraryCommand, model, Messages.MESSAGE_INVALID_ITINERARY_DISPLAYED_INDEX);
+        assertCommandFailure(deleteItineraryCommand, model, Messages.MESSAGE_INVALID_ITINERARY_DISPLAYED_INDEX);
     }
 
     @Test

@@ -47,16 +47,16 @@ public class ItineraryAttractionBuilder {
     /**
      * Sets the {@code startTime} of the {@code ItineraryAttraction} that we are building.
      */
-    public ItineraryAttractionBuilder withStartTime(ItineraryTime startTime) {
-        this.startTime = startTime;
+    public ItineraryAttractionBuilder withStartTime(String startTime) {
+        this.startTime = new ItineraryTime(startTime);
         return this;
     }
 
     /**
      * Sets the {@code endTime} of the {@code ItineraryAttraction} that we are building.
      */
-    public ItineraryAttractionBuilder withEndTime(ItineraryTime endTime) {
-        this.endTime = endTime;
+    public ItineraryAttractionBuilder withEndTime(String endTime) {
+        this.endTime = new ItineraryTime(endTime);
         return this;
     }
 

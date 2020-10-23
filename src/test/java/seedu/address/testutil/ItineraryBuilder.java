@@ -1,10 +1,14 @@
 package seedu.address.testutil;
 
-import seedu.address.logic.parser.ParserUtil;
-import seedu.address.logic.parser.exceptions.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Budget;
+import seedu.address.model.itinerary.Day;
+import seedu.address.model.itinerary.Itinerary;
+import seedu.address.model.itinerary.ItineraryAttraction;
 import seedu.address.model.itinerary.ItineraryDate;
 
 /**
@@ -14,7 +18,7 @@ public class ItineraryBuilder {
     public static final String DEFAULT_NAME = "Singapore Trip";
     public static final String DEFAULT_DESCRIPTION = "Explore the wonders of Singapore!";
     public static final String DEFAULT_START_DATE = "12-12-2020";
-    public static final String DEFAULT_END_DATE = "12-15-2020";
+    public static final String DEFAULT_END_DATE = "15-12-2020";
     public static final String DEFAULT_BUDGET = "100";
 
     private Name name;
@@ -22,21 +26,30 @@ public class ItineraryBuilder {
     private ItineraryDate startDate;
     private ItineraryDate endDate;
     private Budget budget;
+    private List<Day> days;
 
     /**
      * Creates a {@code ItineraryBuilder} with the default details.
      */
-    public ItineraryBuilder() throws ParseException {
+    public ItineraryBuilder() {
         name = new Name(DEFAULT_NAME);
         description = new Description(DEFAULT_DESCRIPTION);
-        try {
-            //todo remove when wrapper class for date is up
-            startDate = ParserUtil.parseItineraryDate(DEFAULT_START_DATE);
-            endDate = ParserUtil.parseItineraryDate(DEFAULT_END_DATE);
-        } catch (ParseException e) {
-            throw e;
-        }
+        startDate = new ItineraryDate(DEFAULT_START_DATE);
+        endDate = new ItineraryDate(DEFAULT_END_DATE);
         budget = new Budget(DEFAULT_BUDGET);
+        days = new ArrayList<>(ItineraryDate.daysBetween(startDate, endDate));
+    }
+
+    /**
+     * Initializes the ItineraryBuilder with the data of {@code itineraryToCopy}.
+     */
+    public ItineraryBuilder(Itinerary itineraryToCopy) {
+        name = itineraryToCopy.getName();
+        description = itineraryToCopy.getDescription();
+        startDate = itineraryToCopy.getStartDate();
+        endDate = itineraryToCopy.getEndDate();
+        budget = itineraryToCopy.getBudget();
+        days = new ArrayList<>(itineraryToCopy.getDays());
     }
 
     /**
@@ -83,7 +96,19 @@ public class ItineraryBuilder {
      * Sets the {@code startDate} of the {@code Itinerary} that we are building.
      */
     public ItineraryBuilder withStartDate(String startDate) {
-        //todo when date wrapper is up
+        this.startDate = new ItineraryDate(startDate);
+        int numberOfDays = ItineraryDate.daysBetween(this.startDate, endDate);
+        List<Day> newDays = new ArrayList<>();
+        int day = 1;
+        while (day <= numberOfDays) {
+            if (day <= days.size()) {
+                newDays.add(days.get(day - 1));
+            } else {
+                newDays.add(new Day(Integer.toString(day)));
+            }
+            day++;
+        }
+        days = newDays;
         return this;
     }
 
@@ -91,7 +116,36 @@ public class ItineraryBuilder {
      * Sets the {@code endDate} of the {@code Itinerary} that we are building.
      */
     public ItineraryBuilder withEndDate(String endDate) {
-        //todo when date wrapper is up
+        this.endDate = new ItineraryDate(endDate);
+        int numberOfDays = ItineraryDate.daysBetween(startDate, this.endDate);
+        List<Day> newDays = new ArrayList<>();
+        int day = 1;
+        while (day <= numberOfDays) {
+            if (day <= days.size()) {
+                newDays.add(days.get(day - 1));
+            } else {
+                newDays.add(new Day(Integer.toString(day)));
+            }
+            day++;
+        }
+        days = newDays;
         return this;
+    }
+
+    /**
+     * Adds an {@code itineraryAttraction} to the {@code Itinerary} that we are building.
+     */
+    public ItineraryBuilder withItineraryAttraction(ItineraryAttraction itineraryAttraction, int day) {
+        this.days.get(day - 1).addItineraryAttraction(itineraryAttraction);
+        return this;
+    }
+
+    /**
+     * Initializes a new itinerary.
+     *
+     * @return a new Itinerary.
+     */
+    public Itinerary build() {
+        return new Itinerary(name, description, startDate, endDate, budget, days);
     }
 }

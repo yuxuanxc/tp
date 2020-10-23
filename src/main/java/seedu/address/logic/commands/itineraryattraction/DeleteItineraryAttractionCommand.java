@@ -43,7 +43,7 @@ public class DeleteItineraryAttractionCommand extends Command {
         Day day = model.getCurrentItinerary().getDay(dayVisiting);
         ItineraryAttraction itineraryAttractionToDelete = day.getItineraryAttractions().get(index.getZeroBased());
 
-        model.getCurrentItinerary().deleteItineraryAttraction(index.getOneBased(), dayVisiting.getOneBased());
+        model.getCurrentItinerary().deleteItineraryAttraction(index, dayVisiting);
 
         return new CommandResult(String.format(MESSAGE_DELETE_ATTRACTION_SUCCESS, itineraryAttractionToDelete));
     }

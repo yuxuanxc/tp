@@ -97,8 +97,8 @@ public class AddItineraryAttractionCommandTest {
         assertNotEquals(addIaCommand, addIaCommand2);
 
         // tests itinerary attraction class
-        ItineraryAttraction ia1 = new ItineraryAttractionBuilder().withStartTime(new ItineraryTime("1200")).build();
-        ItineraryAttraction ia2 = new ItineraryAttractionBuilder().withStartTime(new ItineraryTime("1200")).build();
+        ItineraryAttraction ia1 = new ItineraryAttractionBuilder().withStartTime("1200").build();
+        ItineraryAttraction ia2 = new ItineraryAttractionBuilder().withStartTime("1200").build();
 
         // same object -> returns true
         assertEquals(ia1, ia1);

@@ -1,6 +1,8 @@
 package seedu.address.model.itinerary;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.time.LocalDate;
@@ -58,7 +60,7 @@ class ItineraryDateTest {
     }
 
     @Test
-    public void getLocalDate_ValidInput_CorrectResult() {
+    public void getLocalDate_validInput_correctResult() {
         ItineraryDate itineraryDate = new ItineraryDate("28-02-2024");
         assertEquals(itineraryDate.getLocalDate(), LocalDate.parse("2024-02-28"));
     }

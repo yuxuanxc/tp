@@ -24,7 +24,7 @@ public class ClearAttractionCommandTest {
     }
 
     @Test
-    public void execute_nonEmptyTrackPad_success() {
+    public void execute_nonEmptyAttractionList_success() {
         Model model = new ModelManager(getTypicalAttractionList(), getTypicalItineraryList(), new UserPrefs());
         Model expectedModel = new ModelManager(getTypicalAttractionList(), getTypicalItineraryList(), new UserPrefs());
         expectedModel.setAttractionList(new AttractionList());

@@ -105,22 +105,28 @@ public class Itinerary {
         return itineraryAttractions;
     }
 
+    public void setDates(ItineraryDate startDate, ItineraryDate endDate) {
+
+    }
+
     /**
      * Adds an itinerary attraction to the itinerary.
      */
-    public void addItineraryAttraction(ItineraryAttraction toAdd, int day) {
+    public void addItineraryAttraction(ItineraryAttraction toAdd, Index day) {
         requireNonNull(toAdd);
-        checkArgument(day > 0 && day <= getNumberOfDays(), "Day is not valid");
-        days.get(day - 1).addItineraryAttraction(toAdd);
+        checkArgument(day.getOneBased() > 0 && day.getOneBased() <= getNumberOfDays(),
+                "Day is not valid");
+        getDay(day).addItineraryAttraction(toAdd);
     }
 
     /**
      * Removes the equivalent itinerary attraction from the itinerary.
      * The itinerary attraction must exist in the list.
      */
-    public void deleteItineraryAttraction(int index, int day) {
-        checkArgument(day > 0 && (day <= getNumberOfDays()), "Day is not valid");
-        days.get(day - 1).deleteItineraryAttraction(index);
+    public void deleteItineraryAttraction(Index index, Index day) {
+        checkArgument(day.getOneBased() > 0 && (day.getOneBased() <= getNumberOfDays()),
+                "Day is not valid");
+        getDay(day).deleteItineraryAttraction(index);
     }
 
     /**
@@ -128,10 +134,9 @@ public class Itinerary {
      */
     // todo refine depending on usage
     public void editItineraryAttraction(ItineraryAttraction target, ItineraryAttraction editedItineraryAttraction,
-                                        int day) {
+                                        Index day) {
         requireNonNull(editedItineraryAttraction);
-        Day currentDay = days.get(day - 1);
-        currentDay.editItineraryAttraction(target, editedItineraryAttraction);
+        getDay(day).editItineraryAttraction(target, editedItineraryAttraction);
 
     }
 
