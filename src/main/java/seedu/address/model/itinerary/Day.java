@@ -104,7 +104,7 @@ public class Day {
 
     @Override
     public String toString() {
-        return value;
+        return "Day " + value;
     }
 
     @Override
