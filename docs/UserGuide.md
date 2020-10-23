@@ -11,14 +11,10 @@ title: User Guide
 
 ## 1. Introduction
 TrackPad (TP) is a **desktop app for planning your trips and tracking tourist attractions, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a 
-Graphical User Interface (GUI). 
-If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
+Graphical User Interface (GUI). If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
 
-### 1.1 Our target audience
-Travelholics, wanderlust
-- Loves traveling
-- Travelled to many places
-- Plans to travel to other countries in the future
+This user guide will show you how to use the commands and features available in TP. This app is built for people who would like to collate and store all their itineraries in one single app, 
+and we welcome anyone who loves travelling to try out our app.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -31,10 +27,9 @@ Travelholics, wanderlust
 1. Copy the file to the folder you want to use as the _home folder_ for your TrackPad.
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. 
-    Note how the app contains some sample data.<br>
+    Note how the app contains some sample data.<br><br>
    ![Ui](images/Ui.PNG)
-   <div><sup>Figure 2.1 The Ui of TrackPad</sup></div><br>
-
+   <div align="center"><sup style="font-size:100%"><i>Figure 1. The Ui of TrackPad</i></sup></div><br>
 
 1. Type the command in the command box and press Enter to execute it. 
     e.g. typing **`help`** and pressing Enter will open the help window.<br>
@@ -87,7 +82,7 @@ Travelholics, wanderlust
 Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
-<div><sup>Figure 3.1.1.1 The help window of TrackPad</sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 2. The help window of TrackPad</i></sup></div><br>
 
 Format: `help`
 
@@ -129,8 +124,10 @@ An attraction can have any number of tags (including 0)
 
 Examples:
 * `add-attraction n/USS a/8 Sentosa Gateway, 098269 l/Singapore, Singapore`
-* `add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore, e/singaporezoo@gmail.com
-op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`
+* `add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com 
+op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`<br><br>
+![add_attraction_result](images/addAttractionResult.PNG)
+<div align="center"><sup style="font-size:100%"><i>Figure 3. The result of 'add-attraction'</i></sup></div><br>
 
 #### 3.3.2 Listing all tourist attractions : `list-attraction`
 
@@ -152,10 +149,15 @@ Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] 
 * Field entries are the same as the `add-attraction` command.
 * Any field can be changed by inputting its corresponding prefix in the command.
     * Example: `add-attraction n/MBS l/Singapore, Singapore r/4.3` in an attraction list followed by 
-    `edit-attraction 1 r/4.6` changes the rating of the 1st attraction in the list from `4.3` to `4.6`.
+    `edit-attraction 1 r/4.6` changes the rating of the 1st attraction in the list from `4.3` to `4.6`.<br><br>
+    ![before_editing_attraction](images/editAttractionBefore.PNG)
+    <div align="center"><sup style="font-size:100%"><i>Figure 4. MBS attraction before editing</i></sup></div><br>
+    ![result_of_editing_existing_fields](images/editAttractionResult1.PNG)
+    <div align="center"><sup style="font-size:100%"><i>Figure 5. The result of 'edit-attraction 1 r/4.6'</i></sup></div><br>
 * New fields can be added to current attractions.
-    * Example: `add-attraction n/Singapore Zoo l/Singapore, Singapore` in an attraction list followed by 
-    `edit-attraction 1 pr/MEDIUM t/animals` adds the price range of the Singapore Zoo as `MEDIUM` and adds an `animals` tag.
+    * Example: `edit-attraction 1 pr/MEDIUM t/hotel` adds the price range of MBS as `MEDIUM` and adds an `hotel` tag.<br><br>
+    ![result_of_editing_new_fields](images/editAttractionResult2.PNG)
+    <div align="center"><sup style="font-size:100%"><i>Figure 6. The result of 'edit-attraction 1 pr/MEDIUM t/hotel'</i></sup></div><br>
 
 <div markdown="span" class="alert alert-danger">:warning: **Warning:**
 Editing the tag of an attraction does not add on to its existing tags. Rather, it replaces all existing tags with the 
@@ -175,6 +177,8 @@ Format: `markVisited-attraction INDEX`
 
 Examples:
 * `markVisited-attraction 2` marks the 2nd attraction in the TrackPad as visited.
+![result for 'markVisited-attraction'](images/markVisitedAttraction.PNG)
+  <div align="center"><sup style="font-size:100%"><i>Figure 7. The result of 'markVisited-attraction 2</i></sup></div>
 * Typing `markVisited-attraction 2` again will show that the 2nd attraction in the TrackPad is visited.
 
 #### 3.3.5 Finding a tourist attraction: `find-attraction`
@@ -190,8 +194,8 @@ Format: `find-attraction KEYWORD [MORE_KEYWORDS]`
 
 Examples:
 * `find-attraction jurong` returns `Jurong Bird Park` and `Snow City`<br><br>
-  ![result for 'find jurong'](images/findJurongResult.PNG)
-  <sup>Figure 3.2.4.1 The result of the `find-attraction jurong`</sup><br>
+  ![result for 'find-attraction'](images/findJurongResult.PNG)
+  <div align="center"><sup style="font-size:100%"><i>Figure 7. The result of 'find-attraction jurong'</i></sup></div><br>
   
 #### 3.3.6 Deleting a tourist attraction : `delete-attraction`
 
@@ -204,14 +208,23 @@ Format: `delete-attraction INDEX`
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list-attraction` followed by `delete-attraction 2` deletes the 2nd attraction in the TrackPad.
-* `find-attraction USS` followed by `delete 1` deletes the 1st tourist attraction in the results of the `find-attraction` command.
-
+* `list-attraction` followed by `delete-attraction 1` deletes the 1st attraction in the TrackPad.<br><br>
+![result for `list-attraction`](images/deleteAttractionBefore.PNG)
+<text align="center"><sup style="font-size:100%"><i>Figure 8. Before 'delete-attraction 1' </i></sup></text><br>
+![result for `find-attraction`](images/deleteAttractionResult.PNG)
+<sup style="font-size:100%"><i><text align="center">Figure 9. The result of 'delete-attraction 1'</text></i></sup><br>
+* `find-attraction animals` followed by `delete 2` deletes the 2nd tourist attraction in the results of the `find-attraction` command.
+  
 #### 3.3.7 Clearing all attractions : `clear-attraction`
 
 Clears all tourist attractions.
 
 Format: `clear-attraction`
+
+<div markdown="span" class="alert alert-danger">:warning: **Warning:**
+`clear-attraction` will remove all the attractions stored in TrackPad.
+This action is irreversible and should be used with caution.
+</div>
 
 ### 3.4 Itinerary Features
 
