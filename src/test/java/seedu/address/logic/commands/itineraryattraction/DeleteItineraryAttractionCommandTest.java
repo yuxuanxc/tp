@@ -2,6 +2,7 @@ package seedu.address.logic.commands.itineraryattraction;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAttractions.getTypicalAttractionList;
@@ -57,6 +58,32 @@ public class DeleteItineraryAttractionCommandTest {
         expectedModel.getCurrentItinerary().deleteItineraryAttraction(INDEX_FIRST, INDEX_FIRST);
 
         assertCommandSuccess(delIaCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_commandFailure() {
+        Model model = new ModelManager(getTypicalAttractionList(), getTypicalItineraryList(), new UserPrefs());
+        DeleteItineraryAttractionCommand delIaCommand = new DeleteItineraryAttractionCommand(INDEX_SECOND, INDEX_FIRST);
+        ItineraryAttraction itineraryAttraction = new ItineraryAttractionBuilder().build();
+        Itinerary itinerary = new ItineraryBuilder().withItineraryAttraction(itineraryAttraction, INDEX_FIRST).build();
+        model.setCurrentItinerary(itinerary);
+
+        String expectedMessage = Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX;
+        ModelManager expectedModel = new ModelManager(model.getAttractionList(), model.getItineraryList(),
+                new UserPrefs());
+        Itinerary expectedItinerary = new ItineraryBuilder().withItineraryAttraction(
+                new ItineraryAttractionBuilder().build(), INDEX_FIRST).build();
+        expectedModel.setCurrentItinerary(expectedItinerary);
+        expectedModel.getCurrentItinerary().deleteItineraryAttraction(INDEX_FIRST, INDEX_FIRST);
+        assertCommandFailure(delIaCommand, model, expectedMessage);
+
+        model = new ModelManager(getTypicalAttractionList(), getTypicalItineraryList(), new UserPrefs());
+        delIaCommand = new DeleteItineraryAttractionCommand(INDEX_SECOND, INDEX_THIRD);
+        itineraryAttraction = new ItineraryAttractionBuilder().build();
+        itinerary = new ItineraryBuilder().withItineraryAttraction(itineraryAttraction, INDEX_FIRST).build();
+        model.setCurrentItinerary(itinerary);
+        expectedMessage = Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX;
+        assertCommandFailure(delIaCommand, model, expectedMessage);
     }
 
     @Test
