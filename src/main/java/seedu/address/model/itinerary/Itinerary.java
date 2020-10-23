@@ -78,7 +78,7 @@ public class Itinerary {
     }
 
     public int getNumberOfDays() {
-        assert startDate.isBefore(endDate);
+        assert startDate.isBefore(endDate) || startDate.isEqual(endDate);
         return ItineraryDate.daysBetween(startDate, endDate);
     }
 
@@ -104,10 +104,6 @@ public class Itinerary {
             itineraryAttractions.addAll(day.getItineraryAttractions());
         }
         return itineraryAttractions;
-    }
-
-    public void setDates(ItineraryDate startDate, ItineraryDate endDate) {
-
     }
 
     /**
@@ -189,28 +185,32 @@ public class Itinerary {
                 && otherItinerary.getDescription().equals(getDescription())
                 && otherItinerary.getStartDate().equals(getStartDate())
                 && otherItinerary.getEndDate().equals(getEndDate())
+                && otherItinerary.getBudget().equals(getBudget())
                 && otherItinerary.getDays().equals(getDays());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, description, startDate, endDate, days);
+        return Objects.hash(name, description, startDate, endDate, budget, days);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
-                .append(" Description: ")
-                .append(getDescription())
                 .append(" Start date: ")
                 .append(getStartDate())
                 .append(" End date: ")
-                .append(getEndDate());
+                .append(getEndDate())
+                .append(" Description: ")
+                .append(getDescription())
+                .append(" Budget: ")
+                .append(getBudget());
         for (int i = 1; i <= getNumberOfDays(); i++) {
+            Index day = Index.fromOneBased(i);
             builder.append(" Day ").append(i).append(": ");
-            getDays().get(i - 1).getItineraryAttractions().forEach(builder::append);
+            getDay(day).getItineraryAttractions().forEach(builder::append);
         }
         return builder.toString();
     }

@@ -34,7 +34,7 @@ public class Budget {
     }
 
     /**
-     * Returns if a given string is an valid budget.
+     * Returns if a given string is a valid budget.
      */
     public static boolean isValidBudget(String test) {
         return test.matches(VALIDATION_REGEX);
@@ -42,7 +42,11 @@ public class Budget {
 
     @Override
     public String toString() {
-        return "$" + value;
+        if (value.equals("")) {
+            return "";
+        } else {
+            return "$" + value;
+        }
     }
 
     @Override

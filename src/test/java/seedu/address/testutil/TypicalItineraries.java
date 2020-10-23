@@ -6,6 +6,9 @@ import static seedu.address.testutil.TypicalAttractions.NIGHT_SAFARI;
 import static seedu.address.testutil.TypicalAttractions.NOTRE_DAME;
 import static seedu.address.testutil.TypicalAttractions.RIVER_SAFARI;
 import static seedu.address.testutil.TypicalAttractions.SINGAPORE_ZOO;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,17 +33,17 @@ public class TypicalItineraries {
                     .withAttraction(SINGAPORE_ZOO)
                     .withStartTime("1000")
                     .withEndTime("1700")
-                    .build(), 1)
+                    .build(), INDEX_FIRST)
             .withItineraryAttraction(new ItineraryAttractionBuilder()
                     .withAttraction(NIGHT_SAFARI)
                     .withStartTime("1900")
                     .withEndTime("2300")
-                    .build(), 1)
+                    .build(), INDEX_FIRST)
             .withItineraryAttraction(new ItineraryAttractionBuilder()
                     .withAttraction(RIVER_SAFARI)
                     .withStartTime("1200")
                     .withEndTime("1800")
-                    .build(), 2)
+                    .build(), INDEX_SECOND)
             .build();
 
     public static final Itinerary PARIS_TRIP = new ItineraryBuilder().withName("Paris Trip")
@@ -52,17 +55,17 @@ public class TypicalItineraries {
                     .withAttraction(EIFFEL_TOWER)
                     .withStartTime("0900")
                     .withEndTime("1500")
-                    .build(), 1)
+                    .build(), INDEX_FIRST)
             .withItineraryAttraction(new ItineraryAttractionBuilder()
                     .withAttraction(LOUVRE)
                     .withStartTime("1100")
                     .withEndTime("1800")
-                    .build(), 2)
+                    .build(), INDEX_SECOND)
             .withItineraryAttraction(new ItineraryAttractionBuilder()
                     .withAttraction(NOTRE_DAME)
                     .withStartTime("1200")
                     .withEndTime("1500")
-                    .build(), 3)
+                    .build(), INDEX_THIRD)
             .build();
 
     private TypicalItineraries() {} // prevents instantiation
