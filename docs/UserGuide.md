@@ -162,7 +162,22 @@ Editing the tag of an attraction does not add on to its existing tags. Rather, i
 new tags you’re specifying.
 </div>
 
-#### 3.3.4 Finding a tourist attraction: `find-attraction`
+#### 3.3.4 Mark a tourist attraction as visited: `markVisited-attraction`
+
+Marks a tourist attraction in the current list of attractions as visited.
+
+Format: `markVisited-attraction INDEX`
+ 
+* Marks the attraction at the specified `INDEX` as visited.
+* The index refers to the index number shown in the displayed tourist attraction list.
+* The index **must be a positive integer** 1, 2, 3, …​
+* Any attraction can be marked visited, even if the attraction was already visited.
+
+Examples:
+* `markVisited-attraction 2` marks the 2nd attraction in the TrackPad as visited.
+* Typing `markVisited-attraction 2` again will show that the 2nd attraction in the TrackPad is visited.
+
+#### 3.3.5 Finding a tourist attraction: `find-attraction`
 
 Finds any tourist attraction which contains the keyword(s).
 
@@ -178,7 +193,7 @@ Examples:
   ![result for 'find jurong'](images/findJurongResult.PNG)
   <sup>Figure 3.2.4.1 The result of the `find-attraction jurong`</sup><br>
   
-#### 3.3.5 Deleting a tourist attraction : `delete-attraction`
+#### 3.3.6 Deleting a tourist attraction : `delete-attraction`
 
 Deletes a tourist attraction from the current list of attractions.
 
@@ -192,7 +207,7 @@ Examples:
 * `list-attraction` followed by `delete-attraction 2` deletes the 2nd attraction in the TrackPad.
 * `find-attraction USS` followed by `delete 1` deletes the 1st tourist attraction in the results of the `find-attraction` command.
 
-#### 3.3.6 Clearing all attractions : `clear-attraction`
+#### 3.3.7 Clearing all attractions : `clear-attraction`
 
 Clears all tourist attractions.
 
@@ -369,6 +384,7 @@ Action | Format, Examples
 **Add attraction** | `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​` <br> e.g., `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
 **List attractions** | `list-attraction`
 **Edit attraction** | `edit-attraction INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/Singapore Zoo e/zoo@example.com`
+**Mark Visited attraction** | `markVisited-attraction INDEX`<br> e.g., `markVisited-attraction 2`
 **Find attraction** | `find-attration KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Zoo`
 **Delete attraction** | `delete-attraction INDEX`<br> e.g., `delete 3`
 **Clear all attractions** | `clear-attraction`

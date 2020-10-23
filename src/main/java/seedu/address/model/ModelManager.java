@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -11,8 +12,19 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.attraction.Email;
+import seedu.address.model.attraction.Location;
+import seedu.address.model.attraction.OpeningHours;
+import seedu.address.model.attraction.Phone;
+import seedu.address.model.attraction.PriceRange;
+import seedu.address.model.attraction.Rating;
+import seedu.address.model.attraction.Visited;
+import seedu.address.model.commons.Description;
+import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Itinerary;
+import seedu.address.model.tag.Tag;
 
 /**
  * Represents the in-memory model of the TrackPad data.
@@ -94,6 +106,7 @@ public class ModelManager implements Model {
         userPrefs.setItineraryListFilePath(itineraryListFilePath);
     }
 
+
     //=========== AttractionList ================================================================================
 
     public void setAttractionList(ReadOnlyAttractionList attractionList) {
@@ -127,6 +140,29 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedAttraction);
 
         attractionList.setAttraction(target, editedAttraction);
+    }
+
+    @Override
+    public void markVisitedAttraction(Attraction target) {
+        requireAllNonNull(target);
+
+        Name unchangedName = target.getName();
+        Phone unchangedPhone = target.getPhone();
+        Email unchangedEmail = target.getEmail();
+        Address unchangedAddress = target.getAddress();
+        Description unchangedDescription = target.getDescription();
+        Location unchangedLocation = target.getLocation();
+        OpeningHours unchangedOpeningHours = target.getOpeningHours();
+        PriceRange unchangedPriceRange = target.getPriceRange();
+        Rating unchangedRating = target.getRating();
+        Visited updatedVisited = new Visited("TRUE");
+        Set<Tag> unchangedTags = target.getTags();
+
+        Attraction markVisitedAttraction = new Attraction(unchangedName, unchangedPhone, unchangedEmail,
+                unchangedAddress, unchangedDescription, unchangedLocation, unchangedOpeningHours, unchangedPriceRange,
+                unchangedRating, updatedVisited, unchangedTags);
+
+        attractionList.setAttraction(target, markVisitedAttraction);
     }
 
     //=========== Filtered Attraction List Accessors =============================================================
