@@ -7,14 +7,16 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
+import java.time.temporal.ChronoUnit;
 
 public class ItineraryDate {
 
-    private static final String MESSAGE_CONSTRAINTS = "";
+    public static final String MESSAGE_CONSTRAINTS = "Date should be of the format dd-mm-yyyy";
     private static final DateTimeFormatter DTF = new DateTimeFormatterBuilder()
-            .parseCaseInsensitive()
-            .appendPattern("dd-MM-yyyy")
-            .toFormatter();
+            .appendPattern("dd-MM-uuuu")
+            .toFormatter()
+            .withResolverStyle(ResolverStyle.STRICT);
 
     public final String value;
 
@@ -30,23 +32,47 @@ public class ItineraryDate {
     }
 
     /**
-     * Constructs a {@code Budget} without value.
+     * Returns the itinerary date in LocalDate format.
      */
-    public ItineraryDate() {
-        value = "";
+    public LocalDate getLocalDate() {
+        return LocalDate.parse(value, DTF);
     }
 
     /**
-     * Returns if a given string is an valid budget.
+     * Returns if a given string is a valid itinerary date.
      */
     public static boolean isValidDate(String test) {
-        //todo work in progress
         try {
             LocalDate.parse(test, DTF);
             return true;
         } catch (DateTimeParseException e) {
             return false;
         }
+    }
+
+    /**
+     * Returns if this itinerary date is before the given itinerary date.
+     */
+    public boolean isBefore(ItineraryDate otherDate) {
+        return getLocalDate().isBefore(otherDate.getLocalDate());
+    }
+
+    public boolean isEqual(ItineraryDate otherDate) {
+        return getLocalDate().isEqual(otherDate.getLocalDate());
+    }
+
+    /**
+     * Returns if this itinerary date is after the given itinerary date.
+     */
+    public boolean isAfter(ItineraryDate otherDate) {
+        return getLocalDate().isAfter(otherDate.getLocalDate());
+    }
+
+    /**
+     * Returns the number of days between two itinerary dates.
+     */
+    public static int daysBetween(ItineraryDate startDate, ItineraryDate endDate) {
+        return (int) ChronoUnit.DAYS.between(startDate.getLocalDate(), endDate.getLocalDate()) + 1;
     }
 
     @Override
@@ -65,6 +91,5 @@ public class ItineraryDate {
     public int hashCode() {
         return value.hashCode();
     }
-
 
 }

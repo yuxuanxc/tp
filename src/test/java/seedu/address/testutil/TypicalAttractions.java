@@ -117,6 +117,17 @@ public class TypicalAttractions {
             .withRating()
             .withVisited()
             .build();
+    public static final Attraction NOTRE_DAME = new AttractionBuilder().withName("Cathedrale Notre Dame de Paris")
+            .withPhone()
+            .withEmail()
+            .withAddress("6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004")
+            .withDescription()
+            .withLocation("Paris, France")
+            .withOpeningHours()
+            .withPriceRange()
+            .withRating()
+            .withVisited()
+            .build();
 
     // Manually added
     public static final Attraction ESPLANADE = new AttractionBuilder().withName("Esplanade")
@@ -140,6 +151,18 @@ public class TypicalAttractions {
             .withPriceRange("LOW")
             .withRating("4.5")
             .withVisited("TRUE")
+            .build();
+    public static final Attraction LOUVRE = new AttractionBuilder().withName("Louvre Museum")
+            .withPhone("330140205317")
+            .withEmail("info@louvre.fr")
+            .withAddress("Rue de Rivoli, 75001")
+            .withDescription("The Louvre, or the Louvre Museum, is the world's largest art museum and a"
+                    + " historic monument in Paris, France.")
+            .withLocation("Paris, France")
+            .withOpeningHours("0900-1800")
+            .withPriceRange("MEDIUM")
+            .withRating("4.7")
+            .withVisited("FALSE")
             .build();
 
     // Manually added - Attraction's details found in {@code CommandTestUtil}

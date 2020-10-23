@@ -4,8 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,36 +18,35 @@ import seedu.address.model.commons.Name;
  * Represents an Itinerary in TrackPad.
  */
 public class Itinerary {
-    //todo add budget
     private final Name name;
     private final Description description;
-    private final LocalDate startDate;
-    private final LocalDate endDate;
+    private final ItineraryDate startDate;
+    private final ItineraryDate endDate;
     private final Budget budget;
     private final List<Day> days = new ArrayList<>();
 
     /**
      * Name must be present and not null.
      */
-    public Itinerary(Name name, Description description, LocalDate startDate, LocalDate endDate, Budget budget,
-                     List<Day> days) {
+    public Itinerary(Name name, Description description, ItineraryDate startDate, ItineraryDate endDate,
+                     Budget budget, List<Day> days) {
         requireAllNonNull(name, description, startDate, endDate, budget, days);
 
-        checkArgument(startDate.isBefore(endDate), "Start date should come before end date");
+        checkArgument(startDate.isBefore(endDate) || startDate.isEqual(endDate),
+                "Start date should come before end date");
 
         this.name = name;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
         this.budget = budget;
-        if (!days.isEmpty()) {
-            this.days.addAll(days);
-        } else {
-            for (int i = 1; i <= getNumberOfDays(); i++) {
-                this.days.add(new Day(Integer.toString(i)));
+        for (int i = 0; i < getNumberOfDays(); i++) {
+            if (i < days.size()) {
+                this.days.add(days.get(i));
+            } else {
+                this.days.add(new Day(Integer.toString(i + 1)));
             }
         }
-
     }
 
     public Name getName() {
@@ -60,11 +57,11 @@ public class Itinerary {
         return description;
     }
 
-    public LocalDate getStartDate() {
+    public ItineraryDate getStartDate() {
         return startDate;
     }
 
-    public LocalDate getEndDate() {
+    public ItineraryDate getEndDate() {
         return endDate;
     }
 
@@ -81,7 +78,8 @@ public class Itinerary {
     }
 
     public int getNumberOfDays() {
-        return (int) (ChronoUnit.DAYS.between(startDate, endDate) + 1);
+        assert startDate.isBefore(endDate);
+        return ItineraryDate.daysBetween(startDate, endDate);
     }
 
     /**
@@ -97,7 +95,7 @@ public class Itinerary {
                 }
             }
         }
-        return locations.stream().map(Object::toString).collect(Collectors.joining(", "));
+        return locations.stream().map(Object::toString).collect(Collectors.joining("-> "));
     }
 
     public List<ItineraryAttraction> getItineraryAttractions() {
@@ -108,22 +106,28 @@ public class Itinerary {
         return itineraryAttractions;
     }
 
+    public void setDates(ItineraryDate startDate, ItineraryDate endDate) {
+
+    }
+
     /**
      * Adds an itinerary attraction to the itinerary.
      */
-    public void addItineraryAttraction(ItineraryAttraction toAdd, int day) {
+    public void addItineraryAttraction(ItineraryAttraction toAdd, Index day) {
         requireNonNull(toAdd);
-        checkArgument(day > 0 && day <= getNumberOfDays(), "Day is not valid");
-        days.get(day - 1).addItineraryAttraction(toAdd);
+        checkArgument(day.getOneBased() > 0 && day.getOneBased() <= getNumberOfDays(),
+                "Day is not valid");
+        getDay(day).addItineraryAttraction(toAdd);
     }
 
     /**
      * Removes the equivalent itinerary attraction from the itinerary.
      * The itinerary attraction must exist in the list.
      */
-    public void deleteItineraryAttraction(int index, int day) {
-        checkArgument(day > 0 && (day <= getNumberOfDays()), "Day is not valid");
-        days.get(day - 1).deleteItineraryAttraction(index);
+    public void deleteItineraryAttraction(Index index, Index day) {
+        checkArgument(day.getOneBased() > 0 && (day.getOneBased() <= getNumberOfDays()),
+                "Day is not valid");
+        getDay(day).deleteItineraryAttraction(index);
     }
 
     /**
@@ -131,10 +135,9 @@ public class Itinerary {
      */
     // todo refine depending on usage
     public void editItineraryAttraction(ItineraryAttraction target, ItineraryAttraction editedItineraryAttraction,
-                                        int day) {
+                                        Index day) {
         requireNonNull(editedItineraryAttraction);
-        Day currentDay = days.get(day - 1);
-        currentDay.editItineraryAttraction(target, editedItineraryAttraction);
+        getDay(day).editItineraryAttraction(target, editedItineraryAttraction);
 
     }
 

@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.itinerary.exceptions.DuplicateItineraryAttractionException;
 import seedu.address.model.itinerary.exceptions.ItineraryAttractionNotFoundException;
 
@@ -69,8 +70,8 @@ public class Day {
         });
     }
 
-    public void deleteItineraryAttraction(int index) {
-        itineraryAttractions.remove(index);
+    public void deleteItineraryAttraction(Index index) {
+        itineraryAttractions.remove(index.getZeroBased());
     }
 
     /**

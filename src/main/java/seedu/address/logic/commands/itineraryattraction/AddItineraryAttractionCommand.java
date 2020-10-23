@@ -70,7 +70,7 @@ public class AddItineraryAttractionCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
         }
 
-        model.getCurrentItinerary().addItineraryAttraction(itineraryAttractionToAdd, dayVisited.getOneBased());
+        model.getCurrentItinerary().addItineraryAttraction(itineraryAttractionToAdd, dayVisited);
         return new CommandResult(String.format(MESSAGE_ADD_ATTRACTION_SUCCESS, itineraryAttractionToAdd));
     }
 

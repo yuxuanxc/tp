@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.itinerary;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_BUDGET;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -20,7 +21,8 @@ public class AddItineraryCommand extends Command {
             + PREFIX_NAME + "NAME "
             + PREFIX_START_DATE + "START_DATE "
             + PREFIX_END_DATE + "END_DATE "
-            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] ";
+            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
+            + "[" + PREFIX_BUDGET + "BUDGET] ";
 
     public static final String MESSAGE_SUCCESS = "New itinerary added: %1$s";
     public static final String MESSAGE_DUPLICATE_ITINERARY = "This itinerary already exists in TrackPad";

@@ -24,6 +24,8 @@ import seedu.address.model.attraction.Rating;
 import seedu.address.model.attraction.Visited;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
+import seedu.address.model.itinerary.Budget;
+import seedu.address.model.itinerary.ItineraryDate;
 import seedu.address.model.tag.Tag;
 
 public class ParserUtilTest {
@@ -38,6 +40,8 @@ public class ParserUtilTest {
     private static final String INVALID_RATING = "9";
     private static final String INVALID_VISITED = "FaLse";
     private static final String INVALID_TAG = "#nature";
+    private static final String INVALID_ITINERARY_DATE = "3 february";
+    private static final String INVALID_BUDGET = "345.123";
 
     private static final String VALID_NAME = "Botanic Gardens";
     private static final String VALID_PHONE = "64717138";
@@ -51,6 +55,8 @@ public class ParserUtilTest {
     private static final String VALID_VISITED = "FALSE";
     private static final String VALID_TAG_1 = "nature";
     private static final String VALID_TAG_2 = "sightseeing";
+    private static final String VALID_ITINERARY_DATE = "03-02-2016";
+    private static final String VALID_BUDGET = "100.50";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -349,4 +355,52 @@ public class ParserUtilTest {
 
         assertEquals(expectedTagSet, actualTagSet);
     }
+
+    @Test
+    public void parseItineraryDate_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseItineraryDate((String) null));
+    }
+
+    @Test
+    public void parseItineraryDate_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseItineraryDate(INVALID_ITINERARY_DATE));
+    }
+
+    @Test
+    public void parseItineraryDate_validValueWithoutWhitespace_returnsItineraryDate() throws Exception {
+        ItineraryDate expectedItineraryDate = new ItineraryDate(VALID_ITINERARY_DATE);
+        assertEquals(expectedItineraryDate, ParserUtil.parseItineraryDate(VALID_ITINERARY_DATE));
+    }
+
+    @Test
+    public void parseItineraryDate_validValueWithWhitespace_returnsTrimmedItineraryDate() throws Exception {
+        String itineraryDateWithWhitespace = WHITESPACE + VALID_ITINERARY_DATE + WHITESPACE;
+        ItineraryDate expectedItineraryDate = new ItineraryDate(VALID_ITINERARY_DATE);
+        assertEquals(expectedItineraryDate, ParserUtil.parseItineraryDate(itineraryDateWithWhitespace));
+    }
+
+    @Test
+    public void parseBudget_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseBudget((String) null));
+    }
+
+    @Test
+    public void parseBudget_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseBudget(INVALID_BUDGET));
+    }
+
+    @Test
+    public void parseBudget_validValueWithoutWhitespace_returnsBudget() throws Exception {
+        Budget expectedBudget = new Budget(VALID_BUDGET);
+        assertEquals(expectedBudget, ParserUtil.parseBudget(VALID_BUDGET));
+    }
+
+    @Test
+    public void parseBudget_validValueWithWhitespace_returnsTrimmedBudget() throws Exception {
+        String budgetWithWhitespace = WHITESPACE + VALID_BUDGET + WHITESPACE;
+        Budget expectedBudget = new Budget(VALID_BUDGET);
+        assertEquals(expectedBudget, ParserUtil.parseBudget(budgetWithWhitespace));
+    }
+
+
 }
