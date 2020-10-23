@@ -45,16 +45,18 @@ public class DeleteItineraryAttractionCommandTest {
     public void execute_validIndexValidDay_success() {
         DeleteItineraryAttractionCommand delIaCommand = new DeleteItineraryAttractionCommand(INDEX_FIRST, INDEX_FIRST);
         ItineraryAttraction itineraryAttraction = new ItineraryAttractionBuilder().build();
-        Itinerary itinerary = new ItineraryBuilder().withItineraryAttraction(itineraryAttraction,
-                INDEX_FIRST.getOneBased()).build();
+
+        Itinerary itinerary = new ItineraryBuilder()
+//                .withStartDate(ItineraryBuilder.DEFAULT_START_DATE)
+//                .withEndDate(ItineraryBuilder.DEFAULT_END_DATE)
+//                .withItineraryAttraction(itineraryAttraction, INDEX_FIRST.getOneBased())
+                .build();
         model.setCurrentItinerary(itinerary);
 
-        String expectedMessage = String.format(DeleteItineraryAttractionCommand.MESSAGE_DELETE_ATTRACTION_SUCCESS,
-                itineraryAttraction);
-        ModelManager expectedModel = new ModelManager(model.getAttractionList(), model.getItineraryList(),
-                new UserPrefs());
-        expectedModel.setCurrentItinerary(itinerary);
-        expectedModel.getCurrentItinerary().deleteItineraryAttraction(INDEX_FIRST, INDEX_FIRST);
+        String expectedMessage = String.format(DeleteItineraryAttractionCommand.MESSAGE_DELETE_ATTRACTION_SUCCESS, itineraryAttraction);
+        ModelManager expectedModel = new ModelManager(model.getAttractionList(), model.getItineraryList(), new UserPrefs());
+//        expectedModel.setCurrentItinerary(itinerary);
+//        expectedModel.getCurrentItinerary().deleteItineraryAttraction(INDEX_FIRST, INDEX_FIRST);
 
         assertCommandSuccess(delIaCommand, model, expectedMessage, expectedModel);
     }
