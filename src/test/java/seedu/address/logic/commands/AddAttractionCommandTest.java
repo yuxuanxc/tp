@@ -154,6 +154,11 @@ public class AddAttractionCommandTest {
         }
 
         @Override
+        public void markVisitedAttraction(Attraction target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Attraction> getFilteredAttractionList() {
             throw new AssertionError("This method should not be called.");
         }
