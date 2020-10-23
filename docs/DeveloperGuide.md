@@ -7,18 +7,26 @@ title: Developer Guide
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **1. Setting up, getting started**
+## **1. Introduction**
+
+TrackPad is an app for users to create and store itineraries, to facilitate the planning of their dream vacation!
+This document includes the various design choices, architecture and implementation features of TrackPad. This document 
+is targeted towards developers who want to contribute to and extend our TrackPad app.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **2. Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **2. Design**
+## **3. Design**
 
-### 2.1 Architecture
+### 3.1 Architecture
 
-![Architecture Class Diagram](images/ArchitectureDiagram.png)
-<div><sup>Figure 2.1.1 Architecture Class Diagram</sup></div><br>
+<span style="display:block;align:center">![Architecture Class Diagram](images/ArchitectureDiagram.png)</span>
+<div align='center'><sup>Figure 2.1.1 Architecture Class Diagram</sup></div><br>
 
 Figure 2.1.1 explains the high-level design of the App. Given below is a quick overview of each component.
 
@@ -60,7 +68,7 @@ Figure 2.1.3 above shows how the components interact with each other for the sce
 
 The sections below give more details of each component.
 
-### 2.2 UI component
+### 3.2 UI component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 <div><sup>Figure 2.2.1 Structure of the Ui Component, Ui Class Diagram</sup></div><br>
@@ -79,7 +87,7 @@ The `UI` component,
 
 This design is similar to the Architectural design of TrackPad, whereby different UiParts are encapsulated in the MainWindow java controller class. This allows the Logic to minimise interaction with the UI, since the MainWindow manages the changes to any UiPart classes that result from the execution in the Logic component.
 
-### 2.3 Logic component
+### 3.3 Logic
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 <div><sup>Figure 2.3.1 Structure of the Logic Component, Logic Class Diagram</sup></div><br>
@@ -102,7 +110,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
 
-### 2.4 Model component
+### 3.4 Model
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 <div><sup>Figure 2.4.1 Structure of the Model Component, Model Class Diagram</sup></div><br>
@@ -118,11 +126,11 @@ The `Model` component shown in Figure 2.4.1,
 
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.</div><br>
-![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
-<div><sup>Figure 2.4.2 Structure of an alternative Model Component, Alternative Model Class Diagram</sup></div><br>
+<div>![BetterModelClassDiagram](images/BetterModelClassDiagram.png)</div>
+<div align='center'><sup>Figure 2.4.2 Structure of an alternative Model Component, Alternative Model Class Diagram</sup></div><br>
 
 
-### 2.5 Storage component
+### 3.5 Storage
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 <div><sup>Figure 2.5.1 Structure of the Storage Component, Storage Class Diagram</sup></div><br>
@@ -134,12 +142,12 @@ The `Storage` component shown in Figure 2.5.1,
 * saves `AttractionList` objects containing attraction data in json format and read it back.
 * saves `ItineraryList` objects containing itinerary data in json format and read it back.
 
-### 2.6 Common classes
+### 3.6 Common classes
 
 Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
-## **3. Implementation**
+## **4. Implementation**
 *To be added*
 
 <!--
@@ -233,7 +241,7 @@ _{Explain here how the data archiving feature will be implemented}_
 -->
 --------------------------------------------------------------------------------------------------------------------
 
-## **4. Documentation, logging, testing, configuration, dev-ops**
+## **5. Documentation, logging, testing, configuration, dev-ops**
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -242,10 +250,11 @@ _{Explain here how the data archiving feature will be implemented}_
 * [DevOps guide](DevOps.md)
 
 --------------------------------------------------------------------------------------------------------------------
+<!--
+## **Appendix A: Requirements**
+-->
 
-## **5. Appendix: Requirements**
-
-### 5.1 Product scope
+## **Appendix A: Product Scope**
 
 **Target user profile**:
 
@@ -264,11 +273,11 @@ _{Explain here how the data archiving feature will be implemented}_
 * allows creating an itinerary to track future travels
 * customisable shortcuts that the user can set for frequently used commands
 
-### 5.2 User stories
+## **Appendix B: User Stories**
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-#### 5.2.1 Planning
+### B1 Planning
 
 | Priority | As a …​                     | I want to …​                                                                    | So that I can…​                                              |
 | -------- | ------------------------------ | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- |
@@ -283,7 +292,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | person planning for my travel	| label the city of the tourist attraction	                                         | sort the attractions by city
 | `* * *`  | person planning for my travel	| tag tourist attractions in different categories like food, sightseeing, activities | distinguish between the different kinds of tourist attractions
 
-#### 5.2.2 More informative list
+### B.2 More informative list
 
 | Priority | As a …​                     | I want to …​                                   | So that I can…​                                                     |
 | -------- | ------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------- |
@@ -295,7 +304,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | person planning for my travel	| sort the attractions by their various parameters	| easily skim the attractions I am interested in
 | `* *`    | person planning for my travel	| search attractions by tag                     	| easily skim the attractions I am interested in
 
-#### 5.2.3 Advanced planning
+### B3 Advanced planning
 
 | Priority | As a …​                              | I want to …​                                                                          | So that I can…​                                     |
 | -------- | --------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------ |
@@ -304,14 +313,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | forgetful person planning for my travel | create a checklist of things I want to pack	                                            | not forget the things I should bring when packing
 | `* *`    | person planning for my travel           | add the length of my trip                                                                | plan for the dates I can visit my tourist attractions
 
-#### 5.2.4 Traveling
+### B4 Traveling
 
 | Priority | As a …​                 | I want to …​                                   | So that I can…​                                     |
 | -------- | -------------------------- | ------------------------------------------------- | ------------------------------------------------------ |
 | `* *`    | person currently traveling	| mark tourist attractions as visited / not visited | know which attractions I missed
 
 
-#### 5.2.5 Budgeting
+### B5 Budgeting
 
 | Priority | As a …​                     | I want to …​                                               | So that I can…​                        |
 | -------- | ------------------------------ | ------------------------------------------------------------- | ------------------------------------------|
@@ -320,7 +329,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | person currently travelling	| record how much money I spent in a day	                    | check if I am still within my budget
 | `* *`    | person currently travelling	| know how much money I can spend in my remaining days per day	| check if I am still within my budget
 
-#### 5.2.6 The user is a beginner
+### B6 The user is a beginner
 
 | Priority | As a …​                                 | I want to …​                | So that I can…​                                                     |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
@@ -330,14 +339,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | new user	| know what is the expected outcome of the commands            	 | ensure that I am using the app correctly
 | `*`      | new user	| see the app with sample data	                                 | see what TrackPad is capable of doing
 
-#### 5.2.7 The user is a seasoned expert
+### B7 The user is a seasoned expert
 
 | Priority | As a …​                                 | I want to …​                | So that I can…​                                                     |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
 | `*`      | user who uses the app often	| have advanced time-saving features	| reduce time typing
 | `*`      | user who uses the app often	| store my data properly all the time	| keep track of everything I have added from the start
 
-#### 5.2.8 Quality of life features
+### B8 Quality of life features
 
 | Priority | As a …​                                 | I want to …​                | So that I can…​                                                     |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
@@ -353,7 +362,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | user with many tourist attractions in the app	| I want to search by excluding certain parameters	    | quickly find the information I need
 
 
-### 5.3 Use cases
+## **Appendix C: Use Cases**
 
 (For all use cases below, the **System** is the `TrackPad` and the **Actor** is the `user`, unless specified otherwise)
       
@@ -460,7 +469,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-### 5.4 Non-Functional Requirements
+## **Appendix D: Non-Functional Requirements**
 
 1.  The product should be able to hold up to 1000 tourist attractions without a noticeable sluggishness in performance for typical usage.
 2.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
@@ -473,13 +482,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 9.  The project is expected to be a brown-field project.
 10.  The progress of the project is expected to adhere to the schedule provided on the module website.
 
-### 5.5 Glossary
+## **Appendix E: Glossary**
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **6. Appendix: Instructions for manual testing**
+## **Appendix F: Instructions for Manual Testing**
 
 Given below are instructions to test the app manually.
 
@@ -488,7 +497,7 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-### 6.1 Launch and shutdown
+### F1 Launch and shutdown
 
 1. Initial launch
 
@@ -504,7 +513,7 @@ testers are expected to do more *exploratory* testing.
        Expected: The most recent window size and location is retained.
 
 
-### 6.2 Deleting an attraction
+### F2 Deleting an attraction
 
 1. Deleting an attraction while all attractions are being shown
 
@@ -520,7 +529,7 @@ testers are expected to do more *exploratory* testing.
       Expected: Similar to previous.
       
 <!--
-### 6.3 Saving data
+### F3 Saving data
 
 1. Dealing with missing/corrupted data files
 

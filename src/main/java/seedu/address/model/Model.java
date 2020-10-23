@@ -92,6 +92,12 @@ public interface Model {
      */
     void setAttraction(Attraction target, Attraction editedAttraction);
 
+    /**
+     * Marks the given attraction {@code target} as visited.
+     * {@code target} must exist in the attraction list.
+     */
+    void markVisitedAttraction(Attraction target);
+
     /** Returns an unmodifiable view of the filtered attraction list */
     ObservableList<Attraction> getFilteredAttractionList();
 
