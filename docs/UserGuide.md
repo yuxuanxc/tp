@@ -31,7 +31,6 @@ and we welcome anyone who loves travelling to try out our app.
    ![Ui](images/Ui.PNG)
    <div align="center"><sup style="font-size:100%"><i>Figure 1. The Ui of TrackPad</i></sup></div><br>
 
-
 1. Type the command in the command box and press Enter to execute it. 
     e.g. typing **`help`** and pressing Enter will open the help window.<br>
     Some example commands you can try:
@@ -128,7 +127,7 @@ Examples:
 * `add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com 
 op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`<br><br>
 ![add_attraction_result](images/addAttractionResult.PNG)
-<text align="center"><sup style="font-size:100%"><i>Figure 3. The result of `add-attraction`</i></sup></text><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 3. The result of 'add-attraction'</i></sup></div><br>
 
 #### 3.3.2 Listing all tourist attractions : `list-attraction`
 
@@ -152,13 +151,13 @@ Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] 
     * Example: `add-attraction n/MBS l/Singapore, Singapore r/4.3` in an attraction list followed by 
     `edit-attraction 1 r/4.6` changes the rating of the 1st attraction in the list from `4.3` to `4.6`.<br><br>
     ![before_editing_attraction](images/editAttractionBefore.PNG)
-    <text align="center"><sup style="font-size:100%"><i>Figure 4. MBS attraction before editing</i></sup></text><br>
+    <div align="center"><sup style="font-size:100%"><i>Figure 4. MBS attraction before editing</i></sup></div><br>
     ![result_of_editing_existing_fields](images/editAttractionResult1.PNG)
-    <text align="center"><sup style="font-size:100%"><i>Figure 5. The result of `edit-attraction 1 r/4.6`</i></sup></text><br>
+    <div align="center"><sup style="font-size:100%"><i>Figure 5. The result of 'edit-attraction 1 r/4.6'</i></sup></div><br>
 * New fields can be added to current attractions.
     * Example: `edit-attraction 1 pr/MEDIUM t/hotel` adds the price range of MBS as `MEDIUM` and adds an `hotel` tag.<br><br>
     ![result_of_editing_new_fields](images/editAttractionResult2.PNG)
-    <text align="center"><sup style="font-size:100%"><i>Figure 6. The result of `edit-attraction 1 pr/MEDIUM t/hotel`</i></sup></text><br>
+    <div align="center"><sup style="font-size:100%"><i>Figure 6. The result of 'edit-attraction 1 pr/MEDIUM t/hotel'</i></sup></div><br>
 
 <div markdown="span" class="alert alert-danger">:warning: **Warning:**
 Editing the tag of an attraction does not add on to its existing tags. Rather, it replaces all existing tags with the 
@@ -179,7 +178,7 @@ Format: `find-attraction KEYWORD [MORE_KEYWORDS]`
 Examples:
 * `find-attraction jurong` returns `Jurong Bird Park` and `Snow City`<br><br>
   ![result for 'find-attraction'](images/findJurongResult.PNG)
-  <div align="center"><sup style="font-size:100%"><i>Figure 7. The result of `find-attraction jurong`</i></sup></div><br>
+  <div align="center"><sup style="font-size:100%"><i>Figure 7. The result of 'find-attraction jurong'</i></sup></div><br>
   
 #### 3.3.5 Deleting a tourist attraction : `delete-attraction`
 
@@ -194,9 +193,9 @@ Format: `delete-attraction INDEX`
 Examples:
 * `list-attraction` followed by `delete-attraction 1` deletes the 1st attraction in the TrackPad.<br><br>
 ![result for `list-attraction`](images/deleteAttractionBefore.PNG)
-<text align="center"><sup style="font-size:100%"><i>Figure 8. Before `find-attraction jurong is called`</i></sup></text><br>
+<text align="center"><sup style="font-size:100%"><i>Figure 8. Before 'delete-attraction 1' </i></sup></text><br>
 ![result for `find-attraction`](images/deleteAttractionResult.PNG)
-<text align="center"><sup style="font-size:100%"><i>Figure 9. The result of `find-attraction jurong`</i></sup></text></i><br>
+<sup style="font-size:100%"><i><text align="center">Figure 9. The result of 'delete-attraction 1'</text></i></sup><br>
 * `find-attraction animals` followed by `delete 2` deletes the 2nd tourist attraction in the results of the `find-attraction` command.
   
 #### 3.3.6 Clearing all attractions : `clear-attraction`
