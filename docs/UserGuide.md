@@ -194,9 +194,9 @@ Format: `delete-attraction INDEX`
 Examples:
 * `list-attraction` followed by `delete-attraction 1` deletes the 1st attraction in the TrackPad.<br><br>
 ![result for 'list-attraction'](images/deleteAttractionBefore.PNG)
-<i><div align='center'><sup style="font-size:80%">Figure 7. The result of `find-attraction jurong`</sup></div></i><br>
+<i><div align='center'><sup style="font-size:80%">Figure 8. The result of `find-attraction jurong`</sup></div></i><br>
 ![result for 'find-attraction'](images/deleteAttractionResult.PNG)
-<i><div align='center'><sup style="font-size:80%">Figure 7. The result of `find-attraction jurong`</sup></div></i><br>
+<i><div align='center'><sup style="font-size:80%">Figure 9. The result of `find-attraction jurong`</sup></div></i><br>
 * `find-attraction animals` followed by `delete 2` deletes the 2nd tourist attraction in the results of the `find-attraction` command.
   
 #### 3.3.6 Clearing all attractions : `clear-attraction`
