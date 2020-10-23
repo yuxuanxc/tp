@@ -1,9 +1,11 @@
 package seedu.address.logic.commands.itineraryattraction;
 
 import javafx.collections.ObservableList;
+import javafx.scene.input.MouseDragEvent;
 import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.Messages;
+import seedu.address.logic.commands.attraction.DeleteAttractionCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -13,6 +15,8 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.itinerary.Itinerary;
+import seedu.address.model.itinerary.ItineraryAttraction;
+import seedu.address.testutil.ItineraryAttractionBuilder;
 import seedu.address.testutil.ItineraryBuilder;
 
 import java.nio.file.Path;
@@ -20,6 +24,7 @@ import java.util.function.Predicate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAttractions.getTypicalAttractionList;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
@@ -37,10 +42,27 @@ public class DeleteItineraryAttractionCommandTest {
     private Model model = new ModelManager(getTypicalAttractionList(), getTypicalItineraryList(), new UserPrefs());
 
     @Test
+    public void execute_validIndexValidDay_success() {
+        DeleteItineraryAttractionCommand delIaCommand = new DeleteItineraryAttractionCommand(INDEX_FIRST, INDEX_FIRST);
+        ItineraryAttraction itineraryAttraction = new ItineraryAttractionBuilder().build();
+        Itinerary itinerary = new ItineraryBuilder().withItineraryAttraction(itineraryAttraction,
+                INDEX_FIRST.getOneBased()).build();
+        model.setCurrentItinerary(itinerary);
+
+        String expectedMessage = String.format(DeleteItineraryAttractionCommand.MESSAGE_DELETE_ATTRACTION_SUCCESS,
+                itineraryAttraction);
+        ModelManager expectedModel = new ModelManager(model.getAttractionList(), model.getItineraryList(),
+                new UserPrefs());
+        expectedModel.setCurrentItinerary(itinerary);
+        expectedModel.getCurrentItinerary().deleteItineraryAttraction(INDEX_FIRST, INDEX_FIRST);
+
+        assertCommandSuccess(delIaCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
     public void execute_invalidAttractionIndex_throwsCommandException() {
         DeleteItineraryAttractionCommand delIaCommand = new DeleteItineraryAttractionCommand(INDEX_THIRD, INDEX_FIRST);
-
-        ModelStubWithItinerary modelWithItinerary = new ModelStubWithItinerary(ItineraryBuilder.)
+        ModelStubWithItinerary modelWithItinerary = new ModelStubWithItinerary(new ItineraryBuilder().build());
 
         assertThrows(CommandException.class, Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX,
                 () -> delIaCommand.execute(modelWithItinerary));
@@ -198,6 +220,11 @@ public class DeleteItineraryAttractionCommandTest {
 
         @Override
         public void updateFilteredItineraryList(Predicate<Itinerary> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setCurrentItinerary(Itinerary itinerary) {
             throw new AssertionError("This method should not be called.");
         }
 

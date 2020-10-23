@@ -12,9 +12,13 @@ import seedu.address.model.itinerary.Itinerary;
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Attraction> PREDICATE_SHOW_ALL_ATTRACTIONS = unused -> true;
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Itinerary> PREDICATE_SHOW_ALL_ITINERARIES = unused -> true;
 
     /**
@@ -64,7 +68,9 @@ public interface Model {
      */
     void setAttractionList(ReadOnlyAttractionList attractionList);
 
-    /** Returns the attraction list */
+    /**
+     * Returns the attraction list
+     */
     ReadOnlyAttractionList getAttractionList();
 
     /**
@@ -98,11 +104,14 @@ public interface Model {
      */
     void markVisitedAttraction(Attraction target);
 
-    /** Returns an unmodifiable view of the filtered attraction list */
+    /**
+     * Returns an unmodifiable view of the filtered attraction list
+     */
     ObservableList<Attraction> getFilteredAttractionList();
 
     /**
      * Updates the filter of the filtered attraction list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredAttractionList(Predicate<Attraction> predicate);
@@ -114,7 +123,9 @@ public interface Model {
      */
     void setItineraryList(ReadOnlyItineraryList itineraryList);
 
-    /** Returns the itinerary list */
+    /**
+     * Returns the itinerary list
+     */
     ReadOnlyItineraryList getItineraryList();
 
     /**
@@ -142,14 +153,24 @@ public interface Model {
      */
     void setItinerary(Itinerary target, Itinerary editedItinerary);
 
-    /** Returns an unmodifiable view of the filtered itinerary list */
+    /**
+     * Returns an unmodifiable view of the filtered itinerary list
+     */
     ObservableList<Itinerary> getFilteredItineraryList();
 
     /**
      * Updates the filter of the filtered itinerary list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredItineraryList(Predicate<Itinerary> predicate);
+
+    /**
+     * Sets selected itinerary in ItineraryList.
+     *
+     * @param itinerary selected itinerary.
+     */
+    void setCurrentItinerary(Itinerary itinerary);
 
     /**
      * Returns the current itinerary.

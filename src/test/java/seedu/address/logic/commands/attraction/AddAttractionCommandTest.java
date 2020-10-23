@@ -209,6 +209,11 @@ public class AddAttractionCommandTest {
         }
 
         @Override
+        public void setCurrentItinerary(Itinerary itinerary) {
+            throw new AssertionError("This method should not be called");
+        }
+
+        @Override
         public Itinerary getCurrentItinerary() {
             throw new AssertionError("This methods should not be called.");
         }
