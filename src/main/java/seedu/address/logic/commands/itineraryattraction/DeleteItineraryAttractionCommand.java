@@ -3,6 +3,9 @@ package seedu.address.logic.commands.itineraryattraction;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
 
+import java.util.List;
+
+import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -28,7 +31,7 @@ public class DeleteItineraryAttractionCommand extends Command {
     private final Index dayVisiting;
 
     /**
-     * @param index of the attraction in the selected itinerary
+     * @param index       of the attraction in the selected itinerary
      * @param dayVisiting the attraction
      */
     public DeleteItineraryAttractionCommand(Index index, Index dayVisiting) {
@@ -41,7 +44,13 @@ public class DeleteItineraryAttractionCommand extends Command {
         requireNonNull(model);
 
         Day day = model.getCurrentItinerary().getDay(dayVisiting);
-        ItineraryAttraction itineraryAttractionToDelete = day.getItineraryAttractions().get(index.getZeroBased());
+        List<ItineraryAttraction> itineraryAttractions = day.getItineraryAttractions();
+
+        if (index.getZeroBased() >= itineraryAttractions.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX);
+        }
+
+        ItineraryAttraction itineraryAttractionToDelete = itineraryAttractions.get(index.getZeroBased());
 
         model.getCurrentItinerary().deleteItineraryAttraction(index.getOneBased(), dayVisiting.getOneBased());
 
@@ -52,6 +61,7 @@ public class DeleteItineraryAttractionCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof DeleteItineraryAttractionCommand // instanceof handles nulls
-                && index.equals(((DeleteItineraryAttractionCommand) other).index)); // state check
+                && index.equals(((DeleteItineraryAttractionCommand) other).index))
+                && dayVisiting.equals(((DeleteItineraryAttractionCommand) other).index);
     }
 }
