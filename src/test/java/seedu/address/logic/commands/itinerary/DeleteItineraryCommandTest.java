@@ -98,7 +98,7 @@ public class DeleteItineraryCommandTest {
         // null -> returns false
         assertFalse(deleteFirstCommand.equals(null));
 
-        // different attraction -> returns false
+        // different itinerary -> returns false
         assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
     }
 
