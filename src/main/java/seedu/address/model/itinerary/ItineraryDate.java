@@ -57,6 +57,10 @@ public class ItineraryDate {
         return getLocalDate().isBefore(otherDate.getLocalDate());
     }
 
+    public boolean isEqual(ItineraryDate otherDate) {
+        return getLocalDate().isEqual(otherDate.getLocalDate());
+    }
+
     /**
      * Returns if this itinerary date is after the given itinerary date.
      */

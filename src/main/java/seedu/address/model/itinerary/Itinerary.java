@@ -32,7 +32,8 @@ public class Itinerary {
                      Budget budget, List<Day> days) {
         requireAllNonNull(name, description, startDate, endDate, budget, days);
 
-        checkArgument(startDate.isBefore(endDate), "Start date should come before end date");
+        checkArgument(startDate.isBefore(endDate) || startDate.isEqual(endDate),
+                "Start date should come before end date");
 
         this.name = name;
         this.description = description;
@@ -40,7 +41,7 @@ public class Itinerary {
         this.endDate = endDate;
         this.budget = budget;
         for (int i = 0; i < getNumberOfDays(); i++) {
-            if (days.get(i) != null) {
+            if (i < days.size()) {
                 this.days.add(days.get(i));
             } else {
                 this.days.add(new Day(Integer.toString(i + 1)));

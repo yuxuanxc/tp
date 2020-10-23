@@ -99,14 +99,12 @@ public class ItineraryBuilder {
         this.startDate = new ItineraryDate(startDate);
         int numberOfDays = ItineraryDate.daysBetween(this.startDate, endDate);
         List<Day> newDays = new ArrayList<>();
-        int day = 1;
-        while (day <= numberOfDays) {
-            if (day <= days.size()) {
-                newDays.add(days.get(day - 1));
+        for (int i = 0; i < numberOfDays; i++) {
+            if (i < days.size()) {
+                newDays.add(days.get(i));
             } else {
-                newDays.add(new Day(Integer.toString(day)));
+                newDays.add(new Day(Integer.toString(i + 1)));
             }
-            day++;
         }
         days = newDays;
         return this;
@@ -119,14 +117,12 @@ public class ItineraryBuilder {
         this.endDate = new ItineraryDate(endDate);
         int numberOfDays = ItineraryDate.daysBetween(startDate, this.endDate);
         List<Day> newDays = new ArrayList<>();
-        int day = 1;
-        while (day <= numberOfDays) {
-            if (day <= days.size()) {
-                newDays.add(days.get(day - 1));
+        for (int i = 0; i < numberOfDays; i++) {
+            if (i < days.size()) {
+                newDays.add(days.get(i));
             } else {
-                newDays.add(new Day(Integer.toString(day)));
+                newDays.add(new Day(Integer.toString(i + 1)));
             }
-            day++;
         }
         days = newDays;
         return this;
