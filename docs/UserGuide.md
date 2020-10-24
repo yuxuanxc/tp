@@ -101,25 +101,28 @@ There is no need to save manually.
 
 #### 3.3.1 Adding a tourist attraction: `add-attraction`
 
-Adds a tourist attraction to the current list of attractions.
+Adds a tourist attraction to the current list of attractions. Each attraction must contain a name and a location. 
+Additionally, use the optional fields (as listed below) to specify more information of your attractions. 
 
-Format: `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] 
+Format (Minimal): `add-attraction n/ATTRACTION_NAME l/LOCATION`
+
+Format (All fields): `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] 
 [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
 
 Compulsory fields:
-* **ATTRACTION_NAME**: Name of Attraction. 
-* **LOCATION**: City followed by Country.
+* **ATTRACTION_NAME**: The name of the attraction. 
+* **LOCATION**: The location of the attraction. While any value is possible, we recommend you use the format `CITY, COUNTRY` for a better in-app experience.
 
 Optional fields:
-* **DESCRIPTION**: Description of Attraction, can take in any value.
-* **PHONE_NUMBER**: Phone number should only contain numbers and be at least 3 digits long, no spaces.
-* **EMAIL**: Emails should be of the format: `local-part@domain`.
-* **ADDRESS**: Address of Attraction, can take in any value.
-* **OPENING_HOURS**: Opening Hours should be of the format: `opening time - closing time` (both in 24h format).
-* **PRICE_RANGE**: Price Range can only take in 3 values: `LOW`, `MEDIUM` or `HIGH`.
-* **RATING**: Rating should only contain a number between `0.0` to `5.0` (inclusive), to 1 decimal place.
-* **VISITED**: Visited can only take in 2 values: `TRUE` or `FALSE`.
-* **TAG**: Tag name should be alphanumeric.
+* **DESCRIPTION**: The description of the attraction. Can take in any value. Use this to give a brief summary of the attraction.
+* **PHONE_NUMBER**: The phone number of the attraction. Can only contain numbers and be at least 3 digits long, no spaces.
+* **EMAIL**: The email of the attraction. Emails should be of the format: `local-part@domain`.
+* **ADDRESS**: The postal address of the attraction. Can take in any value. Use this if the location field is not enough for locating the attraction.
+* **OPENING_HOURS**: The opening hours of the attraction. Use the format: `opening time - closing time` (both in 24h format).
+* **PRICE_RANGE**: The price range of the attraction. Use `LOW`, `MEDIUM` or `HIGH` to indicate the range.
+* **RATING**: The rating of the attraction. Use a number between `0.0` to `5.0` to indicate your experience of the attraction.
+* **VISITED**: Marks whether you have visited the attraction before. Use `TRUE` if you want to mark it as visited, and `FALSE` otherwise. 
+* **TAG**: Adds tags to further describe the attraction. Tag names should be alphanumeric.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 An attraction can have any number of tags.

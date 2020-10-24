@@ -277,90 +277,32 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-### B1 Planning
-
 | Priority | As a …​                     | I want to …​                                                                    | So that I can…​                                              |
 | -------- | ------------------------------ | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | `* * *`  | person planning for my travel	| add tourist attractions	                                                         | keep track of tourist attractions I want to visit
 | `* * *`  | person planning for my travel	| delete tourist attractions	                                                     | remove tourist attractions that I might not want to visit
-| `* * *`  | person planning for my travel	| find tourist attractions from my list	                                             | quickly search for a specific tourist attraction
-| `* * *`  | person planning for my travel	| show list of all the tourist attractions	                                         | get a look of all the travel attractions at one go
-| `* * *`  | person planning for my travel  | clear all tourist attractions from my plan                                         | reset the list
-| `* * *`  | person planning for my travel	| add descriptions for tourist attractions	                                         | note down more information about it
-| `* * *`  | person planning for my travel	| add dates on which I will visit the tourist attractions	                         | know when I will visit the tourist attraction
-| `* * *`  | person planning for my travel	| label the country of the tourist attraction	                                     | sort the attractions by country
-| `* * *`  | person planning for my travel	| label the city of the tourist attraction	                                         | sort the attractions by city
+| `* * *`  | person planning for my travel	| find tourist attractions from my list                                              | quickly search for a specific tourist attraction
+| `* * *`  | person planning for my travel	| see a list of all the tourist attractions	                                         | get a look at all my tourist attractions at one go
+| `* * *`  | person planning for my travel  | clear all tourist attractions from my plan                                         | reset the list of attractions
+| `* * *`  | person planning for my travel	| edit the information in my tourist attractions	                                 | update my attractions with new information
 | `* * *`  | person planning for my travel	| tag tourist attractions in different categories like food, sightseeing, activities | distinguish between the different kinds of tourist attractions
-
-### B.2 More informative list
-
-| Priority | As a …​                     | I want to …​                                   | So that I can…​                                                     |
-| -------- | ------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------- |
-| `* *`    | person planning for my travel	| add ratings for tourist attractions	            | keep track of which tourist attractions were enjoyable
-| `* *`    | person planning for my travel	| to add opening hours for tourist attractions  	| keep track of when each tourist attraction is open
-| `* *`    | person planning for my travel	| add price range for tourist attractions       	| estimate the costs of visiting the tourist attraction
-| `* *`    | person planning for my travel	| see the total expenditure range for the trip	    | understand the amount to bring for the trip or to adjust the budget
-| `* *`    | person planning for my travel	| prioritise the different tourist attractions	    | know which ones I would want to visit first if there is a lack of time
-| `* *`    | person planning for my travel	| sort the attractions by their various parameters	| easily skim the attractions I am interested in
-| `* *`    | person planning for my travel	| search attractions by tag                     	| easily skim the attractions I am interested in
-
-### B3 Advanced planning
-
-| Priority | As a …​                              | I want to …​                                                                          | So that I can…​                                     |
-| -------- | --------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| `* *`    | travelholic planning for my travel    	 | create multiple travel plans for different countries	                                    | separate my different travelling trips
-| `* *`    | forgetful person planning for my travel | add overall trip information such as flight and hotel details, essential country info	| ensure I have all the correct information in one place
-| `* *`    | forgetful person planning for my travel | create a checklist of things I want to pack	                                            | not forget the things I should bring when packing
-| `* *`    | person planning for my travel           | add the length of my trip                                                                | plan for the dates I can visit my tourist attractions
-
-### B4 Traveling
-
-| Priority | As a …​                 | I want to …​                                   | So that I can…​                                     |
-| -------- | -------------------------- | ------------------------------------------------- | ------------------------------------------------------ |
-| `* *`    | person currently traveling	| mark tourist attractions as visited / not visited | know which attractions I missed
-
-
-### B5 Budgeting
-
-| Priority | As a …​                     | I want to …​                                               | So that I can…​                        |
-| -------- | ------------------------------ | ------------------------------------------------------------- | ------------------------------------------|
-| `* *`    | person planning for my travel	| set a budget for each tourist attraction beforehand	        | carefully plan my budget beforehand
-| `* *`    | person currently travelling	| record how much I have spent at each tourist attraction   	| check if I am still within my budget
-| `* *`    | person currently travelling	| record how much money I spent in a day	                    | check if I am still within my budget
-| `* *`    | person currently travelling	| know how much money I can spend in my remaining days per day	| check if I am still within my budget
-
-### B6 The user is a beginner
-
-| Priority | As a …​                                 | I want to …​                | So that I can…​                                                     |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `*`      | new user	| find the user guide easily	                                 | know what TrackPad is
-| `*`      | new user	| know the features of the app	                                 | know what I can do on TrackPad
-| `*`      | new user	| know what commands I can type in the app	                     | know what I can do on TrackPad
-| `*`      | new user	| know what is the expected outcome of the commands            	 | ensure that I am using the app correctly
-| `*`      | new user	| see the app with sample data	                                 | see what TrackPad is capable of doing
-
-### B7 The user is a seasoned expert
-
-| Priority | As a …​                                 | I want to …​                | So that I can…​                                                     |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `*`      | user who uses the app often	| have advanced time-saving features	| reduce time typing
-| `*`      | user who uses the app often	| store my data properly all the time	| keep track of everything I have added from the start
-
-### B8 Quality of life features
-
-| Priority | As a …​                                 | I want to …​                | So that I can…​                                                     |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `*`      | user that likes to customise how my apps look	| change the theme of the app between light and dark	| personalise the app to my liking
-| `*`      | user that often makes mistakes                 | when typing	quickly undo / redo things that I typed	| ensure the things I type are accurate
-| `*`      | user that often makes spelling mistakes	    | quickly correct my spelling	                        | ensure the things I type are accurate
-| `*`      | impatient user	                                | create shortcuts for commonly used commands	        | save time 
-| `*`      | fast typist	                                | use my keyboard only to input things into the program	| add items more efficiently
-| `*`      | lazy person	                                | I want auto complete feature	                        | save time 
-| `*`      | someone who is afraid of programs	            | I want to be guided for each step	                    | make sure that I am on the right track
-| `*`      | user with many tourist attractions in the app	| I want to search by multiple parameters at a time	    | quickly find the information I need
-| `*`      | user with many tourist attractions in the app	| I want to search by multiple tags at a time	        | quickly find the information I need
-| `*`      | user with many tourist attractions in the app	| I want to search by excluding certain parameters	    | quickly find the information I need
-
+| `* * *`  | person planning for my travel	| add locations / addresses to my attractions                                        | know where the attraction is located and how to get there
+| `* * *`  | person planning for my travel	| add descriptions to my attractions                                                 | know roughly what the attraction is about when viewing them
+| `* * *`  | person planning for my travel	| add contact details such as email and phone number to my attractions               | know how to contact them if I need
+| `* * *`  | new user	                    | find the user guide easily	                                                     | know what I can do with the app
+| `* *`    | person planning for my travel  | create multiple itineraries for different trips	                                 | plan for all my different travelling trips
+| `* *`    | person planning for my travel  | add descriptions to my itineraries such as trip details                            | ensure I have all the correct trip information in one place
+| `* *`    | person planning for my travel  | add dates to my itineraries                                                        | plan when the trip will take place
+| `* *`    | person planning for my travel  | add attractions to my itineraries                                                  | plan which attractions to visit
+| `* *`    | person planning for my travel  | delete attractions from my itineraries                                             | remove attractions I do not want to visit anymore
+| `* *`    | person planning for my travel  | edit attractions in my itineraries                                                 | update the attractions I am planning to visit in my itineraries
+| `* *`    | person planning for my travel  | specify the times at which I visit an attraction within an itinerary               | plan when to visit the attractions
+| `* *`    | new user	                    | see the app with sample data	                                                     | see what kind of data the app can store
+| `*`      | person planning for my travel	| add opening hours to my attractions                                                | know when to visit
+| `*`      | person planning for my travel	| add the estimated price range to my attractions                                    | know which attractions to choose to match my budget
+| `*`      | person planning for my travel	| add the estimated budget to my itineraries                                         | plan how much to spend on each trip
+| `*`      | person currently traveling	    | mark tourist attractions as visited / not visited                                  | know which attractions I missed
+| `*`      | person who had already traveled | give ratings to my attractions                                                    | keep track of which tourist attractions were enjoyable
 
 ## **Appendix C: Use Cases**
 
