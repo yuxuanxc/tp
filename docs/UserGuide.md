@@ -28,7 +28,7 @@ and we welcome anyone who loves travelling to try out our app.
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. 
     Note how the app contains some sample data.<br><br>
-   ![Ui](images/Ui.PNG)
+   ![Ui](images/Ui.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 1. The Ui of TrackPad</i></sup></div>
 
 1. Type the command in the command box and press Enter to execute it. 
@@ -126,7 +126,7 @@ Examples:
 * `add-attraction n/USS a/8 Sentosa Gateway, 098269 l/Singapore, Singapore`
 * `add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com 
 op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`<br><br>
-![add_attraction_result](images/addAttractionResult.PNG)
+![add_attraction_result](images/addAttractionResult.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 3. The result of 'add-attraction'</i></sup></div>
 
 #### 3.3.2 Editing a tourist attraction: `edit-attraction`
@@ -143,11 +143,11 @@ Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] 
 * Any field can be changed by inputting its corresponding prefix in the command.
     * Example: `add-attraction n/MBS l/Singapore, Singapore r/4.3` in an attraction list followed by 
     `edit-attraction 1 r/4.6` changes the rating of the 1st attraction in the list from `4.3` to `4.6`.<br><br>        
-    ![result_of_editing_existing_fields](images/editAttractionResult1.PNG)
+    ![result_of_editing_existing_fields](images/editAttractionResult1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 4. The result of 'edit-attraction 1 r/4.6'</i></sup></div><br>
 * New fields can be added to current attractions.
     * Example: `edit-attraction 1 pr/MEDIUM t/hotel` adds the price range of MBS as `MEDIUM` and adds an `hotel` tag.<br><br>
-    ![result_of_editing_new_fields](images/editAttractionResult2.PNG)
+    ![result_of_editing_new_fields](images/editAttractionResult2.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 5. The result of 'edit-attraction 1 pr/MEDIUM t/hotel'</i></sup></div>
 
 <div markdown="span" class="alert alert-danger">:warning: **Warning:**
@@ -167,7 +167,7 @@ Format: `delete-attraction INDEX`
 
 Examples:
 * `list-attraction` followed by `delete-attraction 1` deletes the 1st attraction in the TrackPad.<br><br>
-![result for `delete-attraction`](images/deleteAttractionResult.PNG)
+![result for `delete-attraction`](images/deleteAttractionResult.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 8. The result of 'delete-attraction 1'</i></sup></div>
 * `find-attraction animals` followed by `delete 2` deletes the 2nd tourist attraction in the results of the `find-attraction` command.
 
@@ -184,7 +184,7 @@ Format: `markVisited-attraction INDEX`
 
 Examples:
 * `markVisited-attraction 2` marks the 2nd attraction in the TrackPad as visited.
-![result for 'markVisited-attraction'](images/markVisitedAttraction.PNG)
+![result for 'markVisited-attraction'](images/markVisitedAttraction.png)
   <div align="center"><sup style="font-size:100%"><i>Figure 6. The result of 'markVisited-attraction 2</i></sup></div>
 * Typing `markVisited-attraction 2` again will show that the 2nd attraction in the TrackPad is visited.
 
@@ -201,7 +201,7 @@ Format: `find-attraction KEYWORD [MORE_KEYWORDS]`
 
 Examples:
 * `find-attraction jurong` returns `Jurong Bird Park` and `Snow City`<br><br>
-![result for 'find-attraction'](images/findJurongResult.PNG)
+![result for 'find-attraction'](images/findJurongResult.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 7. The result of 'find-attraction jurong'</i></sup></div>
 
 #### 3.3.6 Listing all tourist attractions : `list-attraction`
@@ -309,7 +309,7 @@ Examples:
 Itinerary attractions are attractions added to an itinerary, but with the added start/end time field.
 These commands deal with attractions that are found in an itinerary.
 
-<span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.PNG)</span>
+<span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.png)</span>
 <div align='center'><sup>Figure X Diagram simulating the attractions found in an itinerary</sup></div><br>
 
 In the figure X above, you have selected Itinerary 1 with `show-itinerary 1` command, shown with a yellow border. 
