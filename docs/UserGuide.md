@@ -304,14 +304,14 @@ Format: `list-itinerary`
 
 Selects an itinerary to be shown, from the current list of itineraries.
 
-Format: `show-itinerary INDEX`
+Format: `select-itinerary INDEX`
 
 * Selects the itinerary at the specified `INDEX`.
 * The index refers to the index number shown in the displayed itinerary list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `select-itinerary 3` shows the 3rd itinerary in the list of itineraries.
+* `select-itinerary 3` selects the 3rd itinerary in the list of itineraries.
 
 #### 3.4.7 Clearing all itineraries : `clear-itinerary`
 
@@ -326,7 +326,7 @@ These commands deal with attractions that are found in an itinerary.
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.PNG)</span>
 <div align='center'><i><sup>Figure 9. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
 
-In the figure 9 above, you have selected Itinerary 1 with `show-itinerary 1` command, shown with a yellow border. 
+In the figure 9 above, you have selected Itinerary 1 with `select-itinerary 1` command, shown with a yellow border. 
 Attraction 1A is an itinerary attraction. It has all the same fields as Attraction A, but it has the additional field
 of the start/end time.
 
