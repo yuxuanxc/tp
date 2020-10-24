@@ -300,24 +300,24 @@ Shows all itineraries.
 
 Format: `list-itinerary`
 
-#### 3.4.6 Clearing all itineraries : `clear-itinerary`
-
-Clears all itineraries.
-
-Format: `clear-itinerary`
-
-#### 3.4.7 Showing an itinerary: `show-itinerary`
+#### 3.4.6 Selecting an itinerary: `select-itinerary`
 
 Selects an itinerary to be shown, from the current list of itineraries.
 
 Format: `show-itinerary INDEX`
 
-* Shows the itinerary at the specified `INDEX`.
+* Selects the itinerary at the specified `INDEX`.
 * The index refers to the index number shown in the displayed itinerary list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `show-itinerary 3` shows the 3rd itinerary in the list of itineraries.
+* `select-itinerary 3` shows the 3rd itinerary in the list of itineraries.
+
+#### 3.4.7 Clearing all itineraries : `clear-itinerary`
+
+Clears all itineraries.
+
+Format: `clear-itinerary`
 
 ### 3.5 Itinerary Attraction Features
 Itinerary attractions are attractions added to an itinerary, but with the added start/end time field.
@@ -401,11 +401,11 @@ Action | Format, Examples
 
 Action | Format, Examples
 --------|------------------
-**Add attraction** | `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​` <br> e.g., `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
-**Edit attraction** | `edit-attraction INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/Singapore Zoo e/zoo@example.com`
-**Delete attraction** | `delete-attraction INDEX`<br> e.g., `delete 3`
-**Mark Visited attraction** | `markVisited-attraction INDEX`<br> e.g., `markVisited-attraction 2`
-**Find attraction** | `find-attration KEYWORD [MORE_KEYWORDS]`<br> e.g., `find Zoo`
+**Add attraction** | `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​` <br> e.g. `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
+**Edit attraction** | `edit-attraction INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g. `edit 2 n/Singapore Zoo e/zoo@example.com`
+**Delete attraction** | `delete-attraction INDEX`<br> e.g. `delete 3`
+**Mark Visited attraction** | `markVisited-attraction INDEX`<br> e.g. `markVisited-attraction 2`
+**Find attraction** | `find-attration KEYWORD [MORE_KEYWORDS]`<br> e.g. `find Zoo`
 **List attractions** | `list-attraction`
 **Clear all attractions** | `clear-attraction`
 
@@ -413,19 +413,19 @@ Action | Format, Examples
 
 Action | Format, Examples
 --------|------------------
-**Add itinerary** | `add-itinerary n/ITINERARY sd/START_DATE ed/END_DATE [d/DESCRIPTION]` <br> e.g., `add-itinerary n/Japan holiday d/with friends sd/15-01-2019 ed/30-01-2019`
-**Edit itinerary** | `edit-itinerary INDEX [n/NAME] [d/DESCRIPTION] [sd/START_DATE] [ed/END_DATE]`<br> e.g.,`edit-itinerary 2 n/Singapore journey sd/05-06-2019`
-**Delete itinerary** | `delete-itinerary INDEX`<br> e.g., `delete-itinerary 3`
-**Find itinerary** | `find-itinerary KEYWORD [MORE_KEYWORDS]`<br> e.g., `find-itinerary Korea`
+**Add itinerary** | `add-itinerary n/ITINERARY sd/START_DATE ed/END_DATE [d/DESCRIPTION]` <br> e.g. `add-itinerary n/Japan holiday d/with friends sd/15-01-2019 ed/30-01-2019`
+**Edit itinerary** | `edit-itinerary INDEX [n/NAME] [d/DESCRIPTION] [sd/START_DATE] [ed/END_DATE]`<br> e.g. `edit-itinerary 2 n/Singapore journey sd/05-06-2019`
+**Delete itinerary** | `delete-itinerary INDEX`<br> e.g. `delete-itinerary 3`
+**Find itinerary** | `find-itinerary KEYWORD [MORE_KEYWORDS]`<br> e.g. `find-itinerary Korea`
 **List itineraries** | `list-itinerary`
+**Select itinerary** | `select-itinerary INDEX`<br> e.g. `select-itinerary 3`
 **Clear all itineraries** | `clear-itinerary`
-**Show itinerary** | `show-itinerary INDEX`<br> e.g., `show-itinerary 3`
 
 ### 4.4 Itinerary attraction Commands
 
 Action | Format, Examples
 --------|------------------
-**Add itinerary attraction** | `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING ` <br> e.g., `add-itinerary-attraction 1 st/1400 et/1500 day/5`
-**Edit itinerary attraction** | `edit-itinerary-attraction INDEX [st/START_TIME] [et/END_TIME] [day/DAY_VISITING] ` <br> e.g.,`edit-itinerary-attraction 1 st/0900 et/1000 day/2`
-**Delete itinerary attraction** | `delete-itinerary-attraction INDEX`<br> e.g., `delete-itinerary-attraction 1`
+**Add itinerary attraction** | `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING ` <br> e.g. `add-itinerary-attraction 1 st/1400 et/1500 day/5`
+**Edit itinerary attraction** | `edit-itinerary-attraction INDEX [st/START_TIME] [et/END_TIME] [day/DAY_VISITING] ` <br> e.g. `edit-itinerary-attraction 1 st/0900 et/1000 day/2`
+**Delete itinerary attraction** | `delete-itinerary-attraction INDEX`<br> e.g. `delete-itinerary-attraction 1`
 
