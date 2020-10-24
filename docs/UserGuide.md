@@ -193,7 +193,7 @@ Format: `markVisited-attraction INDEX`
 
 Examples:
 * `markVisited-attraction 2` marks the 2nd attraction in the TrackPad as visited.
-![result for 'markVisited-attraction'](images/markVisitedAttraction.png)
+![result for 'markVisited-attraction'](images/markVisitedAttraction.PNG)
   <div align="center"><sup style="font-size:100%"><i>Figure 7. The result of <code>markVisited-attraction 2</code></i></sup></div>
 * Typing `markVisited-attraction 2` again will show that the 2nd attraction in the TrackPad is visited.
 
@@ -323,7 +323,7 @@ Format: `clear-itinerary`
 Itinerary attractions are attractions added to an itinerary, but with the added start/end time field.
 These commands deal with attractions that are found in an itinerary.
 
-<span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.png)</span>
+<span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.PNG)</span>
 <div align='center'><i><sup>Figure 9. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
 
 In the figure 9 above, you have selected Itinerary 1 with `show-itinerary 1` command, shown with a yellow border. 
