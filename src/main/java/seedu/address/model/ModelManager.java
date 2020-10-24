@@ -219,6 +219,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setCurrentItinerary(Itinerary itinerary) {
+        itineraryList.setCurrentItinerary(itinerary);
+    }
+
+    @Override
     public Itinerary getCurrentItinerary() {
         return itineraryList.getCurrentItinerary();
     }

@@ -210,6 +210,11 @@ class AddItineraryCommandTest {
         }
 
         @Override
+        public void setCurrentItinerary(Itinerary itinerary) {
+
+        }
+
+        @Override
         public Itinerary getCurrentItinerary() {
             throw new AssertionError("This methods should not be called.");
         }
