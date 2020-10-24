@@ -6,23 +6,32 @@ import seedu.address.model.attraction.Attraction;
 import seedu.address.model.commons.Name;
 
 /**
- * Wrapper class to contain attributes of an attraction specific to a particular Itinerary.
+ * Child class of an attraction which additionally stores start time and end time
+ * Is-a attraction specific to a particular Itinerary.
  */
-public class ItineraryAttraction {
-    // todo decide if inheritance or dependency for this attraction, maybe extend from Attraction directly.
-    private final Attraction attraction;
+public class ItineraryAttraction extends Attraction {
     private final ItineraryTime startTime;
     private final ItineraryTime endTime;
 
     /**
      * Constructs a Itinerary attraction.
      *
-     * @param attraction attraction to visit.
-     * @param startTime  time to visit the attraction.
-     * @param endTime    time to leave the attraction.
+     * @param a         attraction to visit.
+     * @param startTime time to visit the attraction.
+     * @param endTime   time to leave the attraction.
      */
-    public ItineraryAttraction(Attraction attraction, ItineraryTime startTime, ItineraryTime endTime) {
-        this.attraction = attraction;
+    public ItineraryAttraction(Attraction a, ItineraryTime startTime, ItineraryTime endTime) {
+        super(a.getName(),
+                a.getPhone(),
+                a.getEmail(),
+                a.getAddress(),
+                a.getDescription(),
+                a.getLocation(),
+                a.getOpeningHours(),
+                a.getPriceRange(),
+                a.getRating(),
+                a.getVisited(),
+                a.getTags());
         this.startTime = startTime;
         this.endTime = endTime;
     }
@@ -31,15 +40,14 @@ public class ItineraryAttraction {
      * Returns name of the attraction in this itinerary attraction.
      */
     public Name getName() {
-        return attraction.getName();
+        return getName();
     }
-
 
     /**
      * Returns the attraction in this itinerary attraction.
      */
     public Attraction getAttraction() {
-        return attraction;
+        return this;
     }
 
     /**
@@ -77,7 +85,7 @@ public class ItineraryAttraction {
             return true;
         }
 
-        return attraction.isSameAttraction(otherItineraryAttraction.getAttraction())
+        return isSameAttraction(otherItineraryAttraction.getAttraction())
                 && isSameTiming(otherItineraryAttraction);
     }
 
@@ -112,13 +120,16 @@ public class ItineraryAttraction {
 
     @Override
     public int hashCode() {
-        // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(attraction);
+        return Objects.hash(this, startTime, endTime);
     }
 
     @Override
     public String toString() {
-        return attraction.toString();
-        // todo add more fields
+       final StringBuilder builder = new StringBuilder();
+       builder.append(toString())
+               .append(startTime)
+               .append(endTime);
+
+        return builder.toString();
     }
 }
