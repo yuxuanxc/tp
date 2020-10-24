@@ -22,6 +22,7 @@ import java.util.List;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.attraction.EditAttractionCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand;
 import seedu.address.model.AttractionList;
 import seedu.address.model.Model;
 import seedu.address.model.attraction.Attraction;
@@ -29,6 +30,7 @@ import seedu.address.model.attraction.AttractionContainsKeywordsPredicate;
 import seedu.address.model.itinerary.Itinerary;
 import seedu.address.model.itinerary.ItineraryContainsKeywordsPredicate;
 import seedu.address.testutil.EditAttractionDescriptorBuilder;
+import seedu.address.testutil.EditItineraryAttractionDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
@@ -59,6 +61,10 @@ public class CommandTestUtil {
     public static final String VALID_VISITED_MBS = "TRUE";
     public static final String VALID_TAG_SIGHTSEEING = "sightseeing";
     public static final String VALID_TAG_ACTIVITY = "activity";
+    public static final String VALID_START_TIME_MBS = "1000";
+    public static final String VALID_START_TIME_EIFFEL = "1200";
+    public static final String VALID_END_TIME_MBS = "1500";
+    public static final String VALID_END_TIME_EIFFEL = "1600";
 
     public static final String NAME_DESC_EIFFEL = " " + PREFIX_NAME + VALID_NAME_EIFFEL;
     public static final String NAME_DESC_MBS = " " + PREFIX_NAME + VALID_NAME_MBS;
@@ -100,6 +106,8 @@ public class CommandTestUtil {
 
     public static final EditAttractionCommand.EditAttractionDescriptor DESC_EIFFEL;
     public static final EditAttractionCommand.EditAttractionDescriptor DESC_MBS;
+    public static final EditItineraryAttractionCommand.EditItineraryAttractionDescriptor DESC_EIFFEL_IA;
+    public static final EditItineraryAttractionCommand.EditItineraryAttractionDescriptor DESC_MBS_IA;
 
     static {
         DESC_EIFFEL = new EditAttractionDescriptorBuilder().withName(VALID_NAME_EIFFEL)
@@ -114,6 +122,20 @@ public class CommandTestUtil {
                 .withLocation(VALID_LOCATION_MBS).withOpeningHours(VALID_OPENING_HOURS_MBS)
                 .withPriceRange(VALID_PRICE_RANGE_MBS).withRating(VALID_RATING_MBS)
                 .withVisited(VALID_VISITED_MBS).withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING).build();
+        DESC_EIFFEL_IA = new EditItineraryAttractionDescriptorBuilder().withName(VALID_NAME_EIFFEL)
+                .withPhone(VALID_PHONE_EIFFEL).withEmail(VALID_EMAIL_EIFFEL)
+                .withAddress(VALID_ADDRESS_EIFFEL).withDescription(VALID_DESCRIPTION_EIFFEL)
+                .withLocation(VALID_LOCATION_EIFFEL).withOpeningHours(VALID_OPENING_HOURS_EIFFEL)
+                .withPriceRange(VALID_PRICE_RANGE_EIFFEL).withRating(VALID_RATING_EIFFEL)
+                .withVisited(VALID_VISITED_EIFFEL).withTags(VALID_TAG_SIGHTSEEING)
+                .withStartTime(VALID_START_TIME_EIFFEL).withEndTime(VALID_END_TIME_EIFFEL).build();
+        DESC_MBS_IA = new EditItineraryAttractionDescriptorBuilder().withName(VALID_NAME_MBS)
+                .withPhone(VALID_PHONE_MBS).withEmail(VALID_EMAIL_MBS)
+                .withAddress(VALID_ADDRESS_MBS).withDescription(VALID_DESCRIPTION_MBS)
+                .withLocation(VALID_LOCATION_MBS).withOpeningHours(VALID_OPENING_HOURS_MBS)
+                .withPriceRange(VALID_PRICE_RANGE_MBS).withRating(VALID_RATING_MBS)
+                .withVisited(VALID_VISITED_MBS).withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING)
+                .withStartTime(VALID_START_TIME_MBS).withEndTime(VALID_END_TIME_MBS).build();
     }
 
     /**
@@ -122,7 +144,7 @@ public class CommandTestUtil {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-            Model expectedModel) {
+                                            Model expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
@@ -137,7 +159,7 @@ public class CommandTestUtil {
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-            Model expectedModel) {
+                                            Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
