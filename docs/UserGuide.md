@@ -105,9 +105,12 @@ Adds a tourist attraction to the current list of attractions.
 
 Format: `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] 
 [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
- 
+
+Compulsory fields:
 * **ATTRACTION_NAME**: Name of Attraction. 
 * **LOCATION**: City followed by Country.
+
+Optional fields:
 * **DESCRIPTION**: Description of Attraction, can take in any value.
 * **PHONE_NUMBER**: Phone number should only contain numbers and be at least 3 digits long, no spaces.
 * **EMAIL**: Emails should be of the format: `local-part@domain`.
@@ -229,9 +232,12 @@ Adds a new itinerary to the current list of itineraries.
 
 Format: `add-itinerary n/ITINERARY_NAME sd/START_DATE ed/END_DATE [d/DESCRIPTION]`
 
+Compulsory fields:
 * **ITINERARY_NAME**: Name of the itinerary.
 * **START_DATE**: Start date of the itinerary in the format `dd-mm-yyyy`.
 * **END_DATE**: End date of the itinerary in the format `dd-mm-yyyy`.
+
+Optional fields:
 * **DESCRIPTION**: Description of the itinerary, can take in any value.
 
 Examples:
