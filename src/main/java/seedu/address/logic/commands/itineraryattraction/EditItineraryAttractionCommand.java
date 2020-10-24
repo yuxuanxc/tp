@@ -1,20 +1,22 @@
 package seedu.address.logic.commands.itineraryattraction;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRACTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
+import java.util.List;
 import java.util.Optional;
 
 import seedu.address.commons.core.Messages;
+import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.itinerary.Day;
+import seedu.address.model.itinerary.Itinerary;
 import seedu.address.model.itinerary.ItineraryAttraction;
 import seedu.address.model.itinerary.ItineraryTime;
 
@@ -29,59 +31,54 @@ public class EditItineraryAttractionCommand extends Command {
     public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in Itinerary.";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the itinerary attraction "
             + "identified by the name of the itinerary attraction displayed in the itinerary"
-            + "Parameters: " + PREFIX_ATTRACTION + "NAME " + "[" + PREFIX_ATTRACTION + "ATTRACTION_NAME] "
-            + "[" + PREFIX_START_TIME + "START_TIME] " + "[" + PREFIX_END_TIME + "END_TIME] "
-            + "[" + PREFIX_DAY_VISITING + "DAY_VISITING] \n"
-            + "Example: " + COMMAND_WORD + " Singapore Zoo " + PREFIX_START_TIME + "10000 " + PREFIX_DAY_VISITING + "4";
+            + "Parameters: INDEX " + PREFIX_DAY_VISITING + "DAY VISITING " + "[" + PREFIX_START_TIME + "START_TIME] "
+            + "[" + PREFIX_END_TIME + "END_TIME] \n"
+            + "Example: " + COMMAND_WORD + " 2 " + PREFIX_DAY_VISITING + "2 " + PREFIX_START_TIME + "10000 "
+            + PREFIX_DAY_VISITING + "4";
 
-    private final String attractionName;
-    private final EditItineraryAttractionDescriptor editItineraryAttractionDescriptor;
+    private final Index index;
+    private final Index dayVisiting;
+    private final EditItineraryAttractionDescriptor editIaDescriptor;
 
     /**
-     * @param attractionName                    of the itinerary attraction to edit
-     * @param editItineraryAttractionDescriptor details to edit the itinerary attraction with
+     * @param index            of the itinerary attraction to edit
+     * @param editIaDescriptor details to edit the itinerary attraction with
      */
-    public EditItineraryAttractionCommand(String attractionName,
-                                          EditItineraryAttractionDescriptor editItineraryAttractionDescriptor) {
-        requireNonNull(attractionName);
-        requireNonNull(editItineraryAttractionDescriptor);
+    public EditItineraryAttractionCommand(Index index, Index dayVisiting,
+                                          EditItineraryAttractionDescriptor editIaDescriptor) {
+        requireNonNull(index);
+        requireNonNull(editIaDescriptor);
 
-        this.attractionName = attractionName;
-        this.editItineraryAttractionDescriptor =
-                new EditItineraryAttractionDescriptor(editItineraryAttractionDescriptor);
+        this.index = index;
+        this.dayVisiting = dayVisiting;
+        this.editIaDescriptor = new EditItineraryAttractionDescriptor(editIaDescriptor);
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        ItineraryAttraction itineraryAttractionToEdit = null;
+        Itinerary itinerary = model.getCurrentItinerary();
+        Day day = itinerary.getDay(dayVisiting);
+        List<ItineraryAttraction> itineraryAttractionsThatDay =
+                model.getCurrentItinerary().getDay(dayVisiting).getItineraryAttractions();
 
-        // todo decide if the looping should be done here.
-        for (Day d : model.getCurrentItinerary().getDays()) {
-            for (ItineraryAttraction ia : d.getItineraryAttractions()) {
-                if (ia.getName().fullName.equals(attractionName)) {
-                    itineraryAttractionToEdit = ia;
-                    break;
-                }
-            }
+        if (index.getZeroBased() >= itineraryAttractionsThatDay.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX);
         }
 
-        if (itineraryAttractionToEdit == null) {
-            throw new CommandException(Messages.MESSAGE_INVALID_ATTRACTION_NAME_GIVEN);
-        }
-
+        ItineraryAttraction itineraryAttractionToEdit = itineraryAttractionsThatDay.get(index.getZeroBased());
         ItineraryAttraction editedItineraryAttraction = createEditedItineraryAttraction(itineraryAttractionToEdit,
-                editItineraryAttractionDescriptor);
+                editIaDescriptor);
 
         if (!itineraryAttractionToEdit.isSameItineraryAttraction(editedItineraryAttraction)
-                && model.getCurrentItinerary().contains(editedItineraryAttraction)) {
+                && day.contains(editedItineraryAttraction)) {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
         }
 
-        // Calls editItineraryAttraction with the updated day visiting it, if it changes
-        model.getCurrentItinerary().editItineraryAttraction(itineraryAttractionToEdit, editedItineraryAttraction,
-                editedItineraryAttraction.getDayVisiting());
+        itinerary.editItineraryAttraction(itineraryAttractionToEdit, editedItineraryAttraction, dayVisiting);
+
+
         return new CommandResult(String.format(MESSAGE_EDIT_ATTRACTION_SUCCESS, editedItineraryAttraction));
     }
 
@@ -96,9 +93,8 @@ public class EditItineraryAttractionCommand extends Command {
 
         ItineraryTime startTime = editItiAttrDesc.getStartTime().orElse(itineraryAttractionToEdit.getStartTime());
         ItineraryTime endTime = editItiAttrDesc.getEndTime().orElse(itineraryAttractionToEdit.getEndTime());
-        int dayVisiting = editItiAttrDesc.getDayVisiting().orElse(itineraryAttractionToEdit.getDayVisiting());
 
-        return new ItineraryAttraction(itineraryAttractionToEdit.getAttraction(), startTime, endTime, dayVisiting);
+        return new ItineraryAttraction(itineraryAttractionToEdit.getAttraction(), startTime, endTime);
     }
 
     @Override
@@ -115,8 +111,8 @@ public class EditItineraryAttractionCommand extends Command {
 
         // state check
         EditItineraryAttractionCommand e = (EditItineraryAttractionCommand) other;
-        return attractionName.equals(e.attractionName)
-                && editItineraryAttractionDescriptor.equals(e.editItineraryAttractionDescriptor);
+        return index.equals(e.index)
+                && editIaDescriptor.equals(e.editIaDescriptor);
     }
 
     /**
@@ -126,7 +122,6 @@ public class EditItineraryAttractionCommand extends Command {
     public static class EditItineraryAttractionDescriptor {
         private ItineraryTime startTime;
         private ItineraryTime endTime;
-        private int dayVisiting;
 
         public EditItineraryAttractionDescriptor() {
         }
@@ -138,14 +133,13 @@ public class EditItineraryAttractionCommand extends Command {
         public EditItineraryAttractionDescriptor(EditItineraryAttractionDescriptor toCopy) {
             setStartTime(toCopy.startTime);
             setEndTime(toCopy.endTime);
-            setDayVisiting(toCopy.dayVisiting);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(startTime, endTime, dayVisiting);
+            return CollectionUtil.isAnyNonNull(startTime, endTime);
         }
 
         public void setStartTime(ItineraryTime startTime) {
@@ -164,15 +158,6 @@ public class EditItineraryAttractionCommand extends Command {
             return Optional.ofNullable(endTime);
         }
 
-        public void setDayVisiting(int dayVisiting) {
-            this.dayVisiting = dayVisiting;
-        }
-
-        public Optional<Integer> getDayVisiting() {
-            return Optional.ofNullable(dayVisiting);
-        }
-
-
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -189,9 +174,7 @@ public class EditItineraryAttractionCommand extends Command {
             EditItineraryAttractionDescriptor e = (EditItineraryAttractionDescriptor) other;
 
             return getStartTime().equals(e.getStartTime())
-                    && getEndTime().equals(e.getEndTime())
-                    && getDayVisiting().equals(e.getDayVisiting());
-
+                    && getEndTime().equals(e.getEndTime());
         }
     }
 }

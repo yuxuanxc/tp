@@ -15,6 +15,7 @@ import seedu.address.logic.commands.attraction.DeleteAttractionCommand;
 import seedu.address.logic.commands.attraction.EditAttractionCommand;
 import seedu.address.logic.commands.attraction.FindAttractionCommand;
 import seedu.address.logic.commands.attraction.ListAttractionCommand;
+import seedu.address.logic.commands.attraction.MarkVisitedAttractionCommand;
 import seedu.address.logic.commands.itinerary.AddItineraryCommand;
 import seedu.address.logic.commands.itinerary.ClearItineraryCommand;
 import seedu.address.logic.commands.itinerary.DeleteItineraryCommand;
@@ -28,6 +29,7 @@ import seedu.address.logic.parser.attraction.AddAttractionCommandParser;
 import seedu.address.logic.parser.attraction.DeleteAttractionCommandParser;
 import seedu.address.logic.parser.attraction.EditAttractionCommandParser;
 import seedu.address.logic.parser.attraction.FindAttractionCommandParser;
+import seedu.address.logic.parser.attraction.MarkVisitedAttractionCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.itinerary.AddItineraryCommandParser;
 import seedu.address.logic.parser.itinerary.DeleteItineraryCommandParser;
@@ -71,6 +73,9 @@ public class TrackPadParser {
 
         case DeleteAttractionCommand.COMMAND_WORD:
             return new DeleteAttractionCommandParser().parse(arguments);
+
+        case MarkVisitedAttractionCommand.COMMAND_WORD:
+            return new MarkVisitedAttractionCommandParser().parse(arguments);
 
         case ClearAttractionCommand.COMMAND_WORD:
             return new ClearAttractionCommand();

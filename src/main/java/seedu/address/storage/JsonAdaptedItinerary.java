@@ -1,7 +1,5 @@
 package seedu.address.storage;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,6 +13,7 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Budget;
 import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.Itinerary;
+import seedu.address.model.itinerary.ItineraryDate;
 
 /**
  * Jackson-friendly version of {@link Itinerary}.
@@ -72,8 +71,8 @@ class JsonAdaptedItinerary {
     public Itinerary toModelType() throws IllegalValueException {
         final Name modelName;
         final Description modelDescription;
-        final LocalDate modelStartDate;
-        final LocalDate modelEndDate;
+        final ItineraryDate modelStartDate;
+        final ItineraryDate modelEndDate;
         final Budget modelBudget;
         final List<Day> modelDays = new ArrayList<>();
 
@@ -105,29 +104,25 @@ class JsonAdaptedItinerary {
         // Start date is not optional
         if (startDate == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    LocalDate.class.getSimpleName()));
+                    ItineraryDate.class.getSimpleName()));
+        } else if (!ItineraryDate.isValidDate(startDate)) {
+            throw new IllegalValueException(ItineraryDate.MESSAGE_CONSTRAINTS);
         } else {
-            try {
-                modelStartDate = LocalDate.parse(startDate);
-            } catch (DateTimeParseException e) {
-                throw new IllegalValueException("Start date is not valid");
-            }
+            modelStartDate = new ItineraryDate(startDate);
         }
 
         // End date is not optional
         if (endDate == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    LocalDate.class.getSimpleName()));
+                    ItineraryDate.class.getSimpleName()));
+        } else if (!ItineraryDate.isValidDate(endDate)) {
+            throw new IllegalValueException(ItineraryDate.MESSAGE_CONSTRAINTS);
         } else {
-            try {
-                modelEndDate = LocalDate.parse(endDate);
-            } catch (DateTimeParseException e) {
-                throw new IllegalValueException("End date is not valid");
-            }
+            modelEndDate = new ItineraryDate(endDate);
         }
 
         // Budget is optional
-        if (description == null) {
+        if (budget == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Budget.class.getSimpleName()));
         } else if (budget.equals("")) {

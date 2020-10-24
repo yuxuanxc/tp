@@ -1,4 +1,4 @@
-package seedu.address.logic.commands.itinerary;
+package seedu.address.logic.commands.attraction;
 
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,67 +17,66 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.ItineraryList;
+import seedu.address.model.AttractionList;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAttractionList;
 import seedu.address.model.ReadOnlyItineraryList;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.itinerary.Itinerary;
-import seedu.address.testutil.ItineraryBuilder;
+import seedu.address.testutil.AttractionBuilder;
 
-class AddItineraryCommandTest {
+public class AddAttractionCommandTest {
+
     @Test
-    public void constructor_nullItinerary_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddItineraryCommand(null));
+    public void constructor_nullAttraction_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new AddAttractionCommand(null));
     }
 
     @Test
-    public void execute_itineraryAcceptedByModel_addSuccessful() throws Exception {
-        AddItineraryCommandTest.ModelStubAcceptingItineraryAdded modelStub =
-                new AddItineraryCommandTest.ModelStubAcceptingItineraryAdded();
-        Itinerary validItinerary = new ItineraryBuilder().build();
+    public void execute_attractionAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingAttractionAdded modelStub = new ModelStubAcceptingAttractionAdded();
+        Attraction validAttraction = new AttractionBuilder().build();
 
-        CommandResult commandResult = new AddItineraryCommand(validItinerary).execute(modelStub);
+        CommandResult commandResult = new AddAttractionCommand(validAttraction).execute(modelStub);
 
-        assertEquals(String.format(AddItineraryCommand.MESSAGE_SUCCESS, validItinerary),
+        assertEquals(String.format(AddAttractionCommand.MESSAGE_SUCCESS, validAttraction),
                 commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validItinerary), modelStub.itinerariesAdded);
+        assertEquals(Arrays.asList(validAttraction), modelStub.attractionsAdded);
     }
 
     @Test
-    public void execute_duplicateItinerary_throwsCommandException() {
-        Itinerary validItinerary = new ItineraryBuilder().build();
-        AddItineraryCommand addItineraryCommand = new AddItineraryCommand(validItinerary);
-        AddItineraryCommandTest.ModelStub modelStub =
-                new AddItineraryCommandTest.ModelStubWithItinerary(validItinerary);
+    public void execute_duplicateAttraction_throwsCommandException() {
+        Attraction validAttraction = new AttractionBuilder().build();
+        AddAttractionCommand addAttractionCommand = new AddAttractionCommand(validAttraction);
+        ModelStub modelStub = new ModelStubWithAttraction(validAttraction);
 
         assertThrows(CommandException.class,
-                AddItineraryCommand.MESSAGE_DUPLICATE_ITINERARY, () -> addItineraryCommand.execute(modelStub));
+                AddAttractionCommand.MESSAGE_DUPLICATE_ATTRACTION, () -> addAttractionCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        Itinerary singaporeZoos = new ItineraryBuilder().withName("Singapore Zoos").build();
-        Itinerary parisTrip = new ItineraryBuilder().withName("Paris Trip").build();
-        AddItineraryCommand addSingaporeZoosCommand = new AddItineraryCommand(singaporeZoos);
-        AddItineraryCommand addParisTripCommand = new AddItineraryCommand(parisTrip);
+        Attraction singaporeZoo = new AttractionBuilder().withName("Singapore Zoo").build();
+        Attraction nightSafari = new AttractionBuilder().withName("Night Safari").build();
+        AddAttractionCommand addSingaporeZooCommand = new AddAttractionCommand(singaporeZoo);
+        AddAttractionCommand addNightSafariCommand = new AddAttractionCommand(nightSafari);
 
         // same object -> returns true
-        assertTrue(addSingaporeZoosCommand.equals(addSingaporeZoosCommand));
+        assertTrue(addSingaporeZooCommand.equals(addSingaporeZooCommand));
 
         // same values -> returns true
-        AddItineraryCommand addSingaporeZooCommandCopy = new AddItineraryCommand(singaporeZoos);
-        assertTrue(addSingaporeZoosCommand.equals(addSingaporeZooCommandCopy));
+        AddAttractionCommand addSingaporeZooCommandCopy = new AddAttractionCommand(singaporeZoo);
+        assertTrue(addSingaporeZooCommand.equals(addSingaporeZooCommandCopy));
 
         // different types -> returns false
-        assertFalse(addSingaporeZoosCommand.equals(1));
+        assertFalse(addSingaporeZooCommand.equals(1));
 
         // null -> returns false
-        assertFalse(addSingaporeZoosCommand.equals(null));
+        assertFalse(addSingaporeZooCommand.equals(null));
 
-        // different itinerary -> returns false
-        assertFalse(addSingaporeZoosCommand.equals(addParisTripCommand));
+        // different attraction -> returns false
+        assertFalse(addSingaporeZooCommand.equals(addNightSafariCommand));
     }
 
     /**
@@ -211,7 +210,7 @@ class AddItineraryCommandTest {
 
         @Override
         public void setCurrentItinerary(Itinerary itinerary) {
-
+            throw new AssertionError("This method should not be called");
         }
 
         @Override
@@ -221,44 +220,45 @@ class AddItineraryCommandTest {
     }
 
     /**
-     * A Model stub that contains a single itinerary.
+     * A Model stub that contains a single attraction.
      */
-    private class ModelStubWithItinerary extends AddItineraryCommandTest.ModelStub {
-        private final Itinerary itinerary;
+    private class ModelStubWithAttraction extends ModelStub {
+        private final Attraction attraction;
 
-        ModelStubWithItinerary(Itinerary itinerary) {
-            requireNonNull(itinerary);
-            this.itinerary = itinerary;
+        ModelStubWithAttraction(Attraction attraction) {
+            requireNonNull(attraction);
+            this.attraction = attraction;
         }
 
         @Override
-        public boolean hasItinerary(Itinerary itinerary) {
-            requireNonNull(itinerary);
-            return this.itinerary.isSameItinerary(itinerary);
+        public boolean hasAttraction(Attraction attraction) {
+            requireNonNull(attraction);
+            return this.attraction.isSameAttraction(attraction);
         }
     }
 
     /**
-     * A Model stub that always accept the itinerary being added.
+     * A Model stub that always accept the attraction being added.
      */
-    private class ModelStubAcceptingItineraryAdded extends AddItineraryCommandTest.ModelStub {
-        final ArrayList<Itinerary> itinerariesAdded = new ArrayList<>();
+    private class ModelStubAcceptingAttractionAdded extends ModelStub {
+        final ArrayList<Attraction> attractionsAdded = new ArrayList<>();
 
         @Override
-        public boolean hasItinerary(Itinerary itinerary) {
-            requireNonNull(itinerary);
-            return itinerariesAdded.stream().anyMatch(itinerary::isSameItinerary);
+        public boolean hasAttraction(Attraction attraction) {
+            requireNonNull(attraction);
+            return attractionsAdded.stream().anyMatch(attraction::isSameAttraction);
         }
 
         @Override
-        public void addItinerary(Itinerary itinerary) {
-            requireNonNull(itinerary);
-            itinerariesAdded.add(itinerary);
+        public void addAttraction(Attraction attraction) {
+            requireNonNull(attraction);
+            attractionsAdded.add(attraction);
         }
 
         @Override
-        public ReadOnlyItineraryList getItineraryList() {
-            return new ItineraryList();
+        public ReadOnlyAttractionList getAttractionList() {
+            return new AttractionList();
         }
     }
+
 }
