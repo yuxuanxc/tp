@@ -22,7 +22,6 @@ import seedu.address.model.Model;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Budget;
-import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.Itinerary;
 
 /**
