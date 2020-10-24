@@ -49,6 +49,25 @@ public class Itinerary {
         }
     }
 
+    /**
+     * Not given number of days
+     */
+    public Itinerary(Name name, Description description, ItineraryDate startDate, ItineraryDate endDate,
+                     Budget budget) {
+        requireAllNonNull(name, description, startDate, endDate, budget);
+
+        checkArgument(startDate.isBefore(endDate), "Start date should come before end date");
+
+        this.name = name;
+        this.description = description;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.budget = budget;
+        for (int i = 1; i <= getNumberOfDays(); i++) {
+            this.days.add(new Day(Integer.toString(i)));
+        }
+    }
+
     public Name getName() {
         return name;
     }
