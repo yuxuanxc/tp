@@ -8,7 +8,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ITINERARIES;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +22,7 @@ import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Budget;
 import seedu.address.model.itinerary.Itinerary;
+import seedu.address.model.itinerary.ItineraryDate;
 
 /**
  * Edits the details of an existing itinerary in the itineraries list in TrackPad.
@@ -93,8 +93,8 @@ public class EditItineraryCommand extends Command {
         Name updatedName = editItineraryDescriptor.getName().orElse(itineraryToEdit.getName());
         Description updatedDescription = editItineraryDescriptor.getDescription()
             .orElse(itineraryToEdit.getDescription());
-        LocalDate updatedStartDate = editItineraryDescriptor.getStartDate().orElse(itineraryToEdit.getStartDate());
-        LocalDate updatedEndDate = editItineraryDescriptor.getEndDate().orElse(itineraryToEdit.getEndDate());
+        ItineraryDate updatedStartDate = editItineraryDescriptor.getStartDate().orElse(itineraryToEdit.getStartDate());
+        ItineraryDate updatedEndDate = editItineraryDescriptor.getEndDate().orElse(itineraryToEdit.getEndDate());
         Budget updatedBudget = editItineraryDescriptor.getBudget().orElse(itineraryToEdit.getBudget());
 
         return new Itinerary(updatedName, updatedDescription, updatedStartDate, updatedEndDate, updatedBudget);
@@ -125,8 +125,8 @@ public class EditItineraryCommand extends Command {
     public static class EditItineraryDescriptor {
         private Name name;
         private Description description;
-        private LocalDate startDate;
-        private LocalDate endDate;
+        private ItineraryDate startDate;
+        private ItineraryDate endDate;
         private Budget budget;
 
         public EditItineraryDescriptor() {}
@@ -166,19 +166,19 @@ public class EditItineraryCommand extends Command {
             return Optional.ofNullable(description);
         }
 
-        public void setStartDate(LocalDate startDate) {
+        public void setStartDate(ItineraryDate startDate) {
             this.startDate = startDate;
         }
 
-        public Optional<LocalDate> getStartDate() {
+        public Optional<ItineraryDate> getStartDate() {
             return Optional.ofNullable(startDate);
         }
 
-        public void setEndDate(LocalDate endDate) {
+        public void setEndDate(ItineraryDate endDate) {
             this.endDate = endDate;
         }
 
-        public Optional<LocalDate> getEndDate() {
+        public Optional<ItineraryDate> getEndDate() {
             return Optional.ofNullable(endDate);
         }
 

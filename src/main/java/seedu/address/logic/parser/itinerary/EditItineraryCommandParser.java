@@ -51,10 +51,12 @@ public class EditItineraryCommandParser implements Parser<EditItineraryCommand> 
                 .setDescription(ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get()));
         }
         if (argMultimap.getValue(PREFIX_START_DATE).isPresent()) {
-            editItineraryDescriptor.setStartDate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_START_DATE).get()));
+            editItineraryDescriptor.setStartDate(ParserUtil.parseItineraryDate(argMultimap.getValue(PREFIX_START_DATE)
+                .get()));
         }
         if (argMultimap.getValue(PREFIX_END_DATE).isPresent()) {
-            editItineraryDescriptor.setEndDate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_END_DATE).get()));
+            editItineraryDescriptor.setEndDate(ParserUtil.parseItineraryDate(argMultimap.getValue(PREFIX_END_DATE)
+                .get()));
         }
 
         if (argMultimap.getValue(PREFIX_BUDGET).isPresent()) {

@@ -52,7 +52,8 @@ public class Itinerary {
     /**
      * Not given number of days
      */
-    public Itinerary(Name name, Description description, LocalDate startDate, LocalDate endDate, Budget budget) {
+    public Itinerary(Name name, Description description, ItineraryDate startDate, ItineraryDate endDate,
+                     Budget budget) {
         requireAllNonNull(name, description, startDate, endDate, budget);
 
         checkArgument(startDate.isBefore(endDate), "Start date should come before end date");
