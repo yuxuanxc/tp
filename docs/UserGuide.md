@@ -13,8 +13,8 @@ title: User Guide
 TrackPad (TP) is a **desktop app for planning your trips and tracking tourist attractions, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a 
 Graphical User Interface (GUI). If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
 
-This user guide will show you how to use the commands and features available in TP. This app is built for people who would like to collate and store all their itineraries in one single app, 
-and we welcome anyone who loves travelling to try out our app.
+This user guide will show you how to use the commands and features available in TP. TP is built for people who love to travel, 
+and want to collate and store all their itineraries in one single app. We welcome anyone who loves travelling to try out our app.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -49,7 +49,7 @@ and we welcome anyone who loves travelling to try out our app.
 
    * **`exit`** : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+1. Refer to the [Features](#3-features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -75,7 +75,10 @@ and we welcome anyone who loves travelling to try out our app.
 
 </div>
 
-### 3.2 General
+### 3.2 General Features
+
+These basic features help TrackPad to run more smoothly, as well as allow users to interact with TrackPad without 
+needing to use the mouse, perfect for fast typists!
 
 #### 3.2.1 Viewing help : `help`
 
@@ -98,6 +101,9 @@ TrackPad data will be saved in the storage automatically after any command that 
 There is no need to save manually.
 
 ### 3.3 Attraction Features
+
+These features are tailored for the attractions in the TrackPad. Attractions are the core building blocks of
+TrackPad, and they are required to create your itineraries!
 
 #### 3.3.1 Adding a tourist attraction: `add-attraction`
 
@@ -226,6 +232,8 @@ This action is irreversible and should be used with caution.
 
 ### 3.4 Itinerary Features
 
+Itineraries contain details of your trip, as well as the attractions that you plan to visit during that trip.
+
 #### 3.4.1 Adding a new itinerary: `add-itinerary`
 
 Adds a new itinerary to the current list of itineraries.
@@ -316,7 +324,7 @@ Itinerary attractions are attractions added to an itinerary, but with the added 
 These commands deal with attractions that are found in an itinerary.
 
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.png)</span>
-<div align='center'><sup>Figure 9 Diagram simulating the attractions found in an itinerary</sup></div><br>
+<div align='center'><i><sup>Figure 9. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
 
 In the figure 9 above, you have selected Itinerary 1 with `show-itinerary 1` command, shown with a yellow border. 
 Attraction 1A is an itinerary attraction. It has all the same fields as Attraction A, but it has the additional field
