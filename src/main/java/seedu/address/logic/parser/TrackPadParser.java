@@ -19,6 +19,9 @@ import seedu.address.logic.commands.attraction.MarkVisitedAttractionCommand;
 import seedu.address.logic.commands.itinerary.AddItineraryCommand;
 import seedu.address.logic.commands.itinerary.ClearItineraryCommand;
 import seedu.address.logic.commands.itinerary.DeleteItineraryCommand;
+import seedu.address.logic.commands.itinerary.EditItineraryCommand;
+import seedu.address.logic.commands.itinerary.FindItineraryCommand;
+import seedu.address.logic.commands.itinerary.ListItineraryCommand;
 import seedu.address.logic.commands.itineraryattraction.AddItineraryAttractionCommand;
 import seedu.address.logic.commands.itineraryattraction.DeleteItineraryAttractionCommand;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand;
@@ -30,6 +33,8 @@ import seedu.address.logic.parser.attraction.MarkVisitedAttractionCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.itinerary.AddItineraryCommandParser;
 import seedu.address.logic.parser.itinerary.DeleteItineraryCommandParser;
+import seedu.address.logic.parser.itinerary.EditItineraryCommandParser;
+import seedu.address.logic.parser.itinerary.FindItineraryCommandParser;
 import seedu.address.logic.parser.itineraryattraction.AddItineraryAttractionCommandParser;
 import seedu.address.logic.parser.itineraryattraction.DeleteItineraryAttractionCommandParser;
 import seedu.address.logic.parser.itineraryattraction.EditItineraryAttractionCommandParser;
@@ -90,11 +95,20 @@ public class TrackPadParser {
         case AddItineraryCommand.COMMAND_WORD:
             return new AddItineraryCommandParser().parse(arguments);
 
+        case EditItineraryCommand.COMMAND_WORD:
+            return new EditItineraryCommandParser().parse(arguments);
+
         case DeleteItineraryCommand.COMMAND_WORD:
             return new DeleteItineraryCommandParser().parse(arguments);
 
         case ClearItineraryCommand.COMMAND_WORD:
             return new ClearItineraryCommand();
+
+        case FindItineraryCommand.COMMAND_WORD:
+            return new FindItineraryCommandParser().parse(arguments);
+
+        case ListItineraryCommand.COMMAND_WORD:
+            return new ListItineraryCommand();
 
         case AddItineraryAttractionCommand.COMMAND_WORD:
             return new AddItineraryAttractionCommandParser().parse(arguments);
