@@ -40,7 +40,7 @@ public class ItineraryAttraction extends Attraction {
      * Returns name of the attraction in this itinerary attraction.
      */
     public Name getName() {
-        return getName();
+        return super.getName();
     }
 
     /**
@@ -114,7 +114,8 @@ public class ItineraryAttraction extends Attraction {
         }
 
         ItineraryAttraction otherItineraryAttraction = (ItineraryAttraction) other;
-        return otherItineraryAttraction.getAttraction().equals(getAttraction())
+        // calls equals of Attraction and checks the timing.
+        return super.equals(otherItineraryAttraction)
                 && isSameTiming(otherItineraryAttraction);
     }
 
@@ -125,10 +126,10 @@ public class ItineraryAttraction extends Attraction {
 
     @Override
     public String toString() {
-       final StringBuilder builder = new StringBuilder();
-       builder.append(toString())
-               .append(startTime)
-               .append(endTime);
+        final StringBuilder builder = new StringBuilder();
+        builder.append(super.toString())
+                .append(startTime)
+                .append(endTime);
 
         return builder.toString();
     }
