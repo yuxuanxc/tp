@@ -1,11 +1,19 @@
 package seedu.address.testutil;
 
+import seedu.address.model.itinerary.ItineraryAttraction;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DESCRIPTION_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DESCRIPTION_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_END_TIME_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_END_TIME_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LOCATION_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LOCATION_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_EIFFEL;
@@ -18,24 +26,19 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_RANGE_EIF
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_RANGE_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RATING_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RATING_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_START_TIME_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_START_TIME_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ACTIVITY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_VISITED_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_VISITED_MBS;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import seedu.address.model.AttractionList;
-import seedu.address.model.attraction.Attraction;
-
 /**
- * A utility class containing a list of {@code Attraction} objects to be used in tests.
+ * A utility class containing a list of {@code ItineraryAttraction} objects to be used in tests.
  */
-public class TypicalAttractions {
+public class TypicalItineraryAttractions {
 
-    public static final Attraction JURONG_BIRD_PARK = new AttractionBuilder()
+    public static final ItineraryAttraction JURONG_BIRD_PARK = new ItineraryAttractionBuilder()
             .withName("JurongBirdPark")
             .withAddress("2 Jurong Hill")
             .withEmail("birdpark@example.com")
@@ -47,8 +50,10 @@ public class TypicalAttractions {
             .withRating()
             .withVisited()
             .withTags("animals")
+            .withStartTime("1000")
+            .withEndTime("1200")
             .build();
-    public static final Attraction NIGHT_SAFARI = new AttractionBuilder()
+    public static final ItineraryAttraction NIGHT_SAFARI = new ItineraryAttractionBuilder()
             .withName("Night Safari")
             .withAddress("80 Mandai Lake Rd")
             .withEmail("nightsafari@example.com")
@@ -60,8 +65,10 @@ public class TypicalAttractions {
             .withRating()
             .withVisited()
             .withTags("animals", "night")
+            .withStartTime("1050")
+            .withEndTime("1242")
             .build();
-    public static final Attraction SINGAPORE_ZOO = new AttractionBuilder()
+    public static final ItineraryAttraction SINGAPORE_ZOO = new ItineraryAttractionBuilder()
             .withName("Singapore Zoo")
             .withPhone("95352563")
             .withEmail("singaporezoo@example.com")
@@ -72,8 +79,10 @@ public class TypicalAttractions {
             .withPriceRange()
             .withRating()
             .withVisited()
+            .withStartTime("1240")
+            .withEndTime("1743")
             .build();
-    public static final Attraction RIVER_SAFARI = new AttractionBuilder()
+    public static final ItineraryAttraction RIVER_SAFARI = new ItineraryAttractionBuilder()
             .withName("River Safari")
             .withPhone("87652533")
             .withEmail("riversafari@example.com")
@@ -85,8 +94,10 @@ public class TypicalAttractions {
             .withRating()
             .withVisited()
             .withTags("panda")
+            .withStartTime("0422")
+            .withEndTime("1522")
             .build();
-    public static final Attraction ORCHARD_ROAD = new AttractionBuilder()
+    public static final ItineraryAttraction ORCHARD_ROAD = new ItineraryAttractionBuilder()
             .withName("Orchard Road")
             .withPhone("9482224")
             .withEmail("orchardroad@example.com")
@@ -98,8 +109,10 @@ public class TypicalAttractions {
             .withPriceRange()
             .withRating()
             .withVisited()
+            .withStartTime("1000")
+            .withEndTime("1200")
             .build();
-    public static final Attraction BOTANIC_GARDENS = new AttractionBuilder()
+    public static final ItineraryAttraction BOTANIC_GARDENS = new ItineraryAttractionBuilder()
             .withName("Botanic Gardens")
             .withPhone("9482427")
             .withEmail("botanicgardens@example.com")
@@ -110,8 +123,10 @@ public class TypicalAttractions {
             .withPriceRange()
             .withRating()
             .withVisited()
+            .withStartTime("1211")
+            .withEndTime("2314")
             .build();
-    public static final Attraction JURONG_LAKE = new AttractionBuilder()
+    public static final ItineraryAttraction JURONG_LAKE = new ItineraryAttractionBuilder()
             .withName("Jurong Lake")
             .withPhone("9482442")
             .withEmail("juronglake@example.com")
@@ -123,8 +138,10 @@ public class TypicalAttractions {
             .withPriceRange()
             .withRating()
             .withVisited()
+            .withStartTime("1232")
+            .withEndTime("2132")
             .build();
-    public static final Attraction NOTRE_DAME = new AttractionBuilder()
+    public static final ItineraryAttraction NOTRE_DAME = new ItineraryAttractionBuilder()
             .withName("Cathedrale Notre Dame de Paris")
             .withPhone()
             .withEmail()
@@ -135,10 +152,12 @@ public class TypicalAttractions {
             .withPriceRange()
             .withRating()
             .withVisited()
+            .withStartTime("1234")
+            .withEndTime("2345")
             .build();
 
     // Manually added
-    public static final Attraction ESPLANADE = new AttractionBuilder()
+    public static final ItineraryAttraction ESPLANADE = new ItineraryAttractionBuilder()
             .withName("Esplanade")
             .withPhone("8482424").withEmail("esplanade@example.com")
             .withAddress("1 Esplanade Dr")
@@ -149,8 +168,10 @@ public class TypicalAttractions {
             .withPriceRange("HIGH")
             .withRating("4.0")
             .withVisited("TRUE")
+            .withStartTime("1000")
+            .withEndTime("2300")
             .build();
-    public static final Attraction SUNTEC = new AttractionBuilder()
+    public static final ItineraryAttraction SUNTEC = new ItineraryAttractionBuilder()
             .withName("Suntec City")
             .withPhone("8482131").withEmail("suntec@example.com")
             .withAddress("3 Temasek Blvd")
@@ -161,8 +182,10 @@ public class TypicalAttractions {
             .withPriceRange("LOW")
             .withRating("4.5")
             .withVisited("TRUE")
+            .withStartTime("1000")
+            .withEndTime("2000")
             .build();
-    public static final Attraction LOUVRE = new AttractionBuilder()
+    public static final ItineraryAttraction LOUVRE = new ItineraryAttractionBuilder()
             .withName("Louvre Museum")
             .withPhone("330140205317")
             .withEmail("info@louvre.fr")
@@ -174,37 +197,48 @@ public class TypicalAttractions {
             .withPriceRange("MEDIUM")
             .withRating("4.7")
             .withVisited("FALSE")
+            .withStartTime("0900")
+            .withEndTime("1500")
             .build();
 
-    // Manually added - Attraction's details found in {@code CommandTestUtil}
-    public static final Attraction EIFFEL_TOWER = new AttractionBuilder().withName(VALID_NAME_EIFFEL)
-            .withPhone(VALID_PHONE_EIFFEL).withEmail(VALID_EMAIL_EIFFEL).withAddress(VALID_ADDRESS_EIFFEL)
-            .withDescription(VALID_DESCRIPTION_EIFFEL).withLocation(VALID_LOCATION_EIFFEL)
-            .withOpeningHours(VALID_OPENING_HOURS_EIFFEL).withPriceRange(VALID_PRICE_RANGE_EIFFEL)
-            .withRating(VALID_RATING_EIFFEL).withVisited(VALID_VISITED_EIFFEL).withTags(VALID_TAG_ACTIVITY).build();
-    public static final Attraction MBS = new AttractionBuilder().withName(VALID_NAME_MBS).withPhone(VALID_PHONE_MBS)
-            .withEmail(VALID_EMAIL_MBS).withAddress(VALID_ADDRESS_MBS)
-            .withDescription(VALID_DESCRIPTION_MBS).withLocation(VALID_LOCATION_MBS)
-            .withOpeningHours(VALID_OPENING_HOURS_MBS).withPriceRange(VALID_PRICE_RANGE_MBS)
-            .withRating(VALID_RATING_MBS).withVisited(VALID_VISITED_MBS)
-            .withTags(VALID_TAG_SIGHTSEEING, VALID_TAG_ACTIVITY).build();
+    // Manually added - ItineraryAttraction's details found in {@code CommandTestUtil}
+    public static final ItineraryAttraction EIFFEL_TOWER = new ItineraryAttractionBuilder()
+            .withName(VALID_NAME_EIFFEL)
+            .withPhone(VALID_PHONE_EIFFEL)
+            .withEmail(VALID_EMAIL_EIFFEL)
+            .withAddress(VALID_ADDRESS_EIFFEL)
+            .withDescription(VALID_DESCRIPTION_EIFFEL)
+            .withLocation(VALID_LOCATION_EIFFEL)
+            .withOpeningHours(VALID_OPENING_HOURS_EIFFEL)
+            .withPriceRange(VALID_PRICE_RANGE_EIFFEL)
+            .withRating(VALID_RATING_EIFFEL)
+            .withVisited(VALID_VISITED_EIFFEL)
+            .withTags(VALID_TAG_ACTIVITY)
+            .withStartTime(VALID_START_TIME_EIFFEL)
+            .withEndTime(VALID_END_TIME_EIFFEL)
+            .build();
+    public static final ItineraryAttraction MBS = new ItineraryAttractionBuilder()
+            .withName(VALID_NAME_MBS)
+            .withPhone(VALID_PHONE_MBS)
+            .withEmail(VALID_EMAIL_MBS)
+            .withAddress(VALID_ADDRESS_MBS)
+            .withDescription(VALID_DESCRIPTION_MBS)
+            .withLocation(VALID_LOCATION_MBS)
+            .withOpeningHours(VALID_OPENING_HOURS_MBS)
+            .withPriceRange(VALID_PRICE_RANGE_MBS)
+            .withRating(VALID_RATING_MBS)
+            .withVisited(VALID_VISITED_MBS)
+            .withTags(VALID_TAG_SIGHTSEEING, VALID_TAG_ACTIVITY)
+            .withStartTime(VALID_START_TIME_MBS)
+            .withEndTime(VALID_END_TIME_MBS)
+            .build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
-    private TypicalAttractions() {} // prevents instantiation
+    private TypicalItineraryAttractions() {} // prevents instantiation
 
-    /**
-     * Returns an {@code AttractionList} with all the typical attractions.
-     */
-    public static AttractionList getTypicalAttractionList() {
-        AttractionList al = new AttractionList();
-        for (Attraction attraction : getTypicalAttractions()) {
-            al.addAttraction(attraction);
-        }
-        return al;
-    }
 
-    public static List<Attraction> getTypicalAttractions() {
+    public static List<ItineraryAttraction> getTypicalItineraryAttractions() {
         return new ArrayList<>(Arrays.asList(JURONG_BIRD_PARK, NIGHT_SAFARI, SINGAPORE_ZOO, RIVER_SAFARI, ORCHARD_ROAD,
                 BOTANIC_GARDENS, JURONG_LAKE));
     }

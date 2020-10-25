@@ -3,14 +3,17 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_OPENING_HOURS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -65,6 +68,10 @@ public class CommandTestUtil {
     public static final String VALID_START_TIME_EIFFEL = "1200";
     public static final String VALID_END_TIME_MBS = "1500";
     public static final String VALID_END_TIME_EIFFEL = "1600";
+    public static final String VALID_INDEX_MBS = "1";
+    public static final String VALID_INDEX_EIFFEL = "2";
+    public static final String VALID_DAY_VISITING_MBS = "3";
+    public static final String VALID_DAY_VISITING_EIFFEL = "2";
 
     public static final String NAME_DESC_EIFFEL = " " + PREFIX_NAME + VALID_NAME_EIFFEL;
     public static final String NAME_DESC_MBS = " " + PREFIX_NAME + VALID_NAME_MBS;
@@ -88,6 +95,14 @@ public class CommandTestUtil {
     public static final String VISITED_DESC_MBS = " " + PREFIX_VISITED + VALID_VISITED_MBS;
     public static final String TAG_DESC_SIGHTSEEING = " " + PREFIX_TAG + VALID_TAG_SIGHTSEEING;
     public static final String TAG_DESC_ACTIVITY = " " + PREFIX_TAG + VALID_TAG_ACTIVITY;
+    public static final String START_TIME_DESC_EIFFEL = " " + PREFIX_START_TIME + VALID_START_TIME_EIFFEL;
+    public static final String START_TIME_DESC_MBS = " " + PREFIX_START_TIME + VALID_START_TIME_MBS;
+    public static final String END_TIME_DESC_EIFFEL = " " + PREFIX_END_TIME + VALID_END_TIME_EIFFEL;
+    public static final String END_TIME_DESC_MBS = " " + PREFIX_END_TIME + VALID_END_TIME_MBS;
+    public static final String INDEX_DESC_EIFFEL = VALID_INDEX_EIFFEL;
+    public static final String INDEX_DESC_MBS = VALID_INDEX_MBS;
+    public static final String DAY_VISITING_DESC_EIFFEL = " " + PREFIX_DAY_VISITING + VALID_DAY_VISITING_EIFFEL;
+    public static final String DAY_VISITING_DESC_MBS = " " + PREFIX_DAY_VISITING + VALID_DAY_VISITING_MBS;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "Zoo&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
@@ -100,6 +115,10 @@ public class CommandTestUtil {
     public static final String INVALID_RATING_DESC = " " + PREFIX_RATING;
     public static final String INVALID_VISITED_DESC = " " + PREFIX_VISITED + "True1"; // numbers not allowed in VISITED
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "Sightseeing*"; // '*' not allowed in tags
+    public static final String INVALID_START_TIME_DESC = " " + PREFIX_START_TIME + "12-33"; // no dash in time
+    public static final String INVALID_END_TIME_DESC = " " + PREFIX_END_TIME + "12111"; // one more digit
+    public static final String INVALID_INDEX_DESC = " -1 "; // index cannot be negative
+    public static final String INVALID_DAY_VISITING_DESC = "-2232"; // day cannot be negative
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

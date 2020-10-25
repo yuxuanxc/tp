@@ -5,10 +5,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
-import java.util.logging.Logger;
 import java.util.stream.Stream;
 
-import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.itineraryattraction.AddItineraryAttractionCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
@@ -17,13 +15,10 @@ import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ItineraryList;
 import seedu.address.model.itinerary.ItineraryTime;
 
 
 public class AddItineraryAttractionCommandParser implements Parser<AddItineraryAttractionCommand> {
-    private static final Logger logger = LogsCenter.getLogger(ItineraryList.class);
-
     /**
      * Parses the given {@code String} of arguments in the context of the AddiCommand
      * and returns an AddiCommand object for execution.
@@ -32,7 +27,6 @@ public class AddItineraryAttractionCommandParser implements Parser<AddItineraryA
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddItineraryAttractionCommand parse(String args) throws ParseException {
-        logger.info("\n\nEntered Add Itinerary Attraction Command Parser\n\n");
             ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_START_TIME, PREFIX_END_TIME,
                     PREFIX_DAY_VISITING);
 
@@ -54,16 +48,12 @@ public class AddItineraryAttractionCommandParser implements Parser<AddItineraryA
             ItineraryTime startTime = ParserUtil.parseItineraryTime(argMultimap.getValue(PREFIX_START_TIME).get());
             ItineraryTime endTime = ParserUtil.parseItineraryTime(argMultimap.getValue(PREFIX_END_TIME).get());
 
-            logger.info("\n\nExecuted until here Add Itinerary Attraction Command Parser\n\n");
-
             if (!startTime.isEarlierThan(endTime)) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                         AddItineraryAttractionCommand.MESSAGE_INVALID_START_TIME));
             }
 
             Index dayVisiting = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_DAY_VISITING).get());
-            logger.info("\n\nLeaving Add Itinerary Attraction Command Parser\n\n");
-
             return new AddItineraryAttractionCommand(index, startTime, endTime, dayVisiting);
     }
 
