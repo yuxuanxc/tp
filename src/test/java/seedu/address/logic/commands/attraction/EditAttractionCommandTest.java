@@ -30,8 +30,7 @@ import seedu.address.testutil.AttractionBuilder;
 import seedu.address.testutil.EditAttractionDescriptorBuilder;
 
 /**
- * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand)
- * and unit tests for EditAttractionCommand.
+ * Contains integration tests (interaction with the Model) and unit tests for {@code EditAttractionCommand}.
  */
 public class EditAttractionCommandTest {
 
@@ -49,7 +48,6 @@ public class EditAttractionCommandTest {
                 new ItineraryList(model.getItineraryList()),
                 new UserPrefs());
         expectedModel.setAttraction(model.getFilteredAttractionList().get(0), editedAttraction);
-
         assertCommandSuccess(editAttractionCommand, model, expectedMessage, expectedModel);
     }
 

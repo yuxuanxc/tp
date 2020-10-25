@@ -7,10 +7,9 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.model.attraction.AttractionContainsKeywordsPredicate;
 
 /**
- * Tests that a {@code ItineraryAttraction}'s {@code Name}, {@code Address}, ***@code Description*** (not working yet),
- *
+ * Tests that a {@code ItineraryAttraction}'s {@code Name}, {@code Address}, {@code Description},
  * {@code Email}, {@code Location}, {@code OpeningHours}, {@code Phone}, {@code PriceRange}, {@code Rating},
- * {@code StartTIme}, {@code EndTime}
+ * {@code StartTime}, {@code EndTime}
  * matches any of the keywords given.
  */
 public class ItineraryAttractionContainsKeywordsPredicate implements Predicate<ItineraryAttraction> {

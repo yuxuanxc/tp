@@ -3,14 +3,17 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_BUDGET;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_OPENING_HOURS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -22,6 +25,7 @@ import java.util.List;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.attraction.EditAttractionCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.itinerary.EditItineraryCommand;
 import seedu.address.model.AttractionList;
 import seedu.address.model.Model;
 import seedu.address.model.attraction.Attraction;
@@ -29,12 +33,14 @@ import seedu.address.model.attraction.AttractionContainsKeywordsPredicate;
 import seedu.address.model.itinerary.Itinerary;
 import seedu.address.model.itinerary.ItineraryContainsKeywordsPredicate;
 import seedu.address.testutil.EditAttractionDescriptorBuilder;
+import seedu.address.testutil.EditItineraryDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
  */
 public class CommandTestUtil {
 
+    //=========== For valid Attraction =======================================================================
     public static final String VALID_NAME_EIFFEL = "Eiffel Tower";
     public static final String VALID_NAME_MBS = "Marina Bay Sands";
     public static final String VALID_PHONE_EIFFEL = "33892701239";
@@ -83,6 +89,30 @@ public class CommandTestUtil {
     public static final String TAG_DESC_SIGHTSEEING = " " + PREFIX_TAG + VALID_TAG_SIGHTSEEING;
     public static final String TAG_DESC_ACTIVITY = " " + PREFIX_TAG + VALID_TAG_ACTIVITY;
 
+    //=========== For valid Itinerary ========================================================================
+    public static final String VALID_NAME_PARIS_TRIP = "Paris Trip";
+    public static final String VALID_NAME_JAPAN_TRIP = "7D Japan Adventure";
+    public static final String VALID_DESCRIPTION_PARIS_TRIP = "Visit the City of Light";
+    public static final String VALID_DESCRIPTION_JAPAN_TRIP = "Have fun in Japan!";
+    public static final String VALID_START_DATE_PARIS_TRIP = "03-06-2020";
+    public static final String VALID_START_DATE_JAPAN_TRIP = "12-12-2019";
+    public static final String VALID_END_DATE_PARIS_TRIP = "05-06-2020";
+    public static final String VALID_END_DATE_JAPAN_TRIP = "18-12-2019";
+    public static final String VALID_BUDGET_PARIS_TRIP = "4000";
+    public static final String VALID_BUDGET_JAPAN_TRIP = "5230.60";
+
+    public static final String NAME_DESC_PARIS_TRIP = " " + PREFIX_NAME + VALID_NAME_PARIS_TRIP;
+    public static final String NAME_DESC_JAPAN_TRIP = " " + PREFIX_NAME + VALID_NAME_JAPAN_TRIP;
+    public static final String DESCRIPTION_DESC_PARIS_TRIP = " " + PREFIX_DESCRIPTION + VALID_DESCRIPTION_PARIS_TRIP;
+    public static final String DESCRIPTION_DESC_JAPAN_TRIP = " " + PREFIX_DESCRIPTION + VALID_DESCRIPTION_JAPAN_TRIP;
+    public static final String START_DATE_DESC_PARIS_TRIP = " " + PREFIX_START_DATE + VALID_START_DATE_PARIS_TRIP;
+    public static final String START_DATE_DESC_JAPAN_TRIP = " " + PREFIX_START_DATE + VALID_START_DATE_JAPAN_TRIP;
+    public static final String END_DATE_DESC_PARIS_TRIP = " " + PREFIX_END_DATE + VALID_END_DATE_PARIS_TRIP;
+    public static final String END_DATE_DESC_JAPAN_TRIP = " " + PREFIX_END_DATE + VALID_END_DATE_JAPAN_TRIP;
+    public static final String BUDGET_DESC_PARIS_TRIP = " " + PREFIX_BUDGET + VALID_BUDGET_PARIS_TRIP;
+    public static final String BUDGET_DESC_JAPAN_TRIP = " " + PREFIX_BUDGET + VALID_BUDGET_JAPAN_TRIP;
+
+    //=========== For invalids ===============================================================================
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "Zoo&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "mbs!yahoo"; // missing '@' symbol
@@ -94,6 +124,9 @@ public class CommandTestUtil {
     public static final String INVALID_RATING_DESC = " " + PREFIX_RATING;
     public static final String INVALID_VISITED_DESC = " " + PREFIX_VISITED + "True1"; // numbers not allowed in VISITED
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "Sightseeing*"; // '*' not allowed in tags
+    public static final String INVALID_START_DATE = " " + PREFIX_START_DATE + "1 Jan 2011"; // 'Jan' not allowed in date
+    public static final String INVALID_END_DATE = " " + PREFIX_END_DATE + "35-68-2011"; // invalid day and month
+    public static final String INVALID_BUDGET = " " + PREFIX_BUDGET + "23.222"; // more than 2 decimal places
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -101,7 +134,11 @@ public class CommandTestUtil {
     public static final EditAttractionCommand.EditAttractionDescriptor DESC_EIFFEL;
     public static final EditAttractionCommand.EditAttractionDescriptor DESC_MBS;
 
+    public static final EditItineraryCommand.EditItineraryDescriptor DESC_PARIS_TRIP;
+    public static final EditItineraryCommand.EditItineraryDescriptor DESC_JAPAN_TRIP;
+
     static {
+        //=========== For Attraction =========================================================================
         DESC_EIFFEL = new EditAttractionDescriptorBuilder().withName(VALID_NAME_EIFFEL)
                 .withPhone(VALID_PHONE_EIFFEL).withEmail(VALID_EMAIL_EIFFEL)
                 .withAddress(VALID_ADDRESS_EIFFEL).withDescription(VALID_DESCRIPTION_EIFFEL)
@@ -114,6 +151,22 @@ public class CommandTestUtil {
                 .withLocation(VALID_LOCATION_MBS).withOpeningHours(VALID_OPENING_HOURS_MBS)
                 .withPriceRange(VALID_PRICE_RANGE_MBS).withRating(VALID_RATING_MBS)
                 .withVisited(VALID_VISITED_MBS).withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING).build();
+
+        //=========== For Itinerary ==========================================================================
+        DESC_PARIS_TRIP = new EditItineraryDescriptorBuilder()
+                .withName(VALID_NAME_PARIS_TRIP)
+                .withDescription(VALID_DESCRIPTION_PARIS_TRIP)
+                .withStartDate(VALID_START_DATE_PARIS_TRIP)
+                .withEndDate(VALID_END_DATE_PARIS_TRIP)
+                .withBudget(VALID_BUDGET_PARIS_TRIP)
+                .build();
+        DESC_JAPAN_TRIP = new EditItineraryDescriptorBuilder()
+                .withName(VALID_NAME_JAPAN_TRIP)
+                .withDescription(VALID_DESCRIPTION_JAPAN_TRIP)
+                .withStartDate(VALID_START_DATE_JAPAN_TRIP)
+                .withEndDate(VALID_END_DATE_JAPAN_TRIP)
+                .withBudget(VALID_BUDGET_JAPAN_TRIP)
+                .build();
     }
 
     /**
