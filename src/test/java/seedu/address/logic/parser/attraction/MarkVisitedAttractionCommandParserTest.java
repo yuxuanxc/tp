@@ -1,4 +1,4 @@
-package seedu.address.logic.parser.itinerary;
+package seedu.address.logic.parser.attraction;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
@@ -8,7 +8,6 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.attraction.MarkVisitedAttractionCommand;
-import seedu.address.logic.parser.attraction.MarkVisitedAttractionCommandParser;
 
 /**
  * As we are only doing white-box testing, our test cases do not cover path variations
@@ -22,7 +21,7 @@ public class MarkVisitedAttractionCommandParserTest {
     private MarkVisitedAttractionCommandParser parser = new MarkVisitedAttractionCommandParser();
 
     @Test
-    public void parse_validArgs_returnsDeleteCommand() {
+    public void parse_validArgs_returnsMarkVisitedCommand() {
         assertParseSuccess(parser, "1", new MarkVisitedAttractionCommand(INDEX_FIRST));
     }
 
