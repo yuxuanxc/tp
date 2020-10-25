@@ -23,7 +23,7 @@ import seedu.address.model.itinerary.Itinerary;
 public class TypicalItineraries {
 
     //todo add more itineraries
-    public static final Itinerary SINGAPORE_ZOOS = new ItineraryBuilder().withName("Singapore Zoos")
+    public static final Itinerary SG_ZOOS_TOUR = new ItineraryBuilder().withName("Singapore Zoos")
             .withDescription("Rediscover our wildlife parks!")
             .withStartDate("06-07-2019")
             .withEndDate("07-07-2019")
@@ -82,6 +82,6 @@ public class TypicalItineraries {
     }
 
     public static List<Itinerary> getTypicalItineraries() {
-        return new ArrayList<>(Arrays.asList(SINGAPORE_ZOOS, PARIS_TRIP));
+        return new ArrayList<>(Arrays.asList(SG_ZOOS_TOUR, PARIS_TRIP));
     }
 }
