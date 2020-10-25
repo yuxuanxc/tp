@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
-import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.itinerary.Itinerary;
 import seedu.address.model.itinerary.UniqueItineraryList;
@@ -27,7 +26,8 @@ public class ItineraryList implements ReadOnlyItineraryList {
      *
      * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
      *   among constructors.
-     */ {
+     */
+    {
         itineraries = new UniqueItineraryList();
     }
 
@@ -43,7 +43,7 @@ public class ItineraryList implements ReadOnlyItineraryList {
         // sets the selected itinerary as the first itinerary when this is first created.
         // may cause error if no itinerary is every created/ exist in json.
         // TODO REMOVE ME after select itinerary is implemented.
-//        setCurrentItinerary(itineraries.asUnmodifiableObservableList().get(0));
+        setCurrentItinerary(itineraries.asUnmodifiableObservableList().get(0));
         logger.info("Initialising...\nCurrent Itinerary is set as: " + this.getCurrentItinerary());
     }
 

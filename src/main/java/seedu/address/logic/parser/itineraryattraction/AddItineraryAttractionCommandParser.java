@@ -27,34 +27,31 @@ public class AddItineraryAttractionCommandParser implements Parser<AddItineraryA
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddItineraryAttractionCommand parse(String args) throws ParseException {
-            ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_START_TIME, PREFIX_END_TIME,
-                    PREFIX_DAY_VISITING);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_START_TIME, PREFIX_END_TIME,
+                PREFIX_DAY_VISITING);
 
-            if (!arePrefixesPresent(argMultimap, PREFIX_START_TIME, PREFIX_END_TIME, PREFIX_DAY_VISITING)
-                    || argMultimap.getPreamble().isEmpty()) {
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                        AddItineraryAttractionCommand.MESSAGE_USAGE));
-            }
+        if (!arePrefixesPresent(argMultimap, PREFIX_START_TIME, PREFIX_END_TIME, PREFIX_DAY_VISITING)
+                || argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddItineraryAttractionCommand.MESSAGE_USAGE));
+        }
 
-            Index index;
-            try {
-                index = ParserUtil.parseIndex(argMultimap.getPreamble());
-            } catch (ParseException pe) {
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                        AddItineraryAttractionCommand.MESSAGE_USAGE), pe);
-            }
+        Index index;
+        try {
+            index = ParserUtil.parseIndex(argMultimap.getPreamble());
+        } catch (ParseException pe) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddItineraryAttractionCommand.MESSAGE_USAGE), pe);
+        }
 
+        ItineraryTime startTime = ParserUtil.parseItineraryTime(argMultimap.getValue(PREFIX_START_TIME).get());
+        ItineraryTime endTime = ParserUtil.parseItineraryTime(argMultimap.getValue(PREFIX_END_TIME).get());
+        if (!startTime.isEarlierThan(endTime)) {
+            throw new ParseException(AddItineraryAttractionCommand.MESSAGE_INVALID_START_TIME);
+        }
 
-            ItineraryTime startTime = ParserUtil.parseItineraryTime(argMultimap.getValue(PREFIX_START_TIME).get());
-            ItineraryTime endTime = ParserUtil.parseItineraryTime(argMultimap.getValue(PREFIX_END_TIME).get());
-
-            if (!startTime.isEarlierThan(endTime)) {
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                        AddItineraryAttractionCommand.MESSAGE_INVALID_START_TIME));
-            }
-
-            Index dayVisiting = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_DAY_VISITING).get());
-            return new AddItineraryAttractionCommand(index, startTime, endTime, dayVisiting);
+        Index dayVisiting = ParserUtil.parseDayIndex(argMultimap.getValue(PREFIX_DAY_VISITING).get());
+        return new AddItineraryAttractionCommand(index, startTime, endTime, dayVisiting);
     }
 
     /**

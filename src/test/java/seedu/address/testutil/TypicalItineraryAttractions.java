@@ -1,11 +1,5 @@
 package seedu.address.testutil;
 
-import seedu.address.model.itinerary.ItineraryAttraction;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DESCRIPTION_EIFFEL;
@@ -32,6 +26,12 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ACTIVITY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_VISITED_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_VISITED_MBS;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import seedu.address.model.itinerary.ItineraryAttraction;
 
 /**
  * A utility class containing a list of {@code ItineraryAttraction} objects to be used in tests.
@@ -235,7 +235,8 @@ public class TypicalItineraryAttractions {
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
-    private TypicalItineraryAttractions() {} // prevents instantiation
+    private TypicalItineraryAttractions() {
+    } // prevents instantiation
 
 
     public static List<ItineraryAttraction> getTypicalItineraryAttractions() {
