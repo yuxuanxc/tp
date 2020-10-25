@@ -262,9 +262,8 @@ public class ParserUtil {
     public static ItineraryTime parseItineraryTime(String time) throws ParseException {
         requireNonNull(time);
         String trimmedTime = time.trim();
-
         if (!ItineraryTime.isValidItineraryTime(trimmedTime)) {
-            throw new ParseException(Visited.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ItineraryTime.MESSAGE_CONSTRAINTS);
         }
         return new ItineraryTime(trimmedTime);
     }

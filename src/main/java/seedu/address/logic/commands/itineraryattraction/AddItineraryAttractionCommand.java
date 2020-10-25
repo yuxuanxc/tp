@@ -31,7 +31,7 @@ public class AddItineraryAttractionCommand extends Command {
             + " displayed itinerary list.\n "
             + "Parameters: INDEX " + PREFIX_START_TIME + "START_TIME " + PREFIX_END_TIME + "END_TIME "
             + PREFIX_DAY_VISITING + "DAY_VISITING "
-            + "Example: " + COMMAND_WORD + " INDEX " + PREFIX_START_TIME + "1000 "
+            + "Example: " + COMMAND_WORD + " 1 " + PREFIX_START_TIME + "1000 "
             + PREFIX_END_TIME + "1600 " + PREFIX_DAY_VISITING + "3";
 
     private final Index index;
