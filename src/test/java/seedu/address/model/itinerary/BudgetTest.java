@@ -33,12 +33,12 @@ public class BudgetTest {
         assertFalse(Budget.isValidBudget("twenty")); // non-numeric value
         assertFalse(Budget.isValidBudget("2E.34")); // non-numeric value
         assertFalse(Budget.isValidBudget("$23")); // non-numeric value
-        assertFalse(Budget.isValidBudget("1.2")); // not enough decimal places
         assertFalse(Budget.isValidBudget("23.345")); // too many decimal places
 
         // valid budget
         assertTrue(Budget.isValidBudget("0")); // zero value
         assertTrue(Budget.isValidBudget("1660")); // non-decimal value
         assertTrue(Budget.isValidBudget("2000.57")); // decimal value
+        assertTrue(Budget.isValidBudget("23.5")); // decimal value can be converted to 2 decimal places
     }
 }
