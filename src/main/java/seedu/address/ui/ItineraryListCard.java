@@ -69,5 +69,6 @@ public class ItineraryListCard extends UiPart<Region> {
         return id.getText().equals(card.id.getText())
                 && itinerary.equals(card.itinerary);
     }
+
 }
 
