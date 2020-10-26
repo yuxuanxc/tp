@@ -118,8 +118,7 @@ public class CommandTestUtil {
     public static final String INVALID_START_TIME_DESC = " " + PREFIX_START_TIME + "12-33"; // no dash in time
     public static final String INVALID_END_TIME_DESC = " " + PREFIX_END_TIME + "12111"; // one more digit
     public static final String INVALID_INDEX_DESC = " -1 "; // index cannot be negative
-    public static final String INVALID_DAY_VISITING_DESC = " " + PREFIX_DAY_VISITING + "-2232"; // day cannot be
-    // negative
+    public static final String INVALID_DAY_VISITING_DESC = " " + PREFIX_DAY_VISITING + "-2232"; // negative day
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

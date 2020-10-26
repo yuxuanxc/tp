@@ -59,9 +59,14 @@ public class DeleteItineraryAttractionCommand extends Command {
 
     @Override
     public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof DeleteItineraryAttractionCommand // instanceof handles nulls
-                && index.equals(((DeleteItineraryAttractionCommand) other).index))
-                && dayVisiting.equals(((DeleteItineraryAttractionCommand) other).index);
+        if (other == this) {
+            return true;
+        }
+        if (!(other instanceof DeleteItineraryAttractionCommand)) {
+            return false;
+        }
+        DeleteItineraryAttractionCommand delIaCommand = (DeleteItineraryAttractionCommand) other;
+
+        return index.equals(delIaCommand.index) && dayVisiting.equals(delIaCommand.dayVisiting);
     }
 }
