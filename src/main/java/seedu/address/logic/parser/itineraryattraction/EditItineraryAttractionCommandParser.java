@@ -60,7 +60,7 @@ public class EditItineraryAttractionCommandParser implements Parser<EditItinerar
                     EditItineraryAttractionCommand.MESSAGE_USAGE), pe);
         }
 
-        if (argMultimap.getValue(PREFIX_DAY_VISITING).isEmpty() || !argMultimap.getPreamble().isEmpty()) {
+        if (argMultimap.getValue(PREFIX_DAY_VISITING).isEmpty() || argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     EditItineraryAttractionCommand.MESSAGE_USAGE));
         }
@@ -81,27 +81,27 @@ public class EditItineraryAttractionCommandParser implements Parser<EditItinerar
             editItiAttrDesc.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
         }
         if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
-            editItiAttrDesc.setDescription(ParserUtil.parseDescription(
-                    argMultimap.getValue(PREFIX_DESCRIPTION).get()));
+            editItiAttrDesc.setDescription(ParserUtil
+                    .parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get()));
         }
         if (argMultimap.getValue(PREFIX_LOCATION).isPresent()) {
             editItiAttrDesc.setLocation(ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION).get()));
         }
         if (argMultimap.getValue(PREFIX_OPENING_HOURS).isPresent()) {
-            editItiAttrDesc.setOpeningHours(ParserUtil.parseOpeningHours(
-                    argMultimap.getValue(PREFIX_OPENING_HOURS).get()));
+            editItiAttrDesc.setOpeningHours(ParserUtil
+                    .parseOpeningHours(argMultimap.getValue(PREFIX_OPENING_HOURS).get()));
         }
         if (argMultimap.getValue(PREFIX_PRICE_RANGE).isPresent()) {
-            editItiAttrDesc.setPriceRange(ParserUtil.parsePriceRange(
-                    argMultimap.getValue(PREFIX_PRICE_RANGE).get()));
+            editItiAttrDesc.setPriceRange(ParserUtil
+                    .parsePriceRange(argMultimap.getValue(PREFIX_PRICE_RANGE).get()));
         }
         if (argMultimap.getValue(PREFIX_RATING).isPresent()) {
-            editItiAttrDesc.setRating(ParserUtil.parseRating(
-                    argMultimap.getValue(PREFIX_RATING).get()));
+            editItiAttrDesc.setRating(ParserUtil
+                    .parseRating(argMultimap.getValue(PREFIX_RATING).get()));
         }
         if (argMultimap.getValue(PREFIX_VISITED).isPresent()) {
-            editItiAttrDesc.setVisited(ParserUtil.parseVisited(
-                    argMultimap.getValue(PREFIX_VISITED).get()));
+            editItiAttrDesc.setVisited(ParserUtil
+                    .parseVisited(argMultimap.getValue(PREFIX_VISITED).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editItiAttrDesc::setTags);
         if (argMultimap.getValue(PREFIX_START_TIME).isPresent()) {
