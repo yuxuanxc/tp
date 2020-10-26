@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_DAY;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
@@ -402,5 +403,23 @@ public class ParserUtilTest {
         assertEquals(expectedBudget, ParserUtil.parseBudget(budgetWithWhitespace));
     }
 
+    @Test
+    public void parseDayIndex_invalidInput_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseDayIndex("10 a"));
+    }
 
+    @Test
+    public void parseDayIndex_outOfRangeInput_throwsParseException() {
+        assertThrows(ParseException.class, MESSAGE_INVALID_DAY, ()
+            -> ParserUtil.parseDayIndex(Long.toString(Integer.MAX_VALUE + 1)));
+    }
+
+    @Test
+    public void parseDayIndex_validInput_success() throws Exception {
+        // No whitespaces
+        assertEquals(INDEX_FIRST, ParserUtil.parseDayIndex("1"));
+
+        // Leading and trailing whitespaces
+        assertEquals(INDEX_FIRST, ParserUtil.parseDayIndex("  1  "));
+    }
 }
