@@ -60,7 +60,7 @@ public class EditItineraryAttractionCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (model.getCurrentItinerary() == null){
+        if (model.getCurrentItinerary() == null) {
             throw new CommandException(MESSAGE_ITINERARY_NOT_SELECTED);
         }
 
