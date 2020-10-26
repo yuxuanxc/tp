@@ -57,12 +57,30 @@ public class AttractionCard extends UiPart<Region> {
         this.attraction = attraction;
         id.setText(displayedIndex + ". ");
         name.setText(attraction.getName().fullName);
-        phone.setText(attraction.getPhone().value);
-        address.setText(attraction.getAddress().value);
-        email.setText(attraction.getEmail().value);
-        locale.setText(attraction.getLocation().value);
+        locale.setText("\uD83C\uDF0E " + attraction.getLocation().value);
+
+        //optional fields
         description.setText(attraction.getDescription().value);
-        openingHours.setText("Opening Hours: " + attraction.getOpeningHours().value);
+        if (attraction.getPhone().value.isEmpty()) {
+            phone.setText("📞 " + "⛔");
+        } else {
+            phone.setText("📞 " + attraction.getPhone().value);
+        }
+        if (attraction.getAddress().value.isEmpty()) {
+            address.setText("\uD83C\uDFE0 " + "⛔");
+        } else {
+            address.setText("\uD83C\uDFE0 " + attraction.getAddress().value);
+        }
+        if (attraction.getEmail().value.isEmpty()) {
+            email.setText("\uD83D\uDCE7 " + "⛔");
+        } else {
+            email.setText("\uD83D\uDCE7 " + attraction.getEmail().value);
+        }
+        if (attraction.getOpeningHours().value.isEmpty()) {
+            openingHours.setText("\uD83D\uDD56 " + "⛔");
+        } else {
+            openingHours.setText("\uD83D\uDD56 " + attraction.getOpeningHours().value);
+        }
         if (attraction.getPriceRange().toString() != "") {
             Label priceRange = new Label(attraction.getPriceRange().toString());
             priceRange.setStyle("-fx-background-color: #800;");
