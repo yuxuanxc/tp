@@ -3,10 +3,8 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
-import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.itinerary.Itinerary;
 import seedu.address.model.itinerary.UniqueItineraryList;
 
@@ -16,7 +14,6 @@ import seedu.address.model.itinerary.UniqueItineraryList;
  */
 public class ItineraryList implements ReadOnlyItineraryList {
 
-    private static final Logger logger = LogsCenter.getLogger(ItineraryList.class);
     private final UniqueItineraryList itineraries;
     private Itinerary currentItinerary;
 
@@ -40,11 +37,6 @@ public class ItineraryList implements ReadOnlyItineraryList {
     public ItineraryList(ReadOnlyItineraryList toBeCopied) {
         this();
         resetData(toBeCopied);
-        // sets the selected itinerary as the first itinerary when this is first created.
-        // may cause error if no itinerary is every created/ exist in json.
-        // TODO REMOVE ME after select itinerary is implemented.
-        // setCurrentItinerary(itineraries.asUnmodifiableObservableList().get(0));
-        logger.info("Initialising...\nCurrent Itinerary is set as: " + this.getCurrentItinerary());
     }
 
     //// list overwrite operations
@@ -82,10 +74,6 @@ public class ItineraryList implements ReadOnlyItineraryList {
      */
     public void addItinerary(Itinerary a) {
         itineraries.add(a);
-        // sets the newly created itinerary to the selected itinerary.
-        // todo REMOVE ME after select itinerary is implemented.
-        // setCurrentItinerary(a);
-        logger.info("Current Itinerary is set as: " + this.getCurrentItinerary());
     }
 
     /**

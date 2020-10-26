@@ -95,7 +95,7 @@ public class Itinerary {
                 }
             }
         }
-        return locations.stream().map(Object::toString).collect(Collectors.joining("-> "));
+        return locations.stream().map(Object::toString).collect(Collectors.joining(" -> "));
     }
 
     public List<ItineraryAttraction> getItineraryAttractions() {
@@ -207,11 +207,6 @@ public class Itinerary {
                 .append(getDescription())
                 .append(" Budget: ")
                 .append(getBudget());
-        for (int i = 1; i <= getNumberOfDays(); i++) {
-            Index day = Index.fromOneBased(i);
-            builder.append(" Day ").append(i).append(": ");
-            getDay(day).getItineraryAttractions().forEach(builder::append);
-        }
         return builder.toString();
     }
 }
