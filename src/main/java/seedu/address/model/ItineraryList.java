@@ -43,7 +43,7 @@ public class ItineraryList implements ReadOnlyItineraryList {
         // sets the selected itinerary as the first itinerary when this is first created.
         // may cause error if no itinerary is every created/ exist in json.
         // TODO REMOVE ME after select itinerary is implemented.
-        setCurrentItinerary(itineraries.asUnmodifiableObservableList().get(0));
+        // setCurrentItinerary(itineraries.asUnmodifiableObservableList().get(0));
         logger.info("Initialising...\nCurrent Itinerary is set as: " + this.getCurrentItinerary());
     }
 
@@ -84,7 +84,7 @@ public class ItineraryList implements ReadOnlyItineraryList {
         itineraries.add(a);
         // sets the newly created itinerary to the selected itinerary.
         // todo REMOVE ME after select itinerary is implemented.
-        setCurrentItinerary(a);
+        // setCurrentItinerary(a);
         logger.info("Current Itinerary is set as: " + this.getCurrentItinerary());
     }
 

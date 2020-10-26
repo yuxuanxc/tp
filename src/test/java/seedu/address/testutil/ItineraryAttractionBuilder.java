@@ -51,7 +51,6 @@ public class ItineraryAttractionBuilder {
     private Rating rating;
     private Visited visited;
     private Set<Tag> tags;
-    private Attraction attraction;
     private ItineraryTime startTime;
     private ItineraryTime endTime;
 
@@ -89,7 +88,6 @@ public class ItineraryAttractionBuilder {
         rating = iaToCopy.getRating();
         visited = iaToCopy.getVisited();
         tags = new HashSet<>(iaToCopy.getTags());
-        attraction = iaToCopy.getAttraction();
         startTime = iaToCopy.getStartTime();
         endTime = iaToCopy.getEndTime();
     }
@@ -269,7 +267,18 @@ public class ItineraryAttractionBuilder {
      * @return a new Attraction.
      */
     public ItineraryAttraction build() {
-        return new ItineraryAttraction(attraction, startTime, endTime);
+        return new ItineraryAttraction(
+                new Attraction(name,
+                        phone,
+                        email,
+                        address,
+                        description,
+                        location,
+                        openingHours,
+                        priceRange,
+                        rating,
+                        visited,
+                        tags), startTime, endTime);
     }
 
 }

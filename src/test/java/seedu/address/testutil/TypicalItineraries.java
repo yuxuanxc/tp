@@ -137,8 +137,7 @@ public class TypicalItineraries {
                     .build(), INDEX_THIRD)
             .build();
 
-    private TypicalItineraries() {
-    } // prevents instantiation
+    private TypicalItineraries() {} // prevents instantiation
 
     /**
      * Returns an {@code ItineraryList} with all the typical itineraries.
