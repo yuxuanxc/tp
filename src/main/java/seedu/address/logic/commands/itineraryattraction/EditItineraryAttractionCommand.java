@@ -13,6 +13,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.attraction.EditAttractionCommand.EditAttractionDescriptor;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.itinerary.Day;
@@ -119,7 +120,7 @@ public class EditItineraryAttractionCommand extends Command {
      * Stores the details to edit the attraction with. Each non-empty field value will replace the
      * corresponding field value of the attraction.
      */
-    public static class EditItineraryAttractionDescriptor {
+    public static class EditItineraryAttractionDescriptor extends EditAttractionDescriptor {
         private ItineraryTime startTime;
         private ItineraryTime endTime;
 
@@ -131,6 +132,17 @@ public class EditItineraryAttractionCommand extends Command {
          * A defensive copy of {@code tags} is used internally.
          */
         public EditItineraryAttractionDescriptor(EditItineraryAttractionDescriptor toCopy) {
+            setName(toCopy.getName().get());
+            setPhone(toCopy.getPhone().get());
+            setEmail(toCopy.getEmail().get());
+            setAddress(toCopy.getAddress().get());
+            setDescription(toCopy.getDescription().get());
+            setLocation(toCopy.getLocation().get());
+            setOpeningHours(toCopy.getOpeningHours().get());
+            setPriceRange(toCopy.getPriceRange().get());
+            setRating(toCopy.getRating().get());
+            setVisited(toCopy.getVisited().get());
+            setTags(toCopy.getTags().get());
             setStartTime(toCopy.startTime);
             setEndTime(toCopy.endTime);
         }
@@ -139,7 +151,7 @@ public class EditItineraryAttractionCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(startTime, endTime);
+            return super.isAnyFieldEdited() && CollectionUtil.isAnyNonNull(startTime, endTime);
         }
 
         public void setStartTime(ItineraryTime startTime) {
@@ -173,7 +185,8 @@ public class EditItineraryAttractionCommand extends Command {
             // state check
             EditItineraryAttractionDescriptor e = (EditItineraryAttractionDescriptor) other;
 
-            return getStartTime().equals(e.getStartTime())
+            return super.equals(other)
+                    && getStartTime().equals(e.getStartTime())
                     && getEndTime().equals(e.getEndTime());
         }
     }

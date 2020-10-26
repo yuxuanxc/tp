@@ -26,12 +26,11 @@ public class AddItineraryAttractionCommand extends Command {
     public static final String MESSAGE_ADD_ATTRACTION_SUCCESS = "Added Attraction: %1$s to Itinerary: %1$s";
     public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in the itinerary.";
     public static final String MESSAGE_INVALID_START_TIME = "The start time cannot be later than end time.";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an attraction identified by the index number used"
-            + " in the displayed attraction list to the itinerary identified by the the index number used in the"
-            + " displayed itinerary list.\n "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an attraction identified by the index in "
+            + "attraction list to the selected itinerary.\n "
             + "Parameters: INDEX " + PREFIX_START_TIME + "START_TIME " + PREFIX_END_TIME + "END_TIME "
             + PREFIX_DAY_VISITING + "DAY_VISITING "
-            + "Example: " + COMMAND_WORD + " INDEX " + PREFIX_START_TIME + "1000 "
+            + "Example: " + COMMAND_WORD + " 1 " + PREFIX_START_TIME + "1000 "
             + PREFIX_END_TIME + "1600 " + PREFIX_DAY_VISITING + "3";
 
     private final Index index;

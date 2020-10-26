@@ -4,8 +4,8 @@ package seedu.address.model.itinerary;
  * Wrapper to hold the time and perform time related functions.
  */
 public class ItineraryTime {
-    private static final String TIME_REGEX = "([01][0-9]|2[0-3])[0-5][0-9]";
-    public static final String VALIDATION_REGEX = TIME_REGEX + "-" + TIME_REGEX;
+    public static final String MESSAGE_CONSTRAINTS = "Time should be of the format HHMM";
+    public static final String VALIDATION_REGEX = "([01][0-9]|2[0-3])[0-5][0-9]";
 
     private final int time;
 
@@ -18,13 +18,6 @@ public class ItineraryTime {
      */
     public static boolean isValidItineraryTime(String test) {
         return test.matches(VALIDATION_REGEX);
-    }
-
-    /**
-     * Returns if a given start time is earlier than end time.
-     */
-    public boolean isValidStartTime(ItineraryTime endTime) {
-        return this.time < endTime.time;
     }
 
     /**
