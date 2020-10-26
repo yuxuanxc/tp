@@ -1,27 +1,17 @@
 package seedu.address.testutil;
 
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_EIFFEL;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DESCRIPTION_EIFFEL;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DESCRIPTION_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_EIFFEL;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LOCATION_EIFFEL;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_LOCATION_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_EIFFEL;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_OPENING_HOURS_EIFFEL;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_OPENING_HOURS_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_EIFFEL;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_RANGE_EIFFEL;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PRICE_RANGE_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RATING_EIFFEL;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_RATING_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_ACTIVITY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_SIGHTSEEING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_VISITED_EIFFEL;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_VISITED_MBS;
+import static seedu.address.testutil.TypicalAttractions.NOTRE_DAME;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD;
@@ -121,23 +111,14 @@ public class TypicalItineraries {
                     .withEndTime("1800")
                     .build(), INDEX_SECOND)
             .withItineraryAttraction(new ItineraryAttractionBuilder()
-                    .withName(VALID_NAME_MBS)
-                    .withPhone(VALID_PHONE_MBS)
-                    .withEmail(VALID_EMAIL_MBS)
-                    .withAddress(VALID_ADDRESS_MBS)
-                    .withDescription(VALID_DESCRIPTION_MBS)
-                    .withLocation(VALID_LOCATION_MBS)
-                    .withOpeningHours(VALID_OPENING_HOURS_MBS)
-                    .withPriceRange(VALID_PRICE_RANGE_MBS)
-                    .withRating(VALID_RATING_MBS)
-                    .withVisited(VALID_VISITED_MBS)
-                    .withTags(VALID_TAG_SIGHTSEEING, VALID_TAG_ACTIVITY)
+                    .withAttraction(NOTRE_DAME)
                     .withStartTime("1200")
                     .withEndTime("1500")
                     .build(), INDEX_THIRD)
             .build();
 
-    private TypicalItineraries() {} // prevents instantiation
+    private TypicalItineraries() {
+    } // prevents instantiation
 
     /**
      * Returns an {@code ItineraryList} with all the typical itineraries.

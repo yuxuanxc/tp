@@ -262,6 +262,24 @@ public class ItineraryAttractionBuilder {
     }
 
     /**
+     * Sets the attraction fields in itinerary attraction that we are building.
+     */
+    public ItineraryAttractionBuilder withAttraction(Attraction attraction) {
+        name = attraction.getName();
+        phone = attraction.getPhone();
+        email = attraction.getEmail();
+        address = attraction.getAddress();
+        description = attraction.getDescription();
+        location = attraction.getLocation();
+        openingHours = attraction.getOpeningHours();
+        priceRange = attraction.getPriceRange();
+        rating = attraction.getRating();
+        visited = attraction.getVisited();
+        tags = attraction.getTags();
+        return this;
+    }
+
+    /**
      * Initializes a new itinerary attraction.
      *
      * @return a new Attraction.
