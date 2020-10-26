@@ -141,6 +141,14 @@ public class ItineraryBuilder {
     }
 
     /**
+     * Sets the {@code days} of the {@code Itinerary} that we are building.
+     */
+    public ItineraryBuilder withDays(List<Day> days) {
+        this.days = new ArrayList<>(days);
+        return this;
+    }
+
+    /**
      * Initializes a new itinerary.
      *
      * @return a new Itinerary.

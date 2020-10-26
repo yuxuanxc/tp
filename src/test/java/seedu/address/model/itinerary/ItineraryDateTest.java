@@ -78,6 +78,11 @@ class ItineraryDateTest {
     }
 
     @Test
+    public void isEqualItineraryDate() {
+        assertTrue(firstDate.isEqual(firstDate));
+    }
+
+    @Test
     public void daysBetweenItineraryDates() {
         assertEquals(ItineraryDate.daysBetween(firstDate, secondDate), 8);
     }

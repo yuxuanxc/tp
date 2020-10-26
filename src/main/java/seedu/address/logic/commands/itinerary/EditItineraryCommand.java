@@ -71,15 +71,19 @@ public class EditItineraryCommand extends Command {
         }
 
         Itinerary itineraryToEdit = lastShownList.get(index.getZeroBased());
-        Itinerary editedItinerary = createEditedItinerary(itineraryToEdit, editItineraryDescriptor);
 
-        if (!itineraryToEdit.isSameItinerary(editedItinerary) && model.hasItinerary(editedItinerary)) {
-            throw new CommandException(MESSAGE_DUPLICATE_ITINERARY);
+        try {
+            Itinerary editedItinerary = createEditedItinerary(itineraryToEdit, editItineraryDescriptor);
+            if (!itineraryToEdit.isSameItinerary(editedItinerary) && model.hasItinerary(editedItinerary)) {
+                throw new CommandException(MESSAGE_DUPLICATE_ITINERARY);
+            }
+
+            model.setItinerary(itineraryToEdit, editedItinerary);
+            model.updateFilteredItineraryList(PREDICATE_SHOW_ALL_ITINERARIES);
+            return new CommandResult(String.format(MESSAGE_EDIT_ITINERARY_SUCCESS, editedItinerary));
+        } catch (IllegalArgumentException e) {
+            throw new CommandException(e.getMessage());
         }
-
-        model.setItinerary(itineraryToEdit, editedItinerary);
-        model.updateFilteredItineraryList(PREDICATE_SHOW_ALL_ITINERARIES);
-        return new CommandResult(String.format(MESSAGE_EDIT_ITINERARY_SUCCESS, editedItinerary));
     }
 
     /**
@@ -97,7 +101,8 @@ public class EditItineraryCommand extends Command {
         ItineraryDate updatedEndDate = editItineraryDescriptor.getEndDate().orElse(itineraryToEdit.getEndDate());
         Budget updatedBudget = editItineraryDescriptor.getBudget().orElse(itineraryToEdit.getBudget());
 
-        return new Itinerary(updatedName, updatedDescription, updatedStartDate, updatedEndDate, updatedBudget);
+        return new Itinerary(updatedName, updatedDescription, updatedStartDate, updatedEndDate, updatedBudget,
+                itineraryToEdit.getDays());
     }
 
     @Override
@@ -133,7 +138,6 @@ public class EditItineraryCommand extends Command {
 
         /**
          * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
          */
         public EditItineraryDescriptor(EditItineraryDescriptor toCopy) {
             setName(toCopy.name);
@@ -213,4 +217,3 @@ public class EditItineraryCommand extends Command {
         }
     }
 }
-
