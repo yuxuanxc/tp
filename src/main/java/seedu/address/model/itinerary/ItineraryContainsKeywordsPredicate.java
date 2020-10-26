@@ -6,9 +6,8 @@ import java.util.function.Predicate;
 import seedu.address.commons.util.StringUtil;
 
 /**
- * Tests that a {@code Itinerary}'s {@code Name}, ***@code Description*** (not working yet),
- *
- * {@code StartTime}, {@code EndTime}, {@code itineraryAttractions}
+ * Tests that a {@code Itinerary}'s {@code Name}, {@code Description},
+ * {@code StartTime}, {@code EndTime}, {@code Budget} and all its itinerary attractions
  * matches any of the keywords given.
  */
 public class ItineraryContainsKeywordsPredicate implements Predicate<Itinerary> {
@@ -24,16 +23,18 @@ public class ItineraryContainsKeywordsPredicate implements Predicate<Itinerary> 
         if (keywords.stream()
                 .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(itinerary.getName().fullName, keyword)
                         || StringUtil.containsWordIgnoreCase(itinerary.getDescription().value, keyword)
-                        // todo change if itinerary date becomes a wrapper class instead of just Localdate
                         || StringUtil.containsWordIgnoreCase(itinerary.getStartDate().toString(), keyword)
                         || StringUtil.containsWordIgnoreCase(itinerary.getEndDate().toString(), keyword)
+                        || StringUtil.containsWordIgnoreCase(itinerary.getBudget().value, keyword)
                 )
         ) {
             return true;
         } else {
-            // todo Also checks through itinerary attractions, remove if not needed (not tested yet)
+            // Also checks through each itinerary attraction
+            ItineraryAttractionContainsKeywordsPredicate iaPredicate =
+                    new ItineraryAttractionContainsKeywordsPredicate(keywords);
             for (ItineraryAttraction ia : itinerary.getItineraryAttractions()) {
-                if (new ItineraryAttractionContainsKeywordsPredicate(keywords).test(ia)) {
+                if (iaPredicate.test(ia)) {
                     return true;
                 }
             }

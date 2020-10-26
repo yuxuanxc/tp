@@ -27,7 +27,7 @@ public class AttractionUtil {
     /**
      * Returns an add command string for adding the {@code attraction}.
      */
-    public static String getAddCommand(Attraction attraction) {
+    public static String getAddAttractionCommand(Attraction attraction) {
         return AddAttractionCommand.COMMAND_WORD + " " + getAttractionDetails(attraction);
     }
 

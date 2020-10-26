@@ -10,8 +10,8 @@ public class Budget {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Budget should only be a non-negative number, and if it contains decimal values it should have"
-                    + " two decimal digits";
-    public static final String VALIDATION_REGEX = "^?[0-9]+(\\.[0-9]{2})?$";
+                    + " only up to two decimal digits";
+    public static final String VALIDATION_REGEX = "^?[0-9]+(\\.[0-9]{1,2})?$";
 
     public final String value;
 
@@ -23,7 +23,7 @@ public class Budget {
     public Budget(String budget) {
         requireNonNull(budget);
         checkArgument(isValidBudget(budget), MESSAGE_CONSTRAINTS);
-        value = budget;
+        value = String.format("%.2f", Double.parseDouble(budget));
     }
 
     /**

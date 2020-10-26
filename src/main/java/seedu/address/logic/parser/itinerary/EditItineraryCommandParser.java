@@ -31,7 +31,7 @@ public class EditItineraryCommandParser implements Parser<EditItineraryCommand> 
         requireNonNull(args);
         ArgumentMultimap argMultimap =
             ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_DESCRIPTION, PREFIX_START_DATE,
-                PREFIX_END_DATE);
+                PREFIX_END_DATE, PREFIX_BUDGET);
 
         Index index;
 

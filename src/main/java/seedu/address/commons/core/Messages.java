@@ -10,5 +10,5 @@ public class Messages {
     public static final String MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX = "The attraction index provided is invalid";
     public static final String MESSAGE_ATTRACTIONS_LISTED_OVERVIEW = "%1$d attractions listed!";
     public static final String MESSAGE_INVALID_ITINERARY_DISPLAYED_INDEX = "The itinerary index provided is invalid";
-    public static final String MESSAGE_ITINERARY_LISTED_OVERVIEW = "%1$d itineraries listed!";
+    public static final String MESSAGE_ITINERARIES_LISTED_OVERVIEW = "%1$d itineraries listed!";
 }
