@@ -153,27 +153,35 @@ public class Attraction {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
-                .append(" Phone: ")
-                .append(getPhone())
-                .append(" Email: ")
-                .append(getEmail())
-                .append(" Address: ")
-                .append(getAddress())
-                .append(" Description: ")
-                .append(getDescription())
-                .append(" Location: ")
-                .append(getLocation())
-                .append(" OpeningHours: ")
-                .append(getOpeningHours())
-                .append(" PriceRange: ")
-                .append(getPriceRange())
-                .append(" Rating: ")
-                .append(getRating())
-                .append(" Visited: ")
-                .append(getVisited())
-                .append(" Tags: ");
-        getTags().forEach(builder::append);
+        builder.append(getName()).append(" Location: ").append(getLocation());
+        if (!getPhone().value.isEmpty()) {
+            builder.append(" Phone: ").append(getPhone());
+        }
+        if (!getEmail().value.isEmpty()) {
+            builder.append(" Email: ").append(getEmail());
+        }
+        if (!getAddress().value.isEmpty()) {
+            builder.append(" Address: ").append(getAddress());
+        }
+        if (!getDescription().value.isEmpty()) {
+            builder.append(" Description: ").append(getDescription());
+        }
+        if (!getOpeningHours().value.isEmpty()) {
+            builder.append(" OpeningHours: ").append(getOpeningHours());
+        }
+        if (!getPriceRange().value.isEmpty()) {
+            builder.append(" PriceRange: ").append(getPriceRange());
+        }
+        if (!getRating().value.isEmpty()) {
+            builder.append(" Rating: ").append(getRating());
+        }
+        if (!getVisited().value.isEmpty()) {
+            builder.append(" Visited: ").append(getVisited());
+        }
+        if (!getTags().isEmpty()) {
+            builder.append(" Tags: ");
+            getTags().forEach(builder::append);
+        }
         return builder.toString();
     }
 }

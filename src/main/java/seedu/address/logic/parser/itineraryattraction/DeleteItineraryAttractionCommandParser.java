@@ -29,14 +29,12 @@ public class DeleteItineraryAttractionCommandParser implements Parser<DeleteItin
     public DeleteItineraryAttractionCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_DAY_VISITING);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_DAY_VISITING) || !argMultimap.getPreamble().isEmpty()) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_DAY_VISITING) || argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     DeleteItineraryAttractionCommand.MESSAGE_USAGE));
         }
 
-        Index dayVisiting = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_DAY_VISITING).get());
         Index index;
-
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
@@ -44,6 +42,7 @@ public class DeleteItineraryAttractionCommandParser implements Parser<DeleteItin
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteItineraryAttractionCommand.MESSAGE_USAGE), pe);
         }
 
+        Index dayVisiting = ParserUtil.parseDayIndex(argMultimap.getValue(PREFIX_DAY_VISITING).get());
         return new DeleteItineraryAttractionCommand(index, dayVisiting);
     }
 

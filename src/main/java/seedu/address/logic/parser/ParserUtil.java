@@ -31,6 +31,7 @@ import seedu.address.model.tag.Tag;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_DAY = "Day cannot be less than 0";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -262,11 +263,26 @@ public class ParserUtil {
     public static ItineraryTime parseItineraryTime(String time) throws ParseException {
         requireNonNull(time);
         String trimmedTime = time.trim();
-
         if (!ItineraryTime.isValidItineraryTime(trimmedTime)) {
-            throw new ParseException(Visited.MESSAGE_CONSTRAINTS);
+            throw new ParseException(ItineraryTime.MESSAGE_CONSTRAINTS);
         }
         return new ItineraryTime(trimmedTime);
     }
+
+    /**
+     * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     * Calls parseIndex return custom message if day is invalid, returning more relevant error message to user.
+     *
+     * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
+     */
+    public static Index parseDayIndex(String oneBasedIndex) throws ParseException {
+        try {
+            return parseIndex(oneBasedIndex);
+        } catch (ParseException pe) {
+            throw new ParseException(MESSAGE_INVALID_DAY);
+        }
+    }
+
 
 }

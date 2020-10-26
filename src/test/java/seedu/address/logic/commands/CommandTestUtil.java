@@ -7,6 +7,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_BUDGET;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_OPENING_HOURS;
@@ -14,6 +16,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRICE_RANGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -26,6 +29,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.attraction.EditAttractionCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.itinerary.EditItineraryCommand;
+import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand;
 import seedu.address.model.AttractionList;
 import seedu.address.model.Model;
 import seedu.address.model.attraction.Attraction;
@@ -34,6 +38,7 @@ import seedu.address.model.itinerary.Itinerary;
 import seedu.address.model.itinerary.ItineraryContainsKeywordsPredicate;
 import seedu.address.testutil.EditAttractionDescriptorBuilder;
 import seedu.address.testutil.EditItineraryDescriptorBuilder;
+import seedu.address.testutil.EditItineraryAttractionDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
@@ -112,6 +117,25 @@ public class CommandTestUtil {
     public static final String BUDGET_DESC_PARIS_TRIP = " " + PREFIX_BUDGET + VALID_BUDGET_PARIS_TRIP;
     public static final String BUDGET_DESC_JAPAN_TRIP = " " + PREFIX_BUDGET + VALID_BUDGET_JAPAN_TRIP;
 
+    //=========== For valid Itinerary Attraction==============================================================
+    public static final String VALID_START_TIME_MBS = "1000";
+    public static final String VALID_START_TIME_EIFFEL = "1200";
+    public static final String VALID_END_TIME_MBS = "1500";
+    public static final String VALID_END_TIME_EIFFEL = "1600";
+    public static final String VALID_INDEX_MBS = "1";
+    public static final String VALID_INDEX_EIFFEL = "2";
+    public static final String VALID_DAY_VISITING_MBS = "3";
+    public static final String VALID_DAY_VISITING_EIFFEL = "2";
+
+    public static final String START_TIME_DESC_EIFFEL = " " + PREFIX_START_TIME + VALID_START_TIME_EIFFEL;
+    public static final String START_TIME_DESC_MBS = " " + PREFIX_START_TIME + VALID_START_TIME_MBS;
+    public static final String END_TIME_DESC_EIFFEL = " " + PREFIX_END_TIME + VALID_END_TIME_EIFFEL;
+    public static final String END_TIME_DESC_MBS = " " + PREFIX_END_TIME + VALID_END_TIME_MBS;
+    public static final String INDEX_DESC_EIFFEL = VALID_INDEX_EIFFEL;
+    public static final String INDEX_DESC_MBS = VALID_INDEX_MBS;
+    public static final String DAY_VISITING_DESC_EIFFEL = " " + PREFIX_DAY_VISITING + VALID_DAY_VISITING_EIFFEL;
+    public static final String DAY_VISITING_DESC_MBS = " " + PREFIX_DAY_VISITING + VALID_DAY_VISITING_MBS;
+
     //=========== For invalids ===============================================================================
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "Zoo&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
@@ -127,12 +151,19 @@ public class CommandTestUtil {
     public static final String INVALID_START_DATE = " " + PREFIX_START_DATE + "1 Jan 2011"; // 'Jan' not allowed in date
     public static final String INVALID_END_DATE = " " + PREFIX_END_DATE + "35-68-2011"; // invalid day and month
     public static final String INVALID_BUDGET = " " + PREFIX_BUDGET + "23.222"; // more than 2 decimal places
+    public static final String INVALID_START_TIME_DESC = " " + PREFIX_START_TIME + "12-33"; // no dash in time
+    public static final String INVALID_END_TIME_DESC = " " + PREFIX_END_TIME + "12111"; // one more digit
+    public static final String INVALID_INDEX_DESC = " -1 "; // index cannot be negative
+    public static final String INVALID_DAY_VISITING_DESC = " " + PREFIX_DAY_VISITING + "-2232"; // negative day
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
     public static final EditAttractionCommand.EditAttractionDescriptor DESC_EIFFEL;
     public static final EditAttractionCommand.EditAttractionDescriptor DESC_MBS;
+
+    public static final EditItineraryAttractionCommand.EditItineraryAttractionDescriptor DESC_EIFFEL_IA;
+    public static final EditItineraryAttractionCommand.EditItineraryAttractionDescriptor DESC_MBS_IA;
 
     public static final EditItineraryCommand.EditItineraryDescriptor DESC_PARIS_TRIP;
     public static final EditItineraryCommand.EditItineraryDescriptor DESC_JAPAN_TRIP;
@@ -167,6 +198,22 @@ public class CommandTestUtil {
                 .withEndDate(VALID_END_DATE_JAPAN_TRIP)
                 .withBudget(VALID_BUDGET_JAPAN_TRIP)
                 .build();
+
+        //=========== For Itinerary Attraction================================================================
+        DESC_EIFFEL_IA = new EditItineraryAttractionDescriptorBuilder().withName(VALID_NAME_EIFFEL)
+                .withPhone(VALID_PHONE_EIFFEL).withEmail(VALID_EMAIL_EIFFEL)
+                .withAddress(VALID_ADDRESS_EIFFEL).withDescription(VALID_DESCRIPTION_EIFFEL)
+                .withLocation(VALID_LOCATION_EIFFEL).withOpeningHours(VALID_OPENING_HOURS_EIFFEL)
+                .withPriceRange(VALID_PRICE_RANGE_EIFFEL).withRating(VALID_RATING_EIFFEL)
+                .withVisited(VALID_VISITED_EIFFEL).withTags(VALID_TAG_SIGHTSEEING)
+                .withStartTime(VALID_START_TIME_EIFFEL).withEndTime(VALID_END_TIME_EIFFEL).build();
+        DESC_MBS_IA = new EditItineraryAttractionDescriptorBuilder().withName(VALID_NAME_MBS)
+                .withPhone(VALID_PHONE_MBS).withEmail(VALID_EMAIL_MBS)
+                .withAddress(VALID_ADDRESS_MBS).withDescription(VALID_DESCRIPTION_MBS)
+                .withLocation(VALID_LOCATION_MBS).withOpeningHours(VALID_OPENING_HOURS_MBS)
+                .withPriceRange(VALID_PRICE_RANGE_MBS).withRating(VALID_RATING_MBS)
+                .withVisited(VALID_VISITED_MBS).withTags(VALID_TAG_ACTIVITY, VALID_TAG_SIGHTSEEING)
+                .withStartTime(VALID_START_TIME_MBS).withEndTime(VALID_END_TIME_MBS).build();
     }
 
     /**
@@ -175,7 +222,7 @@ public class CommandTestUtil {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-            Model expectedModel) {
+                                            Model expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
@@ -190,7 +237,7 @@ public class CommandTestUtil {
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-            Model expectedModel) {
+                                            Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }

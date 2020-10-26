@@ -50,7 +50,6 @@ public class LogicManager implements Logic {
         try {
             storage.saveAttractionList(model.getAttractionList());
             storage.saveItineraryList(model.getItineraryList());
-            System.out.println(model.getItineraryListFilePath());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
