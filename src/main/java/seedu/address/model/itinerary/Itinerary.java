@@ -49,25 +49,6 @@ public class Itinerary {
         }
     }
 
-    /**
-     * Not given number of days
-     */
-    public Itinerary(Name name, Description description, ItineraryDate startDate, ItineraryDate endDate,
-                     Budget budget) {
-        requireAllNonNull(name, description, startDate, endDate, budget);
-
-        checkArgument(startDate.isBefore(endDate), "Start date should come before end date");
-
-        this.name = name;
-        this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.budget = budget;
-        for (int i = 1; i <= getNumberOfDays(); i++) {
-            this.days.add(new Day(Integer.toString(i)));
-        }
-    }
-
     public Name getName() {
         return name;
     }
@@ -114,7 +95,7 @@ public class Itinerary {
                 }
             }
         }
-        return locations.stream().map(Object::toString).collect(Collectors.joining("-> "));
+        return locations.stream().map(Object::toString).collect(Collectors.joining(" -> "));
     }
 
     public List<ItineraryAttraction> getItineraryAttractions() {
@@ -148,7 +129,6 @@ public class Itinerary {
     /**
      * Edits the corresponding itinerary attraction in the itinerary.
      */
-    // todo refine depending on usage
     public void editItineraryAttraction(ItineraryAttraction target, ItineraryAttraction editedItineraryAttraction,
                                         Index day) {
         requireNonNull(editedItineraryAttraction);
@@ -182,7 +162,8 @@ public class Itinerary {
         return otherItinerary != null
                 && otherItinerary.getName().equals(getName())
                 && otherItinerary.getStartDate().equals(getStartDate())
-                && otherItinerary.getEndDate().equals(getEndDate());
+                && otherItinerary.getEndDate().equals(getEndDate())
+                && otherItinerary.getBudget().equals(getBudget());
     }
 
     /**
@@ -226,11 +207,6 @@ public class Itinerary {
                 .append(getDescription())
                 .append(" Budget: ")
                 .append(getBudget());
-        for (int i = 1; i <= getNumberOfDays(); i++) {
-            Index day = Index.fromOneBased(i);
-            builder.append(" Day ").append(i).append(": ");
-            getDay(day).getItineraryAttractions().forEach(builder::append);
-        }
         return builder.toString();
     }
 }
