@@ -15,7 +15,6 @@ public class ListItineraryCommand extends Command {
     public static final String COMMAND_WORD = "list-itinerary";
     public static final String MESSAGE_SUCCESS = "Listed all itineraries";
 
-
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
