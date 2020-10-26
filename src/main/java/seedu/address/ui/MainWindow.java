@@ -128,6 +128,9 @@ public class MainWindow extends UiPart<Stage> {
         itineraryListPanel = new ItineraryListPanel(logic.getFilteredItineraryList());
         itineraryListPanelPlaceholder.getChildren().add(itineraryListPanel.getRoot());
 
+        itineraryAttractionListPanel = new ItineraryAttractionListPanel(logic.getFilteredItineraryList());
+        itineraryAttractionListPanelPlaceholder.getChildren().add(itineraryAttractionListPanel.getRoot());
+
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
