@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_BUDGET;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -37,8 +37,8 @@ import seedu.address.model.attraction.AttractionContainsKeywordsPredicate;
 import seedu.address.model.itinerary.Itinerary;
 import seedu.address.model.itinerary.ItineraryContainsKeywordsPredicate;
 import seedu.address.testutil.EditAttractionDescriptorBuilder;
-import seedu.address.testutil.EditItineraryDescriptorBuilder;
 import seedu.address.testutil.EditItineraryAttractionDescriptorBuilder;
+import seedu.address.testutil.EditItineraryDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
