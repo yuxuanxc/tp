@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.itineraryattraction;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
@@ -58,6 +59,10 @@ public class EditItineraryAttractionCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        if (model.getCurrentItinerary() == null){
+            throw new CommandException(MESSAGE_ITINERARY_NOT_SELECTED);
+        }
 
         Itinerary itinerary = model.getCurrentItinerary();
         Day day = itinerary.getDay(dayVisiting);
