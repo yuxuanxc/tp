@@ -22,6 +22,7 @@ import seedu.address.logic.commands.itinerary.DeleteItineraryCommand;
 import seedu.address.logic.commands.itinerary.EditItineraryCommand;
 import seedu.address.logic.commands.itinerary.FindItineraryCommand;
 import seedu.address.logic.commands.itinerary.ListItineraryCommand;
+import seedu.address.logic.commands.itinerary.SelectItineraryCommand;
 import seedu.address.logic.commands.itineraryattraction.AddItineraryAttractionCommand;
 import seedu.address.logic.commands.itineraryattraction.DeleteItineraryAttractionCommand;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand;
@@ -35,6 +36,7 @@ import seedu.address.logic.parser.itinerary.AddItineraryCommandParser;
 import seedu.address.logic.parser.itinerary.DeleteItineraryCommandParser;
 import seedu.address.logic.parser.itinerary.EditItineraryCommandParser;
 import seedu.address.logic.parser.itinerary.FindItineraryCommandParser;
+import seedu.address.logic.parser.itinerary.SelectItineraryCommandParser;
 import seedu.address.logic.parser.itineraryattraction.AddItineraryAttractionCommandParser;
 import seedu.address.logic.parser.itineraryattraction.DeleteItineraryAttractionCommandParser;
 import seedu.address.logic.parser.itineraryattraction.EditItineraryAttractionCommandParser;
@@ -109,6 +111,9 @@ public class TrackPadParser {
 
         case ListItineraryCommand.COMMAND_WORD:
             return new ListItineraryCommand();
+
+        case SelectItineraryCommand.COMMAND_WORD:
+            return new SelectItineraryCommandParser().parse(arguments);
 
         case AddItineraryAttractionCommand.COMMAND_WORD:
             return new AddItineraryAttractionCommandParser().parse(arguments);
