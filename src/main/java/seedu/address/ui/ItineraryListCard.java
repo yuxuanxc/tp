@@ -6,9 +6,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.itinerary.Itinerary;
 
-
-
-public class ItineraryListCard extends UiPart<Region>{
+public class ItineraryListCard extends UiPart<Region> {
 
     private static final String FXML = "ItineraryListCard.fxml";
 
