@@ -412,6 +412,12 @@ public class ParserUtilTest {
     public void parseDayIndex_outOfRangeInput_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_INVALID_DAY, ()
             -> ParserUtil.parseDayIndex(Long.toString(Integer.MAX_VALUE + 1)));
+
+        assertThrows(ParseException.class, MESSAGE_INVALID_DAY, ()
+            -> ParserUtil.parseDayIndex(Long.toString(-2)));
+
+        assertThrows(ParseException.class, MESSAGE_INVALID_DAY, ()
+            -> ParserUtil.parseDayIndex(Long.toString(0)));
     }
 
     @Test

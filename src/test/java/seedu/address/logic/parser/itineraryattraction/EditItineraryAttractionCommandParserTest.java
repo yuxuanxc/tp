@@ -11,7 +11,21 @@ import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.END_TIME_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.END_TIME_DESC_MBS;
+import static seedu.address.logic.commands.CommandTestUtil.INDEX_DESC_EIFFEL;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_DAY_VISITING_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_END_TIME_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_LOCATION_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_OPENING_HOURS_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_PRICE_RANGE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_RATING_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_START_TIME_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_VISITED_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.LOCATION_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.LOCATION_DESC_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_EIFFEL;
@@ -57,7 +71,9 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_VISITED_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.VISITED_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.VISITED_DESC_MBS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_DAY;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD;
@@ -67,6 +83,18 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand.EditItineraryAttractionDescriptor;
+import seedu.address.model.attraction.Address;
+import seedu.address.model.attraction.Email;
+import seedu.address.model.attraction.Location;
+import seedu.address.model.attraction.OpeningHours;
+import seedu.address.model.attraction.Phone;
+import seedu.address.model.attraction.PriceRange;
+import seedu.address.model.attraction.Rating;
+import seedu.address.model.attraction.Visited;
+import seedu.address.model.commons.Description;
+import seedu.address.model.commons.Name;
+import seedu.address.model.itinerary.ItineraryTime;
+import seedu.address.model.tag.Tag;
 import seedu.address.testutil.EditItineraryAttractionDescriptorBuilder;
 
 
@@ -310,72 +338,123 @@ public class EditItineraryAttractionCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
-    //    @Test
-    //    public void parse_missingParts_failure() {
-    //        // no index specified
-    //        assertParseFailure(parser, VALID_NAME_EIFFEL, MESSAGE_INVALID_FORMAT);
-    //
-    //        // no field specified
-    //        assertParseFailure(parser, "1", EditItineraryAttractionCommand.MESSAGE_NOT_EDITED);
-    //
-    //        // no index and no field specified
-    //        assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);
-    //    }
+    @Test
+    public void parse_missingParts_failure() {
+        // no index specified
+        assertParseFailure(parser, VALID_NAME_EIFFEL, MESSAGE_INVALID_FORMAT);
 
-    //    @Test
-    //    public void parse_invalidPreamble_failure() {
-    //        // negative index
-    //        assertParseFailure(parser, "-5" + NAME_DESC_EIFFEL, MESSAGE_INVALID_FORMAT);
-    //
-    //        // zero index
-    //        assertParseFailure(parser, "0" + NAME_DESC_EIFFEL, MESSAGE_INVALID_FORMAT);
-    //
-    //        // invalid arguments being parsed as preamble
-    //        assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
-    //
-    //        // invalid prefix being parsed as preamble
-    //        assertParseFailure(parser, "1 i/ string", MESSAGE_INVALID_FORMAT);
-    //    }
+        // no day specified
+        assertParseFailure(parser, INDEX_DESC_EIFFEL, MESSAGE_INVALID_FORMAT);
 
-    //    @Test
-    //    public void parse_invalidValue_failure() {
-    //        assertParseFailure(parser, "1" + INVALID_NAME_DESC, Name.MESSAGE_CONSTRAINTS); // invalid name
-    //        assertParseFailure(parser, "1" + INVALID_PHONE_DESC, Phone.MESSAGE_CONSTRAINTS); // invalid phone
-    //        assertParseFailure(parser, "1" + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS); // invalid email
-    //        assertParseFailure(parser, "1" + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS); // invalid address
-    //        assertParseFailure(parser, "1" + INVALID_DESCRIPTION_DESC,
-    //                Description.MESSAGE_CONSTRAINTS); // invalid description
-    //        assertParseFailure(parser, "1" + INVALID_LOCATION_DESC, Location.MESSAGE_CONSTRAINTS); // invalid location
-    //        assertParseFailure(parser, "1" + INVALID_OPENING_HOURS_DESC,
-    //                OpeningHours.MESSAGE_CONSTRAINTS); // invalid opening hours
-    //        assertParseFailure(parser, "1" + INVALID_PRICE_RANGE_DESC,
-    //                PriceRange.MESSAGE_CONSTRAINTS); // invalid price range
-    //        assertParseFailure(parser, "1" + INVALID_RATING_DESC, Rating.MESSAGE_CONSTRAINTS); // invalid rating
-    //        assertParseFailure(parser, "1" + INVALID_VISITED_DESC, Visited.MESSAGE_CONSTRAINTS); // invalid visited
-    //        assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
-    //
-    //        // invalid phone followed by valid email
-    //        assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EMAIL_DESC_EIFFEL, Phone.MESSAGE_CONSTRAINTS);
-    //
-    //        // valid phone followed by invalid phone. The test case for invalid phone followed by valid phone
-    //        // is tested at {@code parse_invalidValueFollowedByValidValue_success()}
-    //        assertParseFailure(parser, "1" + PHONE_DESC_MBS + INVALID_PHONE_DESC, Phone.MESSAGE_CONSTRAINTS);
-    //
-    //        // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code ItineraryAttraction} being
-    //        edited,
-    //        // parsing it together with a valid tag results in error
-    //        assertParseFailure(parser, "1" + TAG_DESC_ACTIVITY + TAG_DESC_SIGHTSEEING + TAG_EMPTY, Tag
-    //        .MESSAGE_CONSTRAINTS);
-    //        assertParseFailure(parser, "1" + TAG_DESC_ACTIVITY + TAG_EMPTY + TAG_DESC_SIGHTSEEING, Tag
-    //        .MESSAGE_CONSTRAINTS);
-    //        assertParseFailure(parser, "1" + TAG_EMPTY + TAG_DESC_ACTIVITY + TAG_DESC_SIGHTSEEING, Tag
-    //        .MESSAGE_CONSTRAINTS);
-    //
-    //        // multiple invalid values, but only the first invalid value is captured
-    //        assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC + VALID_ADDRESS_EIFFEL
-    //                + VALID_PHONE_EIFFEL + VALID_DESCRIPTION_EIFFEL + VALID_LOCATION_EIFFEL +
-    //                VALID_OPENING_HOURS_EIFFEL
-    //                + VALID_PRICE_RANGE_EIFFEL + VALID_RATING_EIFFEL + VALID_VISITED_EIFFEL, Name
-    //                .MESSAGE_CONSTRAINTS);
-    //    }
+        // no field specified
+        assertParseFailure(parser, INDEX_DESC_EIFFEL + DAY_VISITING_DESC_MBS,
+                EditItineraryAttractionCommand.MESSAGE_NOT_EDITED);
+
+        // no index and no field specified
+        assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);
+    }
+
+    @Test
+    public void parse_invalidPreamble_failure() {
+        // negative index
+        assertParseFailure(parser, "-5" + DAY_VISITING_DESC_EIFFEL + NAME_DESC_EIFFEL, MESSAGE_INVALID_FORMAT);
+
+        // zero index
+        assertParseFailure(parser, "0" + DAY_VISITING_DESC_EIFFEL + NAME_DESC_EIFFEL, MESSAGE_INVALID_FORMAT);
+
+        // invalid arguments being parsed as preamble
+        assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
+
+        // invalid prefix being parsed as preamble
+        assertParseFailure(parser, "1 i/ string", MESSAGE_INVALID_FORMAT);
+    }
+
+    @Test
+    public void parse_invalidValue_failure() {
+        // invalid name
+        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_NAME_DESC, Name.MESSAGE_CONSTRAINTS);
+
+        // invalid phone
+        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_PHONE_DESC, Phone.MESSAGE_CONSTRAINTS);
+
+        // invalid email
+        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS);
+
+        // invalid address
+        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS);
+
+        // invalid description
+        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_DESCRIPTION_DESC,
+                Description.MESSAGE_CONSTRAINTS);
+
+        // invalid location
+        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_LOCATION_DESC,
+                Location.MESSAGE_CONSTRAINTS);
+
+        // invalid opening hours
+        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_OPENING_HOURS_DESC,
+                OpeningHours.MESSAGE_CONSTRAINTS);
+
+        // invalid price range
+        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_PRICE_RANGE_DESC,
+                PriceRange.MESSAGE_CONSTRAINTS);
+
+        // invalid rating
+        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_RATING_DESC, Rating.MESSAGE_CONSTRAINTS);
+
+        // invalid visited
+        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_VISITED_DESC,
+                Visited.MESSAGE_CONSTRAINTS);
+
+        // invalid tag
+        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS);
+
+        // invalid start time
+        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_START_TIME_DESC,
+                ItineraryTime.MESSAGE_CONSTRAINTS);
+
+        // invalid end time
+        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_END_TIME_DESC,
+                ItineraryTime.MESSAGE_CONSTRAINTS);
+
+        // negative day
+        assertParseFailure(parser, "2" + INVALID_DAY_VISITING_DESC + NAME_DESC_EIFFEL, MESSAGE_INVALID_DAY);
+
+        // zero day
+        assertParseFailure(parser, "2" + " day/0" + NAME_DESC_EIFFEL, MESSAGE_INVALID_DAY);
+
+        // multiple day
+        assertParseFailure(parser, "2 day/213 321" + NAME_DESC_EIFFEL, MESSAGE_INVALID_DAY);
+
+        // not a day
+        assertParseFailure(parser, "2 day/123 yum" + NAME_DESC_EIFFEL, MESSAGE_INVALID_DAY);
+        assertParseFailure(parser, "3 day/fda" + NAME_DESC_EIFFEL, MESSAGE_INVALID_DAY);
+
+        // invalid phone followed by valid email
+        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_PHONE_DESC + EMAIL_DESC_EIFFEL,
+                Phone.MESSAGE_CONSTRAINTS);
+
+        // valid phone followed by invalid phone. The test case for invalid phone followed by valid phone
+        // is tested at {@code parse_invalidValueFollowedByValidValue_success()}
+        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + PHONE_DESC_MBS + INVALID_PHONE_DESC,
+                Phone.MESSAGE_CONSTRAINTS);
+
+        // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code ItineraryAttraction} being
+        // edited, parsing it together with a valid tag results in error
+        assertParseFailure(parser,
+                "1" + DAY_VISITING_DESC_EIFFEL + TAG_DESC_ACTIVITY + TAG_DESC_SIGHTSEEING + TAG_EMPTY,
+                Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser,
+                "1" + DAY_VISITING_DESC_EIFFEL + TAG_DESC_ACTIVITY + TAG_EMPTY + TAG_DESC_SIGHTSEEING,
+                Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser,
+                "1" + DAY_VISITING_DESC_EIFFEL + TAG_EMPTY + TAG_DESC_ACTIVITY + TAG_DESC_SIGHTSEEING,
+                Tag.MESSAGE_CONSTRAINTS);
+
+        // multiple invalid values, but only the first invalid value is captured
+        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_NAME_DESC + INVALID_EMAIL_DESC
+                + VALID_ADDRESS_EIFFEL + VALID_PHONE_EIFFEL + VALID_DESCRIPTION_EIFFEL + VALID_LOCATION_EIFFEL
+                + VALID_OPENING_HOURS_EIFFEL + VALID_PRICE_RANGE_EIFFEL + VALID_RATING_EIFFEL
+                + VALID_VISITED_EIFFEL, Name.MESSAGE_CONSTRAINTS);
+    }
 }

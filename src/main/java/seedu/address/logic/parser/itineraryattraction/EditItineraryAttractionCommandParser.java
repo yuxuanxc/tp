@@ -65,7 +65,7 @@ public class EditItineraryAttractionCommandParser implements Parser<EditItinerar
                     EditItineraryAttractionCommand.MESSAGE_USAGE));
         }
 
-        Index dayVisiting = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_DAY_VISITING).get());
+        Index dayVisiting = ParserUtil.parseDayIndex(argMultimap.getValue(PREFIX_DAY_VISITING).get());
 
         EditItineraryAttractionDescriptor editItiAttrDesc = new EditItineraryAttractionDescriptor();
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
