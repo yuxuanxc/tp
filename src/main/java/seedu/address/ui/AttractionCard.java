@@ -34,6 +34,8 @@ public class AttractionCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
+    private Label description;
+    @FXML
     private Label phone;
     @FXML
     private Label address;
@@ -42,8 +44,6 @@ public class AttractionCard extends UiPart<Region> {
     @FXML
     // For JavaFX, rename location to locale as location is a reserved keyword in JavaFX
     private Label locale;
-    @FXML
-    private Label description;
     @FXML
     private Label openingHours;
     @FXML

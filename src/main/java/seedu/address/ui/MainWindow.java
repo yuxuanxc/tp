@@ -34,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private AttractionListPanel attractionListPanel;
     private ItineraryListPanel itineraryListPanel;
+    private ItineraryAttractionListPanel itineraryAttractionListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -51,6 +52,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane itineraryListPanelPlaceholder;
+
+    @FXML
+    private StackPane itineraryAttractionListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -177,6 +181,10 @@ public class MainWindow extends UiPart<Stage> {
 
     public ItineraryListPanel getItineraryListPanel() {
         return itineraryListPanel;
+    }
+
+    public ItineraryAttractionListPanel getItineraryAttractionListPanel() {
+        return itineraryAttractionListPanel;
     }
 
     /**
