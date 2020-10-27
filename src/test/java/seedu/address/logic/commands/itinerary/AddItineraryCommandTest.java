@@ -34,8 +34,7 @@ class AddItineraryCommandTest {
 
     @Test
     public void execute_itineraryAcceptedByModel_addSuccessful() throws Exception {
-        AddItineraryCommandTest.ModelStubAcceptingItineraryAdded modelStub =
-                new AddItineraryCommandTest.ModelStubAcceptingItineraryAdded();
+        ModelStubAcceptingItineraryAdded modelStub = new ModelStubAcceptingItineraryAdded();
         Itinerary validItinerary = new ItineraryBuilder().build();
 
         CommandResult commandResult = new AddItineraryCommand(validItinerary).execute(modelStub);
@@ -49,8 +48,7 @@ class AddItineraryCommandTest {
     public void execute_duplicateItinerary_throwsCommandException() {
         Itinerary validItinerary = new ItineraryBuilder().build();
         AddItineraryCommand addItineraryCommand = new AddItineraryCommand(validItinerary);
-        AddItineraryCommandTest.ModelStub modelStub =
-                new AddItineraryCommandTest.ModelStubWithItinerary(validItinerary);
+        ModelStub modelStub = new ModelStubWithItinerary(validItinerary);
 
         assertThrows(CommandException.class,
                 AddItineraryCommand.MESSAGE_DUPLICATE_ITINERARY, () -> addItineraryCommand.execute(modelStub));
