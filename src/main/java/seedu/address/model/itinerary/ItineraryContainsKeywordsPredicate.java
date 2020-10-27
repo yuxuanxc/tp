@@ -25,7 +25,8 @@ public class ItineraryContainsKeywordsPredicate implements Predicate<Itinerary> 
                         || StringUtil.containsWordIgnoreCase(itinerary.getDescription().value, keyword)
                         || StringUtil.containsWordIgnoreCase(itinerary.getStartDate().toString(), keyword)
                         || StringUtil.containsWordIgnoreCase(itinerary.getEndDate().toString(), keyword)
-                        || StringUtil.containsWordIgnoreCase(itinerary.getBudget().value, keyword)
+                        || itinerary.getBudget().value.contains(keyword) // numerical budget value
+                        || itinerary.getBudget().toString().contains(keyword) // budget value with $
                 )
         ) {
             return true;

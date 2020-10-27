@@ -50,7 +50,7 @@ public class ItineraryTime {
 
     @Override
     public String toString() {
-        return String.valueOf(time);
+        return String.format("%04d", time);
     }
 
     @Override

@@ -48,7 +48,7 @@ public class ItineraryListCard extends UiPart<Region> {
         startDate.setText(itinerary.getStartDate().value);
         endDate.setText(itinerary.getEndDate().value);
         description.setText(itinerary.getDescription().value);
-        budget.setText(itinerary.getBudget().value);
+        budget.setText(itinerary.getBudget().toString());
         locale.setText(itinerary.getLocations());
     }
 
