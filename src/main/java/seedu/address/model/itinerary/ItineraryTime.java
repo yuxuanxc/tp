@@ -36,9 +36,16 @@ public class ItineraryTime {
 
     @Override
     public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof ItineraryTime // instanceof handles nulls
-                && time == (((ItineraryTime) other).time)); // state check
+        if (this == other) {
+            return true;
+        }
+
+        if (!(other instanceof ItineraryTime)) {
+            return false;
+        }
+
+        ItineraryTime otherTime = (ItineraryTime) other;
+        return time == otherTime.time; // state check
     }
 
     @Override
