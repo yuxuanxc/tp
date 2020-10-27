@@ -58,7 +58,7 @@ public class CommandTestUtil {
             + "wrought-iron 1889 tower, with steps and elevators to observation decks.";
     public static final String VALID_DESCRIPTION_MBS = "The Marina Bay Sands is an integrated "
             + "resort fronting Marina Bay within the Downtown Core district of Singapore.";
-    public static final String VALID_LOCATION_EIFFEL = "France, Paris";
+    public static final String VALID_LOCATION_EIFFEL = "Paris, France";
     public static final String VALID_LOCATION_MBS = "Singapore, Singapore";
     public static final String VALID_OPENING_HOURS_EIFFEL = "1000-2200";
     public static final String VALID_OPENING_HOURS_MBS = "0000-2359";
@@ -117,7 +117,7 @@ public class CommandTestUtil {
     public static final String BUDGET_DESC_PARIS_TRIP = " " + PREFIX_BUDGET + VALID_BUDGET_PARIS_TRIP;
     public static final String BUDGET_DESC_JAPAN_TRIP = " " + PREFIX_BUDGET + VALID_BUDGET_JAPAN_TRIP;
 
-    //=========== For valid Itinerary Attraction==============================================================
+    //=========== For valid Itinerary Attraction =============================================================
     public static final String VALID_START_TIME_MBS = "1000";
     public static final String VALID_START_TIME_EIFFEL = "1200";
     public static final String VALID_END_TIME_MBS = "1500";
@@ -148,9 +148,9 @@ public class CommandTestUtil {
     public static final String INVALID_RATING_DESC = " " + PREFIX_RATING;
     public static final String INVALID_VISITED_DESC = " " + PREFIX_VISITED + "True1"; // numbers not allowed in VISITED
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "Sightseeing*"; // '*' not allowed in tags
-    public static final String INVALID_START_DATE = " " + PREFIX_START_DATE + "1 Jan 2011"; // 'Jan' not allowed in date
-    public static final String INVALID_END_DATE = " " + PREFIX_END_DATE + "35-68-2011"; // invalid day and month
-    public static final String INVALID_BUDGET = " " + PREFIX_BUDGET + "23.222"; // more than 2 decimal places
+    public static final String INVALID_START_DATE_DESC = " " + PREFIX_START_DATE + "1 Jan 2011"; // 'Jan' invalid date
+    public static final String INVALID_END_DATE_DESC = " " + PREFIX_END_DATE + "35-68-2011"; // invalid day and month
+    public static final String INVALID_BUDGET_DESC = " " + PREFIX_BUDGET + "23.222"; // more than 2 decimal places
     public static final String INVALID_START_TIME_DESC = " " + PREFIX_START_TIME + "12-33"; // no dash in time
     public static final String INVALID_END_TIME_DESC = " " + PREFIX_END_TIME + "12111"; // one more digit
     public static final String INVALID_INDEX_DESC = " -1 "; // index cannot be negative
@@ -199,7 +199,7 @@ public class CommandTestUtil {
                 .withBudget(VALID_BUDGET_JAPAN_TRIP)
                 .build();
 
-        //=========== For Itinerary Attraction================================================================
+        //=========== For Itinerary Attraction ===============================================================
         DESC_EIFFEL_IA = new EditItineraryAttractionDescriptorBuilder().withName(VALID_NAME_EIFFEL)
                 .withPhone(VALID_PHONE_EIFFEL).withEmail(VALID_EMAIL_EIFFEL)
                 .withAddress(VALID_ADDRESS_EIFFEL).withDescription(VALID_DESCRIPTION_EIFFEL)

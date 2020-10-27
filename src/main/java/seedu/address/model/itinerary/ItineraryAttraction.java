@@ -93,9 +93,8 @@ public class ItineraryAttraction extends Attraction {
      * Returns false if timing does not clash with this itinerary attraction.
      */
     public boolean isTimingClash(ItineraryAttraction itineraryAttraction) {
-        // Might make a mistake here with the ! due to De Morgan's law
-        return !this.getStartTime().isEarlierThan(itineraryAttraction.getStartTime())
-                && !this.getEndTime().isLaterThan(itineraryAttraction.getEndTime());
+        return (this.getStartTime().isEarlierThan(itineraryAttraction.getEndTime()))
+                && (itineraryAttraction.getStartTime().isEarlierThan(this.getEndTime()));
     }
 
     /**
@@ -128,7 +127,9 @@ public class ItineraryAttraction extends Attraction {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(super.toString())
+                .append(" Start time: ")
                 .append(startTime)
+                .append(" End time: ")
                 .append(endTime);
 
         return builder.toString();
