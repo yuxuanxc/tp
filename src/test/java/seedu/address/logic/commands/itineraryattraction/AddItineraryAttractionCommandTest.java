@@ -61,6 +61,7 @@ public class AddItineraryAttractionCommandTest {
         assertThrows(CommandException.class, MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX, ()
             -> addIaCommand.execute(model)); // test on empty filtered list
 
+
         ModelStubWithItineraryAttraction model2 = new ModelStubWithItineraryAttraction(new ItineraryBuilder()
                 .withItineraryAttraction(new ItineraryAttractionBuilder().withAttraction(new AttractionBuilder()
                         .build()).build(), INDEX_FIRST).build());

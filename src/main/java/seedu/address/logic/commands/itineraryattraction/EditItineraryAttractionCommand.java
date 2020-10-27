@@ -77,8 +77,10 @@ public class EditItineraryAttractionCommand extends Command {
         ItineraryAttraction editedItineraryAttraction = createEditedItineraryAttraction(itineraryAttractionToEdit,
                 editIaDescriptor);
 
+
+        // todo decide if isSameItineraryAttraction is redundant
         if (!itineraryAttractionToEdit.isSameItineraryAttraction(editedItineraryAttraction)
-                && day.contains(editedItineraryAttraction)) {
+                || day.contains(editedItineraryAttraction)) {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
         }
 
