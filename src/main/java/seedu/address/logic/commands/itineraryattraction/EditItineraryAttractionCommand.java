@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.itineraryattraction;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
@@ -59,6 +60,10 @@ public class EditItineraryAttractionCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
+        if (model.getCurrentItinerary() == null) {
+            throw new CommandException(MESSAGE_ITINERARY_NOT_SELECTED);
+        }
+
         Itinerary itinerary = model.getCurrentItinerary();
         Day day = itinerary.getDay(dayVisiting);
         List<ItineraryAttraction> itineraryAttractionsThatDay =
@@ -113,7 +118,8 @@ public class EditItineraryAttractionCommand extends Command {
         // state check
         EditItineraryAttractionCommand e = (EditItineraryAttractionCommand) other;
         return index.equals(e.index)
-                && editIaDescriptor.equals(e.editIaDescriptor);
+                && editIaDescriptor.equals(e.editIaDescriptor)
+                && dayVisiting.equals(e.dayVisiting);
     }
 
     /**
@@ -132,17 +138,50 @@ public class EditItineraryAttractionCommand extends Command {
          * A defensive copy of {@code tags} is used internally.
          */
         public EditItineraryAttractionDescriptor(EditItineraryAttractionDescriptor toCopy) {
-            setName(toCopy.getName().get());
-            setPhone(toCopy.getPhone().get());
-            setEmail(toCopy.getEmail().get());
-            setAddress(toCopy.getAddress().get());
-            setDescription(toCopy.getDescription().get());
-            setLocation(toCopy.getLocation().get());
-            setOpeningHours(toCopy.getOpeningHours().get());
-            setPriceRange(toCopy.getPriceRange().get());
-            setRating(toCopy.getRating().get());
-            setVisited(toCopy.getVisited().get());
-            setTags(toCopy.getTags().get());
+            if (toCopy.getName().isPresent()) {
+                setName(toCopy.getName().get());
+            }
+
+            if (toCopy.getPhone().isPresent()) {
+                setPhone(toCopy.getPhone().get());
+            }
+
+            if (toCopy.getEmail().isPresent()) {
+                setEmail(toCopy.getEmail().get());
+            }
+
+            if (toCopy.getAddress().isPresent()) {
+                setAddress(toCopy.getAddress().get());
+            }
+
+            if (toCopy.getDescription().isPresent()) {
+                setDescription(toCopy.getDescription().get());
+            }
+
+            if (toCopy.getLocation().isPresent()) {
+                setLocation(toCopy.getLocation().get());
+            }
+
+            if (toCopy.getOpeningHours().isPresent()) {
+                setOpeningHours(toCopy.getOpeningHours().get());
+            }
+
+            if (toCopy.getPriceRange().isPresent()) {
+                setPriceRange(toCopy.getPriceRange().get());
+            }
+
+            if (toCopy.getRating().isPresent()) {
+                setRating(toCopy.getRating().get());
+            }
+
+            if (toCopy.getVisited().isPresent()) {
+                setVisited(toCopy.getVisited().get());
+            }
+
+            if (toCopy.getTags().isPresent()) {
+                setTags(toCopy.getTags().get());
+            }
+
             setStartTime(toCopy.startTime);
             setEndTime(toCopy.endTime);
         }
@@ -151,7 +190,7 @@ public class EditItineraryAttractionCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return super.isAnyFieldEdited() && CollectionUtil.isAnyNonNull(startTime, endTime);
+            return super.isAnyFieldEdited() || CollectionUtil.isAnyNonNull(startTime, endTime);
         }
 
         public void setStartTime(ItineraryTime startTime) {
@@ -181,13 +220,18 @@ public class EditItineraryAttractionCommand extends Command {
             if (!(other instanceof EditItineraryAttractionDescriptor)) {
                 return false;
             }
-
             // state check
             EditItineraryAttractionDescriptor e = (EditItineraryAttractionDescriptor) other;
 
-            return super.equals(other)
-                    && getStartTime().equals(e.getStartTime())
-                    && getEndTime().equals(e.getEndTime());
+            if (e.getStartTime().isPresent() && !e.getStartTime().get().equals(startTime)) {
+                return false;
+            }
+
+            if (e.getEndTime().isPresent() && !e.getEndTime().get().equals(endTime)) {
+                return false;
+            }
+
+            return super.equals(other);
         }
     }
 }
