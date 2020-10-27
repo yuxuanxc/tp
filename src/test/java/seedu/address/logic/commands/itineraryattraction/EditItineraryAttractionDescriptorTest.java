@@ -21,9 +21,12 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_VISITED_MBS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 
-import javafx.collections.ObservableList;
+import java.nio.file.Path;
+import java.util.function.Predicate;
+
 import org.junit.jupiter.api.Test;
 
+import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand.EditItineraryAttractionDescriptor;
@@ -36,9 +39,6 @@ import seedu.address.model.itinerary.Itinerary;
 import seedu.address.model.itinerary.ItineraryTime;
 import seedu.address.testutil.EditItineraryAttractionDescriptorBuilder;
 
-import java.nio.file.Path;
-import java.util.function.Predicate;
-
 public class EditItineraryAttractionDescriptorTest {
     // A itinerary time instance for testing exceptions
     private final ItineraryTime timeObject = new ItineraryTime("1000");
@@ -47,9 +47,9 @@ public class EditItineraryAttractionDescriptorTest {
     public void execute_itineraryNotSelected_throwsCommandException() {
         ModelStubNoItinerarySelected model = new ModelStubNoItinerarySelected();
 
-        AddItineraryAttractionCommand addIaCommand = new AddItineraryAttractionCommand(
-                INDEX_FIRST, timeObject, timeObject, INDEX_FIRST);
-        assertThrows(CommandException.class, MESSAGE_ITINERARY_NOT_SELECTED, () -> addIaCommand.execute(model));
+        EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(
+                INDEX_FIRST, INDEX_FIRST, new EditItineraryAttractionDescriptorBuilder().build());
+        assertThrows(CommandException.class, MESSAGE_ITINERARY_NOT_SELECTED, () -> editIaCommand.execute(model));
     }
 
     @Test

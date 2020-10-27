@@ -100,11 +100,9 @@ public class DeleteItineraryAttractionCommandTest {
     @Test
     public void execute_itineraryNotSelected_throwsCommandException() {
         ModelStubNoItinerarySelected model = new ModelStubNoItinerarySelected();
-        ItineraryTime timeObject = new ItineraryTime("1000");
 
-        AddItineraryAttractionCommand addIaCommand = new AddItineraryAttractionCommand(
-                INDEX_FIRST, timeObject, timeObject, INDEX_FIRST);
-        assertThrows(CommandException.class, MESSAGE_ITINERARY_NOT_SELECTED, () -> addIaCommand.execute(model));
+        DeleteItineraryAttractionCommand delIaCommand = new DeleteItineraryAttractionCommand(INDEX_FIRST, INDEX_FIRST);
+        assertThrows(CommandException.class, MESSAGE_ITINERARY_NOT_SELECTED, () -> delIaCommand.execute(model));
     }
 
     @Test
