@@ -2,6 +2,7 @@ package seedu.address.logic.commands.itineraryattraction;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -29,6 +30,7 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.itinerary.Itinerary;
 import seedu.address.model.itinerary.ItineraryAttraction;
+import seedu.address.model.itinerary.ItineraryTime;
 import seedu.address.testutil.ItineraryAttractionBuilder;
 import seedu.address.testutil.ItineraryBuilder;
 
@@ -95,6 +97,15 @@ public class DeleteItineraryAttractionCommandTest {
                 delIaCommand.execute(modelWithItinerary));
     }
 
+    @Test
+    public void execute_itineraryNotSelected_throwsCommandException() {
+        ModelStubNoItinerarySelected model = new ModelStubNoItinerarySelected();
+        ItineraryTime timeObject = new ItineraryTime("1000");
+
+        AddItineraryAttractionCommand addIaCommand = new AddItineraryAttractionCommand(
+                INDEX_FIRST, timeObject, timeObject, INDEX_FIRST);
+        assertThrows(CommandException.class, MESSAGE_ITINERARY_NOT_SELECTED, () -> addIaCommand.execute(model));
+    }
 
     @Test
     public void equals() {
@@ -273,6 +284,16 @@ public class DeleteItineraryAttractionCommandTest {
         @Override
         public Itinerary getCurrentItinerary() {
             return this.itinerary;
+        }
+    }
+
+    /**
+     * A Model stub that returns no itinerary selected.
+     */
+    private class ModelStubNoItinerarySelected extends ModelStub {
+        @Override
+        public Itinerary getCurrentItinerary() {
+            return null;
         }
     }
 
