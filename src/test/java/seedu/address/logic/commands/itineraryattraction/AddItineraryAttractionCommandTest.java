@@ -22,6 +22,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAttractionList;
+import seedu.address.model.ReadOnlyItineraryAttractionList;
 import seedu.address.model.ReadOnlyItineraryList;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.attraction.Attraction;
@@ -287,6 +288,16 @@ public class AddItineraryAttractionCommandTest {
 
         @Override
         public Itinerary getCurrentItinerary() {
+            throw new AssertionError("This methods should not be called.");
+        }
+
+        @Override
+        public ReadOnlyItineraryAttractionList getItineraryAttractionList() {
+            throw new AssertionError("This methods should not be called.");
+        }
+
+        @Override
+        public ObservableList<ItineraryAttraction> getFilteredItineraryAttractionList() {
             throw new AssertionError("This methods should not be called.");
         }
     }

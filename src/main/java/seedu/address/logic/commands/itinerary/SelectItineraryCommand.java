@@ -41,6 +41,6 @@ public class SelectItineraryCommand extends Command {
         }
         Itinerary itineraryToSelect = lastShownList.get(targetIndex.getZeroBased());
         model.setCurrentItinerary(itineraryToSelect);
-        return new CommandResult(String.format(MESSAGE_SELECT_ITINERARY_SUCCESS, itineraryToSelect));
+        return new CommandResult(String.format(MESSAGE_SELECT_ITINERARY_SUCCESS, itineraryToSelect), true);
     }
 }

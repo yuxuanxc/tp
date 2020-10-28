@@ -29,6 +29,7 @@ public class ItineraryListPanel extends UiPart<Region> {
         itineraryListView.setCellFactory(listView -> new ItineraryListViewCell());
     }
 
+
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Itinerary} using a {@code ItineraryCard}.
      */
