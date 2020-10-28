@@ -15,6 +15,7 @@ public class ItineraryAttractionList implements ReadOnlyItineraryAttractionList 
 
     public ItineraryAttractionList(Itinerary currentItinerary) {
         this.currentItinerary = currentItinerary;
+        setItineraryAttractionList(currentItinerary);
     }
 
     public void setItineraryAttractionList(Itinerary currentItinerary) {

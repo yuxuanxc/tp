@@ -40,10 +40,11 @@ public class ItineraryListPanel extends UiPart<Region> {
         super(FXML);
         itineraryListView.setItems(itineraryList);
         itineraryListView.setCellFactory(listView -> new ItineraryListViewCell());
-        itineraryAttractionListView.setItems(itineraryAttractionList);
-        itineraryAttractionListView.setCellFactory(listView -> new ItineraryAttractionListViewCell());
-        this.itineraryTab = pane.getTabs().get(0);
-        this.itineraryAttractionTab = pane.getTabs().get(1);
+//        itineraryAttractionListView.setItems(itineraryAttractionList);
+//        itineraryAttractionListView.setCellFactory(listView -> new ItineraryAttractionListViewCell());
+//        pane.getSelectionModel().select(0);
+//        this.itineraryTab = pane.getTabs().get(0);
+//        this.itineraryAttractionTab = pane.getTabs().get(1);
     }
 
     public void changeTabView(int index) {
