@@ -1,85 +1,82 @@
-package seedu.address.logic.commands.itinerary;
+package seedu.address.logic.commands.itineraryattraction;
 
-import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.ItineraryList;
+import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand.EditItineraryAttractionDescriptor;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAttractionList;
 import seedu.address.model.ReadOnlyItineraryList;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.itinerary.Itinerary;
+import seedu.address.model.itinerary.ItineraryAttraction;
+import seedu.address.testutil.AttractionBuilder;
+import seedu.address.testutil.EditItineraryAttractionDescriptorBuilder;
+import seedu.address.testutil.ItineraryAttractionBuilder;
 import seedu.address.testutil.ItineraryBuilder;
 
-class AddItineraryCommandTest {
+public class EditItineraryAttractionCommandTest {
+    private final EditItineraryAttractionDescriptor descriptor = new EditItineraryAttractionDescriptorBuilder().build();
+
     @Test
-    public void constructor_nullItinerary_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddItineraryCommand(null));
+    public void execute_itineraryNotSelected_throwsCommandException() {
+        ModelStubNoItinerarySelected model = new ModelStubNoItinerarySelected();
+        EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(
+                INDEX_FIRST, INDEX_FIRST, descriptor);
+
+        assertThrows(CommandException.class, MESSAGE_ITINERARY_NOT_SELECTED, () -> editIaCommand.execute(model));
     }
 
     @Test
-    public void execute_itineraryAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingItineraryAdded modelStub = new ModelStubAcceptingItineraryAdded();
-        Itinerary validItinerary = new ItineraryBuilder().build();
+    public void execute_invalidIaIndex_throwsCommandException() {
+        Itinerary itinerary = new ItineraryBuilder().withItineraryAttraction(
+                new ItineraryAttractionBuilder().build(), INDEX_FIRST).build();
+        ModelStubWithItinerarySelected model = new ModelStubWithItinerarySelected(itinerary);
+        EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(
+                INDEX_SECOND, INDEX_FIRST, descriptor);
 
-        CommandResult commandResult = new AddItineraryCommand(validItinerary).execute(modelStub);
+        // tests with 1 ItineraryAttraction in a day
+        assertThrows(CommandException.class, MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX, ()
+            -> editIaCommand.execute(model));
 
-        assertEquals(String.format(AddItineraryCommand.MESSAGE_SUCCESS, validItinerary),
-                commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validItinerary), modelStub.itinerariesAdded);
+
+        Itinerary itinerary2 = new ItineraryBuilder().build();
+        ModelStubWithItinerarySelected model2 = new ModelStubWithItinerarySelected(itinerary2);
+        EditItineraryAttractionCommand editIaCommand2 = new EditItineraryAttractionCommand(
+                INDEX_FIRST, INDEX_FIRST, descriptor);
+
+        // tests with no ItineraryAttraction in a day
+        assertThrows(CommandException.class, MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX, ()
+            -> editIaCommand2.execute(model2));
     }
 
     @Test
-    public void execute_duplicateItinerary_throwsCommandException() {
-        Itinerary validItinerary = new ItineraryBuilder().build();
-        AddItineraryCommand addItineraryCommand = new AddItineraryCommand(validItinerary);
-        ModelStub modelStub = new ModelStubWithItinerary(validItinerary);
+    public void execute_duplicateItineraryAttraction_throwsCommandException() {
+        Attraction attraction = new AttractionBuilder().build();
+        ItineraryAttraction itineraryAttraction = new ItineraryAttractionBuilder().withAttraction(attraction).build();
+        Itinerary itinerary = new ItineraryBuilder().withItineraryAttraction(itineraryAttraction, INDEX_FIRST).build();
+        ModelStubWithItinerarySelected model = new ModelStubWithItinerarySelected(itinerary);
+        EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(
+                INDEX_FIRST, INDEX_FIRST, descriptor);
 
-        assertThrows(CommandException.class,
-                AddItineraryCommand.MESSAGE_DUPLICATE_ITINERARY, () -> addItineraryCommand.execute(modelStub));
-    }
-
-    @Test
-    public void equals() {
-        Itinerary singaporeZoos = new ItineraryBuilder().withName("Singapore Zoos").build();
-        Itinerary parisTrip = new ItineraryBuilder().withName("Paris Trip").build();
-        AddItineraryCommand addSingaporeZoosCommand = new AddItineraryCommand(singaporeZoos);
-        AddItineraryCommand addParisTripCommand = new AddItineraryCommand(parisTrip);
-
-        // same object -> returns true
-        assertTrue(addSingaporeZoosCommand.equals(addSingaporeZoosCommand));
-
-        // same values -> returns true
-        AddItineraryCommand addSingaporeZooCommandCopy = new AddItineraryCommand(singaporeZoos);
-        assertTrue(addSingaporeZoosCommand.equals(addSingaporeZooCommandCopy));
-
-        // different types -> returns false
-        assertFalse(addSingaporeZoosCommand.equals(1));
-
-        // null -> returns false
-        assertFalse(addSingaporeZoosCommand.equals(null));
-
-        // different itinerary -> returns false
-        assertFalse(addSingaporeZoosCommand.equals(addParisTripCommand));
+        assertThrows(CommandException.class, EditItineraryAttractionCommand.MESSAGE_DUPLICATE_ATTRACTION, ()
+            -> editIaCommand.execute(model));
     }
 
     /**
-     * A default model stub that have all of the methods failing.
+     * A default model stub that throws exception for all method calls.
      */
     private class ModelStub implements Model {
         @Override
@@ -209,7 +206,7 @@ class AddItineraryCommandTest {
 
         @Override
         public void setCurrentItinerary(Itinerary itinerary) {
-
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
@@ -219,44 +216,28 @@ class AddItineraryCommandTest {
     }
 
     /**
-     * A Model stub that contains a single itinerary.
+     * A Model stub that returns no itinerary selected.
      */
-    private class ModelStubWithItinerary extends AddItineraryCommandTest.ModelStub {
-        private final Itinerary itinerary;
-
-        ModelStubWithItinerary(Itinerary itinerary) {
-            requireNonNull(itinerary);
-            this.itinerary = itinerary;
-        }
-
+    private class ModelStubNoItinerarySelected extends ModelStub {
         @Override
-        public boolean hasItinerary(Itinerary itinerary) {
-            requireNonNull(itinerary);
-            return this.itinerary.isSameItinerary(itinerary);
+        public Itinerary getCurrentItinerary() {
+            return null;
         }
     }
 
     /**
-     * A Model stub that always accept the itinerary being added.
+     * A Model stub that returns a itinerary selected.
      */
-    private class ModelStubAcceptingItineraryAdded extends AddItineraryCommandTest.ModelStub {
-        final ArrayList<Itinerary> itinerariesAdded = new ArrayList<>();
+    private class ModelStubWithItinerarySelected extends ModelStub {
+        private final Itinerary itinerary;
 
-        @Override
-        public boolean hasItinerary(Itinerary itinerary) {
-            requireNonNull(itinerary);
-            return itinerariesAdded.stream().anyMatch(itinerary::isSameItinerary);
+        public ModelStubWithItinerarySelected(Itinerary itinerary) {
+            this.itinerary = itinerary;
         }
 
         @Override
-        public void addItinerary(Itinerary itinerary) {
-            requireNonNull(itinerary);
-            itinerariesAdded.add(itinerary);
-        }
-
-        @Override
-        public ReadOnlyItineraryList getItineraryList() {
-            return new ItineraryList();
+        public Itinerary getCurrentItinerary() {
+            return itinerary;
         }
     }
 }

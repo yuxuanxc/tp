@@ -1,66 +1,91 @@
 package seedu.address.logic.commands.itineraryattraction;
 
-import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAttractionList;
 import seedu.address.model.ReadOnlyItineraryList;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.Itinerary;
 import seedu.address.model.itinerary.ItineraryAttraction;
 import seedu.address.model.itinerary.ItineraryTime;
+import seedu.address.testutil.AttractionBuilder;
+import seedu.address.testutil.AttractionListBuilder;
 import seedu.address.testutil.ItineraryAttractionBuilder;
+import seedu.address.testutil.ItineraryBuilder;
 
 public class AddItineraryAttractionCommandTest {
+    // A itinerary time instance for testing exceptions
+    private final ItineraryTime timeObject = new ItineraryTime("1000");
 
     @Test
     public void constructor_nullItineraryAttraction_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new AddItineraryAttractionCommand(null, null, null, null));
     }
 
-    /*@Test
-    public void execute_duplicateItineraryAttraction_throwsCommandException() {
-        ItineraryTime startTime = new ItineraryTime("1200");
-        ItineraryTime endTime = new ItineraryTime("1300");
-        ItineraryAttraction validItineraryAttraction =
-                new ItineraryAttractionBuilder().withStartTime(startTime).withEndTime(endTime).build();
-        AddItineraryAttractionCommand addIaCommand = new AddItineraryAttractionCommand(Index.fromOneBased(1),
-                startTime, endTime, Index.fromOneBased(2));
+    @Test
+    public void execute_itineraryNotSelected_throwsCommandException() {
+        ModelStubNoItinerarySelected model = new ModelStubNoItinerarySelected();
 
-                // todo wait for itinerary builder
-        ModelStub modelStub = new ModelStubWithItinerary(validItineraryAttraction, 1);
-        assertThrows(CommandException.class,
-                AddItineraryAttractionCommand.MESSAGE_DUPLICATE_ATTRACTION, () -> addIaCommand.execute(modelStub));
-    }*/
+        AddItineraryAttractionCommand addIaCommand = new AddItineraryAttractionCommand(
+                INDEX_FIRST, timeObject, timeObject, INDEX_FIRST);
+        assertThrows(CommandException.class, MESSAGE_ITINERARY_NOT_SELECTED, () -> addIaCommand.execute(model));
+    }
 
     @Test
     public void execute_invalidAttractionIndex_throwsCommandException() {
-        ItineraryAttraction validItineraryAttraction = new ItineraryAttractionBuilder().build();
-        ItineraryTime startTime = new ItineraryTime("1200");
-        ItineraryTime endTime = new ItineraryTime("1300");
-        AddItineraryAttractionCommand addIaCommand = new AddItineraryAttractionCommand(Index.fromOneBased(9),
-                startTime, endTime, Index.fromOneBased(2));
+        ModelStubWithEmptyAttractionInFilteredList model = new ModelStubWithEmptyAttractionInFilteredList();
+        AddItineraryAttractionCommand addIaCommand = new AddItineraryAttractionCommand(
+                INDEX_FIRST, timeObject, timeObject, INDEX_FIRST);
 
-        ModelStubWithAttractionFilteredList model =
-                new ModelStubWithAttractionFilteredList(new FilteredList<>(FXCollections.observableArrayList()));
+        assertThrows(CommandException.class, MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX, ()
+            -> addIaCommand.execute(model)); // test on empty filtered list
 
-        // assertThrows(CommandException.class, Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX, () ->
-        //        addIaCommand.execute(model));
 
+        ModelStubWithItineraryAttraction model2 = new ModelStubWithItineraryAttraction(new ItineraryBuilder()
+                .withItineraryAttraction(new ItineraryAttractionBuilder().withAttraction(new AttractionBuilder()
+                        .build()).build(), INDEX_FIRST).build());
+        AddItineraryAttractionCommand addIaCommand2 = new AddItineraryAttractionCommand(
+                INDEX_SECOND, timeObject, timeObject, INDEX_FIRST);
+
+        assertThrows(CommandException.class, MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX, ()
+            -> addIaCommand2.execute(model2)); // test on filtered list with 1 element
+    }
+
+    @Test
+    public void execute_duplicateItineraryAttraction_throwsCommandException() {
+        ModelStubWithItineraryAttraction model = new ModelStubWithItineraryAttraction(new ItineraryBuilder()
+                .withItineraryAttraction(new ItineraryAttractionBuilder().withAttraction(new AttractionBuilder()
+                        .build()).build(), INDEX_FIRST).build());
+
+        ItineraryAttraction expectedIa = new ItineraryAttractionBuilder()
+                .withAttraction(new AttractionBuilder().build()).build();
+
+        AddItineraryAttractionCommand addIaCommand = new AddItineraryAttractionCommand(
+                INDEX_FIRST, expectedIa.getStartTime(), expectedIa.getEndTime(), INDEX_FIRST);
+
+        assertThrows(CommandException.class, AddItineraryAttractionCommand.MESSAGE_DUPLICATE_ATTRACTION, ()
+            -> addIaCommand.execute(model));
     }
 
     @Test
@@ -111,6 +136,20 @@ public class AddItineraryAttractionCommandTest {
         // null -> returns false
         assertNotEquals(ia1, null);
     }
+
+    @Test
+    public void execute_attractionAccepted_addSuccessful() throws Exception {
+        ModelStubWithItineraryAttraction model = new ModelStubWithItineraryAttraction(new ItineraryBuilder().build());
+
+        ItineraryAttraction validIa = new ItineraryAttractionBuilder().build();
+        CommandResult commandResult = new AddItineraryAttractionCommand(
+                INDEX_FIRST, validIa.getStartTime(), validIa.getEndTime(), INDEX_FIRST).execute(model);
+
+        assertEquals(String.format(AddItineraryAttractionCommand.MESSAGE_ADD_ATTRACTION_SUCCESS, validIa),
+                commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(validIa), model.getDay(INDEX_FIRST).getItineraryAttractions());
+    }
+
 
     /**
      * A default model stub that throws exception for all method calls.
@@ -253,34 +292,45 @@ public class AddItineraryAttractionCommandTest {
     }
 
     /**
-     * A Model stub that contains a single attraction.
+     * A Model stub that returns no itinerary selected.
      */
-    private class ModelStubWithAttraction extends ModelStub {
+    private class ModelStubNoItinerarySelected extends ModelStub {
+        @Override
+        public Itinerary getCurrentItinerary() {
+            return null;
+        }
+    }
 
-        private final Attraction attraction;
+    /**
+     * A Model stub that contains a empty filtered list of Attraction type.
+     * filteredAttractions does not contain anything.
+     */
+    private class ModelStubWithEmptyAttractionInFilteredList extends ModelStub {
+        private final FilteredList<Attraction> filteredAttractions = new FilteredList<>(
+                new AttractionListBuilder().build().getAttractionList());
 
-        ModelStubWithAttraction(Attraction attraction) {
-            requireNonNull(attraction);
-            this.attraction = attraction;
+        @Override
+        public ObservableList<Attraction> getFilteredAttractionList() {
+            return filteredAttractions;
         }
 
         @Override
-        public boolean hasAttraction(Attraction attraction) {
-            requireNonNull(attraction);
-            return this.attraction.isSameAttraction(attraction);
+        public Itinerary getCurrentItinerary() {
+            return new ItineraryBuilder().build();
         }
 
     }
 
     /**
-     * A Model stub that contains a empty filtered list of Attraction type.
+     * A Model stub that contains 1 Itinerary and 1 ItineraryAttraction in Day 1 with non null filteredAttractions.
      */
-    private class ModelStubWithAttractionFilteredList extends ModelStub {
-        private final FilteredList<Attraction> filteredAttractions;
+    private class ModelStubWithItineraryAttraction extends ModelStub {
+        private final Itinerary itinerary;
+        private final FilteredList<Attraction> filteredAttractions = new FilteredList<>(new AttractionListBuilder()
+                .withAttraction(new AttractionBuilder().build()).build().getAttractionList());
 
-        ModelStubWithAttractionFilteredList(FilteredList<Attraction> filteredAttractions) {
-            requireNonNull(filteredAttractions);
-            this.filteredAttractions = filteredAttractions;
+        public ModelStubWithItineraryAttraction(Itinerary itinerary) {
+            this.itinerary = itinerary;
         }
 
         @Override
@@ -288,17 +338,14 @@ public class AddItineraryAttractionCommandTest {
             return filteredAttractions;
         }
 
+        @Override
+        public Itinerary getCurrentItinerary() {
+            return itinerary;
+        }
+
+        private Day getDay(Index index) {
+            return itinerary.getDay(index);
+        }
     }
 
-    ///**
-    // * A Model stub that contains a single Itinerary.
-    // */
-    //private class ModelStubWithItinerary extends ModelStub {
-    //    private final Itinerary itinerary;
-    //    ModelStubWithItinerary(ItineraryAttraction attraction, int day) {
-    //        requireNonNull(attraction);
-    //        this.itinerary = new ItineraryBuilder(); // build a itinerary and put it into model
-    //        this.itinerary.addItineraryAttraction(attraction, day);
-    //    }
-    //}
 }

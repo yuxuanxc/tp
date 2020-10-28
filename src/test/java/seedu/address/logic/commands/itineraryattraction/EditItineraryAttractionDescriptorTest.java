@@ -24,7 +24,6 @@ import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionC
 import seedu.address.testutil.EditItineraryAttractionDescriptorBuilder;
 
 public class EditItineraryAttractionDescriptorTest {
-
     @Test
     public void equals() {
         // same values -> returns true
