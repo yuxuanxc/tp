@@ -40,7 +40,7 @@ public class ItineraryBuilder {
         budget = new Budget(DEFAULT_BUDGET);
         days = new ArrayList<>();
         for (int i = 1; i <= ItineraryDate.daysBetween(startDate, endDate); i++) {
-            days.add(new Day(Integer.toString(i)));
+            days.add(new Day(i));
         }
     }
 
@@ -107,7 +107,7 @@ public class ItineraryBuilder {
             if (i < days.size()) {
                 newDays.add(days.get(i));
             } else {
-                newDays.add(new Day(Integer.toString(i + 1)));
+                newDays.add(new Day(i + 1));
             }
         }
         days = newDays;
@@ -125,7 +125,7 @@ public class ItineraryBuilder {
             if (i < days.size()) {
                 newDays.add(days.get(i));
             } else {
-                newDays.add(new Day(Integer.toString(i + 1)));
+                newDays.add(new Day(i + 1));
             }
         }
         days = newDays;

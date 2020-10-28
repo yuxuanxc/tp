@@ -20,6 +20,7 @@ import seedu.address.model.attraction.Visited;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Budget;
+import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.ItineraryDate;
 import seedu.address.model.itinerary.ItineraryTime;
 import seedu.address.model.tag.Tag;
@@ -31,7 +32,6 @@ import seedu.address.model.tag.Tag;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
-    public static final String MESSAGE_INVALID_DAY = "Day cannot be less than 0";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -245,7 +245,7 @@ public class ParserUtil {
      */
     public static Budget parseBudget(String budget) throws ParseException {
         requireNonNull(budget);
-        String trimmedBudget = budget.trim();
+        String trimmedBudget = budget.trim().replaceAll("\\$", "");
         if (!Budget.isValidBudget(trimmedBudget)) {
             throw new ParseException(Budget.MESSAGE_CONSTRAINTS);
         }
@@ -280,7 +280,7 @@ public class ParserUtil {
         try {
             return parseIndex(oneBasedIndex);
         } catch (ParseException pe) {
-            throw new ParseException(MESSAGE_INVALID_DAY);
+            throw new ParseException(Day.MESSAGE_CONSTRAINTS);
         }
     }
 

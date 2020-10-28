@@ -9,8 +9,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Budget {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Budget should only be a non-negative number, and if it contains decimal values it should have"
-                    + " only up to two decimal digits";
+            "Budget should only be a non-negative number, and if it contains decimal values it should only be"
+                    + " up to two decimal places";
     public static final String VALIDATION_REGEX = "^?[0-9]+(\\.[0-9]{1,2})?$";
 
     public final String value;

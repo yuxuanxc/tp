@@ -30,7 +30,7 @@ class JsonAdaptedItinerary {
     private final List<JsonAdaptedDay> days = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonAdaptedItinerary} with the given person details.
+     * Constructs a {@code JsonAdaptedItinerary} with the given itinerary details.
      */
     @JsonCreator
     public JsonAdaptedItinerary(@JsonProperty("name") String name,

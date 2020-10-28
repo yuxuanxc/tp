@@ -16,14 +16,14 @@ import seedu.address.model.itinerary.ItineraryAttraction;
  */
 public class JsonAdaptedDay {
 
-    private final String day;
+    private final int day;
     private final List<JsonAdaptedItineraryAttraction> itineraryAttractions = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonAdaptedDay} with the given {@code tagName}.
+     * Constructs a {@code JsonAdaptedDay} with the given day details.
      */
     @JsonCreator
-    public JsonAdaptedDay(@JsonProperty("day") String day,
+    public JsonAdaptedDay(@JsonProperty("day") int day,
                           @JsonProperty("itineraryAttractions")
                                   List<JsonAdaptedItineraryAttraction> itineraryAttractions) {
         this.day = day;
@@ -50,7 +50,7 @@ public class JsonAdaptedDay {
     public Day toModelType() throws IllegalValueException {
         final List<ItineraryAttraction> modelItineraryAttractions = new ArrayList<>();
 
-        if (!Day.isValidDay(day)) {
+        if (!Day.isValidDayNumber(day)) {
             throw new IllegalValueException(Day.MESSAGE_CONSTRAINTS);
         }
 

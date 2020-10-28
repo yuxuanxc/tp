@@ -22,12 +22,12 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_DAY;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.itineraryattraction.AddItineraryAttractionCommand;
+import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.ItineraryTime;
 
 
@@ -166,7 +166,7 @@ public class AddItineraryAttractionCommandParserTest {
                         + START_TIME_DESC_MBS
                         + END_TIME_DESC_MBS
                         + INVALID_DAY_VISITING_DESC,
-                MESSAGE_INVALID_DAY);
+                Day.MESSAGE_CONSTRAINTS);
 
         // valid start time followed by invalid start time
         assertParseFailure(parser,
@@ -204,42 +204,42 @@ public class AddItineraryAttractionCommandParserTest {
                         + START_TIME_DESC_MBS
                         + END_TIME_DESC_MBS
                         + " " + PREFIX_DAY_VISITING + "-99",
-                MESSAGE_INVALID_DAY);
+                Day.MESSAGE_CONSTRAINTS);
 
         assertParseFailure(parser,
                 PREAMBLE_WHITESPACE + INDEX_DESC_MBS
                         + START_TIME_DESC_MBS
                         + END_TIME_DESC_MBS
                         + " " + PREFIX_DAY_VISITING + "0",
-                MESSAGE_INVALID_DAY);
+                Day.MESSAGE_CONSTRAINTS);
 
         assertParseFailure(parser,
                 PREAMBLE_WHITESPACE + INDEX_DESC_MBS
                         + START_TIME_DESC_MBS
                         + END_TIME_DESC_MBS
                         + " " + PREFIX_DAY_VISITING + "fadsdf",
-                MESSAGE_INVALID_DAY);
+                Day.MESSAGE_CONSTRAINTS);
 
         assertParseFailure(parser,
                 PREAMBLE_WHITESPACE + INDEX_DESC_MBS
                         + START_TIME_DESC_MBS
                         + END_TIME_DESC_MBS
                         + " " + PREFIX_DAY_VISITING + "03jklfas",
-                MESSAGE_INVALID_DAY);
+                Day.MESSAGE_CONSTRAINTS);
 
         assertParseFailure(parser,
                 PREAMBLE_WHITESPACE + INDEX_DESC_MBS
                         + START_TIME_DESC_MBS
                         + END_TIME_DESC_MBS
                         + " " + PREFIX_DAY_VISITING + "1#@312",
-                MESSAGE_INVALID_DAY);
+                Day.MESSAGE_CONSTRAINTS);
 
         assertParseFailure(parser,
                 PREAMBLE_WHITESPACE + INDEX_DESC_MBS
                         + START_TIME_DESC_MBS
                         + END_TIME_DESC_MBS
                         + " " + PREFIX_DAY_VISITING + "1O", // !10
-                MESSAGE_INVALID_DAY);
+                Day.MESSAGE_CONSTRAINTS);
     }
 
     @Test

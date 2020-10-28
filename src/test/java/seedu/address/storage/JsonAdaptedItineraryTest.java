@@ -30,6 +30,7 @@ public class JsonAdaptedItineraryTest {
     private static final List<JsonAdaptedDay> VALID_DAYS = PARIS_TRIP.getDays().stream()
             .map(JsonAdaptedDay::new)
             .collect(Collectors.toList());
+
     @Test
     public void toModelType_validItineraryDetails_returnsItinerary() throws Exception {
         JsonAdaptedItinerary itinerary = new JsonAdaptedItinerary(PARIS_TRIP);

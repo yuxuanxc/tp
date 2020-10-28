@@ -73,7 +73,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VISITED_DESC_MBS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_DAY;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD;
@@ -93,6 +92,7 @@ import seedu.address.model.attraction.Rating;
 import seedu.address.model.attraction.Visited;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
+import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.ItineraryTime;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.EditItineraryAttractionDescriptorBuilder;
@@ -418,17 +418,17 @@ public class EditItineraryAttractionCommandParserTest {
                 ItineraryTime.MESSAGE_CONSTRAINTS);
 
         // negative day
-        assertParseFailure(parser, "2" + INVALID_DAY_VISITING_DESC + NAME_DESC_EIFFEL, MESSAGE_INVALID_DAY);
+        assertParseFailure(parser, "2" + INVALID_DAY_VISITING_DESC + NAME_DESC_EIFFEL, Day.MESSAGE_CONSTRAINTS);
 
         // zero day
-        assertParseFailure(parser, "2" + " day/0" + NAME_DESC_EIFFEL, MESSAGE_INVALID_DAY);
+        assertParseFailure(parser, "2" + " day/0" + NAME_DESC_EIFFEL, Day.MESSAGE_CONSTRAINTS);
 
         // multiple day
-        assertParseFailure(parser, "2 day/213 321" + NAME_DESC_EIFFEL, MESSAGE_INVALID_DAY);
+        assertParseFailure(parser, "2 day/213 321" + NAME_DESC_EIFFEL, Day.MESSAGE_CONSTRAINTS);
 
         // not a day
-        assertParseFailure(parser, "2 day/123 yum" + NAME_DESC_EIFFEL, MESSAGE_INVALID_DAY);
-        assertParseFailure(parser, "3 day/fda" + NAME_DESC_EIFFEL, MESSAGE_INVALID_DAY);
+        assertParseFailure(parser, "2 day/123 yum" + NAME_DESC_EIFFEL, Day.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "3 day/fda" + NAME_DESC_EIFFEL, Day.MESSAGE_CONSTRAINTS);
 
         // invalid phone followed by valid email
         assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_PHONE_DESC + EMAIL_DESC_EIFFEL,

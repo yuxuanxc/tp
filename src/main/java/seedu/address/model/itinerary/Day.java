@@ -17,35 +17,39 @@ import seedu.address.model.itinerary.exceptions.ItineraryAttractionNotFoundExcep
  */
 public class Day {
 
-    public static final String MESSAGE_CONSTRAINTS = "Days should be a positive number, and it should not be blank";
-    public static final String VALIDATION_REGEX = "^[1-9]\\d*$";
-    public final String value;
+    public static final String MESSAGE_CONSTRAINTS = "Day should be a positive number, not be blank, and"
+            + " should exist within the date range of the itinerary";
+    public final Integer value;
     private final List<ItineraryAttraction> itineraryAttractions;
 
     /**
      * Constructs an empty {@code Day}.
      *
-     * @param day A valid day.
+     * @param day A valid day number.
      */
-    public Day(String day) {
+    public Day(Integer day) {
         requireNonNull(day);
-        checkArgument(isValidDay(day), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidDayNumber(day), MESSAGE_CONSTRAINTS);
         value = day;
         this.itineraryAttractions = new ArrayList<>();
     }
 
     /**
-     * Constructs a {@code Day}.
+     * Constructs a {@code Day} with the sepcified itinerary attractions.
      *
-     * @param day A valid day.
+     * @param day A valid day number.
+     * @param itineraryAttractions Itinerary attractions to include in the Day.
      */
-    public Day(String day, List<ItineraryAttraction> itineraryAttractions) {
+    public Day(Integer day, List<ItineraryAttraction> itineraryAttractions) {
         requireNonNull(day);
-        checkArgument(isValidDay(day), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidDayNumber(day), MESSAGE_CONSTRAINTS);
         value = day;
         this.itineraryAttractions = itineraryAttractions;
     }
 
+    /**
+     * Returns a list of all the itinerary attractions.
+     */
     public List<ItineraryAttraction> getItineraryAttractions() {
         return itineraryAttractions;
     }
@@ -73,6 +77,9 @@ public class Day {
         });
     }
 
+    /**
+     * Deletes the itinerary attraction specified by the index.
+     */
     public void deleteItineraryAttraction(Index index) {
         itineraryAttractions.remove(index.getZeroBased());
     }
@@ -94,27 +101,30 @@ public class Day {
 
     }
 
+    /**
+     * Returns true if the itinerary attraction is found in the Day.
+     */
     public boolean contains(ItineraryAttraction itineraryAttraction) {
         return itineraryAttractions.contains(itineraryAttraction);
     }
 
     /**
-     * Returns true if a given string is a valid day.
+     * Returns true if a given int is a valid day number.
      */
-    public static boolean isValidDay(String test) {
-        return test.matches(VALIDATION_REGEX);
+    public static boolean isValidDayNumber(Integer test) {
+        return test > 0;
     }
 
     @Override
     public String toString() {
-        return "Day " + value;
+        return String.format("Day %d", value);
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Day // instanceof handles nulls
-                && value.equals(((Day) other).value)
+                && value == (((Day) other).value)
                 && itineraryAttractions.equals(((Day) other).itineraryAttractions)); // state check
     }
 
