@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import java.util.logging.Logger;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -7,8 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.itinerary.ItineraryAttraction;
-
-import java.util.logging.Logger;
+import seedu.address.model.itinerary.ItineraryAttractionPlaceholder;
 
 /**
  * Panel containing the list of itinerary attractions.
@@ -16,6 +17,7 @@ import java.util.logging.Logger;
 public class ItineraryAttractionListPanel extends UiPart<Region> {
     private static final String FXML = "ItineraryAttractionListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ItineraryAttractionListPanel.class);
+    private int indexCounter = 0;
 
     @FXML
     private ListView<ItineraryAttraction> itineraryAttractionListView;
@@ -41,8 +43,12 @@ public class ItineraryAttractionListPanel extends UiPart<Region> {
             if (empty || itineraryAttractionListView == null) {
                 setGraphic(null);
                 setText(null);
+            } else if (itineraryAttraction instanceof ItineraryAttractionPlaceholder) {
+                setGraphic(new ItineraryAttractionPlaceholderCard(itineraryAttraction).getRoot());
+                indexCounter = 0;
             } else {
-                setGraphic(new ItineraryAttractionListCard(itineraryAttraction, getIndex() + 1).getRoot());
+                setGraphic(new ItineraryAttractionListCard(itineraryAttraction, indexCounter + 1).getRoot());
+                indexCounter++;
             }
         }
     }

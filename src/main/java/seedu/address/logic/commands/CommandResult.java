@@ -77,8 +77,8 @@ public class CommandResult {
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
-                && exit == otherCommandResult.exit
-                && switchToItineraryAttraction == otherCommandResult.switchToItineraryAttraction;
+                && exit == otherCommandResult.exit;
+        // && switchToItineraryAttraction == otherCommandResult.switchToItineraryAttraction;
     }
 
     @Override

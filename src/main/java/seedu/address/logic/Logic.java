@@ -61,7 +61,7 @@ public interface Logic {
      */
     Path getItineraryListFilePath();
 
-    //=========== Itinerary Attraction List ================================================================================
+    //=========== Itinerary Attraction List ===========================================================================
 
     /**
      * Returns the ItineraryAttractionList.

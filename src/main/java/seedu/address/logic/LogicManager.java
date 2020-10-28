@@ -93,7 +93,7 @@ public class LogicManager implements Logic {
         return model.getItineraryListFilePath();
     }
 
-    //=========== Itinerary Attraction List ================================================================================
+    //=========== Itinerary Attraction List ===========================================================================
 
     @Override
     public ReadOnlyItineraryAttractionList getItineraryAttractionList() {

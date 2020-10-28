@@ -40,7 +40,7 @@ public class ModelManager implements Model {
 
     private final AttractionList attractionList;
     private final ItineraryList itineraryList;
-    private final ItineraryAttractionList itineraryAttractionList;
+    private ItineraryAttractionList itineraryAttractionList;
     private final UserPrefs userPrefs;
     private final FilteredList<Attraction> filteredAttractions;
     private final FilteredList<Itinerary> filteredItineraries;
@@ -58,7 +58,10 @@ public class ModelManager implements Model {
 
         this.attractionList = new AttractionList(attractionList);
         this.itineraryList = new ItineraryList(itineraryList);
-        this.itineraryAttractionList = new ItineraryAttractionList(new Itinerary(new Name("test"), new Description("test"), new ItineraryDate("01-01-2020"),
+        // This is not sustainable
+        // this.itineraryAttractionList = new ItineraryAttractionList(null);
+        this.itineraryAttractionList = new ItineraryAttractionList(new Itinerary(new Name("test"),
+                new Description("test"), new ItineraryDate("01-01-2020"),
                 new ItineraryDate("02-01-2020"), new Budget("10"), new ArrayList<Day>()));
         this.userPrefs = new UserPrefs(userPrefs);
         filteredAttractions = new FilteredList<>(this.attractionList.getAttractionList());
@@ -231,7 +234,6 @@ public class ModelManager implements Model {
     public void setCurrentItinerary(Itinerary itinerary) {
         itineraryList.setCurrentItinerary(itinerary);
         itineraryAttractionList.setItineraryAttractionList(itinerary);
-
     }
 
     @Override
@@ -276,7 +278,7 @@ public class ModelManager implements Model {
                 && filteredItineraries.equals(other.filteredItineraries);
     }
 
-    //=========== ItineraryAttractionList ================================================================================
+    //=========== ItineraryAttractionList =============================================================================
 
     @Override
     public ReadOnlyItineraryAttractionList getItineraryAttractionList() {
@@ -289,6 +291,7 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<ItineraryAttraction> getFilteredItineraryAttractionList() {
+        itineraryAttractionList.setItineraryAttractionList(itineraryList.getCurrentItinerary());
         return itineraryAttractionList.getItineraryAttractionList();
     }
 }

@@ -11,7 +11,6 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.itinerary.Itinerary;
-import seedu.address.ui.MainWindow;
 
 /**
  * Selects an itinerary in the itinerary list in TrackPad.
