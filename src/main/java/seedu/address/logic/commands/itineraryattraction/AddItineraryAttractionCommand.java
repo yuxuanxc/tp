@@ -82,7 +82,7 @@ public class AddItineraryAttractionCommand extends Command {
         }
 
         model.getCurrentItinerary().addItineraryAttraction(itineraryAttractionToAdd, dayVisited);
-        return new CommandResult(String.format(MESSAGE_ADD_ATTRACTION_SUCCESS, itineraryAttractionToAdd));
+        return new CommandResult(String.format(MESSAGE_ADD_ATTRACTION_SUCCESS, itineraryAttractionToAdd), true);
     }
 
     @Override

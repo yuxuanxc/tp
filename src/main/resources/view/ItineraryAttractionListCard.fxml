@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <GridPane HBox.hgrow="ALWAYS">
     <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
@@ -30,14 +30,13 @@
       </HBox>
       <FlowPane fx:id="tags" />
       <Label fx:id="description" styleClass="cell_small_label" text="\$description" />
-      <Label fx:id="locale" styleClass="cell_small_label" />
-      <Label fx:id="field1" styleClass="cell_small_label" />
-      <Label fx:id="field2" styleClass="cell_small_label" />
-      <Label fx:id="field3" styleClass="cell_small_label" />
-      <Label fx:id="field4" styleClass="cell_small_label" />
-         <GridPane.margin>
-            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-         </GridPane.margin>
+      <Label fx:id="startTime" styleClass="cell_small_label" text="\$startTime" />
+      <Label fx:id="endTime" styleClass="cell_small_label" text="\$endTime" />
+      <Label fx:id="locale" styleClass="cell_small_label" text="\$location" />
+      <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
+      <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
+      <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
+      <Label fx:id="openingHours" styleClass="cell_small_label" text="\$openingHours" />
     </VBox>
       <rowConstraints>
          <RowConstraints />

@@ -59,7 +59,7 @@ public class DeleteItineraryAttractionCommand extends Command {
 
         model.getCurrentItinerary().deleteItineraryAttraction(index, dayVisiting);
 
-        return new CommandResult(String.format(MESSAGE_DELETE_ATTRACTION_SUCCESS, itineraryAttractionToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_ATTRACTION_SUCCESS, itineraryAttractionToDelete), true);
     }
 
     @Override

@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -23,7 +24,12 @@ import seedu.address.model.attraction.Rating;
 import seedu.address.model.attraction.Visited;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
+import seedu.address.model.itinerary.Budget;
+import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.Itinerary;
+import seedu.address.model.itinerary.ItineraryAttraction;
+import seedu.address.model.itinerary.ItineraryAttractionList;
+import seedu.address.model.itinerary.ItineraryDate;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -34,6 +40,7 @@ public class ModelManager implements Model {
 
     private final AttractionList attractionList;
     private final ItineraryList itineraryList;
+    private ItineraryAttractionList itineraryAttractionList;
     private final UserPrefs userPrefs;
     private final FilteredList<Attraction> filteredAttractions;
     private final FilteredList<Itinerary> filteredItineraries;
@@ -51,6 +58,11 @@ public class ModelManager implements Model {
 
         this.attractionList = new AttractionList(attractionList);
         this.itineraryList = new ItineraryList(itineraryList);
+        // This is not sustainable
+        // this.itineraryAttractionList = new ItineraryAttractionList(null);
+        this.itineraryAttractionList = new ItineraryAttractionList(new Itinerary(new Name("test"),
+                new Description("test"), new ItineraryDate("01-01-2020"),
+                new ItineraryDate("02-01-2020"), new Budget("10"), new ArrayList<Day>()));
         this.userPrefs = new UserPrefs(userPrefs);
         filteredAttractions = new FilteredList<>(this.attractionList.getAttractionList());
         filteredItineraries = new FilteredList<>(this.itineraryList.getItineraryList());
@@ -221,6 +233,7 @@ public class ModelManager implements Model {
     @Override
     public void setCurrentItinerary(Itinerary itinerary) {
         itineraryList.setCurrentItinerary(itinerary);
+        itineraryAttractionList.setItineraryAttractionList(itinerary);
     }
 
     @Override
@@ -265,4 +278,20 @@ public class ModelManager implements Model {
                 && filteredItineraries.equals(other.filteredItineraries);
     }
 
+    //=========== ItineraryAttractionList =============================================================================
+
+    @Override
+    public ReadOnlyItineraryAttractionList getItineraryAttractionList() {
+        return itineraryAttractionList;
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code ItineraryAttraction} backed by the internal list of
+     * {@code versionedTrackPad}
+     */
+    @Override
+    public ObservableList<ItineraryAttraction> getFilteredItineraryAttractionList() {
+        itineraryAttractionList.setItineraryAttractionList(itineraryList.getCurrentItinerary());
+        return itineraryAttractionList.getItineraryAttractionList();
+    }
 }

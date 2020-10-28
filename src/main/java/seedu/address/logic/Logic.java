@@ -8,9 +8,11 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAttractionList;
+import seedu.address.model.ReadOnlyItineraryAttractionList;
 import seedu.address.model.ReadOnlyItineraryList;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.itinerary.Itinerary;
+import seedu.address.model.itinerary.ItineraryAttraction;
 
 /**
  * API of the Logic component
@@ -58,6 +60,18 @@ public interface Logic {
      * Returns the user prefs' ItineraryList file path.
      */
     Path getItineraryListFilePath();
+
+    //=========== Itinerary Attraction List ===========================================================================
+
+    /**
+     * Returns the ItineraryAttractionList.
+     *
+     * @see seedu.address.model.Model#getItineraryAttractionList()
+     */
+    ReadOnlyItineraryAttractionList getItineraryAttractionList();
+
+    /** Returns an unmodifiable view of the filtered list of itinerary attractions in the current selected itinerary */
+    ObservableList<ItineraryAttraction> getFilteredItineraryAttractionList();
 
     //=========== GUI Settings ==================================================================================
 
