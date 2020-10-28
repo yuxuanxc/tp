@@ -41,7 +41,7 @@ public class ItineraryAttractionList implements ReadOnlyItineraryAttractionList 
         internalList = FXCollections.observableArrayList();
         for (Day day : currentItinerary.getDays()) {
             internalList.add(new ItineraryAttractionPlaceholder(testingItineraryAttraction,
-                    Integer.parseInt(day.value)));
+                    day.value));
             for (ItineraryAttraction itineraryAttraction : day.getItineraryAttractions()) {
                 internalList.add(itineraryAttraction);
             }
