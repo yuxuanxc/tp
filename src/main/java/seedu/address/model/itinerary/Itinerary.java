@@ -108,7 +108,7 @@ public class Itinerary {
     }
 
     /**
-     * Adds an itinerary attraction to the itinerary.
+     * Adds an itinerary attraction to the specified day in the itinerary.
      */
     public void addItineraryAttraction(ItineraryAttraction toAdd, Index day) {
         requireNonNull(toAdd);

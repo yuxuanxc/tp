@@ -23,27 +23,27 @@ public class Day {
     private final List<ItineraryAttraction> itineraryAttractions;
 
     /**
-     * Constructs an empty {@code Day}.
+     * Constructs an empty {@code Day} of day {@code dayNumber}.
      *
-     * @param day A valid day number.
+     * @param dayNumber A valid day number.
      */
-    public Day(Integer day) {
-        requireNonNull(day);
-        checkArgument(isValidDayNumber(day), MESSAGE_CONSTRAINTS);
-        value = day;
+    public Day(Integer dayNumber) {
+        requireNonNull(dayNumber);
+        checkArgument(isValidDayNumber(dayNumber), MESSAGE_CONSTRAINTS);
+        value = dayNumber;
         this.itineraryAttractions = new ArrayList<>();
     }
 
     /**
-     * Constructs a {@code Day} with the sepcified itinerary attractions.
+     * Constructs a {@code Day} of day {@code dayNumber} with the specified itinerary attractions.
      *
-     * @param day A valid day number.
+     * @param dayNumber A valid day number.
      * @param itineraryAttractions Itinerary attractions to include in the Day.
      */
-    public Day(Integer day, List<ItineraryAttraction> itineraryAttractions) {
-        requireNonNull(day);
-        checkArgument(isValidDayNumber(day), MESSAGE_CONSTRAINTS);
-        value = day;
+    public Day(Integer dayNumber, List<ItineraryAttraction> itineraryAttractions) {
+        requireNonNull(dayNumber);
+        checkArgument(isValidDayNumber(dayNumber), MESSAGE_CONSTRAINTS);
+        value = dayNumber;
         this.itineraryAttractions = itineraryAttractions;
     }
 
@@ -58,10 +58,7 @@ public class Day {
      * Adds an itinerary attraction and sorts them based on their start times.
      */
     public void addItineraryAttraction(ItineraryAttraction toAdd) {
-        for (ItineraryAttraction itineraryAttraction : itineraryAttractions) {
-            checkArgument(!toAdd.isTimingClash(itineraryAttraction),
-                    "The timing clashes with another attraction in the itinerary");
-        }
+        checkArgument(!hasTimingClash(toAdd), "The timing clashes with another attraction in the itinerary");
         itineraryAttractions.add(toAdd);
         itineraryAttractions.sort(new Comparator<ItineraryAttraction>() {
             @Override
@@ -109,6 +106,19 @@ public class Day {
     }
 
     /**
+     * Returns true if the itinerary attraction has a timing that clashes with another itinerary attraction already
+     * in the Day.
+     */
+    public boolean hasTimingClash(ItineraryAttraction toCheck) {
+        for (ItineraryAttraction itineraryAttraction : itineraryAttractions) {
+            if (toCheck.isTimingClash(itineraryAttraction)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Returns true if a given int is a valid day number.
      */
     public static boolean isValidDayNumber(Integer test) {
@@ -124,7 +134,7 @@ public class Day {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Day // instanceof handles nulls
-                && value == (((Day) other).value)
+                && value.equals(((Day) other).value)
                 && itineraryAttractions.equals(((Day) other).itineraryAttractions)); // state check
     }
 
