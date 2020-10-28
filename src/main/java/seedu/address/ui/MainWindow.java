@@ -122,7 +122,8 @@ public class MainWindow extends UiPart<Stage> {
         attractionListPanel = new AttractionListPanel(logic.getFilteredAttractionList());
         attractionListPanelPlaceholder.getChildren().add(attractionListPanel.getRoot());
 
-        handleChangeToItineraryPanel();
+        itineraryListPanel = new ItineraryListPanel(logic.getFilteredItineraryList(), logic.getFilteredItineraryAttractionList());
+        itineraryListPanelPlaceholder.getChildren().add(itineraryListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -144,13 +145,15 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void handleChangeToItineraryPanel() {
-        itineraryListPanel = new ItineraryListPanel(logic.getFilteredItineraryList());
-        itineraryListPanelPlaceholder.getChildren().add(itineraryListPanel.getRoot());
+        itineraryListPanel.changeTabView(0);
     }
 
-    private void handleChangeToItineraryAttractionPanel() {
-        itineraryAttractionListPanel = new ItineraryAttractionListPanel(logic.getFilteredItineraryAttractionList());
-        itineraryListPanelPlaceholder.getChildren().add(itineraryAttractionListPanel.getRoot());
+    public void handleChangeToItineraryAttractionPanel() {
+//        attractionListPanel = new AttractionListPanel(logic.getFilteredAttractionList());
+//        itineraryListPanelPlaceholder.getChildren().add(attractionListPanel.getRoot());
+//        itineraryAttractionListPanel = new ItineraryAttractionListPanel(logic.getFilteredItineraryAttractionList());
+//        itineraryListPanelPlaceholder.getChildren().add(itineraryAttractionListPanel.getRoot());
+        itineraryListPanel.changeTabView(1);
     }
 
     /**
@@ -210,6 +213,12 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            if (commandResult.isSwitchToItineraryAttraction()) {
+                handleChangeToItineraryAttractionPanel();
+            } else {
+                handleChangeToItineraryPanel();
             }
 
             return commandResult;

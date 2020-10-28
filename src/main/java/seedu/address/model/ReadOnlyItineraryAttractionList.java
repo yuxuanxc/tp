@@ -2,18 +2,16 @@ package seedu.address.model;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.itinerary.Itinerary;
+import seedu.address.model.itinerary.ItineraryAttraction;
 
 /**
- * Unmodifiable view of a itinerary list
+ * Unmodifiable view of an itinerary attraction list
  */
-public interface ReadOnlyItineraryList {
+public interface ReadOnlyItineraryAttractionList {
 
     /**
-     * Returns an unmodifiable view of the itinerary list.
-     * This list will not contain any duplicate itineraries.
+     * Returns an unmodifiable view of the itinerary attraction list.
      */
-    ObservableList<Itinerary> getItineraryList();
-
-    Itinerary getCurrentItinerary();
+    ObservableList<ItineraryAttraction> getItineraryAttractionList();
 }
 

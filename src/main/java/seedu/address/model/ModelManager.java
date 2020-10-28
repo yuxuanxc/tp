@@ -24,6 +24,8 @@ import seedu.address.model.attraction.Visited;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Itinerary;
+import seedu.address.model.itinerary.ItineraryAttraction;
+import seedu.address.model.itinerary.ItineraryAttractionList;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -34,6 +36,7 @@ public class ModelManager implements Model {
 
     private final AttractionList attractionList;
     private final ItineraryList itineraryList;
+    private final ItineraryAttractionList itineraryAttractionList;
     private final UserPrefs userPrefs;
     private final FilteredList<Attraction> filteredAttractions;
     private final FilteredList<Itinerary> filteredItineraries;
@@ -51,6 +54,7 @@ public class ModelManager implements Model {
 
         this.attractionList = new AttractionList(attractionList);
         this.itineraryList = new ItineraryList(itineraryList);
+        this.itineraryAttractionList = new ItineraryAttractionList(null);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredAttractions = new FilteredList<>(this.attractionList.getAttractionList());
         filteredItineraries = new FilteredList<>(this.itineraryList.getItineraryList());
@@ -221,6 +225,8 @@ public class ModelManager implements Model {
     @Override
     public void setCurrentItinerary(Itinerary itinerary) {
         itineraryList.setCurrentItinerary(itinerary);
+        itineraryAttractionList.setItineraryAttractionList(itinerary);
+
     }
 
     @Override
@@ -265,4 +271,19 @@ public class ModelManager implements Model {
                 && filteredItineraries.equals(other.filteredItineraries);
     }
 
+    //=========== ItineraryAttractionList ================================================================================
+
+    @Override
+    public ReadOnlyItineraryAttractionList getItineraryAttractionList() {
+        return itineraryAttractionList;
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code ItineraryAttraction} backed by the internal list of
+     * {@code versionedTrackPad}
+     */
+    @Override
+    public ObservableList<ItineraryAttraction> getFilteredItineraryAttractionList() {
+        return itineraryAttractionList.getItineraryAttractionList();
+    }
 }

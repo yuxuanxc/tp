@@ -62,7 +62,8 @@ public class ItineraryAttractionListCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(itineraryAttraction.getName().fullName);
         locale.setText("\uD83C\uDF0E " + itineraryAttraction.getLocation().value);
-        startTime.setText(itineraryAttraction.getStartTime().toString());
+//        String startTIme = itineraryAttraction.getStartTime().toString();
+//        startTime.setText(startTIme);
         endTime.setText(itineraryAttraction.getEndTime().toString());
 
         //optional fields
