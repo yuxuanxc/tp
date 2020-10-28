@@ -30,22 +30,24 @@ public class AttractionCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
-    @FXML
     private Label id;
     @FXML
-    private Label phone;
-    @FXML
-    private Label address;
-    @FXML
-    private Label email;
+    private Label name;
     @FXML
     // For JavaFX, rename location to locale as location is a reserved keyword in JavaFX
     private Label locale;
+
+    //optional fields
     @FXML
     private Label description;
     @FXML
-    private Label openingHours;
+    private Label field1;
+    @FXML
+    private Label field2;
+    @FXML
+    private Label field3;
+    @FXML
+    private Label field4;
     @FXML
     private FlowPane tags;
 
@@ -61,36 +63,62 @@ public class AttractionCard extends UiPart<Region> {
 
         //optional fields
         description.setText(attraction.getDescription().value);
-        if (attraction.getPhone().value.isEmpty()) {
-            phone.setText("📞 " + "⛔");
-        } else {
-            phone.setText("📞 " + attraction.getPhone().value);
+
+        int fieldsFilled = 0;
+
+        if (!attraction.getAddress().value.isEmpty()) {
+            String address = "\uD83C\uDFE0 " + attraction.getAddress().value;
+            field1.setText(address);
+            fieldsFilled++;
         }
-        if (attraction.getAddress().value.isEmpty()) {
-            address.setText("\uD83C\uDFE0 " + "⛔");
-        } else {
-            address.setText("\uD83C\uDFE0 " + attraction.getAddress().value);
+
+        if (!attraction.getPhone().value.isEmpty()) {
+            String phone = "📞 " + attraction.getPhone().value;
+            if (fieldsFilled == 0) {
+                field1.setText(phone);
+            } else {
+                field2.setText(phone);
+            }
+            fieldsFilled++;
         }
-        if (attraction.getEmail().value.isEmpty()) {
-            email.setText("\uD83D\uDCE7 " + "⛔");
-        } else {
-            email.setText("\uD83D\uDCE7 " + attraction.getEmail().value);
+
+        if (!attraction.getEmail().value.isEmpty()) {
+            String email = "\uD83D\uDCE7 " + attraction.getEmail().value;
+            if (fieldsFilled == 0) {
+                field1.setText(email);
+            } else if (fieldsFilled == 1) {
+                field2.setText(email);
+            } else {
+                field3.setText(email);
+            }
+            fieldsFilled++;
         }
-        if (attraction.getOpeningHours().value.isEmpty()) {
-            openingHours.setText("\uD83D\uDD56 " + "⛔");
-        } else {
-            openingHours.setText("\uD83D\uDD56 " + attraction.getOpeningHours().value);
+
+        if (!attraction.getOpeningHours().value.isEmpty()) {
+            String openingHours = "\uD83D\uDD56 " + attraction.getOpeningHours().value;
+            if (fieldsFilled == 0) {
+                field1.setText(openingHours);
+            } else if (fieldsFilled == 1) {
+                field2.setText(openingHours);
+            } else if (fieldsFilled == 2) {
+                field3.setText(openingHours);
+            } else {
+                field4.setText(openingHours);
+            }
         }
+
         if (attraction.getPriceRange().toString() != "") {
             Label priceRange = new Label(attraction.getPriceRange().toString());
             priceRange.setStyle("-fx-background-color: #800;");
             tags.getChildren().add(priceRange);
         }
+
         if (attraction.getRating().toString() != "") {
             Label rating = new Label(attraction.getRating().toString());
             rating.setStyle("-fx-background-color: #080;");
             tags.getChildren().add(rating);
         }
+
         if (attraction.getVisited().toString() != "") {
             Label visited = new Label(attraction.getVisited().toString());
             if (attraction.getVisited().equals(new Visited("TRUE"))) {
@@ -101,6 +129,7 @@ public class AttractionCard extends UiPart<Region> {
             visited.setStyle("-fx-background-color: #9933ff;");
             tags.getChildren().add(visited);
         }
+
         attraction.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
