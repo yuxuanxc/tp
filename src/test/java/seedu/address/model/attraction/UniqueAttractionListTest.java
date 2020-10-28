@@ -156,9 +156,9 @@ public class UniqueAttractionListTest {
         uniqueAttractionList.add(BOTANIC_GARDENS);
         List<Attraction> attractionList = Collections.singletonList(SUNTEC);
         uniqueAttractionList.setAttractions(attractionList);
-        UniqueAttractionList expectedUniquePersonList = new UniqueAttractionList();
-        expectedUniquePersonList.add(SUNTEC);
-        assertEquals(expectedUniquePersonList, uniqueAttractionList);
+        UniqueAttractionList expectedUniqueAttractionList = new UniqueAttractionList();
+        expectedUniqueAttractionList.add(SUNTEC);
+        assertEquals(expectedUniqueAttractionList, uniqueAttractionList);
     }
 
     @Test

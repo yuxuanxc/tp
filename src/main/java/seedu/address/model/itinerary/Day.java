@@ -54,6 +54,10 @@ public class Day {
      * Adds an itinerary attraction and sorts them based on their start times.
      */
     public void addItineraryAttraction(ItineraryAttraction toAdd) {
+        for (ItineraryAttraction itineraryAttraction : itineraryAttractions) {
+            checkArgument(!toAdd.isTimingClash(itineraryAttraction),
+                    "The timing clashes with another attraction in the itinerary");
+        }
         itineraryAttractions.add(toAdd);
         itineraryAttractions.sort(new Comparator<ItineraryAttraction>() {
             @Override
@@ -63,7 +67,6 @@ public class Day {
                 } else if (first.getStartTime().isLaterThan(second.getStartTime())) {
                     return 1;
                 } else {
-                    assert false; // There cannot be 2 itinerary attractions with same start time in a day
                     return 0;
                 }
             }

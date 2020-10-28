@@ -1,5 +1,5 @@
 {
-  "_comment": "TrackPad save file which contains the same Attraction values as in TypicalAttractions#getTypicalTrackPad()",
+  "_comment": "TrackPad save file which contains the same Attraction values as in TypicalAttractions#getTypicalAttractions()",
   "attractions" : [ {
     "name" : "JurongBirdPark",
     "phone" : "94351253",

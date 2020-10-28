@@ -5,6 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -70,7 +71,7 @@ public class Itinerary {
     }
 
     public List<Day> getDays() {
-        return days;
+        return Collections.unmodifiableList(days);
     }
 
     public Day getDay(Index day) {
@@ -162,8 +163,7 @@ public class Itinerary {
         return otherItinerary != null
                 && otherItinerary.getName().equals(getName())
                 && otherItinerary.getStartDate().equals(getStartDate())
-                && otherItinerary.getEndDate().equals(getEndDate())
-                && otherItinerary.getBudget().equals(getBudget());
+                && otherItinerary.getEndDate().equals(getEndDate());
     }
 
     /**
@@ -186,7 +186,8 @@ public class Itinerary {
                 && otherItinerary.getStartDate().equals(getStartDate())
                 && otherItinerary.getEndDate().equals(getEndDate())
                 && otherItinerary.getBudget().equals(getBudget())
-                && otherItinerary.getDays().equals(getDays());
+                && otherItinerary.getDays().equals(getDays())
+                && otherItinerary.getItineraryAttractions().equals(getItineraryAttractions());
     }
 
     @Override

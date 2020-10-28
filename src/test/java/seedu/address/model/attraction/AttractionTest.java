@@ -79,7 +79,7 @@ public class AttractionTest {
         // different type -> returns false
         assertFalse(MBS.equals(5));
 
-        // different person -> returns false
+        // different attraction -> returns false
         assertFalse(MBS.equals(SUNTEC));
 
         // different name -> returns false

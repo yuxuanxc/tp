@@ -6,7 +6,7 @@ import seedu.address.model.itinerary.Itinerary;
 /**
  * A utility class to help with building ItineraryList objects.
  * Example usage: <br>
- *     {@code ItineraryList il = new ItineraryListBuilder().withItinerary(todo add example).build();}
+ *     {@code ItineraryList il = new ItineraryListBuilder().withItinerary(SG_ZOOS_TOUR, PARIS_TRIP).build();}
  */
 public class ItineraryListBuilder {
 
