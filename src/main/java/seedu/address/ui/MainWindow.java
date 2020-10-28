@@ -54,9 +54,6 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane itineraryListPanelPlaceholder;
 
     @FXML
-    private StackPane itineraryAttractionListPanelPlaceholder;
-
-    @FXML
     private StackPane resultDisplayPlaceholder;
 
     @FXML
@@ -125,11 +122,7 @@ public class MainWindow extends UiPart<Stage> {
         attractionListPanel = new AttractionListPanel(logic.getFilteredAttractionList());
         attractionListPanelPlaceholder.getChildren().add(attractionListPanel.getRoot());
 
-        itineraryListPanel = new ItineraryListPanel(logic.getFilteredItineraryList());
-        itineraryListPanelPlaceholder.getChildren().add(itineraryListPanel.getRoot());
-
-//        itineraryAttractionListPanel = new ItineraryAttractionListPanel(logic.getFilteredItineraryAttractionList());
-//        itineraryAttractionListPanelPlaceholder.getChildren().add(itineraryAttractionListPanel.getRoot());
+        handleChangeToItineraryPanel();
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -148,6 +141,16 @@ public class MainWindow extends UiPart<Stage> {
             primaryStage.setX(guiSettings.getWindowCoordinates().getX());
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());
         }
+    }
+
+    private void handleChangeToItineraryPanel() {
+        itineraryListPanel = new ItineraryListPanel(logic.getFilteredItineraryList());
+        itineraryListPanelPlaceholder.getChildren().add(itineraryListPanel.getRoot());
+    }
+
+    private void handleChangeToItineraryAttractionPanel() {
+        itineraryAttractionListPanel = new ItineraryAttractionListPanel(logic.getFilteredItineraryAttractionList());
+        itineraryListPanelPlaceholder.getChildren().add(itineraryAttractionListPanel.getRoot());
     }
 
     /**
