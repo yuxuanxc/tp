@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.itinerary.Itinerary;
+import seedu.address.model.itinerary.ItineraryAttraction;
 
 /**
  * The API of the Model component.
@@ -176,4 +177,16 @@ public interface Model {
      * Returns the current itinerary.
      */
     Itinerary getCurrentItinerary();
+
+    //=========== ItineraryAttractionList =============================================================================
+
+    /**
+     * Returns the itinerary attraction list
+     */
+    ReadOnlyItineraryAttractionList getItineraryAttractionList();
+
+    /**
+     * Returns an unmodifiable view of the filtered itinerary attraction list
+     */
+    ObservableList<ItineraryAttraction> getFilteredItineraryAttractionList();
 }

@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextInputControl;
@@ -34,6 +35,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private AttractionListPanel attractionListPanel;
     private ItineraryListPanel itineraryListPanel;
+    private ItineraryAttractionListPanel itineraryAttractionListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -57,6 +59,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private Label listTitle;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -121,8 +126,7 @@ public class MainWindow extends UiPart<Stage> {
         attractionListPanel = new AttractionListPanel(logic.getFilteredAttractionList());
         attractionListPanelPlaceholder.getChildren().add(attractionListPanel.getRoot());
 
-        itineraryListPanel = new ItineraryListPanel(logic.getFilteredItineraryList());
-        itineraryListPanelPlaceholder.getChildren().add(itineraryListPanel.getRoot());
+        handleChangeToItineraryPanel();
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -141,6 +145,26 @@ public class MainWindow extends UiPart<Stage> {
             primaryStage.setX(guiSettings.getWindowCoordinates().getX());
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());
         }
+    }
+
+    /**
+     * Switches panel to show list of itineraries.
+     */
+    private void handleChangeToItineraryPanel() {
+        listTitle.setText("Itineraries");
+        itineraryListPanel = new ItineraryListPanel(logic.getFilteredItineraryList());
+        itineraryListPanelPlaceholder.getChildren().clear();
+        itineraryListPanelPlaceholder.getChildren().add(itineraryListPanel.getRoot());
+    }
+
+    /**
+     * Switches panel to show itinerary attractions.
+     */
+    public void handleChangeToItineraryAttractionPanel() {
+        listTitle.setText("Attractions in Selected Itinerary");
+        itineraryAttractionListPanel = new ItineraryAttractionListPanel(logic.getFilteredItineraryAttractionList());
+        itineraryListPanelPlaceholder.getChildren().clear();
+        itineraryListPanelPlaceholder.getChildren().add(itineraryAttractionListPanel.getRoot());
     }
 
     /**
@@ -179,6 +203,10 @@ public class MainWindow extends UiPart<Stage> {
         return itineraryListPanel;
     }
 
+    public ItineraryAttractionListPanel getItineraryAttractionListPanel() {
+        return itineraryAttractionListPanel;
+    }
+
     /**
      * Executes the command and returns the result.
      *
@@ -196,6 +224,12 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            if (commandResult.isSwitchToItineraryAttraction()) {
+                handleChangeToItineraryAttractionPanel();
+            } else {
+                handleChangeToItineraryPanel();
             }
 
             return commandResult;

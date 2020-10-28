@@ -17,13 +17,17 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    /** The application should switch panels to Itinerary Attraction */
+    private final boolean switchToItineraryAttraction;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean switchToItineraryAttraction) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
+        this.switchToItineraryAttraction = switchToItineraryAttraction;
     }
 
     /**
@@ -31,7 +35,11 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false);
+        this(feedbackToUser, false, false, false);
+    }
+
+    public CommandResult(String feedbackToUser, boolean switchToItineraryAttraction) {
+        this(feedbackToUser, false, false, switchToItineraryAttraction);
     }
 
     public String getFeedbackToUser() {
@@ -44,6 +52,10 @@ public class CommandResult {
 
     public boolean isExit() {
         return exit;
+    }
+
+    public boolean isSwitchToItineraryAttraction() {
+        return switchToItineraryAttraction;
     }
 
     /**
@@ -66,11 +78,12 @@ public class CommandResult {
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
                 && exit == otherCommandResult.exit;
+        // && switchToItineraryAttraction == otherCommandResult.switchToItineraryAttraction;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit);
+        return Objects.hash(feedbackToUser, showHelp, exit, switchToItineraryAttraction);
     }
 
 }

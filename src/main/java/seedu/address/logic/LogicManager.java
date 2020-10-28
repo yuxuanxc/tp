@@ -14,9 +14,11 @@ import seedu.address.logic.parser.TrackPadParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAttractionList;
+import seedu.address.model.ReadOnlyItineraryAttractionList;
 import seedu.address.model.ReadOnlyItineraryList;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.itinerary.Itinerary;
+import seedu.address.model.itinerary.ItineraryAttraction;
 import seedu.address.storage.Storage;
 
 /**
@@ -91,6 +93,17 @@ public class LogicManager implements Logic {
         return model.getItineraryListFilePath();
     }
 
+    //=========== Itinerary Attraction List ===========================================================================
+
+    @Override
+    public ReadOnlyItineraryAttractionList getItineraryAttractionList() {
+        return model.getItineraryAttractionList();
+    }
+
+    @Override
+    public ObservableList<ItineraryAttraction> getFilteredItineraryAttractionList() {
+        return model.getFilteredItineraryAttractionList();
+    }
     //=========== GUI Settings ==================================================================================
 
     @Override
