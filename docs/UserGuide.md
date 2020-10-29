@@ -263,9 +263,14 @@ Compulsory fields:
 Optional fields:
 * **DESCRIPTION**: Description of the itinerary, can take in any value. Use this to give a brief summary of the itinerary or to note down important details.
 * **BUDGET**: Planned budget for the itinerary, can only contain a non-negative number up to two decimal places. Use this to plan how much to spend on your trip.
+
 Examples:
-* `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020`
-* `add-itinerary n/Japan holiday sd/15-01-2019 ed/30-01-2019 d/with friends b/4000 `
+* `add-itinerary n/Japan holiday sd/15-01-2019 ed/30-01-2019`
+* `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000`<br>
+
+![result_of_adding an itinerary](images/addItinerary.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 9. The result of <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
+
 
 #### 4.4.2 Editing an itinerary: `edit-itinerary`
 
@@ -279,8 +284,11 @@ Format: `edit-itinerary INDEX [n/NAME] [sd/START_DATE] [ed/END_DATE] [d/DESCRIPT
 * Field entries are the same as the `add-itinerary` command.
 * Any field can be changed by inputting its corresponding prefix in the command.
 
-Example: 
-* `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020` in an itinerary list followed by `edit-itinerary 1 sd/06-12-2020` changes the start date of the 1st itinerary in the list from `01-12-2020` to `06-12-2020`.
+Examples: 
+* `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000` in an itinerary list followed by `edit-itinerary 1 sd/06-12-2020` changes the start date of the 1st itinerary in the list from `01-12-2020` to `06-12-2020`.<br>
+
+![result_of_editing an itinerary](images/editItinerary.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 10. The result of <code>edit-itinerary 1 sd/06-12-2020</code></i></sup></div>
 
 #### 4.4.3 Deleting an itinerary: `delete-itinerary`
 
@@ -293,7 +301,10 @@ Format: `delete-itinerary INDEX`
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list-itinerary` followed by `delete 2` deletes the 2nd itinerary from the list.
+* `list-itinerary` followed by `delete-itinerary 1` deletes the 1st itinerary from the list.<br>
+
+![result_of_deleting an itinerary](images/deleteItinerary.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 11. The result of <code>delete-itinerary 1</code></i></sup></div>
 
 #### 4.4.4 Finding an itinerary: `find-itinerary`
 
@@ -309,11 +320,17 @@ Format: `find-itinerary KEYWORD [MORE_KEYWORDS]`
 Examples:
 * `find-itinerary Japan` returns `Japan Okinawa` and `Japan Tokyo`<br>
 
+![result_of_finding an itinerary](images/findItinerary.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 12. The result of <code>find-itinerary Japan</code></i></sup></div>
+
 #### 4.4.5 Listing all itineraries: `list-itinerary`
 
 Shows all itineraries.
 
-Format: `list-itinerary`
+Format: `list-itinerary`<br>
+
+![result_of_listing itineraries](images/listItinerary.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 13. The result of <code>list-itinerary</code></i></sup></div>
 
 #### 4.4.6 Selecting an itinerary: `select-itinerary`
 
@@ -325,8 +342,15 @@ Format: `select-itinerary INDEX`
 * The index refers to the index number shown in the displayed itinerary list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+To go back to seeing the list of itineraries, use `list-itinerary`.
+</div>
+
 Examples:
-* `select-itinerary 3` selects the 3rd itinerary in the list of itineraries.
+* `select-itinerary 1` selects the 1st itinerary in the list of itineraries.<br>
+
+![result_of_selecting itinerary](images/selectItinerary.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 14. The result of <code>select-itinerary 1</code></i></sup></div>
 
 #### 4.4.7 Clearing all itineraries : `clear-itinerary`
 
@@ -338,15 +362,19 @@ Format: `clear-itinerary`
 `clear-itinerary` will remove all the itineraries stored in TrackPad.
 This action is irreversible and should be used with caution.
 </div>
+<br>
+
+![result_of_clearing all itineraries](images/clearItinerary.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 15. The result of <code>clear-itinerary</code></i></sup></div>
 
 ### 4.5 Itinerary Attraction Features
 Itinerary attractions are attractions added to an itinerary, but with additional start/end time fields.
 These commands deal with attractions that are found in an itinerary.
 
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.png)</span>
-<div align='center'><i><sup>Figure 18. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
+<div align='center'><i><sup>Figure 16. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
 
-In Figure 9 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown with a yellow border. 
+In Figure 16 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown with a yellow border. 
 Attraction 1A is an itinerary attraction. It has all the same fields as Attraction A, but with the additional start/end time field.
 
 #### 4.5.1 Adding an attraction to the selected itinerary: `add-itinerary-attraction`
@@ -365,7 +393,7 @@ Examples:
 * `add-itinerary-attraction 2 st/1000 et/1600 day/3`
 * `add-itinerary-attraction 1 st/0900 et/1200 day/1` adds `Jurong Bird Park` into day 1 of selected itinerary<br><br>
 ![result for 'find-attraction'](images/addItineraryAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 19. The result of <code>add-itinerary-attraction 1 st/0900 et/1200 day/1</code></i></sup></div>
+<div align="center"><sup style="font-size:100%"><i>Figure 17. The result of <code>add-itinerary-attraction 1 st/0900 et/1200 day/1</code></i></sup></div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The attraction will be added into the selected itinerary.
@@ -387,7 +415,7 @@ Examples:
 * `edit-itinerary-attraction 3 day/2 st/1500 et/1800` Edits the start time, end time of the third attraction on day 2 of the selected itinerary to  be `1500` and `1800` respectively.
 * `edit-itinerary-attraction 1 day/1 st/1500` edits the starting time to visit the attraction`Jurong Bird Park`<br><br>
 ![result for 'find-attraction'](images/editItineraryAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 20. The result of <code>edit-itinerary-attraction 1 day/1 st/1500</code></i></sup></div>
+<div align="center"><sup style="font-size:100%"><i>Figure 18. The result of <code>edit-itinerary-attraction 1 day/1 st/1500</code></i></sup></div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 Only the INDEX and day/DAY_VISITING is required to identify the field to edit.
@@ -405,7 +433,7 @@ Format: `delete-itinerary-attraction INDEX`
 Examples:
 * `delete-itinerary-attraction 1 day/1` removes `Jurong Bird Park from the itinerary`<br><br>
 ![result for 'find-attraction'](images/deleteItineraryAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 8. The result of <code>delete-itinerary-attraction 1 day/1</code></i></sup></div>
+<div align="center"><sup style="font-size:100%"><i>Figure 19. The result of <code>delete-itinerary-attraction 1 day/1</code></i></sup></div>
 <!--how to comment in markdown-->
 --------------------------------------------------------------------------------------------------------------------
 
