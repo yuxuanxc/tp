@@ -61,6 +61,7 @@ public class SelectItineraryCommandTest {
             itineraryToSelect);
 
         Model expectedModel = new ModelManager(model.getAttractionList(), model.getItineraryList(), new UserPrefs());
+        showItineraryAtIndex(expectedModel, INDEX_FIRST);
         expectedModel.setCurrentItinerary(itineraryToSelect);
 
         assertCommandSuccess(selectItineraryCommand, model, expectedMessage, expectedModel);
