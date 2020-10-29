@@ -63,7 +63,7 @@ public class ItineraryAttractionListCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(itineraryAttraction.getName().fullName);
         locale.setText("\uD83C\uDF0E " + itineraryAttraction.getLocation().value);
-        startEndTime.setText(itineraryAttraction.getStartTime().toString() + "-" +
+        startEndTime.setText("\uD83D\uDD56 " + itineraryAttraction.getStartTime().toString() + "-" +
                 itineraryAttraction.getEndTime().toString());
 
         //optional fields
@@ -100,7 +100,7 @@ public class ItineraryAttractionListCard extends UiPart<Region> {
         }
 
         if (!itineraryAttraction.getOpeningHours().value.isEmpty()) {
-            String openingHours = "\uD83D\uDD56 " + itineraryAttraction.getOpeningHours().value;
+            String openingHours = "\uD83C\uDE3A " + itineraryAttraction.getOpeningHours().value;
             if (fieldsFilled == 0) {
                 field1.setText(openingHours);
             } else if (fieldsFilled == 1) {
