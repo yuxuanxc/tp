@@ -15,9 +15,9 @@ Class JsonAttractionListStorage
 Class JsonItineraryListStorage
 
 StorageManager .up.|> Storage
-StorageManager o--> UserPrefsStorage
-StorageManager o--> AttractionListStorage
-StorageManager o--> ItineraryListStorage
+StorageManager --> UserPrefsStorage
+StorageManager --> AttractionListStorage
+StorageManager --> ItineraryListStorage
 
 JsonItineraryListStorage .up.|> ItineraryListStorage
 JsonItineraryListStorage .down.> JsonSerializableItineraryList

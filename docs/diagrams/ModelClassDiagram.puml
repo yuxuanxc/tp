@@ -53,13 +53,13 @@ ItineraryList .up.|> ReadOnlyItineraryList
 
 ModelManager .up.|> Model
 Model .right.> ObservableList
-ModelManager o--> "1" AttractionList
-ModelManager o--> "1" ItineraryList
-ModelManager o-left-> "1" UserPrefs
+ModelManager --> "1" AttractionList
+ModelManager --> "1" ItineraryList
+ModelManager -left-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
 AttractionList *--> "1" UniqueAttractionList
-UniqueAttractionList o--> "*" Attraction
+UniqueAttractionList --> "*" Attraction
 Attraction *--> "1" Name
 Attraction *--> "1" Location
 Attraction *--> "0..1" Phone

@@ -10,7 +10,7 @@ UniqueTagList -[hidden]down- UniqueAttractionList
 UniqueTagList -[hidden]down- UniqueAttractionList
 
 UniqueTagList *-right-> "*" Tag
-UniqueAttractionList o-right-> Attraction
+UniqueAttractionList -right-> Attraction
 
 Attraction -up-> "*" Tag
 

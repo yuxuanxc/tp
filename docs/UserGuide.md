@@ -29,7 +29,7 @@ Minimal prior technical knowledge is needed in order to use TrackPad and we hope
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 3. Quick start
+## 3. Getting started
 
 Here are the steps to download TrackPad and start using it immediately!
 
@@ -88,36 +88,12 @@ Here are the steps to download TrackPad and start using it immediately!
 
 </div>
 
-### 4.2 General Features
-
-These basic features help TrackPad to run smoothly, as well as allow you to interact with TrackPad without the use of your mouse, perfect for fast typists!
-
-#### 4.2.1 Viewing help : `help`
-
-Shows a message with a link to this User Guide.
-
-![help message](images/helpMessage.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 2. The help window of TrackPad</i></sup></div>
-
-Format: `help`
-
-#### 4.2.2 Exiting the program : `exit`
-
-Exits the program.
-
-Format: `exit`
-
-#### 4.2.3 Saving the data
-
-TrackPad data will be saved in the storage automatically after any command that changes the data. 
-There is no need for you to save manually.
-
-### 4.3 Attraction Features
+### 4.2 Attraction Features
 
 Attractions are the core building blocks of TrackPad and are required to populate your itineraries! 
 The following features are tailored for attractions in TrackPad. 
 
-#### 4.3.1 Adding a tourist attraction: `add-attraction`
+#### 4.2.1 Adding a tourist attraction: `add-attraction`
 
 Adds a tourist attraction to the current list of attractions. Each attraction must contain a name and a location. 
 Additionally, use the optional fields (as listed below) to include more information for your attractions. 
@@ -153,7 +129,7 @@ op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`<br><br>
 ![add_attraction_result](images/addAttractionResult.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 3. The result of <code>add-attraction</code></i></sup></div>
 
-#### 4.3.2 Editing a tourist attraction: `edit-attraction`
+#### 4.2.2 Editing a tourist attraction: `edit-attraction`
 
 Edits a tourist attraction in the current list of attractions.
 
@@ -179,7 +155,7 @@ Editing the tag of an attraction does not add on to its existing tags. Rather, i
 new tags you’re specifying.
 </div>
 
-#### 4.3.3 Deleting a tourist attraction : `delete-attraction`
+#### 4.2.3 Deleting a tourist attraction : `delete-attraction`
 
 Deletes a tourist attraction from the current list of attractions.
 
@@ -195,7 +171,7 @@ Examples:
 <div align="center"><sup style="font-size:100%"><i>Figure 6. The result of <code>delete-attraction 1</code></i></sup></div>
 * `find-attraction animals` followed by `delete-attraction 2` deletes the 2nd tourist attraction in the results of the `find-attraction` command.
 
-#### 4.3.4 Marking a tourist attraction as visited: `markVisited-attraction`
+#### 4.2.4 Marking a tourist attraction as visited: `markVisited-attraction`
 
 Marks a tourist attraction in the current list of attractions as visited.
 
@@ -212,7 +188,7 @@ Examples:
   <div align="center"><sup style="font-size:100%"><i>Figure 7. The result of <code>markVisited-attraction 2</code></i></sup></div>
 * Typing `markVisited-attraction 2` again will show that the 2nd attraction in the TrackPad is visited.
 
-#### 4.3.5 Finding a tourist attraction: `find-attraction`
+#### 4.2.5 Finding a tourist attraction: `find-attraction`
 
 Finds any tourist attraction which contains the keyword(s).
 
@@ -228,13 +204,13 @@ Examples:
 ![result for 'find-attraction'](images/findJurongResult.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 8. The result of <code>find-attraction jurong</code></i></sup></div>
 
-#### 4.3.6 Listing all tourist attractions : `list-attraction`
+#### 4.2.6 Listing all tourist attractions : `list-attraction`
 
 Shows a list of all the tourist attractions. Use this command to reset the view of the Attractions panel, as 
 certain commands (`find-attraction`) can alter the view of the Attractions panel. 
 
 Format: `list-attraction`
-#### 4.3.7 Clearing all attractions : `clear-attraction`
+#### 4.2.7 Clearing all attractions : `clear-attraction`
 
 Clears all tourist attractions.
 
@@ -245,11 +221,11 @@ Format: `clear-attraction`
 This action is irreversible and should be used with caution.
 </div>
 
-### 4.4 Itinerary Features
+### 4.3 Itinerary Features
 
 Itineraries help track the details of your trip, as well as the attractions you plan on visiting.
 
-#### 4.4.1 Adding a new itinerary: `add-itinerary`
+#### 4.3.1 Adding a new itinerary: `add-itinerary`
 
 Adds a new itinerary to the current list of itineraries.
 
@@ -272,7 +248,7 @@ Examples:
 <div align="center"><sup style="font-size:100%"><i>Figure 9. The result of <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
 
 
-#### 4.4.2 Editing an itinerary: `edit-itinerary`
+#### 4.3.2 Editing an itinerary: `edit-itinerary`
 
 Edits an itinerary from the current list of itineraries.
 
@@ -290,7 +266,7 @@ Examples:
 ![result_of_editing an itinerary](images/editItinerary.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 10. The result of <code>edit-itinerary 1 sd/06-12-2020</code></i></sup></div>
 
-#### 4.4.3 Deleting an itinerary: `delete-itinerary`
+#### 4.3.3 Deleting an itinerary: `delete-itinerary`
 
 Deletes an itinerary from the current list of itineraries.
 
@@ -306,7 +282,7 @@ Examples:
 ![result_of_deleting an itinerary](images/deleteItinerary.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 11. The result of <code>delete-itinerary 1</code></i></sup></div>
 
-#### 4.4.4 Finding an itinerary: `find-itinerary`
+#### 4.3.4 Finding an itinerary: `find-itinerary`
 
 Finds itineraries from the current list of itineraries which contain the keyword(s).
 
@@ -323,7 +299,7 @@ Examples:
 ![result_of_finding an itinerary](images/findItinerary.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 12. The result of <code>find-itinerary Japan</code></i></sup></div>
 
-#### 4.4.5 Listing all itineraries: `list-itinerary`
+#### 4.3.5 Listing all itineraries: `list-itinerary`
 
 Shows all itineraries.
 
@@ -332,7 +308,7 @@ Format: `list-itinerary`<br>
 ![result_of_listing itineraries](images/listItinerary.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 13. The result of <code>list-itinerary</code></i></sup></div>
 
-#### 4.4.6 Selecting an itinerary: `select-itinerary`
+#### 4.3.6 Selecting an itinerary: `select-itinerary`
 
 Selects an itinerary to be shown in detail, from the current list of itineraries.
 
@@ -352,7 +328,7 @@ Examples:
 ![result_of_selecting itinerary](images/selectItinerary.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 14. The result of <code>select-itinerary 1</code></i></sup></div>
 
-#### 4.4.7 Clearing all itineraries : `clear-itinerary`
+#### 4.3.7 Clearing all itineraries : `clear-itinerary`
 
 Clears all itineraries.
 
@@ -366,7 +342,7 @@ This action is irreversible and should be used with caution.
 ![result_of_clearing all itineraries](images/clearItinerary.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 15. The result of <code>clear-itinerary</code></i></sup></div>
 
-### 4.5 Itinerary Attraction Features
+### 4.4 Itinerary Attraction Features
 Itinerary attractions are attractions added to an itinerary, but with additional start/end time fields.
 These commands deal with attractions that are found in an itinerary.
 
@@ -376,7 +352,7 @@ These commands deal with attractions that are found in an itinerary.
 In Figure 16 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown with a yellow border. 
 Attraction 1A is an itinerary attraction. It has all the same fields as Attraction A, but with the additional start/end time field.
 
-#### 4.5.1 Adding an attraction to the selected itinerary: `add-itinerary-attraction`
+#### 4.4.1 Adding an attraction to the selected itinerary: `add-itinerary-attraction`
 Adds an attraction to the selected itinerary.
 
 Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING`
@@ -398,7 +374,7 @@ Examples:
 The attraction will be added into the selected itinerary.
 </div>
 
-#### 4.5.2 Editing an attraction from the selected itinerary : `edit-itinerary-attraction`
+#### 4.4.2 Editing an attraction from the selected itinerary : `edit-itinerary-attraction`
 Edits an existing attraction in the selected itinerary.
 
 Format: `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/END_TIME][n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS][op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
@@ -420,7 +396,7 @@ Examples:
 Only the INDEX and day/DAY_VISITING is required to identify the field to edit.
 </div>
 
-#### 4.5.3 Deleting an attraction from the selected itinerary: `delete-itinerary-attraction`
+#### 4.4.3 Deleting an attraction from the selected itinerary: `delete-itinerary-attraction`
 Deletes an attraction from the selected itinerary.
 
 Format: `delete-itinerary-attraction INDEX`
@@ -434,6 +410,30 @@ Examples:
 ![result for 'find-attraction'](images/deleteItineraryAttraction.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 19. The result of <code>delete-itinerary-attraction 1 day/1</code></i></sup></div>
 <!--how to comment in markdown-->
+
+### 4.5 Miscellaneous Features
+
+These basic features help TrackPad to run smoothly, as well as allow you to interact with TrackPad without the use of your mouse, perfect for fast typists!
+
+#### 4.5.1 Viewing help : `help`
+
+Shows a message with a link to this User Guide.
+
+![help message](images/helpMessage.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 2. The help window of TrackPad</i></sup></div>
+
+Format: `help`
+
+#### 4.5.2 Exiting the program : `exit`
+
+Exits the program.
+
+Format: `exit`
+
+#### 4.5.3 Saving the data
+
+TrackPad data will be saved in the storage automatically after any command that changes the data. 
+There is no need for you to save manually.
 --------------------------------------------------------------------------------------------------------------------
 
 
