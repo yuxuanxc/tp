@@ -45,7 +45,9 @@ public class ItineraryListCard extends UiPart<Region> {
         name.setText(itinerary.getName().fullName);
         startEndDate.setText("\uD83D\uDCC6 " + itinerary.getStartDate().value + " to " + itinerary.getEndDate().value);
         description.setText(itinerary.getDescription().value);
-        budget.setText("💲 " + itinerary.getBudget().toString());
+        if (!itinerary.getBudget().value.isEmpty()) {
+            budget.setText("💲 " + itinerary.getBudget().toString());
+        }
         locale.setText("\uD83C\uDF0E " + itinerary.getLocations());
     }
 

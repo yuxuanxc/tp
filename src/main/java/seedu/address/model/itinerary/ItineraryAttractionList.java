@@ -22,10 +22,7 @@ import seedu.address.model.commons.Name;
 
 public class ItineraryAttractionList implements ReadOnlyItineraryAttractionList {
 
-    //    private Itinerary currentItinerary;
     private ObservableList<ItineraryAttraction> internalList = FXCollections.observableArrayList();
-    //    private final ObservableList<ItineraryAttraction> internalUnmodifiableList =
-    //            FXCollections.unmodifiableObservableList(internalList);
 
     private ItineraryAttraction testingItineraryAttraction = new ItineraryAttraction(
             new Attraction(new Name("test"), new Phone(), new Email(), new Address(), new Description(),
