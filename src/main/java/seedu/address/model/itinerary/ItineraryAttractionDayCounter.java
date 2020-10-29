@@ -3,19 +3,19 @@ package seedu.address.model.itinerary;
 import java.util.Objects;
 
 /**
- * Child class of an attraction which additionally stores start time and end time
- * Is-a attraction specific to a particular Itinerary.
+ * Child class of an itinerary attraction.
+ * Designed to hold the day number in ItineraryAttractionList.
  */
-public class ItineraryAttractionPlaceholder extends ItineraryAttraction {
+public class ItineraryAttractionDayCounter extends ItineraryAttraction {
     private final int day;
 
     /**
-     * Constructs a Itinerary attraction.
+     * Constructs a Itinerary attraction day counter.
      *
      * @param itineraryAttraction
      * @param day Day of visit.
      */
-    public ItineraryAttractionPlaceholder(ItineraryAttraction itineraryAttraction, int day) {
+    public ItineraryAttractionDayCounter(ItineraryAttraction itineraryAttraction, int day) {
         super(itineraryAttraction.getAttraction(), itineraryAttraction.getStartTime(),
                 itineraryAttraction.getEndTime());
         this.day = day;
@@ -35,11 +35,11 @@ public class ItineraryAttractionPlaceholder extends ItineraryAttraction {
             return true;
         }
 
-        if (!(other instanceof ItineraryAttractionPlaceholder)) {
+        if (!(other instanceof ItineraryAttractionDayCounter)) {
             return false;
         }
 
-        ItineraryAttractionPlaceholder otherItineraryAttraction = (ItineraryAttractionPlaceholder) other;
+        ItineraryAttractionDayCounter otherItineraryAttraction = (ItineraryAttractionDayCounter) other;
         // calls equals of Attraction and checks the timing.
         return super.equals(otherItineraryAttraction)
                 && isSameTiming(otherItineraryAttraction);

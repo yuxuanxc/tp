@@ -37,7 +37,7 @@ public class ItineraryAttractionList implements ReadOnlyItineraryAttractionList 
         requireNonNull(currentItinerary);
         internalList = FXCollections.observableArrayList();
         for (Day day : currentItinerary.getDays()) {
-            internalList.add(new ItineraryAttractionPlaceholder(testingItineraryAttraction,
+            internalList.add(new ItineraryAttractionDayCounter(testingItineraryAttraction,
                     day.value));
             for (ItineraryAttraction itineraryAttraction : day.getItineraryAttractions()) {
                 internalList.add(itineraryAttraction);

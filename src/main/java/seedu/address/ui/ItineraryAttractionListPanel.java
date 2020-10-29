@@ -9,7 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.itinerary.ItineraryAttraction;
-import seedu.address.model.itinerary.ItineraryAttractionPlaceholder;
+import seedu.address.model.itinerary.ItineraryAttractionDayCounter;
 
 /**
  * Panel containing the list of itinerary attractions.
@@ -43,10 +43,10 @@ public class ItineraryAttractionListPanel extends UiPart<Region> {
             if (empty || itineraryAttractionListView == null) {
                 setGraphic(null);
                 setText(null);
-            } else if (itineraryAttraction instanceof ItineraryAttractionPlaceholder) {
+            } else if (itineraryAttraction instanceof ItineraryAttractionDayCounter) {
                 indexCounter = 0;
                 // indexCounter++;
-                setGraphic(new ItineraryAttractionPlaceholderCard(itineraryAttraction).getRoot());
+                setGraphic(new ItineraryAttractionDayCounterCard(itineraryAttraction).getRoot());
             } else {
                 indexCounter++;
                 System.out.println(indexCounter);
