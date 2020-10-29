@@ -1,14 +1,5 @@
 package seedu.address.testutil;
 
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.itineraryattraction.AddItineraryAttractionCommand;
-import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand;
-import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand.EditItineraryAttractionDescriptor;
-import seedu.address.model.itinerary.ItineraryAttraction;
-import seedu.address.model.tag.Tag;
-
-import java.util.Set;
-
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
@@ -23,6 +14,15 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_VISITED;
+
+import java.util.Set;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.itineraryattraction.AddItineraryAttractionCommand;
+import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand;
+import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand.EditItineraryAttractionDescriptor;
+import seedu.address.model.itinerary.ItineraryAttraction;
+import seedu.address.model.tag.Tag;
 
 /**
  * A utility class for Attraction.
@@ -82,7 +82,8 @@ public class ItineraryAttractionUtil {
                 sb.append(PREFIX_PRICE_RANGE).append(priceRange.value).append(" "));
         descriptor.getRating().ifPresent(rating -> sb.append(PREFIX_RATING).append(rating.value).append(" "));
         descriptor.getVisited().ifPresent(visited -> sb.append(PREFIX_VISITED).append(visited.value).append(" "));
-        descriptor.getStartTime().ifPresent(startTime -> sb.append(PREFIX_START_TIME).append(startTime.toString()).append(" "));
+        descriptor.getStartTime().ifPresent(startTime ->
+                sb.append(PREFIX_START_TIME).append(startTime.toString()).append(" "));
         descriptor.getEndTime().ifPresent(endTime -> sb.append(PREFIX_END_TIME).append(endTime.toString()).append(" "));
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();

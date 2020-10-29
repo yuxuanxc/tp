@@ -80,8 +80,7 @@ public class EditItineraryAttractionCommand extends Command {
 
         Itinerary itinerary = model.getCurrentItinerary();
         Day day = itinerary.getDay(dayVisiting);
-        List<ItineraryAttraction> itineraryAttractionsThatDay =
-                model.getCurrentItinerary().getDay(dayVisiting).getItineraryAttractions();
+        List<ItineraryAttraction> itineraryAttractionsThatDay = day.getItineraryAttractions();
 
         if (index.getZeroBased() >= itineraryAttractionsThatDay.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX);

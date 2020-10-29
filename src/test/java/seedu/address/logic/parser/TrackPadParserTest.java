@@ -187,7 +187,7 @@ public class TrackPadParserTest {
 
     // =========== Itinerary Attraction Commands =======================================================================
     @Test
-    public void parserCommand_AddItineraryAttraction() throws Exception {
+    public void parserCommand_addItineraryAttraction() throws Exception {
         Index index = INDEX_FIRST;
         ItineraryTime startTime = new ItineraryTime("2000");
         ItineraryTime endTime = new ItineraryTime("2300");
@@ -203,7 +203,7 @@ public class TrackPadParserTest {
     }
 
     @Test
-    public void parserCommand_EditItineraryAttraction() throws Exception {
+    public void parserCommand_editItineraryAttraction() throws Exception {
         Index index = INDEX_FIRST;
         ItineraryTime startTime = new ItineraryTime("1000");
         ItineraryTime endTime = new ItineraryTime("1300");
