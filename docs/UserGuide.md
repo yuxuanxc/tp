@@ -193,7 +193,7 @@ Examples:
 * `list-attraction` followed by `delete-attraction 1` deletes the 1st attraction in the TrackPad.<br><br>
 ![result for `delete-attraction`](images/deleteAttractionResult.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 6. The result of <code>delete-attraction 1</code></i></sup></div>
-* `find-attraction animals` followed by `delete 2` deletes the 2nd tourist attraction in the results of the `find-attraction` command.
+* `find-attraction animals` followed by `delete-attraction 2` deletes the 2nd tourist attraction in the results of the `find-attraction` command.
 
 #### 4.3.4 Marking a tourist attraction as visited: `markVisited-attraction`
 
@@ -318,7 +318,7 @@ Format: `find-itinerary KEYWORD [MORE_KEYWORDS]`
 * Only full words will be matched e.g. `Jap` will not match `Japan`
 
 Examples:
-* `find-itinerary Japan` returns `Japan Okinawa` and `Japan Tokyo`<br>
+* `find-itinerary Japan` returns `Japan Okinawa` and `Japan Tokyo`, if such itineraries exist<br>
 
 ![result_of_finding an itinerary](images/findItinerary.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 12. The result of <code>find-itinerary Japan</code></i></sup></div>
@@ -334,7 +334,7 @@ Format: `list-itinerary`<br>
 
 #### 4.4.6 Selecting an itinerary: `select-itinerary`
 
-Selects an itinerary to be shown, from the current list of itineraries.
+Selects an itinerary to be shown in detail, from the current list of itineraries.
 
 Format: `select-itinerary INDEX`
 
