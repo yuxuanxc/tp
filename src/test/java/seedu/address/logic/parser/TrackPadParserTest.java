@@ -4,8 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,6 +17,7 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.attraction.AddAttractionCommand;
@@ -30,15 +35,23 @@ import seedu.address.logic.commands.itinerary.EditItineraryCommand.EditItinerary
 import seedu.address.logic.commands.itinerary.FindItineraryCommand;
 import seedu.address.logic.commands.itinerary.ListItineraryCommand;
 import seedu.address.logic.commands.itinerary.SelectItineraryCommand;
+import seedu.address.logic.commands.itineraryattraction.AddItineraryAttractionCommand;
+import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand;
+import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand.EditItineraryAttractionDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.AttractionContainsKeywordsPredicate;
 import seedu.address.model.itinerary.Itinerary;
+import seedu.address.model.itinerary.ItineraryAttraction;
 import seedu.address.model.itinerary.ItineraryContainsKeywordsPredicate;
+import seedu.address.model.itinerary.ItineraryTime;
 import seedu.address.testutil.AttractionBuilder;
 import seedu.address.testutil.AttractionUtil;
 import seedu.address.testutil.EditAttractionDescriptorBuilder;
+import seedu.address.testutil.EditItineraryAttractionDescriptorBuilder;
 import seedu.address.testutil.EditItineraryDescriptorBuilder;
+import seedu.address.testutil.ItineraryAttractionBuilder;
+import seedu.address.testutil.ItineraryAttractionUtil;
 import seedu.address.testutil.ItineraryBuilder;
 import seedu.address.testutil.ItineraryUtil;
 
@@ -98,8 +111,8 @@ public class TrackPadParserTest {
         EditAttractionDescriptor descriptor = new EditAttractionDescriptorBuilder(attraction).build();
         EditAttractionCommand command = (EditAttractionCommand) parser.parseCommand(
                 EditAttractionCommand.COMMAND_WORD + " "
-                + INDEX_FIRST.getOneBased() + " "
-                + AttractionUtil.getEditAttractionDescriptorDetails(descriptor));
+                        + INDEX_FIRST.getOneBased() + " "
+                        + AttractionUtil.getEditAttractionDescriptorDetails(descriptor));
         assertEquals(new EditAttractionCommand(INDEX_FIRST, descriptor), command);
     }
 
@@ -168,7 +181,42 @@ public class TrackPadParserTest {
     @Test
     public void parseCommand_selectItinerary() throws Exception {
         SelectItineraryCommand command = (SelectItineraryCommand) parser.parseCommand(
-            SelectItineraryCommand.COMMAND_WORD + " " + INDEX_FIRST.getOneBased());
+                SelectItineraryCommand.COMMAND_WORD + " " + INDEX_FIRST.getOneBased());
         assertEquals(new SelectItineraryCommand(INDEX_FIRST), command);
     }
+
+    // =========== Itinerary Attraction Commands =======================================================================
+    @Test
+    public void parserCommand_addItineraryAttraction() throws Exception {
+        Index index = INDEX_FIRST;
+        ItineraryTime startTime = new ItineraryTime("2000");
+        ItineraryTime endTime = new ItineraryTime("2300");
+        Index day = INDEX_THIRD;
+
+        // tests if same input produces same command
+        AddItineraryAttractionCommand command = (AddItineraryAttractionCommand) parser.parseCommand(
+                AddItineraryAttractionCommand.COMMAND_WORD + " " + index.getOneBased() + " "
+                        + PREFIX_START_TIME + startTime.toString() + " " + PREFIX_END_TIME + endTime.toString() + " "
+                        + PREFIX_DAY_VISITING + day.getOneBased());
+
+        assertEquals(new AddItineraryAttractionCommand(index, startTime, endTime, day), command);
+    }
+
+    @Test
+    public void parserCommand_editItineraryAttraction() throws Exception {
+        Index index = INDEX_FIRST;
+        ItineraryTime startTime = new ItineraryTime("1000");
+        ItineraryTime endTime = new ItineraryTime("1300");
+        Index day = INDEX_THIRD;
+        ItineraryAttraction itineraryAttraction = new ItineraryAttractionBuilder().build();
+        EditItineraryAttractionDescriptor editDescriptor =
+                new EditItineraryAttractionDescriptorBuilder(itineraryAttraction).build();
+
+        // tests if same input produces same command
+        EditItineraryAttractionCommand command = (EditItineraryAttractionCommand) parser.parseCommand(
+                ItineraryAttractionUtil.getEditItineraryAttractionCommand(index, day, editDescriptor));
+
+        assertEquals(new EditItineraryAttractionCommand(index, day, editDescriptor), command);
+    }
+
 }

@@ -5,6 +5,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD;
 
 import java.nio.file.Path;
 import java.util.function.Predicate;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand.EditItineraryAttractionDescriptor;
 import seedu.address.model.Model;
@@ -75,6 +77,55 @@ public class EditItineraryAttractionCommandTest {
         assertThrows(CommandException.class, EditItineraryAttractionCommand.MESSAGE_DUPLICATE_ATTRACTION, ()
             -> editIaCommand.execute(model));
     }
+
+    @Test
+    public void execute_fieldSpecified_success() {
+        Index index = INDEX_FIRST;
+        Index day = INDEX_THIRD;
+
+        // original
+        //        ItineraryAttraction itineraryAttraction = new ItineraryAttractionBuilder().build();
+        //        Itinerary itinerary = new ItineraryBuilder().withItineraryAttraction(itineraryAttraction, day)
+        //        .build();
+        //        EditItineraryAttractionDescriptor descriptor =
+        //                new EditItineraryAttractionDescriptorBuilder().withPhone("12312").build();
+        //        EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(index, day,
+        //        descriptor);
+        //        ModelStubWithItinerarySelected model = new ModelStubWithItinerarySelected(itinerary);
+        //
+        //        // expected
+        //        ItineraryAttraction expectedIa = new ItineraryAttractionBuilder().withPhone("12312").build();
+        //        Itinerary expectedI = new ItineraryBuilder().withItineraryAttraction(expectedIa, day).build();
+        //        ModelStubWithItinerarySelected expectedModel = new ModelStubWithItinerarySelected(expectedI);
+        //
+        //        String expectedMessage = String.format(EditItineraryAttractionCommand
+        //        .MESSAGE_EDIT_ATTRACTION_SUCCESS, expectedIa);
+
+        //        ItineraryAttraction itineraryAttraction = new ItineraryAttractionBuilder().build();
+        //        Itinerary itinerary = new ItineraryBuilder().withItineraryAttraction(itineraryAttraction).build();
+        //        Model model = new ModelManager(getTypicalAttractionList(), getTypicalItineraryList(), new UserPrefs
+        //        ());
+        //        model.setCurrentItinerary(itinerary);
+        //
+        //        ItineraryAttraction editedIa = new ItineraryAttractionBuilder().build();
+        //        EditItineraryAttractionDescriptor descriptor = new EditItineraryAttractionDescriptorBuilder
+        //        (editedIa).build();
+        //        EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(index, day,
+        //        descriptor);
+        //
+        //        String expectedMessage = String.format(EditItineraryAttractionCommand
+        //        .MESSAGE_EDIT_ATTRACTION_SUCCESS, editedIa);
+        //
+        //        Model expectedModel = new ModelManager(new AttractionList(model.getAttractionList()),
+        //                new ItineraryList(model.getItineraryList()),
+        //                new UserPrefs());
+        //        Itinerary itinerary =
+        //        expectedModel.setItinerary();
+
+
+        //        assertCommandSuccess(editIaCommand, model, expectedMessage, expectedModel);
+    }
+
 
     /**
      * A default model stub that throws exception for all method calls.
