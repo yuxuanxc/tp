@@ -32,19 +32,20 @@ public class EditItineraryCommand extends Command {
     public static final String COMMAND_WORD = "edit-itinerary";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the itinerary identified "
-        + "by the index number used in the displayed itinerary list. "
-        + "Existing values will be overwritten by the input values.\n"
-        + "Parameters: INDEX (must be a positive integer) "
-        + "[" + PREFIX_NAME + "NAME] "
-        + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
-        + "[" + PREFIX_START_DATE + "START_DATE] "
-        + "[" + PREFIX_END_DATE + "END_DATE ] "
-        + "[" + PREFIX_BUDGET + "BUDGET ] "
-        + "Example: " + COMMAND_WORD + " 2 n/Singapore journey sd/05-06-2019";
+            + "by the index number used in the displayed itinerary list. "
+            + "Existing values will be overwritten by the input values.\n"
+            + "Parameters: INDEX (must be a positive integer) "
+            + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
+            + "[" + PREFIX_START_DATE + "START_DATE] "
+            + "[" + PREFIX_END_DATE + "END_DATE ] "
+            + "[" + PREFIX_BUDGET + "BUDGET ] "
+            + "Example: " + COMMAND_WORD + " 2 n/Singapore journey sd/05-06-2019";
 
     public static final String MESSAGE_EDIT_ITINERARY_SUCCESS = "Edited Itinerary: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_ITINERARY = "This itinerary already exists in TrackPad.";
+    public static final String MESSAGE_START_BEFORE_END_DATE = "Start date should come before end date";
 
     private final Index index;
     private final EditItineraryDescriptor editItineraryDescriptor;
@@ -72,18 +73,14 @@ public class EditItineraryCommand extends Command {
 
         Itinerary itineraryToEdit = lastShownList.get(index.getZeroBased());
 
-        try {
-            Itinerary editedItinerary = createEditedItinerary(itineraryToEdit, editItineraryDescriptor);
-            if (!itineraryToEdit.isSameItinerary(editedItinerary) && model.hasItinerary(editedItinerary)) {
-                throw new CommandException(MESSAGE_DUPLICATE_ITINERARY);
-            }
-
-            model.setItinerary(itineraryToEdit, editedItinerary);
-            model.updateFilteredItineraryList(PREDICATE_SHOW_ALL_ITINERARIES);
-            return new CommandResult(String.format(MESSAGE_EDIT_ITINERARY_SUCCESS, editedItinerary));
-        } catch (IllegalArgumentException e) {
-            throw new CommandException(e.getMessage());
+        Itinerary editedItinerary = createEditedItinerary(itineraryToEdit, editItineraryDescriptor);
+        if (!itineraryToEdit.isSameItinerary(editedItinerary) && model.hasItinerary(editedItinerary)) {
+            throw new CommandException(MESSAGE_DUPLICATE_ITINERARY);
         }
+
+        model.setItinerary(itineraryToEdit, editedItinerary);
+        model.updateFilteredItineraryList(PREDICATE_SHOW_ALL_ITINERARIES);
+        return new CommandResult(String.format(MESSAGE_EDIT_ITINERARY_SUCCESS, editedItinerary));
     }
 
     /**
@@ -91,15 +88,20 @@ public class EditItineraryCommand extends Command {
      * edited with {@code editItineraryDescriptor}.
      */
     private static Itinerary createEditedItinerary(Itinerary itineraryToEdit,
-                                                     EditItineraryDescriptor editItineraryDescriptor) {
+                                                   EditItineraryDescriptor editItineraryDescriptor)
+            throws CommandException {
         assert itineraryToEdit != null;
 
         Name updatedName = editItineraryDescriptor.getName().orElse(itineraryToEdit.getName());
         Description updatedDescription = editItineraryDescriptor.getDescription()
-            .orElse(itineraryToEdit.getDescription());
+                .orElse(itineraryToEdit.getDescription());
         ItineraryDate updatedStartDate = editItineraryDescriptor.getStartDate().orElse(itineraryToEdit.getStartDate());
         ItineraryDate updatedEndDate = editItineraryDescriptor.getEndDate().orElse(itineraryToEdit.getEndDate());
         Budget updatedBudget = editItineraryDescriptor.getBudget().orElse(itineraryToEdit.getBudget());
+
+        if (updatedStartDate.isAfter(updatedEndDate)) {
+            throw new CommandException(MESSAGE_START_BEFORE_END_DATE);
+        }
 
         return new Itinerary(updatedName, updatedDescription, updatedStartDate, updatedEndDate, updatedBudget,
                 itineraryToEdit.getDays());
@@ -119,8 +121,7 @@ public class EditItineraryCommand extends Command {
 
         // state check
         EditItineraryCommand e = (EditItineraryCommand) other;
-        return index.equals(e.index)
-            && editItineraryDescriptor.equals(e.editItineraryDescriptor);
+        return index.equals(e.index) && editItineraryDescriptor.equals(e.editItineraryDescriptor);
     }
 
     /**
@@ -210,10 +211,10 @@ public class EditItineraryCommand extends Command {
             EditItineraryDescriptor e = (EditItineraryDescriptor) other;
 
             return getName().equals(e.getName())
-                && getDescription().equals(e.getDescription())
-                && getStartDate().equals(e.getStartDate())
-                && getEndDate().equals(e.getEndDate())
-                && getBudget().equals(e.getBudget());
+                    && getDescription().equals(e.getDescription())
+                    && getStartDate().equals(e.getStartDate())
+                    && getEndDate().equals(e.getEndDate())
+                    && getBudget().equals(e.getBudget());
         }
     }
 }

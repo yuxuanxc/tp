@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_DAY;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
@@ -26,6 +25,7 @@ import seedu.address.model.attraction.Visited;
 import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Budget;
+import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.ItineraryDate;
 import seedu.address.model.tag.Tag;
 
@@ -410,13 +410,13 @@ public class ParserUtilTest {
 
     @Test
     public void parseDayIndex_outOfRangeInput_throwsParseException() {
-        assertThrows(ParseException.class, MESSAGE_INVALID_DAY, ()
+        assertThrows(ParseException.class, Day.MESSAGE_CONSTRAINTS, ()
             -> ParserUtil.parseDayIndex(Long.toString(Integer.MAX_VALUE + 1)));
 
-        assertThrows(ParseException.class, MESSAGE_INVALID_DAY, ()
+        assertThrows(ParseException.class, Day.MESSAGE_CONSTRAINTS, ()
             -> ParserUtil.parseDayIndex(Long.toString(-2)));
 
-        assertThrows(ParseException.class, MESSAGE_INVALID_DAY, ()
+        assertThrows(ParseException.class, Day.MESSAGE_CONSTRAINTS, ()
             -> ParserUtil.parseDayIndex(Long.toString(0)));
     }
 
