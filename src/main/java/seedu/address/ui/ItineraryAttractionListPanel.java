@@ -45,7 +45,7 @@ public class ItineraryAttractionListPanel extends UiPart<Region> {
                 setText(null);
             } else if (itineraryAttraction instanceof ItineraryAttractionPlaceholder) {
                 indexCounter = 0;
-//                indexCounter++;
+                // indexCounter++;
                 setGraphic(new ItineraryAttractionPlaceholderCard(itineraryAttraction).getRoot());
             } else {
                 indexCounter++;
