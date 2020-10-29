@@ -41,7 +41,7 @@ Here are the steps to download TrackPad and start using it immediately!
 
 1. Double-click the file to start the app. The GUI similar to the following Figure 1 should appear in a few seconds. Here's how your app should look like!
     Note how the app contains some sample data. <br><br>
-   ![Ui](images/Ui.png)
+   ![Ui](images/Ui-Labelled.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 1. The Ui of TrackPad</i></sup></div>
 
 1. Type the command in the command box and press Enter to execute it. 
@@ -133,10 +133,10 @@ Compulsory fields:
 
 Optional fields:
 * **DESCRIPTION**: Description of the attraction, can take in any value. Use this to give a brief summary of the attraction.
-* **PHONE_NUMBER**: Phone number of the attraction, can only contain numbers and be at least 3 digits long, no spaces.
-* **EMAIL**: Email of the attraction in the format `local-part@domain`.
-* **ADDRESS**: Postal address of the attraction, can take in any value. Use this if the location field is not enough for locating the attraction.
-* **OPENING_HOURS**: Opening hours of the attraction in the format `opening time - closing time` (both in 24h format).
+* **PHONE_NUMBER** 📞: Phone number of the attraction, can only contain numbers and be at least 3 digits long, no spaces.
+* **EMAIL** 📧: Email of the attraction in the format `local-part@domain`.
+* **ADDRESS** 🏠: Postal address of the attraction, can take in any value. Use this if the location field is not enough for locating the attraction.
+* **OPENING_HOURS** 🈺: Opening hours of the attraction in the format `opening time - closing time` (both in 24h format).
 * **PRICE_RANGE**: Price range of the attraction. Use `LOW`, `MEDIUM` or `HIGH` to indicate the range.
 * **RATING**: Rating of the attraction. Use a number between `0.0` to `5.0` to indicate your experience of the attraction after visiting it.
 * **VISITED**: Marks whether you have visited the attraction before. Use `TRUE` if you want to mark it as visited, and `FALSE` otherwise. 
@@ -162,7 +162,7 @@ Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] 
  
 * Edits the attraction at the specified `INDEX`.
 * The index refers to the index number shown in the displayed tourist attraction list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The index **must be a positive number** 1, 2, 3, …​
 * Field entries are the same as the `add-attraction` command.
 * Any field can be changed by inputting its corresponding prefix in the command.
     * Example: `add-attraction n/MBS l/Singapore, Singapore r/4.3` in an attraction list followed by 
@@ -187,7 +187,7 @@ Format: `delete-attraction INDEX`
 
 * Deletes the attraction at the specified `INDEX`.
 * The index refers to the index number shown in the displayed tourist attraction list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The index **must be a positive number** 1, 2, 3, …​
 
 Examples:
 * `list-attraction` followed by `delete-attraction 1` deletes the 1st attraction in the TrackPad.<br><br>
@@ -203,7 +203,7 @@ Format: `markVisited-attraction INDEX`
  
 * Marks the attraction at the specified `INDEX` as visited.
 * The index refers to the index number shown in the displayed tourist attraction list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The index **must be a positive number** 1, 2, 3, …​
 * Any attraction can be marked visited, even if the attraction was already visited.
 
 Examples:
@@ -257,12 +257,12 @@ Format: `add-itinerary n/ITINERARY_NAME sd/START_DATE ed/END_DATE [d/DESCRIPTION
 
 Compulsory fields:
 * **ITINERARY_NAME**: Name of the itinerary.
-* **START_DATE**: Start date of the itinerary in the format `dd-mm-yyyy`.
-* **END_DATE**: End date of the itinerary in the format `dd-mm-yyyy`.
+* **START_DATE** 📆: Start date of the itinerary in the format `dd-mm-yyyy`.
+* **END_DATE** 📆: End date of the itinerary in the format `dd-mm-yyyy`.
 
 Optional fields:
 * **DESCRIPTION**: Description of the itinerary, can take in any value. Use this to give a brief summary of the itinerary or to note down important details.
-* **BUDGET**: Planned budget for the itinerary, can only contain a non-negative number up to two decimal places. Use this to plan how much to spend on your trip.
+* **BUDGET** 💵: Planned budget for the itinerary, can only contain a non-negative number up to two decimal places. Use this to plan how much to spend on your trip.
 
 Examples:
 * `add-itinerary n/Japan holiday sd/15-01-2019 ed/30-01-2019`
@@ -280,7 +280,7 @@ Format: `edit-itinerary INDEX [n/NAME] [sd/START_DATE] [ed/END_DATE] [d/DESCRIPT
 
 * Edits the itinerary at the specified `INDEX`.
 * The index refers to the index number shown in the displayed itinerary list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The index **must be a positive number** 1, 2, 3, …​
 * Field entries are the same as the `add-itinerary` command.
 * Any field can be changed by inputting its corresponding prefix in the command.
 
@@ -298,7 +298,7 @@ Format: `delete-itinerary INDEX`
 
 * Deletes the itinerary at the specified `INDEX`.
 * The index refers to the index number shown in the displayed itinerary list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The index **must be a positive number** 1, 2, 3, …​
 
 Examples:
 * `list-itinerary` followed by `delete-itinerary 1` deletes the 1st itinerary from the list.<br>
@@ -340,7 +340,7 @@ Format: `select-itinerary INDEX`
 
 * Selects the itinerary at the specified `INDEX`.
 * The index refers to the index number shown in the displayed itinerary list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The index **must be a positive number** 1, 2, 3, …​
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 To go back to seeing the list of itineraries, use `list-itinerary`.
@@ -382,8 +382,8 @@ Adds an attraction to the selected itinerary.
 Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING`
 
 * **INDEX**: Index of attraction in the current list of attractions.
-* **START_TIME**: Start time to visit the attraction in the 24H format `HHMM`.
-* **END_TIME**: End time to visit the attraction in the 24H format `HHMM`.
+* **START_TIME** 🕖: Start time to visit the attraction in the 24H format `HHMM`.
+* **END_TIME** 🕖: End time to visit the attraction in the 24H format `HHMM`.
 * **DAY_VISITING**: Day on which you plan to visit the attraction in the itinerary.
 * The start time and end time cannot overlap with other attractions in the selected itinerary.
 * None of the fields can be left blank.
@@ -427,7 +427,7 @@ Format: `delete-itinerary-attraction INDEX`
 
 * Deletes the attraction specified by the `INDEX`.
 * The index refers to the index number shown in the selected itinerary.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The index **must be a positive number** 1, 2, 3, …​
 
 Examples:
 * `delete-itinerary-attraction 1 day/1` removes `Jurong Bird Park from the itinerary`<br><br>
