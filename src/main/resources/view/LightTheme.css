@@ -133,6 +133,13 @@
     -fx-text-fill: black;
 }
 
+.cell_day_label {
+    -fx-font-family: "Book Antiqua";
+    -fx-font-size: 20px;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+
 .cell_small_label {
     -fx-font-family: "Book Antiqua";
     -fx-font-size: 13px;

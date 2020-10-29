@@ -29,9 +29,7 @@ public class ItineraryListCard extends UiPart<Region> {
     @FXML
     private Label locale;
     @FXML
-    private Label startDate;
-    @FXML
-    private Label endDate;
+    private Label startEndDate;
     @FXML
     private Label budget;
     @FXML
@@ -45,11 +43,14 @@ public class ItineraryListCard extends UiPart<Region> {
         this.itinerary = itinerary;
         id.setText(displayedIndex + ". ");
         name.setText(itinerary.getName().fullName);
-        startDate.setText(itinerary.getStartDate().value);
-        endDate.setText(itinerary.getEndDate().value);
+        startEndDate.setText("\uD83D\uDCC6 " + itinerary.getStartDate().value
+                + " to "
+                + itinerary.getEndDate().value);
         description.setText(itinerary.getDescription().value);
-        budget.setText(itinerary.getBudget().toString());
-        locale.setText(itinerary.getLocations());
+        if (!itinerary.getBudget().value.isEmpty()) {
+            budget.setText("💲 " + itinerary.getBudget().toString());
+        }
+        locale.setText("\uD83C\uDF0E " + itinerary.getLocations());
     }
 
     @Override

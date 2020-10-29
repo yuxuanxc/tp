@@ -22,10 +22,8 @@ import seedu.address.model.commons.Name;
 
 public class ItineraryAttractionList implements ReadOnlyItineraryAttractionList {
 
-    //    private Itinerary currentItinerary;
     private ObservableList<ItineraryAttraction> internalList = FXCollections.observableArrayList();
-    //    private final ObservableList<ItineraryAttraction> internalUnmodifiableList =
-    //            FXCollections.unmodifiableObservableList(internalList);
+    private int indexCounter = 1;
 
     private ItineraryAttraction testingItineraryAttraction = new ItineraryAttraction(
             new Attraction(new Name("test"), new Phone(), new Email(), new Address(), new Description(),
@@ -40,10 +38,12 @@ public class ItineraryAttractionList implements ReadOnlyItineraryAttractionList 
         requireNonNull(currentItinerary);
         internalList = FXCollections.observableArrayList();
         for (Day day : currentItinerary.getDays()) {
-            internalList.add(new ItineraryAttractionPlaceholder(testingItineraryAttraction,
+            internalList.add(new ItineraryAttractionDayCounter(testingItineraryAttraction,
                     day.value));
+            indexCounter = 1;
             for (ItineraryAttraction itineraryAttraction : day.getItineraryAttractions()) {
-                internalList.add(itineraryAttraction);
+                internalList.add(new ItineraryAttractionIndexCounter(itineraryAttraction, indexCounter));
+                indexCounter++;
             }
         }
     }

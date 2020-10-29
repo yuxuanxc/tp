@@ -9,7 +9,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.itinerary.ItineraryAttraction;
-import seedu.address.model.itinerary.ItineraryAttractionPlaceholder;
+import seedu.address.model.itinerary.ItineraryAttractionDayCounter;
+import seedu.address.model.itinerary.ItineraryAttractionIndexCounter;
 
 /**
  * Panel containing the list of itinerary attractions.
@@ -17,7 +18,6 @@ import seedu.address.model.itinerary.ItineraryAttractionPlaceholder;
 public class ItineraryAttractionListPanel extends UiPart<Region> {
     private static final String FXML = "ItineraryAttractionListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ItineraryAttractionListPanel.class);
-    private int indexCounter = 0;
 
     @FXML
     private ListView<ItineraryAttraction> itineraryAttractionListView;
@@ -43,12 +43,10 @@ public class ItineraryAttractionListPanel extends UiPart<Region> {
             if (empty || itineraryAttractionListView == null) {
                 setGraphic(null);
                 setText(null);
-            } else if (itineraryAttraction instanceof ItineraryAttractionPlaceholder) {
-                setGraphic(new ItineraryAttractionPlaceholderCard(itineraryAttraction).getRoot());
-                indexCounter = 0;
-            } else {
-                setGraphic(new ItineraryAttractionListCard(itineraryAttraction, indexCounter + 1).getRoot());
-                indexCounter++;
+            } else if (itineraryAttraction instanceof ItineraryAttractionDayCounter) {
+                setGraphic(new ItineraryAttractionDayCounterCard(itineraryAttraction).getRoot());
+            } else if (itineraryAttraction instanceof ItineraryAttractionIndexCounter) {
+                setGraphic(new ItineraryAttractionListCard(itineraryAttraction).getRoot());
             }
         }
     }

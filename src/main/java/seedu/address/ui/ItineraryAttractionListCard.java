@@ -29,64 +29,90 @@ public class ItineraryAttractionListCard extends UiPart<Region> {
 
     @FXML
     private HBox cardPane;
+    // Compulsory Fields
     @FXML
     private Label name;
     @FXML
     private Label id;
     @FXML
-    private Label startTime;
-    @FXML
-    private Label endTime;
-    @FXML
-    private Label description;
-    @FXML
-    private Label phone;
-    @FXML
-    private Label address;
-    @FXML
-    private Label email;
+    private Label startEndTime;
     @FXML
     // For JavaFX, rename location to locale as location is a reserved keyword in JavaFX
     private Label locale;
+
+    // Optional Fields
     @FXML
-    private Label openingHours;
+    private Label description;
+    @FXML
+    private Label field1;
+    @FXML
+    private Label field2;
+    @FXML
+    private Label field3;
+    @FXML
+    private Label field4;
     @FXML
     private FlowPane tags;
 
     /**
      * Creates a {@code ItineraryAttractionCode} with the given {@code ItineraryAttraction} and index to display.
      */
-    public ItineraryAttractionListCard(ItineraryAttraction itineraryAttraction, int displayedIndex) {
+    public ItineraryAttractionListCard(ItineraryAttraction itineraryAttraction) {
         super(FXML);
-        this.itineraryAttraction = itineraryAttraction;
-        id.setText(displayedIndex + ". ");
+        this.itineraryAttraction = itineraryAttraction.getItineraryAttraction();
+        id.setText(itineraryAttraction.getIndex() + ". ");
         name.setText(itineraryAttraction.getName().fullName);
         locale.setText("\uD83C\uDF0E " + itineraryAttraction.getLocation().value);
-        startTime.setText(itineraryAttraction.getStartTime().toString());
-        endTime.setText(itineraryAttraction.getEndTime().toString());
+        startEndTime.setText("\uD83D\uDD56 " + itineraryAttraction.getStartTime().toString()
+                + "-"
+                + itineraryAttraction.getEndTime().toString());
 
         //optional fields
         description.setText(itineraryAttraction.getDescription().value);
-        if (itineraryAttraction.getPhone().value.isEmpty()) {
-            phone.setText("📞 " + "⛔");
-        } else {
-            phone.setText("📞 " + itineraryAttraction.getPhone().value);
+
+        int fieldsFilled = 0;
+
+        if (!itineraryAttraction.getAddress().value.isEmpty()) {
+            String address = "\uD83C\uDFE0 " + itineraryAttraction.getAddress().value;
+            field1.setText(address);
+            fieldsFilled++;
         }
-        if (itineraryAttraction.getAddress().value.isEmpty()) {
-            address.setText("\uD83C\uDFE0 " + "⛔");
-        } else {
-            address.setText("\uD83C\uDFE0 " + itineraryAttraction.getAddress().value);
+
+        if (!itineraryAttraction.getPhone().value.isEmpty()) {
+            String phone = "📞 " + itineraryAttraction.getPhone().value;
+            if (fieldsFilled == 0) {
+                field1.setText(phone);
+            } else {
+                field2.setText(phone);
+            }
+            fieldsFilled++;
         }
-        if (itineraryAttraction.getEmail().value.isEmpty()) {
-            email.setText("\uD83D\uDCE7 " + "⛔");
-        } else {
-            email.setText("\uD83D\uDCE7 " + itineraryAttraction.getEmail().value);
+
+        if (!itineraryAttraction.getEmail().value.isEmpty()) {
+            String email = "\uD83D\uDCE7 " + itineraryAttraction.getEmail().value;
+            if (fieldsFilled == 0) {
+                field1.setText(email);
+            } else if (fieldsFilled == 1) {
+                field2.setText(email);
+            } else {
+                field3.setText(email);
+            }
+            fieldsFilled++;
         }
-        if (itineraryAttraction.getOpeningHours().value.isEmpty()) {
-            openingHours.setText("\uD83D\uDD56 " + "⛔");
-        } else {
-            openingHours.setText("\uD83D\uDD56 " + itineraryAttraction.getOpeningHours().value);
+
+        if (!itineraryAttraction.getOpeningHours().value.isEmpty()) {
+            String openingHours = "\uD83C\uDE3A " + itineraryAttraction.getOpeningHours().value;
+            if (fieldsFilled == 0) {
+                field1.setText(openingHours);
+            } else if (fieldsFilled == 1) {
+                field2.setText(openingHours);
+            } else if (fieldsFilled == 2) {
+                field3.setText(openingHours);
+            } else {
+                field4.setText(openingHours);
+            }
         }
+
         if (itineraryAttraction.getPriceRange().toString() != "") {
             Label priceRange = new Label(itineraryAttraction.getPriceRange().toString());
             priceRange.setStyle("-fx-background-color: #800;");
