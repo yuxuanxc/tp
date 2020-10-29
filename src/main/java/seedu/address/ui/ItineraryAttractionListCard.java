@@ -29,6 +29,7 @@ public class ItineraryAttractionListCard extends UiPart<Region> {
 
     @FXML
     private HBox cardPane;
+    // Compulsory Fields
     @FXML
     private Label name;
     @FXML
@@ -38,6 +39,11 @@ public class ItineraryAttractionListCard extends UiPart<Region> {
     @FXML
     private Label endTime;
     @FXML
+    // For JavaFX, rename location to locale as location is a reserved keyword in JavaFX
+    private Label locale;
+
+    // Optional Fields
+    @FXML
     private Label description;
     @FXML
     private Label phone;
@@ -45,9 +51,6 @@ public class ItineraryAttractionListCard extends UiPart<Region> {
     private Label address;
     @FXML
     private Label email;
-    @FXML
-    // For JavaFX, rename location to locale as location is a reserved keyword in JavaFX
-    private Label locale;
     @FXML
     private Label openingHours;
     @FXML

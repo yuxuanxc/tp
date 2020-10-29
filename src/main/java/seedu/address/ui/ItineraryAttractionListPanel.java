@@ -44,11 +44,13 @@ public class ItineraryAttractionListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else if (itineraryAttraction instanceof ItineraryAttractionPlaceholder) {
-                setGraphic(new ItineraryAttractionPlaceholderCard(itineraryAttraction).getRoot());
                 indexCounter = 0;
+//                indexCounter++;
+                setGraphic(new ItineraryAttractionPlaceholderCard(itineraryAttraction).getRoot());
             } else {
-                setGraphic(new ItineraryAttractionListCard(itineraryAttraction, indexCounter + 1).getRoot());
                 indexCounter++;
+                System.out.println(indexCounter);
+                setGraphic(new ItineraryAttractionListCard(itineraryAttraction, getIndex()).getRoot());
             }
         }
     }
