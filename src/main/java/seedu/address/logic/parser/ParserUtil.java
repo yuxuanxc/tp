@@ -31,6 +31,7 @@ import seedu.address.model.tag.Tag;
  */
 public class ParserUtil {
 
+    // todo improve this weird phrasing error message
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
 
     /**
