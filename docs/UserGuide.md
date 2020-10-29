@@ -344,7 +344,7 @@ Itinerary attractions are attractions added to an itinerary, but with additional
 These commands deal with attractions that are found in an itinerary.
 
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.png)</span>
-<div align='center'><i><sup>Figure 9. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
+<div align='center'><i><sup>Figure 18. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
 
 In Figure 9 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown with a yellow border. 
 Attraction 1A is an itinerary attraction. It has all the same fields as Attraction A, but with the additional start/end time field.
@@ -363,7 +363,9 @@ Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITI
 
 Examples:
 * `add-itinerary-attraction 2 st/1000 et/1600 day/3`
-* `add-itinerary-attraction 1 st/0900 et/1200 day/2`
+* `add-itinerary-attraction 1 st/0900 et/1200 day/1` adds `Jurong Bird Park` into day 1 of selected itinerary<br><br>
+![result for 'find-attraction'](images/addItineraryAttraction.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 19. The result of <code>add-itinerary-attraction 1 st/0900 et/1200 day/1</code></i></sup></div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The attraction will be added into the selected itinerary.
@@ -372,7 +374,7 @@ The attraction will be added into the selected itinerary.
 #### 4.5.2 Editing an attraction from the selected itinerary : `edit-itinerary-attraction`
 Edits an existing attraction in the selected itinerary.
 
-Format: `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/END_TIME]`
+Format: `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/END_TIME][n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS][op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
 
 * Edits the attraction specified by the `INDEX` and `DAY_VISITING`.
 * The index refers to the index number shown in the selected itinerary.
@@ -382,7 +384,14 @@ Format: `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/EN
 * Existing values will be updated to the input values.
 
 Examples:
-*  `edit-itinerary-attraction 3 day/2 st/1500 et/1800` Edits the start time and the end time of the third attraction on day 2 of the selected itinerary to  be `1500` and `1800` respectively.
+* `edit-itinerary-attraction 3 day/2 st/1500 et/1800` Edits the start time, end time of the third attraction on day 2 of the selected itinerary to  be `1500` and `1800` respectively.
+* `edit-itinerary-attraction 1 day/1 st/1500` edits the starting time to visit the attraction`Jurong Bird Park`<br><br>
+![result for 'find-attraction'](images/editItineraryAttraction.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 20. The result of <code>edit-itinerary-attraction 1 day/1 st/1500</code></i></sup></div>
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Only the INDEX and day/DAY_VISITING is required to identify the field to edit.
+</div>
 
 #### 4.5.3 Deleting an attraction from the selected itinerary: `delete-itinerary-attraction`
 Deletes an attraction from the selected itinerary.
@@ -393,6 +402,10 @@ Format: `delete-itinerary-attraction INDEX`
 * The index refers to the index number shown in the selected itinerary.
 * The index **must be a positive integer** 1, 2, 3, …​
 
+Examples:
+* `delete-itinerary-attraction 1 day/1` removes `Jurong Bird Park from the itinerary`<br><br>
+![result for 'find-attraction'](images/deleteItineraryAttraction.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 8. The result of <code>delete-itinerary-attraction 1 day/1</code></i></sup></div>
 <!--how to comment in markdown-->
 --------------------------------------------------------------------------------------------------------------------
 
