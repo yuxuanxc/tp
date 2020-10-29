@@ -41,7 +41,7 @@ Here are the steps to download TrackPad and start using it immediately!
 
 1. Double-click the file to start the app. The GUI similar to the following Figure 1 should appear in a few seconds. Here's how your app should look like!
     Note how the app contains some sample data. <br><br>
-   ![Ui](images/Ui.PNG)
+   ![Ui](images/Ui.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 1. The Ui of TrackPad</i></sup></div>
 
 1. Type the command in the command box and press Enter to execute it. 
