@@ -121,12 +121,14 @@ The `Model` component shown in Figure 2.4.1,
 * stores a `UserPref` object that represents the user’s preferences.
 * stores an `AttractionList` object that is a list of all the attractions in TrackPad.
 * stores an `ItineraryList` object that is a list of all the itineraries in TrackPad.
+* stores an `ItineraryAttractionList` object that is a list of all the attractions in the current selected itinerary.
 * exposes two unmodifiable `ObservableList<Attraction>` and `ObservableList<Itinerary>` that can be 'observed' e.g. the UI can be bound to the lists so that the UI automatically updates when the data in the lists change.
 * does not depend on any of the other three components.
 
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.</div><br>
-<div>![BetterModelClassDiagram](images/BetterModelClassDiagram.png)</div>
+<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.</div><br> 
+
+![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
 <div align='center'><sup>Figure 2.4.2 Structure of an alternative Model Component, Alternative Model Class Diagram</sup></div><br>
 
 
