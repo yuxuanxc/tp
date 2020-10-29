@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -17,10 +18,22 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.attraction.EditAttractionCommand.EditAttractionDescriptor;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.attraction.Address;
+import seedu.address.model.attraction.Attraction;
+import seedu.address.model.attraction.Email;
+import seedu.address.model.attraction.Location;
+import seedu.address.model.attraction.OpeningHours;
+import seedu.address.model.attraction.Phone;
+import seedu.address.model.attraction.PriceRange;
+import seedu.address.model.attraction.Rating;
+import seedu.address.model.attraction.Visited;
+import seedu.address.model.commons.Description;
+import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.Itinerary;
 import seedu.address.model.itinerary.ItineraryAttraction;
 import seedu.address.model.itinerary.ItineraryTime;
+import seedu.address.model.tag.Tag;
 
 /**
  * Edits the details of an existing attraction in the itinerary.
@@ -79,19 +92,16 @@ public class EditItineraryAttractionCommand extends Command {
                 editIaDescriptor);
 
 
-        // todo decide if isSameItineraryAttraction is redundant
-        if (!itineraryAttractionToEdit.isSameItineraryAttraction(editedItineraryAttraction)
-                || day.contains(editedItineraryAttraction)) {
+        if (itineraryAttractionToEdit.equals(editedItineraryAttraction)) {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
         }
 
         // checks if there is a timing clash with an existing itinerary attraction
-        if (itinerary.getDay(dayVisiting).hasTimingClash(editedItineraryAttraction)) {
+        if (itinerary.getDay(dayVisiting).hasTimingClash(editedItineraryAttraction, itineraryAttractionToEdit)) {
             throw new CommandException(MESSAGE_TIMING_CLASH);
         }
 
         itinerary.editItineraryAttraction(itineraryAttractionToEdit, editedItineraryAttraction, dayVisiting);
-
 
         return new CommandResult(String.format(MESSAGE_EDIT_ATTRACTION_SUCCESS, editedItineraryAttraction), true);
     }
@@ -100,15 +110,30 @@ public class EditItineraryAttractionCommand extends Command {
      * Creates and returns a {@code Attraction} with the details of {@code attractionToEdit}
      * edited with {@code editItineraryAttractionDescriptor}.
      */
-    private static ItineraryAttraction createEditedItineraryAttraction(ItineraryAttraction itineraryAttractionToEdit,
-                                                                       EditItineraryAttractionDescriptor
-                                                                               editItiAttrDesc) {
+    private ItineraryAttraction createEditedItineraryAttraction(ItineraryAttraction itineraryAttractionToEdit,
+                                                                EditItineraryAttractionDescriptor editItiAttrDesc) {
         assert itineraryAttractionToEdit != null;
+        Name updatedName = editItiAttrDesc.getName().orElse(itineraryAttractionToEdit.getName());
+        Phone updatedPhone = editItiAttrDesc.getPhone().orElse(itineraryAttractionToEdit.getPhone());
+        Email updatedEmail = editItiAttrDesc.getEmail().orElse(itineraryAttractionToEdit.getEmail());
+        Address updatedAddress = editItiAttrDesc.getAddress().orElse(itineraryAttractionToEdit.getAddress());
+        Description updatedDescription = editItiAttrDesc
+                .getDescription().orElse(itineraryAttractionToEdit.getDescription());
+        Location updatedLocation = editItiAttrDesc.getLocation().orElse(itineraryAttractionToEdit.getLocation());
+        OpeningHours updatedOpeningHours = editItiAttrDesc
+                .getOpeningHours().orElse(itineraryAttractionToEdit.getOpeningHours());
+        PriceRange updatedPriceRange = editItiAttrDesc
+                .getPriceRange().orElse(itineraryAttractionToEdit.getPriceRange());
+        Rating updatedRating = editItiAttrDesc.getRating().orElse(itineraryAttractionToEdit.getRating());
+        Visited updatedVisited = editItiAttrDesc.getVisited().orElse(itineraryAttractionToEdit.getVisited());
+        Set<Tag> updatedTags = editItiAttrDesc.getTags().orElse(itineraryAttractionToEdit.getTags());
 
         ItineraryTime startTime = editItiAttrDesc.getStartTime().orElse(itineraryAttractionToEdit.getStartTime());
         ItineraryTime endTime = editItiAttrDesc.getEndTime().orElse(itineraryAttractionToEdit.getEndTime());
 
-        return new ItineraryAttraction(itineraryAttractionToEdit.getAttraction(), startTime, endTime);
+        return new ItineraryAttraction(new Attraction(updatedName, updatedPhone, updatedEmail, updatedAddress,
+                updatedDescription, updatedLocation, updatedOpeningHours, updatedPriceRange,
+                updatedRating, updatedVisited, updatedTags), startTime, endTime);
     }
 
     @Override

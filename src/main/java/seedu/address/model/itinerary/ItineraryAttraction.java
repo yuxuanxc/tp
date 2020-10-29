@@ -74,6 +74,9 @@ public class ItineraryAttraction extends Attraction {
                 && this.endTime.equals(otherItineraryAttraction.endTime);
     }
 
+
+    // todo remove this as this weaker equal method is not useful.
+
     /**
      * Returns true if both itinerary attractions are of the same name, have the same visiting timing.
      * This defines a weaker notion of equality between two itinerary attractions.

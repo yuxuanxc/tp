@@ -37,7 +37,7 @@ public class Day {
     /**
      * Constructs a {@code Day} of day {@code dayNumber} with the specified itinerary attractions.
      *
-     * @param dayNumber A valid day number.
+     * @param dayNumber            A valid day number.
      * @param itineraryAttractions Itinerary attractions to include in the Day.
      */
     public Day(Integer dayNumber, List<ItineraryAttraction> itineraryAttractions) {
@@ -111,6 +111,24 @@ public class Day {
      */
     public boolean hasTimingClash(ItineraryAttraction toCheck) {
         for (ItineraryAttraction itineraryAttraction : itineraryAttractions) {
+            if (toCheck.isTimingClash(itineraryAttraction)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Returns true if the itinerary attraction has a timing that clashes with another itinerary attraction already
+     * in the Day.
+     * Overloaded method only for EditItineraryAttractionCommand.
+     * Does not run toCheck with the itineraryAttraction it is replacing.
+     */
+    public boolean hasTimingClash(ItineraryAttraction toCheck, ItineraryAttraction toReplace) {
+        for (ItineraryAttraction itineraryAttraction : itineraryAttractions) {
+            if (toReplace.equals(itineraryAttraction)) {
+                continue;
+            }
             if (toCheck.isTimingClash(itineraryAttraction)) {
                 return true;
             }
