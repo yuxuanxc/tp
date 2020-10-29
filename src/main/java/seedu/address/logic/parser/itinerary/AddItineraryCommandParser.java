@@ -69,6 +69,10 @@ public class AddItineraryCommandParser implements Parser<AddItineraryCommand> {
             budget = new Budget();
         }
 
+        if (startDate.isAfter(endDate)) {
+            throw new ParseException(AddItineraryCommand.MESSAGE_START_BEFORE_END_DATE);
+        }
+
         Itinerary itinerary = new Itinerary(name, description, startDate, endDate, budget, new ArrayList<Day>());
 
         return new AddItineraryCommand(itinerary);

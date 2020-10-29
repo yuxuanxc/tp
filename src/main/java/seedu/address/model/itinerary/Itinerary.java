@@ -27,7 +27,7 @@ public class Itinerary {
     private final List<Day> days = new ArrayList<>();
 
     /**
-     * Name must be present and not null.
+     * Every field must be present and not null.
      */
     public Itinerary(Name name, Description description, ItineraryDate startDate, ItineraryDate endDate,
                      Budget budget, List<Day> days) {
@@ -43,9 +43,9 @@ public class Itinerary {
         this.budget = budget;
         for (int i = 0; i < getNumberOfDays(); i++) {
             if (i < days.size()) {
-                this.days.add(days.get(i));
+                this.days.add(new Day(i + 1, days.get(i).getItineraryAttractions()));
             } else {
-                this.days.add(new Day(Integer.toString(i + 1)));
+                this.days.add(new Day(i + 1));
             }
         }
     }
@@ -84,7 +84,7 @@ public class Itinerary {
     }
 
     /**
-     * Returns a string of all the locations of the itinerary attractions ordered by day.
+     * Returns a string of all the locations of the itinerary attractions ordered by day and time.
      */
     public String getLocations() {
         List<Location> locations = new ArrayList<>();
@@ -108,7 +108,7 @@ public class Itinerary {
     }
 
     /**
-     * Adds an itinerary attraction to the itinerary.
+     * Adds an itinerary attraction to the specified day in the itinerary.
      */
     public void addItineraryAttraction(ItineraryAttraction toAdd, Index day) {
         requireNonNull(toAdd);
@@ -118,7 +118,7 @@ public class Itinerary {
     }
 
     /**
-     * Removes the equivalent itinerary attraction from the itinerary.
+     * Removes the itinerary attraction specified by the index and day from the itinerary.
      * The itinerary attraction must exist in the list.
      */
     public void deleteItineraryAttraction(Index index, Index day) {

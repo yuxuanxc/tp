@@ -17,35 +17,39 @@ import seedu.address.model.itinerary.exceptions.ItineraryAttractionNotFoundExcep
  */
 public class Day {
 
-    public static final String MESSAGE_CONSTRAINTS = "Days should be a positive number, and it should not be blank";
-    public static final String VALIDATION_REGEX = "^[1-9]\\d*$";
-    public final String value;
+    public static final String MESSAGE_CONSTRAINTS = "Day should be a positive number, not be blank, and"
+            + " should exist within the date range of the itinerary";
+    public final Integer value;
     private final List<ItineraryAttraction> itineraryAttractions;
 
     /**
-     * Constructs an empty {@code Day}.
+     * Constructs an empty {@code Day} of day {@code dayNumber}.
      *
-     * @param day A valid day.
+     * @param dayNumber A valid day number.
      */
-    public Day(String day) {
-        requireNonNull(day);
-        checkArgument(isValidDay(day), MESSAGE_CONSTRAINTS);
-        value = day;
+    public Day(Integer dayNumber) {
+        requireNonNull(dayNumber);
+        checkArgument(isValidDayNumber(dayNumber), MESSAGE_CONSTRAINTS);
+        value = dayNumber;
         this.itineraryAttractions = new ArrayList<>();
     }
 
     /**
-     * Constructs a {@code Day}.
+     * Constructs a {@code Day} of day {@code dayNumber} with the specified itinerary attractions.
      *
-     * @param day A valid day.
+     * @param dayNumber A valid day number.
+     * @param itineraryAttractions Itinerary attractions to include in the Day.
      */
-    public Day(String day, List<ItineraryAttraction> itineraryAttractions) {
-        requireNonNull(day);
-        checkArgument(isValidDay(day), MESSAGE_CONSTRAINTS);
-        value = day;
+    public Day(Integer dayNumber, List<ItineraryAttraction> itineraryAttractions) {
+        requireNonNull(dayNumber);
+        checkArgument(isValidDayNumber(dayNumber), MESSAGE_CONSTRAINTS);
+        value = dayNumber;
         this.itineraryAttractions = itineraryAttractions;
     }
 
+    /**
+     * Returns a list of all the itinerary attractions.
+     */
     public List<ItineraryAttraction> getItineraryAttractions() {
         return itineraryAttractions;
     }
@@ -54,10 +58,7 @@ public class Day {
      * Adds an itinerary attraction and sorts them based on their start times.
      */
     public void addItineraryAttraction(ItineraryAttraction toAdd) {
-        for (ItineraryAttraction itineraryAttraction : itineraryAttractions) {
-            checkArgument(!toAdd.isTimingClash(itineraryAttraction),
-                    "The timing clashes with another attraction in the itinerary");
-        }
+        checkArgument(!hasTimingClash(toAdd), "The timing clashes with another attraction in the itinerary");
         itineraryAttractions.add(toAdd);
         itineraryAttractions.sort(new Comparator<ItineraryAttraction>() {
             @Override
@@ -73,6 +74,9 @@ public class Day {
         });
     }
 
+    /**
+     * Deletes the itinerary attraction specified by the index.
+     */
     public void deleteItineraryAttraction(Index index) {
         itineraryAttractions.remove(index.getZeroBased());
     }
@@ -94,20 +98,36 @@ public class Day {
 
     }
 
+    /**
+     * Returns true if the itinerary attraction is found in the Day.
+     */
     public boolean contains(ItineraryAttraction itineraryAttraction) {
         return itineraryAttractions.contains(itineraryAttraction);
     }
 
     /**
-     * Returns true if a given string is a valid day.
+     * Returns true if the itinerary attraction has a timing that clashes with another itinerary attraction already
+     * in the Day.
      */
-    public static boolean isValidDay(String test) {
-        return test.matches(VALIDATION_REGEX);
+    public boolean hasTimingClash(ItineraryAttraction toCheck) {
+        for (ItineraryAttraction itineraryAttraction : itineraryAttractions) {
+            if (toCheck.isTimingClash(itineraryAttraction)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Returns true if a given int is a valid day number.
+     */
+    public static boolean isValidDayNumber(Integer test) {
+        return test > 0;
     }
 
     @Override
     public String toString() {
-        return "Day " + value;
+        return String.format("Day %d", value);
     }
 
     @Override

@@ -27,6 +27,7 @@ public class AddItineraryAttractionCommand extends Command {
     public static final String MESSAGE_ADD_ATTRACTION_SUCCESS = "Added Attraction: %1$s to Itinerary: %1$s";
     public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in the itinerary.";
     public static final String MESSAGE_INVALID_START_TIME = "The start time cannot be later than end time.";
+    public static final String MESSAGE_TIMING_CLASH = "The timing clashes with another attraction in the itinerary";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an attraction identified by the index in "
             + "attraction list to the selected itinerary.\n "
             + "Parameters: INDEX " + PREFIX_START_TIME + "START_TIME " + PREFIX_END_TIME + "END_TIME "
@@ -73,6 +74,11 @@ public class AddItineraryAttractionCommand extends Command {
 
         if (model.getCurrentItinerary().getDay(dayVisited).contains(itineraryAttractionToAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
+        }
+
+        // checks if there is a timing clash with an existing itinerary attraction
+        if (model.getCurrentItinerary().getDay(dayVisited).hasTimingClash(itineraryAttractionToAdd)) {
+            throw new CommandException(MESSAGE_TIMING_CLASH);
         }
 
         model.getCurrentItinerary().addItineraryAttraction(itineraryAttractionToAdd, dayVisited);

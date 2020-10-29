@@ -31,6 +31,7 @@ public class EditItineraryAttractionCommand extends Command {
     public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in Itinerary.";
+    public static final String MESSAGE_TIMING_CLASH = "The timing clashes with another attraction in the itinerary";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the itinerary attraction "
             + "identified by the name of the itinerary attraction displayed in the itinerary"
             + "Parameters: INDEX " + PREFIX_DAY_VISITING + "DAY VISITING " + "[" + PREFIX_START_TIME + "START_TIME] "
@@ -82,6 +83,11 @@ public class EditItineraryAttractionCommand extends Command {
         if (!itineraryAttractionToEdit.isSameItineraryAttraction(editedItineraryAttraction)
                 || day.contains(editedItineraryAttraction)) {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
+        }
+
+        // checks if there is a timing clash with an existing itinerary attraction
+        if (itinerary.getDay(dayVisiting).hasTimingClash(editedItineraryAttraction)) {
+            throw new CommandException(MESSAGE_TIMING_CLASH);
         }
 
         itinerary.editItineraryAttraction(itineraryAttractionToEdit, editedItineraryAttraction, dayVisiting);
