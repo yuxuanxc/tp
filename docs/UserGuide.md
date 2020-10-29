@@ -125,9 +125,10 @@ An attraction can have any number of tags.
 Examples:
 * `add-attraction n/USS a/8 Sentosa Gateway, 098269 l/Singapore, Singapore`
 * `add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com 
-op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`<br><br>
-![add_attraction_result](images/addAttractionResult.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 3. The result of <code>add-attraction</code></i></sup></div>
+op/1000-1800 pr/MEDMIU r/4.6 v/FALSE`<br><br>
+![add_attraction_result](images/addAttraction.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 2. The result of <code>add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com 
+op/1000-1800 pr/MEDMIU r/4.6 v/FALSE</code></i></sup></div>
 
 #### 4.2.2 Editing a tourist attraction: `edit-attraction`
 
@@ -142,13 +143,13 @@ Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] 
 * Field entries are the same as the `add-attraction` command.
 * Any field can be changed by inputting its corresponding prefix in the command.
     * Example: `add-attraction n/MBS l/Singapore, Singapore r/4.3` in an attraction list followed by 
-    `edit-attraction 1 r/4.6` changes the rating of the 1st attraction in the list from `4.3` to `4.6`.<br><br>        
-    ![result_of_editing_existing_fields](images/editAttractionResult1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 4. The result of <code>edit-attraction 1 r/4.6</code></i></sup></div><br>
+    `edit-attraction 1 r/4.6` changes the rating of the 1st attraction in the list from `4.3` to `4.6`.<br>        
+    ![result_of_editing_existing_fields](images/editAttraction1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 3. The result of <code>edit-attraction 1 r/4.6</code></i></sup></div><br>
 * New fields can be added to current attractions.
     * Example: `edit-attraction 1 pr/MEDIUM t/hotel` adds the price range of MBS as `MEDIUM` and adds an `hotel` tag.<br><br>
-    ![result_of_editing_new_fields](images/editAttractionResult2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 5. The result of <code>edit-attraction 1 pr/MEDIUM t/hotel</code></i></sup></div>
+    ![result_of_editing_new_fields](images/editAttraction2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 4. The result of <code>edit-attraction 1 pr/MEDIUM t/hotel</code></i></sup></div>
 
 <div markdown="span" class="alert alert-danger">:warning: **Warning:**
 Editing the tag of an attraction does not add on to its existing tags. Rather, it replaces all existing tags with the 
@@ -167,8 +168,9 @@ Format: `delete-attraction INDEX`
 
 Examples:
 * `list-attraction` followed by `delete-attraction 1` deletes the 1st attraction in the TrackPad.<br><br>
-![result for `delete-attraction`](images/deleteAttractionResult.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 6. The result of <code>delete-attraction 1</code></i></sup></div>
+![result for `delete-attraction`](images/deleteAttraction.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 5. The result of <code>delete-attraction 1</code></i></sup></div>
+
 * `find-attraction animals` followed by `delete-attraction 2` deletes the 2nd tourist attraction in the results of the `find-attraction` command.
 
 #### 4.2.4 Marking a tourist attraction as visited: `markVisited-attraction`
@@ -183,9 +185,10 @@ Format: `markVisited-attraction INDEX`
 * Any attraction can be marked visited, even if the attraction was already visited.
 
 Examples:
-* `markVisited-attraction 2` marks the 2nd attraction in the TrackPad as visited.
+* `markVisited-attraction 2` marks the 2nd attraction in the TrackPad as visited.<br><br>
 ![result for 'markVisited-attraction'](images/markVisitedAttraction.png)
-  <div align="center"><sup style="font-size:100%"><i>Figure 7. The result of <code>markVisited-attraction 2</code></i></sup></div>
+  <div align="center"><sup style="font-size:100%"><i>Figure 6. The result of <code>markVisited-attraction 2</code></i></sup></div>
+
 * Typing `markVisited-attraction 2` again will show that the 2nd attraction in the TrackPad is visited.
 
 #### 4.2.5 Finding a tourist attraction: `find-attraction`
@@ -201,15 +204,19 @@ Format: `find-attraction KEYWORD [MORE_KEYWORDS]`
 
 Examples:
 * `find-attraction jurong` returns `Jurong Bird Park` and `Snow City`<br><br>
-![result for 'find-attraction'](images/findJurongResult.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 8. The result of <code>find-attraction jurong</code></i></sup></div>
+![result for 'find-attraction'](images/findAttraction.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 7. The result of <code>find-attraction jurong</code></i></sup></div>
 
 #### 4.2.6 Listing all tourist attractions : `list-attraction`
 
 Shows a list of all the tourist attractions. Use this command to reset the view of the Attractions panel, as 
 certain commands (`find-attraction`) can alter the view of the Attractions panel. 
 
-Format: `list-attraction`
+Format: `list-attraction`<br>
+
+![result for 'list-attraction'](images/listAttraction.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 8. The result of <code>list-attraction</code></i></sup></div>
+
 #### 4.2.7 Clearing all attractions : `clear-attraction`
 
 Clears all tourist attractions.
@@ -219,7 +226,10 @@ Format: `clear-attraction`
 <div markdown="span" class="alert alert-danger">:warning: **Warning:**
 `clear-attraction` will remove all the attractions stored in TrackPad.
 This action is irreversible and should be used with caution.
-</div>
+</div><br>
+
+![result for 'clear-attraction'](images/clearAttraction.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 9. The result of <code>clear-attraction</code></i></sup></div>
 
 ### 4.3 Itinerary Features
 
@@ -245,7 +255,7 @@ Examples:
 * `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000`<br>
 
 ![result_of_adding an itinerary](images/addItinerary.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 9. The result of <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
+<div align="center"><sup style="font-size:100%"><i>Figure 10. The result of <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
 
 
 #### 4.3.2 Editing an itinerary: `edit-itinerary`
@@ -264,7 +274,7 @@ Examples:
 * `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000` in an itinerary list followed by `edit-itinerary 1 sd/06-12-2020` changes the start date of the 1st itinerary in the list from `01-12-2020` to `06-12-2020`.<br>
 
 ![result_of_editing an itinerary](images/editItinerary.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 10. The result of <code>edit-itinerary 1 sd/06-12-2020</code></i></sup></div>
+<div align="center"><sup style="font-size:100%"><i>Figure 11. The result of <code>edit-itinerary 1 sd/06-12-2020</code></i></sup></div>
 
 #### 4.3.3 Deleting an itinerary: `delete-itinerary`
 
@@ -280,7 +290,7 @@ Examples:
 * `list-itinerary` followed by `delete-itinerary 1` deletes the 1st itinerary from the list.<br>
 
 ![result_of_deleting an itinerary](images/deleteItinerary.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 11. The result of <code>delete-itinerary 1</code></i></sup></div>
+<div align="center"><sup style="font-size:100%"><i>Figure 12. The result of <code>delete-itinerary 1</code></i></sup></div>
 
 #### 4.3.4 Finding an itinerary: `find-itinerary`
 
@@ -297,16 +307,17 @@ Examples:
 * `find-itinerary Japan` returns `Japan Okinawa` and `Japan Tokyo`, if such itineraries exist<br>
 
 ![result_of_finding an itinerary](images/findItinerary.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 12. The result of <code>find-itinerary Japan</code></i></sup></div>
+<div align="center"><sup style="font-size:100%"><i>Figure 13. The result of <code>find-itinerary Japan</code></i></sup></div>
 
 #### 4.3.5 Listing all itineraries: `list-itinerary`
 
-Shows all itineraries.
+Shows all itineraries. Use this command to reset the view of the Itineraries panel, as 
+certain commands (`find-itinerary`, `select-itinerary`) can alter the view of the Itineraries panel. 
 
 Format: `list-itinerary`<br>
 
 ![result_of_listing itineraries](images/listItinerary.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 13. The result of <code>list-itinerary</code></i></sup></div>
+<div align="center"><sup style="font-size:100%"><i>Figure 14. The result of <code>list-itinerary</code></i></sup></div>
 
 #### 4.3.6 Selecting an itinerary: `select-itinerary`
 
@@ -326,7 +337,7 @@ Examples:
 * `select-itinerary 1` selects the 1st itinerary in the list of itineraries.<br>
 
 ![result_of_selecting itinerary](images/selectItinerary.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 14. The result of <code>select-itinerary 1</code></i></sup></div>
+<div align="center"><sup style="font-size:100%"><i>Figure 15. The result of <code>select-itinerary 1</code></i></sup></div>
 
 #### 4.3.7 Clearing all itineraries : `clear-itinerary`
 
@@ -340,14 +351,14 @@ This action is irreversible and should be used with caution.
 </div>
 
 ![result_of_clearing all itineraries](images/clearItinerary.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 15. The result of <code>clear-itinerary</code></i></sup></div>
+<div align="center"><sup style="font-size:100%"><i>Figure 16. The result of <code>clear-itinerary</code></i></sup></div>
 
 ### 4.4 Itinerary Attraction Features
 Itinerary attractions are attractions added to an itinerary, but with additional start/end time fields.
 These commands deal with attractions that are found in an itinerary.
 
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.png)</span>
-<div align='center'><i><sup>Figure 16. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
+<div align='center'><i><sup>Figure 17. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
 
 In Figure 16 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown with a yellow border. 
 Attraction 1A is an itinerary attraction. It has all the same fields as Attraction A, but with the additional start/end time field.
@@ -368,7 +379,7 @@ Examples:
 * `add-itinerary-attraction 2 st/1000 et/1600 day/3`
 * `add-itinerary-attraction 1 st/0900 et/1200 day/1` adds `Jurong Bird Park` into day 1 of selected itinerary<br><br>
 ![result for 'find-attraction'](images/addItineraryAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 17. The result of <code>add-itinerary-attraction 1 st/0900 et/1200 day/1</code></i></sup></div>
+<div align="center"><sup style="font-size:100%"><i>Figure 18. The result of <code>add-itinerary-attraction 1 st/0900 et/1200 day/1</code></i></sup></div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The attraction will be added into the selected itinerary.
@@ -390,7 +401,7 @@ Examples:
 * `edit-itinerary-attraction 3 day/2 st/1500 et/1800` Edits the start time, end time of the third attraction on day 2 of the selected itinerary to  be `1500` and `1800` respectively.
 * `edit-itinerary-attraction 1 day/1 st/1500` edits the starting time to visit the attraction`Jurong Bird Park`<br><br>
 ![result for 'find-attraction'](images/editItineraryAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 18. The result of <code>edit-itinerary-attraction 1 day/1 st/1500</code></i></sup></div>
+<div align="center"><sup style="font-size:100%"><i>Figure 19. The result of <code>edit-itinerary-attraction 1 day/1 st/1500</code></i></sup></div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 Only the INDEX and day/DAY_VISITING is required to identify the field to edit.
@@ -408,7 +419,7 @@ Format: `delete-itinerary-attraction INDEX`
 Examples:
 * `delete-itinerary-attraction 1 day/1` removes `Jurong Bird Park from the itinerary`<br><br>
 ![result for 'find-attraction'](images/deleteItineraryAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 19. The result of <code>delete-itinerary-attraction 1 day/1</code></i></sup></div>
+<div align="center"><sup style="font-size:100%"><i>Figure 20. The result of <code>delete-itinerary-attraction 1 day/1</code></i></sup></div>
 <!--how to comment in markdown-->
 
 ### 4.5 Miscellaneous Features
@@ -420,7 +431,7 @@ These basic features help TrackPad to run smoothly, as well as allow you to inte
 Shows a message with a link to this User Guide.
 
 ![help message](images/helpMessage.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 2. The help window of TrackPad</i></sup></div>
+<div align="center"><sup style="font-size:100%"><i>Figure 21. The help window of TrackPad</i></sup></div>
 
 Format: `help`
 
