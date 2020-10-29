@@ -43,4 +43,11 @@ public class SelectItineraryCommand extends Command {
         model.setCurrentItinerary(itineraryToSelect);
         return new CommandResult(String.format(MESSAGE_SELECT_ITINERARY_SUCCESS, itineraryToSelect), true);
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+            || (other instanceof SelectItineraryCommand // instanceof handles nulls
+            && targetIndex.equals(((SelectItineraryCommand) other).targetIndex)); // state check
+    }
 }

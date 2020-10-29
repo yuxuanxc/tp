@@ -29,6 +29,7 @@ import seedu.address.logic.commands.itinerary.EditItineraryCommand;
 import seedu.address.logic.commands.itinerary.EditItineraryCommand.EditItineraryDescriptor;
 import seedu.address.logic.commands.itinerary.FindItineraryCommand;
 import seedu.address.logic.commands.itinerary.ListItineraryCommand;
+import seedu.address.logic.commands.itinerary.SelectItineraryCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.attraction.Attraction;
 import seedu.address.model.attraction.AttractionContainsKeywordsPredicate;
@@ -162,5 +163,12 @@ public class TrackPadParserTest {
     public void parseCommand_listItinerary() throws Exception {
         assertTrue(parser.parseCommand(ListItineraryCommand.COMMAND_WORD) instanceof ListItineraryCommand);
         assertTrue(parser.parseCommand(ListItineraryCommand.COMMAND_WORD + " 3") instanceof ListItineraryCommand);
+    }
+
+    @Test
+    public void parseCommand_selectItinerary() throws Exception {
+        SelectItineraryCommand command = (SelectItineraryCommand) parser.parseCommand(
+            SelectItineraryCommand.COMMAND_WORD + " " + INDEX_FIRST.getOneBased());
+        assertEquals(new SelectItineraryCommand(INDEX_FIRST), command);
     }
 }
