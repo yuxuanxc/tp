@@ -362,7 +362,6 @@ Format: `clear-itinerary`
 `clear-itinerary` will remove all the itineraries stored in TrackPad.
 This action is irreversible and should be used with caution.
 </div>
-<br>
 
 ![result_of_clearing all itineraries](images/clearItinerary.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 15. The result of <code>clear-itinerary</code></i></sup></div>
