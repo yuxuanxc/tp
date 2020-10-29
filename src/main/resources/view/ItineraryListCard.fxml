@@ -26,8 +26,8 @@
                 </Label>
                 <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
             </HBox>
-            <Label fx:id="description" styleClass="cell_small_label" text="\$description" />
-            <Label fx:id="locale" styleClass="cell_small_label" text="\$location" />
+            <Label fx:id="description" styleClass="cell_small_label" />
+            <Label fx:id="locale" styleClass="cell_small_label"/>
             <Label fx:id="startEndDate" styleClass="cell_small_label" text="\$startEndDate" />
             <Label fx:id="budget" styleClass="cell_small_label" />
 
