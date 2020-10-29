@@ -50,7 +50,9 @@ public class ItineraryListCard extends UiPart<Region> {
         if (!itinerary.getBudget().value.isEmpty()) {
             budget.setText("💲 " + itinerary.getBudget().toString());
         }
-        locale.setText("\uD83C\uDF0E " + itinerary.getLocations());
+        if (!itinerary.getLocations().isEmpty()) {
+            locale.setText("\uD83C\uDF0E " + itinerary.getLocations());
+        }
     }
 
     @Override
