@@ -57,14 +57,15 @@ public class ItineraryAttractionListCard extends UiPart<Region> {
     /**
      * Creates a {@code ItineraryAttractionCode} with the given {@code ItineraryAttraction} and index to display.
      */
-    public ItineraryAttractionListCard(ItineraryAttraction itineraryAttraction, int displayedIndex) {
+    public ItineraryAttractionListCard(ItineraryAttraction itineraryAttraction) {
         super(FXML);
-        this.itineraryAttraction = itineraryAttraction;
-        id.setText(displayedIndex + ". ");
+        this.itineraryAttraction = itineraryAttraction.getItineraryAttraction();
+        id.setText(itineraryAttraction.getIndex() + ". ");
         name.setText(itineraryAttraction.getName().fullName);
         locale.setText("\uD83C\uDF0E " + itineraryAttraction.getLocation().value);
-        startEndTime.setText("\uD83D\uDD56 " + itineraryAttraction.getStartTime().toString() + "-" +
-                itineraryAttraction.getEndTime().toString());
+        startEndTime.setText("\uD83D\uDD56 " + itineraryAttraction.getStartTime().toString()
+                + "-"
+                + itineraryAttraction.getEndTime().toString());
 
         //optional fields
         description.setText(itineraryAttraction.getDescription().value);

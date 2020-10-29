@@ -65,6 +65,22 @@ public class ItineraryAttraction extends Attraction {
     }
 
     /**
+     * Method for ItineraryAttractionIndexCounter
+     * @return null
+     */
+    public ItineraryAttraction getItineraryAttraction() {
+        return null;
+    }
+
+    /**
+     * Method for ItineraryAttractionIndexCounter
+     * @return 0
+     */
+    public int getIndex() {
+        return 0;
+    }
+
+    /**
      * Returns true if both ItineraryAttraction has the same start and end time.
      *
      * @param otherItineraryAttraction the ItineraryAttraction to compare with.

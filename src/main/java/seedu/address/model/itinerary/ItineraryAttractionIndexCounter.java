@@ -3,26 +3,34 @@ package seedu.address.model.itinerary;
 import java.util.Objects;
 
 /**
- * Child class of an itinerary attraction.
- * Designed to hold the day number in ItineraryAttractionList.
- */
-public class ItineraryAttractionDayCounter extends ItineraryAttraction {
-    private final int day;
+* Child class of an itinerary attraction.
+* Designed to hold the index number in ItineraryAttractionList.
+*/
+public class ItineraryAttractionIndexCounter extends ItineraryAttraction {
+    private final ItineraryAttraction itineraryAttraction;
+    private final int index;
 
     /**
-     * Constructs a Itinerary attraction day counter.
+     * Constructs a Itinerary attraction index counter.
      *
      * @param itineraryAttraction Original itinerary attraction.
-     * @param day Day of visit.
+     * @param index Index of itinerary attraction, relative to the list of attractions in that day.
      */
-    public ItineraryAttractionDayCounter(ItineraryAttraction itineraryAttraction, int day) {
+    public ItineraryAttractionIndexCounter(ItineraryAttraction itineraryAttraction, int index) {
         super(itineraryAttraction.getAttraction(), itineraryAttraction.getStartTime(),
                 itineraryAttraction.getEndTime());
-        this.day = day;
+        this.itineraryAttraction = itineraryAttraction;
+        this.index = index;
     }
 
-    public int getDay() {
-        return day;
+    @Override
+    public ItineraryAttraction getItineraryAttraction() {
+        return itineraryAttraction;
+    }
+
+    @Override
+    public int getIndex() {
+        return index;
     }
 
     // todo determine if this method should stay
@@ -37,11 +45,11 @@ public class ItineraryAttractionDayCounter extends ItineraryAttraction {
             return true;
         }
 
-        if (!(other instanceof ItineraryAttractionDayCounter)) {
+        if (!(other instanceof ItineraryAttractionIndexCounter)) {
             return false;
         }
 
-        ItineraryAttractionDayCounter otherItineraryAttraction = (ItineraryAttractionDayCounter) other;
+        ItineraryAttractionIndexCounter otherItineraryAttraction = (ItineraryAttractionIndexCounter) other;
         // calls equals of Attraction and checks the timing.
         return super.equals(otherItineraryAttraction)
                 && isSameTiming(otherItineraryAttraction);
@@ -49,11 +57,11 @@ public class ItineraryAttractionDayCounter extends ItineraryAttraction {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this, day);
+        return Objects.hash(this, index);
     }
 
     @Override
     public String toString() {
-        return "Day " + day;
+        return Integer.toString(index);
     }
 }

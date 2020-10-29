@@ -23,6 +23,7 @@ import seedu.address.model.commons.Name;
 public class ItineraryAttractionList implements ReadOnlyItineraryAttractionList {
 
     private ObservableList<ItineraryAttraction> internalList = FXCollections.observableArrayList();
+    private int indexCounter = 1;
 
     private ItineraryAttraction testingItineraryAttraction = new ItineraryAttraction(
             new Attraction(new Name("test"), new Phone(), new Email(), new Address(), new Description(),
@@ -39,8 +40,10 @@ public class ItineraryAttractionList implements ReadOnlyItineraryAttractionList 
         for (Day day : currentItinerary.getDays()) {
             internalList.add(new ItineraryAttractionDayCounter(testingItineraryAttraction,
                     day.value));
+            indexCounter = 1;
             for (ItineraryAttraction itineraryAttraction : day.getItineraryAttractions()) {
-                internalList.add(itineraryAttraction);
+                internalList.add(new ItineraryAttractionIndexCounter(itineraryAttraction, indexCounter));
+                indexCounter++;
             }
         }
     }

@@ -10,6 +10,7 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.itinerary.ItineraryAttraction;
 import seedu.address.model.itinerary.ItineraryAttractionDayCounter;
+import seedu.address.model.itinerary.ItineraryAttractionIndexCounter;
 
 /**
  * Panel containing the list of itinerary attractions.
@@ -17,7 +18,6 @@ import seedu.address.model.itinerary.ItineraryAttractionDayCounter;
 public class ItineraryAttractionListPanel extends UiPart<Region> {
     private static final String FXML = "ItineraryAttractionListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ItineraryAttractionListPanel.class);
-    private int indexCounter = 0;
 
     @FXML
     private ListView<ItineraryAttraction> itineraryAttractionListView;
@@ -44,13 +44,9 @@ public class ItineraryAttractionListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else if (itineraryAttraction instanceof ItineraryAttractionDayCounter) {
-                indexCounter = 0;
-                // indexCounter++;
                 setGraphic(new ItineraryAttractionDayCounterCard(itineraryAttraction).getRoot());
-            } else {
-                indexCounter++;
-                System.out.println(indexCounter);
-                setGraphic(new ItineraryAttractionListCard(itineraryAttraction, getIndex()).getRoot());
+            } else if (itineraryAttraction instanceof ItineraryAttractionIndexCounter) {
+                setGraphic(new ItineraryAttractionListCard(itineraryAttraction).getRoot());
             }
         }
     }
