@@ -102,25 +102,57 @@
     -fx-label-padding: 0 0 0 0;
     -fx-graphic-text-gap : 0;
     -fx-padding: 0 0 0 0;
-    -fx-opacity: 0.95;
+    -fx-opacity: 0.8;
+    -fx-background-color: #F5DCE0;
+}
+
+.list-cell:filled:even #attractionCardPane {
+    -fx-background-color: #7EE5B1;
     -fx-background-radius: 15px;
 }
 
-.list-cell:filled:even {
-    -fx-background-color: #7EE5B1;
-}
-
-.list-cell:filled:odd {
+.list-cell:filled:odd #attractionCardPane {
     -fx-background-color: #DBFFD6;
+    -fx-background-radius: 15px;
 }
 
-.list-cell:filled:selected {
+.list-cell:filled:selected #attractionCardPane {
     -fx-background-color: #C1E7E3;
-}
-
-.list-cell:filled:selected #cardPane {
     -fx-border-color: transparent;
     -fx-border-width: 1;
+    -fx-background-radius: 15px;
+}
+
+.list-cell:filled:even #itineraryCardPane {
+    -fx-background-color: #6EB5FF;
+    -fx-background-radius: 15px;
+}
+
+.list-cell:filled:odd #itineraryCardPane {
+    -fx-background-color: #85E3FF;
+    -fx-background-radius: 15px;
+}
+
+.list-cell:filled:selected #itineraryCardPane {
+    -fx-background-color: #ACE7FF;
+    -fx-border-color: transparent;
+    -fx-border-width: 1;
+    -fx-background-radius: 15px;
+}
+
+.list-cell:filled #dayCardPane {
+    -fx-background-color: #A79AFF;
+    -fx-background-radius: 10px;
+}
+
+.list-cell:filled:even #itineraryAttractionCardPane {
+    -fx-background-color: #FF9CEE;
+    -fx-background-radius: 15px;
+}
+
+.list-cell:filled:odd #itineraryAttractionCardPane {
+    -fx-background-color: #FFB5E8;
+    -fx-background-radius: 15px;
 }
 
 .list-cell .label {
@@ -155,7 +187,7 @@
      -fx-background-color: #F5DCE0;
      -fx-border-color: transparent;
      -fx-border-top-width: 1px;
-     -fx-opacity: 0.9;
+     -fx-opacity: 0.91;
 }
 
 .status-bar {
@@ -324,7 +356,12 @@
     -fx-padding: 8 1 8 1;
 }
 
-#cardPane {
+#attractionCardPane {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+#itineraryCardPane {
     -fx-background-color: transparent;
     -fx-border-width: 0;
 }

@@ -63,6 +63,9 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private Label listTitle;
 
+    @FXML
+    private Label attractionListTitle;
+
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
@@ -133,6 +136,8 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        attractionListTitle.setText("Attractions");
     }
 
     /**
