@@ -49,7 +49,7 @@ public class EditItineraryAttractionCommand extends Command {
             + "identified by the name of the itinerary attraction displayed in the itinerary"
             + "Parameters: INDEX " + PREFIX_DAY_VISITING + "DAY VISITING " + "[" + PREFIX_START_TIME + "START_TIME] "
             + "[" + PREFIX_END_TIME + "END_TIME] \n"
-            + "Example: " + COMMAND_WORD + " 2 " + PREFIX_DAY_VISITING + "2 " + PREFIX_START_TIME + "10000 "
+            + "Example: " + COMMAND_WORD + " 2 " + PREFIX_DAY_VISITING + "2 " + PREFIX_START_TIME + "1000 "
             + PREFIX_DAY_VISITING + "4";
 
     private final Index index;
