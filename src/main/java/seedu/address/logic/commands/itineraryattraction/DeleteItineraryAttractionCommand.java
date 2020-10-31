@@ -25,7 +25,7 @@ public class DeleteItineraryAttractionCommand extends Command {
     public static final String MESSAGE_DELETE_ATTRACTION_SUCCESS = "Deleted attraction: %1$s";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes the attraction identified by the index of"
             + "attraction in the selected itinerary.\nParameters: INDEX " + PREFIX_DAY_VISITING + "DAY VISITING \n"
-            + "Example: " + COMMAND_WORD + " 1" + PREFIX_DAY_VISITING + "2";
+            + "Example: " + COMMAND_WORD + " 1 " + PREFIX_DAY_VISITING + "2";
 
 
     private final Index index;
