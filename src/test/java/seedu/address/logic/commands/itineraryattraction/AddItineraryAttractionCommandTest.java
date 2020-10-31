@@ -2,6 +2,7 @@ package seedu.address.logic.commands.itineraryattraction;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ATTRACTION;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -85,7 +86,7 @@ public class AddItineraryAttractionCommandTest {
         AddItineraryAttractionCommand addIaCommand = new AddItineraryAttractionCommand(
                 INDEX_FIRST, expectedIa.getStartTime(), expectedIa.getEndTime(), INDEX_FIRST);
 
-        assertThrows(CommandException.class, AddItineraryAttractionCommand.MESSAGE_DUPLICATE_ATTRACTION, ()
+        assertThrows(CommandException.class, MESSAGE_DUPLICATE_ATTRACTION, ()
             -> addIaCommand.execute(model));
     }
 

@@ -1,5 +1,6 @@
 package seedu.address.logic.commands.itineraryattraction;
 
+import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ATTRACTION;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -74,7 +75,7 @@ public class EditItineraryAttractionCommandTest {
         EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(
                 INDEX_FIRST, INDEX_FIRST, descriptor);
 
-        assertThrows(CommandException.class, EditItineraryAttractionCommand.MESSAGE_DUPLICATE_ATTRACTION, ()
+        assertThrows(CommandException.class, MESSAGE_DUPLICATE_ATTRACTION, ()
             -> editIaCommand.execute(model));
     }
 

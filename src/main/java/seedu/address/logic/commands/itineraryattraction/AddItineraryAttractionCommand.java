@@ -1,7 +1,10 @@
 package seedu.address.logic.commands.itineraryattraction;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ATTRACTION;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITINERARY_DAY;
 import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
+import static seedu.address.commons.core.Messages.MESSAGE_TIMING_CLASH;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
@@ -15,6 +18,8 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.itinerary.Day;
+import seedu.address.model.itinerary.Itinerary;
 import seedu.address.model.itinerary.ItineraryAttraction;
 import seedu.address.model.itinerary.ItineraryTime;
 
@@ -25,9 +30,7 @@ public class AddItineraryAttractionCommand extends Command {
 
     public static final String COMMAND_WORD = "add-itinerary-attraction";
     public static final String MESSAGE_ADD_ATTRACTION_SUCCESS = "Added Attraction: %1$s to Itinerary: %1$s";
-    public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in the itinerary.";
     public static final String MESSAGE_INVALID_START_TIME = "The start time cannot be later than end time.";
-    public static final String MESSAGE_TIMING_CLASH = "The timing clashes with another attraction in the itinerary";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an attraction identified by the index in "
             + "attraction list to the selected itinerary.\n "
             + "Parameters: INDEX " + PREFIX_START_TIME + "START_TIME " + PREFIX_END_TIME + "END_TIME "
@@ -38,51 +41,62 @@ public class AddItineraryAttractionCommand extends Command {
     private final Index index;
     private final ItineraryTime startTime;
     private final ItineraryTime endTime;
-    private final Index dayVisited;
+    private final Index dayVisiting;
 
     /**
      * Creates an AddAttractionCommand to add the specified {@code Attraction}
      */
     public AddItineraryAttractionCommand(Index index, ItineraryTime startTime, ItineraryTime endTime,
-                                         Index dayVisited) {
+                                         Index dayVisiting) {
         requireNonNull(index);
         requireNonNull(startTime);
         requireNonNull(endTime);
-        requireNonNull(dayVisited);
+        requireNonNull(dayVisiting);
         this.index = index;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.dayVisited = dayVisited;
+        this.dayVisiting = dayVisiting;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        Itinerary itinerary;
+        Attraction attraction;
+        ItineraryAttraction ia;
+        Day day;
 
         if (model.getCurrentItinerary() == null) {
             throw new CommandException(MESSAGE_ITINERARY_NOT_SELECTED);
         }
 
+        itinerary = model.getCurrentItinerary();
         List<Attraction> lastShownList = model.getFilteredAttractionList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX);
         }
 
-        Attraction attractionToAdd = lastShownList.get(index.getZeroBased());
-        ItineraryAttraction itineraryAttractionToAdd = new ItineraryAttraction(attractionToAdd, startTime, endTime);
+        attraction = lastShownList.get(index.getZeroBased());
+        ia = new ItineraryAttraction(attraction, startTime, endTime);
 
-        if (model.getCurrentItinerary().getDay(dayVisited).contains(itineraryAttractionToAdd)) {
+
+        if (dayVisiting.getZeroBased() >= itinerary.getDays().size()) {
+            throw new CommandException(MESSAGE_INVALID_ITINERARY_DAY);
+        }
+        day = itinerary.getDay(dayVisiting);
+
+        if (day.contains(ia)) {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
         }
 
         // checks if there is a timing clash with an existing itinerary attraction
-        if (model.getCurrentItinerary().getDay(dayVisited).hasTimingClash(itineraryAttractionToAdd)) {
+        if (day.hasTimingClash(ia)) {
             throw new CommandException(MESSAGE_TIMING_CLASH);
         }
 
-        model.getCurrentItinerary().addItineraryAttraction(itineraryAttractionToAdd, dayVisited);
-        return new CommandResult(String.format(MESSAGE_ADD_ATTRACTION_SUCCESS, itineraryAttractionToAdd), true);
+        itinerary.addItineraryAttraction(ia, dayVisiting);
+        return new CommandResult(String.format(MESSAGE_ADD_ATTRACTION_SUCCESS, ia), true);
     }
 
     @Override
@@ -92,6 +106,6 @@ public class AddItineraryAttractionCommand extends Command {
                 && index.equals(((AddItineraryAttractionCommand) other).index)
                 && startTime.equals(((AddItineraryAttractionCommand) other).startTime)
                 && endTime.equals(((AddItineraryAttractionCommand) other).endTime)
-                && dayVisited.equals(((AddItineraryAttractionCommand) other).dayVisited));
+                && dayVisiting.equals(((AddItineraryAttractionCommand) other).dayVisiting));
     }
 }

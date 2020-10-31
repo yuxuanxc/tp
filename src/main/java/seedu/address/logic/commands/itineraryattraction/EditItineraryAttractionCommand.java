@@ -1,7 +1,10 @@
 package seedu.address.logic.commands.itineraryattraction;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ATTRACTION;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITINERARY_DAY;
 import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
+import static seedu.address.commons.core.Messages.MESSAGE_TIMING_CLASH;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
@@ -43,8 +46,6 @@ public class EditItineraryAttractionCommand extends Command {
     public static final String COMMAND_WORD = "edit-itinerary-attraction";
     public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in Itinerary.";
-    public static final String MESSAGE_TIMING_CLASH = "The timing clashes with another attraction in the itinerary";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the itinerary attraction "
             + "identified by the name of the itinerary attraction displayed in the itinerary"
             + "Parameters: INDEX " + PREFIX_DAY_VISITING + "DAY VISITING " + "[" + PREFIX_START_TIME + "START_TIME] "
@@ -73,13 +74,21 @@ public class EditItineraryAttractionCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        Itinerary itinerary;
+        Day day;
 
         if (model.getCurrentItinerary() == null) {
             throw new CommandException(MESSAGE_ITINERARY_NOT_SELECTED);
         }
 
-        Itinerary itinerary = model.getCurrentItinerary();
-        Day day = itinerary.getDay(dayVisiting);
+        itinerary = model.getCurrentItinerary();
+
+        if (dayVisiting.getZeroBased() >= itinerary.getDays().size()) {
+            throw new CommandException(MESSAGE_INVALID_ITINERARY_DAY);
+        }
+
+        day = itinerary.getDay(dayVisiting);
+
         List<ItineraryAttraction> itineraryAttractionsThatDay = day.getItineraryAttractions();
 
         if (index.getZeroBased() >= itineraryAttractionsThatDay.size()) {
@@ -89,7 +98,6 @@ public class EditItineraryAttractionCommand extends Command {
         ItineraryAttraction itineraryAttractionToEdit = itineraryAttractionsThatDay.get(index.getZeroBased());
         ItineraryAttraction editedItineraryAttraction = createEditedItineraryAttraction(itineraryAttractionToEdit,
                 editIaDescriptor);
-
 
         if (itineraryAttractionToEdit.equals(editedItineraryAttraction)) {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);

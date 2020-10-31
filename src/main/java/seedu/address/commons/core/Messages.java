@@ -12,4 +12,11 @@ public class Messages {
     public static final String MESSAGE_INVALID_ITINERARY_DISPLAYED_INDEX = "The itinerary index provided is invalid";
     public static final String MESSAGE_ITINERARIES_LISTED_OVERVIEW = "%1$d itineraries listed!";
     public static final String MESSAGE_ITINERARY_NOT_SELECTED = "Please select a itinerary to work on";
+
+    // Itinerary Attraction
+    public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction with the same start time, end time and "
+            + "day visiting already exist in the itinerary";
+    public static final String MESSAGE_TIMING_CLASH = "The timing clashes with another attraction in the itinerary";
+    public static final String MESSAGE_INVALID_ITINERARY_DAY = "Your day does not exist in the itinerary";
+
 }
