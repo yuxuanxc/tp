@@ -6,9 +6,11 @@ import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ATTRACTION;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITINERARY_DAY;
 import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
+import static seedu.address.commons.core.Messages.MESSAGE_TIMING_CLASH;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD;
 
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -39,6 +41,7 @@ import seedu.address.testutil.ItineraryBuilder;
 
 public class AddItineraryAttractionCommandTest {
     // A itinerary time instance for testing exceptions
+    // does not throw error for same start and end time as this was checked in the parser
     private final ItineraryTime timeObject = new ItineraryTime("1000");
 
     @Test
@@ -73,6 +76,32 @@ public class AddItineraryAttractionCommandTest {
 
         assertThrows(CommandException.class, MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX, ()
             -> addIaCommand2.execute(model2)); // test on filtered list with 1 element
+    }
+
+    @Test
+    public void execute_timingClash_throwsCommandException() {
+        // start time of new itineraryAttraction conflicts with end time of existing itineraryAttraction
+        ItineraryAttraction ia = new ItineraryAttractionBuilder().withStartTime("0900").withEndTime("1100").build();
+        Itinerary itinerary = new ItineraryBuilder().withItineraryAttraction(ia, INDEX_THIRD).build();
+        ModelStubWithItineraryAttraction model = new ModelStubWithItineraryAttraction(itinerary);
+        AddItineraryAttractionCommand addIaCommand = new AddItineraryAttractionCommand(
+                INDEX_FIRST, new ItineraryTime("1000"), new ItineraryTime("1300"), INDEX_THIRD);
+
+        assertThrows(CommandException.class, MESSAGE_TIMING_CLASH, ()
+            -> addIaCommand.execute(model));
+    }
+
+    @Test
+    public void execute_timingClash2_throwsCommandException() {
+        // end time of new itineraryAttraction conflicts with start time of existing itineraryAttraction
+        ItineraryAttraction ia = new ItineraryAttractionBuilder().withStartTime("0900").withEndTime("1100").build();
+        Itinerary itinerary = new ItineraryBuilder().withItineraryAttraction(ia, INDEX_THIRD).build();
+        ModelStubWithItineraryAttraction model = new ModelStubWithItineraryAttraction(itinerary);
+        AddItineraryAttractionCommand addIaCommand = new AddItineraryAttractionCommand(
+                INDEX_FIRST, new ItineraryTime("0600"), new ItineraryTime("1000"), INDEX_THIRD);
+
+        assertThrows(CommandException.class, MESSAGE_TIMING_CLASH, ()
+            -> addIaCommand.execute(model));
     }
 
     @Test
@@ -350,11 +379,12 @@ public class AddItineraryAttractionCommandTest {
      */
     private class ModelStubWithItineraryAttraction extends ModelStub {
         private final Itinerary itinerary;
-        private final FilteredList<Attraction> filteredAttractions = new FilteredList<>(new AttractionListBuilder()
-                .withAttraction(new AttractionBuilder().build()).build().getAttractionList());
+        private final FilteredList<Attraction> filteredAttractions;
 
         public ModelStubWithItineraryAttraction(Itinerary itinerary) {
             this.itinerary = itinerary;
+            this.filteredAttractions = new FilteredList<>(new AttractionListBuilder()
+                    .withAttraction(new AttractionBuilder().build()).build().getAttractionList());
         }
 
         @Override
