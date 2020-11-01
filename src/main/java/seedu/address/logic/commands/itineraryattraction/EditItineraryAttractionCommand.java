@@ -3,6 +3,7 @@ package seedu.address.logic.commands.itineraryattraction;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ATTRACTION;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITINERARY_DAY;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_START_TIME;
 import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
 import static seedu.address.commons.core.Messages.MESSAGE_TIMING_CLASH;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
@@ -101,6 +102,11 @@ public class EditItineraryAttractionCommand extends Command {
 
         if (itineraryAttractionToEdit.equals(editedItineraryAttraction)) {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
+        }
+
+        // new itinerary must comply with start time earlier than end time
+        if (!editedItineraryAttraction.getStartTime().isEarlierThan(editedItineraryAttraction.getEndTime())) {
+            throw new CommandException(MESSAGE_INVALID_START_TIME);
         }
 
         // checks if there is a timing clash with an existing itinerary attraction

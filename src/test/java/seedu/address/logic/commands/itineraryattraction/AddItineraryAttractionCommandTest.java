@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ATTRACTION;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITINERARY_DAY;
 import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
@@ -72,6 +73,17 @@ public class AddItineraryAttractionCommandTest {
 
         assertThrows(CommandException.class, MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX, ()
             -> addIaCommand2.execute(model2)); // test on filtered list with 1 element
+    }
+
+    @Test
+    public void execute_invalidDay_throwsCommandException() {
+        Itinerary itinerary = new ItineraryBuilder().build();
+        ModelStubWithItineraryAttraction model = new ModelStubWithItineraryAttraction(itinerary);
+        AddItineraryAttractionCommand addIaCommand = new AddItineraryAttractionCommand(INDEX_FIRST, timeObject,
+                timeObject, Index.fromZeroBased(4));
+
+        assertThrows(CommandException.class, MESSAGE_INVALID_ITINERARY_DAY, ()
+            -> addIaCommand.execute(model));
     }
 
     @Test

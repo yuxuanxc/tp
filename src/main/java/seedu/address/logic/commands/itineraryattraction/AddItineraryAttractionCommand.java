@@ -30,7 +30,6 @@ public class AddItineraryAttractionCommand extends Command {
 
     public static final String COMMAND_WORD = "add-itinerary-attraction";
     public static final String MESSAGE_ADD_ATTRACTION_SUCCESS = "Added Attraction: %1$s to Itinerary: %1$s";
-    public static final String MESSAGE_INVALID_START_TIME = "The start time cannot be later than end time.";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an attraction identified by the index in "
             + "attraction list to the selected itinerary.\n "
             + "Parameters: INDEX " + PREFIX_START_TIME + "START_TIME " + PREFIX_END_TIME + "END_TIME "

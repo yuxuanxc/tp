@@ -2,6 +2,7 @@ package seedu.address.logic.commands.itineraryattraction;
 
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ATTRACTION;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITINERARY_DAY;
 import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
@@ -41,6 +42,18 @@ public class EditItineraryAttractionCommandTest {
                 INDEX_FIRST, INDEX_FIRST, descriptor);
 
         assertThrows(CommandException.class, MESSAGE_ITINERARY_NOT_SELECTED, () -> editIaCommand.execute(model));
+    }
+
+    @Test
+    public void execute_invalidDay_throwsCommandException() {
+        Itinerary itinerary = new ItineraryBuilder().build();
+        ModelStubWithItinerarySelected model = new ModelStubWithItinerarySelected(itinerary);
+        EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(
+                INDEX_FIRST, Index.fromZeroBased(4), descriptor);
+
+        assertThrows(CommandException.class, MESSAGE_INVALID_ITINERARY_DAY, ()
+            -> editIaCommand.execute(model));
+
     }
 
     @Test
