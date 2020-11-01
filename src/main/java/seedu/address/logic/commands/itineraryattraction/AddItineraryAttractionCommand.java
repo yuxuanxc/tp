@@ -32,7 +32,8 @@ public class AddItineraryAttractionCommand extends Command {
     public static final String MESSAGE_ADD_ATTRACTION_SUCCESS = "Added Attraction: %1$s to Itinerary: %1$s";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an attraction identified by the index in "
             + "attraction list to the selected itinerary.\n "
-            + "Parameters: INDEX " + PREFIX_START_TIME + "START_TIME " + PREFIX_END_TIME + "END_TIME "
+            + "Parameters: INDEX must be a number between 0 and 2147483647 " + PREFIX_START_TIME + "START_TIME "
+            + PREFIX_END_TIME + "END_TIME "
             + PREFIX_DAY_VISITING + "DAY_VISITING "
             + "Example: " + COMMAND_WORD + " 1 " + PREFIX_START_TIME + "1000 "
             + PREFIX_END_TIME + "1600 " + PREFIX_DAY_VISITING + "3";

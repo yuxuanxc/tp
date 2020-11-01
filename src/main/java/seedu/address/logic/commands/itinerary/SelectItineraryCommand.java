@@ -21,7 +21,7 @@ public class SelectItineraryCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Selects the itinerary identified by the index number used in the displayed itinerary list.\n"
-        + "Parameters: INDEX (must be a positive integer)\n"
+        + "Parameters: INDEX must be a number between 0 and 2147483647\n"
         + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_SELECT_ITINERARY_SUCCESS = "Selected itinerary: %1$s";
