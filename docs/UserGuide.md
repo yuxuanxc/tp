@@ -11,7 +11,7 @@ title: User Guide
 
 ## 1. Introduction
 TrackPad (TP) is a **desktop app for planning your trips and tracking tourist attractions, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a 
-Graphical User Interface (GUI). If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
+Graphical User Interface (GUI). Our command instructions utilise full words, they sound more natural and verbose than short forms, so it's easier for you to remember. If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
 
 This user guide will show you how to use the commands and features available in TP. TP is built for people who love to travel, 
 and want to collate and store all their itineraries in one single app. We welcome anyone who loves travelling to try out our app.

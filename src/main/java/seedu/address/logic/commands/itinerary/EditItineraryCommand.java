@@ -34,7 +34,7 @@ public class EditItineraryCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the itinerary identified "
             + "by the index number used in the displayed itinerary list. "
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
+            + "Parameters: INDEX must be a number between 0 and 2147483647 "
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_START_DATE + "START_DATE] "

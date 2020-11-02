@@ -2,6 +2,7 @@ package seedu.address.logic.commands.itineraryattraction;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITINERARY_DAY;
 import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -20,6 +21,7 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.Messages;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -94,6 +96,17 @@ public class DeleteItineraryAttractionCommandTest {
 
         assertThrows(CommandException.class, Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX, () ->
                 delIaCommand.execute(modelWithItinerary));
+    }
+
+    @Test
+    public void execute_invalidDay_throwsCommandException() {
+        Itinerary itinerary = new ItineraryBuilder().build();
+        ModelStubWithItinerary model = new ModelStubWithItinerary(itinerary);
+        DeleteItineraryAttractionCommand delIaCommand = new DeleteItineraryAttractionCommand(INDEX_FIRST,
+                Index.fromZeroBased(4));
+
+        assertThrows(CommandException.class, MESSAGE_INVALID_ITINERARY_DAY, ()
+            -> delIaCommand.execute(model));
     }
 
     @Test

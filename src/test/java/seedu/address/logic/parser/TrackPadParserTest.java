@@ -27,6 +27,7 @@ import seedu.address.logic.commands.attraction.EditAttractionCommand;
 import seedu.address.logic.commands.attraction.EditAttractionCommand.EditAttractionDescriptor;
 import seedu.address.logic.commands.attraction.FindAttractionCommand;
 import seedu.address.logic.commands.attraction.ListAttractionCommand;
+import seedu.address.logic.commands.attraction.MarkVisitedAttractionCommand;
 import seedu.address.logic.commands.itinerary.AddItineraryCommand;
 import seedu.address.logic.commands.itinerary.ClearItineraryCommand;
 import seedu.address.logic.commands.itinerary.DeleteItineraryCommand;
@@ -36,6 +37,7 @@ import seedu.address.logic.commands.itinerary.FindItineraryCommand;
 import seedu.address.logic.commands.itinerary.ListItineraryCommand;
 import seedu.address.logic.commands.itinerary.SelectItineraryCommand;
 import seedu.address.logic.commands.itineraryattraction.AddItineraryAttractionCommand;
+import seedu.address.logic.commands.itineraryattraction.DeleteItineraryAttractionCommand;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand.EditItineraryAttractionDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -58,6 +60,10 @@ import seedu.address.testutil.ItineraryUtil;
 public class TrackPadParserTest {
 
     private final TrackPadParser parser = new TrackPadParser();
+    private final ItineraryTime startTime = new ItineraryTime("1000");
+    private final ItineraryTime endTime = new ItineraryTime("1300");
+    private final Index index = INDEX_FIRST;
+    private final Index day = INDEX_THIRD;
 
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
@@ -130,6 +136,13 @@ public class TrackPadParserTest {
         assertTrue(parser.parseCommand(ListAttractionCommand.COMMAND_WORD + " 3") instanceof ListAttractionCommand);
     }
 
+    @Test
+    public void parseCommand_markVisitedAttraction() throws Exception {
+        MarkVisitedAttractionCommand command = (MarkVisitedAttractionCommand) parser.parseCommand(
+                MarkVisitedAttractionCommand.COMMAND_WORD + " " + index.getOneBased());
+        assertEquals(new MarkVisitedAttractionCommand(index), command);
+    }
+
     // =========== Itinerary Commands ==================================================================================
 
     @Test
@@ -188,11 +201,6 @@ public class TrackPadParserTest {
     // =========== Itinerary Attraction Commands =======================================================================
     @Test
     public void parserCommand_addItineraryAttraction() throws Exception {
-        Index index = INDEX_FIRST;
-        ItineraryTime startTime = new ItineraryTime("2000");
-        ItineraryTime endTime = new ItineraryTime("2300");
-        Index day = INDEX_THIRD;
-
         // tests if same input produces same command
         AddItineraryAttractionCommand command = (AddItineraryAttractionCommand) parser.parseCommand(
                 AddItineraryAttractionCommand.COMMAND_WORD + " " + index.getOneBased() + " "
@@ -204,10 +212,6 @@ public class TrackPadParserTest {
 
     @Test
     public void parserCommand_editItineraryAttraction() throws Exception {
-        Index index = INDEX_FIRST;
-        ItineraryTime startTime = new ItineraryTime("1000");
-        ItineraryTime endTime = new ItineraryTime("1300");
-        Index day = INDEX_THIRD;
         ItineraryAttraction itineraryAttraction = new ItineraryAttractionBuilder().build();
         EditItineraryAttractionDescriptor editDescriptor =
                 new EditItineraryAttractionDescriptorBuilder(itineraryAttraction).build();
@@ -217,6 +221,15 @@ public class TrackPadParserTest {
                 ItineraryAttractionUtil.getEditItineraryAttractionCommand(index, day, editDescriptor));
 
         assertEquals(new EditItineraryAttractionCommand(index, day, editDescriptor), command);
+    }
+
+    @Test
+    public void parserCommand_deleteItineraryAttraction() throws Exception {
+        DeleteItineraryAttractionCommand command = (DeleteItineraryAttractionCommand) parser.parseCommand(
+                DeleteItineraryAttractionCommand.COMMAND_WORD + " " + index.getOneBased() + " "
+                        + PREFIX_DAY_VISITING + day.getOneBased());
+
+        assertEquals(new DeleteItineraryAttractionCommand(index, day), command);
     }
 
 }

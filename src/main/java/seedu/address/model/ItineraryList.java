@@ -102,7 +102,6 @@ public class ItineraryList implements ReadOnlyItineraryList {
         this.currentItinerary = currentItinerary;
     }
 
-    // todo throw error if current itinerary is not set
     public Itinerary getCurrentItinerary() {
         return this.currentItinerary;
     }

@@ -1,7 +1,11 @@
 package seedu.address.logic.commands.itineraryattraction;
 
+import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ATTRACTION;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITINERARY_DAY;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_START_TIME;
 import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
+import static seedu.address.commons.core.Messages.MESSAGE_TIMING_CLASH;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
@@ -43,6 +47,18 @@ public class EditItineraryAttractionCommandTest {
     }
 
     @Test
+    public void execute_invalidDay_throwsCommandException() {
+        Itinerary itinerary = new ItineraryBuilder().build();
+        ModelStubWithItinerarySelected model = new ModelStubWithItinerarySelected(itinerary);
+        EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(
+                INDEX_FIRST, Index.fromZeroBased(4), descriptor);
+
+        assertThrows(CommandException.class, MESSAGE_INVALID_ITINERARY_DAY, ()
+            -> editIaCommand.execute(model));
+
+    }
+
+    @Test
     public void execute_invalidIaIndex_throwsCommandException() {
         Itinerary itinerary = new ItineraryBuilder().withItineraryAttraction(
                 new ItineraryAttractionBuilder().build(), INDEX_FIRST).build();
@@ -74,7 +90,74 @@ public class EditItineraryAttractionCommandTest {
         EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(
                 INDEX_FIRST, INDEX_FIRST, descriptor);
 
-        assertThrows(CommandException.class, EditItineraryAttractionCommand.MESSAGE_DUPLICATE_ATTRACTION, ()
+        assertThrows(CommandException.class, MESSAGE_DUPLICATE_ATTRACTION, ()
+            -> editIaCommand.execute(model));
+    }
+
+    @Test
+    public void execute_invalidStartTime_throwsCommandException() {
+        // same start time and end time
+        ItineraryAttraction ia = new ItineraryAttractionBuilder().build();
+        Itinerary itinerary = new ItineraryBuilder().withItineraryAttraction(ia, INDEX_THIRD).build();
+        ModelStubWithItinerarySelected model = new ModelStubWithItinerarySelected(itinerary);
+        EditItineraryAttractionDescriptor descriptor = new EditItineraryAttractionDescriptorBuilder()
+                .withStartTime("1000").withEndTime("1000").build();
+
+        EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(
+                INDEX_FIRST, INDEX_THIRD, descriptor);
+
+        assertThrows(CommandException.class, MESSAGE_INVALID_START_TIME, ()
+            -> editIaCommand.execute(model));
+    }
+
+    @Test
+    public void execute_invalidStartTime2_throwsCommandException() {
+        // start time later than end time
+        ItineraryAttraction ia = new ItineraryAttractionBuilder().build();
+        Itinerary itinerary = new ItineraryBuilder().withItineraryAttraction(ia, INDEX_THIRD).build();
+        ModelStubWithItinerarySelected model = new ModelStubWithItinerarySelected(itinerary);
+        EditItineraryAttractionDescriptor descriptor = new EditItineraryAttractionDescriptorBuilder()
+                .withStartTime("1001").withEndTime("1000").build();
+
+        EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(
+                INDEX_FIRST, INDEX_THIRD, descriptor);
+
+        assertThrows(CommandException.class, MESSAGE_INVALID_START_TIME, ()
+            -> editIaCommand.execute(model));
+    }
+
+    @Test
+    public void execute_timingClash_throwsCommandException() {
+        // edits the end time of ia, end time conflicts with the start time of ia2
+        ItineraryAttraction ia = new ItineraryAttractionBuilder().withStartTime("0900").withEndTime("1000").build();
+        ItineraryAttraction ia2 = new ItineraryAttractionBuilder().withStartTime("1000").withEndTime("1200").build();
+        Itinerary itinerary = new ItineraryBuilder().withItineraryAttraction(ia, INDEX_THIRD)
+                .withItineraryAttraction(ia2, INDEX_THIRD).build();
+        ModelStubWithItinerarySelected model = new ModelStubWithItinerarySelected(itinerary);
+        EditItineraryAttractionDescriptor descriptor = new EditItineraryAttractionDescriptorBuilder()
+                .withEndTime("1001").build();
+        EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(
+                INDEX_FIRST, INDEX_THIRD, descriptor);
+
+        assertThrows(CommandException.class, MESSAGE_TIMING_CLASH, ()
+            -> editIaCommand.execute(model));
+    }
+
+    @Test
+    public void execute_timingClash2_throwsCommandException() {
+        // used new test cases as the variables used in lambda must be effectively final
+        // edits the start time of ia2, end time conflicts with the start time of ia
+        ItineraryAttraction ia = new ItineraryAttractionBuilder().withStartTime("0900").withEndTime("1000").build();
+        ItineraryAttraction ia2 = new ItineraryAttractionBuilder().withStartTime("1000").withEndTime("1200").build();
+        Itinerary itinerary = new ItineraryBuilder().withItineraryAttraction(ia, INDEX_THIRD)
+                .withItineraryAttraction(ia2, INDEX_THIRD).build();
+        ModelStubWithItinerarySelected model = new ModelStubWithItinerarySelected(itinerary);
+        EditItineraryAttractionDescriptor descriptor = new EditItineraryAttractionDescriptorBuilder()
+                .withStartTime("0959").build();
+        EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(
+                INDEX_SECOND, INDEX_THIRD, descriptor);
+
+        assertThrows(CommandException.class, MESSAGE_TIMING_CLASH, ()
             -> editIaCommand.execute(model));
     }
 
@@ -125,7 +208,6 @@ public class EditItineraryAttractionCommandTest {
 
         //        assertCommandSuccess(editIaCommand, model, expectedMessage, expectedModel);
     }
-
 
     /**
      * A default model stub that throws exception for all method calls.
