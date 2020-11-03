@@ -115,7 +115,7 @@ public class AttractionCard extends UiPart<Region> {
         }
 
         if (attraction.getRating().toString() != "") {
-            Label rating = new Label(attraction.getRating().toString());
+            Label rating = new Label(attraction.getRating().toString() + "\u2605");
             rating.setStyle("-fx-background-color: #080;");
             tags.getChildren().add(rating);
         }
