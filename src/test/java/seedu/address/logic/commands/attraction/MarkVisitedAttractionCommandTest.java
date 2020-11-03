@@ -24,8 +24,7 @@ import seedu.address.model.attraction.Visited;
 
 
 /**
- * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
- * {@code MarkVisitedAttractionCommand}.
+ * Contains integration tests (interaction with the Model) and unit tests for {@code MarkVisitedAttractionCommand}.
  */
 public class MarkVisitedAttractionCommandTest {
 

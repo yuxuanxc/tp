@@ -203,11 +203,13 @@ public class Itinerary {
                 .append(" Start date: ")
                 .append(getStartDate())
                 .append(" End date: ")
-                .append(getEndDate())
-                .append(" Description: ")
-                .append(getDescription())
-                .append(" Budget: ")
-                .append(getBudget());
+                .append(getEndDate());
+        if (!getDescription().value.isEmpty()) {
+            builder.append(" Description: ").append(getDescription());
+        }
+        if (!getBudget().value.isEmpty()) {
+            builder.append(" Budget: ").append(getBudget());
+        }
         return builder.toString();
     }
 }

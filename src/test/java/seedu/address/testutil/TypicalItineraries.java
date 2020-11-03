@@ -27,13 +27,11 @@ import seedu.address.model.itinerary.Itinerary;
  */
 public class TypicalItineraries {
 
-    //todo add more itineraries
     public static final Itinerary SG_ZOOS_TOUR = new ItineraryBuilder().withName("Singapore Zoos")
             .withDescription("Rediscover our wildlife parks!")
             .withStartDate("06-07-2019")
             .withEndDate("07-07-2019")
             .withBudget("500")
-            // todo might need more typical attractions from different countries
             .withItineraryAttraction(new ItineraryAttractionBuilder()
                     .withAttraction(SINGAPORE_ZOO)
                     .withStartTime("1000")

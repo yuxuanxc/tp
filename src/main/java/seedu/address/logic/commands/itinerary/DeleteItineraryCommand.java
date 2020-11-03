@@ -43,6 +43,7 @@ public class DeleteItineraryCommand extends Command {
 
         Itinerary itineraryToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteItinerary(itineraryToDelete);
+        model.setCurrentItinerary(null);
         return new CommandResult(String.format(MESSAGE_DELETE_ITINERARY_SUCCESS, itineraryToDelete));
     }
 
