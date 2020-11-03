@@ -15,7 +15,7 @@ public class OpeningHoursTest {
 
     @Test
     public void constructor_invalidOpeningHours_throwsIllegalArgumentException() {
-        String invalidOpeningHours = "";
+        String invalidOpeningHours = "4-8";
         assertThrows(IllegalArgumentException.class, () -> new OpeningHours(invalidOpeningHours));
     }
 
@@ -24,8 +24,7 @@ public class OpeningHoursTest {
         // null openingHours
         assertThrows(NullPointerException.class, () -> OpeningHours.isValidOpeningHours(null));
 
-        // blank openingHours
-        assertFalse(OpeningHours.isValidOpeningHours("")); // empty string
+        // invalid openingHours
         assertFalse(OpeningHours.isValidOpeningHours(" ")); // spaces only
 
         // missing parts
@@ -51,6 +50,7 @@ public class OpeningHoursTest {
         assertFalse(OpeningHours.isValidOpeningHours("1330-23-59")); // '-' symbol in closing time
 
         // valid email
+        assertTrue(OpeningHours.isValidOpeningHours("")); // empty string
         assertTrue(OpeningHours.isValidOpeningHours("0000-2359"));
         assertTrue(OpeningHours.isValidOpeningHours("2300-1000")); //opening time can be more than closing time
 

@@ -14,21 +14,13 @@ public class DescriptionTest {
     }
 
     @Test
-    public void constructor_invalidDescription_throwsIllegalArgumentException() {
-        String invalidDescription = "";
-        assertThrows(IllegalArgumentException.class, () -> new Description(invalidDescription));
-    }
-
-    @Test
     public void isValidDescription() {
         // null description
         assertThrows(NullPointerException.class, () -> Description.isValidDescription(null));
 
-        // invalid descriptions
-        assertFalse(Description.isValidDescription("")); // empty string
-        assertFalse(Description.isValidDescription(" ")); // spaces only
-
         // valid descriptions
+        assertTrue(Description.isValidDescription("")); // empty string
+        assertTrue(Description.isValidDescription(" ")); // spaces only
         assertTrue(Description.isValidDescription("World's first Gudetama themed cafe."));
         assertTrue(Description.isValidDescription("-")); // one character
         assertTrue(Description.isValidDescription(

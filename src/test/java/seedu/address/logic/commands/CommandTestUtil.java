@@ -140,12 +140,12 @@ public class CommandTestUtil {
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "Zoo&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "mbs!yahoo"; // missing '@' symbol
-    public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
-    public static final String INVALID_DESCRIPTION_DESC = " " + PREFIX_DESCRIPTION;
+//    public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS;
+//    public static final String INVALID_DESCRIPTION_DESC = " " + PREFIX_DESCRIPTION;
     public static final String INVALID_LOCATION_DESC = " " + PREFIX_LOCATION; // empty string not allowed for locations
-    public static final String INVALID_OPENING_HOURS_DESC = " " + PREFIX_OPENING_HOURS;
-    public static final String INVALID_PRICE_RANGE_DESC = " " + PREFIX_PRICE_RANGE;
-    public static final String INVALID_RATING_DESC = " " + PREFIX_RATING;
+    public static final String INVALID_OPENING_HOURS_DESC = " " + PREFIX_OPENING_HOURS + "10-12";
+    public static final String INVALID_PRICE_RANGE_DESC = " " + PREFIX_PRICE_RANGE + "AVERAGE";
+    public static final String INVALID_RATING_DESC = " " + PREFIX_RATING + "5.1";
     public static final String INVALID_VISITED_DESC = " " + PREFIX_VISITED + "True1"; // numbers not allowed in VISITED
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "Sightseeing*"; // '*' not allowed in tags
     public static final String INVALID_START_DATE_DESC = " " + PREFIX_START_DATE + "1 Jan 2011"; // 'Jan' invalid date

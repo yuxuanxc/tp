@@ -15,7 +15,7 @@ public class PriceRangeTest {
 
     @Test
     public void constructor_invalidPriceRange_throwsIllegalArgumentException() {
-        String invalidPriceRange = "";
+        String invalidPriceRange = "average";
         assertThrows(IllegalArgumentException.class, () -> new PriceRange(invalidPriceRange));
     }
 
@@ -25,7 +25,6 @@ public class PriceRangeTest {
         assertThrows(NullPointerException.class, () -> PriceRange.isValidPriceRange(null));
 
         // invalid price ranges
-        assertFalse(PriceRange.isValidPriceRange("")); // empty string
         assertFalse(PriceRange.isValidPriceRange(" ")); // spaces only
         assertFalse(PriceRange.isValidPriceRange("low"));
         assertFalse(PriceRange.isValidPriceRange("average"));
@@ -33,6 +32,7 @@ public class PriceRangeTest {
         assertFalse(PriceRange.isValidPriceRange("MEDIUM ")); // trailing space
 
         // valid price ranges
+        assertTrue(PriceRange.isValidPriceRange("")); // empty string
         assertTrue(PriceRange.isValidPriceRange("LOW"));
         assertTrue(PriceRange.isValidPriceRange("MEDIUM"));
         assertTrue(PriceRange.isValidPriceRange("HIGH"));

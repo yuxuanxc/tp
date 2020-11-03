@@ -1,6 +1,5 @@
 package seedu.address.logic.parser.itinerary;
 
-
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.BUDGET_DESC_JAPAN_TRIP;
 import static seedu.address.logic.commands.CommandTestUtil.BUDGET_DESC_PARIS_TRIP;
@@ -9,7 +8,6 @@ import static seedu.address.logic.commands.CommandTestUtil.DESCRIPTION_DESC_PARI
 import static seedu.address.logic.commands.CommandTestUtil.END_DATE_DESC_JAPAN_TRIP;
 import static seedu.address.logic.commands.CommandTestUtil.END_DATE_DESC_PARIS_TRIP;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_BUDGET_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_END_DATE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_START_DATE_DESC;
@@ -132,10 +130,10 @@ class AddItineraryCommandParserTest {
                         + INVALID_END_DATE_DESC + DESCRIPTION_DESC_JAPAN_TRIP + BUDGET_DESC_JAPAN_TRIP,
                 ItineraryDate.MESSAGE_CONSTRAINTS);
 
-        // invalid description
-        assertParseFailure(parser, NAME_DESC_JAPAN_TRIP + START_DATE_DESC_JAPAN_TRIP
-                        + END_DATE_DESC_JAPAN_TRIP + INVALID_DESCRIPTION_DESC + BUDGET_DESC_JAPAN_TRIP,
-                Description.MESSAGE_CONSTRAINTS);
+//        // invalid description
+//        assertParseFailure(parser, NAME_DESC_JAPAN_TRIP + START_DATE_DESC_JAPAN_TRIP
+//                        + END_DATE_DESC_JAPAN_TRIP + INVALID_DESCRIPTION_DESC + BUDGET_DESC_JAPAN_TRIP,
+//                Description.MESSAGE_CONSTRAINTS);
 
         // invalid budget
         assertParseFailure(parser, NAME_DESC_JAPAN_TRIP + START_DATE_DESC_JAPAN_TRIP

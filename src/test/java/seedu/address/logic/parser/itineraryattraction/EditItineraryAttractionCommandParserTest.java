@@ -12,9 +12,7 @@ import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.END_TIME_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.END_TIME_DESC_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.INDEX_DESC_EIFFEL;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DAY_VISITING_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_END_TIME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_LOCATION_DESC;
@@ -380,12 +378,12 @@ public class EditItineraryAttractionCommandParserTest {
         // invalid email
         assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS);
 
-        // invalid address
-        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS);
-
-        // invalid description
-        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_DESCRIPTION_DESC,
-                Description.MESSAGE_CONSTRAINTS);
+//        // invalid address
+//        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS);
+//
+//        // invalid description
+//        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_DESCRIPTION_DESC,
+//                Description.MESSAGE_CONSTRAINTS);
 
         // invalid location
         assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_LOCATION_DESC,

@@ -15,7 +15,7 @@ public class BudgetTest {
 
     @Test
     public void constructor_invalidBudget_throwsIllegalArgumentException() {
-        String invalidBudget = "";
+        String invalidBudget = "5.000";
         assertThrows(IllegalArgumentException.class, () -> new Budget(invalidBudget));
     }
 
@@ -24,11 +24,8 @@ public class BudgetTest {
         // null budget
         assertThrows(NullPointerException.class, () -> Budget.isValidBudget(null));
 
-        // blank budget
-        assertFalse(Budget.isValidBudget("")); // empty string
-        assertFalse(Budget.isValidBudget(" ")); // spaces only
-
         // invalid budget
+        assertFalse(Budget.isValidBudget(" ")); // spaces only
         assertFalse(Budget.isValidBudget("-1")); // non-positive value
         assertFalse(Budget.isValidBudget("twenty")); // non-numeric value
         assertFalse(Budget.isValidBudget("2E.34")); // non-numeric value
@@ -36,6 +33,7 @@ public class BudgetTest {
         assertFalse(Budget.isValidBudget("23.345")); // too many decimal places
 
         // valid budget
+        assertTrue(Budget.isValidBudget("")); // empty string
         assertTrue(Budget.isValidBudget("0")); // zero value
         assertTrue(Budget.isValidBudget("1660")); // non-decimal value
         assertTrue(Budget.isValidBudget("2000.57")); // decimal value
