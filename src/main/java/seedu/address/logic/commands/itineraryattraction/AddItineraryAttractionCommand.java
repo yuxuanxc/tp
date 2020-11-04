@@ -96,7 +96,8 @@ public class AddItineraryAttractionCommand extends Command {
         }
 
         itinerary.addItineraryAttraction(ia, dayVisiting);
-        return new CommandResult(String.format(MESSAGE_ADD_ATTRACTION_SUCCESS, ia), true);
+        return new CommandResult(String.format(MESSAGE_ADD_ATTRACTION_SUCCESS, ia),
+                CommandResult.ToSwitchItineraryPanels.YES);
     }
 
     @Override

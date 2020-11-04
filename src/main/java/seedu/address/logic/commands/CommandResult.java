@@ -18,12 +18,15 @@ public class CommandResult {
     private final boolean exit;
 
     /** The application should switch panels to Itinerary Attraction */
-    private final boolean switchToItineraryAttraction;
+    private final ToSwitchItineraryPanels switchToItineraryAttraction;
+
+    public enum ToSwitchItineraryPanels { YES, NO, NIL }
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean switchToItineraryAttraction) {
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit,
+                         ToSwitchItineraryPanels switchToItineraryAttraction) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
@@ -35,10 +38,11 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false, false);
+        this(feedbackToUser, false, false,
+                ToSwitchItineraryPanels.NIL);
     }
 
-    public CommandResult(String feedbackToUser, boolean switchToItineraryAttraction) {
+    public CommandResult(String feedbackToUser, ToSwitchItineraryPanels switchToItineraryAttraction) {
         this(feedbackToUser, false, false, switchToItineraryAttraction);
     }
 
@@ -54,7 +58,7 @@ public class CommandResult {
         return exit;
     }
 
-    public boolean isSwitchToItineraryAttraction() {
+    public ToSwitchItineraryPanels isSwitchToItineraryAttraction() {
         return switchToItineraryAttraction;
     }
 

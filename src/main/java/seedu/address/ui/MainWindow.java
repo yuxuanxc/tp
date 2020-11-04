@@ -231,9 +231,9 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
-            if (commandResult.isSwitchToItineraryAttraction()) {
+            if (commandResult.isSwitchToItineraryAttraction() == CommandResult.ToSwitchItineraryPanels.YES) {
                 handleChangeToItineraryAttractionPanel();
-            } else {
+            } else if (commandResult.isSwitchToItineraryAttraction() == CommandResult.ToSwitchItineraryPanels.NO) {
                 handleChangeToItineraryPanel();
             }
 
