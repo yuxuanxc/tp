@@ -70,7 +70,7 @@ Here are the steps to download TrackPad and start using it immediately!
 
 ### 4.1 Command Format
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-warning">
 
 **:information_source: Notes about the command format:**<br>
 
@@ -211,6 +211,11 @@ Format: `list-attraction`<br>
 ![result for 'list-attraction'](images/listAttraction.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 8. The result of <code>list-attraction</code></i></sup></div>
 
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+`list-attraction` will work even if there are extra characters behind the command.
+Eg. `list-attraction abcd` will behave like `list-attraction`.
+</div><br>
+
 #### 4.2.7 Clearing all attractions : `clear-attraction`
 
 Clears all tourist attractions.
@@ -308,6 +313,11 @@ Format: `list-itinerary`<br>
 
 ![result_of_listing itineraries](images/listItinerary.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 14. The result of <code>list-itinerary</code></i></sup></div>
+
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+`list-itinerary` will work even if there are extra characters behind the command.
+Eg. `list-itinerary abcd` will behave like `list-itinerary`.
+</div><br>
 
 #### 4.3.6 Selecting an itinerary: `select-itinerary`
 
