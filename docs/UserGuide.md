@@ -130,6 +130,17 @@ op/1000-1800 pr/MEDMIU r/4.6 v/FALSE`<br><br>
 <div align="center"><sup style="font-size:100%"><i>Figure 2. The result of <code>add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com 
 op/1000-1800 pr/MEDMIU r/4.6 v/FALSE</code></i></sup></div>
 
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+Multiple attractions of the same name can be added into the same list, only if their 
+locations are all different from one another.
+</div><br>
+
+<div markdown="span" class="alert alert-danger">:warning: **Warning:**
+The names and locations of attractions are case sensitive.
+`add-attraction n/Singapore Zoo l/Singapore` followed by 
+`add-attraction n/singapore zoo l/singapore` will create two different attractions in the same list.
+</div>
+
 #### 4.2.2 Editing a tourist attraction: `edit-attraction`
 
 Edits a tourist attraction in the current list of attractions.
@@ -214,7 +225,7 @@ Format: `list-attraction`<br>
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 `list-attraction` will work even if there are extra characters behind the command.
 Eg. `list-attraction abcd` will behave like `list-attraction`.
-</div><br>
+</div>
 
 #### 4.2.7 Clearing all attractions : `clear-attraction`
 
@@ -256,6 +267,11 @@ Examples:
 ![result_of_adding an itinerary](images/addItinerary.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 10. The result of <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
 
+<div markdown="span" class="alert alert-danger">:warning: **Warning:**
+The names of itineraries are case sensitive.
+`add-itinerary n/japan trip sd/20-12-2020 ed/30-12-2020` followed by 
+`add-itinerary n/Japan Trip sd/20-12-2020 ed/30-12-2020` will create two different itineraries in the same list.
+</div>
 
 #### 4.3.2 Editing an itinerary: `edit-itinerary`
 
