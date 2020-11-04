@@ -18,7 +18,7 @@ import seedu.address.model.itinerary.exceptions.ItineraryAttractionNotFoundExcep
 public class Day {
 
     public static final String MESSAGE_CONSTRAINTS = "Day should be a positive number, not be blank, and"
-            + " should exist within the date range of the itinerary";
+            + " should exist within the date range of the itinerary.";
     public final Integer value;
     private final List<ItineraryAttraction> itineraryAttractions;
 

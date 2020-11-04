@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Visited {
 
     public static final String MESSAGE_CONSTRAINTS = "Visited should be either "
-            + "TRUE or FALSE";
+            + "TRUE or FALSE.";
     public static final String VALIDATION_REGEX = "(?i)\\bTRUE\\b|\\bFALSE\\b|^$";
 
     public final String value;

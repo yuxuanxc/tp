@@ -39,10 +39,10 @@ public class EditItineraryCommand extends Command {
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_START_DATE + "START_DATE] "
             + "[" + PREFIX_END_DATE + "END_DATE ] "
-            + "[" + PREFIX_BUDGET + "BUDGET ] "
-            + "Example: " + COMMAND_WORD + " 2 n/Singapore journey sd/05-06-2019";
+            + "[" + PREFIX_BUDGET + "BUDGET ]."
+            + "Example: " + COMMAND_WORD + " 2 n/Singapore journey sd/05-06-2019.";
 
-    public static final String MESSAGE_EDIT_ITINERARY_SUCCESS = "Edited Itinerary: %1$s";
+    public static final String MESSAGE_EDIT_ITINERARY_SUCCESS = "Edited Itinerary: %1$s.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_ITINERARY = "This itinerary already exists in TrackPad.";
     public static final String MESSAGE_START_BEFORE_END_DATE = "Start date should come before end date";

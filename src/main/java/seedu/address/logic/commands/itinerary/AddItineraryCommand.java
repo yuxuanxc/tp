@@ -22,10 +22,10 @@ public class AddItineraryCommand extends Command {
             + PREFIX_START_DATE + "START_DATE "
             + PREFIX_END_DATE + "END_DATE "
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
-            + "[" + PREFIX_BUDGET + "BUDGET] ";
+            + "[" + PREFIX_BUDGET + "BUDGET].";
 
-    public static final String MESSAGE_SUCCESS = "New itinerary added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ITINERARY = "This itinerary already exists in TrackPad";
+    public static final String MESSAGE_SUCCESS = "New itinerary added: %1$s.";
+    public static final String MESSAGE_DUPLICATE_ITINERARY = "This itinerary already exists in TrackPad.";
     public static final String MESSAGE_START_BEFORE_END_DATE = "Start date should come before end date.";
 
     private final Itinerary toAdd;

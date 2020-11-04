@@ -45,15 +45,15 @@ import seedu.address.model.tag.Tag;
 public class EditItineraryAttractionCommand extends Command {
 
     public static final String COMMAND_WORD = "edit-itinerary-attraction";
-    public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s";
+    public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the itinerary attraction "
-            + "identified by the name of the itinerary attraction displayed in the itinerary"
+            + "identified by the name of the itinerary attraction displayed in the itinerary."
             + "Parameters: INDEX must be a number between 0 and 2147483647 " + PREFIX_DAY_VISITING + "DAY VISITING "
             + "[" + PREFIX_START_TIME + "START_TIME] "
-            + "[" + PREFIX_END_TIME + "END_TIME] \n"
+            + "[" + PREFIX_END_TIME + "END_TIME].\n"
             + "Example: " + COMMAND_WORD + " 2 " + PREFIX_DAY_VISITING + "2 " + PREFIX_START_TIME + "1000 "
-            + PREFIX_DAY_VISITING + "4";
+            + PREFIX_DAY_VISITING + "4.";
 
     private final Index index;
     private final Index dayVisiting;

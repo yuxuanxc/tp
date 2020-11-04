@@ -64,9 +64,9 @@ public class EditAttractionCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "62693411 "
-            + PREFIX_EMAIL + "sgzoo@example.com";
+            + PREFIX_EMAIL + "sgzoo@example.com.";
 
-    public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s";
+    public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in TrackPad.";
 

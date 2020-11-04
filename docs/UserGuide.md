@@ -139,8 +139,7 @@ op/1000-1800 pr/MEDMIU r/4.6 v/FALSE`<br><br>
 op/1000-1800 pr/MEDMIU r/4.6 v/FALSE</code></i></sup></div>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
-Multiple attractions of the same name can be added into the same list, only if their 
-locations are all different from one another.
+Multiple attractions of the same name and locatin cannot be added into the current list of attractions.
 </div><br>
 
 <div markdown="span" class="alert alert-danger">:warning: **Warning:**

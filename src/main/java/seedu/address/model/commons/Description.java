@@ -9,7 +9,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Description {
 
-    public static final String MESSAGE_CONSTRAINTS = "Descriptions can take any values";
+    public static final String MESSAGE_CONSTRAINTS = "Descriptions can take any values.";
 
     /*
      * Any String is fine, including empty ones.
