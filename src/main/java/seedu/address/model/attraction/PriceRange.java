@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class PriceRange {
 
     public static final String MESSAGE_CONSTRAINTS = "Price Range should be either "
-            + "LOW, MEDIUM, or HIGH";
+            + "LOW, MEDIUM, or HIGH.";
     public static final String VALIDATION_REGEX = "(?i)\\bLOW\\b|\\bMEDIUM\\b|\\bHIGH\\b|^$";
 
     public final String value;

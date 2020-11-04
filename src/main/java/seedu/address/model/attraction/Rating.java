@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Rating {
 
     public static final String MESSAGE_CONSTRAINTS = "Rating should only contain a number "
-            + "between 0.0 to 5.0(inclusive), to 1 decimal place";
+            + "between 0.0 to 5.0(inclusive), to 1 decimal place.";
     public static final String VALIDATION_REGEX = "^([0-4]\\.[0-9]|5\\.0)$|^$";
 
     public final String value;

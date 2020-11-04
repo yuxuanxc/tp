@@ -6,6 +6,6 @@ package seedu.address.model.attraction.exceptions;
  */
 public class DuplicateAttractionException extends RuntimeException {
     public DuplicateAttractionException() {
-        super("Operation would result in duplicate attractions");
+        super("Operation would result in duplicate attractions.");
     }
 }

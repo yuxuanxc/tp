@@ -21,10 +21,10 @@ public class DeleteAttractionCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the attraction identified by the index number used in the displayed attraction list.\n"
-            + "Parameters: INDEX must be a number between 0 and 2147483647\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + "Parameters: INDEX must be a number between 0 and 2147483647.\n"
+            + "Example: " + COMMAND_WORD + " 1.";
 
-    public static final String MESSAGE_DELETE_ATTRACTION_SUCCESS = "Deleted attraction: %1$s";
+    public static final String MESSAGE_DELETE_ATTRACTION_SUCCESS = "Deleted attraction: %1$s.";
 
     private final Index targetIndex;
 

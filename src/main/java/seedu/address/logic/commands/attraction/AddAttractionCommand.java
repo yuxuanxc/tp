@@ -50,10 +50,10 @@ public class AddAttractionCommand extends Command {
             + PREFIX_PRICE_RANGE + "MEDIUM "
             + PREFIX_RATING + "4.8 "
             + PREFIX_VISITED + "TRUE "
-            + PREFIX_TAG + "animal ";
+            + PREFIX_TAG + "animal.";
 
-    public static final String MESSAGE_SUCCESS = "New attraction added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in TrackPad";
+    public static final String MESSAGE_SUCCESS = "New attraction added: %1$s.";
+    public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in TrackPad.";
 
     private final Attraction toAdd;
 

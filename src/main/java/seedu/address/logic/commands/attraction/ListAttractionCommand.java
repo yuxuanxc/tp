@@ -14,7 +14,7 @@ public class ListAttractionCommand extends Command {
 
     public static final String COMMAND_WORD = "list-attraction";
 
-    public static final String MESSAGE_SUCCESS = "Listed all attractions";
+    public static final String MESSAGE_SUCCESS = "Listed all attractions.";
 
 
     @Override

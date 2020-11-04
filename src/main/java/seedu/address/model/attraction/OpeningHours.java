@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class OpeningHours {
 
     public static final String MESSAGE_CONSTRAINTS = "Opening Hours should be of the format "
-            + "opening time (in 24 hour format) - closing time (in 24 hour format)";
+            + "opening time (in 24 hour format) - closing time (in 24 hour format).";
     private static final String VALIDATION_REGEX =
             "([01][0-9]|2[0-3])[0-5][0-9]-([01][0-9]|2[0-3])[0-5][0-9]|^$";
 
