@@ -11,7 +11,7 @@ public class PriceRange {
 
     public static final String MESSAGE_CONSTRAINTS = "Price Range should be of the format "
             + "LOW, MEDIUM, or HIGH";
-    public static final String VALIDATION_REGEX = "\\bLOW\\b|\\bMEDIUM\\b|\\bHIGH\\b|^$";
+    public static final String VALIDATION_REGEX = "(?i)\\bLOW\\b|\\bMEDIUM\\b|\\bHIGH\\b|^$";
 
     public final String value;
 

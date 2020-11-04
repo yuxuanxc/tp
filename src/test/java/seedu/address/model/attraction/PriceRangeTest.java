@@ -26,7 +26,7 @@ public class PriceRangeTest {
 
         // invalid price ranges
         assertFalse(PriceRange.isValidPriceRange(" ")); // spaces only
-        assertFalse(PriceRange.isValidPriceRange("low"));
+        assertFalse(PriceRange.isValidPriceRange("lo")); //incomplete
         assertFalse(PriceRange.isValidPriceRange("average"));
         assertFalse(PriceRange.isValidPriceRange(" MEDIUM")); // leading space
         assertFalse(PriceRange.isValidPriceRange("MEDIUM ")); // trailing space
@@ -36,5 +36,6 @@ public class PriceRangeTest {
         assertTrue(PriceRange.isValidPriceRange("LOW"));
         assertTrue(PriceRange.isValidPriceRange("MEDIUM"));
         assertTrue(PriceRange.isValidPriceRange("HIGH"));
+        assertTrue(PriceRange.isValidPriceRange("HiGh"));
     }
 }
