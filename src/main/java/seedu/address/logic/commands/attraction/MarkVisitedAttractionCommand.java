@@ -39,8 +39,10 @@ public class MarkVisitedAttractionCommand extends Command {
 
     public static final String MESSAGE_MARKVISITED_ATTRACTION_SUCCESS = "Attraction marked as visited: %1$s";
 
-    private final Index index;
+    public static final String MESSAGE_ATTRACTION_ALREADY_MARKVISITED = "This attraction was already marked as "
+            + "visited.";
 
+    private final Index index;
     /**
      * @param index of the attraction in the filtered attraction list to mark as visited
 //     * @param markVisitedAttractionDescriptor details to edit the attraction with
@@ -60,6 +62,10 @@ public class MarkVisitedAttractionCommand extends Command {
         }
 
         Attraction attractionToMarkVisited = lastShownList.get(index.getZeroBased());
+
+        if (attractionToMarkVisited.getVisited().equals(new Visited("True"))) {
+            throw new CommandException(MESSAGE_ATTRACTION_ALREADY_MARKVISITED);
+        }
         Attraction markedVisitedAttraction = createMarkVisitedAttraction(attractionToMarkVisited);
 
         model.setAttraction(attractionToMarkVisited, markedVisitedAttraction);

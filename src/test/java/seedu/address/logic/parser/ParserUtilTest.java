@@ -36,9 +36,9 @@ public class ParserUtilTest {
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_LOCATION = " ";
     private static final String INVALID_OPENING_HOURS = "1-2";
-    private static final String INVALID_PRICE_RANGE = "low";
+    private static final String INVALID_PRICE_RANGE = "MEDUM";
     private static final String INVALID_RATING = "9";
-    private static final String INVALID_VISITED = "FaLse";
+    private static final String INVALID_VISITED = "Fase";
     private static final String INVALID_TAG = "#nature";
     private static final String INVALID_ITINERARY_DATE = "3 february";
     private static final String INVALID_BUDGET = "345.123";
