@@ -41,17 +41,26 @@ public class ItineraryListCard extends UiPart<Region> {
     public ItineraryListCard(Itinerary itinerary, int displayedIndex) {
         super(FXML);
         this.itinerary = itinerary;
+
         id.setText(displayedIndex + ". ");
+
         name.setText(itinerary.getName().fullName);
+        name.setWrapText(true);
+
         startEndDate.setText("\uD83D\uDCC6 " + itinerary.getStartDate().value
                 + " to "
                 + itinerary.getEndDate().value);
+
         description.setText(itinerary.getDescription().value);
+        description.setWrapText(true);
+
         if (!itinerary.getBudget().value.isEmpty()) {
             budget.setText("\uD83D\uDCB5 " + itinerary.getBudget().toString());
+            budget.setWrapText(true);
         }
         if (!itinerary.getLocations().isEmpty()) {
             locale.setText("\uD83C\uDF0E " + itinerary.getLocations());
+            locale.setWrapText(true);
         }
     }
 

@@ -29,7 +29,7 @@ Minimal prior technical knowledge is needed in order to use TrackPad and we hope
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 3. Getting started
+## 3. Getting Started
 
 Here are the steps to download TrackPad and start using it immediately!
 
