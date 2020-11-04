@@ -11,8 +11,8 @@ public class OpeningHours {
 
     public static final String MESSAGE_CONSTRAINTS = "Opening Hours should be of the format "
             + "opening time (in 24 hour format) - closing time (in 24 hour format)";
-    private static final String TIME_REGEX = "([01][0-9]|2[0-3])[0-5][0-9]";
-    public static final String VALIDATION_REGEX = TIME_REGEX + "-" + TIME_REGEX;
+    private static final String VALIDATION_REGEX =
+            "([01][0-9]|2[0-3])[0-5][0-9]-([01][0-9]|2[0-3])[0-5][0-9]|^$";
 
     public final String value;
 

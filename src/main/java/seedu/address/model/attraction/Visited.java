@@ -11,7 +11,7 @@ public class Visited {
 
     public static final String MESSAGE_CONSTRAINTS = "Visited should be of the format "
             + "TRUE or FALSE";
-    public static final String VALIDATION_REGEX = "\\bTRUE\\b|\\bFALSE\\b";
+    public static final String VALIDATION_REGEX = "\\bTRUE\\b|\\bFALSE\\b|^$";
 
     public final String value;
 
