@@ -112,7 +112,7 @@ public class Attraction {
 
         return otherAttraction != null
                 && otherAttraction.getName().equals(getName())
-                && (otherAttraction.getPhone().equals(getPhone()) || otherAttraction.getEmail().equals(getEmail()));
+                && (otherAttraction.getLocation().equals(getLocation()));
     }
 
     /**

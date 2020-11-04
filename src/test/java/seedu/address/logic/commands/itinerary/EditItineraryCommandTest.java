@@ -12,6 +12,7 @@ import static seedu.address.logic.commands.CommandTestUtil.showItineraryAtIndex;
 import static seedu.address.testutil.TypicalAttractions.getTypicalAttractionList;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
+import static seedu.address.testutil.TypicalItineraries.PARIS_TRIP;
 import static seedu.address.testutil.TypicalItineraries.getTypicalItineraryList;
 
 import org.junit.jupiter.api.Test;
@@ -60,7 +61,7 @@ class EditItineraryCommandTest {
                 .withStartDate(VALID_START_DATE_PARIS_TRIP)
                 .build();
 
-        EditItineraryCommand.EditItineraryDescriptor descriptor = new EditItineraryDescriptorBuilder()
+        EditItineraryDescriptor descriptor = new EditItineraryDescriptorBuilder()
                 .withName(VALID_NAME_PARIS_TRIP)
                 .withStartDate(VALID_START_DATE_PARIS_TRIP)
                 .build();
@@ -77,18 +78,13 @@ class EditItineraryCommandTest {
     }
 
     @Test
-    public void execute_noFieldSpecifiedUnfilteredList_success() {
+    public void execute_noFieldSpecifiedUnfilteredList_failure() {
         EditItineraryCommand editItineraryCommand = new EditItineraryCommand(INDEX_FIRST,
-                new EditItineraryCommand.EditItineraryDescriptor());
-        Itinerary editedItinerary = model.getFilteredItineraryList().get(INDEX_FIRST.getZeroBased());
+                new EditItineraryDescriptor());
 
-        String expectedMessage = String.format(EditItineraryCommand.MESSAGE_EDIT_ITINERARY_SUCCESS, editedItinerary);
+        String expectedMessage = EditItineraryCommand.MESSAGE_DUPLICATE_ITINERARY;
 
-        Model expectedModel = new ModelManager(new AttractionList(model.getAttractionList()),
-                new ItineraryList(model.getItineraryList()),
-                new UserPrefs());
-
-        assertCommandSuccess(editItineraryCommand, model, expectedMessage, expectedModel);
+        assertCommandFailure(editItineraryCommand, model, expectedMessage);
     }
 
     @Test
@@ -112,10 +108,28 @@ class EditItineraryCommandTest {
     }
 
     @Test
+    public void execute_hasCurrentItineraryBefore_noCurrentItineraryAfter() {
+        // Follows execute_allFieldsSpecifiedUnfilteredList_success() except with current itinerary
+        Itinerary itineraryToEdit = model.getFilteredItineraryList().get(0);
+        Itinerary editedItinerary = new ItineraryBuilder().withDays(itineraryToEdit.getDays()).build();
+        EditItineraryDescriptor descriptor = new EditItineraryDescriptorBuilder(editedItinerary).build();
+        EditItineraryCommand editItineraryCommand = new EditItineraryCommand(INDEX_FIRST, descriptor);
+
+        String expectedMessage = String.format(EditItineraryCommand.MESSAGE_EDIT_ITINERARY_SUCCESS, editedItinerary);
+
+        Model expectedModel = new ModelManager(new AttractionList(model.getAttractionList()),
+                new ItineraryList(model.getItineraryList()),
+                new UserPrefs());
+        expectedModel.setItinerary(itineraryToEdit, editedItinerary);
+        expectedModel.setCurrentItinerary(null);
+        model.setCurrentItinerary(PARIS_TRIP);
+        assertCommandSuccess(editItineraryCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
     public void execute_duplicateItineraryUnfilteredList_failure() {
         Itinerary firstItinerary = model.getFilteredItineraryList().get(INDEX_FIRST.getZeroBased());
-        EditItineraryCommand.EditItineraryDescriptor descriptor =
-                new EditItineraryDescriptorBuilder(firstItinerary).build();
+        EditItineraryDescriptor descriptor = new EditItineraryDescriptorBuilder(firstItinerary).build();
         EditItineraryCommand editItineraryCommand = new EditItineraryCommand(INDEX_SECOND, descriptor);
 
         assertCommandFailure(editItineraryCommand, model, EditItineraryCommand.MESSAGE_DUPLICATE_ITINERARY);
@@ -137,7 +151,7 @@ class EditItineraryCommandTest {
     @Test
     public void execute_invalidItineraryIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredItineraryList().size() + 1);
-        EditItineraryCommand.EditItineraryDescriptor descriptor = new EditItineraryDescriptorBuilder()
+        EditItineraryDescriptor descriptor = new EditItineraryDescriptorBuilder()
                 .withName(VALID_NAME_PARIS_TRIP).build();
         EditItineraryCommand editItineraryCommand = new EditItineraryCommand(outOfBoundIndex, descriptor);
 
@@ -166,8 +180,7 @@ class EditItineraryCommandTest {
         final EditItineraryCommand standardCommand = new EditItineraryCommand(INDEX_FIRST, DESC_PARIS_TRIP);
 
         // same values -> returns true
-        EditItineraryCommand.EditItineraryDescriptor copyDescriptor =
-                new EditItineraryCommand.EditItineraryDescriptor(DESC_PARIS_TRIP);
+        EditItineraryDescriptor copyDescriptor = new EditItineraryDescriptor(DESC_PARIS_TRIP);
         EditItineraryCommand commandWithSameValues = new EditItineraryCommand(INDEX_FIRST, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 

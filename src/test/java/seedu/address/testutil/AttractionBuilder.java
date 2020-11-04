@@ -22,14 +22,12 @@ import seedu.address.model.util.SampleDataUtil;
  */
 public class AttractionBuilder {
 
-    public static final String DEFAULT_NAME = "Singapore Zoo";
-    public static final String DEFAULT_PHONE = "62693411";
-    public static final String DEFAULT_EMAIL = "zoo@example.com";
-    public static final String DEFAULT_ADDRESS = "80 Mandai Lake Rd, 729826";
-    public static final String DEFAULT_DESCRIPTION = "Set in a rainforest environment, "
-            + "Singapore Zoo's world-famous \"Open Concept” offers the opportunity to "
-            + "experience and be inspired by the wonders of nature.";
-    public static final String DEFAULT_LOCATION = "Singapore, Singapore";
+    public static final String DEFAULT_NAME = "Tokyo Disneyland";
+    public static final String DEFAULT_PHONE = "81453305211";
+    public static final String DEFAULT_EMAIL = "contact@tokyodisneyresort.jp";
+    public static final String DEFAULT_ADDRESS = "1-1 Maihama, Urayasu, Chiba 279-0031";
+    public static final String DEFAULT_DESCRIPTION = "The first Disney park to be built outside the United States.";
+    public static final String DEFAULT_LOCATION = "Urayasu, Japan";
     public static final String DEFAULT_OPENING_HOURS = "1000-1800";
     public static final String DEFAULT_PRICE_RANGE = "MEDIUM";
     public static final String DEFAULT_RATING = "4.5";
@@ -209,6 +207,7 @@ public class AttractionBuilder {
         this.rating = new Rating();
         return this;
     }
+
     /**
      * Sets the {@code Visited} of the {@code Attraction} that we are building.
      */

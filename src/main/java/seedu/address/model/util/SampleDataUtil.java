@@ -82,7 +82,7 @@ public class SampleDataUtil {
         return sampleAl;
     }
 
-    // todo Make non empty sample itinerary list.
+    // Sample itinerary list will be blank
     public static ReadOnlyItineraryList getSampleItineraryList() {
         return new ItineraryList();
     }

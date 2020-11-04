@@ -3,6 +3,7 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Optional;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.itinerary.Itinerary;
@@ -123,7 +124,9 @@ public class ItineraryList implements ReadOnlyItineraryList {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof ItineraryList // instanceof handles nulls
-                && itineraries.equals(((ItineraryList) other).itineraries));
+                && itineraries.equals(((ItineraryList) other).itineraries))
+                && Optional.ofNullable(currentItinerary)
+                .equals(Optional.ofNullable(((ItineraryList) other).currentItinerary));
     }
 
     @Override

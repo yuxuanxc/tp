@@ -74,12 +74,18 @@ public class EditItineraryCommand extends Command {
         Itinerary itineraryToEdit = lastShownList.get(index.getZeroBased());
 
         Itinerary editedItinerary = createEditedItinerary(itineraryToEdit, editItineraryDescriptor);
+
+        if (itineraryToEdit.equals(editedItinerary)) {
+            throw new CommandException(MESSAGE_DUPLICATE_ITINERARY);
+        }
+
         if (!itineraryToEdit.isSameItinerary(editedItinerary) && model.hasItinerary(editedItinerary)) {
             throw new CommandException(MESSAGE_DUPLICATE_ITINERARY);
         }
 
         model.setItinerary(itineraryToEdit, editedItinerary);
         model.updateFilteredItineraryList(PREDICATE_SHOW_ALL_ITINERARIES);
+        model.setCurrentItinerary(null);
         return new CommandResult(String.format(MESSAGE_EDIT_ITINERARY_SUCCESS, editedItinerary));
     }
 

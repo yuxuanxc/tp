@@ -32,6 +32,7 @@ public class FindItineraryCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredItineraryList(predicate);
+        model.setCurrentItinerary(null);
         return new CommandResult(
             String.format(Messages.MESSAGE_ITINERARIES_LISTED_OVERVIEW, model.getFilteredItineraryList().size()));
     }

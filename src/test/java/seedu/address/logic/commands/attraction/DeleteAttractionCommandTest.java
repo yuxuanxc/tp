@@ -20,8 +20,7 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.attraction.Attraction;
 
 /**
- * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
- * {@code DeleteAttractionCommand}.
+ * Contains integration tests (interaction with the Model) and unit tests for {@code DeleteAttractionCommand}.
  */
 public class DeleteAttractionCommandTest {
 
@@ -72,7 +71,7 @@ public class DeleteAttractionCommandTest {
         showAttractionAtIndex(model, INDEX_FIRST);
 
         Index outOfBoundIndex = INDEX_SECOND;
-        // ensures that outOfBoundIndex is still in bounds of trackPad list
+        // ensures that outOfBoundIndex is still in bounds of attraction list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAttractionList().getAttractionList().size());
 
         DeleteAttractionCommand deleteAttractionCommand = new DeleteAttractionCommand(outOfBoundIndex);

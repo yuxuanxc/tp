@@ -19,7 +19,7 @@ public class Description {
     public final String value;
 
     /**
-     * Constructs an {@code Description}.
+     * Constructs a {@code Description}.
      *
      * @param description A valid description.
      */
@@ -31,7 +31,7 @@ public class Description {
 
 
     /**
-     * Constructs an {@code Description} with an empty description value.
+     * Constructs a {@code Description} with an empty description value.
      */
     public Description() {
         value = "";

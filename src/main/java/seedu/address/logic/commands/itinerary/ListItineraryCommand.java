@@ -19,6 +19,7 @@ public class ListItineraryCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredItineraryList(PREDICATE_SHOW_ALL_ITINERARIES);
+        model.setCurrentItinerary(null);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

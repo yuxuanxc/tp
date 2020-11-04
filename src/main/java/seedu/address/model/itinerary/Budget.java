@@ -18,7 +18,7 @@ public class Budget {
     /**
      * Constructs a {@code Budget}.
      *
-     * @param budget A valid budget number.
+     * @param budget A valid budget value.
      */
     public Budget(String budget) {
         requireNonNull(budget);

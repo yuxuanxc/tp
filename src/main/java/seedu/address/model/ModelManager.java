@@ -223,8 +223,12 @@ public class ModelManager implements Model {
 
     @Override
     public void setCurrentItinerary(Itinerary itinerary) {
-        itineraryList.setCurrentItinerary(itinerary);
-        itineraryAttractionList = new ItineraryAttractionList(itinerary);
+        if (itinerary == null) {
+            itineraryList.setCurrentItinerary(null);
+        } else {
+            itineraryList.setCurrentItinerary(itinerary);
+            itineraryAttractionList = new ItineraryAttractionList(itinerary);
+        }
     }
 
     @Override
@@ -264,6 +268,7 @@ public class ModelManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return attractionList.equals(other.attractionList)
+                && itineraryList.equals(other.itineraryList)
                 && userPrefs.equals(other.userPrefs)
                 && filteredAttractions.equals(other.filteredAttractions)
                 && filteredItineraries.equals(other.filteredItineraries);

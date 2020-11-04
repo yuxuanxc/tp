@@ -85,29 +85,38 @@ public class MainApp extends Application {
         ReadOnlyAttractionList initialAttractionList;
         Optional<ReadOnlyItineraryList> itineraryListOptional;
         ReadOnlyItineraryList initialItineraryList;
+
+        // attraction list
         try {
-            // attraction list
             attractionListOptional = storage.readAttractionList();
-            if (!attractionListOptional.isPresent()) {
-                logger.info("Data file not found. Will be starting with a sample AttractionList");
+            if (attractionListOptional.isEmpty()) {
+                logger.info("Attraction data file not found. Will be starting with a sample AttractionList");
             }
             initialAttractionList = attractionListOptional.orElseGet(SampleDataUtil::getSampleAttractionsList);
+        } catch (DataConversionException e) {
+            logger.warning("Attraction data file not in the correct format. Will be starting with an empty"
+                    + " AttractionList");
+            initialAttractionList = new AttractionList();
+        } catch (IOException e) {
+            logger.warning("Problem while reading from the attraction data file. Will be starting with an"
+                    + " empty AttractionList");
+            initialAttractionList = new AttractionList();
+        }
 
-            // itinerary list
+        // itinerary list
+        try {
             itineraryListOptional = storage.readItineraryList();
-            if (!itineraryListOptional.isPresent()) {
-                logger.info("Data file not found. Will be starting with an empty ItineraryList");
+            if (itineraryListOptional.isEmpty()) {
+                logger.info("Itinerary data file not found. Will be starting with an empty ItineraryList");
             }
             initialItineraryList = itineraryListOptional.orElseGet(SampleDataUtil::getSampleItineraryList);
         } catch (DataConversionException e) {
-            logger.warning("Data file not in the correct format. Will be starting with an empty AttractionList"
-                    + " and empty ItineraryList");
-            initialAttractionList = new AttractionList();
+            logger.warning("Itinerary data file not in the correct format. Will be starting with an empty"
+                    + " ItineraryList");
             initialItineraryList = new ItineraryList();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty AttractionList"
-                    + " and empty ItineraryList");
-            initialAttractionList = new AttractionList();
+            logger.warning("Problem while reading from the itinerary data file. Will be starting with an"
+                    + " empty ItineraryList");
             initialItineraryList = new ItineraryList();
         }
 

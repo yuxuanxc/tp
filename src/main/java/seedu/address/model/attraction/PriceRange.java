@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Attraction's price range in TrackPad.
+ * Represents an Attraction's price range in TrackPad.
  * Guarantees: immutable; is valid as declared in {@link #isValidPriceRange(String)} (String)}
  */
 public class PriceRange {
@@ -16,7 +16,7 @@ public class PriceRange {
     public final String value;
 
     /**
-     * Constructs an {@code PriceRange}.
+     * Constructs a {@code PriceRange}.
      *
      * @param priceRange A valid price range.
      */
@@ -27,7 +27,7 @@ public class PriceRange {
     }
 
     /**
-     * Constructs an {@code PriceRange} without value.
+     * Constructs a {@code PriceRange} without value.
      */
     public PriceRange() {
         value = "";

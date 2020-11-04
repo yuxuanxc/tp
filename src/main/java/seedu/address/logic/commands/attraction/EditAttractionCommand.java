@@ -97,6 +97,10 @@ public class EditAttractionCommand extends Command {
         Attraction attractionToEdit = lastShownList.get(index.getZeroBased());
         Attraction editedAttraction = createEditedAttraction(attractionToEdit, editAttractionDescriptor);
 
+        if (attractionToEdit.equals(editedAttraction)) {
+            throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
+        }
+
         if (!attractionToEdit.isSameAttraction(editedAttraction) && model.hasAttraction(editedAttraction)) {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
         }

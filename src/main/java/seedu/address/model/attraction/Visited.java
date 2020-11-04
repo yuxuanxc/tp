@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Attraction's price range in TrackPad.
+ * Represents an Attraction's visited status in TrackPad.
  * Guarantees: immutable; is valid as declared in {@link #isValidVisited(String)} (String)}
  */
 public class Visited {
@@ -16,9 +16,9 @@ public class Visited {
     public final String value;
 
     /**
-     * Constructs an {@code IsVisited}.
+     * Constructs a {@code Visited}.
      *
-     * @param visited A valid price range.
+     * @param visited A valid visited status.
      */
     public Visited(String visited) {
         requireNonNull(visited);
@@ -27,14 +27,14 @@ public class Visited {
     }
 
     /**
-     * Constructs an {@code IsVisited} without value.
+     * Constructs a {@code Visited} without value.
      */
     public Visited() {
         value = "";
     }
 
     /**
-     * Returns if a given string is a valid price range.
+     * Returns if a given string is a valid visited status.
      */
     public static boolean isValidVisited(String test) {
         return test.matches(VALIDATION_REGEX);

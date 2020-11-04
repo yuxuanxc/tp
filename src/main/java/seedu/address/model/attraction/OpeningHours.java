@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Attraction's Opening hours in TrackPad.
+ * Represents an Attraction's Opening hours in TrackPad.
  * Guarantees: immutable; is valid as declared in {@link #isValidOpeningHours(String)} (String)}
  */
 public class OpeningHours {
@@ -19,7 +19,7 @@ public class OpeningHours {
     /**
      * Constructs an {@code OpeningHours}.
      *
-     * @param openingHours An valid opening hour.
+     * @param openingHours A valid opening hour.
      */
     public OpeningHours(String openingHours) {
         requireNonNull(openingHours);
@@ -35,7 +35,7 @@ public class OpeningHours {
     }
 
     /**
-     * Returns if a given string is an valid opening hour.
+     * Returns if a given string is a valid opening hour.
      */
     public static boolean isValidOpeningHours(String test) {
         return test.matches(VALIDATION_REGEX);
