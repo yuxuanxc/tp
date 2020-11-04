@@ -137,9 +137,7 @@ Edits a tourist attraction in the current list of attractions.
 Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS]
 [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
  
-* Edits the attraction at the specified `INDEX`.
-* The index refers to the index number shown in the displayed tourist attraction list.
-* The index **must be a positive number** 1, 2, 3, …​
+* Edits the attraction at the specified `INDEX` shown in the attractions panel.
 * Field entries are the same as the `add-attraction` command.
 * Any field can be changed by inputting its corresponding prefix in the command.
     * Example: `add-attraction n/MBS l/Singapore, Singapore r/4.3` in an attraction list followed by 
@@ -162,9 +160,7 @@ Deletes a tourist attraction from the current list of attractions.
 
 Format: `delete-attraction INDEX`
 
-* Deletes the attraction at the specified `INDEX`.
-* The index refers to the index number shown in the displayed tourist attraction list.
-* The index **must be a positive number** 1, 2, 3, …​
+* Deletes the attraction at the specified `INDEX` shown in the attractions panel.
 
 Examples:
 * `list-attraction` followed by `delete-attraction 1` deletes the 1st attraction in the TrackPad.<br><br>
@@ -179,9 +175,7 @@ Marks a tourist attraction in the current list of attractions as visited.
 
 Format: `markVisited-attraction INDEX`
  
-* Marks the attraction at the specified `INDEX` as visited.
-* The index refers to the index number shown in the displayed tourist attraction list.
-* The index **must be a positive number** 1, 2, 3, …​
+* Marks the attraction at the specified `INDEX` shown in the attractions panel as visited.
 * Any attraction can be marked visited, even if the attraction was already visited.
 
 Examples:
@@ -264,9 +258,7 @@ Edits an itinerary from the current list of itineraries.
 
 Format: `edit-itinerary INDEX [n/NAME] [sd/START_DATE] [ed/END_DATE] [d/DESCRIPTION] [b/BUDGET]`
 
-* Edits the itinerary at the specified `INDEX`.
-* The index refers to the index number shown in the displayed itinerary list.
-* The index **must be a positive number** 1, 2, 3, …​
+* Edits the itinerary at the specified `INDEX` shown in the itinerary panel.
 * Field entries are the same as the `add-itinerary` command.
 * Any field can be changed by inputting its corresponding prefix in the command.
 
@@ -282,9 +274,7 @@ Deletes an itinerary from the current list of itineraries.
 
 Format: `delete-itinerary INDEX`
 
-* Deletes the itinerary at the specified `INDEX`.
-* The index refers to the index number shown in the displayed itinerary list.
-* The index **must be a positive number** 1, 2, 3, …​
+* Deletes the itinerary at the specified `INDEX` shown in the itinerary panel.
 
 Examples:
 * `list-itinerary` followed by `delete-itinerary 1` deletes the 1st itinerary from the list.<br>
@@ -325,9 +315,7 @@ Selects an itinerary to be shown in detail, from the current list of itineraries
 
 Format: `select-itinerary INDEX`
 
-* Selects the itinerary at the specified `INDEX`.
-* The index refers to the index number shown in the displayed itinerary list.
-* The index **must be a positive number** 1, 2, 3, …​
+* Selects the itinerary at the specified `INDEX` shown in the itinerary panel.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 To go back to seeing the list of itineraries, use `list-itinerary`.
@@ -390,10 +378,7 @@ Edits an existing attraction in the selected itinerary.
 
 Format: `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/END_TIME][n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS][op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
 
-* Edits the attraction specified by the `INDEX` and `DAY_VISITING`.
-* The index refers to the index number shown in the selected itinerary.
-* The day refers to the day in the selected itinerary that contains the attraction you want to edit.
-* The index and day **must be positive integers** 1, 2, 3, …​
+* Edits the attraction specified by the `INDEX` and `DAY_VISITING` shown in the itinerary panel.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 
@@ -410,11 +395,9 @@ Only the INDEX and day/DAY_VISITING is required to identify the field to edit.
 #### 4.4.3 Deleting an attraction from the selected itinerary: `delete-itinerary-attraction`
 Deletes an attraction from the selected itinerary.
 
-Format: `delete-itinerary-attraction INDEX`
+Format: `delete-itinerary-attraction INDEX day/DAY_VISITING`
 
-* Deletes the attraction specified by the `INDEX`.
-* The index refers to the index number shown in the selected itinerary.
-* The index **must be a positive number** 1, 2, 3, …​
+* Deletes the attraction specified by the `INDEX` and `DAY_VISITING` shown in the itinerary panel.
 
 Examples:
 * `delete-itinerary-attraction 1 day/1` removes `Jurong Bird Park from the itinerary`<br><br>
@@ -447,7 +430,6 @@ TrackPad data will be saved in the storage automatically after any command that 
 There is no need for you to save manually.
 --------------------------------------------------------------------------------------------------------------------
 
-
 <!--
 ## FAQ
 
@@ -457,17 +439,23 @@ There is no need for you to save manually.
 --------------------------------------------------------------------------------------------------------------------
 -->
 
+## 5. Glossary
+* **Command Line Interface (CLI):** An interface that processes commands to a computer program in the form of lines of text.
+* **Graphical User Interface (GUI):** An interface that allows users to interact with through visual indicator representations.
+* **Prefix:** The letter(s) and '/' placed before the corresponding fields when typing the commands ('n/' for Name, 'op/' for Opening Hours etc).
+* **INDEX:** The number shown in the displayed attractions/itinerary panel. Must be a positive number (1, 2, 3, ...)
+* **DAY_VISITING:** The day in a selected itinerary which contains the attraction(s) planned to visit. Must be a positive number (1, 2, 3, ...)
 
-## 5. Command summary
+## 6. Command summary
 
-### 5.1 General Commands
+### 6.1 General Commands
 
 Action | Format, Examples
 --------|------------------
 **Help** | `help`
 **Exit** | `exit`
 
-### 5.2 Attraction Commands
+### 6.2 Attraction Commands
 
 Action | Format, Examples
 --------|------------------
@@ -479,7 +467,7 @@ Action | Format, Examples
 **List attractions** | `list-attraction`
 **Clear all attractions** | `clear-attraction`
 
-### 5.3 Itinerary Commands
+### 6.3 Itinerary Commands
 
 Action | Format, Examples
 --------|------------------
@@ -491,7 +479,7 @@ Action | Format, Examples
 **Select itinerary** | `select-itinerary INDEX`<br> e.g. `select-itinerary 3`
 **Clear all itineraries** | `clear-itinerary`
 
-### 5.4 Itinerary attraction Commands
+### 6.4 Itinerary attraction Commands
 
 Action | Format, Examples
 --------|------------------
