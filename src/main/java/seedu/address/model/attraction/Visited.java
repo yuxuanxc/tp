@@ -9,7 +9,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Visited {
 
-    public static final String MESSAGE_CONSTRAINTS = "Visited should be of the format "
+    public static final String MESSAGE_CONSTRAINTS = "Visited should be either "
             + "TRUE or FALSE";
     public static final String VALIDATION_REGEX = "(?i)\\bTRUE\\b|\\bFALSE\\b|^$";
 
@@ -23,7 +23,7 @@ public class Visited {
     public Visited(String visited) {
         requireNonNull(visited);
         checkArgument(isValidVisited(visited), MESSAGE_CONSTRAINTS);
-        value = visited;
+        value = visited.toUpperCase();
     }
 
     /**
@@ -42,7 +42,7 @@ public class Visited {
 
     @Override
     public String toString() {
-        if (value.equals("TRUE")) {
+        if (value.equalsIgnoreCase("TRUE")) {
             return "Visited";
         } else {
             return "";

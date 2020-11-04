@@ -9,7 +9,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class PriceRange {
 
-    public static final String MESSAGE_CONSTRAINTS = "Price Range should be of the format "
+    public static final String MESSAGE_CONSTRAINTS = "Price Range should be either "
             + "LOW, MEDIUM, or HIGH";
     public static final String VALIDATION_REGEX = "(?i)\\bLOW\\b|\\bMEDIUM\\b|\\bHIGH\\b|^$";
 
@@ -23,7 +23,7 @@ public class PriceRange {
     public PriceRange(String priceRange) {
         requireNonNull(priceRange);
         checkArgument(isValidPriceRange(priceRange), MESSAGE_CONSTRAINTS);
-        value = priceRange;
+        value = priceRange.toUpperCase();
     }
 
     /**
@@ -42,11 +42,11 @@ public class PriceRange {
 
     @Override
     public String toString() {
-        if (value.equals("LOW")) {
+        if (value.equalsIgnoreCase("LOW")) {
             return "$";
-        } else if (value.equals("MEDIUM")) {
+        } else if (value.equalsIgnoreCase("MEDIUM")) {
             return "$$";
-        } else if (value.equals("HIGH")) {
+        } else if (value.equalsIgnoreCase("HIGH")) {
             return "$$$";
         } else {
             return "";
