@@ -50,8 +50,8 @@ Here are the steps to download TrackPad and start using it immediately!
 
    * **`list-attraction`** : Lists all tourist attractions added.
 
-   * **`add-attraction`**`n/Singapore Zoo l/Singapore, Singapore p/62693411 t/hot a/80 Mandai Lake Rd, 729826` : 
-   Adds an attraction named `Singapore Zoo` to TrackPad.
+   * **`add-attraction`**`n/Singapore Discovery Center l/Singapore, Singapore p/67926188 t/educational a/510 Upper Jurong Rd, 38365` : 
+   Adds an attraction named `Singapore Discovery Center` to TrackPad.
 
    * **`delete-attraction`**`3` : Deletes the 3rd attraction shown in the current list.
    

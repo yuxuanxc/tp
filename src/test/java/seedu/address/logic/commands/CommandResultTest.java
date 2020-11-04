@@ -55,5 +55,9 @@ public class CommandResultTest {
         // different exit value -> returns different hashcode
         assertNotEquals(commandResult.hashCode(), new CommandResult("feedback", false, true,
                 CommandResult.ToSwitchItineraryPanels.NIL).hashCode());
+
+        // different switchToItineraryPanels value -> returns different hashcode
+        assertNotEquals(commandResult.hashCode(), new CommandResult("feedback", false, false,
+                CommandResult.ToSwitchItineraryPanels.YES).hashCode());
     }
 }
