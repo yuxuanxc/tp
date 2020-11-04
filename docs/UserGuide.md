@@ -74,17 +74,20 @@ Here are the steps to download TrackPad and start using it immediately!
 
 **:information_source: Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by you.<br>
-  e.g. in `add-attraction n/ATTRACTION`, `ATTRACTION` is a parameter which can be used as `add-attraction n/USS`.
+* Words in `UPPER_CASE` are the fields to be supplied by you.<br>
+  e.g. in `add-attraction n/ATTRACTION`, `ATTRACTION` is a field which can be used as `add-attraction n/USS`.
 
-* Items in square brackets are optional.<br>
+* Fields in square brackets are optional.<br>
   e.g `n/ATTRACTION [t/TAG]` can be used as `n/USS t/28 OCT` or as `n/USS`.
 
-* Items with `…`​ after them can be used multiple times or not used at all.<br>
+* Fields with `…`​ after them can be used multiple times or not used at all.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (not used), `t/Singapore`, `t/friend t/family` etc.
+  
+* If a field cannot be used multiple times, and you supply 2 or more of the same field, the app takes only the last specified field.<br>
+  e.g. if you type `add-attraction n/USS n/Marina Bay Sands l/Singapore, Singapore`, which contains 2 names, "USS" and "Marina Bay Sands", only "Marina Bay Sands" is taken.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/ATTRACTION p/PHONE_NUMBER`, `p/PHONE_NUMBER n/ATTRACTION` is also acceptable.
+  e.g. if the command specifies `n/ATTRACTION p/PHONE_NUMBER`, `p/PHONE_NUMBER n/ATTRACTION` is also acceptable.  
 
 </div>
 
@@ -257,13 +260,19 @@ Adds a new itinerary to the current list of itineraries.
 Format: `add-itinerary n/ITINERARY_NAME sd/START_DATE ed/END_DATE [d/DESCRIPTION] [b/BUDGET]`
 
 Compulsory fields:
-* **ITINERARY_NAME**: Name of the itinerary.
-* **START_DATE** 📆: Start date of the itinerary in the format `dd-mm-yyyy`.
-* **END_DATE** 📆: End date of the itinerary in the format `dd-mm-yyyy`.
+
+|   |   |
+|---|---|
+| **ITINERARY_NAME** | Contains only letters and numbers and should not be blank |
+| **START_DATE** 📆 | Takes the format `dd-mm-yyyy` and should not be after the end date |
+| **END_DATE** 📆 | Takes the format `dd-mm-yyyy` and should not be before the start date |
 
 Optional fields:
-* **DESCRIPTION**: Description of the itinerary, can take in any value. Use this to give a brief summary of the itinerary or to note down important details.
-* **BUDGET** 💵: Planned budget for the itinerary, can only contain a non-negative number up to two decimal places. Use this to plan how much to spend on your trip.
+
+|   |   |
+|---|---|
+| **DESCRIPTION** | Can take any value |
+| **BUDGET** 💵 | Can only be a non-negative number up to two decimal places |
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 The budget for the trip should not exceed 1 trillion.
