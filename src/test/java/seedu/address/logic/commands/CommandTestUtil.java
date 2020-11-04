@@ -140,8 +140,6 @@ public class CommandTestUtil {
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "Zoo&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "mbs!yahoo"; // missing '@' symbol
-//    public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS;
-//    public static final String INVALID_DESCRIPTION_DESC = " " + PREFIX_DESCRIPTION;
     public static final String INVALID_LOCATION_DESC = " " + PREFIX_LOCATION; // empty string not allowed for locations
     public static final String INVALID_OPENING_HOURS_DESC = " " + PREFIX_OPENING_HOURS + "10-12";
     public static final String INVALID_PRICE_RANGE_DESC = " " + PREFIX_PRICE_RANGE + "AVERAGE";

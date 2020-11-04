@@ -29,7 +29,6 @@ import static seedu.address.testutil.TypicalItineraries.JAPAN_TRIP;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.itinerary.AddItineraryCommand;
-import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Budget;
 import seedu.address.model.itinerary.Itinerary;
@@ -129,11 +128,6 @@ class AddItineraryCommandParserTest {
         assertParseFailure(parser, NAME_DESC_JAPAN_TRIP + START_DATE_DESC_JAPAN_TRIP
                         + INVALID_END_DATE_DESC + DESCRIPTION_DESC_JAPAN_TRIP + BUDGET_DESC_JAPAN_TRIP,
                 ItineraryDate.MESSAGE_CONSTRAINTS);
-
-//        // invalid description
-//        assertParseFailure(parser, NAME_DESC_JAPAN_TRIP + START_DATE_DESC_JAPAN_TRIP
-//                        + END_DATE_DESC_JAPAN_TRIP + INVALID_DESCRIPTION_DESC + BUDGET_DESC_JAPAN_TRIP,
-//                Description.MESSAGE_CONSTRAINTS);
 
         // invalid budget
         assertParseFailure(parser, NAME_DESC_JAPAN_TRIP + START_DATE_DESC_JAPAN_TRIP

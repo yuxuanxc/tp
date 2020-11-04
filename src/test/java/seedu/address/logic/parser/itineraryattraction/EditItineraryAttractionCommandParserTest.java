@@ -80,7 +80,6 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand.EditItineraryAttractionDescriptor;
-import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.OpeningHours;
@@ -88,7 +87,6 @@ import seedu.address.model.attraction.Phone;
 import seedu.address.model.attraction.PriceRange;
 import seedu.address.model.attraction.Rating;
 import seedu.address.model.attraction.Visited;
-import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.ItineraryTime;
@@ -377,13 +375,6 @@ public class EditItineraryAttractionCommandParserTest {
 
         // invalid email
         assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS);
-
-//        // invalid address
-//        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS);
-//
-//        // invalid description
-//        assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_DESCRIPTION_DESC,
-//                Description.MESSAGE_CONSTRAINTS);
 
         // invalid location
         assertParseFailure(parser, "1" + DAY_VISITING_DESC_EIFFEL + INVALID_LOCATION_DESC,

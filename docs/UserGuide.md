@@ -118,6 +118,11 @@ Optional fields:
 * **VISITED**: Marks whether you have visited the attraction before. Use `TRUE` if you want to mark it as visited, and `FALSE` otherwise. 
 * **TAG**: Adds tags to further describe the attraction. Tag names should only contain letters and numbers.
 
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+The opening time of an attraction can be more than it's the closing time, for those
+which operates overnight.
+</div><br>
+
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 An attraction can have any number of tags.
 </div>
@@ -259,6 +264,10 @@ Compulsory fields:
 Optional fields:
 * **DESCRIPTION**: Description of the itinerary, can take in any value. Use this to give a brief summary of the itinerary or to note down important details.
 * **BUDGET** 💵: Planned budget for the itinerary, can only contain a non-negative number up to two decimal places. Use this to plan how much to spend on your trip.
+
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+The budget for the trip should not exceed 1 trillion.
+</div><br>
 
 Examples:
 * `add-itinerary n/Japan holiday sd/15-01-2019 ed/30-01-2019`

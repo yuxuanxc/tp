@@ -286,21 +286,6 @@ public class AddAttractionCommandParserTest {
                         + TAG_DESC_ACTIVITY,
                 Email.MESSAGE_CONSTRAINTS);
 
-        // invalid address
-//        assertParseFailure(parser, NAME_DESC_MBS
-//                        + INVALID_ADDRESS_DESC
-//                        + DESCRIPTION_DESC_MBS
-//                        + EMAIL_DESC_MBS
-//                        + LOCATION_DESC_MBS
-//                        + OPENING_HOURS_DESC_MBS
-//                        + PHONE_DESC_MBS
-//                        + PRICE_RANGE_DESC_MBS
-//                        + RATING_DESC_MBS
-//                        + VISITED_DESC_MBS
-//                        + TAG_DESC_SIGHTSEEING
-//                        + TAG_DESC_ACTIVITY,
-//                Address.MESSAGE_CONSTRAINTS);
-
         // invalid location
         assertParseFailure(parser, NAME_DESC_MBS
                         + ADDRESS_DESC_MBS
@@ -330,21 +315,6 @@ public class AddAttractionCommandParserTest {
                         + INVALID_TAG_DESC
                         + VALID_TAG_ACTIVITY,
                 Tag.MESSAGE_CONSTRAINTS);
-
-        // invalid Description
-//        assertParseFailure(parser, NAME_DESC_MBS
-//                        + ADDRESS_DESC_MBS
-//                        + INVALID_DESCRIPTION_DESC
-//                        + EMAIL_DESC_MBS
-//                        + LOCATION_DESC_MBS
-//                        + OPENING_HOURS_DESC_MBS
-//                        + PHONE_DESC_MBS
-//                        + PRICE_RANGE_DESC_MBS
-//                        + RATING_DESC_MBS
-//                        + VISITED_DESC_MBS
-//                        + TAG_DESC_SIGHTSEEING
-//                        + TAG_DESC_ACTIVITY,
-//                Description.MESSAGE_CONSTRAINTS);
 
         // invalid Opening hours
         assertParseFailure(parser, NAME_DESC_MBS

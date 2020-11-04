@@ -30,7 +30,6 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.itinerary.EditItineraryCommand;
 import seedu.address.logic.commands.itinerary.EditItineraryCommand.EditItineraryDescriptor;
-import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Budget;
 import seedu.address.model.itinerary.ItineraryDate;
@@ -73,8 +72,6 @@ class EditItineraryCommandParserTest {
     @Test
     public void parse_invalidValue_failure() {
         assertParseFailure(parser, "1" + INVALID_NAME_DESC, Name.MESSAGE_CONSTRAINTS); // invalid name
-//        assertParseFailure(parser, "1" + INVALID_DESCRIPTION_DESC,
-//                Description.MESSAGE_CONSTRAINTS); // invalid description
         assertParseFailure(parser, "1" + INVALID_START_DATE_DESC,
                 ItineraryDate.MESSAGE_CONSTRAINTS); // invalid start date
         assertParseFailure(parser, "1" + INVALID_END_DATE_DESC,
