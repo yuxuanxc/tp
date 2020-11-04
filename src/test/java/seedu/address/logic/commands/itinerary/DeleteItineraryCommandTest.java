@@ -8,6 +8,7 @@ import static seedu.address.logic.commands.CommandTestUtil.showItineraryAtIndex;
 import static seedu.address.testutil.TypicalAttractions.getTypicalAttractionList;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
+import static seedu.address.testutil.TypicalItineraries.JAPAN_TRIP;
 import static seedu.address.testutil.TypicalItineraries.getTypicalItineraryList;
 
 import org.junit.jupiter.api.Test;
@@ -20,8 +21,7 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.itinerary.Itinerary;
 
 /**
- * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
- * {@code DeleteItineraryCommand}.
+ * Contains integration tests (interaction with the Model) and unit tests for {@code DeleteItineraryCommand}.
  */
 public class DeleteItineraryCommandTest {
 
@@ -72,12 +72,31 @@ public class DeleteItineraryCommandTest {
         showItineraryAtIndex(model, INDEX_FIRST);
 
         Index outOfBoundIndex = INDEX_SECOND;
-        // ensures that outOfBoundIndex is still in bounds of trackPad list
+        // ensures that outOfBoundIndex is still in bounds of itinerary list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getItineraryList().getItineraryList().size());
 
         DeleteItineraryCommand deleteItineraryCommand = new DeleteItineraryCommand(outOfBoundIndex);
 
         assertCommandFailure(deleteItineraryCommand, model, Messages.MESSAGE_INVALID_ITINERARY_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_hasCurrentItineraryBefore_noCurrentItineraryAfter() {
+        // Follows execute_validIndexUnfilteredList_success() except with current itinerary
+        Itinerary itineraryToDelete = model.getFilteredItineraryList().get(INDEX_FIRST.getZeroBased());
+        DeleteItineraryCommand deleteItineraryCommand = new DeleteItineraryCommand(INDEX_FIRST);
+
+        String expectedMessage = String.format(DeleteItineraryCommand.MESSAGE_DELETE_ITINERARY_SUCCESS,
+                itineraryToDelete);
+
+        ModelManager expectedModel = new ModelManager(model.getAttractionList(), model.getItineraryList(),
+                new UserPrefs());
+        expectedModel.setCurrentItinerary(null);
+        expectedModel.deleteItinerary(itineraryToDelete);
+
+        model.setCurrentItinerary(JAPAN_TRIP);
+
+        assertCommandSuccess(deleteItineraryCommand, model, expectedMessage, expectedModel);
     }
 
     @Test

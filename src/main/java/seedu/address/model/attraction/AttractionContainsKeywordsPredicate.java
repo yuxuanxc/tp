@@ -6,8 +6,7 @@ import java.util.function.Predicate;
 import seedu.address.commons.util.StringUtil;
 
 /**
- * Tests that a {@code Attraction}'s {@code Name}, {@code Address}, ***@code Description*** (not working yet),
- *
+ * Tests that an {@code Attraction}'s {@code Name}, {@code Address}, {@code Description},
  * {@code Email}, {@code Location}, {@code OpeningHours}, {@code Phone}, {@code PriceRange}, {@code Rating}
  * matches any of the keywords given.
  */

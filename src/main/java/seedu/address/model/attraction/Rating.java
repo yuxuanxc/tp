@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Attraction's rating in TrackPad.
+ * Represents an Attraction's rating in TrackPad.
  * Guarantees: immutable; is valid as declared in {@link #isValidRating(String)} (String)}
  */
 public class Rating {
@@ -16,7 +16,7 @@ public class Rating {
     public final String value;
 
     /**
-     * Constructs an {@code Rating}.
+     * Constructs a {@code Rating}.
      *
      * @param rating A valid rating.
      */
@@ -27,7 +27,7 @@ public class Rating {
     }
 
     /**
-     * Constructs an {@code Rating} without value.
+     * Constructs a {@code Rating} without value.
      */
     public Rating() {
         value = "";
