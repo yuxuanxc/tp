@@ -11,7 +11,7 @@ public class Messages {
     public static final String MESSAGE_ATTRACTIONS_LISTED_OVERVIEW = "%1$d attractions listed!";
     public static final String MESSAGE_INVALID_ITINERARY_DISPLAYED_INDEX = "The itinerary index provided is invalid";
     public static final String MESSAGE_ITINERARIES_LISTED_OVERVIEW = "%1$d itineraries listed!";
-    public static final String MESSAGE_ITINERARY_NOT_SELECTED = "Please select a itinerary to work on";
+    public static final String MESSAGE_ITINERARY_NOT_SELECTED = "Please select an itinerary to work on";
 
     // Itinerary Attraction
     public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction with the same start time, end time and "
