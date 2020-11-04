@@ -58,18 +58,25 @@ public class AttractionCard extends UiPart<Region> {
     public AttractionCard(Attraction attraction, int displayedIndex) {
         super(FXML);
         this.attraction = attraction;
+
         id.setText(displayedIndex + ". ");
+
         name.setText(attraction.getName().fullName);
+        name.setWrapText(true);
+
         locale.setText("\uD83C\uDF0E " + attraction.getLocation().value);
+        locale.setWrapText(true);
 
         //optional fields
         description.setText(attraction.getDescription().value);
+        description.setWrapText(true);
 
         int fieldsFilled = 0;
 
         if (!attraction.getAddress().value.isEmpty()) {
             String address = "\uD83C\uDFE0 " + attraction.getAddress().value;
             field1.setText(address);
+            field1.setWrapText(true);
             fieldsFilled++;
         }
 
@@ -79,6 +86,7 @@ public class AttractionCard extends UiPart<Region> {
                 field1.setText(phone);
             } else {
                 field2.setText(phone);
+                field2.setWrapText(true);
             }
             fieldsFilled++;
         }
@@ -91,6 +99,7 @@ public class AttractionCard extends UiPart<Region> {
                 field2.setText(email);
             } else {
                 field3.setText(email);
+                field3.setWrapText(true);
             }
             fieldsFilled++;
         }
@@ -105,6 +114,7 @@ public class AttractionCard extends UiPart<Region> {
                 field3.setText(openingHours);
             } else {
                 field4.setText(openingHours);
+                field4.setWrapText(true);
             }
         }
 
