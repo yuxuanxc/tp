@@ -18,7 +18,6 @@ Given below are my contributions to the project.
 * **Code contributed**: [RepoSense link]()
 
 * **Project management**:
-  * 
 
 * **Enhancements to existing features**:
   * Added the location field to attractions
@@ -35,4 +34,3 @@ Given below are my contributions to the project.
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [\#00](), [\#00](), [\#00](), [\#00]()
   * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
-  
