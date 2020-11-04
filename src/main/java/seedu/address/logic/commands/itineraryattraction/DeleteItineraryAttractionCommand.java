@@ -71,7 +71,8 @@ public class DeleteItineraryAttractionCommand extends Command {
 
         itinerary.deleteItineraryAttraction(index, dayVisiting);
 
-        return new CommandResult(String.format(MESSAGE_DELETE_ATTRACTION_SUCCESS, itineraryAttractionToDelete), true);
+        return new CommandResult(String.format(MESSAGE_DELETE_ATTRACTION_SUCCESS, itineraryAttractionToDelete),
+                CommandResult.ToSwitchItineraryPanels.YES);
     }
 
     @Override

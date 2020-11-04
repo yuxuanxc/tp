@@ -48,7 +48,7 @@ public class AddItineraryCommand extends Command {
 
         model.addItinerary(toAdd);
         model.setCurrentItinerary(null);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), CommandResult.ToSwitchItineraryPanels.NO);
     }
 
     @Override

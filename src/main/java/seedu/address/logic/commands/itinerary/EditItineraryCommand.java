@@ -86,7 +86,8 @@ public class EditItineraryCommand extends Command {
         model.setItinerary(itineraryToEdit, editedItinerary);
         model.updateFilteredItineraryList(PREDICATE_SHOW_ALL_ITINERARIES);
         model.setCurrentItinerary(null);
-        return new CommandResult(String.format(MESSAGE_EDIT_ITINERARY_SUCCESS, editedItinerary));
+        return new CommandResult(String.format(MESSAGE_EDIT_ITINERARY_SUCCESS, editedItinerary),
+                CommandResult.ToSwitchItineraryPanels.NO);
     }
 
     /**

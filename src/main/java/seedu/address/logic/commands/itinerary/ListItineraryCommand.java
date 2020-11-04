@@ -20,6 +20,6 @@ public class ListItineraryCommand extends Command {
         requireNonNull(model);
         model.updateFilteredItineraryList(PREDICATE_SHOW_ALL_ITINERARIES);
         model.setCurrentItinerary(null);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult((MESSAGE_SUCCESS), CommandResult.ToSwitchItineraryPanels.NO);
     }
 }

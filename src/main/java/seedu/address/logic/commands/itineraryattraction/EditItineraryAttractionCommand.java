@@ -117,7 +117,8 @@ public class EditItineraryAttractionCommand extends Command {
 
         itinerary.editItineraryAttraction(itineraryAttractionToEdit, editedItineraryAttraction, dayVisiting);
 
-        return new CommandResult(String.format(MESSAGE_EDIT_ATTRACTION_SUCCESS, editedItineraryAttraction), true);
+        return new CommandResult(String.format(MESSAGE_EDIT_ATTRACTION_SUCCESS, editedItineraryAttraction),
+                CommandResult.ToSwitchItineraryPanels.YES);
     }
 
     /**
