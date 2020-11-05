@@ -415,7 +415,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ## **Appendix D: Non-Functional Requirements**
 
-1.  The product should be able to hold up to 1000 tourist attractions without a noticeable sluggishness in performance for typical usage.
+1.  The product should be able to hold up to 1000 tourist attractions/itineraries/days without a noticeable sluggishness in performance for typical usage.
 2.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 3.  The user interface should be intuitive enough for users who are not IT-savvy.
 4.  The product is not required to recommend new tourist attractions which are not inputted by the user.

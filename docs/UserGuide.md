@@ -50,19 +50,19 @@ Here are the steps to download TrackPad and start using it immediately!
 
    * **`list-attraction`** : Lists all tourist attractions added.
 
-   * **`add-attraction`**`n/Singapore Discovery Center l/Singapore, Singapore p/67926188 t/educational a/510 Upper Jurong Rd, 38365` : 
+   * **`add-attraction`**` n/Singapore Discovery Center l/Singapore, Singapore p/67926188 t/educational a/510 Upper Jurong Rd, 38365` : 
    Adds an attraction named `Singapore Discovery Center` to TrackPad.
 
-   * **`delete-attraction`**`3` : Deletes the 3rd attraction shown in the current list.
+   * **`delete-attraction`**` 3` : Deletes the 3rd attraction shown in the current list.
    
-   * **`edit-attraction`**`3 pr/HIGH` : Edits the 3rd attraction shown in the current list, changing its original
+   * **`edit-attraction`**` 3 pr/HIGH` : Edits the 3rd attraction shown in the current list, changing its original
     price range to HIGH.
 
    * **`clear-attraction`** : Deletes all attractions.
 
    * **`exit`** : Exits the app.
 
-1. Refer to [Features](#3-features) below for details of each command.
+1. Refer to [Features](#4-features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -133,10 +133,10 @@ An attraction can have any number of tags.
 Examples:
 * `add-attraction n/USS a/8 Sentosa Gateway, 098269 l/Singapore, Singapore`
 * `add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com 
-op/1000-1800 pr/MEDMIU r/4.6 v/FALSE`<br><br>
+op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`<br><br>
 ![add_attraction_result](images/addAttraction.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 2. The result of <code>add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com 
-op/1000-1800 pr/MEDMIU r/4.6 v/FALSE</code></i></sup></div>
+op/1000-1800 pr/MEDIUM r/4.6 v/FALSE</code></i></sup></div>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 Multiple attractions of the same name and locatin cannot be added into the current list of attractions.
@@ -396,7 +396,7 @@ Action | Format, Examples
 **Delete itinerary attraction** | `delete-itinerary-attraction INDEX`<br> e.g. `delete-itinerary-attraction 1`
 
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.png)</span>
-<div align='center'><i><sup>Figure 17. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
+<div align='center'><i><sup style="font-size:100%">Figure 17. Diagram simulating the attractions found in an itinerary</></i></div><br>
 
 In Figure 16 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown with a yellow border. 
 Attraction 1A is an itinerary attraction. It has all the same fields as Attraction A, but with the additional start/end time field.
@@ -541,7 +541,7 @@ Action | Format, Examples
 **Edit attraction** | `edit-attraction INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g. `edit 2 n/Singapore Zoo e/zoo@example.com`
 **Delete attraction** | `delete-attraction INDEX`<br> e.g. `delete 3`
 **Mark Visited attraction** | `markVisited-attraction INDEX`<br> e.g. `markVisited-attraction 2`
-**Find attraction** | `find-attration KEYWORD [MORE_KEYWORDS]`<br> e.g. `find Zoo`
+**Find attraction** | `find-attraction KEYWORD [MORE_KEYWORDS]`<br> e.g. `find Zoo`
 **List attractions** | `list-attraction`
 **Clear all attractions** | `clear-attraction`
 
