@@ -2,7 +2,7 @@
 layout: page
 title: User Guide
 ---
-
+![Logo](images/TrackPad_logo.PNG)
 
 * Table of Contents
 {:toc}
