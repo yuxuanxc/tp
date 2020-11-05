@@ -69,8 +69,8 @@ Here are the steps to download TrackPad and start using it immediately!
 ## 4. Features
 
 In this section, we will go into the details of all the features available for you to use after
-installing TrackPad. These features are split into 4 subsections, Attraction Features(4.2), 
-Itinerary Features(4.3), Itinerary Attraction Features(4.4) and Miscellaneous Features(4.5).
+installing TrackPad. These features are split into 4 subsections, Attraction Features (4.2), 
+Itinerary Features (4.3), Itinerary Attraction Features (4.4) and Miscellaneous Features (4.5).
 
 ### 4.1 Command Format
 
