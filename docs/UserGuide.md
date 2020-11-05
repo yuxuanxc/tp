@@ -399,26 +399,26 @@ Adds an attraction to the selected itinerary.
 
 Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING`
 
-| **Compulsory fields** | Description |
+| Compulsory fields | Description |
 |---|---|
 | **INDEX** | Index of attraction in the current list of attractions. |
 | **START_TIME** 🕖 | Start time to visit the attraction in the 24H format `HHMM`. |
 | **END_TIME** 🕖 | End time to visit the attraction in the 24H format `HHMM`.|
 |**DAY_VISITING** 📆 | Day in your itinerary when you plan to visit the attraction.|
 
-<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The start time and end time cannot overlap with other attractions in the selected itinerary.
-</div><br>
+</div>
+
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+The attraction will be added into the selected itinerary.
+</div>
 
 Examples:
 * `add-itinerary-attraction 2 st/1000 et/1600 day/3`
 * `add-itinerary-attraction 1 st/0900 et/1200 day/1` adds `Jurong Bird Park` into day 1 of selected itinerary<br><br>
 ![result for 'find-attraction'](images/addItineraryAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 18. The result of <code>add-itinerary-attraction 1 st/0900 et/1200 day/1</code></i></sup></div>
-
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-The attraction will be added into the selected itinerary.
-</div>
+<div align="center"><sup style="font-size:100%"><i>Figure 18. The result of <code>add-itinerary-attraction 1 st/0900 et/1200 day/1</code></i></sup></div><br>
 
 #### 4.4.2 Editing an attraction from the selected itinerary : `edit-itinerary-attraction`
 Edits an existing attraction in the selected itinerary.
