@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_ITINERARIES_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalAttractions.getTypicalAttractionList;
+import static seedu.address.testutil.TypicalItineraries.JAPAN_TRIP;
 import static seedu.address.testutil.TypicalItineraries.PARIS_TRIP;
 import static seedu.address.testutil.TypicalItineraries.SG_ZOOS_TOUR;
 import static seedu.address.testutil.TypicalItineraries.getTypicalItineraryList;
@@ -74,6 +75,20 @@ class FindItineraryCommandTest {
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(Arrays.asList(SG_ZOOS_TOUR, PARIS_TRIP),
                 model.getFilteredItineraryList());
+    }
+
+    @Test
+    public void execute_hasCurrentItineraryBefore_noCurrentItineraryAfter() {
+        // Follows execute_multipleKeywords_multipleItinerariesFound() except with current itinerary
+        String expectedMessage = String.format(MESSAGE_ITINERARIES_LISTED_OVERVIEW, 2);
+        ItineraryContainsKeywordsPredicate predicate = preparePredicate("Zoo paris");
+        FindItineraryCommand command = new FindItineraryCommand(predicate);
+        expectedModel.updateFilteredItineraryList(predicate);
+
+        model.setCurrentItinerary(JAPAN_TRIP);
+        expectedModel.setCurrentItinerary(null);
+
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
     }
 
     /**

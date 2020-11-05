@@ -34,13 +34,15 @@ public class MarkVisitedAttractionCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks the attraction identified "
             + "by the index number used in the displayed attraction list as visited.\n"
-            + "Parameters: INDEX (must be a positive integer) "
-            + "Example: " + COMMAND_WORD + " 1 ";
+            + "Parameters: INDEX must be a number between 0 and 2147483647."
+            + "Example: " + COMMAND_WORD + " 1.";
 
-    public static final String MESSAGE_MARKVISITED_ATTRACTION_SUCCESS = "Attraction marked as visited: %1$s";
+    public static final String MESSAGE_MARKVISITED_ATTRACTION_SUCCESS = "Attraction marked as visited: %1$s.";
+
+    public static final String MESSAGE_ATTRACTION_ALREADY_MARKVISITED = "This attraction was already marked as "
+            + "visited.";
 
     private final Index index;
-
     /**
      * @param index of the attraction in the filtered attraction list to mark as visited
 //     * @param markVisitedAttractionDescriptor details to edit the attraction with
@@ -60,6 +62,10 @@ public class MarkVisitedAttractionCommand extends Command {
         }
 
         Attraction attractionToMarkVisited = lastShownList.get(index.getZeroBased());
+
+        if (attractionToMarkVisited.getVisited().equals(new Visited("True"))) {
+            throw new CommandException(MESSAGE_ATTRACTION_ALREADY_MARKVISITED);
+        }
         Attraction markedVisitedAttraction = createMarkVisitedAttraction(attractionToMarkVisited);
 
         model.setAttraction(attractionToMarkVisited, markedVisitedAttraction);

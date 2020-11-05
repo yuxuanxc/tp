@@ -75,18 +75,13 @@ public class EditAttractionCommandTest {
     }
 
     @Test
-    public void execute_noFieldSpecifiedUnfilteredList_success() {
+    public void execute_noFieldSpecifiedUnfilteredList_failure() {
         EditAttractionCommand editAttractionCommand = new EditAttractionCommand(INDEX_FIRST,
                 new EditAttractionDescriptor());
-        Attraction editedAttraction = model.getFilteredAttractionList().get(INDEX_FIRST.getZeroBased());
 
-        String expectedMessage = String.format(EditAttractionCommand.MESSAGE_EDIT_ATTRACTION_SUCCESS, editedAttraction);
+        String expectedMessage = EditAttractionCommand.MESSAGE_DUPLICATE_ATTRACTION;
 
-        Model expectedModel = new ModelManager(new AttractionList(model.getAttractionList()),
-                new ItineraryList(model.getItineraryList()),
-                new UserPrefs());
-
-        assertCommandSuccess(editAttractionCommand, model, expectedMessage, expectedModel);
+        assertCommandFailure(editAttractionCommand, model, expectedMessage);
     }
 
     @Test

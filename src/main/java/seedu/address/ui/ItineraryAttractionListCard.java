@@ -60,21 +60,30 @@ public class ItineraryAttractionListCard extends UiPart<Region> {
     public ItineraryAttractionListCard(ItineraryAttraction itineraryAttraction) {
         super(FXML);
         this.itineraryAttraction = itineraryAttraction.getItineraryAttraction();
+
         id.setText(itineraryAttraction.getIndex() + ". ");
+
         name.setText(itineraryAttraction.getName().fullName);
+        name.setWrapText(true);
+
         locale.setText("\uD83C\uDF0E " + itineraryAttraction.getLocation().value);
+        locale.setWrapText(true);
+
         startEndTime.setText("\uD83D\uDD56 " + itineraryAttraction.getStartTime().toString()
                 + "-"
                 + itineraryAttraction.getEndTime().toString());
+        startEndTime.setWrapText(true);
 
         //optional fields
         description.setText(itineraryAttraction.getDescription().value);
+        description.setWrapText(true);
 
         int fieldsFilled = 0;
 
         if (!itineraryAttraction.getAddress().value.isEmpty()) {
             String address = "\uD83C\uDFE0 " + itineraryAttraction.getAddress().value;
             field1.setText(address);
+            field1.setWrapText(true);
             fieldsFilled++;
         }
 
@@ -84,6 +93,7 @@ public class ItineraryAttractionListCard extends UiPart<Region> {
                 field1.setText(phone);
             } else {
                 field2.setText(phone);
+                field2.setWrapText(true);
             }
             fieldsFilled++;
         }
@@ -96,6 +106,7 @@ public class ItineraryAttractionListCard extends UiPart<Region> {
                 field2.setText(email);
             } else {
                 field3.setText(email);
+                field3.setWrapText(true);
             }
             fieldsFilled++;
         }
@@ -110,6 +121,7 @@ public class ItineraryAttractionListCard extends UiPart<Region> {
                 field3.setText(openingHours);
             } else {
                 field4.setText(openingHours);
+                field4.setWrapText(true);
             }
         }
 

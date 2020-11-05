@@ -7,8 +7,6 @@ import static seedu.address.logic.commands.CommandTestUtil.DESCRIPTION_DESC_EIFF
 import static seedu.address.logic.commands.CommandTestUtil.DESCRIPTION_DESC_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_MBS;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_DESCRIPTION_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_LOCATION_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
@@ -66,7 +64,6 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.attraction.EditAttractionCommand;
 import seedu.address.logic.commands.attraction.EditAttractionCommand.EditAttractionDescriptor;
-import seedu.address.model.attraction.Address;
 import seedu.address.model.attraction.Email;
 import seedu.address.model.attraction.Location;
 import seedu.address.model.attraction.OpeningHours;
@@ -74,7 +71,6 @@ import seedu.address.model.attraction.Phone;
 import seedu.address.model.attraction.PriceRange;
 import seedu.address.model.attraction.Rating;
 import seedu.address.model.attraction.Visited;
-import seedu.address.model.commons.Description;
 import seedu.address.model.commons.Name;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.EditAttractionDescriptorBuilder;
@@ -113,6 +109,14 @@ public class EditAttractionCommandParserTest {
 
         // invalid prefix being parsed as preamble
         assertParseFailure(parser, "1 i/ string", MESSAGE_INVALID_FORMAT);
+
+        // valid prefix for itinerary but invalid for attraction being parsed as preamble
+        assertParseFailure(parser, "1 b/100", MESSAGE_INVALID_FORMAT); // budget
+        assertParseFailure(parser, "1 sd/20-12-2020", MESSAGE_INVALID_FORMAT); // start date
+        assertParseFailure(parser, "1 ed/30-12-2020", MESSAGE_INVALID_FORMAT); // end date
+        assertParseFailure(parser, "1 st/1000", MESSAGE_INVALID_FORMAT); // start time
+        assertParseFailure(parser, "1 et/1400", MESSAGE_INVALID_FORMAT); // end time
+        assertParseFailure(parser, "1 day/3", MESSAGE_INVALID_FORMAT); // day
     }
 
     @Test
@@ -120,9 +124,6 @@ public class EditAttractionCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_NAME_DESC, Name.MESSAGE_CONSTRAINTS); // invalid name
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC, Phone.MESSAGE_CONSTRAINTS); // invalid phone
         assertParseFailure(parser, "1" + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS); // invalid email
-        assertParseFailure(parser, "1" + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS); // invalid address
-        assertParseFailure(parser, "1" + INVALID_DESCRIPTION_DESC,
-                Description.MESSAGE_CONSTRAINTS); // invalid description
         assertParseFailure(parser, "1" + INVALID_LOCATION_DESC, Location.MESSAGE_CONSTRAINTS); // invalid location
         assertParseFailure(parser, "1" + INVALID_OPENING_HOURS_DESC,
                 OpeningHours.MESSAGE_CONSTRAINTS); // invalid opening hours
@@ -134,6 +135,9 @@ public class EditAttractionCommandParserTest {
 
         // invalid phone followed by valid email
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EMAIL_DESC_EIFFEL, Phone.MESSAGE_CONSTRAINTS);
+
+        // invalid rating followed by valid address
+        assertParseFailure(parser, "1" + INVALID_RATING_DESC + ADDRESS_DESC_EIFFEL, Rating.MESSAGE_CONSTRAINTS);
 
         // valid phone followed by invalid phone. The test case for invalid phone followed by valid phone
         // is tested at {@code parse_invalidValueFollowedByValidValue_success()}

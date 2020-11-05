@@ -4,12 +4,12 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Attraction's location in TrackPad.
+ * Represents an Attraction's location in TrackPad.
  * Guarantees: immutable; is valid as declared in {@link #isValidLocation(String)}
  */
 public class Location {
 
-    public static final String MESSAGE_CONSTRAINTS = "Locations can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Locations can take any values, and it should not be blank.";
 
     /**
      * The first character of the location must not be a whitespace,

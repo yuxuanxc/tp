@@ -8,7 +8,6 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.attraction.Attraction;
-import seedu.address.model.attraction.Visited;
 
 /**
  * An UI component that displays information of a {@code Attraction}.
@@ -58,18 +57,25 @@ public class AttractionCard extends UiPart<Region> {
     public AttractionCard(Attraction attraction, int displayedIndex) {
         super(FXML);
         this.attraction = attraction;
+
         id.setText(displayedIndex + ". ");
+
         name.setText(attraction.getName().fullName);
+        name.setWrapText(true);
+
         locale.setText("\uD83C\uDF0E " + attraction.getLocation().value);
+        locale.setWrapText(true);
 
         //optional fields
         description.setText(attraction.getDescription().value);
+        description.setWrapText(true);
 
         int fieldsFilled = 0;
 
         if (!attraction.getAddress().value.isEmpty()) {
             String address = "\uD83C\uDFE0 " + attraction.getAddress().value;
             field1.setText(address);
+            field1.setWrapText(true);
             fieldsFilled++;
         }
 
@@ -79,6 +85,7 @@ public class AttractionCard extends UiPart<Region> {
                 field1.setText(phone);
             } else {
                 field2.setText(phone);
+                field2.setWrapText(true);
             }
             fieldsFilled++;
         }
@@ -91,6 +98,7 @@ public class AttractionCard extends UiPart<Region> {
                 field2.setText(email);
             } else {
                 field3.setText(email);
+                field3.setWrapText(true);
             }
             fieldsFilled++;
         }
@@ -105,6 +113,7 @@ public class AttractionCard extends UiPart<Region> {
                 field3.setText(openingHours);
             } else {
                 field4.setText(openingHours);
+                field4.setWrapText(true);
             }
         }
 
@@ -115,18 +124,14 @@ public class AttractionCard extends UiPart<Region> {
         }
 
         if (attraction.getRating().toString() != "") {
-            Label rating = new Label(attraction.getRating().toString());
+            Label rating = new Label(attraction.getRating().toString() + "\u2605");
             rating.setStyle("-fx-background-color: #080;");
             tags.getChildren().add(rating);
         }
 
         if (attraction.getVisited().toString() != "") {
             Label visited = new Label(attraction.getVisited().toString());
-            if (attraction.getVisited().equals(new Visited("TRUE"))) {
-                visited.setText(attraction.getVisited().toString());
-            } else {
-                visited.setText("Not Visited");
-            }
+            visited.setText(attraction.getVisited().toString());
             visited.setStyle("-fx-background-color: #9933ff;");
             tags.getChildren().add(visited);
         }

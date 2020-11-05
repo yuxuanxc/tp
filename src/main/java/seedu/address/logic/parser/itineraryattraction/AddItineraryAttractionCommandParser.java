@@ -1,6 +1,7 @@
 package seedu.address.logic.parser.itineraryattraction;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_START_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
@@ -47,7 +48,7 @@ public class AddItineraryAttractionCommandParser implements Parser<AddItineraryA
         ItineraryTime startTime = ParserUtil.parseItineraryTime(argMultimap.getValue(PREFIX_START_TIME).get());
         ItineraryTime endTime = ParserUtil.parseItineraryTime(argMultimap.getValue(PREFIX_END_TIME).get());
         if (!startTime.isEarlierThan(endTime)) {
-            throw new ParseException(AddItineraryAttractionCommand.MESSAGE_INVALID_START_TIME);
+            throw new ParseException(MESSAGE_INVALID_START_TIME);
         }
 
         Index dayVisiting = ParserUtil.parseDayIndex(argMultimap.getValue(PREFIX_DAY_VISITING).get());

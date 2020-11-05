@@ -34,7 +34,7 @@ public class Itinerary {
         requireAllNonNull(name, description, startDate, endDate, budget, days);
 
         checkArgument(startDate.isBefore(endDate) || startDate.isEqual(endDate),
-                "Start date should come before end date");
+                "Start date should come before end date.");
 
         this.name = name;
         this.description = description;
@@ -203,11 +203,13 @@ public class Itinerary {
                 .append(" Start date: ")
                 .append(getStartDate())
                 .append(" End date: ")
-                .append(getEndDate())
-                .append(" Description: ")
-                .append(getDescription())
-                .append(" Budget: ")
-                .append(getBudget());
+                .append(getEndDate());
+        if (!getDescription().value.isEmpty()) {
+            builder.append(" Description: ").append(getDescription());
+        }
+        if (!getBudget().value.isEmpty()) {
+            builder.append(" Budget: ").append(getBudget());
+        }
         return builder.toString();
     }
 }

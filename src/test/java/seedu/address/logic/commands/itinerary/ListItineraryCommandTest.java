@@ -4,6 +4,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showItineraryAtIndex;
 import static seedu.address.testutil.TypicalAttractions.getTypicalAttractionList;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
+import static seedu.address.testutil.TypicalItineraries.PARIS_TRIP;
 import static seedu.address.testutil.TypicalItineraries.getTypicalItineraryList;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -35,6 +36,13 @@ class ListItineraryCommandTest {
     @Test
     public void execute_listIsFiltered_showsEverything() {
         showItineraryAtIndex(model, INDEX_FIRST);
+        assertCommandSuccess(new ListItineraryCommand(), model, ListItineraryCommand.MESSAGE_SUCCESS, expectedModel);
+    }
+
+    @Test
+    public void execute_hasCurrentItineraryBefore_noCurrentItineraryAfter() {
+        model.setCurrentItinerary(PARIS_TRIP);
+        expectedModel.setCurrentItinerary(null);
         assertCommandSuccess(new ListItineraryCommand(), model, ListItineraryCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }

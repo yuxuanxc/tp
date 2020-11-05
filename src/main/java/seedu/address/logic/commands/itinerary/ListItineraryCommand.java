@@ -13,12 +13,13 @@ import seedu.address.model.Model;
 public class ListItineraryCommand extends Command {
 
     public static final String COMMAND_WORD = "list-itinerary";
-    public static final String MESSAGE_SUCCESS = "Listed all itineraries";
+    public static final String MESSAGE_SUCCESS = "Listed all itineraries.";
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredItineraryList(PREDICATE_SHOW_ALL_ITINERARIES);
-        return new CommandResult(MESSAGE_SUCCESS);
+        model.setCurrentItinerary(null);
+        return new CommandResult((MESSAGE_SUCCESS), CommandResult.ToSwitchItineraryPanels.NO);
     }
 }

@@ -1,6 +1,7 @@
 package seedu.address.logic.parser.itineraryattraction;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_START_TIME;
 import static seedu.address.logic.commands.CommandTestUtil.DAY_VISITING_DESC_EIFFEL;
 import static seedu.address.logic.commands.CommandTestUtil.DAY_VISITING_DESC_MBS;
 import static seedu.address.logic.commands.CommandTestUtil.END_TIME_DESC_EIFFEL;
@@ -253,7 +254,7 @@ public class AddItineraryAttractionCommandParserTest {
                         + " " + PREFIX_START_TIME + laterTime
                         + " " + PREFIX_END_TIME + earlyTime
                         + DAY_VISITING_DESC_MBS,
-                AddItineraryAttractionCommand.MESSAGE_INVALID_START_TIME);
+                MESSAGE_INVALID_START_TIME);
 
         // start time same as end time
         assertParseFailure(parser,
@@ -261,7 +262,7 @@ public class AddItineraryAttractionCommandParserTest {
                         + " " + PREFIX_START_TIME + earlyTime
                         + " " + PREFIX_END_TIME + earlyTime
                         + DAY_VISITING_DESC_MBS,
-                AddItineraryAttractionCommand.MESSAGE_INVALID_START_TIME);
+                MESSAGE_INVALID_START_TIME);
 
         // start time same as end time
         assertParseFailure(parser,
@@ -269,7 +270,7 @@ public class AddItineraryAttractionCommandParserTest {
                         + " " + PREFIX_START_TIME + laterTime
                         + " " + PREFIX_END_TIME + laterTime
                         + DAY_VISITING_DESC_MBS,
-                AddItineraryAttractionCommand.MESSAGE_INVALID_START_TIME);
+                MESSAGE_INVALID_START_TIME);
 
         // invalid time format
         assertParseFailure(parser,

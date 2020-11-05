@@ -4,22 +4,22 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Attraction's Opening hours in TrackPad.
+ * Represents an Attraction's Opening hours in TrackPad.
  * Guarantees: immutable; is valid as declared in {@link #isValidOpeningHours(String)} (String)}
  */
 public class OpeningHours {
 
     public static final String MESSAGE_CONSTRAINTS = "Opening Hours should be of the format "
-            + "opening time (in 24 hour format) - closing time (in 24 hour format)";
-    private static final String TIME_REGEX = "([01][0-9]|2[0-3])[0-5][0-9]";
-    public static final String VALIDATION_REGEX = TIME_REGEX + "-" + TIME_REGEX;
+            + "opening time (in 24 hour format) - closing time (in 24 hour format).";
+    private static final String VALIDATION_REGEX =
+            "([01][0-9]|2[0-3])[0-5][0-9]-([01][0-9]|2[0-3])[0-5][0-9]|^$";
 
     public final String value;
 
     /**
      * Constructs an {@code OpeningHours}.
      *
-     * @param openingHours An valid opening hour.
+     * @param openingHours A valid opening hour.
      */
     public OpeningHours(String openingHours) {
         requireNonNull(openingHours);
@@ -35,7 +35,7 @@ public class OpeningHours {
     }
 
     /**
-     * Returns if a given string is an valid opening hour.
+     * Returns if a given string is a valid opening hour.
      */
     public static boolean isValidOpeningHours(String test) {
         return test.matches(VALIDATION_REGEX);

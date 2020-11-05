@@ -14,6 +14,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/peter-yeh.png" width="200px">
 
 [[github](https://github.com/peter-yeh)]
+[[portfolio](team/peter-yeh.md)]
 
 
 ### Lim Koon Kiat
@@ -21,6 +22,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/limkoonkiat.png" width="200px">
 
 [[github](http://github.com/limkoonkiat)]
+[[portfolio](team/limkoonkiat.md)]
 
 ### Lee York Tat
 

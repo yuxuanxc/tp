@@ -4,30 +4,30 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Attraction's price range in TrackPad.
+ * Represents an Attraction's price range in TrackPad.
  * Guarantees: immutable; is valid as declared in {@link #isValidPriceRange(String)} (String)}
  */
 public class PriceRange {
 
-    public static final String MESSAGE_CONSTRAINTS = "Price Range should be of the format "
-            + "LOW, MEDIUM, or HIGH";
-    public static final String VALIDATION_REGEX = "\\bLOW\\b|\\bMEDIUM\\b|\\bHIGH\\b";
+    public static final String MESSAGE_CONSTRAINTS = "Price Range should be either "
+            + "LOW, MEDIUM, or HIGH.";
+    public static final String VALIDATION_REGEX = "(?i)\\bLOW\\b|\\bMEDIUM\\b|\\bHIGH\\b|^$";
 
     public final String value;
 
     /**
-     * Constructs an {@code PriceRange}.
+     * Constructs a {@code PriceRange}.
      *
      * @param priceRange A valid price range.
      */
     public PriceRange(String priceRange) {
         requireNonNull(priceRange);
         checkArgument(isValidPriceRange(priceRange), MESSAGE_CONSTRAINTS);
-        value = priceRange;
+        value = priceRange.toUpperCase();
     }
 
     /**
-     * Constructs an {@code PriceRange} without value.
+     * Constructs a {@code PriceRange} without value.
      */
     public PriceRange() {
         value = "";
@@ -42,11 +42,11 @@ public class PriceRange {
 
     @Override
     public String toString() {
-        if (value.equals("LOW")) {
+        if (value.equalsIgnoreCase("LOW")) {
             return "$";
-        } else if (value.equals("MEDIUM")) {
+        } else if (value.equalsIgnoreCase("MEDIUM")) {
             return "$$";
-        } else if (value.equals("HIGH")) {
+        } else if (value.equalsIgnoreCase("HIGH")) {
             return "$$$";
         } else {
             return "";

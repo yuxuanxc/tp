@@ -4,37 +4,37 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Attraction's price range in TrackPad.
+ * Represents an Attraction's visited status in TrackPad.
  * Guarantees: immutable; is valid as declared in {@link #isValidVisited(String)} (String)}
  */
 public class Visited {
 
-    public static final String MESSAGE_CONSTRAINTS = "Visited should be of the format "
-            + "TRUE or FALSE";
-    public static final String VALIDATION_REGEX = "\\bTRUE\\b|\\bFALSE\\b";
+    public static final String MESSAGE_CONSTRAINTS = "Visited should be either "
+            + "TRUE or FALSE.";
+    public static final String VALIDATION_REGEX = "(?i)\\bTRUE\\b|\\bFALSE\\b|^$";
 
     public final String value;
 
     /**
-     * Constructs an {@code IsVisited}.
+     * Constructs a {@code Visited}.
      *
-     * @param visited A valid price range.
+     * @param visited A valid visited status.
      */
     public Visited(String visited) {
         requireNonNull(visited);
         checkArgument(isValidVisited(visited), MESSAGE_CONSTRAINTS);
-        value = visited;
+        value = visited.toUpperCase();
     }
 
     /**
-     * Constructs an {@code IsVisited} without value.
+     * Constructs a {@code Visited} without value.
      */
     public Visited() {
         value = "";
     }
 
     /**
-     * Returns if a given string is a valid price range.
+     * Returns if a given string is a valid visited status.
      */
     public static boolean isValidVisited(String test) {
         return test.matches(VALIDATION_REGEX);
@@ -42,7 +42,7 @@ public class Visited {
 
     @Override
     public String toString() {
-        if (value.equals("TRUE")) {
+        if (value.equalsIgnoreCase("TRUE")) {
             return "Visited";
         } else {
             return "";

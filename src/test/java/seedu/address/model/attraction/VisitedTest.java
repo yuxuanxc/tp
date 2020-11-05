@@ -15,7 +15,7 @@ public class VisitedTest {
 
     @Test
     public void constructor_invalidVisited_throwsIllegalArgumentException() {
-        String invalidVisited = "";
+        String invalidVisited = "not yet";
         assertThrows(IllegalArgumentException.class, () -> new Visited(invalidVisited));
     }
 
@@ -25,17 +25,19 @@ public class VisitedTest {
         assertThrows(NullPointerException.class, () -> Visited.isValidVisited(null));
 
         // invalid ratings
-        assertFalse(Visited.isValidVisited("")); // empty string
         assertFalse(Visited.isValidVisited(" ")); // spaces only
-        assertFalse(Visited.isValidVisited("True"));
-        assertFalse(Visited.isValidVisited("False"));
-        assertFalse(Visited.isValidVisited("TRuE"));
+        assertFalse(Visited.isValidVisited("Tru")); //Spelling Errors
+        assertFalse(Visited.isValidVisited("Fase"));
+        assertFalse(Visited.isValidVisited("Tue"));
         assertFalse(Visited.isValidVisited("TRUE1"));
         assertFalse(Visited.isValidVisited(" TRUE")); // leading space
         assertFalse(Visited.isValidVisited("TRUE ")); // trailing space
 
         // valid price ranges
+        assertTrue(Visited.isValidVisited("")); // empty string
         assertTrue(Visited.isValidVisited("TRUE"));
         assertTrue(Visited.isValidVisited("FALSE"));
+        assertTrue(Visited.isValidVisited("False"));
+        assertTrue(Visited.isValidVisited("TruE"));
     }
 }

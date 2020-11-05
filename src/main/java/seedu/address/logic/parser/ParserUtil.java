@@ -31,8 +31,8 @@ import seedu.address.model.tag.Tag;
  */
 public class ParserUtil {
 
-    // todo improve this weird phrasing error message
-    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    // todo remove if never used. I think it's never shown as it's always over shadowed by other error.
+    public static final String MESSAGE_INVALID_INDEX = "INDEX must be a number between 0 and 2147483647.";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be

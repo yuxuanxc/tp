@@ -50,7 +50,7 @@ public class EditAttractionCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the attraction identified "
             + "by the index number used in the displayed attraction list. "
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
+            + "Parameters: INDEX must be a number between 0 and 2147483647 "
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
@@ -64,9 +64,9 @@ public class EditAttractionCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "62693411 "
-            + PREFIX_EMAIL + "sgzoo@example.com";
+            + PREFIX_EMAIL + "sgzoo@example.com.";
 
-    public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s";
+    public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in TrackPad.";
 
@@ -96,6 +96,10 @@ public class EditAttractionCommand extends Command {
 
         Attraction attractionToEdit = lastShownList.get(index.getZeroBased());
         Attraction editedAttraction = createEditedAttraction(attractionToEdit, editAttractionDescriptor);
+
+        if (attractionToEdit.equals(editedAttraction)) {
+            throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
+        }
 
         if (!attractionToEdit.isSameAttraction(editedAttraction) && model.hasAttraction(editedAttraction)) {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);

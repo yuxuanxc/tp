@@ -12,7 +12,8 @@ import java.time.temporal.ChronoUnit;
 
 public class ItineraryDate {
 
-    public static final String MESSAGE_CONSTRAINTS = "Date should be of the format dd-mm-yyyy";
+    public static final String MESSAGE_CONSTRAINTS = "Date should be of the format dd-mm-yyyy,"
+            + " and must be a valid date.";
     private static final DateTimeFormatter DTF = new DateTimeFormatterBuilder()
             .appendPattern("dd-MM-uuuu")
             .toFormatter()
@@ -23,7 +24,7 @@ public class ItineraryDate {
     /**
      * Constructs a {@code ItineraryDate}.
      *
-     * @param date A valid ItineraryDate number.
+     * @param date A valid date.
      */
     public ItineraryDate(String date) {
         requireNonNull(date);
@@ -32,7 +33,7 @@ public class ItineraryDate {
     }
 
     /**
-     * Returns the itinerary date in LocalDate format.
+     * Returns the itinerary date in {@code LocalDate} format.
      */
     public LocalDate getLocalDate() {
         return LocalDate.parse(value, DTF);
@@ -57,6 +58,9 @@ public class ItineraryDate {
         return getLocalDate().isBefore(otherDate.getLocalDate());
     }
 
+    /**
+     * Returns if this itinerary date is the same as the given itinerary date.
+     */
     public boolean isEqual(ItineraryDate otherDate) {
         return getLocalDate().isEqual(otherDate.getLocalDate());
     }

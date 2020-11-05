@@ -37,8 +37,9 @@ public class AttractionTest {
         // null -> returns false
         assertFalse(MBS.isSameAttraction(null));
 
-        // different phone and email -> returns false
-        Attraction editedMbs = new AttractionBuilder(MBS).withPhone(VALID_PHONE_EIFFEL).withEmail(VALID_EMAIL_EIFFEL)
+        // different name and location -> returns false
+        Attraction editedMbs = new AttractionBuilder(MBS).withName(VALID_NAME_EIFFEL)
+                .withLocation(VALID_LOCATION_EIFFEL)
                 .build();
         assertFalse(MBS.isSameAttraction(editedMbs));
 
@@ -46,21 +47,15 @@ public class AttractionTest {
         editedMbs = new AttractionBuilder(MBS).withName(VALID_NAME_EIFFEL).build();
         assertFalse(MBS.isSameAttraction(editedMbs));
 
-        // same name, same phone, different attributes -> returns true
-        editedMbs = new AttractionBuilder(MBS).withEmail(VALID_EMAIL_EIFFEL).withAddress(VALID_ADDRESS_EIFFEL)
+        // different location -> returns false
+        editedMbs = new AttractionBuilder(MBS).withLocation(VALID_LOCATION_EIFFEL).build();
+        assertFalse(MBS.isSameAttraction(editedMbs));
+
+        // same name, same location, different attributes -> returns true
+        editedMbs = new AttractionBuilder(MBS).withPriceRange(VALID_PRICE_RANGE_EIFFEL)
+                .withAddress(VALID_ADDRESS_EIFFEL)
                 .withDescription(VALID_DESCRIPTION_EIFFEL)
                 .withTags(VALID_TAG_SIGHTSEEING).build();
-        assertTrue(MBS.isSameAttraction(editedMbs));
-
-        // same name, same email, different attributes -> returns true
-        editedMbs = new AttractionBuilder(MBS).withPhone(VALID_PHONE_EIFFEL).withAddress(VALID_ADDRESS_EIFFEL)
-                .withDescription(VALID_DESCRIPTION_EIFFEL)
-                .withTags(VALID_TAG_SIGHTSEEING).build();
-        assertTrue(MBS.isSameAttraction(editedMbs));
-
-        // same name, same phone, same email, different attributes -> returns true
-        editedMbs = new AttractionBuilder(MBS).withAddress(VALID_ADDRESS_EIFFEL).withTags(VALID_TAG_SIGHTSEEING)
-                .withDescription(VALID_DESCRIPTION_EIFFEL).build();
         assertTrue(MBS.isSameAttraction(editedMbs));
     }
 

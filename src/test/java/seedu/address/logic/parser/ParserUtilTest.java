@@ -27,22 +27,22 @@ import seedu.address.model.commons.Name;
 import seedu.address.model.itinerary.Budget;
 import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.ItineraryDate;
+import seedu.address.model.itinerary.ItineraryTime;
 import seedu.address.model.tag.Tag;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "Bot@nic Gardens";
     private static final String INVALID_PHONE = "+6471 7138";
-    private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
-    private static final String INVALID_DESCRIPTION = " ";
     private static final String INVALID_LOCATION = " ";
     private static final String INVALID_OPENING_HOURS = "1-2";
-    private static final String INVALID_PRICE_RANGE = "low";
+    private static final String INVALID_PRICE_RANGE = "MEDUM";
     private static final String INVALID_RATING = "9";
-    private static final String INVALID_VISITED = "FaLse";
+    private static final String INVALID_VISITED = "Fase";
     private static final String INVALID_TAG = "#nature";
     private static final String INVALID_ITINERARY_DATE = "3 february";
     private static final String INVALID_BUDGET = "345.123";
+    private static final String INVALID_ITINERARY_TIME = "10";
 
     private static final String VALID_NAME = "Botanic Gardens";
     private static final String VALID_PHONE = "64717138";
@@ -58,6 +58,7 @@ public class ParserUtilTest {
     private static final String VALID_TAG_2 = "sightseeing";
     private static final String VALID_ITINERARY_DATE = "03-02-2016";
     private static final String VALID_BUDGET = "100.50";
+    private static final String VALID_ITINERARY_TIME = "1000";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -133,11 +134,6 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseAddress_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseAddress(INVALID_ADDRESS));
-    }
-
-    @Test
     public void parseAddress_validValueWithoutWhitespace_returnsAddress() throws Exception {
         Address expectedAddress = new Address(VALID_ADDRESS);
         assertEquals(expectedAddress, ParserUtil.parseAddress(VALID_ADDRESS));
@@ -176,11 +172,6 @@ public class ParserUtilTest {
     @Test
     public void parseDescription_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> ParserUtil.parseDescription((String) null));
-    }
-
-    @Test
-    public void parseDescription_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseDescription(INVALID_DESCRIPTION));
     }
 
     @Test
@@ -427,5 +418,28 @@ public class ParserUtilTest {
 
         // Leading and trailing whitespaces
         assertEquals(INDEX_FIRST, ParserUtil.parseDayIndex("  1  "));
+    }
+
+    @Test
+    public void parseItineraryTime_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseItineraryTime((String) null));
+    }
+
+    @Test
+    public void parseItineraryTime_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseItineraryTime(INVALID_ITINERARY_TIME));
+    }
+
+    @Test
+    public void parseItineraryTime_validValueWithoutWhitespace_returnsItineraryTime() throws Exception {
+        ItineraryTime expectedItineraryTime = new ItineraryTime(VALID_ITINERARY_TIME);
+        assertEquals(expectedItineraryTime, ParserUtil.parseItineraryTime(VALID_ITINERARY_TIME));
+    }
+
+    @Test
+    public void parseItineraryTime_validValueWithWhitespace_returnsTrimmedItineraryTime() throws Exception {
+        String itineraryTimeWithWhitespace = WHITESPACE + VALID_ITINERARY_TIME + WHITESPACE;
+        ItineraryTime expectedItineraryTime = new ItineraryTime(VALID_ITINERARY_TIME);
+        assertEquals(expectedItineraryTime, ParserUtil.parseItineraryTime(itineraryTimeWithWhitespace));
     }
 }

@@ -18,7 +18,6 @@ import seedu.address.model.itinerary.ItineraryDate;
 
 public class JsonAdaptedItineraryTest {
     private static final String INVALID_NAME = "Tr!p";
-    private static final String INVALID_DESCRIPTION = " ";
     private static final String INVALID_DATE = "23-13-2019";
     private static final String INVALID_BUDGET = "-1";
 
@@ -51,15 +50,6 @@ public class JsonAdaptedItineraryTest {
         JsonAdaptedItinerary itinerary = new JsonAdaptedItinerary(null, VALID_DESCRIPTION,
                 VALID_START_DATE, VALID_END_DATE, VALID_BUDGET, VALID_DAYS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
-        assertThrows(IllegalValueException.class, expectedMessage, itinerary::toModelType);
-    }
-
-    @Test
-    public void toModelType_invalidDescription_throwsIllegalValueException() {
-        JsonAdaptedItinerary itinerary =
-                new JsonAdaptedItinerary(VALID_NAME, INVALID_DESCRIPTION, VALID_START_DATE,
-                        VALID_END_DATE, VALID_BUDGET, VALID_DAYS);
-        String expectedMessage = Description.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, itinerary::toModelType);
     }
 

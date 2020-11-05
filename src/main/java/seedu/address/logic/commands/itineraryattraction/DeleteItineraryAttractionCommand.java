@@ -13,6 +13,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.itinerary.Day;
+import seedu.address.model.itinerary.Itinerary;
 import seedu.address.model.itinerary.ItineraryAttraction;
 
 
@@ -22,10 +23,11 @@ import seedu.address.model.itinerary.ItineraryAttraction;
 public class DeleteItineraryAttractionCommand extends Command {
 
     public static final String COMMAND_WORD = "delete-itinerary-attraction";
-    public static final String MESSAGE_DELETE_ATTRACTION_SUCCESS = "Deleted attraction: %1$s";
+    public static final String MESSAGE_DELETE_ATTRACTION_SUCCESS = "Deleted attraction: %1$s.";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes the attraction identified by the index of"
-            + "attraction in the selected itinerary.\nParameters: INDEX " + PREFIX_DAY_VISITING + "DAY VISITING \n"
-            + "Example: " + COMMAND_WORD + " 1" + PREFIX_DAY_VISITING + "2";
+            + "attraction in the selected itinerary.\nParameters: INDEX must be a number between 0 and 2147483647 "
+            + PREFIX_DAY_VISITING + "DAY VISITING .\n"
+            + "Example: " + COMMAND_WORD + " 1 " + PREFIX_DAY_VISITING + "2.";
 
 
     private final Index index;
@@ -43,23 +45,34 @@ public class DeleteItineraryAttractionCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        Itinerary itinerary;
+        ItineraryAttraction itineraryAttractionToDelete;
+        Day day;
+
 
         if (model.getCurrentItinerary() == null) {
             throw new CommandException(MESSAGE_ITINERARY_NOT_SELECTED);
         }
 
-        Day day = model.getCurrentItinerary().getDay(dayVisiting);
+        itinerary = model.getCurrentItinerary();
+
+        if (dayVisiting.getZeroBased() >= itinerary.getDays().size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_ITINERARY_DAY);
+        }
+        day = model.getCurrentItinerary().getDay(dayVisiting);
+
         List<ItineraryAttraction> itineraryAttractions = day.getItineraryAttractions();
 
         if (index.getZeroBased() >= itineraryAttractions.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX);
         }
 
-        ItineraryAttraction itineraryAttractionToDelete = itineraryAttractions.get(index.getZeroBased());
+        itineraryAttractionToDelete = itineraryAttractions.get(index.getZeroBased());
 
-        model.getCurrentItinerary().deleteItineraryAttraction(index, dayVisiting);
+        itinerary.deleteItineraryAttraction(index, dayVisiting);
 
-        return new CommandResult(String.format(MESSAGE_DELETE_ATTRACTION_SUCCESS, itineraryAttractionToDelete), true);
+        return new CommandResult(String.format(MESSAGE_DELETE_ATTRACTION_SUCCESS, itineraryAttractionToDelete),
+                CommandResult.ToSwitchItineraryPanels.YES);
     }
 
     @Override

@@ -1,7 +1,11 @@
 package seedu.address.logic.commands.itineraryattraction;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ATTRACTION;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITINERARY_DAY;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_START_TIME;
 import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
+import static seedu.address.commons.core.Messages.MESSAGE_TIMING_CLASH;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY_VISITING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
@@ -41,16 +45,15 @@ import seedu.address.model.tag.Tag;
 public class EditItineraryAttractionCommand extends Command {
 
     public static final String COMMAND_WORD = "edit-itinerary-attraction";
-    public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s";
+    public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in Itinerary.";
-    public static final String MESSAGE_TIMING_CLASH = "The timing clashes with another attraction in the itinerary";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the itinerary attraction "
-            + "identified by the name of the itinerary attraction displayed in the itinerary"
-            + "Parameters: INDEX " + PREFIX_DAY_VISITING + "DAY VISITING " + "[" + PREFIX_START_TIME + "START_TIME] "
-            + "[" + PREFIX_END_TIME + "END_TIME] \n"
-            + "Example: " + COMMAND_WORD + " 2 " + PREFIX_DAY_VISITING + "2 " + PREFIX_START_TIME + "10000 "
-            + PREFIX_DAY_VISITING + "4";
+            + "identified by the name of the itinerary attraction displayed in the itinerary."
+            + "Parameters: INDEX must be a number between 0 and 2147483647 " + PREFIX_DAY_VISITING + "DAY VISITING "
+            + "[" + PREFIX_START_TIME + "START_TIME] "
+            + "[" + PREFIX_END_TIME + "END_TIME].\n"
+            + "Example: " + COMMAND_WORD + " 2 " + PREFIX_DAY_VISITING + "2 " + PREFIX_START_TIME + "1000 "
+            + PREFIX_DAY_VISITING + "4.";
 
     private final Index index;
     private final Index dayVisiting;
@@ -73,13 +76,21 @@ public class EditItineraryAttractionCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        Itinerary itinerary;
+        Day day;
 
         if (model.getCurrentItinerary() == null) {
             throw new CommandException(MESSAGE_ITINERARY_NOT_SELECTED);
         }
 
-        Itinerary itinerary = model.getCurrentItinerary();
-        Day day = itinerary.getDay(dayVisiting);
+        itinerary = model.getCurrentItinerary();
+
+        if (dayVisiting.getZeroBased() >= itinerary.getDays().size()) {
+            throw new CommandException(MESSAGE_INVALID_ITINERARY_DAY);
+        }
+
+        day = itinerary.getDay(dayVisiting);
+
         List<ItineraryAttraction> itineraryAttractionsThatDay = day.getItineraryAttractions();
 
         if (index.getZeroBased() >= itineraryAttractionsThatDay.size()) {
@@ -90,9 +101,13 @@ public class EditItineraryAttractionCommand extends Command {
         ItineraryAttraction editedItineraryAttraction = createEditedItineraryAttraction(itineraryAttractionToEdit,
                 editIaDescriptor);
 
-
         if (itineraryAttractionToEdit.equals(editedItineraryAttraction)) {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
+        }
+
+        // new itinerary must comply with start time earlier than end time
+        if (!editedItineraryAttraction.getStartTime().isEarlierThan(editedItineraryAttraction.getEndTime())) {
+            throw new CommandException(MESSAGE_INVALID_START_TIME);
         }
 
         // checks if there is a timing clash with an existing itinerary attraction
@@ -102,7 +117,8 @@ public class EditItineraryAttractionCommand extends Command {
 
         itinerary.editItineraryAttraction(itineraryAttractionToEdit, editedItineraryAttraction, dayVisiting);
 
-        return new CommandResult(String.format(MESSAGE_EDIT_ATTRACTION_SUCCESS, editedItineraryAttraction), true);
+        return new CommandResult(String.format(MESSAGE_EDIT_ATTRACTION_SUCCESS, editedItineraryAttraction),
+                CommandResult.ToSwitchItineraryPanels.YES);
     }
 
     /**

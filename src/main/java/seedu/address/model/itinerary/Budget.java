@@ -10,15 +10,15 @@ public class Budget {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Budget should only be a non-negative number, and if it contains decimal values it should only be"
-                    + " up to two decimal places";
-    public static final String VALIDATION_REGEX = "^?[0-9]+(\\.[0-9]{1,2})?$";
+                    + " up to two decimal places.";
+    public static final String VALIDATION_REGEX = "^?[0-9]+(\\.[0-9]{1,2})?$|^$";
 
     public final String value;
 
     /**
      * Constructs a {@code Budget}.
      *
-     * @param budget A valid budget number.
+     * @param budget A valid budget value.
      */
     public Budget(String budget) {
         requireNonNull(budget);

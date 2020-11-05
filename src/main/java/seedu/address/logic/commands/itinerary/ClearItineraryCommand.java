@@ -20,6 +20,7 @@ public class ClearItineraryCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.setItineraryList(new ItineraryList());
-        return new CommandResult(MESSAGE_SUCCESS);
+        model.setCurrentItinerary(null);
+        return new CommandResult((MESSAGE_SUCCESS), CommandResult.ToSwitchItineraryPanels.NO);
     }
 }
