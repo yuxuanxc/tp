@@ -2,7 +2,7 @@
 layout: page
 title: User Guide
 ---
-
+![Logo](images/TrackPad_logo.PNG)
 
 * Table of Contents
 {:toc}
@@ -68,6 +68,10 @@ Here are the steps to download TrackPad and start using it immediately!
 
 ## 4. Features
 
+In this section, we will go into the details of all the features available for you to use after
+installing TrackPad. These features are split into 4 subsections, Attraction Features(4.2), 
+Itinerary Features(4.3), Itinerary Attraction Features(4.4) and Miscellaneous Features(4.5).
+
 ### 4.1 Command Format
 
 <div markdown="block" class="alert alert-warning">
@@ -124,7 +128,7 @@ Optional fields:
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 The opening time of an attraction can be more than it's the closing time, for those
 which operates overnight.
-</div><br>
+</div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 An attraction can have any number of tags.
@@ -139,8 +143,8 @@ op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`<br><br>
 op/1000-1800 pr/MEDIUM r/4.6 v/FALSE</code></i></sup></div>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
-Multiple attractions of the same name and locatin cannot be added into the current list of attractions.
-</div><br>
+Multiple attractions of the same name and location cannot be added into the current list of attractions.
+</div>
 
 <div markdown="span" class="alert alert-danger">:warning: **Warning:**
 The names and locations of attractions are case sensitive.
@@ -161,7 +165,7 @@ Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] 
     * Example: `add-attraction n/MBS l/Singapore, Singapore r/4.3` in an attraction list followed by 
     `edit-attraction 1 r/4.6` changes the rating of the 1st attraction in the list from `4.3` to `4.6`.<br>        
     ![result_of_editing_existing_fields](images/editAttraction1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 3. The result of <code>edit-attraction 1 r/4.6</code></i></sup></div><br>
+    <div align="center"><sup style="font-size:100%"><i>Figure 3. The result of <code>edit-attraction 1 r/4.6</code></i></sup></div>
 * New fields can be added to current attractions.
     * Example: `edit-attraction 1 pr/MEDIUM t/hotel` adds the price range of MBS as `MEDIUM` and adds an `hotel` tag.<br><br>
     ![result_of_editing_new_fields](images/editAttraction2.png)
@@ -275,7 +279,7 @@ Optional fields:
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 The budget for the trip should not exceed 1 trillion.
-</div><br>
+</div>
 
 Examples:
 * `add-itinerary n/Japan holiday sd/15-01-2019 ed/30-01-2019`
@@ -350,7 +354,7 @@ Format: `list-itinerary`<br>
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 `list-itinerary` will work even if there are extra characters behind the command.
 Eg. `list-itinerary abcd` will behave like `list-itinerary`.
-</div><br>
+</div>
 
 #### 4.3.6 Selecting an itinerary: `select-itinerary`
 
