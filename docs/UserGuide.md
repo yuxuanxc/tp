@@ -399,12 +399,16 @@ Adds an attraction to the selected itinerary.
 
 Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING`
 
-* **INDEX**: Index of attraction in the current list of attractions.
-* **START_TIME** 🕖: Start time to visit the attraction in the 24H format `HHMM`.
-* **END_TIME** 🕖: End time to visit the attraction in the 24H format `HHMM`.
-* **DAY_VISITING**: Day on which you plan to visit the attraction in the itinerary.
-* The start time and end time cannot overlap with other attractions in the selected itinerary.
-* None of the fields can be left blank.
+| **Compulsory fields** | Description |
+|---|---|
+| **INDEX** | Index of attraction in the current list of attractions. |
+| **START_TIME** 🕖 | Start time to visit the attraction in the 24H format `HHMM`. |
+| **END_TIME** 🕖 | End time to visit the attraction in the 24H format `HHMM`.|
+|**DAY_VISITING** 📆 | Day in your itinerary when you plan to visit the attraction.|
+
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+The start time and end time cannot overlap with other attractions in the selected itinerary.
+</div><br>
 
 Examples:
 * `add-itinerary-attraction 2 st/1000 et/1600 day/3`
