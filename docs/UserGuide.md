@@ -69,8 +69,8 @@ Here are the steps to download TrackPad and start using it immediately!
 ## 4. Features
 
 In this section, we will go into the details of all the features available for you to use after
-installing TrackPad. These features are split into 4 subsections, Attraction Features(4.2), 
-Itinerary Features(4.3), Itinerary Attraction Features(4.4) and Miscellaneous Features(4.5).
+installing TrackPad. These features are split into 4 subsections, Attraction Features (4.2), 
+Itinerary Features (4.3), Itinerary Attraction Features (4.4) and Miscellaneous Features (4.5).
 
 ### 4.1 Command Format
 
@@ -400,7 +400,7 @@ Action | Format, Examples
 **Delete itinerary attraction** | `delete-itinerary-attraction INDEX`<br> e.g. `delete-itinerary-attraction 1`
 
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.png)</span>
-<div align='center'><i><sup style="font-size:100%">Figure 17. Diagram simulating the attractions found in an itinerary</></i></div><br>
+<div align='center'><i><sup style="font-size:100%">Figure 17. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
 
 In Figure 16 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown with a yellow border. 
 Attraction 1A is an itinerary attraction. It has all the same fields as Attraction A, but with the additional start/end time field.
