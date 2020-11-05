@@ -388,6 +388,13 @@ This action is irreversible and should be used with caution.
 Itinerary attractions are attractions added to an itinerary, but with additional start/end time fields.
 These commands deal with attractions that are found in an itinerary.
 
+The table below shows a summary of the commands in this section.
+Action | Format, Examples
+--------|------------------
+**Add itinerary attraction** | `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING` <br> e.g. `add-itinerary-attraction 1 st/1400 et/1500 day/5`
+**Edit itinerary attraction** | `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/END_TIME]` <br> e.g. `edit-itinerary-attraction 1 day/2 st/0900 et/1000`
+**Delete itinerary attraction** | `delete-itinerary-attraction INDEX`<br> e.g. `delete-itinerary-attraction 1`
+
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.png)</span>
 <div align='center'><i><sup>Figure 17. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
 
@@ -401,10 +408,10 @@ Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITI
 
 | Compulsory fields | Description |
 |---|---|
-| **INDEX** | Index of attraction in the current list of attractions. |
-| **START_TIME** 🕖 | Start time to visit the attraction in the 24H format `HHMM`. |
-| **END_TIME** 🕖 | End time to visit the attraction in the 24H format `HHMM`.|
-|**DAY_VISITING** 📆 | Day in your itinerary when you plan to visit the attraction.|
+| **INDEX** | Index of attraction in the current list of attractions |
+| **START_TIME** 🕖 | Start time to visit the attraction in the 24H format `HHMM` |
+| **END_TIME** 🕖 | End time to visit the attraction in the 24H format `HHMM` |
+| **DAY_VISITING** 📆 | Day in your itinerary when you plan to visit the attraction |
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The start time and end time cannot overlap with other attractions in the selected itinerary.
@@ -425,9 +432,33 @@ Edits an existing attraction in the selected itinerary.
 
 Format: `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/END_TIME][n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS][op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
 
-* Edits the attraction specified by the `INDEX` and `DAY_VISITING` shown in the itinerary panel.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
+
+| Compulsory fields | Description |
+|---|---|
+| **INDEX** # | Index of attraction to edit in the itinerary panel |
+| **DAY_VISITING** 📆 | Specifies the day the attraction exist in the itinerary panel |
+
+| Optional fields | Description (At least one must be present) |
+|---|---|
+| **START_TIME** 🕖    | Changing the start time to visit the attraction in the 24H format `HHMM` |
+| **END_TIME** 🕖      | Changing the end time to visit the attraction in the 24H format `HHMM` |
+| **ATTRACTION_NAME**  | Changing the name of the attraction |
+| **LOCATION** 🏳       | Changing the location of the attraction, we recommend editing this only for typos |
+| **DESCRIPTION**      | Changing description of the attraction | 
+| **PHONE_NUMBER** 📞  | Changing phone number of the attraction |
+| **EMAIL** 📧         | Changing email of the attraction |
+| **ADDRESS** 🏠       | Changing the address attraction |
+| **OPENING_HOURS** 🈺 | Changing the opening hours of the attraction, in the 24H format `HHMM - HHMM` |
+| **PRICE_RANGE** 💲   | Changing the price range of the attraction |
+| **RATING** ★        | Changing the rating of the attraction |
+| **VISITED** ✔       | Marking the attraction as visited |
+| **TAG** 🔖           | Changing the tag of the attraction |
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Some fields can be left empty to remove it. Example, <code>edit-itinerary-attraction 1 day/1 t/ </code> would remove the tag from the attraction.
+</div>
 
 Examples:
 * `edit-itinerary-attraction 3 day/2 st/1500 et/1800` Edits the start time, end time of the third attraction on day 2 of the selected itinerary to  be `1500` and `1800` respectively.
