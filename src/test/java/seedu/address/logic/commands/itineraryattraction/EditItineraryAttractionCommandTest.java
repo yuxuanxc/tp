@@ -1,6 +1,5 @@
 package seedu.address.logic.commands.itineraryattraction;
 
-import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ATTRACTION;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITINERARY_DAY;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_START_TIME;
@@ -90,8 +89,8 @@ public class EditItineraryAttractionCommandTest {
         EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(
                 INDEX_FIRST, INDEX_FIRST, descriptor);
 
-        assertThrows(CommandException.class, MESSAGE_DUPLICATE_ATTRACTION, ()
-            -> editIaCommand.execute(model));
+        assertThrows(CommandException.class,
+                EditItineraryAttractionCommand.MESSAGE_FIELD_NOT_CHANGED, () -> editIaCommand.execute(model));
     }
 
     @Test

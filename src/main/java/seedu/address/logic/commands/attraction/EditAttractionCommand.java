@@ -68,8 +68,10 @@ public class EditAttractionCommand extends Command {
 
     public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_ATTRACTION = "This attraction already exists in TrackPad, please choose a different name/location.";
-    public static final String MESSAGE_FIELD_NOT_CHANGED = "Please provide a different value for the field(s) to be edited.";
+    public static final String MESSAGE_DUPLICATE_ATTRACTION =
+            "This attraction already exists in TrackPad, please choose a different name/location.";
+    public static final String MESSAGE_FIELD_NOT_CHANGED =
+            "Please provide a different value for the field(s) to be edited.";
 
     private final Index index;
     private final EditAttractionDescriptor editAttractionDescriptor;

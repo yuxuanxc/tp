@@ -44,9 +44,11 @@ public class EditItineraryCommand extends Command {
 
     public static final String MESSAGE_EDIT_ITINERARY_SUCCESS = "Edited Itinerary: %1$s.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_ITINERARY = "This itinerary already exists in TrackPad, please choose a different name/date";
+    public static final String MESSAGE_DUPLICATE_ITINERARY =
+            "This itinerary already exists in TrackPad, please choose a different name/date";
     public static final String MESSAGE_START_BEFORE_END_DATE = "Start date should come before end date";
-    public static final String MESSAGE_FIELD_NOT_CHANGED = "Please provide a different value for the field(s) to be edited.";
+    public static final String MESSAGE_FIELD_NOT_CHANGED =
+            "Please provide a different value for the field(s) to be edited.";
 
     private final Index index;
     private final EditItineraryDescriptor editItineraryDescriptor;

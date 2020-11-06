@@ -47,7 +47,8 @@ public class EditItineraryAttractionCommand extends Command {
     public static final String COMMAND_WORD = "edit-itinerary-attraction";
     public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_FIELD_NOT_CHANGED = "Please provide a different value for the field(s) to be edited.";
+    public static final String MESSAGE_FIELD_NOT_CHANGED =
+            "Please provide a different value for the field(s) to be edited.";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the itinerary attraction "
             + "identified by the name of the itinerary attraction displayed in the itinerary.\n"
@@ -104,9 +105,9 @@ public class EditItineraryAttractionCommand extends Command {
         ItineraryAttraction editedItineraryAttraction = createEditedItineraryAttraction(itineraryAttractionToEdit,
                 editIaDescriptor);
 
-//        if (itineraryAttractionToEdit.equals(editedItineraryAttraction)) {
-//            throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
-//        }
+        //        if (itineraryAttractionToEdit.equals(editedItineraryAttraction)) {
+        //            throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
+        //        }
 
         if (itineraryAttractionToEdit.equals(editedItineraryAttraction)) {
             throw new CommandException(MESSAGE_FIELD_NOT_CHANGED);

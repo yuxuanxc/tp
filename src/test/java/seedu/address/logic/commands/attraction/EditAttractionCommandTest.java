@@ -79,7 +79,7 @@ public class EditAttractionCommandTest {
         EditAttractionCommand editAttractionCommand = new EditAttractionCommand(INDEX_FIRST,
                 new EditAttractionDescriptor());
 
-        String expectedMessage = EditAttractionCommand.MESSAGE_DUPLICATE_ATTRACTION;
+        String expectedMessage = EditAttractionCommand.MESSAGE_FIELD_NOT_CHANGED;
 
         assertCommandFailure(editAttractionCommand, model, expectedMessage);
     }
