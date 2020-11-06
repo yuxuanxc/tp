@@ -111,19 +111,25 @@ Format (All fields): `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION
 [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
 
 Compulsory fields:
-* **ATTRACTION_NAME**: Name of the attraction. 
-* **LOCATION**: Location of the attraction. While any value is possible, we recommend you use the format `CITY, COUNTRY` for a better in-app experience.
+
+|   |   |
+|---|---|
+| **ATTRACTION_NAME** | Contains only letters and numbers and should not be blank |
+| **LOCATION** | Can take any value, we recommend the format: `CITY, COUNTRY` |
 
 Optional fields:
-* **DESCRIPTION**: Description of the attraction, can take in any value. Use this to give a brief summary of the attraction.
-* **PHONE_NUMBER** 📞: Phone number of the attraction, can only contain numbers and be at least 3 digits long, no spaces.
-* **EMAIL** 📧: Email of the attraction in the format `local-part@domain`.
-* **ADDRESS** 🏠: Postal address of the attraction, can take in any value. Use this if the location field is not enough for locating the attraction.
-* **OPENING_HOURS** 🈺: Opening hours of the attraction in the format `opening time - closing time` (both in 24h format).
-* **PRICE_RANGE**: Price range of the attraction. Use `LOW`, `MEDIUM` or `HIGH` to indicate the range.
-* **RATING**: Rating of the attraction. Use a number between `0.0` to `5.0` to indicate your experience of the attraction after visiting it.
-* **VISITED**: Marks whether you have visited the attraction before. Use `TRUE` if you want to mark it as visited, and `FALSE` otherwise. 
-* **TAG**: Adds tags to further describe the attraction. Tag names should only contain letters and numbers.
+
+|   |   |
+|---|---|
+| **DESCRIPTION** | Can take any value |
+| **PHONE_NUMBER** 📞 | Contains only numbers and be at least 3 digits long with no spaces in between |
+| **EMAIL** 📧 | Takes the format `local-part@domain` |
+| **ADDRESS** 🏠 | Postal address of the attraction, can take any value |
+| **OPENING_HOURS** | Takes the format `opening time - closing time`, both in the 24H format `HHMM-HHMM` |
+| **PRICE_RANGE** | Takes one of the following ranges: `LOW`, `MEDIUM` or `HIGH` |
+| **RATING** | Takes a number between `0.0` to `5.0` |
+| **VISITED** | Takes either `TRUE` if visited or `FALSE` otherwise |
+| **TAG** | Contains only letters and numbers |
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 The opening time of an attraction can be more than it's the closing time, for those
