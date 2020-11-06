@@ -8,9 +8,9 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import seedu.address.model.attraction.Attraction;
 
-public class Attraction3FieldCard extends AttractionCard {
+public class AttractionCard4Field extends AttractionCard {
 
-    private static final String FXML = "AttractionListCard3Field.fxml";
+    private static final String FXML = "AttractionListCard4Field.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -41,12 +41,14 @@ public class Attraction3FieldCard extends AttractionCard {
     @FXML
     private Label field3;
     @FXML
+    private Label field4;
+    @FXML
     private FlowPane tags;
 
     /**
      * Creates a {@code AttractionCode} with the given {@code Attraction} and index to display.
      */
-    public Attraction3FieldCard(Attraction attraction, int displayedIndex) {
+    public AttractionCard4Field(Attraction attraction, int displayedIndex) {
         super(attraction, displayedIndex, FXML);
 
         this.attraction = attraction;
@@ -66,7 +68,6 @@ public class Attraction3FieldCard extends AttractionCard {
         if (!attraction.getAddress().value.isEmpty()) {
             String address = "\uD83C\uDFE0 " + attraction.getAddress().value;
             field1.setText(address);
-            field1.setWrapText(true);
             fieldsFilled++;
         }
 
@@ -76,7 +77,6 @@ public class Attraction3FieldCard extends AttractionCard {
                 field1.setText(phone);
             } else {
                 field2.setText(phone);
-                field2.setWrapText(true);
             }
             fieldsFilled++;
         }
@@ -99,8 +99,10 @@ public class Attraction3FieldCard extends AttractionCard {
                 field1.setText(openingHours);
             } else if (fieldsFilled == 1) {
                 field2.setText(openingHours);
-            } else {
+            } else if (fieldsFilled == 2) {
                 field3.setText(openingHours);
+            } else {
+                field4.setText(openingHours);
             }
             fieldsFilled++;
         }
@@ -111,14 +113,17 @@ public class Attraction3FieldCard extends AttractionCard {
                 field1.setText(description);
             } else if (fieldsFilled == 1) {
                 field2.setText(description);
-            } else {
+            } else if (fieldsFilled == 2) {
                 field3.setText(description);
+            } else {
+                field4.setText(description);
             }
         }
 
         field1.setWrapText(true);
         field2.setWrapText(true);
         field3.setWrapText(true);
+        field4.setWrapText(true);
 
         if (attraction.getPriceRange().toString() != "") {
             Label priceRange = new Label(attraction.getPriceRange().toString());

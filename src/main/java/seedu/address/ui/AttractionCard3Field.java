@@ -8,9 +8,9 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import seedu.address.model.attraction.Attraction;
 
-public class Attraction5FieldCard extends AttractionCard {
+public class AttractionCard3Field extends AttractionCard {
 
-    private static final String FXML = "AttractionListCard5Field.fxml";
+    private static final String FXML = "AttractionListCard3Field.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -41,16 +41,12 @@ public class Attraction5FieldCard extends AttractionCard {
     @FXML
     private Label field3;
     @FXML
-    private Label field4;
-    @FXML
-    private Label field5;
-    @FXML
     private FlowPane tags;
 
     /**
      * Creates a {@code AttractionCode} with the given {@code Attraction} and index to display.
      */
-    public Attraction5FieldCard(Attraction attraction, int displayedIndex) {
+    public AttractionCard3Field(Attraction attraction, int displayedIndex) {
         super(attraction, displayedIndex, FXML);
 
         this.attraction = attraction;
@@ -65,36 +61,64 @@ public class Attraction5FieldCard extends AttractionCard {
 
         //optional fields
 
+        int fieldsFilled = 0;
+
         if (!attraction.getAddress().value.isEmpty()) {
             String address = "\uD83C\uDFE0 " + attraction.getAddress().value;
             field1.setText(address);
+            field1.setWrapText(true);
+            fieldsFilled++;
         }
 
         if (!attraction.getPhone().value.isEmpty()) {
             String phone = "📞 " + attraction.getPhone().value;
-            field2.setText(phone);
+            if (fieldsFilled == 0) {
+                field1.setText(phone);
+            } else {
+                field2.setText(phone);
+                field2.setWrapText(true);
+            }
+            fieldsFilled++;
         }
 
         if (!attraction.getEmail().value.isEmpty()) {
             String email = "\uD83D\uDCE7 " + attraction.getEmail().value;
-            field3.setText(email);
+            if (fieldsFilled == 0) {
+                field1.setText(email);
+            } else if (fieldsFilled == 1) {
+                field2.setText(email);
+            } else {
+                field3.setText(email);
+            }
+            fieldsFilled++;
         }
 
         if (!attraction.getOpeningHours().value.isEmpty()) {
             String openingHours = "\uD83C\uDE3A " + attraction.getOpeningHours().value;
-            field4.setText(openingHours);
+            if (fieldsFilled == 0) {
+                field1.setText(openingHours);
+            } else if (fieldsFilled == 1) {
+                field2.setText(openingHours);
+            } else {
+                field3.setText(openingHours);
+            }
+            fieldsFilled++;
         }
 
         if (!attraction.getDescription().value.isEmpty()) {
             String description = attraction.getDescription().value;
-            field5.setText(description);
+            if (fieldsFilled == 0) {
+                field1.setText(description);
+            } else if (fieldsFilled == 1) {
+                field2.setText(description);
+            } else {
+                field3.setText(description);
+            }
         }
 
         field1.setWrapText(true);
         field2.setWrapText(true);
         field3.setWrapText(true);
-        field4.setWrapText(true);
-        field5.setWrapText(true);
 
         if (attraction.getPriceRange().toString() != "") {
             Label priceRange = new Label(attraction.getPriceRange().toString());

@@ -8,7 +8,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import seedu.address.model.attraction.Attraction;
 
-public class Attraction1FieldCard extends AttractionCard {
+public class AttractionCard1Field extends AttractionCard {
 
     private static final String FXML = "AttractionListCard1Field.fxml";
 
@@ -42,7 +42,7 @@ public class Attraction1FieldCard extends AttractionCard {
     /**
      * Creates a {@code AttractionCode} with the given {@code Attraction} and index to display.
      */
-    public Attraction1FieldCard(Attraction attraction, int displayedIndex) {
+    public AttractionCard1Field(Attraction attraction, int displayedIndex) {
         super(attraction, displayedIndex, FXML);
 
         this.attraction = attraction;

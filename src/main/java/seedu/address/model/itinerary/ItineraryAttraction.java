@@ -12,6 +12,7 @@ import seedu.address.model.commons.Name;
 public class ItineraryAttraction extends Attraction {
     private final ItineraryTime startTime;
     private final ItineraryTime endTime;
+    private final Attraction attraction;
 
     /**
      * Constructs a Itinerary attraction.
@@ -34,6 +35,7 @@ public class ItineraryAttraction extends Attraction {
                 a.getTags());
         this.startTime = startTime;
         this.endTime = endTime;
+        this.attraction = a;
     }
 
     /**
@@ -47,7 +49,7 @@ public class ItineraryAttraction extends Attraction {
      * Returns the attraction in this itinerary attraction.
      */
     public Attraction getAttraction() {
-        return this;
+        return attraction;
     }
 
     /**
@@ -78,6 +80,14 @@ public class ItineraryAttraction extends Attraction {
      */
     public int getIndex() {
         return 0;
+    }
+
+    /**
+     * Returns number of filled fields in this itinerary attraction.
+     * @return integer of number of filled fields
+     */
+    public int getNumOfFilledFields() {
+        return getAttraction().getNumOfFilledFields();
     }
 
     /**

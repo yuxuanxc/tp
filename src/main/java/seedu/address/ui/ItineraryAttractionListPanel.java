@@ -33,7 +33,7 @@ public class ItineraryAttractionListPanel extends UiPart<Region> {
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code ItineraryAttraction} using
-     * a {@code ItineraryAttractionListCard}.
+     * a {@code ItineraryAttractionCard}.
      */
     class ItineraryAttractionListViewCell extends ListCell<ItineraryAttraction> {
         @Override
@@ -46,9 +46,31 @@ public class ItineraryAttractionListPanel extends UiPart<Region> {
             } else if (itineraryAttraction instanceof ItineraryAttractionDayCounter) {
                 setGraphic(new ItineraryAttractionDayCounterCard(itineraryAttraction).getRoot());
             } else if (itineraryAttraction instanceof ItineraryAttractionIndexCounter) {
-                setGraphic(new ItineraryAttractionListCard(itineraryAttraction).getRoot());
+                switch (itineraryAttraction.getNumOfFilledFields()) {
+                case 0:
+                    setGraphic(new ItineraryAttractionCard0Field(itineraryAttraction).getRoot());
+                    break;
+                case 1:
+                    setGraphic(new ItineraryAttractionCard1Field(itineraryAttraction).getRoot());
+                    break;
+                case 2:
+                    setGraphic(new ItineraryAttractionCard2Field(itineraryAttraction).getRoot());
+                    break;
+                case 3:
+                    setGraphic(new ItineraryAttractionCard3Field(itineraryAttraction).getRoot());
+                    break;
+                case 4:
+                    setGraphic(new ItineraryAttractionCard4Field(itineraryAttraction).getRoot());
+                    break;
+                case 5:
+                    setGraphic(new ItineraryAttractionCard5Field(itineraryAttraction).getRoot());
+                    break;
+                default:
+                    break;
+                }
+
             }
         }
-    }
 
+    }
 }

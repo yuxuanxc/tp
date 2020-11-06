@@ -2,32 +2,40 @@ package seedu.address.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Region;
+import javafx.scene.layout.HBox;
 import seedu.address.model.itinerary.Itinerary;
 
-public class ItineraryListCard extends UiPart<Region> {
+public class ItineraryListCard0Field extends ItineraryListCard {
 
-    /**
-     * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
-     * As a consequence, UI elements' variable names cannot be set to such keywords
-     * or an exception will be thrown by JavaFX during runtime.
-     *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
-     */
+    private static final String FXML = "ItineraryListCard0Field.fxml";
 
     public final Itinerary itinerary;
 
     @FXML
+    private HBox cardPane;
+    @FXML
+    private Label name;
+    @FXML
     private Label id;
+    @FXML
+    private Label startEndDate;
+
 
     /**
      * Creates a {@code ItineraryCode} with the given {@code Itinerary} and index to display.
      */
-    public ItineraryListCard(Itinerary itinerary, int displayedIndex, String fxml) {
-        super(fxml);
+    public ItineraryListCard0Field(Itinerary itinerary, int displayedIndex) {
+        super(itinerary, displayedIndex, FXML);
         this.itinerary = itinerary;
 
         id.setText(displayedIndex + ". ");
+
+        name.setText(itinerary.getName().fullName);
+        name.setWrapText(true);
+
+        startEndDate.setText("\uD83D\uDCC6 " + itinerary.getStartDate().value
+                + " to "
+                + itinerary.getEndDate().value);
     }
 
     @Override
@@ -38,12 +46,12 @@ public class ItineraryListCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof ItineraryListCard)) {
+        if (!(other instanceof ItineraryListCard0Field)) {
             return false;
         }
 
         // state check
-        ItineraryListCard card = (ItineraryListCard) other;
+        ItineraryListCard0Field card = (ItineraryListCard0Field) other;
         return id.getText().equals(card.id.getText())
                 && itinerary.equals(card.itinerary);
     }
