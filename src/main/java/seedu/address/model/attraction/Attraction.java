@@ -115,6 +115,28 @@ public class Attraction {
                 && (otherAttraction.getLocation().equals(getLocation()));
     }
 
+    /** Returns number of filled fields that have an icon in the UI.
+     * @return integer of number of filled fields
+     */
+    public int getNumOfFilledFields() {
+        int filledFields = 0;
+
+        if (!getAddress().value.isEmpty()) {
+            filledFields++;
+        }
+        if (!getPhone().value.isEmpty()) {
+            filledFields++;
+        }
+        if (!getEmail().value.isEmpty()) {
+            filledFields++;
+        }
+        if (!getOpeningHours().value.isEmpty()) {
+            filledFields++;
+        }
+
+        return filledFields;
+    }
+
     /**
      * Returns true if both attractions have the same identity and data fields.
      * This defines a stronger notion of equality between two attractions.
