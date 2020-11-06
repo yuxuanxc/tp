@@ -9,23 +9,22 @@ title: User Guide
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 1. Introduction
+## 1. Introduction (York Tat)
 TrackPad (TP) is a **desktop app for planning your trips and tracking tourist attractions, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a 
-Graphical User Interface (GUI). Our command instructions utilise full words, they sound more natural and verbose than short forms, so it's easier for you to remember. If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
-
-This user guide will show you how to use the commands and features available in TP. TP is built for people who love to travel, 
-and want to collate and store all their itineraries in one single app. We welcome anyone who loves travelling to try out our app.
+Graphical User Interface (GUI). TP is built for people who love to travel, and store all their itineraries in a structured format in one single app. 
+Our commands are **intuitive** and utilise full words, making them sound more natural and verbose than short forms, so it's **easier** for you to remember. 
+If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 2. About This Document
+## 2. About This Document (York Tat)
 Welcome to the TrackPad User Guide!
 
-We at TrackPad believe that tracking tourist attractions and planning your trips should be both **easy and fuss-free**. 
+We at TrackPad believe that tracking your attractions and planning your trips should be both **easy and fuss-free**. 
 We understand how **messy** it can be when it comes to keeping track of your travel itineraries, which can get frustrating.
 
-That's why here at TrackPad, we have come up with a simple yet useful guide to help you get started with using TrackPad.
-Minimal prior technical knowledge is needed in order to use TrackPad and we hope to help you with your travel tracking and planning.
+That's why here at TrackPad, we have come up with a **simple yet useful** guide to help you get started with using TrackPad.
+Minimal prior technical knowledge is needed in order to use TrackPad so try out TrackPad now to make your travel planning **easier and faster**!
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -95,7 +94,7 @@ Itinerary Features (4.3), Itinerary Attraction Features (4.4) and Miscellaneous 
 
 </div>
 
-### 4.2 Attraction Features
+### 4.2 Attraction Features (York Tat)
 
 Attractions are the core building blocks of TrackPad and are required to populate your itineraries! 
 The following features are tailored for attractions in TrackPad. 
@@ -111,19 +110,25 @@ Format (All fields): `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION
 [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
 
 Compulsory fields:
-* **ATTRACTION_NAME**: Name of the attraction. 
-* **LOCATION**: Location of the attraction. While any value is possible, we recommend you use the format `CITY, COUNTRY` for a better in-app experience.
+
+|   |   |
+|---|---|
+| **ATTRACTION_NAME** | Contains only letters and numbers and should not be blank |
+| **LOCATION** | Can take any value, we recommend the format: `CITY, COUNTRY` |
 
 Optional fields:
-* **DESCRIPTION**: Description of the attraction, can take in any value. Use this to give a brief summary of the attraction.
-* **PHONE_NUMBER** 📞: Phone number of the attraction, can only contain numbers and be at least 3 digits long, no spaces.
-* **EMAIL** 📧: Email of the attraction in the format `local-part@domain`.
-* **ADDRESS** 🏠: Postal address of the attraction, can take in any value. Use this if the location field is not enough for locating the attraction.
-* **OPENING_HOURS** 🈺: Opening hours of the attraction in the format `opening time - closing time` (both in 24h format).
-* **PRICE_RANGE**: Price range of the attraction. Use `LOW`, `MEDIUM` or `HIGH` to indicate the range.
-* **RATING**: Rating of the attraction. Use a number between `0.0` to `5.0` to indicate your experience of the attraction after visiting it.
-* **VISITED**: Marks whether you have visited the attraction before. Use `TRUE` if you want to mark it as visited, and `FALSE` otherwise. 
-* **TAG**: Adds tags to further describe the attraction. Tag names should only contain letters and numbers.
+
+|   |   |
+|---|---|
+| **DESCRIPTION** | Can take any value |
+| **PHONE_NUMBER** 📞 | Contains only numbers and be at least 3 digits long with no spaces in between |
+| **EMAIL** 📧 | Takes the format `local-part@domain` |
+| **ADDRESS** 🏠 | Postal address of the attraction, can take any value |
+| **OPENING_HOURS** | Takes the format `opening time - closing time`, both in the 24H format `HHMM-HHMM` |
+| **PRICE_RANGE** | Takes one of the following ranges: `LOW`, `MEDIUM` or `HIGH` |
+| **RATING** | Takes a number between `0.0` to `5.0` |
+| **VISITED** | Takes either `TRUE` if visited or `FALSE` otherwise |
+| **TAG** | Contains only letters and numbers |
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 The opening time of an attraction can be more than it's the closing time, for those
