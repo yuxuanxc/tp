@@ -40,7 +40,7 @@ Here are the steps to download TrackPad and start using it immediately!
 1. Copy the file to the folder you want to use as the _home folder_ for your TrackPad.
 
 1. Double-click the file to start the app. The GUI similar to the following Figure 1 should appear in a few seconds. Here's how your app should look like!
-    Note how the app contains some sample data. <br><br>
+    Note how the app contains data on Rediscover Singapore attractions. <br><br>
    ![Ui](images/Ui-Labelled.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 1. The Ui of TrackPad</i></sup></div>
 
@@ -294,6 +294,10 @@ The names of itineraries are case sensitive.
 `add-itinerary n/Japan Trip sd/20-12-2020 ed/30-12-2020` will create two different itineraries in the same list.
 </div>
 
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+Multiple itineraries of the same name, start date and end date cannot be added into the list of itineraries.
+</div>
+
 #### 4.3.2 Editing an itinerary: `edit-itinerary`
 
 Edits an itinerary from the current list of itineraries.
@@ -418,7 +422,8 @@ Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITI
 | **DAY_VISITING** 📆 | Day in your itinerary when you plan to visit the attraction |
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-The start time and end time cannot overlap with other attractions in the selected itinerary.
+The start time and end time cannot overlap with other attractions in the selected itinerary. 
+Also, the start and end time does not need to match the opening hours of the attraction, so that you can visit closed attractions.
 </div>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
