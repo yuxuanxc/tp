@@ -34,7 +34,7 @@ public class MarkVisitedAttractionCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks the attraction identified "
             + "by the index number used in the displayed attraction list as visited.\n"
-            + "Parameters: INDEX must be a number between 0 and 2147483647."
+            + "Parameters: INDEX must be a number between 0 and 2147483648.\n"
             + "Example: " + COMMAND_WORD + " 1.";
 
     public static final String MESSAGE_MARKVISITED_ATTRACTION_SUCCESS = "Attraction marked as visited: %1$s.";

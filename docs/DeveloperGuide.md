@@ -17,11 +17,16 @@ is targeted towards developers who want to contribute to and extend our TrackPad
 
 ## **2. Setting up, getting started**
 
-Refer to the guide [_Setting up and getting started_](SettingUp.md).
+Follow the [_link_](SettingUp.md) to get set up your environment and get started creating pull request for TrackPad. 
+
+<!--Refer to the guide [_Setting up and getting started_](SettingUp.md).-->
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## **3. Design**
+
+This section discusses the current design pattern used by TrackPad. It explains the current architecture of TrackPad. 
+Then, there is a more in depth explanation on the design of the Ui, model and storage functionality. 
 
 ### 3.1 Architecture
 
@@ -150,7 +155,34 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 ## **4. Implementation**
+This section describes some noteworthy details on the implementation of core TrackPad feature.
+
 *To be added*
+
+### 3.ia Itinerary Attraction class
+This is a type of `Attraction` that goes into the `List<Day>` that resides in `Itinerary`. 
+
+#### 3.ia.1 Current Implementation
+
+`ItineraryAttraction` extends `Attraction`. It is a `Attraction` with 2 extra fields, `startTime` and `endTime`. 
+It is stored internally as an `List<Day>`. Additionally, it implements the following operations:
+
+
+Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+
+
+#### 3.1.2 Design consideration
+
+##### 3.1.2.1 Aspect: How undo & redo executes
+
+* **Alternative 1 (current choice):** Extends `Attraction`.
+  * Pros: Access to private fields in 
+  * Cons: Hard to implement and May have performance issues in terms of memory usage.
+
+* **Alternative 2:** Use a wrapper class to contain `Attraction`
+`ItineraryAttraction` would contain a field `Attraction` inside.
+  * Pros: Easy to implement. No coupling with `Attraction`. 
+  * Cons: Does not have access to private fields in attraction, would require 
 
 <!--
 This section describes some noteworthy details on how certain features are implemented.
@@ -243,7 +275,9 @@ _{Explain here how the data archiving feature will be implemented}_
 -->
 --------------------------------------------------------------------------------------------------------------------
 
-## **5. Documentation, logging, testing, configuration, dev-ops**
+## **5. Documentation, logging, testing, configuration, dev-ops**\
+
+This section shows the various standards TrackPad adheres to.
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -415,7 +449,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ## **Appendix D: Non-Functional Requirements**
 
-1.  The product should be able to hold up to 1000 tourist attractions without a noticeable sluggishness in performance for typical usage.
+1.  The product should be able to hold up to 1000 tourist attractions/itineraries/days without a noticeable sluggishness in performance for typical usage.
 2.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 3.  The user interface should be intuitive enough for users who are not IT-savvy.
 4.  The product is not required to recommend new tourist attractions which are not inputted by the user.

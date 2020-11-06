@@ -2,30 +2,29 @@
 layout: page
 title: User Guide
 ---
-
+![Logo](images/TrackPad_logo.PNG)
 
 * Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 1. Introduction
+## 1. Introduction (York Tat)
 TrackPad (TP) is a **desktop app for planning your trips and tracking tourist attractions, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a 
-Graphical User Interface (GUI). Our command instructions utilise full words, they sound more natural and verbose than short forms, so it's easier for you to remember. If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
-
-This user guide will show you how to use the commands and features available in TP. TP is built for people who love to travel, 
-and want to collate and store all their itineraries in one single app. We welcome anyone who loves travelling to try out our app.
+Graphical User Interface (GUI). TP is built for people who love to travel, and store all their itineraries in a structured format in one single app. 
+Our commands are **intuitive** and utilise full words, making them sound more natural and verbose than short forms, so it's **easier** for you to remember. 
+If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 2. About This Document
+## 2. About This Document (York Tat)
 Welcome to the TrackPad User Guide!
 
-We at TrackPad believe that tracking tourist attractions and planning your trips should be both **easy and fuss-free**. 
+We at TrackPad believe that tracking your attractions and planning your trips should be both **easy and fuss-free**. 
 We understand how **messy** it can be when it comes to keeping track of your travel itineraries, which can get frustrating.
 
-That's why here at TrackPad, we have come up with a simple yet useful guide to help you get started with using TrackPad.
-Minimal prior technical knowledge is needed in order to use TrackPad and we hope to help you with your travel tracking and planning.
+That's why here at TrackPad, we have come up with a **simple yet useful** guide to help you get started with using TrackPad.
+Minimal prior technical knowledge is needed in order to use TrackPad so try out TrackPad now to make your travel planning **easier and faster**!
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -40,7 +39,7 @@ Here are the steps to download TrackPad and start using it immediately!
 1. Copy the file to the folder you want to use as the _home folder_ for your TrackPad.
 
 1. Double-click the file to start the app. The GUI similar to the following Figure 1 should appear in a few seconds. Here's how your app should look like!
-    Note how the app contains some sample data. <br><br>
+    Note how the app contains data on Rediscover Singapore attractions. <br><br>
    ![Ui](images/Ui-Labelled.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 1. The Ui of TrackPad</i></sup></div>
 
@@ -50,23 +49,27 @@ Here are the steps to download TrackPad and start using it immediately!
 
    * **`list-attraction`** : Lists all tourist attractions added.
 
-   * **`add-attraction`**`n/Singapore Discovery Center l/Singapore, Singapore p/67926188 t/educational a/510 Upper Jurong Rd, 38365` : 
+   * **`add-attraction`**` n/Singapore Discovery Center l/Singapore, Singapore p/67926188 t/educational a/510 Upper Jurong Rd, 38365` : 
    Adds an attraction named `Singapore Discovery Center` to TrackPad.
 
-   * **`delete-attraction`**`3` : Deletes the 3rd attraction shown in the current list.
+   * **`delete-attraction`**` 3` : Deletes the 3rd attraction shown in the current list.
    
-   * **`edit-attraction`**`3 pr/HIGH` : Edits the 3rd attraction shown in the current list, changing its original
+   * **`edit-attraction`**` 3 pr/HIGH` : Edits the 3rd attraction shown in the current list, changing its original
     price range to HIGH.
 
    * **`clear-attraction`** : Deletes all attractions.
 
    * **`exit`** : Exits the app.
 
-1. Refer to [Features](#3-features) below for details of each command.
+1. Refer to [Features](#4-features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## 4. Features
+
+In this section, we will go into the details of all the features available for you to use after
+installing TrackPad. These features are split into 4 subsections, Attraction Features (4.2), 
+Itinerary Features (4.3), Itinerary Attraction Features (4.4) and Miscellaneous Features (4.5).
 
 ### 4.1 Command Format
 
@@ -91,7 +94,7 @@ Here are the steps to download TrackPad and start using it immediately!
 
 </div>
 
-### 4.2 Attraction Features
+### 4.2 Attraction Features (York Tat)
 
 Attractions are the core building blocks of TrackPad and are required to populate your itineraries! 
 The following features are tailored for attractions in TrackPad. 
@@ -107,24 +110,30 @@ Format (All fields): `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION
 [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
 
 Compulsory fields:
-* **ATTRACTION_NAME**: Name of the attraction. 
-* **LOCATION**: Location of the attraction. While any value is possible, we recommend you use the format `CITY, COUNTRY` for a better in-app experience.
+
+|   |   |
+|---|---|
+| **ATTRACTION_NAME** | Contains only letters and numbers and should not be blank |
+| **LOCATION** | Can take any value, we recommend the format: `CITY, COUNTRY` |
 
 Optional fields:
-* **DESCRIPTION**: Description of the attraction, can take in any value. Use this to give a brief summary of the attraction.
-* **PHONE_NUMBER** 📞: Phone number of the attraction, can only contain numbers and be at least 3 digits long, no spaces.
-* **EMAIL** 📧: Email of the attraction in the format `local-part@domain`.
-* **ADDRESS** 🏠: Postal address of the attraction, can take in any value. Use this if the location field is not enough for locating the attraction.
-* **OPENING_HOURS** 🈺: Opening hours of the attraction in the format `opening time - closing time` (both in 24h format).
-* **PRICE_RANGE**: Price range of the attraction. Use `LOW`, `MEDIUM` or `HIGH` to indicate the range.
-* **RATING**: Rating of the attraction. Use a number between `0.0` to `5.0` to indicate your experience of the attraction after visiting it.
-* **VISITED**: Marks whether you have visited the attraction before. Use `TRUE` if you want to mark it as visited, and `FALSE` otherwise. 
-* **TAG**: Adds tags to further describe the attraction. Tag names should only contain letters and numbers.
+
+|   |   |
+|---|---|
+| **DESCRIPTION** | Can take any value |
+| **PHONE_NUMBER** 📞 | Contains only numbers and be at least 3 digits long with no spaces in between |
+| **EMAIL** 📧 | Takes the format `local-part@domain` |
+| **ADDRESS** 🏠 | Postal address of the attraction, can take any value |
+| **OPENING_HOURS** | Takes the format `opening time - closing time`, both in the 24H format `HHMM-HHMM` |
+| **PRICE_RANGE** | Takes one of the following ranges: `LOW`, `MEDIUM` or `HIGH` |
+| **RATING** | Takes a number between `0.0` to `5.0` |
+| **VISITED** | Takes either `TRUE` if visited or `FALSE` otherwise |
+| **TAG** | Contains only letters and numbers |
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 The opening time of an attraction can be more than it's the closing time, for those
 which operates overnight.
-</div><br>
+</div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 An attraction can have any number of tags.
@@ -133,14 +142,14 @@ An attraction can have any number of tags.
 Examples:
 * `add-attraction n/USS a/8 Sentosa Gateway, 098269 l/Singapore, Singapore`
 * `add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com 
-op/1000-1800 pr/MEDMIU r/4.6 v/FALSE`<br><br>
+op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`<br><br>
 ![add_attraction_result](images/addAttraction.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 2. The result of <code>add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com 
-op/1000-1800 pr/MEDMIU r/4.6 v/FALSE</code></i></sup></div>
+op/1000-1800 pr/MEDIUM r/4.6 v/FALSE</code></i></sup></div>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
-Multiple attractions of the same name and locatin cannot be added into the current list of attractions.
-</div><br>
+Multiple attractions of the same name and location cannot be added into the current list of attractions.
+</div>
 
 <div markdown="span" class="alert alert-danger">:warning: **Warning:**
 The names and locations of attractions are case sensitive.
@@ -161,11 +170,15 @@ Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] 
     * Example: `add-attraction n/MBS l/Singapore, Singapore r/4.3` in an attraction list followed by 
     `edit-attraction 1 r/4.6` changes the rating of the 1st attraction in the list from `4.3` to `4.6`.<br>        
     ![result_of_editing_existing_fields](images/editAttraction1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 3. The result of <code>edit-attraction 1 r/4.6</code></i></sup></div><br>
+    <div align="center"><sup style="font-size:100%"><i>Figure 3. The result of <code>edit-attraction 1 r/4.6</code></i></sup></div>
 * New fields can be added to current attractions.
     * Example: `edit-attraction 1 pr/MEDIUM t/hotel` adds the price range of MBS as `MEDIUM` and adds an `hotel` tag.<br><br>
     ![result_of_editing_new_fields](images/editAttraction2.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 4. The result of <code>edit-attraction 1 pr/MEDIUM t/hotel</code></i></sup></div>
+
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+You can use `edit-attraction INDEX prefix/ ` to remove existing optional fields.
+</div>
 
 <div markdown="span" class="alert alert-danger">:warning: **Warning:**
 Editing the tag of an attraction does not add on to its existing tags. Rather, it replaces all existing tags with the 
@@ -275,7 +288,7 @@ Optional fields:
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 The budget for the trip should not exceed 1 trillion.
-</div><br>
+</div>
 
 Examples:
 * `add-itinerary n/Japan holiday sd/15-01-2019 ed/30-01-2019`
@@ -288,6 +301,10 @@ Examples:
 The names of itineraries are case sensitive.
 `add-itinerary n/japan trip sd/20-12-2020 ed/30-12-2020` followed by 
 `add-itinerary n/Japan Trip sd/20-12-2020 ed/30-12-2020` will create two different itineraries in the same list.
+</div>
+
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+Multiple itineraries of the same name, start date and end date cannot be added into the list of itineraries.
 </div>
 
 #### 4.3.2 Editing an itinerary: `edit-itinerary`
@@ -305,6 +322,10 @@ Examples:
 
 ![result_of_editing an itinerary](images/editItinerary.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 11. The result of <code>edit-itinerary 1 sd/06-12-2020</code></i></sup></div>
+
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+You can use `edit-itinerary INDEX prefix/ ` to remove existing optional fields.
+</div>
 
 #### 4.3.3 Deleting an itinerary: `delete-itinerary`
 
@@ -350,7 +371,7 @@ Format: `list-itinerary`<br>
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 `list-itinerary` will work even if there are extra characters behind the command.
 Eg. `list-itinerary abcd` will behave like `list-itinerary`.
-</div><br>
+</div>
 
 #### 4.3.6 Selecting an itinerary: `select-itinerary`
 
@@ -388,8 +409,16 @@ This action is irreversible and should be used with caution.
 Itinerary attractions are attractions added to an itinerary, but with additional start/end time fields.
 These commands deal with attractions that are found in an itinerary.
 
+The table below shows a summary of the commands in this section.
+
+Action | Format, Examples
+--------|------------------
+**Add itinerary attraction** | `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING` <br> e.g. `add-itinerary-attraction 1 st/1400 et/1500 day/5`
+**Edit itinerary attraction** | `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/END_TIME]` <br> e.g. `edit-itinerary-attraction 1 day/2 st/0900 et/1000`
+**Delete itinerary attraction** | `delete-itinerary-attraction INDEX`<br> e.g. `delete-itinerary-attraction 1`
+
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.png)</span>
-<div align='center'><i><sup>Figure 17. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
+<div align='center'><i><sup style="font-size:100%">Figure 17. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
 
 In Figure 16 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown with a yellow border. 
 Attraction 1A is an itinerary attraction. It has all the same fields as Attraction A, but with the additional start/end time field.
@@ -399,22 +428,27 @@ Adds an attraction to the selected itinerary.
 
 Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING`
 
-* **INDEX**: Index of attraction in the current list of attractions.
-* **START_TIME** 🕖: Start time to visit the attraction in the 24H format `HHMM`.
-* **END_TIME** 🕖: End time to visit the attraction in the 24H format `HHMM`.
-* **DAY_VISITING**: Day on which you plan to visit the attraction in the itinerary.
-* The start time and end time cannot overlap with other attractions in the selected itinerary.
-* None of the fields can be left blank.
+| Compulsory fields | Description |
+|---|---|
+| **INDEX** | Index of attraction in the current list of attractions |
+| **START_TIME** 🕖 | Start time to visit the attraction in the 24H format `HHMM` |
+| **END_TIME** 🕖 | End time to visit the attraction in the 24H format `HHMM` |
+| **DAY_VISITING** 📆 | Day in your itinerary when you plan to visit the attraction |
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+The start time and end time cannot overlap with other attractions in the selected itinerary. 
+Also, the start and end time does not need to match the opening hours of the attraction, so that you can visit closed attractions.
+</div>
+
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+The attraction will be added into the selected itinerary.
+</div>
 
 Examples:
 * `add-itinerary-attraction 2 st/1000 et/1600 day/3`
 * `add-itinerary-attraction 1 st/0900 et/1200 day/1` adds `Jurong Bird Park` into day 1 of selected itinerary<br><br>
 ![result for 'find-attraction'](images/addItineraryAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 18. The result of <code>add-itinerary-attraction 1 st/0900 et/1200 day/1</code></i></sup></div>
-
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-The attraction will be added into the selected itinerary.
-</div>
+<div align="center"><sup style="font-size:100%"><i>Figure 18. The result of <code>add-itinerary-attraction 1 st/0900 et/1200 day/1</code></i></sup></div><br>
 
 #### 4.4.2 Editing an attraction from the selected itinerary : `edit-itinerary-attraction`
 Edits an existing attraction in the selected itinerary.
@@ -424,6 +458,10 @@ Format: `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/EN
 * Edits the attraction specified by the `INDEX` and `DAY_VISITING` shown in the itinerary panel.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Some fields can be left empty to remove it. Example, <code>edit-itinerary-attraction 1 day/1 t/ </code> would remove the tag from the attraction.
+</div>
 
 Examples:
 * `edit-itinerary-attraction 3 day/2 st/1500 et/1800` Edits the start time, end time of the third attraction on day 2 of the selected itinerary to  be `1500` and `1800` respectively.
@@ -506,7 +544,7 @@ Action | Format, Examples
 **Edit attraction** | `edit-attraction INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g. `edit 2 n/Singapore Zoo e/zoo@example.com`
 **Delete attraction** | `delete-attraction INDEX`<br> e.g. `delete 3`
 **Mark Visited attraction** | `markVisited-attraction INDEX`<br> e.g. `markVisited-attraction 2`
-**Find attraction** | `find-attration KEYWORD [MORE_KEYWORDS]`<br> e.g. `find Zoo`
+**Find attraction** | `find-attraction KEYWORD [MORE_KEYWORDS]`<br> e.g. `find Zoo`
 **List attractions** | `list-attraction`
 **Clear all attractions** | `clear-attraction`
 

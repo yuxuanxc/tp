@@ -32,7 +32,7 @@ import seedu.address.model.tag.Tag;
 public class ParserUtil {
 
     // todo remove if never used. I think it's never shown as it's always over shadowed by other error.
-    public static final String MESSAGE_INVALID_INDEX = "INDEX must be a number between 0 and 2147483647.";
+    public static final String MESSAGE_INVALID_INDEX = "INDEX must be a number between 0 and 2147483648.";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be

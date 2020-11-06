@@ -146,12 +146,12 @@
 }
 
 .list-cell:filled:even #itineraryAttractionCardPane {
-    -fx-background-color: #FF9CEE;
+    -fx-background-color: #F9E076;
     -fx-background-radius: 15px;
 }
 
 .list-cell:filled:odd #itineraryAttractionCardPane {
-    -fx-background-color: #FFB5E8;
+    -fx-background-color: #EEC565;
     -fx-background-radius: 15px;
 }
 
@@ -163,6 +163,13 @@
     -fx-font-family: "Book Antiqua";
     -fx-font-size: 16px;
     -fx-text-fill: black;
+}
+
+.cell_time_label {
+    -fx-font-family: "Book Antiqua";
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+    -fx-underline: true;
 }
 
 .cell_day_label {

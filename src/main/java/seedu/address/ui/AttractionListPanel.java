@@ -41,7 +41,28 @@ public class AttractionListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new AttractionCard(attraction, getIndex() + 1).getRoot());
+                switch (attraction.getNumOfFilledFields()) {
+                case 0:
+                    setGraphic(new AttractionCard0Field(attraction, getIndex() + 1).getRoot());
+                    break;
+                case 1:
+                    setGraphic(new AttractionCard1Field(attraction, getIndex() + 1).getRoot());
+                    break;
+                case 2:
+                    setGraphic(new AttractionCard2Field(attraction, getIndex() + 1).getRoot());
+                    break;
+                case 3:
+                    setGraphic(new AttractionCard3Field(attraction, getIndex() + 1).getRoot());
+                    break;
+                case 4:
+                    setGraphic(new AttractionCard4Field(attraction, getIndex() + 1).getRoot());
+                    break;
+                case 5:
+                    setGraphic(new AttractionCard5Field(attraction, getIndex() + 1).getRoot());
+                    break;
+                default:
+                    break;
+                }
             }
         }
     }

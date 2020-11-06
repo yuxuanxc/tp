@@ -23,7 +23,11 @@ public class Budget {
     public Budget(String budget) {
         requireNonNull(budget);
         checkArgument(isValidBudget(budget), MESSAGE_CONSTRAINTS);
-        value = String.format("%.2f", Double.parseDouble(budget));
+        if (budget.equals("")) { //Double.parseDouble("") doesn't give correct output
+            value = "";
+        } else {
+            value = String.format("%.2f", Double.parseDouble(budget));
+        }
     }
 
     /**

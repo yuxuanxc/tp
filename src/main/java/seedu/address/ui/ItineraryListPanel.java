@@ -42,7 +42,23 @@ public class ItineraryListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new ItineraryListCard(itinerary, getIndex() + 1).getRoot());
+                switch (itinerary.getNumOfFilledFields()) {
+                case 0:
+                    setGraphic(new ItineraryListCard0Field(itinerary, getIndex() + 1).getRoot());
+                    break;
+                case 1:
+                    setGraphic(new ItineraryListCard1Field(itinerary, getIndex() + 1).getRoot());
+                    break;
+                case 2:
+                    setGraphic(new ItineraryListCard2Field(itinerary, getIndex() + 1).getRoot());
+                    break;
+                case 3:
+                    setGraphic(new ItineraryListCard3Field(itinerary, getIndex() + 1).getRoot());
+                    break;
+                default:
+                    break;
+                }
+
             }
         }
     }
