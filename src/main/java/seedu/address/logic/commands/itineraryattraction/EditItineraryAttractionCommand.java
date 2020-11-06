@@ -1,7 +1,7 @@
 package seedu.address.logic.commands.itineraryattraction;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ATTRACTION;
+//import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ATTRACTION;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITINERARY_DAY;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_START_TIME;
 import static seedu.address.commons.core.Messages.MESSAGE_ITINERARY_NOT_SELECTED;
@@ -47,11 +47,15 @@ public class EditItineraryAttractionCommand extends Command {
     public static final String COMMAND_WORD = "edit-itinerary-attraction";
     public static final String MESSAGE_EDIT_ATTRACTION_SUCCESS = "Edited Attraction: %1$s.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+    public static final String MESSAGE_FIELD_NOT_CHANGED =
+            "Please provide a different value for the field(s) to be edited.";
+
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the itinerary attraction "
-            + "identified by the name of the itinerary attraction displayed in the itinerary."
-            + "Parameters: INDEX must be a number between 0 and 2147483647 " + PREFIX_DAY_VISITING + "DAY VISITING "
+            + "identified by the name of the itinerary attraction displayed in the itinerary.\n"
+            + "Parameters: INDEX must be a number between 0 and 2147483648 " + PREFIX_DAY_VISITING + "DAY VISITING "
             + "[" + PREFIX_START_TIME + "START_TIME] "
-            + "[" + PREFIX_END_TIME + "END_TIME].\n"
+            + "[" + PREFIX_END_TIME + "END_TIME] "
+            + "[" + PREFIX_DAY_VISITING + "DAY].\n"
             + "Example: " + COMMAND_WORD + " 2 " + PREFIX_DAY_VISITING + "2 " + PREFIX_START_TIME + "1000 "
             + PREFIX_DAY_VISITING + "4.";
 
@@ -101,8 +105,12 @@ public class EditItineraryAttractionCommand extends Command {
         ItineraryAttraction editedItineraryAttraction = createEditedItineraryAttraction(itineraryAttractionToEdit,
                 editIaDescriptor);
 
+        //        if (itineraryAttractionToEdit.equals(editedItineraryAttraction)) {
+        //            throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
+        //        }
+
         if (itineraryAttractionToEdit.equals(editedItineraryAttraction)) {
-            throw new CommandException(MESSAGE_DUPLICATE_ATTRACTION);
+            throw new CommandException(MESSAGE_FIELD_NOT_CHANGED);
         }
 
         // new itinerary must comply with start time earlier than end time

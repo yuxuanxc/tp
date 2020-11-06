@@ -82,7 +82,7 @@ class EditItineraryCommandTest {
         EditItineraryCommand editItineraryCommand = new EditItineraryCommand(INDEX_FIRST,
                 new EditItineraryDescriptor());
 
-        String expectedMessage = EditItineraryCommand.MESSAGE_DUPLICATE_ITINERARY;
+        String expectedMessage = EditItineraryCommand.MESSAGE_FIELD_NOT_CHANGED;
 
         assertCommandFailure(editItineraryCommand, model, expectedMessage);
     }
