@@ -25,9 +25,6 @@ Follow the [_link_](SettingUp.md) to get set up your environment and get started
 
 ## **3. Design**
 
-* Table of Contents
-{:toc}
-
 This section discusses the current design pattern used by TrackPad. It explains the current architecture of TrackPad. 
 Then, there is a more in depth explanation on the design of the Ui, model and storage functionality. 
 
