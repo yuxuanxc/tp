@@ -14,16 +14,6 @@ import seedu.address.model.attraction.Attraction;
  */
 public class AttractionCard extends UiPart<Region> {
 
-    private static final String FXML = "AttractionListCard.fxml";
-
-    /**
-     * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
-     * As a consequence, UI elements' variable names cannot be set to such keywords
-     * or an exception will be thrown by JavaFX during runtime.
-     *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
-     */
-
     public final Attraction attraction;
 
     @FXML
@@ -39,8 +29,6 @@ public class AttractionCard extends UiPart<Region> {
 
     //optional fields
     @FXML
-    private Label description;
-    @FXML
     private Label field1;
     @FXML
     private Label field2;
@@ -49,15 +37,16 @@ public class AttractionCard extends UiPart<Region> {
     @FXML
     private Label field4;
     @FXML
+    private Label field5;
+    @FXML
     private FlowPane tags;
 
     /**
-     * Creates a {@code AttractionCode} with the given {@code Attraction} and index to display.
+     * Creates a {@code AttractionCode} with the given {@code FXML}.
      */
-    public AttractionCard(Attraction attraction, int displayedIndex) {
-        super(FXML);
+    public AttractionCard(Attraction attraction, int displayedIndex, String fxml) {
+        super(fxml);
         this.attraction = attraction;
-
         id.setText(displayedIndex + ". ");
 
         name.setText(attraction.getName().fullName);
@@ -65,57 +54,6 @@ public class AttractionCard extends UiPart<Region> {
 
         locale.setText("\uD83C\uDF0E " + attraction.getLocation().value);
         locale.setWrapText(true);
-
-        //optional fields
-        description.setText(attraction.getDescription().value);
-        description.setWrapText(true);
-
-        int fieldsFilled = 0;
-
-        if (!attraction.getAddress().value.isEmpty()) {
-            String address = "\uD83C\uDFE0 " + attraction.getAddress().value;
-            field1.setText(address);
-            field1.setWrapText(true);
-            fieldsFilled++;
-        }
-
-        if (!attraction.getPhone().value.isEmpty()) {
-            String phone = "📞 " + attraction.getPhone().value;
-            if (fieldsFilled == 0) {
-                field1.setText(phone);
-            } else {
-                field2.setText(phone);
-                field2.setWrapText(true);
-            }
-            fieldsFilled++;
-        }
-
-        if (!attraction.getEmail().value.isEmpty()) {
-            String email = "\uD83D\uDCE7 " + attraction.getEmail().value;
-            if (fieldsFilled == 0) {
-                field1.setText(email);
-            } else if (fieldsFilled == 1) {
-                field2.setText(email);
-            } else {
-                field3.setText(email);
-                field3.setWrapText(true);
-            }
-            fieldsFilled++;
-        }
-
-        if (!attraction.getOpeningHours().value.isEmpty()) {
-            String openingHours = "\uD83C\uDE3A " + attraction.getOpeningHours().value;
-            if (fieldsFilled == 0) {
-                field1.setText(openingHours);
-            } else if (fieldsFilled == 1) {
-                field2.setText(openingHours);
-            } else if (fieldsFilled == 2) {
-                field3.setText(openingHours);
-            } else {
-                field4.setText(openingHours);
-                field4.setWrapText(true);
-            }
-        }
 
         if (attraction.getPriceRange().toString() != "") {
             Label priceRange = new Label(attraction.getPriceRange().toString());

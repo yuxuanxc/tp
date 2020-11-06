@@ -81,6 +81,14 @@ public class ItineraryAttraction extends Attraction {
     }
 
     /**
+     * Returns number of filled fields in this itinerary attraction.
+     * @return integer of number of filled fields
+     */
+    public int getNumOfFilledFields() {
+        return super.getNumOfFilledFields();
+    }
+
+    /**
      * Returns true if both ItineraryAttraction has the same start and end time.
      *
      * @param otherItineraryAttraction the ItineraryAttraction to compare with.

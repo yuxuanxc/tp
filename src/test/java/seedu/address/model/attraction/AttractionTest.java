@@ -1,5 +1,6 @@
 package seedu.address.model.attraction;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_EIFFEL;
@@ -17,8 +18,13 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAttractions.MBS;
 import static seedu.address.testutil.TypicalAttractions.SUNTEC;
 
+import java.util.HashSet;
+
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.commons.Description;
+import seedu.address.model.commons.Name;
+import seedu.address.model.tag.Tag;
 import seedu.address.testutil.AttractionBuilder;
 
 public class AttractionTest {
@@ -120,5 +126,48 @@ public class AttractionTest {
         // different tags -> returns false
         editedSuntec = new AttractionBuilder(SUNTEC).withTags(VALID_TAG_SIGHTSEEING).build();
         assertFalse(SUNTEC.equals(editedSuntec));
+    }
+
+    @Test
+    public void getNumOfFilledFieldsTest() {
+        //O fields test
+        Attraction zeroFields = new Attraction(new Name(VALID_NAME_EIFFEL), new Phone(""), new Email(""),
+                new Address(""), new Description(""), new Location(VALID_LOCATION_EIFFEL),
+                new OpeningHours(""), new PriceRange(""), new Rating(""), new Visited(""), new HashSet<Tag>());
+        assertEquals(0, zeroFields.getNumOfFilledFields());
+
+        //1 fields test
+        Attraction oneFields = new Attraction(new Name(VALID_NAME_EIFFEL), new Phone(VALID_PHONE_EIFFEL), new Email(""),
+                new Address(""), new Description(""), new Location(VALID_LOCATION_EIFFEL),
+                new OpeningHours(""), new PriceRange(""), new Rating(""), new Visited(""), new HashSet<Tag>());
+        assertEquals(1, oneFields.getNumOfFilledFields());
+
+        //2 fields test
+        Attraction twoFields = new Attraction(new Name(VALID_NAME_EIFFEL), new Phone(VALID_PHONE_EIFFEL), new Email(""),
+                new Address(VALID_ADDRESS_EIFFEL), new Description(""), new Location(VALID_LOCATION_EIFFEL),
+                new OpeningHours(""), new PriceRange(""), new Rating(""), new Visited(""), new HashSet<Tag>());
+        assertTrue(twoFields.getNumOfFilledFields() == 2);
+
+        //3 fields test
+        Attraction threeFields = new Attraction(new Name(VALID_NAME_EIFFEL), new Phone(VALID_PHONE_EIFFEL),
+                new Email(VALID_EMAIL_EIFFEL), new Address(VALID_ADDRESS_EIFFEL), new Description(""),
+                new Location(VALID_LOCATION_EIFFEL),
+                new OpeningHours(""), new PriceRange(""), new Rating(""), new Visited(""), new HashSet<Tag>());
+        assertTrue(threeFields.getNumOfFilledFields() == 3);
+
+        //4 fields test
+        Attraction fourFields = new Attraction(new Name(VALID_NAME_EIFFEL), new Phone(VALID_PHONE_EIFFEL),
+                new Email(VALID_EMAIL_EIFFEL), new Address(VALID_ADDRESS_EIFFEL),
+                new Description(VALID_DESCRIPTION_EIFFEL), new Location(VALID_LOCATION_EIFFEL),
+                new OpeningHours(""), new PriceRange(""), new Rating(""), new Visited(""), new HashSet<Tag>());
+        assertTrue(fourFields.getNumOfFilledFields() == 4);
+
+        //5 fields test
+        Attraction fiveFields = new Attraction(new Name(VALID_NAME_EIFFEL), new Phone(VALID_PHONE_EIFFEL),
+                new Email(VALID_EMAIL_EIFFEL), new Address(VALID_ADDRESS_EIFFEL),
+                new Description(VALID_DESCRIPTION_EIFFEL), new Location(VALID_LOCATION_EIFFEL),
+                new OpeningHours(VALID_OPENING_HOURS_EIFFEL), new PriceRange(""), new Rating(""), new Visited(""),
+                new HashSet<Tag>());
+        assertTrue(fiveFields.getNumOfFilledFields() == 5);
     }
 }
