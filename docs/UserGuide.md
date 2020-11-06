@@ -94,7 +94,7 @@ Itinerary Features (4.3), Itinerary Attraction Features (4.4) and Miscellaneous 
 
 </div>
 
-### 4.2 Attraction Features
+### 4.2 Attraction Features (York Tat)
 
 Attractions are the core building blocks of TrackPad and are required to populate your itineraries! 
 The following features are tailored for attractions in TrackPad. 
