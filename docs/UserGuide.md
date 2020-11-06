@@ -9,23 +9,22 @@ title: User Guide
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 1. Introduction
+## 1. Introduction (York Tat)
 TrackPad (TP) is a **desktop app for planning your trips and tracking tourist attractions, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a 
-Graphical User Interface (GUI). Our command instructions utilise full words, they sound more natural and verbose than short forms, so it's easier for you to remember. If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
-
-This user guide will show you how to use the commands and features available in TP. TP is built for people who love to travel, 
-and want to collate and store all their itineraries in one single app. We welcome anyone who loves travelling to try out our app.
+Graphical User Interface (GUI). TP is built for people who love to travel, and store all their itineraries in a structured format in one single app. 
+Our commands are **intuitive** and utilise full words, making them sound more natural and verbose than short forms, so it's **easier** for you to remember. 
+If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 2. About This Document
+## 2. About This Document (York Tat)
 Welcome to the TrackPad User Guide!
 
-We at TrackPad believe that tracking tourist attractions and planning your trips should be both **easy and fuss-free**. 
+We at TrackPad believe that tracking your attractions and planning your trips should be both **easy and fuss-free**. 
 We understand how **messy** it can be when it comes to keeping track of your travel itineraries, which can get frustrating.
 
-That's why here at TrackPad, we have come up with a simple yet useful guide to help you get started with using TrackPad.
-Minimal prior technical knowledge is needed in order to use TrackPad and we hope to help you with your travel tracking and planning.
+That's why here at TrackPad, we have come up with a **simple yet useful** guide to help you get started with using TrackPad.
+Minimal prior technical knowledge is needed in order to use TrackPad so try out TrackPad now to make your travel planning **easier and faster**!
 
 --------------------------------------------------------------------------------------------------------------------
 
