@@ -1,5 +1,6 @@
 package seedu.address.logic.commands.itineraryattraction;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ATTRACTION_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITINERARY_DAY;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_START_TIME;
@@ -11,6 +12,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD;
 
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -18,6 +20,7 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.itineraryattraction.EditItineraryAttractionCommand.EditItineraryAttractionDescriptor;
 import seedu.address.model.Model;
@@ -26,8 +29,10 @@ import seedu.address.model.ReadOnlyItineraryAttractionList;
 import seedu.address.model.ReadOnlyItineraryList;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.attraction.Attraction;
+import seedu.address.model.itinerary.Day;
 import seedu.address.model.itinerary.Itinerary;
 import seedu.address.model.itinerary.ItineraryAttraction;
+import seedu.address.model.itinerary.ItineraryTime;
 import seedu.address.testutil.AttractionBuilder;
 import seedu.address.testutil.EditItineraryAttractionDescriptorBuilder;
 import seedu.address.testutil.ItineraryAttractionBuilder;
@@ -161,51 +166,25 @@ public class EditItineraryAttractionCommandTest {
     }
 
     @Test
-    public void execute_fieldSpecified_success() {
+    public void execute_fieldSpecified_success() throws Exception {
         Index index = INDEX_FIRST;
-        Index day = INDEX_THIRD;
+        Index day = INDEX_FIRST;
 
-        // original
-        //        ItineraryAttraction itineraryAttraction = new ItineraryAttractionBuilder().build();
-        //        Itinerary itinerary = new ItineraryBuilder().withItineraryAttraction(itineraryAttraction, day)
-        //        .build();
-        //        EditItineraryAttractionDescriptor descriptor =
-        //                new EditItineraryAttractionDescriptorBuilder().withPhone("12312").build();
-        //        EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(index, day,
-        //        descriptor);
-        //        ModelStubWithItinerarySelected model = new ModelStubWithItinerarySelected(itinerary);
-        //
-        //        // expected
-        //        ItineraryAttraction expectedIa = new ItineraryAttractionBuilder().withPhone("12312").build();
-        //        Itinerary expectedI = new ItineraryBuilder().withItineraryAttraction(expectedIa, day).build();
-        //        ModelStubWithItinerarySelected expectedModel = new ModelStubWithItinerarySelected(expectedI);
-        //
-        //        String expectedMessage = String.format(EditItineraryAttractionCommand
-        //        .MESSAGE_EDIT_ATTRACTION_SUCCESS, expectedIa);
+        // to test
+        EditItineraryAttractionDescriptor tDescriptor = new EditItineraryAttractionDescriptorBuilder()
+                .withEndTime("2359").build();
+        ItineraryAttraction validIa = new ItineraryAttractionBuilder().build();
+        ModelStubWithItinerarySelected model = new ModelStubWithItinerarySelected(new ItineraryBuilder()
+                .withItineraryAttraction(validIa, day).build());
 
-        //        ItineraryAttraction itineraryAttraction = new ItineraryAttractionBuilder().build();
-        //        Itinerary itinerary = new ItineraryBuilder().withItineraryAttraction(itineraryAttraction).build();
-        //        Model model = new ModelManager(getTypicalAttractionList(), getTypicalItineraryList(), new UserPrefs
-        //        ());
-        //        model.setCurrentItinerary(itinerary);
-        //
-        //        ItineraryAttraction editedIa = new ItineraryAttractionBuilder().build();
-        //        EditItineraryAttractionDescriptor descriptor = new EditItineraryAttractionDescriptorBuilder
-        //        (editedIa).build();
-        //        EditItineraryAttractionCommand editIaCommand = new EditItineraryAttractionCommand(index, day,
-        //        descriptor);
-        //
-        //        String expectedMessage = String.format(EditItineraryAttractionCommand
-        //        .MESSAGE_EDIT_ATTRACTION_SUCCESS, editedIa);
-        //
-        //        Model expectedModel = new ModelManager(new AttractionList(model.getAttractionList()),
-        //                new ItineraryList(model.getItineraryList()),
-        //                new UserPrefs());
-        //        Itinerary itinerary =
-        //        expectedModel.setItinerary();
+        CommandResult commandResult = new EditItineraryAttractionCommand(index, day, descriptor).execute(model);
 
+        // expected
+        ItineraryAttraction eItineraryAttraction = new ItineraryAttractionBuilder().withEndTime("2359").build();
 
-        //        assertCommandSuccess(editIaCommand, model, expectedMessage, expectedModel);
+        assertEquals(String.format(EditItineraryAttractionCommand.MESSAGE_EDIT_ATTRACTION_SUCCESS, eItineraryAttraction),
+                commandResult.getFeedbackToUser());
+//        assertEquals(Arrays.asList(validIa), model.getDay(INDEX_FIRST).getItineraryAttractions());
     }
 
     /**
@@ -381,6 +360,10 @@ public class EditItineraryAttractionCommandTest {
         @Override
         public Itinerary getCurrentItinerary() {
             return itinerary;
+        }
+
+        private Day getDay(Index index) {
+            return itinerary.getDay(index);
         }
     }
 }
