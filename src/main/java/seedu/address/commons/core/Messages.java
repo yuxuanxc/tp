@@ -18,6 +18,6 @@ public class Messages {
             + "day visiting already exist in the itinerary.";
     public static final String MESSAGE_TIMING_CLASH = "The timing clashes with another attraction in the itinerary.";
     public static final String MESSAGE_INVALID_ITINERARY_DAY = "Your day does not exist in the itinerary.";
-    public static final String MESSAGE_INVALID_START_TIME = "The start time cannot be later than end time.";
+    public static final String MESSAGE_INVALID_START_TIME = "The start time must be less than the end time.";
 
 }

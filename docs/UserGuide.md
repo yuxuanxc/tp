@@ -171,6 +171,10 @@ Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] 
     ![result_of_editing_new_fields](images/editAttraction2.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 4. The result of <code>edit-attraction 1 pr/MEDIUM t/hotel</code></i></sup></div>
 
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+You can use `edit-attraction INDEX prefix/ ` to remove existing optional fields.
+</div>
+
 <div markdown="span" class="alert alert-danger">:warning: **Warning:**
 Editing the tag of an attraction does not add on to its existing tags. Rather, it replaces all existing tags with the 
 new tags you’re specifying.
@@ -309,6 +313,10 @@ Examples:
 
 ![result_of_editing an itinerary](images/editItinerary.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 11. The result of <code>edit-itinerary 1 sd/06-12-2020</code></i></sup></div>
+
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+You can use `edit-itinerary INDEX prefix/ ` to remove existing optional fields.
+</div>
 
 #### 4.3.3 Deleting an itinerary: `delete-itinerary`
 

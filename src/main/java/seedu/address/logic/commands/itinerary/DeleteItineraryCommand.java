@@ -21,7 +21,7 @@ public class DeleteItineraryCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the itinerary identified by the index number used in the displayed itinerary list.\n"
-            + "Parameters: INDEX must be a number between 0 and 2147483647.\n"
+            + "Parameters: INDEX must be a number between 0 and 2147483648.\n"
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_ITINERARY_SUCCESS = "Deleted itinerary: %1$s.";

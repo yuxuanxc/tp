@@ -34,18 +34,19 @@ public class EditItineraryCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the itinerary identified "
             + "by the index number used in the displayed itinerary list. "
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX must be a number between 0 and 2147483647 "
+            + "Parameters: INDEX must be a number between 0 and 2147483648 "
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_START_DATE + "START_DATE] "
             + "[" + PREFIX_END_DATE + "END_DATE ] "
-            + "[" + PREFIX_BUDGET + "BUDGET ]."
+            + "[" + PREFIX_BUDGET + "BUDGET ].\n"
             + "Example: " + COMMAND_WORD + " 2 n/Singapore journey sd/05-06-2019.";
 
     public static final String MESSAGE_EDIT_ITINERARY_SUCCESS = "Edited Itinerary: %1$s.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_ITINERARY = "This itinerary already exists in TrackPad.";
+    public static final String MESSAGE_DUPLICATE_ITINERARY = "This itinerary already exists in TrackPad, please choose a different name/date";
     public static final String MESSAGE_START_BEFORE_END_DATE = "Start date should come before end date";
+    public static final String MESSAGE_FIELD_NOT_CHANGED = "Please provide a different value for the field(s) to be edited.";
 
     private final Index index;
     private final EditItineraryDescriptor editItineraryDescriptor;
@@ -76,7 +77,7 @@ public class EditItineraryCommand extends Command {
         Itinerary editedItinerary = createEditedItinerary(itineraryToEdit, editItineraryDescriptor);
 
         if (itineraryToEdit.equals(editedItinerary)) {
-            throw new CommandException(MESSAGE_DUPLICATE_ITINERARY);
+            throw new CommandException(MESSAGE_FIELD_NOT_CHANGED);
         }
 
         if (!itineraryToEdit.isSameItinerary(editedItinerary) && model.hasItinerary(editedItinerary)) {
