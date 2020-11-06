@@ -107,7 +107,7 @@ public class MainApp extends Application {
         try {
             itineraryListOptional = storage.readItineraryList();
             if (itineraryListOptional.isEmpty()) {
-                logger.info("Itinerary data file not found. Will be starting with an empty ItineraryList");
+                logger.info("Itinerary data file not found. Will be starting with a sample ItineraryList");
             }
             initialItineraryList = itineraryListOptional.orElseGet(SampleDataUtil::getSampleItineraryList);
         } catch (DataConversionException e) {
