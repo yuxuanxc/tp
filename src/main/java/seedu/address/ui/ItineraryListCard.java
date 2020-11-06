@@ -2,23 +2,22 @@ package seedu.address.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.itinerary.Itinerary;
 
 public class ItineraryListCard extends UiPart<Region> {
 
-    /**
-     * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
-     * As a consequence, UI elements' variable names cannot be set to such keywords
-     * or an exception will be thrown by JavaFX during runtime.
-     *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
-     */
-
     public final Itinerary itinerary;
 
     @FXML
+    private HBox cardPane;
+    @FXML
+    private Label name;
+    @FXML
     private Label id;
+    @FXML
+    private Label startEndDate;
 
     /**
      * Creates a {@code ItineraryCode} with the given {@code Itinerary} and index to display.
@@ -28,6 +27,14 @@ public class ItineraryListCard extends UiPart<Region> {
         this.itinerary = itinerary;
 
         id.setText(displayedIndex + ". ");
+
+        name.setText(itinerary.getName().fullName);
+        name.setWrapText(true);
+
+        startEndDate.setText("\uD83D\uDCC6 " + itinerary.getStartDate().value
+                + " to "
+                + itinerary.getEndDate().value);
+
     }
 
     @Override

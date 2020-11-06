@@ -165,6 +165,13 @@
     -fx-text-fill: black;
 }
 
+.cell_time_label {
+    -fx-font-family: "Book Antiqua";
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+    -fx-underline: true;
+}
+
 .cell_day_label {
     -fx-font-family: "Book Antiqua";
     -fx-font-size: 20px;

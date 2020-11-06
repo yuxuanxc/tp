@@ -2,23 +2,12 @@ package seedu.address.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import seedu.address.model.itinerary.Itinerary;
 
 public class ItineraryListCard2Field extends ItineraryListCard {
 
     private static final String FXML = "ItineraryListCard2Field.fxml";
 
-    public final Itinerary itinerary;
-
-    @FXML
-    private HBox cardPane;
-    @FXML
-    private Label name;
-    @FXML
-    private Label id;
-    @FXML
-    private Label startEndDate;
     @FXML
     private Label field1;
     @FXML
@@ -30,16 +19,6 @@ public class ItineraryListCard2Field extends ItineraryListCard {
      */
     public ItineraryListCard2Field(Itinerary itinerary, int displayedIndex) {
         super(itinerary, displayedIndex, FXML);
-        this.itinerary = itinerary;
-
-        id.setText(displayedIndex + ". ");
-
-        name.setText(itinerary.getName().fullName);
-        name.setWrapText(true);
-
-        startEndDate.setText("\uD83D\uDCC6 " + itinerary.getStartDate().value
-                + " to "
-                + itinerary.getEndDate().value);
 
         int filledFields = 0;
 
@@ -67,25 +46,6 @@ public class ItineraryListCard2Field extends ItineraryListCard {
 
         field1.setWrapText(true);
         field2.setWrapText(true);
-    }
-
-
-    @Override
-    public boolean equals(Object other) {
-        // short circuit if same object
-        if (other == this) {
-            return true;
-        }
-
-        // instanceof handles nulls
-        if (!(other instanceof ItineraryListCard2Field)) {
-            return false;
-        }
-
-        // state check
-        ItineraryListCard2Field card = (ItineraryListCard2Field) other;
-        return id.getText().equals(card.id.getText())
-                && itinerary.equals(card.itinerary);
     }
 
 }
