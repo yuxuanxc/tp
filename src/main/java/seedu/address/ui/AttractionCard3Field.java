@@ -94,7 +94,7 @@ public class AttractionCard3Field extends AttractionCard {
         }
 
         if (!attraction.getOpeningHours().value.isEmpty()) {
-            String openingHours = "\uD83C\uDE3A " + attraction.getOpeningHours().value;
+            String openingHours = "\uD83D\uDD56 " + attraction.getOpeningHours().value;
             if (fieldsFilled == 0) {
                 field1.setText(openingHours);
             } else if (fieldsFilled == 1) {

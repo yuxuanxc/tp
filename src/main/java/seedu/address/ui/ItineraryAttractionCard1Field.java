@@ -57,9 +57,11 @@ public class ItineraryAttractionCard1Field extends ItineraryAttractionCard {
         locale.setText("\uD83C\uDF0E " + itineraryAttraction.getLocation().value);
         locale.setWrapText(true);
 
-        startEndTime.setText("\uD83D\uDD56 " + itineraryAttraction.getStartTime().toString()
-                + "-"
-                + itineraryAttraction.getEndTime().toString());
+        startEndTime.setText("["
+                + itineraryAttraction.getStartTime().toString()
+                + " - "
+                + itineraryAttraction.getEndTime().toString()
+                + "]");
         startEndTime.setWrapText(true);
 
         //optional fields
@@ -80,7 +82,7 @@ public class ItineraryAttractionCard1Field extends ItineraryAttractionCard {
             field1.setText(email);
             field1.setWrapText(true);
         } else if (!itineraryAttraction.getOpeningHours().value.isEmpty()) {
-            String openingHours = "\uD83C\uDE3A " + itineraryAttraction.getOpeningHours().value;
+            String openingHours = "\uD83D\uDD56 " + itineraryAttraction.getOpeningHours().value;
             field1.setText(openingHours);
             field1.setWrapText(true);
         }

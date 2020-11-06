@@ -55,9 +55,11 @@ public class ItineraryAttractionCard0Field extends ItineraryAttractionCard {
         locale.setText("\uD83C\uDF0E " + itineraryAttraction.getLocation().value);
         locale.setWrapText(true);
 
-        startEndTime.setText("\uD83D\uDD56 " + itineraryAttraction.getStartTime().toString()
-                + "-"
-                + itineraryAttraction.getEndTime().toString());
+        startEndTime.setText("["
+                + itineraryAttraction.getStartTime().toString()
+                + " - "
+                + itineraryAttraction.getEndTime().toString()
+                + "]");
         startEndTime.setWrapText(true);
 
         if (itineraryAttraction.getPriceRange().toString() != "") {

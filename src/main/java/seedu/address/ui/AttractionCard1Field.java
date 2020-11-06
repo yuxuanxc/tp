@@ -73,7 +73,7 @@ public class AttractionCard1Field extends AttractionCard {
             field1.setText(email);
             field1.setWrapText(true);
         } else if (!attraction.getOpeningHours().value.isEmpty()) {
-            String openingHours = "\uD83C\uDE3A " + attraction.getOpeningHours().value;
+            String openingHours = "\uD83D\uDD56 " + attraction.getOpeningHours().value;
             field1.setText(openingHours);
             field1.setWrapText(true);
         }
