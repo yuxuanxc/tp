@@ -29,7 +29,6 @@
         <Label fx:id="name" styleClass="cell_big_label" text="\$first" />
       </HBox>
       <FlowPane fx:id="tags" />
-      <Label fx:id="description" styleClass="cell_small_label" text="\$description" />
       <Label fx:id="locale" styleClass="cell_small_label" />
          <GridPane.margin>
             <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />

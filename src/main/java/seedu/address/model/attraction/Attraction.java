@@ -121,6 +121,9 @@ public class Attraction {
     public int getNumOfFilledFields() {
         int filledFields = 0;
 
+        if (!getDescription().value.isEmpty()) {
+            filledFields++;
+        }
         if (!getAddress().value.isEmpty()) {
             filledFields++;
         }

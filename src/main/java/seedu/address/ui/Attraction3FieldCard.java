@@ -1,12 +1,12 @@
 package seedu.address.ui;
 
+import java.util.Comparator;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import seedu.address.model.attraction.Attraction;
-
-import java.util.Comparator;
 
 public class Attraction3FieldCard extends AttractionCard {
 
@@ -35,15 +35,11 @@ public class Attraction3FieldCard extends AttractionCard {
 
     //optional fields
     @FXML
-    private Label description;
-    @FXML
     private Label field1;
     @FXML
     private Label field2;
     @FXML
     private Label field3;
-    @FXML
-    private Label field4;
     @FXML
     private FlowPane tags;
 
@@ -64,8 +60,6 @@ public class Attraction3FieldCard extends AttractionCard {
         locale.setWrapText(true);
 
         //optional fields
-        description.setText(attraction.getDescription().value);
-        description.setWrapText(true);
 
         int fieldsFilled = 0;
 
@@ -95,7 +89,6 @@ public class Attraction3FieldCard extends AttractionCard {
                 field2.setText(email);
             } else {
                 field3.setText(email);
-                field3.setWrapText(true);
             }
             fieldsFilled++;
         }
@@ -106,13 +99,26 @@ public class Attraction3FieldCard extends AttractionCard {
                 field1.setText(openingHours);
             } else if (fieldsFilled == 1) {
                 field2.setText(openingHours);
-            } else if (fieldsFilled == 2) {
-                field3.setText(openingHours);
             } else {
-                field4.setText(openingHours);
-                field4.setWrapText(true);
+                field3.setText(openingHours);
+            }
+            fieldsFilled++;
+        }
+
+        if (!attraction.getDescription().value.isEmpty()) {
+            String description = attraction.getDescription().value;
+            if (fieldsFilled == 0) {
+                field1.setText(description);
+            } else if (fieldsFilled == 1) {
+                field2.setText(description);
+            } else {
+                field3.setText(description);
             }
         }
+
+        field1.setWrapText(true);
+        field2.setWrapText(true);
+        field3.setWrapText(true);
 
         if (attraction.getPriceRange().toString() != "") {
             Label priceRange = new Label(attraction.getPriceRange().toString());

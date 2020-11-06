@@ -18,8 +18,8 @@ public class AttractionCard extends UiPart<Region> {
     /**
      * Creates a {@code AttractionCode} with the given {@code FXML}.
      */
-    public AttractionCard(Attraction attraction, int displayedIndex, String FXML) {
-        super(FXML);
+    public AttractionCard(Attraction attraction, int displayedIndex, String fxml) {
+        super(fxml);
         this.attraction = attraction;
         id.setText(displayedIndex + ". ");
     }

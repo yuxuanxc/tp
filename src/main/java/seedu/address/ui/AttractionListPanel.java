@@ -57,8 +57,12 @@ public class AttractionListPanel extends UiPart<Region> {
                 case 4:
                     setGraphic(new Attraction4FieldCard(attraction, getIndex() + 1).getRoot());
                     break;
+                case 5:
+                    setGraphic(new Attraction5FieldCard(attraction, getIndex() + 1).getRoot());
+                    break;
+                default:
+                    break;
                 }
-
             }
         }
     }
