@@ -183,7 +183,7 @@ which operates overnight.
 An attraction can have any number of tags.
 </div>
 
-Examples:
+For example:
 * `add-attraction n/USS a/8 Sentosa Gateway, 098269 l/Singapore, Singapore`
 * `add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com
 op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`<br><br>
@@ -302,8 +302,19 @@ Format: `clear-attraction`
 This action is irreversible and should be used with caution.
 </div><br>
 
-![result for 'clear-attraction'](images/userguideimages/clearAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 9. The result of <code>clear-attraction</code></i></sup></div>
+Example:
+
+You want to delete all your attractions and start with an empty list of attractions. 
+
+1. Enter `clear-attraction` into the app. 
+
+    ![result_of_clearing all attractions](images/userguideimages/clearItinerary1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 9a. Before entering <code>clear-attraction</code></i></sup></div>
+
+2. Note how all your attractions are now deleted. 
+
+    ![result_of_clearing all_attractions](images/userguideimages/clearItinerary2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 9b. After entering <code>clear-attraction</code></i></sup></div>
 
 ### 4.3 Itinerary Features
 
