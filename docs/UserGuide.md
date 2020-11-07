@@ -429,8 +429,8 @@ Action | Format, Examples
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.png)</span>
 <div align='center'><i><sup style="font-size:100%">Figure 17. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
 
-In Figure 16 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown with a yellow border. 
-Attraction 1A is an itinerary attraction. It has all the same fields as Attraction A, but with the additional start/end time field.
+In Figure 17 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown on the right of the image with a red border.
+Attractions inside `Selected Itinerary` is an itinerary attraction. Notice both copy of `Jurong Bird Park` has almost the same fields, but with the addition of a start/end time field.
 
 #### 4.4.1 Adding an attraction to the selected itinerary: `add-itinerary-attraction`
 Adds an attraction to the selected itinerary.
@@ -454,14 +454,23 @@ The attraction will be added into the selected itinerary.
 </div>
 
 Examples:
-* `add-itinerary-attraction 2 st/1000 et/1600 day/3`
-* `add-itinerary-attraction 1 st/0900 et/1200 day/1` adds `Jurong Bird Park` into day 1 of selected itinerary<br><br>
-![result for 'find-attraction'](images/addItineraryAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 18. The result of <code>add-itinerary-attraction 1 st/0900 et/1200 day/1</code></i></sup></div><br>
+// * `add-itinerary-attraction 2 st/1000 et/1600 day/3`
+// * `add-itinerary-attraction 1 st/0900 et/1200 day/1` adds `Jurong Bird Park` into day 1 of selected itinerary<br><br>
+// ![result for 'find-attraction'](images/addItineraryAttraction.png)
+// <div align="center"><sup style="font-size:100%"><i>Figure 18. The result of <code>add-itinerary-attraction 1 st/0900 et/1200 day/1</code></i></sup></div><br>
 
 For example:
 
-1.  types in some example
+1. Look on the left side of the image below. You want to add `Night Safari` to your `Selected Itinerary`.
+![what is this text for?](images/AddItineraryAttraction1.png)
+
+1. You type `add-itinerary-attraction 2 day/2 st/1000 et/1100`, where you want to visit it on day 2, from `1000` to `1100` and press <kbd>Enter</kbd> to add it.
+![what is this text for?](images/AddItineraryAttraction2.png)
+
+1. `Night Safari` has been added into your `Selected Itineray`.
+![what is this text for?](images/AddItineraryAttraction3.png)
+
+
 
 #### 4.4.2 Editing an attraction from the selected itinerary : `edit-itinerary-attraction`
 Edits an existing attraction in the selected itinerary.
