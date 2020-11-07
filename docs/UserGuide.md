@@ -462,9 +462,9 @@ For example:
 1. `Night Safari` has been added into your `Selected Itineray`.
 ![what is this text for?](images/AddItineraryAttraction3.png)
 
-Try these examples too!
-    * `add-itinerary-attraction 3 st/1000 et/1600 day/3`
-    * `add-itinerary-attraction 4 st/0900 et/1200 day/1`
+Try these other examples too!
+    * `add-itinerary-attraction 3 st/1000 et/1600 day/3` Adds the third item from Attractions list into `Day 3` of the `Selected Itinerary`.
+    * `add-itinerary-attraction 5 st/0900 et/1200 day/4` Adds the fifth item from Attractions lists into `Day 4` of the `Selected Itinerary`.
     
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The start time and end time cannot overlap with other attractions in the selected itinerary. 
@@ -484,20 +484,31 @@ Format: `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/EN
 * Edits the attraction specified by the `INDEX` and `DAY_VISITING` shown in the itinerary panel.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-Some fields can be left empty to remove it. Example, <code>edit-itinerary-attraction 1 day/1 t/ </code> would remove the tag from the attraction.
-</div>
-
 <!--
 Examples:
-* `edit-itinerary-attraction 3 day/2 st/1500 et/1800` Edits the start time, end time of the third attraction on day 2 of the selected itinerary to  be `1500` and `1800` respectively.
-* `edit-itinerary-attraction 1 day/1 st/1500` edits the starting time to visit the attraction`Jurong Bird Park`<br><br>
+* `edit-itinerary-attraction 3 day/3 st/1500 et/1800` Edits the start time, end time of the third attraction on day 2 of the selected itinerary to  be `1500` and `1800` respectively.
+* `edit-itinerary-attraction 1 day/4 st/1500` edits the starting time to visit the attraction`Jurong Bird Park`<br><br>
 ![result for 'find-attraction'](images/editItineraryAttraction.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 19. The result of <code>edit-itinerary-attraction 1 day/1 st/1500</code></i></sup></div>
 -->
 
+For example:
 
+1. You made a mistake by adding the `START_TIME` of `Night Safari` as `1000`, but plans to visit it at night instead. (singlish????)
+![what is this text for?](images/EditItineraryAttraction1.png)
+
+1. You type `edit-itinerary-attraction 1 day/2 st/1900 et/2300`, and press <kbd>Enter</kbd> to edit it.
+![what is this text for?](images/EditItineraryAttraction2.png)
+
+1. Scroll down the `Selected Itinerary` and notice the `START_TIME` of `Night Safari` has been changed to `1900 - 2300`.
+![what is this text for?](images/EditItineraryAttraction3.png)
+
+Try these other examples too!
+    * `edit-itinerary-attraction 1 day/2 et/2200` Edits the `END_TIME` of the attraction first attraction in `Day 2` to be `2200`    
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Some fields can be left empty to remove it. Example, <code>edit-itinerary-attraction 1 day/1 t/ </code> would remove the tag from the attraction.
+</div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 Only the INDEX and day/DAY_VISITING is required to identify the field to edit.
