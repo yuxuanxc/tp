@@ -35,6 +35,7 @@ Minimal prior technical knowledge is needed in order to use TrackPad so try out 
 --------------------------------------------------------------------------------------------------------------------
 
 <div style="page-break-after: always;"></div>
+
 ## 3. Getting Started (Robin)
 
 Here are the steps to download TrackPad and start using it immediately!
@@ -329,12 +330,12 @@ Let's say you want to add an itinerary for a trip to Europe with your friends.
  
 1. Enter `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000` into the app. <br>
 
-   ![before_adding an itinerary](images/beforeAddItinerary.png)
+   ![before_adding an itinerary](images/userguideimages/addItinerary1.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 10a. Before entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
 
 2. Note how your new itinerary appears in the `Itineraries` section of the app. 
 
-   ![after_adding an itinerary](images/afterAddItinerary.png)
+   ![after_adding an itinerary](images/userguideimages/addItinerary2.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 10b. After entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
  
 <div markdown="span" class="alert alert-danger">:warning: **Warning:**
@@ -363,12 +364,12 @@ Let's say after adding a second itinerary that starts on `01-12-2020`, you want 
 
 1. Enter `edit-itinerary 2 sd/06-12-2020` into the app.
 
-    ![result_of_editing an itinerary](images/editItinerary.png)
+    ![result_of_editing an itinerary](images/userguideimages/editItinerary1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 11a. Before entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div>
 
 2. Note how the start date of the second itinerary has changed from `01-12-2020` to `06-12-2020`.
 
-    ![result_of_editing an itinerary](images/editItinerary.png)
+    ![result_of_editing an itinerary](images/userguideimages/editItinerary2.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 11b. After entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
@@ -389,13 +390,13 @@ Let's say you do not want to store the first itinerary in the app anymore, and y
 
 1. Enter `delete-itinerary 1` into the app. 
 
-    ![result_of_deleting an itinerary](images/deleteItinerary.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 12. Before entering <code>delete-itinerary 1</code></i></sup></div>
+    ![result_of_deleting an itinerary](images/userguideimages/deleteItinerary1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 12a. Before entering <code>delete-itinerary 1</code></i></sup></div>
 
 2. Note how your first itinerary has been deleted, and there is now one less itinerary. 
 
-    ![result_of_deleting an itinerary](images/deleteItinerary.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 12. After entering <code>delete-itinerary 1</code></i></sup></div>
+    ![result_of_deleting an itinerary](images/userguideimages/deleteItinerary2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 12b. After entering <code>delete-itinerary 1</code></i></sup></div>
 
 
 #### 4.3.4 Finding an itinerary: `find-itinerary`
@@ -414,13 +415,13 @@ Example:
 Let's say you want to look for all the itineraries that contain the keyword `Europe`.
 
 1. Enter `find-itinerary Europe`
-    ![result_of_finding an itinerary](images/findItinerary.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 13. The result of <code>find-itinerary Japan</code></i></sup></div>
+    ![result_of_finding an itinerary](images/userguideimages/findItinerary1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 13a. Before entering <code>find-itinerary Europe</code></i></sup></div>
 
 2. Note how only the itinerary with `Europe` in its name is displayed. 
 
-    ![result_of_finding an itinerary](images/findItinerary.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 13. The result of <code>find-itinerary Japan</code></i></sup></div>
+    ![result_of_finding an itinerary](images/userguideimages/findItinerary2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 13b. After entering <code>find-itinerary Europe</code></i></sup></div>
 
 
 #### 4.3.5 Listing all itineraries: `list-itinerary`
@@ -436,13 +437,13 @@ After finding an itinerary, you want to go back to seeing all your itineraries.
 
 1. Enter `list-itinerary` into the app. 
 
-    ![result_of_listing itineraries](images/listItinerary.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 14. The result of <code>list-itinerary</code></i></sup></div>
+    ![result_of_listing itineraries](images/userguideimages/listItinerary1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 14a. Before entering <code>list-itinerary</code></i></sup></div>
 
 2. Note how all your itineraries are displayed again.
 
-    ![result_of_listing itineraries](images/listItinerary.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 14. The result of <code>list-itinerary</code></i></sup></div>
+    ![result_of_listing itineraries](images/userguideimages/listItinerary2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 14b. After entering <code>list-itinerary</code></i></sup></div>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 `list-itinerary` will work even if there are extra characters behind the command.
@@ -469,13 +470,13 @@ Let's say you want to view the attractions you want to visit in your first itine
 
 1. Enter `select-itinerary 1` into the app. 
 
-    ![result_of_selecting itinerary](images/selectItinerary.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 15. The result of <code>select-itinerary 1</code></i></sup></div>
+    ![result_of_selecting itinerary](images/userguideimages/selectItinerary1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 15a. Before entering <code>select-itinerary 1</code></i></sup></div>
 
 2. Note how the itinerary panel has changed to show a detailed view of the attractions in the itinerary. 
 
-    ![result_of_selecting itinerary](images/selectItinerary.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 15. The result of <code>select-itinerary 1</code></i></sup></div>
+    ![result_of_selecting itinerary](images/userguideimages/selectItinerary2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 15b. After entering <code>select-itinerary 1</code></i></sup></div>
     
 #### 4.3.7 Clearing all itineraries : `clear-itinerary`
 
@@ -494,13 +495,13 @@ You want to delete all your itineraries, and start with an empty list of itinera
 
 1. Enter `clear-itinerary` into the app. 
 
-    ![result_of_clearing all itineraries](images/clearItinerary.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 16. The result of <code>clear-itinerary</code></i></sup></div>
+    ![result_of_clearing all itineraries](images/userguideimages/clearItinerary1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 16. Before entering <code>clear-itinerary</code></i></sup></div>
 
 2. Note how all your itineraries are now deleted. 
 
-    ![result_of_clearing all itineraries](images/clearItinerary.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 16. The result of <code>clear-itinerary</code></i></sup></div>
+    ![result_of_clearing all itineraries](images/userguideimages/clearItinerary2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 16. After entering <code>clear-itinerary</code></i></sup></div>
 
 ### 4.4 Itinerary Attraction Features (Yeh Yu Chun)
 Itinerary attractions are attractions added to an itinerary, but with additional start/end time fields. These commands deal with attractions that are found in an itinerary.
