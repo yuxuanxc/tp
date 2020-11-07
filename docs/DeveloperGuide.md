@@ -30,7 +30,7 @@ Then, there is a more in depth explanation on the design of the Ui, model and st
 
 ### 3.1 Architecture
 
-<span style="display:block;align:center">![Architecture Class Diagram](images/ArchitectureDiagram.png)</span>
+<span style="display:block;align:center">![Architecture Class Diagram](images/devguideimages/ArchitectureDiagram.png)</span>
 <div align="center"><sup style="font-size:100%"><i>Figure 1 Architecture Class Diagram</i></sup></div><br>
 
 Figure 1 explains the high-level design of the App. Given below is a quick overview of each component.
@@ -59,14 +59,14 @@ Each of the four components,
 * defines its *API* in an `interface` with the same name as the Component.
 * exposes its functionality using a concrete `{Component Name}Manager` class (which implements the corresponding API `interface` mentioned in the previous point.
 
-![Class Diagram of the Logic Component](images/LogicClassDiagram.png)
+![Class Diagram of the Logic Component](images/devguideimages/LogicClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 2 Class Diagram of the Logic Component</i></sup></div><br>
 
 For example, the `Logic` component (seen from Figure 2 above) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
 
 **How the architecture components interact with each other**
 
-![Sequence Diagram of the Various Components](images/ArchitectureSequenceDiagram.png)
+![Sequence Diagram of the Various Components](images/devguideimages/ArchitectureSequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 3 Sequence Diagram of the various components</i></sup></div><br>
 
 Figure 3 above shows how the components interact with each other for the scenario where the user issues the command `delete-attraction 1`.
@@ -75,7 +75,7 @@ The sections below give more details of each component.
 
 ### 3.2 UI component
 
-![Structure of the UI Component](images/UiClassDiagram.png)
+![Structure of the UI Component](images/devguideimages/UiClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 4 Structure of the Ui Component, Ui Class Diagram</i></sup></div><br>
 
 **API** :
@@ -94,7 +94,7 @@ This design is similar to the Architectural design of TrackPad, whereby differen
 
 ### 3.3 Logic
 
-![Structure of the Logic Component](images/LogicClassDiagram.png)
+![Structure of the Logic Component](images/devguideimages/LogicClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 5 Structure of the Logic Component, Logic Class Diagram</i></sup></div><br>
 
 **API** :
@@ -109,7 +109,7 @@ This design is similar to the Architectural design of TrackPad, whereby differen
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete-attraction 1")` API call.
 
-![Interactions Inside the Logic Component for the `delete-attraction 1` Command](images/DeleteSequenceDiagram.png)
+![Interactions Inside the Logic Component for the `delete-attraction 1` Command](images/devguideimages/DeleteSequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 6 Interactions inside the Logic Component for the `delete-attraction 1` Command</i></sup></div><br>
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
@@ -117,7 +117,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 ### 3.4 Model
 
-![Structure of the Model Component](images/ModelClassDiagram.png)
+![Structure of the Model Component](images/devguideimages/ModelClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 7 Structure of the Model Component, Model Class Diagram</i></sup></div><br>
 
 **API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
@@ -133,13 +133,13 @@ The `Model` component shown in Figure 7,
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.</div><br> 
 
-![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
+![BetterModelClassDiagram](images/devguideimages/BetterModelClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 8 Structure of an alternative Model Component, Alternative Model Class Diagram</i></sup></div><br>
 
 
 ### 3.5 Storage
 
-![Structure of the Storage Component](images/StorageClassDiagram.png)
+![Structure of the Storage Component](images/devguideimages/StorageClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 9 Structure of the Storage Component, Storage Class Diagram</i></sup></div><br>
 
 **API** : [`Storage.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
