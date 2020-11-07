@@ -130,12 +130,10 @@ The `Model` component shown in Figure 7,
 * exposes two unmodifiable `ObservableList<Attraction>` and `ObservableList<Itinerary>` that can be 'observed' e.g. the UI can be bound to the lists so that the UI automatically updates when the data in the lists change.
 * does not depend on any of the other three components.
 
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.</div><br> 
-
+< markdown="span" class="alert alert-info">:information_source: **Note:** 
+An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.<br>
 ![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 8 Structure of an alternative Model Component, Alternative Model Class Diagram</i></sup></div><br>
-
+<div align="center"><sup style="font-size:100%"><i>Figure 8 Structure of an alternative Model Component, Alternative Model Class Diagram</i></sup></div></div><br>
 
 ### 3.5 Storage
 
@@ -154,6 +152,7 @@ The `Storage` component shown in Figure 9,
 Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
+
 ## **4. Implementation**
 This section describes some noteworthy details on the implementation of core TrackPad feature.
 
@@ -275,7 +274,7 @@ _{Explain here how the data archiving feature will be implemented}_
 -->
 --------------------------------------------------------------------------------------------------------------------
 
-## **5. Documentation, logging, testing, configuration, dev-ops**\
+## **5. Documentation, logging, testing, configuration, dev-ops**
 
 This section shows the various standards TrackPad adheres to.
 
@@ -344,69 +343,95 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `TrackPad` and the **Actor** is the `user`, unless specified otherwise)
       
-**Use case: Add a tourist attraction**
+**Use case: UC01 - Add a tourist attraction**
 
 **MSS**
 
-1.  User requests to add a tourist attraction
-2.  TrackPad adds the tourist attraction
+1. User requests to add a tourist attraction.
+2. User provides the fields of the tourist attraction to be added.
+3. TrackPad adds the tourist attraction and shows a success message.
 
-    Use case ends.
+   Use case ends.
       
 **Extensions**
 
-* 2a. The given format for tourist attraction is invalid.
+* 2a. A field provided for the tourist attraction is invalid.
 
     * 2a1. TrackPad shows an error message.
     
-      Use case resumes at step 1.
+      Use case resumes at step 2.
 
-**Use case: Delete a tourist attraction**
+* 2b. The tourist attraction to be added already exists in the list of attractions.
+
+    * 2b1. TrackPad shows an error message.
+    
+      Use case ends.
+
+**Use case: UC02 - Edit a tourist attraction**
 
 **MSS**
 
-1.  User requests to list tourist attractions
-2.  TrackPad shows a list of tourist attractions
-3.  User requests to delete a specific tourist attraction in the list
-4.  TrackPad deletes the tourist attraction
+1. User requests to edit a tourist attraction.
+2. User provides the index of the tourist attraction to be edited.
+3. User provides the fields of the tourist attraction to be edited.
+4. TrackPad edits the fields and shows a success message.
 
-    Use case ends.
+   Use case ends.
     
 **Extensions**
 
-* 2a. The list is empty.
-      
-  Use case ends.
-      
-* 2b. The format is invalid. 
-      
-  Use case ends.
-  
-* 3a. The given index is invalid.
+* 2a. The index provided does not exist in the attractions list.
+
+    * 2a1. TrackPad shows an error message.
+    
+      Use case resumes at step 2.
+
+* 3a. The new field provided for the tourist attraction is invalid.
 
     * 3a1. TrackPad shows an error message.
     
-      Use case resumes at step 2.
+      Use case resumes as step 3.
       
-**Use case: Find a tourist attraction**
+* 3b. The new field provided for the tourist attraction is the same as the current one.
+
+    * 3b1. TrackPad shows an error message.
+    
+      Use case ends.
+
+**Use case: UC03 - Delete a tourist attraction**
 
 **MSS**
 
-1.  User requests to find a tourist attraction
-2.  TrackPad shows a list of tourist attractions matching the keyword entered
+1. User requests to delete a tourist attraction.
+2. User provides the index of the tourist attraction to be deleted.
+3. TrackPad deletes the tourist attraction and shows a success message.
 
-    Use case ends.
+   Use case ends.
+    
+**Extensions**
+  
+* 2a. The index provided does not exist in the attractions list.
+
+    * 2a1. TrackPad shows an error message.
+    
+      Use case resumes at step 2.
+      
+**Use case: UC05 - Find a tourist attraction**
+
+**MSS**
+
+1. User requests to find a tourist attraction.
+2. User provides the keyword he is looking for.
+3. TrackPad shows a list of all the tourist attractions that match the keyword.
+
+   Use case ends.
     
 **Extensions**
 
-* 2a. The list is empty.
+* 3a. There are no tourist attractions that matches the keyword.
 
-  Use case ends.
+    * 3a1. TrackPad shows an empty list of attractions.
     
-* 3a. The given keyword is not found.
-
-    * 3a1. TrackPad shows an error.
-
       Use case ends.
 
 **Use case: List all tourist attractions**
@@ -477,35 +502,80 @@ testers are expected to do more *exploratory* testing.
 
 ### F1 Launch and shutdown
 
-1. Initial launch
+1. Initial launch.
 
-   1. Download the jar file and copy into an empty folder
+   1. Download the jar file and copy into an empty folder.
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-1. Saving window preferences
+2. Saving window preferences.
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+   2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
+### F2 Adding a tourist attraction
 
-### F2 Deleting an attraction
+1. Adding a tourist attraction.
 
-1. Deleting an attraction while all attractions are being shown
+   1. Prerequisites: No attraction in TrackPad has both the name 'Zoo' and the location 'Singapore'.
+   
+   2. Test case: `add-attraction n/Zoo l/Singapore`<br>
+      Expected: New attraction added to the bottom of the attractions list. 
+      Details of the added attraction shown in the status message.
 
-   1. Prerequisites: List all attractions using the `list` command. Multiple attractions in the list.
+   3. Test case: `add-attraction n/Zoo`<br>
+      Expected: No attraction added. Error details shown in the status message.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-
-   1. Test case: `delete 0`<br>
-      Expected: No attraction is deleted. Error details shown in the status message. Status bar remains the same.
-
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   4. Other incorrect add-attraction commands to try: `add-attraction n/Zoo l/Singapore p/+6591234567`, 
+      `add-attraction n/NAME l/LOCATION` (where both the NAME and LOCATION are the same as another attraction in TrackPad)<br>
       Expected: Similar to previous.
       
+### F3 Editing a tourist attraction
+
+1. Editing a tourist attraction while all the attractions in TrackPad are shown in the attractions list.
+
+   1. Prerequisites: List all attractions using the `list-attraction` command.
+
+   2. Test case: `edit-attraction 1 p/999`<br>
+      Expected: Phone number of first attraction edited to 999. Details of the edited attraction shown in the status message.
+
+   3. Test case: `edit-attraction 0 p/999`<br>
+      Expected: No attraction edited. Error details shown in the status message.
+
+   4. Other incorrect edit-attraction commands to try: `edit-attraction 1 r/5.1`,
+      `edit-attraction 1 n/NAME` (where NAME is the same as the current name of the first attraction)<br>
+      Expected: Similar to previous.
+      
+### F4 Deleting a tourist attraction
+
+1. Deleting a tourist attraction while all the attractions in TrackPad are shown in the attractions list.
+
+   1. Prerequisites: List all attractions using the `list-attraction` command.
+
+   2. Test case: `delete-attraction 1`<br>
+      Expected: First attraction deleted from the list. Details of the deleted attraction shown in the status message.
+
+   3. Test case: `delete-attraction 0`<br>
+      Expected: No attraction deleted. Error details shown in the status message.
+
+   4. Other incorrect delete-attraction commands to try: `delete-attraction`, 
+      `delete-attraction x` (where x is larger than the list size)<br>
+      Expected: Similar to previous.
+      
+### F6 Finding a tourist attraction
+
+1. Finding a tourist attraction while all the attractions in TrackPad are shown in the attractions list.
+
+   1. Prerequisites: List all attractions using the `list-attraction` command. Attractions Jurong Bird Park and Snow City are in the attractions list.
+
+   2. Test case: `find-attraction jurong`<br>
+      Expected: Attractions Jurong Bird Park and Snow City shown in the attractions list. Number of attractions listed shown in the status message.
+
+   3. Test case: `find-attraction #$%`<br>
+      Expected: Empty attractions list shown. "0 attractions listed!" shown in the status message.
+            
 <!--
 ### F3 Saving data
 
