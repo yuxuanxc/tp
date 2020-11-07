@@ -411,9 +411,12 @@ This action is irreversible and should be used with caution.
 ![result_of_clearing all itineraries](images/clearItinerary.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 16. The result of <code>clear-itinerary</code></i></sup></div>
 
-### 4.4 Itinerary Attraction Features
-Itinerary attractions are attractions added to an itinerary, but with additional start/end time fields.
-These commands deal with attractions that are found in an itinerary.
+### 4.4 Itinerary Attraction Features (Yeh Yu Chun)
+Itinerary attractions are attractions added to an itinerary, but with additional start/end time fields. These commands deal with attractions that are found in an itinerary.
+
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+Any command in this section requires an itinerary to be first selected. Refer to [Selecting an itinerary](#436-selecting-an-itinerary-select-itinerary) to select an Itinerary before proceeding.
+</div>
 
 The table below shows a summary of the commands in this section.
 
@@ -455,6 +458,10 @@ Examples:
 * `add-itinerary-attraction 1 st/0900 et/1200 day/1` adds `Jurong Bird Park` into day 1 of selected itinerary<br><br>
 ![result for 'find-attraction'](images/addItineraryAttraction.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 18. The result of <code>add-itinerary-attraction 1 st/0900 et/1200 day/1</code></i></sup></div><br>
+
+For example:
+
+1.  types in some example
 
 #### 4.4.2 Editing an attraction from the selected itinerary : `edit-itinerary-attraction`
 Edits an existing attraction in the selected itinerary.
@@ -573,3 +580,18 @@ Action | Format, Examples
 **Add itinerary attraction** | `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING` <br> e.g. `add-itinerary-attraction 1 st/1400 et/1500 day/5`
 **Edit itinerary attraction** | `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/END_TIME]` <br> e.g. `edit-itinerary-attraction 1 day/2 st/0900 et/1000`
 **Delete itinerary attraction** | `delete-itinerary-attraction INDEX`<br> e.g. `delete-itinerary-attraction 1`
+
+<!--
+// to link to a section header,
+// all caps -> lower case
+// spaces -> -
+// __ -> __ (no change)
+// !, [], (), :, //, ., -> ignored
+
+Example:
+## [![Alt Text][badge__example]](https://example.com) To Somewhere
+[Imaged](#alt-textbadge__examplehttpsexamplecom-to-somewhere)
+
+// damn cancer ^^^^ alternatively,
+just type [name you want to call](#NoSpaceHeader'sNumber) // intellij will suggest for you lmao
+-->
