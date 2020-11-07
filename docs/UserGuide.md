@@ -494,7 +494,7 @@ Examples:
 
 For example:
 
-1. You made a mistake by adding the `START_TIME` of `Night Safari` as `1000`, but plans to visit it at night instead. (singlish????)
+1. You made a mistake by adding the `START_TIME` of `Night Safari` as `1000`, but it is not open in the day.
 ![what is this text for?](images/EditItineraryAttraction1.png)
 
 1. You type `edit-itinerary-attraction 1 day/2 st/1900 et/2300`, and press <kbd>Enter</kbd> to edit it.
@@ -521,11 +521,26 @@ Format: `delete-itinerary-attraction INDEX day/DAY_VISITING`
 
 * Deletes the attraction specified by the `INDEX` and `DAY_VISITING` shown in the itinerary panel.
 
+For example:
+
+1. You no longer want to visit `Night Safari`.
+
+1. You want to delete it from your `Selected Itinerary`.
+
+1. You type `delete-itinerary-attraction 1 day/2`, and press <kbd>Enter</kbd> to delete it.
+![what is this text for?](images/DeleteItineraryAttraction1.png)
+
+1. Scroll down the `Selected Itinerary` and notice `Day 2` is now empty.
+![what is this text for?](images/DeleteItineraryAttraction2.png)
+
+Try these other examples too!
+    * `delete-itinerary-attraction 1 day/1` Deletes the first attraction from `Day 1` of `Selected Itinerary`.
+<!--
 Examples:
 * `delete-itinerary-attraction 1 day/1` removes `Jurong Bird Park from the itinerary`<br><br>
 ![result for 'find-attraction'](images/deleteItineraryAttraction.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 20. The result of <code>delete-itinerary-attraction 1 day/1</code></i></sup></div>
-<!--how to comment in markdown-->
+-->
 
 ### 4.5 Miscellaneous Features (Yuxuan)
 
@@ -615,6 +630,7 @@ Action | Format, Examples
 
 
 
+<!--how to comment in markdown-->
 
 <!--
 // to link to a section header,
