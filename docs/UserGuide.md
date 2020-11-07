@@ -113,7 +113,7 @@ Itinerary Features (4.3), Itinerary Attraction Features (4.4) and Miscellaneous 
 * If a field cannot be used multiple times, and you supply 2 or more of the same field, the app takes only the last specified field.<br>
   e.g. if you type `add-attraction n/USS n/Marina Bay Sands l/Singapore, Singapore`, which contains 2 names, "USS" and "Marina Bay Sands", only "Marina Bay Sands" is taken.
 
-* Parameters can be in any order.<br>
+* Fields can be in any order.<br>
   e.g. if the command specifies `n/ATTRACTION p/PHONE_NUMBER`, `p/PHONE_NUMBER n/ATTRACTION` is also acceptable.
 
 </div>
@@ -657,7 +657,7 @@ Format: `exit`
 
 #### 4.5.3 Saving the data
 
-TrackPad data will be saved in the storage automatically after any command that changes the data.
+Your data in TrackPad will be saved in the storage automatically after any command that changes the data. 
 There is no need for you to save manually.
 
 --------------------------------------------------------------------------------------------------------------------

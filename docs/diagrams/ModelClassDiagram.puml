@@ -4,44 +4,32 @@ skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
-Package Model <<Rectangle>>{
+Package Model <<Rectangle>> {
 Interface ReadOnlyAttractionList <<Interface>>
 Interface ReadOnlyItineraryList <<Interface>>
+Interface ReadOnlyItineraryAttractionList <<Interface>>
 Interface Model <<Interface>>
 Interface ObservableList <<Interface>>
 Class AttractionList
 Class ItineraryList
+Class ItineraryAttractionList
 Class Model
 Class ModelManager
 Class UserPrefs
-Class ReadOnlyUserPrefs
+Interface ReadOnlyUserPrefs <<Interface>>
 
 Package Attraction {
 Class Attraction
-Class Address
-Class Email
-Class Name
-Class Phone
-Class Location
-Class Description
-Class OpeningHours
-Class PriceRange
-Class Rating
-Class Visited
 Class UniqueAttractionList
 }
 
 Package Itinerary {
 Class Itinerary
-Class Name
-Class Description
-Class LocalDate
-Class Days
 Class UniqueItineraryList
 }
 
-Package Tag {
-Class Tag
+Package ItineraryAttraction {
+Class ItineraryAttraction
 }
 }
 
@@ -50,35 +38,26 @@ HiddenOutside ..> Model
 
 AttractionList .up.|> ReadOnlyAttractionList
 ItineraryList .up.|> ReadOnlyItineraryList
+ItineraryAttractionList .up.|> ReadOnlyItineraryAttractionList
 
 ModelManager .up.|> Model
 Model .right.> ObservableList
 ModelManager --> "1" AttractionList
 ModelManager --> "1" ItineraryList
-ModelManager -left-> "1" UserPrefs
+ModelManager --> "1" ItineraryAttractionList
+ModelManager --> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
 AttractionList *--> "1" UniqueAttractionList
 UniqueAttractionList --> "*" Attraction
-Attraction *--> "1" Name
-Attraction *--> "1" Location
-Attraction *--> "0..1" Phone
-Attraction *--> "0..1" Email
-Attraction *--> "0..1" Address
-Attraction *--> "0..1" Description
-Attraction *--> "0..1" OpeningHours
-Attraction *--> "0..1" PriceRange
-Attraction *--> "0..1" Rating
-Attraction *--> "0..1" Visited
-Attraction *--> "*" Tag
 
 ItineraryList *--> "1" UniqueItineraryList
-UniqueItineraryList o--> "*" Itinerary
-Itinerary *--> "1" Name
-Itinerary *--> "0..1" Description
-Itinerary *--> "2" LocalDate
-Itinerary *--> "*" Days
+UniqueItineraryList --> "*" Itinerary
 
-ModelManager -->"1" Attraction : filtered attraction list
-ModelManager -->"1" Itinerary : filtered itinerary list
+ItineraryAttractionList --> "*" ItineraryAttraction
+
+ItineraryAttraction --|> Attraction
+
+ModelManager --> "1" Attraction : filtered attraction list
+ModelManager --> "1" Itinerary : filtered itinerary list
 @enduml
