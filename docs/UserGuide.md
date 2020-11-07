@@ -477,8 +477,8 @@ For example:
 ![what is this text for?](images/userguideimages/AddItineraryAttraction3.png)
 
 Try these other examples too!
-    * `add-itinerary-attraction 3 st/1000 et/1600 day/3` Adds the third item from Attractions list into `Day 3` of the `Selected Itinerary`.
-    * `add-itinerary-attraction 5 st/0900 et/1200 day/4` Adds the fifth item from Attractions lists into `Day 4` of the `Selected Itinerary`.
+* `add-itinerary-attraction 3 st/1000 et/1600 day/3` Adds the third item from Attractions list into `Day 3` of the `Selected Itinerary`.
+* `add-itinerary-attraction 5 st/0900 et/1200 day/4` Adds the fifth item from Attractions lists into `Day 4` of the `Selected Itinerary`.
     
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The start time and end time cannot overlap with other attractions in the selected itinerary.
@@ -498,6 +498,7 @@ Format: `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/EN
 * Edits the attraction specified by the `INDEX` and `DAY_VISITING` shown in the itinerary panel.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
+
 <!--
 Examples:
 * `edit-itinerary-attraction 3 day/3 st/1500 et/1800` Edits the start time, end time of the third attraction on day 2 of the selected itinerary to  be `1500` and `1800` respectively.
@@ -518,13 +519,13 @@ For example:
 ![what is this text for?](images/userguideimages/EditItineraryAttraction3.png)
 
 Try these other examples too!
-    * `edit-itinerary-attraction 1 day/2 et/2200` Edits the `END_TIME` of the attraction first attraction in `Day 2` to be `2200`    
+* `edit-itinerary-attraction 1 day/2 et/2200` Edits the `END_TIME` of the attraction first attraction in `Day 2` to be `2200`    
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 Some fields can be left empty to remove it. Example, <code>edit-itinerary-attraction 1 day/1 t/ </code> would remove the tag from the attraction.
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
 Only the INDEX and day/DAY_VISITING is required to identify the field to edit.
 </div>
 
@@ -548,7 +549,8 @@ For example:
 ![what is this text for?](images/userguideimages/DeleteItineraryAttraction2.png)
 
 Try these other examples too!
-    * `delete-itinerary-attraction 1 day/1` Deletes the first attraction from `Day 1` of `Selected Itinerary`.
+* `delete-itinerary-attraction 1 day/1` Deletes the first attraction from `Day 1` of `Selected Itinerary`.
+
 <!--
 Examples:
 * `delete-itinerary-attraction 1 day/1` removes `Jurong Bird Park from the itinerary`<br><br>
