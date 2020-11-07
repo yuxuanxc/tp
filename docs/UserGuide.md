@@ -121,7 +121,17 @@ Itinerary Features (4.3), Itinerary Attraction Features (4.4) and Miscellaneous 
 ### 4.2 Attraction Features (York Tat)
 
 Attractions are the core building blocks of TrackPad and are required to populate your itineraries!
-The following features are tailored for attractions in TrackPad.
+The table below shows a summary of the commands in this section.
+
+Action | Format, Examples
+--------|------------------
+**[Add attraction](#421-adding-a-tourist-attraction-add-attraction)** | `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​` <br> e.g. `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
+**[Edit attraction](#422-editing-a-tourist-attraction-edit-attraction)** | `edit-attraction INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g. `edit 2 n/Singapore Zoo e/zoo@example.com`
+**[Delete attraction](#423-deleting-a-tourist-attraction--delete-attraction)** | `delete-attraction INDEX`<br> e.g. `delete 3`
+**[Mark Visited attraction](#424-marking-a-tourist-attraction-as-visited-markvisited-attraction)** | `markVisited-attraction INDEX`<br> e.g. `markVisited-attraction 2`
+**[Find attraction](#425-finding-a-tourist-attraction-find-attraction)** | `find-attraction KEYWORD [MORE_KEYWORDS]`<br> e.g. `find Zoo`
+**[List attractions](#426-listing-all-tourist-attractions--list-attraction)** | `list-attraction`
+**[Clear all attractions](#427-clearing-all-attractions--clear-attraction)** | `clear-attraction`
 
 #### 4.2.1 Adding a tourist attraction: `add-attraction`
 
@@ -133,21 +143,17 @@ Format (Minimal): `add-attraction n/ATTRACTION_NAME l/LOCATION`
 Format (All fields): `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS]
 [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
 
-Compulsory fields:
-
-|   |   |
+| Compulsory fields | Description |
 |---|---|
 | **ATTRACTION_NAME** | Contains only letters and numbers and should not be blank |
 | **LOCATION** | Can take any value, we recommend the format: `CITY, COUNTRY` |
 
-Optional fields:
-
-|   |   |
+| Optional fields | Description |
 |---|---|
 | **DESCRIPTION** | Can take any value |
-| **PHONE_NUMBER** 📞 | Contains only numbers and be at least 3 digits long with no spaces in between |
-| **EMAIL** 📧 | Takes the format `local-part@domain` |
-| **ADDRESS** 🏠 | Postal address of the attraction, can take any value |
+| **PHONE_NUMBER** | Contains only numbers and be at least 3 digits long with no spaces in between |
+| **EMAIL** | Takes the format `local-part@domain` |
+| **ADDRESS** | Postal address of the attraction, can take any value |
 | **OPENING_HOURS** | Takes the format `opening time - closing time`, both in the 24H format `HHMM-HHMM` |
 | **PRICE_RANGE** | Takes one of the following ranges: `LOW`, `MEDIUM` or `HIGH` |
 | **RATING** | Takes a number between `0.0` to `5.0` |
@@ -688,13 +694,13 @@ about how the commands work, and you just want a quick refresher.
 
 Action | Format, Examples
 --------|------------------
-**Add attraction** | `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​` <br> e.g. `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
-**Edit attraction** | `edit-attraction INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g. `edit 2 n/Singapore Zoo e/zoo@example.com`
-**Delete attraction** | `delete-attraction INDEX`<br> e.g. `delete 3`
-**Mark Visited attraction** | `markVisited-attraction INDEX`<br> e.g. `markVisited-attraction 2`
-**Find attraction** | `find-attraction KEYWORD [MORE_KEYWORDS]`<br> e.g. `find Zoo`
-**List attractions** | `list-attraction`
-**Clear all attractions** | `clear-attraction`
+**[Add attraction](#421-adding-a-tourist-attraction-add-attraction)** | `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​` <br> e.g. `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
+**[Edit attraction](#422-editing-a-tourist-attraction-edit-attraction)** | `edit-attraction INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g. `edit 2 n/Singapore Zoo e/zoo@example.com`
+**[Delete attraction](#423-deleting-a-tourist-attraction--delete-attraction)** | `delete-attraction INDEX`<br> e.g. `delete 3`
+**[Mark Visited attraction](#424-marking-a-tourist-attraction-as-visited-markvisited-attraction)** | `markVisited-attraction INDEX`<br> e.g. `markVisited-attraction 2`
+**[Find attraction](#425-finding-a-tourist-attraction-find-attraction)** | `find-attraction KEYWORD [MORE_KEYWORDS]`<br> e.g. `find Zoo`
+**[List attractions](#426-listing-all-tourist-attractions--list-attraction)** | `list-attraction`
+**[Clear all attractions](#427-clearing-all-attractions--clear-attraction)** | `clear-attraction`
 
 ### 7.2 Itinerary Commands
 
