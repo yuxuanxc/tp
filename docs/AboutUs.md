@@ -11,7 +11,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Yeh Yu Chun
 
-<img src="images/peter-yeh.png" width="200px">
+<img src="images/aboutusimages/peter-yeh.png" width="200px">
 
 [[github](https://github.com/peter-yeh)]
 [[portfolio](team/peter-yeh.md)]
@@ -19,14 +19,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Lim Koon Kiat
 
-<img src="images/limkoonkiat.png" width="200px">
+<img src="images/aboutusimages/limkoonkiat.png" width="200px">
 
 [[github](http://github.com/limkoonkiat)]
 [[portfolio](team/limkoonkiat.md)]
 
 ### Lee York Tat
 
-<img src="images/leeyorktat.png" width="200px">
+<img src="images/aboutusimages/leeyorktat.png" width="200px">
 
 [[github](http://github.com/leeyorktat)]
 
@@ -35,7 +35,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Robin Ho
 
-<img src="images/robinho98.png" width="200px">
+<img src="images/aboutusimages/robinho98.png" width="200px">
 
 [[github](http://github.com/robinho98)]
 [[portfolio](team/robinho98.md)]
@@ -45,6 +45,6 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Zhu Yuxuan
 
-<img src="images/yuxuanxc.png" width="200px">
+<img src="images/aboutusimages/yuxuanxc.png" width="200px">
 
 [[github](http://github.com/yuxuanxc)]
