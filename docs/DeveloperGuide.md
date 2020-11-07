@@ -45,14 +45,14 @@ Figure 1 explains the high-level design of the App. Given below is a quick overv
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
-[**`Commons`**](#26-common-classes) represents a collection of classes used by multiple other components.
+[**`Commons`**](#36-common-classes) represents a collection of classes used by multiple other components.
 
 The rest of the App consists of four components.
 
-* [**`UI`**](#22-ui-component): The UI of the App.
-* [**`Logic`**](#23-logic-component): The command executor.
-* [**`Model`**](#24-model-component): Holds the data of the App in memory.
-* [**`Storage`**](#25-storage-component): Reads data from, and writes data to, the hard disk.
+* [**`UI`**](#32-ui-component): The UI of the App.
+* [**`Logic`**](#33-logic-component): The command executor.
+* [**`Model`**](#34-model-component): Holds the data of the App in memory.
+* [**`Storage`**](#35-storage-component): Reads data from, and writes data to, the hard disk.
 
 Each of the four components,
 
@@ -69,7 +69,7 @@ For example, the `Logic` component (seen from Figure 2 above) defines its API in
 ![Sequence Diagram of the Various Components](images/ArchitectureSequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 3 Sequence Diagram of the various components</i></sup></div><br>
 
-Figure 3 above shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+Figure 3 above shows how the components interact with each other for the scenario where the user issues the command `delete-attraction 1`.
 
 The sections below give more details of each component.
 
@@ -596,6 +596,60 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
       
+### FX Marking an attraction as Visited (Robin)
+
+1. Marking an attraction as Visited while all attractions are being shown
+
+   1. Prerequisites: There is at least one attraction present in the attraction list of TrackPad.
+
+   1. Test case: `markVisited-attraction 1`<br>
+   
+      1. Scenario 1: First attraction does not have the purple Visited tag.<br>
+      Expected: First attraction is marked as visited on the list. Details of the attraction shown in the status message. <br>
+      
+      1. Scenario 2: First attraction already has the purple Visited tag.<br>
+      Expected: First attraction remains unchanged. Error message shown in the result box.
+
+   1. Test case: `markVisited-attraction 1`<br>
+      Expected: No attraction is marked as visited. Error details shown in the result box.
+      
+   1. Other incorrect markVisited commands to try: `markVisited-attraction`, `markVisited-attraction x` (where x is larger than the list size, or less than 0)<br>
+      Expected: Similar to previous.
+      
+      
+### FX Listing attractions (Robin)
+
+1. Listing all attractions currently stored in TrackPad
+
+   1. Prerequisites: Lists all attractions using the `list-attraction` command
+
+   1. Test case: `list-attraction`<br>
+      Expected: All attractions that are currently stored in the app will be displayed in the Attractions panel.
+      
+   1. Test case: `list-attraction 1`<br>
+      Expected: Everything typed after the space following the command will be ignored, and list-attraction command will be executed successfully.
+
+### FX Clearing attractions (Robin)
+
+1. Clears all attractions currently stored in TrackPad
+
+   1. Prerequisites: Clears all attractions using the `clear-attraction` command
+
+   1. Test case: `clear-attraction`<br>
+      Expected: All attractions that are currently stored in the app will be deleted. An empty attractions panel will be shown.
+      
+   1. Test case: `clear-attraction 1`<br>
+      Expected: Everything typed after the space following the command will be ignored, and clear-attraction command will be executed successfully.
+      
+### FX Exiting the program (Robin)
+
+1. Exits and shutdowns the program
+
+   1. Prerequisite: NIL
+   
+   1. Test case: `exit`<br>
+   Expected: TrackPad shuts down.
+
 ### F8 Adding an itinerary
 
 1. Adding an itinerary
@@ -688,3 +742,22 @@ testers are expected to do more *exploratory* testing.
    1. Test case: In the folder where you saved the app, go to the `data` folder. Open `itinerarylist.json`, delete some portions of it and save. Launch TrackPad again.<br>
    Expected behavior: TrackPad launches with an empty list of itineraries to replace the corrupted itineraries file. After entering a valid command, a new `itinerarylist.json` file with the current itineraries will be created. 
 
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix G: Effort**
+
+Our project was harder than Address Book Level 3(AB3) because while AB3 deals with one entity, TrackPad deals with several
+entities, including Attractions, Itineraries as well as Itinerary Attraction. Initially, we had to refactor most of the code, 
+to change all instance of Person to Attraction and AddressBook to TrackPad. We also had to change the test cases, and figure out
+why some of them failed.
+
+After which, we had to implement itinerary into the app, and make it work similarly to Attraction, but taking in different
+fields from Attraction. We also had to create new parsers for Itinerary, so that it can read the itinerary commands. 
+
+In addition, we had to implement an adaptable UI, so that the attraction and itinerary box displays will vary in height, 
+since we have optional fields for our entities. We had to create different FXML files, to be compatible with our AttractionCard
+and ItineraryCard having multiple Labels.
+
+Also, since we stored attractions as a List of Days in itineraries, it proved a further challenge in reading the itinerary
+attractions since we had to go through several layers to reach the list of itinerary attractions. Our UI also contains of 
+boxes for the Day, to distinguish between different days of the same itinerary.
