@@ -552,8 +552,12 @@ Action | Format, Examples
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/userguideimages/ItineraryAttraction.png)</span>
 <div align='center'><i><sup style="font-size:100%">Figure 17. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
 
-In Figure 17 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown on the right of the image with a red border.
-Attractions inside `Selected Itinerary` is an itinerary attraction. Notice both copy of `Jurong Bird Park` has almost the same fields, but with the addition of a start/end time field.
+In Figure 17 above, 
+* The left side shows attractions you have added.
+* The right side shows the itinerary currently selected.
+* Notice the right copy of `Jurong Bird Park`'s name has the addition of a start and end time on top of it.
+
+Let's start filling up your itinerary with attractions!
 
 #### 4.4.1 Adding an attraction to the selected itinerary: `add-itinerary-attraction`
 Adds an attraction to the selected itinerary.
