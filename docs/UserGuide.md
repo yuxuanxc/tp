@@ -10,9 +10,9 @@ title: User Guide
 --------------------------------------------------------------------------------------------------------------------
 
 ## 1. Introduction (York Tat)
-TrackPad (TP) is a **desktop app for planning your trips and tracking tourist attractions, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a 
-Graphical User Interface (GUI). TP is built for people who love to travel, and store all their itineraries in a structured format in one single app. 
-Our commands are **intuitive** and utilise full words, making them sound more natural and verbose than short forms, so it's **easier** for you to remember. 
+TrackPad (TP) is a **desktop app for planning your trips and tracking tourist attractions, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a
+Graphical User Interface (GUI). TP is built for people who love to travel, and store all their itineraries in a structured format in one single app.
+Our commands are **intuitive** and utilise full words, making them sound more natural and verbose than short forms, so it's **easier** for you to remember.
 If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -20,7 +20,7 @@ If you can type fast, TP can get your itinerary planned faster than traditional 
 ## 2. About This Document (York Tat)
 Welcome to the TrackPad User Guide!
 
-We at TrackPad believe that tracking your attractions and planning your trips should be both **easy and fuss-free**. 
+We at TrackPad believe that tracking your attractions and planning your trips should be both **easy and fuss-free**.
 We understand how **messy** it can be when it comes to keeping track of your travel itineraries, which can get frustrating.
 
 That's why here at TrackPad, we have come up with a **simple yet useful** guide to help you get started with using TrackPad.
@@ -46,34 +46,34 @@ Here are the steps to download TrackPad and start using it immediately!
 1. Type the command in the command box and press Enter to execute it. Let's try it out by adding Gardens by the Bay into the app.
     Type in `add-attraction n/Gardens by the Bay l/Singapore, Singapore a/18 Marina Gardens Dr, 018953 r/4.7` ! Your application should
     look like this when you scroll to the bottom of the attraction list.
-    
+
     ![Ui](images/gettingStartedAddAttraction.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 2. Adding Gardens by the Bay</i></sup></div>
 
-1. Oh no, you forgot to add the opening hours for Gardens by the Bay. No worries! By using the 
+1. Oh no, you forgot to add the opening hours for Gardens by the Bay. No worries! By using the
    `edit-attraction 11 op/0500-0200` , we can edit the 11th attraction to add the opening hours from 5am to 2am.
-   
+
    ![Ui](images/gettingStartedEditAttraction.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 3. Editing Gardens by the Bay to add Opening Hours</i></sup></div>
 
-1. Now, you want to create a one day itinerary to visit the Gardens by the Bay. Easy! Just type in 
+1. Now, you want to create a one day itinerary to visit the Gardens by the Bay. Easy! Just type in
    `add-itinerary n/Walk in the Park sd/01-01-2021 ed/01-01-2021 d/Appreciate Singapore's flora and fauna`
-    
+
    ![Ui](images/gettingStartedAddItinerary.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 4. Adding the new itinerary</i></sup></div>
-   
-1. To add Gardens by the Bay into the itinerary you just created, select the itinerary you want to add the attraction into, 
+
+1. To add Gardens by the Bay into the itinerary you just created, select the itinerary you want to add the attraction into,
    by `select-itinerary 2`.
-    
+
     ![Ui](images/gettingStartedSelectItinerary.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 5. Selecting the itinerary</i></sup></div>
-       
+    
 1. If you want to visit Gardens by the Bay from 10am to 2pm on the first day of your trip, type
    `add-itinerary-attraction 11 day/1 st/1000 et/1400`.
-   
+
    ![Ui](images/gettingStartedAddItineraryAttraction.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 6. Adding Gardens by the Bay into the itinerary</i></sup></div>
-    
+ 
 1. You are done! Feel free to add more attractions into the itinerary, or read on to discover other commands that will
    give you more control over TrackPad, such as [`find-attraction`](#425-finding-a-tourist-attraction--find-attraction)
    and [`delete-attraction`](##423-deleting-a-tourist-attraction---delete-attraction)!
@@ -83,7 +83,7 @@ Here are the steps to download TrackPad and start using it immediately!
 ## 4. Features
 
 In this section, we will go into the details of all the features available for you to use after
-installing TrackPad. These features are split into 4 subsections, Attraction Features (4.2), 
+installing TrackPad. These features are split into 4 subsections, Attraction Features (4.2),
 Itinerary Features (4.3), Itinerary Attraction Features (4.4) and Miscellaneous Features (4.5).
 
 ### 4.1 Command Format (Yuxuan)
@@ -100,28 +100,28 @@ Itinerary Features (4.3), Itinerary Attraction Features (4.4) and Miscellaneous 
 
 * Fields with `…`​ after them can be used multiple times or not used at all.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (not used), `t/Singapore`, `t/friend t/family` etc.
-  
+
 * If a field cannot be used multiple times, and you supply 2 or more of the same field, the app takes only the last specified field.<br>
   e.g. if you type `add-attraction n/USS n/Marina Bay Sands l/Singapore, Singapore`, which contains 2 names, "USS" and "Marina Bay Sands", only "Marina Bay Sands" is taken.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/ATTRACTION p/PHONE_NUMBER`, `p/PHONE_NUMBER n/ATTRACTION` is also acceptable.  
+  e.g. if the command specifies `n/ATTRACTION p/PHONE_NUMBER`, `p/PHONE_NUMBER n/ATTRACTION` is also acceptable.
 
 </div>
 
 ### 4.2 Attraction Features (York Tat)
 
-Attractions are the core building blocks of TrackPad and are required to populate your itineraries! 
-The following features are tailored for attractions in TrackPad. 
+Attractions are the core building blocks of TrackPad and are required to populate your itineraries!
+The following features are tailored for attractions in TrackPad.
 
 #### 4.2.1 Adding a tourist attraction: `add-attraction`
 
-Adds a tourist attraction to the current list of attractions. Each attraction must contain a name and a location. 
-Additionally, use the optional fields (as listed below) to include more information for your attractions. 
+Adds a tourist attraction to the current list of attractions. Each attraction must contain a name and a location.
+Additionally, use the optional fields (as listed below) to include more information for your attractions.
 
 Format (Minimal): `add-attraction n/ATTRACTION_NAME l/LOCATION`
 
-Format (All fields): `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] 
+Format (All fields): `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS]
 [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
 
 Compulsory fields:
@@ -156,10 +156,10 @@ An attraction can have any number of tags.
 
 Examples:
 * `add-attraction n/USS a/8 Sentosa Gateway, 098269 l/Singapore, Singapore`
-* `add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com 
+* `add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com
 op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`<br><br>
 ![add_attraction_result](images/addAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 2. The result of <code>add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com 
+<div align="center"><sup style="font-size:100%"><i>Figure 2. The result of <code>add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com
 op/1000-1800 pr/MEDIUM r/4.6 v/FALSE</code></i></sup></div>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
@@ -168,7 +168,7 @@ Multiple attractions of the same name and location cannot be added into the curr
 
 <div markdown="span" class="alert alert-danger">:warning: **Warning:**
 The names and locations of attractions are case sensitive.
-`add-attraction n/Singapore Zoo l/Singapore` followed by 
+`add-attraction n/Singapore Zoo l/Singapore` followed by
 `add-attraction n/singapore zoo l/singapore` will create two different attractions in the same list.
 </div>
 
@@ -178,12 +178,12 @@ Edits a tourist attraction in the current list of attractions.
 
 Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS]
 [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
- 
+
 * Edits the attraction at the specified `INDEX` shown in the attractions panel.
 * Field entries are the same as the `add-attraction` command.
 * Any field can be changed by inputting its corresponding prefix in the command.
-    * Example: `add-attraction n/MBS l/Singapore, Singapore r/4.3` in an attraction list followed by 
-    `edit-attraction 1 r/4.6` changes the rating of the 1st attraction in the list from `4.3` to `4.6`.<br>        
+    * Example: `add-attraction n/MBS l/Singapore, Singapore r/4.3` in an attraction list followed by
+    `edit-attraction 1 r/4.6` changes the rating of the 1st attraction in the list from `4.3` to `4.6`.<br>
     ![result_of_editing_existing_fields](images/editAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 3. The result of <code>edit-attraction 1 r/4.6</code></i></sup></div>
 * New fields can be added to current attractions.
@@ -196,7 +196,7 @@ You can use `edit-attraction INDEX prefix/ ` to remove existing optional fields.
 </div>
 
 <div markdown="span" class="alert alert-danger">:warning: **Warning:**
-Editing the tag of an attraction does not add on to its existing tags. Rather, it replaces all existing tags with the 
+Editing the tag of an attraction does not add on to its existing tags. Rather, it replaces all existing tags with the
 new tags you’re specifying.
 </div>
 
@@ -220,7 +220,7 @@ Examples:
 Marks a tourist attraction in the current list of attractions as visited.
 
 Format: `markVisited-attraction INDEX`
- 
+
 * Marks the attraction at the specified `INDEX` shown in the attractions panel as visited.
 * Any attraction can be marked visited, even if the attraction was already visited.
 
@@ -249,8 +249,8 @@ Examples:
 
 #### 4.2.6 Listing all tourist attractions : `list-attraction`
 
-Shows a list of all the tourist attractions. Use this command to reset the view of the Attractions panel, as 
-certain commands (`find-attraction`) can alter the view of the Attractions panel. 
+Shows a list of all the tourist attractions. Use this command to reset the view of the Attractions panel, as
+certain commands (`find-attraction`) can alter the view of the Attractions panel.
 
 Format: `list-attraction`<br>
 
@@ -314,7 +314,7 @@ Examples:
 
 <div markdown="span" class="alert alert-danger">:warning: **Warning:**
 The names of itineraries are case sensitive.
-`add-itinerary n/japan trip sd/20-12-2020 ed/30-12-2020` followed by 
+`add-itinerary n/japan trip sd/20-12-2020 ed/30-12-2020` followed by
 `add-itinerary n/Japan Trip sd/20-12-2020 ed/30-12-2020` will create two different itineraries in the same list.
 </div>
 
@@ -332,7 +332,7 @@ Format: `edit-itinerary INDEX [n/NAME] [sd/START_DATE] [ed/END_DATE] [d/DESCRIPT
 * Field entries are the same as the `add-itinerary` command.
 * Any field can be changed by inputting its corresponding prefix in the command.
 
-Examples: 
+Examples:
 * `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000` in an itinerary list followed by `edit-itinerary 1 sd/06-12-2020` changes the start date of the 1st itinerary in the list from `01-12-2020` to `06-12-2020`.<br>
 
 ![result_of_editing an itinerary](images/editItinerary.png)
@@ -375,8 +375,8 @@ Examples:
 
 #### 4.3.5 Listing all itineraries: `list-itinerary`
 
-Shows all itineraries. Use this command to reset the view of the Itineraries panel, as 
-certain commands (`find-itinerary`, `select-itinerary`) can alter the view of the Itineraries panel. 
+Shows all itineraries. Use this command to reset the view of the Itineraries panel, as
+certain commands (`find-itinerary`, `select-itinerary`) can alter the view of the Itineraries panel.
 
 Format: `list-itinerary`<br>
 
@@ -435,7 +435,7 @@ Action | Format, Examples
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.png)</span>
 <div align='center'><i><sup style="font-size:100%">Figure 17. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
 
-In Figure 16 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown with a yellow border. 
+In Figure 16 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown with a yellow border.
 Attraction 1A is an itinerary attraction. It has all the same fields as Attraction A, but with the additional start/end time field.
 
 #### 4.4.1 Adding an attraction to the selected itinerary: `add-itinerary-attraction`
@@ -451,7 +451,7 @@ Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITI
 | **DAY_VISITING** 📆 | Day in your itinerary when you plan to visit the attraction |
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-The start time and end time cannot overlap with other attractions in the selected itinerary. 
+The start time and end time cannot overlap with other attractions in the selected itinerary.
 Also, the start and end time does not need to match the opening hours of the attraction, so that you can visit closed attractions.
 </div>
 
@@ -522,7 +522,7 @@ Format: `exit`
 
 #### 4.5.3 Saving the data
 
-TrackPad data will be saved in the storage automatically after any command that changes the data. 
+TrackPad data will be saved in the storage automatically after any command that changes the data.
 There is no need for you to save manually.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -546,7 +546,7 @@ There is no need for you to save manually.
 
 ## 7. Command summary (Robin)
 
-Below is a condensed table for all the commands currently supported in our app. Refer to this table when you are sure 
+Below is a condensed table for all the commands currently supported in our app. Refer to this table when you are sure
 about how the commands work, and you just want a quick refresher.
 
 ### 7.1 Attraction Commands
