@@ -444,21 +444,13 @@ Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITI
 | **END_TIME** | End time to visit the attraction in the 24H format `HHMM` |
 | **DAY_VISITING** | Day in your itinerary when you plan to visit the attraction |
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-The start time and end time cannot overlap with other attractions in the selected itinerary. 
-Also, the start and end time does not need to match the opening hours of the attraction, so that you can visit closed attractions.
-</div>
-
-<div markdown="span" class="alert alert-warning">:information_source: **Note:**
-The attraction will be added into the selected itinerary.
-</div>
-
-Examples:
+<!--
+//Examples:
 // * `add-itinerary-attraction 2 st/1000 et/1600 day/3`
 // * `add-itinerary-attraction 1 st/0900 et/1200 day/1` adds `Jurong Bird Park` into day 1 of selected itinerary<br><br>
 // ![result for 'find-attraction'](images/addItineraryAttraction.png)
 // <div align="center"><sup style="font-size:100%"><i>Figure 18. The result of <code>add-itinerary-attraction 1 st/0900 et/1200 day/1</code></i></sup></div><br>
-
+-->
 For example:
 
 1. Look on the left side of the image below. You want to add `Night Safari` to your `Selected Itinerary`.
@@ -470,6 +462,18 @@ For example:
 1. `Night Safari` has been added into your `Selected Itineray`.
 ![what is this text for?](images/AddItineraryAttraction3.png)
 
+Try these examples too!
+    * `add-itinerary-attraction 3 st/1000 et/1600 day/3`
+    * `add-itinerary-attraction 4 st/0900 et/1200 day/1`
+    
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+The start time and end time cannot overlap with other attractions in the selected itinerary. 
+Also, the start and end time does not need to match the opening hours of the attraction, so that you can visit closed attractions.
+</div>
+
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+The attraction will be added into the selected itinerary.
+</div>
 
 
 #### 4.4.2 Editing an attraction from the selected itinerary : `edit-itinerary-attraction`
@@ -485,11 +489,15 @@ Format: `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/EN
 Some fields can be left empty to remove it. Example, <code>edit-itinerary-attraction 1 day/1 t/ </code> would remove the tag from the attraction.
 </div>
 
+<!--
 Examples:
 * `edit-itinerary-attraction 3 day/2 st/1500 et/1800` Edits the start time, end time of the third attraction on day 2 of the selected itinerary to  be `1500` and `1800` respectively.
 * `edit-itinerary-attraction 1 day/1 st/1500` edits the starting time to visit the attraction`Jurong Bird Park`<br><br>
 ![result for 'find-attraction'](images/editItineraryAttraction.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 19. The result of <code>edit-itinerary-attraction 1 day/1 st/1500</code></i></sup></div>
+-->
+
+
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 Only the INDEX and day/DAY_VISITING is required to identify the field to edit.
