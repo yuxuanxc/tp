@@ -434,7 +434,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.
 
-**Use case: List all tourist attractions**
+**Use case: UC06 - List all tourist attractions**
 
 **MSS**
 
@@ -449,7 +449,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
  
-**Use case: Clear all tourist attractions**
+**Use case: UC07 - Clear all tourist attractions**
 
 **MSS**
 
@@ -660,7 +660,7 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: There is at least one attraction present in the attraction list of TrackPad.
 
-   1. Test case: `markVisited-attraction 1`<br>
+   2. Test case: `markVisited-attraction 1`<br>
    
       1. Scenario 1: First attraction does not have the purple Visited tag.<br>
       Expected: First attraction is marked as visited on the list. Details of the attraction shown in the status message. <br>
@@ -668,10 +668,10 @@ testers are expected to do more *exploratory* testing.
       1. Scenario 2: First attraction already has the purple Visited tag.<br>
       Expected: First attraction remains unchanged. Error message shown in the result box.
 
-   1. Test case: `markVisited-attraction 1`<br>
+   3. Test case: `markVisited-attraction 1`<br>
       Expected: No attraction is marked as visited. Error details shown in the result box.
       
-   1. Other incorrect markVisited commands to try: `markVisited-attraction`, `markVisited-attraction x` (where x is larger than the list size, or less than 0)<br>
+   4. Other incorrect markVisited commands to try: `markVisited-attraction`, `markVisited-attraction x` (where x is larger than the list size, or less than 0)<br>
       Expected: Similar to previous.
 
 ### F6 Finding a tourist attraction
@@ -686,72 +686,63 @@ testers are expected to do more *exploratory* testing.
    3. Test case: `find-attraction #$%`<br>
       Expected: Empty attractions list shown. "0 attractions listed!" shown in the status message.
       
-### FX Listing attractions (Robin)
+### F7 Listing attractions (Robin)
 
 1. Listing all attractions currently stored in TrackPad
 
    1. Prerequisites: Lists all attractions using the `list-attraction` command
 
-   1. Test case: `list-attraction`<br>
+   2. Test case: `list-attraction`<br>
       Expected: All attractions that are currently stored in the app will be displayed in the Attractions panel.
       
-   1. Test case: `list-attraction 1`<br>
+   3. Test case: `list-attraction 1`<br>
       Expected: Everything typed after the space following the command will be ignored, and list-attraction command will be executed successfully.
 
-### FX Clearing attractions (Robin)
+### F8 Clearing attractions (Robin)
 
 1. Clears all attractions currently stored in TrackPad
 
    1. Prerequisites: Clears all attractions using the `clear-attraction` command
 
-   1. Test case: `clear-attraction`<br>
+   2. Test case: `clear-attraction`<br>
       Expected: All attractions that are currently stored in the app will be deleted. An empty attractions panel will be shown.
       
-   1. Test case: `clear-attraction 1`<br>
+   3. Test case: `clear-attraction 1`<br>
       Expected: Everything typed after the space following the command will be ignored, and clear-attraction command will be executed successfully.
-      
-### FX Exiting the program (Robin)
 
-1. Exits and shutdowns the program
-
-   1. Prerequisite: NIL
-   
-   1. Test case: `exit`<br>
-   Expected: TrackPad shuts down.
-
-### F8 Adding an itinerary
+### F9 Adding an itinerary
 
 1. Adding an itinerary
 
    1. Prerequisites: None.
 
-   1. Test case: `add-itinerary n/Thailand Trip sd/01-08-2020 ed/03-08-2020`<br>
+   2. Test case: `add-itinerary n/Thailand Trip sd/01-08-2020 ed/03-08-2020`<br>
       Expected: An itinerary with the specified name, start date and end date is added to the itinerary list. 
       Details of the added itinerary shown in the status message.
 
-   1. Test case: `add-itinerary `<br>
+   3. Test case: `add-itinerary `<br>
       Expected: No itinerary added. Error details shown in the status message.
 
-   1. Other incorrect add itinerary commands to try: 
+   4. Other incorrect add itinerary commands to try: 
      * Missing compulsory fields (e.g. missing end date): `add-itinerary n/Germany sd/03-02-2020 b/100`<br>
         Expected: Similar to 3.
      * Invalid format for fields (e.g. invalid start date format): `add-itinerary n/Germany sd/03 02 2020 ed/06-02-2020`<br>
         Expected: Similar to 3.
         
-### F9 Editing an itinerary
+### F10 Editing an itinerary
 
 1. Editing an itinerary
 
    1. Prerequisites: At least one itinerary exists for editing.
 
-   1. Test case: `edit-itinerary 1 n/Japan trip`<br>
+   2. Test case: `edit-itinerary 1 n/Japan trip`<br>
       Expected: The name of the first itinerary is changed to `Japan trip`.
       Details of the edited itinerary shown in the status message.
 
-   1. Test case: `edit-itinerary 0 n/Japan trip`<br>
+   3. Test case: `edit-itinerary 0 n/Japan trip`<br>
       Expected: No itinerary edited. Error details shown in the status message.
 
-   1. Other incorrect edit itinerary commands to try: 
+   4. Other incorrect edit itinerary commands to try: 
      * Missing fields: `edit-itinerary 1`<br>
         Expected: Similar to 3.
      * Invalid format for fields (e.g. invalid start date format): `edit-itinerary 1 sd/03 02 2020`<br>
@@ -759,56 +750,65 @@ testers are expected to do more *exploratory* testing.
      * No change in fields: `edit-itinerary 1 n/Germany` when the name is already `Germany`<br>
         Expected: Similar to 3.
         
-### F10 Deleting an itinerary
+### F11 Deleting an itinerary
 
 1. Deleting an itinerary while all itineraries are being shown
 
    1. Prerequisites: List all itineraries using the `list-itinerary` command. Multiple itineraries in the list.
 
-   1. Test case: `delete-itinerary 1`<br>
+   2. Test case: `delete-itinerary 1`<br>
       Expected: First itinerary is deleted from the list. Details of the deleted itinerary shown in the status message.
 
-   1. Test case: `delete-itinerary 0`<br>
+   3. Test case: `delete-itinerary 0`<br>
       Expected: No itinerary is deleted. Error details shown in the status message.
 
-   1. Other incorrect delete commands to try:
+   4. Other incorrect delete commands to try:
     * Missing index: `delete-itinerary`<br>
       Expected: Similar to 3
     * Invalid index: `delete-itinerary x`, where x is larger than the list size <br>
       Expected: Similar to 3
       
-### F11 Finding an itinerary
+### F12 Finding an itinerary
 
 1. Finding an itinerary
 
    1. Prerequisites: TrackPad contains an itinerary with the name `Singapore Tour`.
 
-   1. Test case: `find-itinerary Singapore Tour`<br>
+   2. Test case: `find-itinerary Singapore Tour`<br>
       Expected: The itinerary with the name `Singapore Tour` is found. 
 
-   1. Test case: `find-itinerary`<br>
+   3. Test case: `find-itinerary`<br>
       Expected: No itinerary is found. Error details shown in the status message.
-      
-### F20 Saving data
+  
+### F20 Exiting the program (Robin)
+
+1. Exits and shutdowns the program
+
+   1. Prerequisite: NIL
+   
+   2. Test case: `exit`<br>
+      Expected: TrackPad shuts down.
+   
+### F21 Saving data
 
 1. Dealing with missing data files
 
    1. Prerequisites: Launch TrackPad, enter at least one valid command, then exit the app. 
    
-   1. Test case: In the folder where you saved the app, go to the `data` folder. Delete `attractionlist.json`. Launch TrackPad again.<br>
+   2. Test case: In the folder where you saved the app, go to the `data` folder. Delete `attractionlist.json`. Launch TrackPad again.<br>
    Expected behavior: TrackPad launches with a sample list of attractions to replace the missing attractions file. After entering a valid command, a new `attractionlist.json` file with the current attractions will be created. 
    
-   1. Test case: In the folder where you saved the app, go to the `data` folder. Delete `itinerarylist.json`. Launch TrackPad again.<br>
+   3. Test case: In the folder where you saved the app, go to the `data` folder. Delete `itinerarylist.json`. Launch TrackPad again.<br>
    Expected behavior: TrackPad launches with a sample list of itineraries to replace the missing itineraries file. After entering a valid command, a new `itinerarylist.json` file with the current itineraries will be created. 
    
 2. Dealing with corrupted data files
 
    1. Prerequisites: Launch TrackPad, enter at least one valid command, then exit the app. 
       
-   1. Test case: In the folder where you saved the app, go to the `data` folder. Open `attractionlist.json`, delete some portions of it and save. Launch TrackPad again.<br>
+   2. Test case: In the folder where you saved the app, go to the `data` folder. Open `attractionlist.json`, delete some portions of it and save. Launch TrackPad again.<br>
    Expected behavior: TrackPad launches with an empty list of attractions to replace the corrupted attractions file. After entering a valid command, a new `attractionlist.json` file with the current attractions will be created. 
       
-   1. Test case: In the folder where you saved the app, go to the `data` folder. Open `itinerarylist.json`, delete some portions of it and save. Launch TrackPad again.<br>
+   3. Test case: In the folder where you saved the app, go to the `data` folder. Open `itinerarylist.json`, delete some portions of it and save. Launch TrackPad again.<br>
    Expected behavior: TrackPad launches with an empty list of itineraries to replace the corrupted itineraries file. After entering a valid command, a new `itinerarylist.json` file with the current itineraries will be created. 
 
 --------------------------------------------------------------------------------------------------------------------

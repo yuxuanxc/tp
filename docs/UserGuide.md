@@ -113,7 +113,7 @@ Itinerary Features (4.3), Itinerary Attraction Features (4.4) and Miscellaneous 
 * If a field cannot be used multiple times, and you supply 2 or more of the same field, the app takes only the last specified field.<br>
   e.g. if you type `add-attraction n/USS n/Marina Bay Sands l/Singapore, Singapore`, which contains 2 names, "USS" and "Marina Bay Sands", only "Marina Bay Sands" is taken.
 
-* Parameters can be in any order.<br>
+* Fields can be in any order.<br>
   e.g. if the command specifies `n/ATTRACTION p/PHONE_NUMBER`, `p/PHONE_NUMBER n/ATTRACTION` is also acceptable.
 
 </div>
@@ -683,8 +683,6 @@ There is no need for you to save manually.
 
 Below is a condensed table for all the commands currently supported in our app. Refer to this table when you are sure
 about how the commands work, and you just want a quick refresher.
-
-The tables below summarise all the commands that are available for you to use in the current version of TrackPad.
 
 ### 7.1 Attraction Commands
 
