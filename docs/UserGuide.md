@@ -507,7 +507,7 @@ Format: `exit`
 
 #### 4.5.3 Saving the data
 
-TrackPad data will be saved in the storage automatically after any command that changes the data. 
+Your data in TrackPad will be saved in the storage automatically after any command that changes the data. 
 There is no need for you to save manually.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -530,6 +530,8 @@ There is no need for you to save manually.
 --------------------------------------------------------------------------------------------------------------------
 
 ## 7. Command summary
+
+The tables below summarise all the commands that are available for you to use in the current version of TrackPad.
 
 ### 7.1 Attraction Commands
 
