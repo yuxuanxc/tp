@@ -137,6 +137,25 @@ public class Itinerary {
 
     }
 
+    /** Returns number of filled fields in itinerary.
+     * @returns integer of number of filled fields
+     */
+    public int getNumOfFilledFields() {
+        int filledFields = 0;
+
+        if (!getBudget().value.isEmpty()) {
+            filledFields++;
+        }
+        if (!getDescription().value.isEmpty()) {
+            filledFields++;
+        }
+        if (!getLocations().isEmpty()) {
+            filledFields++;
+        }
+
+        return filledFields;
+    }
+
     /**
      * Returns true if an itinerary attraction in the itinerary list with the same identity as
      * {@code itineraryAttraction} exists.
