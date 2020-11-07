@@ -71,7 +71,7 @@ In this section, we will go into the details of all the features available for y
 installing TrackPad. These features are split into 4 subsections, Attraction Features (4.2), 
 Itinerary Features (4.3), Itinerary Attraction Features (4.4) and Miscellaneous Features (4.5).
 
-### 4.1 Command Format
+### 4.1 Command Format (Yuxuan)
 
 <div markdown="block" class="alert alert-warning">
 
@@ -505,13 +505,13 @@ Examples:
 <div align="center"><sup style="font-size:100%"><i>Figure 20. The result of <code>delete-itinerary-attraction 1 day/1</code></i></sup></div>
 <!--how to comment in markdown-->
 
-### 4.5 Miscellaneous Features
+### 4.5 Miscellaneous Features (Yuxuan)
 
 These basic features help TrackPad to run smoothly, as well as allow you to interact with TrackPad without the use of your mouse, perfect for fast typists!
 
 #### 4.5.1 Viewing help : `help`
 
-Shows a message with a link to this User Guide.
+You can use this command whenever you are unsure about any features, and the link will lead you straight to our user guide which will help to clarify your doubts.
 
 ![help message](images/helpMessage.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 21. The help window of TrackPad</i></sup></div>
@@ -520,7 +520,7 @@ Format: `help`
 
 #### 4.5.2 Exiting the program : `exit`
 
-Exits the program.
+You can type this command into the command box to exit the program.
 
 Format: `exit`
 
@@ -528,34 +528,29 @@ Format: `exit`
 
 TrackPad data will be saved in the storage automatically after any command that changes the data. 
 There is no need for you to save manually.
+
 --------------------------------------------------------------------------------------------------------------------
 
-<!--
-## FAQ
+## 5. FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous TrackPad home folder.
 
 --------------------------------------------------------------------------------------------------------------------
--->
 
-## 5. Glossary
+## 6. Glossary (Yuxuan)
+
 * **Command Line Interface (CLI):** An interface that processes commands to a computer program in the form of lines of text.
 * **Graphical User Interface (GUI):** An interface that allows users to interact with through visual indicator representations.
 * **Prefix:** The letter(s) and '/' placed before the corresponding fields when typing the commands ('n/' for Name, 'op/' for Opening Hours etc).
 * **INDEX:** The number shown in the displayed attractions/itinerary panel. Must be a positive number (1, 2, 3, ...)
 * **DAY_VISITING:** The day in a selected itinerary which contains the attraction(s) planned to visit. Must be a positive number (1, 2, 3, ...)
 
-## 6. Command summary
+--------------------------------------------------------------------------------------------------------------------
 
-### 6.1 General Commands
+## 7. Command summary
 
-Action | Format, Examples
---------|------------------
-**Help** | `help`
-**Exit** | `exit`
-
-### 6.2 Attraction Commands
+### 7.1 Attraction Commands
 
 Action | Format, Examples
 --------|------------------
@@ -567,7 +562,7 @@ Action | Format, Examples
 **List attractions** | `list-attraction`
 **Clear all attractions** | `clear-attraction`
 
-### 6.3 Itinerary Commands
+### 7.2 Itinerary Commands
 
 Action | Format, Examples
 --------|------------------
@@ -579,10 +574,17 @@ Action | Format, Examples
 **Select itinerary** | `select-itinerary INDEX`<br> e.g. `select-itinerary 3`
 **Clear all itineraries** | `clear-itinerary`
 
-### 6.4 Itinerary attraction Commands
+### 7.3 Itinerary attraction Commands
 
 Action | Format, Examples
 --------|------------------
 **Add itinerary attraction** | `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING` <br> e.g. `add-itinerary-attraction 1 st/1400 et/1500 day/5`
 **Edit itinerary attraction** | `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/END_TIME]` <br> e.g. `edit-itinerary-attraction 1 day/2 st/0900 et/1000`
 **Delete itinerary attraction** | `delete-itinerary-attraction INDEX`<br> e.g. `delete-itinerary-attraction 1`
+
+### 7.4 Miscellaneous Commands
+
+Action | Format, Examples
+--------|------------------
+**Help** | `help`
+**Exit** | `exit`
