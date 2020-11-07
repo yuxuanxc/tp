@@ -437,9 +437,9 @@ Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITI
 | Compulsory fields | Description |
 |---|---|
 | **INDEX** | Index of attraction in the current list of attractions |
-| **START_TIME** 🕖 | Start time to visit the attraction in the 24H format `HHMM` |
-| **END_TIME** 🕖 | End time to visit the attraction in the 24H format `HHMM` |
-| **DAY_VISITING** 📆 | Day in your itinerary when you plan to visit the attraction |
+| **START_TIME** | Start time to visit the attraction in the 24H format `HHMM` |
+| **END_TIME** | End time to visit the attraction in the 24H format `HHMM` |
+| **DAY_VISITING** | Day in your itinerary when you plan to visit the attraction |
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The start time and end time cannot overlap with other attractions in the selected itinerary. 
