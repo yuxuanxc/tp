@@ -32,6 +32,19 @@ We understand how **messy** it can be when it comes to keeping track of your tra
 That's why here at TrackPad, we have come up with a **simple yet useful** guide to help you get started with using TrackPad.
 Minimal prior technical knowledge is needed in order to use TrackPad so try out TrackPad now to make your travel planning **easier and faster**!
 
+Here are some symbols we will be using in this guide to help you along:
+
+<div markdown="span" class="alert alert-warning">:information_source: Boxes with the :information_source: icon contain
+important information.
+</div>
+
+<div markdown="span" class="alert alert-primary">:bulb: Boxes with the :bulb: icon contain
+additional useful tips.
+</div>
+
+<div markdown="span" class="alert alert-danger">:warning: Boxes with the :warning: icon contain
+caution messages.
+</div>
 --------------------------------------------------------------------------------------------------------------------
 
 <div style="page-break-after: always;"></div>
