@@ -2,7 +2,9 @@
 layout: page
 title: User Guide
 ---
-![Logo](images/TrackPad_logo.PNG)
+![Logo](images/userguideimages/TrackPad_logo.PNG)
+
+<div style="page-break-after: always;"></div>
 
 <div style="page-break-after: always;"></div>
 
@@ -45,38 +47,39 @@ Here are the steps to download TrackPad and start using it immediately!
 
 1. Double-click the file to start the app. An application similar to Figure 1 should appear in a few seconds. Here's how your app should look like!
     Note how the app contains data on Rediscover Singapore attractions. <br><br>
-   ![Ui](images/Ui-Labelled.png)
+   ![Ui](images/userguideimages/Ui-Labelled.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 1. The Ui of TrackPad</i></sup></div>
 
 1. Type the command in the command box and press Enter to execute it. Let's try it out by adding Gardens by the Bay into the app.
     Type in `add-attraction n/Gardens by the Bay l/Singapore, Singapore a/18 Marina Gardens Dr, 018953 r/4.7` ! Your application should
     look like this when you scroll to the bottom of the attraction list.
 
-    ![Ui](images/gettingStartedAddAttraction.png)
+    ![Ui](images/userguideimages/gettingStartedAddAttraction.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 2. Adding Gardens by the Bay</i></sup></div>
 
 1. Oh no, you forgot to add the opening hours for Gardens by the Bay. No worries! By using the
    `edit-attraction 11 op/0500-0200` , we can edit the 11th attraction to add the opening hours from 5am to 2am.
 
-   ![Ui](images/gettingStartedEditAttraction.png)
+
+   ![Ui](images/userguideimages/gettingStartedEditAttraction.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 3. Editing Gardens by the Bay to add Opening Hours</i></sup></div>
 
 1. Now, you want to create a one day itinerary to visit the Gardens by the Bay. Easy! Just type in
    `add-itinerary n/Walk in the Park sd/01-01-2021 ed/01-01-2021 d/Appreciate Singapore's flora and fauna`
 
-   ![Ui](images/gettingStartedAddItinerary.png)
+   ![Ui](images/userguideimages/gettingStartedAddItinerary.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 4. Adding the new itinerary</i></sup></div>
 
 1. To add Gardens by the Bay into the itinerary you just created, select the itinerary you want to add the attraction into,
    by `select-itinerary 2`.
 
-    ![Ui](images/gettingStartedSelectItinerary.png)
+    ![Ui](images/userguideimages/gettingStartedSelectItinerary.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 5. Selecting the itinerary</i></sup></div>
     
 1. If you want to visit Gardens by the Bay from 10am to 2pm on the first day of your trip, type
    `add-itinerary-attraction 11 day/1 st/1000 et/1400`.
 
-   ![Ui](images/gettingStartedAddItineraryAttraction.png)
+   ![Ui](images/userguideimages/gettingStartedAddItineraryAttraction.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 6. Adding Gardens by the Bay into the itinerary</i></sup></div>
  
 1. You are done! Feel free to add more attractions into the itinerary, or read on to discover other commands that will
@@ -163,7 +166,7 @@ Examples:
 * `add-attraction n/USS a/8 Sentosa Gateway, 098269 l/Singapore, Singapore`
 * `add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com
 op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`<br><br>
-![add_attraction_result](images/addAttraction.png)
+![add_attraction_result](images/userguideimages/addAttraction.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 2. The result of <code>add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com
 op/1000-1800 pr/MEDIUM r/4.6 v/FALSE</code></i></sup></div>
 
@@ -189,11 +192,11 @@ Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] 
 * Any field can be changed by inputting its corresponding prefix in the command.
     * Example: `add-attraction n/MBS l/Singapore, Singapore r/4.3` in an attraction list followed by
     `edit-attraction 1 r/4.6` changes the rating of the 1st attraction in the list from `4.3` to `4.6`.<br>
-    ![result_of_editing_existing_fields](images/editAttraction1.png)
+    ![result_of_editing_existing_fields](images/userguideimages/editAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 3. The result of <code>edit-attraction 1 r/4.6</code></i></sup></div>
 * New fields can be added to current attractions.
     * Example: `edit-attraction 1 pr/MEDIUM t/hotel` adds the price range of MBS as `MEDIUM` and adds an `hotel` tag.<br><br>
-    ![result_of_editing_new_fields](images/editAttraction2.png)
+    ![result_of_editing_new_fields](images/userguideimages/editAttraction2.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 4. The result of <code>edit-attraction 1 pr/MEDIUM t/hotel</code></i></sup></div>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
@@ -215,7 +218,7 @@ Format: `delete-attraction INDEX`
 
 Examples:
 * `list-attraction` followed by `delete-attraction 1` deletes the 1st attraction in the TrackPad.<br><br>
-![result for `delete-attraction`](images/deleteAttraction.png)
+![result for `delete-attraction`](images/userguideimages/deleteAttraction.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 5. The result of <code>delete-attraction 1</code></i></sup></div>
 
 * `find-attraction animals` followed by `delete-attraction 2` deletes the 2nd tourist attraction in the results of the `find-attraction` command.
@@ -231,7 +234,7 @@ Format: `markVisited-attraction INDEX`
 
 Examples:
 * `markVisited-attraction 2` marks the 2nd attraction in the TrackPad as visited.<br><br>
-![result for 'markVisited-attraction'](images/markVisitedAttraction.png)
+![result for 'markVisited-attraction'](images/userguideimages/markVisitedAttraction.png)
   <div align="center"><sup style="font-size:100%"><i>Figure 6. The result of <code>markVisited-attraction 2</code></i></sup></div>
 
 * Typing `markVisited-attraction 2` again will show that the 2nd attraction in the TrackPad is visited.
@@ -249,7 +252,7 @@ Format: `find-attraction KEYWORD [MORE_KEYWORDS]`
 
 Examples:
 * `find-attraction jurong` returns `Jurong Bird Park` and `Snow City`<br><br>
-![result for 'find-attraction'](images/findAttraction.png)
+![result for 'find-attraction'](images/userguideimages/findAttraction.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 7. The result of <code>find-attraction jurong</code></i></sup></div>
 
 #### 4.2.6 Listing all tourist attractions : `list-attraction`
@@ -259,7 +262,7 @@ certain commands (`find-attraction`) can alter the view of the Attractions panel
 
 Format: `list-attraction`<br>
 
-![result for 'list-attraction'](images/listAttraction.png)
+![result for 'list-attraction'](images/userguideimages/listAttraction.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 8. The result of <code>list-attraction</code></i></sup></div>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
@@ -278,7 +281,7 @@ Format: `clear-attraction`
 This action is irreversible and should be used with caution.
 </div><br>
 
-![result for 'clear-attraction'](images/clearAttraction.png)
+![result for 'clear-attraction'](images/userguideimages/clearAttraction.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 9. The result of <code>clear-attraction</code></i></sup></div>
 
 ### 4.3 Itinerary Features
@@ -514,7 +517,7 @@ Action | Format, Examples
 **Edit itinerary attraction** | `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/END_TIME]` <br> e.g. `edit-itinerary-attraction 1 day/2 st/0900 et/1000`
 **Delete itinerary attraction** | `delete-itinerary-attraction INDEX`<br> e.g. `delete-itinerary-attraction 1`
 
-<span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.png)</span>
+<span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/userguideimages/ItineraryAttraction.png)</span>
 <div align='center'><i><sup style="font-size:100%">Figure 17. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
 
 In Figure 17 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown on the right of the image with a red border.
@@ -542,13 +545,13 @@ Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITI
 For example:
 
 1. Look on the left side of the image below. You want to add `Night Safari` to your `Selected Itinerary`.
-![what is this text for?](images/AddItineraryAttraction1.png)
+![what is this text for?](images/userguideimages/AddItineraryAttraction1.png)
 
 1. You type `add-itinerary-attraction 2 day/2 st/1000 et/1100`, where you want to visit it on day 2, from `1000` to `1100` and press <kbd>Enter</kbd> to add it.
-![what is this text for?](images/AddItineraryAttraction2.png)
+![what is this text for?](images/userguideimages/AddItineraryAttraction2.png)
 
 1. `Night Safari` has been added into your `Selected Itineray`.
-![what is this text for?](images/AddItineraryAttraction3.png)
+![what is this text for?](images/userguideimages/AddItineraryAttraction3.png)
 
 Try these other examples too!
     * `add-itinerary-attraction 3 st/1000 et/1600 day/3` Adds the third item from Attractions list into `Day 3` of the `Selected Itinerary`.
@@ -583,13 +586,13 @@ Examples:
 For example:
 
 1. You made a mistake by adding the `START_TIME` of `Night Safari` as `1000`, but it is not open in the day.
-![what is this text for?](images/EditItineraryAttraction1.png)
+![what is this text for?](images/userguideimages/EditItineraryAttraction1.png)
 
 1. You type `edit-itinerary-attraction 1 day/2 st/1900 et/2300`, and press <kbd>Enter</kbd> to edit it.
-![what is this text for?](images/EditItineraryAttraction2.png)
+![what is this text for?](images/userguideimages/EditItineraryAttraction2.png)
 
 1. Scroll down the `Selected Itinerary` and notice the `START_TIME` of `Night Safari` has been changed to `1900 - 2300`.
-![what is this text for?](images/EditItineraryAttraction3.png)
+![what is this text for?](images/userguideimages/EditItineraryAttraction3.png)
 
 Try these other examples too!
     * `edit-itinerary-attraction 1 day/2 et/2200` Edits the `END_TIME` of the attraction first attraction in `Day 2` to be `2200`    
@@ -616,10 +619,10 @@ For example:
 1. You want to delete it from your `Selected Itinerary`.
 
 1. You type `delete-itinerary-attraction 1 day/2`, and press <kbd>Enter</kbd> to delete it.
-![what is this text for?](images/DeleteItineraryAttraction1.png)
+![what is this text for?](images/userguideimages/DeleteItineraryAttraction1.png)
 
 1. Scroll down the `Selected Itinerary` and notice `Day 2` is now empty.
-![what is this text for?](images/DeleteItineraryAttraction2.png)
+![what is this text for?](images/userguideimages/DeleteItineraryAttraction2.png)
 
 Try these other examples too!
     * `delete-itinerary-attraction 1 day/1` Deletes the first attraction from `Day 1` of `Selected Itinerary`.
@@ -638,7 +641,7 @@ These basic features help TrackPad to run smoothly, as well as allow you to inte
 
 You can use this command whenever you are unsure about any features, and the link will lead you straight to our user guide which will help to clarify your doubts.
 
-![help message](images/helpMessage.png)
+![help message](images/userguideimages/helpMessage.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 21. The help window of TrackPad</i></sup></div>
 
 Format: `help`
