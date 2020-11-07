@@ -23,7 +23,7 @@ public class ItineraryListCard1Field extends ItineraryListCard {
         } else if (!itinerary.getBudget().value.isEmpty()) {
             field1.setText("\uD83D\uDCB5 " + itinerary.getBudget().toString());
         } else if (!itinerary.getDescription().value.isEmpty()) {
-            field1.setText("\uD83C\uDF0E " + itinerary.getDescription());
+            field1.setText(itinerary.getDescription().value);
         }
         field1.setWrapText(true);
     }
