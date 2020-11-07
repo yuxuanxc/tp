@@ -17,20 +17,21 @@ title: User Guide
 
 ## 1. Introduction (York Tat)
 TrackPad (TP) is a **desktop app for planning your trips and tracking tourist attractions, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a
-Graphical User Interface (GUI). TP is built for people who love to travel, and store all their itineraries in a structured format in one single app.
-Our commands are **intuitive** and utilise full words, making them sound more natural and verbose than short forms, so it's **easier** for you to remember.
-If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
+Graphical User Interface (GUI). TP is built for people who love to travel and want to collate all their itineraries neatly in one single app.
+Our **intuitive** commands utilise words in full, making it **easy** for you to remember.
+If you can type fast, TP can get your itinerary planned **faster** than traditional GUI apps. Minimal prior technical knowledge is needed in order to 
+use TrackPad so try out TrackPad now to make your travel planning **easier and faster**!
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## 2. About This Document (York Tat)
 Welcome to the TrackPad User Guide!
 
-We at TrackPad believe that tracking your attractions and planning your trips should be both **easy and fuss-free**.
-We understand how **messy** it can be when it comes to keeping track of your travel itineraries, which can get frustrating.
+We at TrackPad know how **difficult and messy** it can get when it comes to keeping track of your travel itineraries and TrackPad
+is a **fuss-free and easy** app that helps you keep track of all your travel related information.
 
-That's why here at TrackPad, we have come up with a **simple yet useful** guide to help you get started with using TrackPad.
-Minimal prior technical knowledge is needed in order to use TrackPad so try out TrackPad now to make your travel planning **easier and faster**!
+This simple guide provides a **comprehensive** description of the features in TrackPad and also includes a [getting started](#3-getting-started-robin) section
+that helps you get started.
 
 Here are some symbols we will be using in this guide to help you along:
 
