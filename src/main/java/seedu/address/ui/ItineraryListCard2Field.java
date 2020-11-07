@@ -13,7 +13,6 @@ public class ItineraryListCard2Field extends ItineraryListCard {
     @FXML
     private Label field2;
 
-
     /**
      * Creates a {@code ItineraryCode} with the given {@code Itinerary} and index to display.
      */
