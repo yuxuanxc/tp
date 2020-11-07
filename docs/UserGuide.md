@@ -4,8 +4,12 @@ title: User Guide
 ---
 ![Logo](images/TrackPad_logo.PNG)
 
+<div style="page-break-after: always;"></div>
+
 * Table of Contents
 {:toc}
+
+<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -27,6 +31,8 @@ That's why here at TrackPad, we have come up with a **simple yet useful** guide 
 Minimal prior technical knowledge is needed in order to use TrackPad so try out TrackPad now to make your travel planning **easier and faster**!
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## 3. Getting Started
 
@@ -405,9 +411,12 @@ This action is irreversible and should be used with caution.
 ![result_of_clearing all itineraries](images/clearItinerary.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 16. The result of <code>clear-itinerary</code></i></sup></div>
 
-### 4.4 Itinerary Attraction Features
-Itinerary attractions are attractions added to an itinerary, but with additional start/end time fields.
-These commands deal with attractions that are found in an itinerary.
+### 4.4 Itinerary Attraction Features (Yeh Yu Chun)
+Itinerary attractions are attractions added to an itinerary, but with additional start/end time fields. These commands deal with attractions that are found in an itinerary.
+
+<div markdown="span" class="alert alert-warning">:information_source: **Note:**
+Any command in this section requires an itinerary to be first selected. Refer to [Selecting an itinerary](#436-selecting-an-itinerary-select-itinerary) to select an Itinerary before proceeding.
+</div>
 
 The table below shows a summary of the commands in this section.
 
@@ -420,8 +429,8 @@ Action | Format, Examples
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/ItineraryAttraction.png)</span>
 <div align='center'><i><sup style="font-size:100%">Figure 17. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
 
-In Figure 16 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown with a yellow border. 
-Attraction 1A is an itinerary attraction. It has all the same fields as Attraction A, but with the additional start/end time field.
+In Figure 17 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown on the right of the image with a red border.
+Attractions inside `Selected Itinerary` is an itinerary attraction. Notice both copy of `Jurong Bird Park` has almost the same fields, but with the addition of a start/end time field.
 
 #### 4.4.1 Adding an attraction to the selected itinerary: `add-itinerary-attraction`
 Adds an attraction to the selected itinerary.
@@ -431,10 +440,32 @@ Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITI
 | Compulsory fields | Description |
 |---|---|
 | **INDEX** | Index of attraction in the current list of attractions |
-| **START_TIME** 🕖 | Start time to visit the attraction in the 24H format `HHMM` |
-| **END_TIME** 🕖 | End time to visit the attraction in the 24H format `HHMM` |
-| **DAY_VISITING** 📆 | Day in your itinerary when you plan to visit the attraction |
+| **START_TIME** | Start time to visit the attraction in the 24H format `HHMM` |
+| **END_TIME** | End time to visit the attraction in the 24H format `HHMM` |
+| **DAY_VISITING** | Day in your itinerary when you plan to visit the attraction |
 
+<!--
+//Examples:
+// * `add-itinerary-attraction 2 st/1000 et/1600 day/3`
+// * `add-itinerary-attraction 1 st/0900 et/1200 day/1` adds `Jurong Bird Park` into day 1 of selected itinerary<br><br>
+// ![result for 'find-attraction'](images/addItineraryAttraction.png)
+// <div align="center"><sup style="font-size:100%"><i>Figure 18. The result of <code>add-itinerary-attraction 1 st/0900 et/1200 day/1</code></i></sup></div><br>
+-->
+For example:
+
+1. Look on the left side of the image below. You want to add `Night Safari` to your `Selected Itinerary`.
+![what is this text for?](images/AddItineraryAttraction1.png)
+
+1. You type `add-itinerary-attraction 2 day/2 st/1000 et/1100`, where you want to visit it on day 2, from `1000` to `1100` and press <kbd>Enter</kbd> to add it.
+![what is this text for?](images/AddItineraryAttraction2.png)
+
+1. `Night Safari` has been added into your `Selected Itineray`.
+![what is this text for?](images/AddItineraryAttraction3.png)
+
+Try these other examples too!
+    * `add-itinerary-attraction 3 st/1000 et/1600 day/3` Adds the third item from Attractions list into `Day 3` of the `Selected Itinerary`.
+    * `add-itinerary-attraction 5 st/0900 et/1200 day/4` Adds the fifth item from Attractions lists into `Day 4` of the `Selected Itinerary`.
+    
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 The start time and end time cannot overlap with other attractions in the selected itinerary. 
 Also, the start and end time does not need to match the opening hours of the attraction, so that you can visit closed attractions.
@@ -444,11 +475,6 @@ Also, the start and end time does not need to match the opening hours of the att
 The attraction will be added into the selected itinerary.
 </div>
 
-Examples:
-* `add-itinerary-attraction 2 st/1000 et/1600 day/3`
-* `add-itinerary-attraction 1 st/0900 et/1200 day/1` adds `Jurong Bird Park` into day 1 of selected itinerary<br><br>
-![result for 'find-attraction'](images/addItineraryAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 18. The result of <code>add-itinerary-attraction 1 st/0900 et/1200 day/1</code></i></sup></div><br>
 
 #### 4.4.2 Editing an attraction from the selected itinerary : `edit-itinerary-attraction`
 Edits an existing attraction in the selected itinerary.
@@ -458,16 +484,31 @@ Format: `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/EN
 * Edits the attraction specified by the `INDEX` and `DAY_VISITING` shown in the itinerary panel.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
+<!--
+Examples:
+* `edit-itinerary-attraction 3 day/3 st/1500 et/1800` Edits the start time, end time of the third attraction on day 2 of the selected itinerary to  be `1500` and `1800` respectively.
+* `edit-itinerary-attraction 1 day/4 st/1500` edits the starting time to visit the attraction`Jurong Bird Park`<br><br>
+![result for 'find-attraction'](images/editItineraryAttraction.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 19. The result of <code>edit-itinerary-attraction 1 day/1 st/1500</code></i></sup></div>
+-->
+
+For example:
+
+1. You made a mistake by adding the `START_TIME` of `Night Safari` as `1000`, but it is not open in the day.
+![what is this text for?](images/EditItineraryAttraction1.png)
+
+1. You type `edit-itinerary-attraction 1 day/2 st/1900 et/2300`, and press <kbd>Enter</kbd> to edit it.
+![what is this text for?](images/EditItineraryAttraction2.png)
+
+1. Scroll down the `Selected Itinerary` and notice the `START_TIME` of `Night Safari` has been changed to `1900 - 2300`.
+![what is this text for?](images/EditItineraryAttraction3.png)
+
+Try these other examples too!
+    * `edit-itinerary-attraction 1 day/2 et/2200` Edits the `END_TIME` of the attraction first attraction in `Day 2` to be `2200`    
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 Some fields can be left empty to remove it. Example, <code>edit-itinerary-attraction 1 day/1 t/ </code> would remove the tag from the attraction.
 </div>
-
-Examples:
-* `edit-itinerary-attraction 3 day/2 st/1500 et/1800` Edits the start time, end time of the third attraction on day 2 of the selected itinerary to  be `1500` and `1800` respectively.
-* `edit-itinerary-attraction 1 day/1 st/1500` edits the starting time to visit the attraction`Jurong Bird Park`<br><br>
-![result for 'find-attraction'](images/editItineraryAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 19. The result of <code>edit-itinerary-attraction 1 day/1 st/1500</code></i></sup></div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 Only the INDEX and day/DAY_VISITING is required to identify the field to edit.
@@ -480,11 +521,26 @@ Format: `delete-itinerary-attraction INDEX day/DAY_VISITING`
 
 * Deletes the attraction specified by the `INDEX` and `DAY_VISITING` shown in the itinerary panel.
 
+For example:
+
+1. You no longer want to visit `Night Safari`.
+
+1. You want to delete it from your `Selected Itinerary`.
+
+1. You type `delete-itinerary-attraction 1 day/2`, and press <kbd>Enter</kbd> to delete it.
+![what is this text for?](images/DeleteItineraryAttraction1.png)
+
+1. Scroll down the `Selected Itinerary` and notice `Day 2` is now empty.
+![what is this text for?](images/DeleteItineraryAttraction2.png)
+
+Try these other examples too!
+    * `delete-itinerary-attraction 1 day/1` Deletes the first attraction from `Day 1` of `Selected Itinerary`.
+<!--
 Examples:
 * `delete-itinerary-attraction 1 day/1` removes `Jurong Bird Park from the itinerary`<br><br>
 ![result for 'find-attraction'](images/deleteItineraryAttraction.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 20. The result of <code>delete-itinerary-attraction 1 day/1</code></i></sup></div>
-<!--how to comment in markdown-->
+-->
 
 ### 4.5 Miscellaneous Features (Yuxuan)
 
@@ -569,3 +625,24 @@ Action | Format, Examples
 --------|------------------
 **Help** | `help`
 **Exit** | `exit`
+
+
+
+
+
+<!--how to comment in markdown-->
+
+<!--
+// to link to a section header,
+// all caps -> lower case
+// spaces -> -
+// __ -> __ (no change)
+// !, [], (), :, //, ., -> ignored
+
+Example:
+## [![Alt Text][badge__example]](https://example.com) To Somewhere
+[Imaged](#alt-textbadge__examplehttpsexamplecom-to-somewhere)
+
+// damn cancer ^^^^ alternatively,
+just type [name you want to call](#NoSpaceHeader'sNumber) // intellij will suggest for you lmao
+-->
