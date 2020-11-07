@@ -168,7 +168,7 @@ public class MainWindow extends UiPart<Stage> {
      * Switches panel to show itinerary attractions.
      */
     public void handleChangeToItineraryAttractionPanel() {
-        listTitle.setText("Attractions in Selected Itinerary");
+        listTitle.setText("Selected Itinerary");
         itineraryAttractionListPanel = new ItineraryAttractionListPanel(logic.getFilteredItineraryAttractionList());
         itineraryListPanelPlaceholder.getChildren().clear();
         itineraryListPanelPlaceholder.getChildren().add(itineraryAttractionListPanel.getRoot());
