@@ -4,8 +4,12 @@ title: User Guide
 ---
 ![Logo](images/TrackPad_logo.PNG)
 
+<div style="page-break-after: always;"></div>
+
 * Table of Contents
 {:toc}
+
+<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -27,6 +31,8 @@ That's why here at TrackPad, we have come up with a **simple yet useful** guide 
 Minimal prior technical knowledge is needed in order to use TrackPad so try out TrackPad now to make your travel planning **easier and faster**!
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## 3. Getting Started
 
