@@ -30,7 +30,7 @@ Then, there is a more in depth explanation on the design of the Ui, model and st
 
 ### 3.1 Architecture
 
-<span style="display:block;align:center">![Architecture Class Diagram](images/ArchitectureDiagram.png)</span>
+<span style="display:block;align:center">![Architecture Class Diagram](images/devguideimages/ArchitectureDiagram.png)</span>
 <div align="center"><sup style="font-size:100%"><i>Figure 1 Architecture Class Diagram</i></sup></div><br>
 
 Figure 1 explains the high-level design of the App. Given below is a quick overview of each component.
@@ -45,37 +45,37 @@ Figure 1 explains the high-level design of the App. Given below is a quick overv
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
-[**`Commons`**](#26-common-classes) represents a collection of classes used by multiple other components.
+[**`Commons`**](#36-common-classes) represents a collection of classes used by multiple other components.
 
 The rest of the App consists of four components.
 
-* [**`UI`**](#22-ui-component): The UI of the App.
-* [**`Logic`**](#23-logic-component): The command executor.
-* [**`Model`**](#24-model-component): Holds the data of the App in memory.
-* [**`Storage`**](#25-storage-component): Reads data from, and writes data to, the hard disk.
+* [**`UI`**](#32-ui-component): The UI of the App.
+* [**`Logic`**](#33-logic-component): The command executor.
+* [**`Model`**](#34-model-component): Holds the data of the App in memory.
+* [**`Storage`**](#35-storage-component): Reads data from, and writes data to, the hard disk.
 
 Each of the four components,
 
 * defines its *API* in an `interface` with the same name as the Component.
 * exposes its functionality using a concrete `{Component Name}Manager` class (which implements the corresponding API `interface` mentioned in the previous point.
 
-![Class Diagram of the Logic Component](images/LogicClassDiagram.png)
+![Class Diagram of the Logic Component](images/devguideimages/LogicClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 2 Class Diagram of the Logic Component</i></sup></div><br>
 
 For example, the `Logic` component (seen from Figure 2 above) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
 
 **How the architecture components interact with each other**
 
-![Sequence Diagram of the Various Components](images/ArchitectureSequenceDiagram.png)
+![Sequence Diagram of the Various Components](images/devguideimages/ArchitectureSequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 3 Sequence Diagram of the various components</i></sup></div><br>
 
-Figure 3 above shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+Figure 3 above shows how the components interact with each other for the scenario where the user issues the command `delete-attraction 1`.
 
 The sections below give more details of each component.
 
 ### 3.2 UI component
 
-![Structure of the UI Component](images/UiClassDiagram.png)
+![Structure of the UI Component](images/devguideimages/UiClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 4 Structure of the Ui Component, Ui Class Diagram</i></sup></div><br>
 
 **API** :
@@ -94,7 +94,7 @@ This design is similar to the Architectural design of TrackPad, whereby differen
 
 ### 3.3 Logic
 
-![Structure of the Logic Component](images/LogicClassDiagram.png)
+![Structure of the Logic Component](images/devguideimages/LogicClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 5 Structure of the Logic Component, Logic Class Diagram</i></sup></div><br>
 
 **API** :
@@ -109,7 +109,7 @@ This design is similar to the Architectural design of TrackPad, whereby differen
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete-attraction 1")` API call.
 
-![Interactions Inside the Logic Component for the `delete-attraction 1` Command](images/DeleteSequenceDiagram.png)
+![Interactions Inside the Logic Component for the `delete-attraction 1` Command](images/devguideimages/DeleteSequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 6 Interactions inside the Logic Component for the `delete-attraction 1` Command</i></sup></div><br>
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
@@ -117,7 +117,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 ### 3.4 Model
 
-![Structure of the Model Component](images/ModelClassDiagram.png)
+![Structure of the Model Component](images/devguideimages/ModelClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 7 Structure of the Model Component, Model Class Diagram</i></sup></div><br>
 
 **API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
@@ -133,13 +133,13 @@ The `Model` component shown in Figure 7,
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.</div><br> 
 
-![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
+![BetterModelClassDiagram](images/devguideimages/BetterModelClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 8 Structure of an alternative Model Component, Alternative Model Class Diagram</i></sup></div><br>
 
 
 ### 3.5 Storage
 
-![Structure of the Storage Component](images/StorageClassDiagram.png)
+![Structure of the Storage Component](images/devguideimages/StorageClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 9 Structure of the Storage Component, Storage Class Diagram</i></sup></div><br>
 
 **API** : [`Storage.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
@@ -424,7 +424,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
  
-
 **Use case: Clear all tourist attractions**
 
 **MSS**
@@ -445,7 +444,98 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. TrackPad shows an error.
 
       Use case ends.
+      
+**Use case: UC08 - Add an itinerary**
 
+**MSS**
+
+1.  User requests to add an itinerary.
+2.  TrackPad adds the itinerary.
+
+    Use case ends.
+      
+**Extensions**
+
+* 2a. The given format for the itinerary is invalid.
+
+    * 2a1. TrackPad shows an error message.
+    
+      Use case resumes at step 1.
+
+**Use case: UC09 - Edit an itinerary**
+
+**MSS**
+
+1.  User requests to list itineraries.
+2.  TrackPad shows a list of itineraries.
+3.  User requests to edit a specific itinerary in the list.
+4.  TrackPad edits the itinerary.
+
+    Use case ends.
+      
+**Extensions**
+
+* 2a. The list is empty.
+      
+  Use case ends.
+      
+* 2b. The format is invalid. 
+      
+  Use case ends.
+  
+* 3a. The given index is invalid.
+
+    * 3a1. TrackPad shows an error message.
+    
+      Use case resumes at step 2.
+      
+**Use case: UC10 - Delete an itinerary**
+
+**MSS**
+
+1.  User requests to list itineraries.
+2.  TrackPad shows a list of itineraries.
+3.  User requests to delete a specific itinerary in the list.
+4.  TrackPad deletes the itinerary.
+
+    Use case ends.
+    
+**Extensions**
+
+* 2a. The list is empty.
+      
+  Use case ends.
+      
+* 2b. The format is invalid. 
+      
+  Use case ends.
+  
+* 3a. The given index is invalid.
+
+    * 3a1. TrackPad shows an error message.
+    
+      Use case resumes at step 2.
+      
+**Use case: UC11 - Find an itinerary**
+
+**MSS**
+
+1.  User requests to find an itinerary.
+2.  TrackPad shows a list of itineraries matching the keyword entered.
+
+    Use case ends.
+    
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+    
+* 3a. The given keyword is not found.
+
+    * 3a1. TrackPad shows an error.
+
+      Use case ends.
 
 ## **Appendix D: Non-Functional Requirements**
 
@@ -506,10 +596,168 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
       
-<!--
-### F3 Saving data
+### FX Marking an attraction as Visited (Robin)
 
-1. Dealing with missing/corrupted data files
+1. Marking an attraction as Visited while all attractions are being shown
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
--->
+   1. Prerequisites: There is at least one attraction present in the attraction list of TrackPad.
+
+   1. Test case: `markVisited-attraction 1`<br>
+   
+      1. Scenario 1: First attraction does not have the purple Visited tag.<br>
+      Expected: First attraction is marked as visited on the list. Details of the attraction shown in the status message. <br>
+      
+      1. Scenario 2: First attraction already has the purple Visited tag.<br>
+      Expected: First attraction remains unchanged. Error message shown in the result box.
+
+   1. Test case: `markVisited-attraction 1`<br>
+      Expected: No attraction is marked as visited. Error details shown in the result box.
+      
+   1. Other incorrect markVisited commands to try: `markVisited-attraction`, `markVisited-attraction x` (where x is larger than the list size, or less than 0)<br>
+      Expected: Similar to previous.
+      
+      
+### FX Listing attractions (Robin)
+
+1. Listing all attractions currently stored in TrackPad
+
+   1. Prerequisites: Lists all attractions using the `list-attraction` command
+
+   1. Test case: `list-attraction`<br>
+      Expected: All attractions that are currently stored in the app will be displayed in the Attractions panel.
+      
+   1. Test case: `list-attraction 1`<br>
+      Expected: Everything typed after the space following the command will be ignored, and list-attraction command will be executed successfully.
+
+### FX Clearing attractions (Robin)
+
+1. Clears all attractions currently stored in TrackPad
+
+   1. Prerequisites: Clears all attractions using the `clear-attraction` command
+
+   1. Test case: `clear-attraction`<br>
+      Expected: All attractions that are currently stored in the app will be deleted. An empty attractions panel will be shown.
+      
+   1. Test case: `clear-attraction 1`<br>
+      Expected: Everything typed after the space following the command will be ignored, and clear-attraction command will be executed successfully.
+      
+### FX Exiting the program (Robin)
+
+1. Exits and shutdowns the program
+
+   1. Prerequisite: NIL
+   
+   1. Test case: `exit`<br>
+   Expected: TrackPad shuts down.
+
+### F8 Adding an itinerary
+
+1. Adding an itinerary
+
+   1. Prerequisites: None.
+
+   1. Test case: `add-itinerary n/Thailand Trip sd/01-08-2020 ed/03-08-2020`<br>
+      Expected: An itinerary with the specified name, start date and end date is added to the itinerary list. 
+      Details of the added itinerary shown in the status message.
+
+   1. Test case: `add-itinerary `<br>
+      Expected: No itinerary added. Error details shown in the status message.
+
+   1. Other incorrect add itinerary commands to try: 
+     * Missing compulsory fields (e.g. missing end date): `add-itinerary n/Germany sd/03-02-2020 b/100`<br>
+        Expected: Similar to 3.
+     * Invalid format for fields (e.g. invalid start date format): `add-itinerary n/Germany sd/03 02 2020 ed/06-02-2020`<br>
+        Expected: Similar to 3.
+        
+### F9 Editing an itinerary
+
+1. Editing an itinerary
+
+   1. Prerequisites: At least one itinerary exists for editing.
+
+   1. Test case: `edit-itinerary 1 n/Japan trip`<br>
+      Expected: The name of the first itinerary is changed to `Japan trip`.
+      Details of the edited itinerary shown in the status message.
+
+   1. Test case: `edit-itinerary 0 n/Japan trip`<br>
+      Expected: No itinerary edited. Error details shown in the status message.
+
+   1. Other incorrect edit itinerary commands to try: 
+     * Missing fields: `edit-itinerary 1`<br>
+        Expected: Similar to 3.
+     * Invalid format for fields (e.g. invalid start date format): `edit-itinerary 1 sd/03 02 2020`<br>
+        Expected: Similar to 3.
+     * No change in fields: `edit-itinerary 1 n/Germany` when the name is already `Germany`<br>
+        Expected: Similar to 3.
+        
+### F10 Deleting an itinerary
+
+1. Deleting an itinerary while all itineraries are being shown
+
+   1. Prerequisites: List all itineraries using the `list-itinerary` command. Multiple itineraries in the list.
+
+   1. Test case: `delete-itinerary 1`<br>
+      Expected: First itinerary is deleted from the list. Details of the deleted itinerary shown in the status message.
+
+   1. Test case: `delete-itinerary 0`<br>
+      Expected: No itinerary is deleted. Error details shown in the status message.
+
+   1. Other incorrect delete commands to try:
+    * Missing index: `delete-itinerary`<br>
+      Expected: Similar to 3
+    * Invalid index: `delete-itinerary x`, where x is larger than the list size <br>
+      Expected: Similar to 3
+      
+### F11 Finding an itinerary
+
+1. Finding an itinerary
+
+   1. Prerequisites: TrackPad contains an itinerary with the name `Singapore Tour`.
+
+   1. Test case: `find-itinerary Singapore Tour`<br>
+      Expected: The itinerary with the name `Singapore Tour` is found. 
+
+   1. Test case: `find-itinerary`<br>
+      Expected: No itinerary is found. Error details shown in the status message.
+      
+### F20 Saving data
+
+1. Dealing with missing data files
+
+   1. Prerequisites: Launch TrackPad, enter at least one valid command, then exit the app. 
+   
+   1. Test case: In the folder where you saved the app, go to the `data` folder. Delete `attractionlist.json`. Launch TrackPad again.<br>
+   Expected behavior: TrackPad launches with a sample list of attractions to replace the missing attractions file. After entering a valid command, a new `attractionlist.json` file with the current attractions will be created. 
+   
+   1. Test case: In the folder where you saved the app, go to the `data` folder. Delete `itinerarylist.json`. Launch TrackPad again.<br>
+   Expected behavior: TrackPad launches with a sample list of itineraries to replace the missing itineraries file. After entering a valid command, a new `itinerarylist.json` file with the current itineraries will be created. 
+   
+2. Dealing with corrupted data files
+
+   1. Prerequisites: Launch TrackPad, enter at least one valid command, then exit the app. 
+      
+   1. Test case: In the folder where you saved the app, go to the `data` folder. Open `attractionlist.json`, delete some portions of it and save. Launch TrackPad again.<br>
+   Expected behavior: TrackPad launches with an empty list of attractions to replace the corrupted attractions file. After entering a valid command, a new `attractionlist.json` file with the current attractions will be created. 
+      
+   1. Test case: In the folder where you saved the app, go to the `data` folder. Open `itinerarylist.json`, delete some portions of it and save. Launch TrackPad again.<br>
+   Expected behavior: TrackPad launches with an empty list of itineraries to replace the corrupted itineraries file. After entering a valid command, a new `itinerarylist.json` file with the current itineraries will be created. 
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix G: Effort**
+
+Our project was harder than Address Book Level 3(AB3) because while AB3 deals with one entity, TrackPad deals with several
+entities, including Attractions, Itineraries as well as Itinerary Attraction. Initially, we had to refactor most of the code, 
+to change all instance of Person to Attraction and AddressBook to TrackPad. We also had to change the test cases, and figure out
+why some of them failed.
+
+After which, we had to implement itinerary into the app, and make it work similarly to Attraction, but taking in different
+fields from Attraction. We also had to create new parsers for Itinerary, so that it can read the itinerary commands. 
+
+In addition, we had to implement an adaptable UI, so that the attraction and itinerary box displays will vary in height, 
+since we have optional fields for our entities. We had to create different FXML files, to be compatible with our AttractionCard
+and ItineraryCard having multiple Labels.
+
+Also, since we stored attractions as a List of Days in itineraries, it proved a further challenge in reading the itinerary
+attractions since we had to go through several layers to reach the list of itinerary attractions. Our UI also contains of 
+boxes for the Day, to distinguish between different days of the same itinerary.

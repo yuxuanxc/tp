@@ -21,7 +21,7 @@ Given below are my contributions to the project.
 
 * **Enhancements to existing features**:
   * Added the location field to attractions
-  * Updated how the app stores data 
+  * Updated how the app stores data
   * Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests [\#00](), [\#00]())
 
 * **Documentation**:
