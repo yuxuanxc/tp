@@ -496,12 +496,12 @@ You want to delete all your itineraries, and start with an empty list of itinera
 1. Enter `clear-itinerary` into the app. 
 
     ![result_of_clearing all itineraries](images/userguideimages/clearItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 16. Before entering <code>clear-itinerary</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 16a. Before entering <code>clear-itinerary</code></i></sup></div>
 
 2. Note how all your itineraries are now deleted. 
 
     ![result_of_clearing all itineraries](images/userguideimages/clearItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 16. After entering <code>clear-itinerary</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 16b. After entering <code>clear-itinerary</code></i></sup></div>
 
 ### 4.4 Itinerary Attraction Features (Yeh Yu Chun)
 Itinerary attractions are attractions added to an itinerary, but with additional start/end time fields. These commands deal with attractions that are found in an itinerary.
