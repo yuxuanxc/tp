@@ -28,7 +28,7 @@ Minimal prior technical knowledge is needed in order to use TrackPad so try out 
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 3. Getting Started
+## 3. Getting Started (Robin)
 
 Here are the steps to download TrackPad and start using it immediately!
 
@@ -38,30 +38,45 @@ Here are the steps to download TrackPad and start using it immediately!
 
 1. Copy the file to the folder you want to use as the _home folder_ for your TrackPad.
 
-1. Double-click the file to start the app. The GUI similar to the following Figure 1 should appear in a few seconds. Here's how your app should look like!
+1. Double-click the file to start the app. An application similar to Figure 1 should appear in a few seconds. Here's how your app should look like!
     Note how the app contains data on Rediscover Singapore attractions. <br><br>
    ![Ui](images/Ui-Labelled.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 1. The Ui of TrackPad</i></sup></div>
 
-1. Type the command in the command box and press Enter to execute it. 
-    e.g. typing **`help`** and pressing Enter will open the help window.<br>
-    Try out some of these commands!
+1. Type the command in the command box and press Enter to execute it. Let's try it out by adding Gardens by the Bay into the app.
+    Type in `add-attraction n/Gardens by the Bay l/Singapore, Singapore a/18 Marina Gardens Dr, 018953 r/4.7` ! Your application should
+    look like this when you scroll to the bottom of the attraction list.
+    
+    ![Ui](images/gettingStartedAddAttraction.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 2. Adding Gardens by the Bay</i></sup></div>
 
-   * **`list-attraction`** : Lists all tourist attractions added.
-
-   * **`add-attraction`**` n/Singapore Discovery Center l/Singapore, Singapore p/67926188 t/educational a/510 Upper Jurong Rd, 38365` : 
-   Adds an attraction named `Singapore Discovery Center` to TrackPad.
-
-   * **`delete-attraction`**` 3` : Deletes the 3rd attraction shown in the current list.
+1. Oh no, you forgot to add the opening hours for Gardens by the Bay. No worries! By using the 
+   `edit-attraction 11 op/0500-0200` , we can edit the 11th attraction to add the opening hours from 5am to 2am.
    
-   * **`edit-attraction`**` 3 pr/HIGH` : Edits the 3rd attraction shown in the current list, changing its original
-    price range to HIGH.
+   ![Ui](images/gettingStartedEditAttraction.png)
+   <div align="center"><sup style="font-size:100%"><i>Figure 3. Editing Gardens by the Bay to add Opening Hours</i></sup></div>
 
-   * **`clear-attraction`** : Deletes all attractions.
-
-   * **`exit`** : Exits the app.
-
-1. Refer to [Features](#4-features) below for details of each command.
+1. Now, you want to create a one day itinerary to visit the Gardens by the Bay. Easy! Just type in 
+   `add-itinerary n/Walk in the Park sd/01-01-2021 ed/01-01-2021 d/Appreciate Singapore's flora and fauna`
+    
+   ![Ui](images/gettingStartedAddItinerary.png)
+   <div align="center"><sup style="font-size:100%"><i>Figure 4. Adding the new itinerary</i></sup></div>
+   
+1. To add Gardens by the Bay into the itinerary you just created, select the itinerary you want to add the attraction into, 
+   by `select-itinerary 2`.
+    
+    ![Ui](images/gettingStartedSelectItinerary.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 5. Selecting the itinerary</i></sup></div>
+       
+1. If you want to visit Gardens by the Bay from 10am to 2pm on the first day of your trip, type
+   `add-itinerary-attraction 11 day/1 st/1000 et/1400`.
+   
+   ![Ui](images/gettingStartedAddItineraryAttraction.png)
+   <div align="center"><sup style="font-size:100%"><i>Figure 6. Adding Gardens by the Bay into the itinerary</i></sup></div>
+    
+1. You are done! Feel free to add more attractions into the itinerary, or read on to discover other commands that will
+   give you more control over TrackPad, such as [`find-attraction`](#425-finding-a-tourist-attraction--find-attraction)
+   and [`delete-attraction`](##423-deleting-a-tourist-attraction---delete-attraction)!
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -529,7 +544,10 @@ There is no need for you to save manually.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 7. Command summary
+## 7. Command summary (Robin)
+
+Below is a condensed table for all the commands currently supported in our app. Refer to this table when you are sure 
+about how the commands work, and you just want a quick refresher.
 
 ### 7.1 Attraction Commands
 
