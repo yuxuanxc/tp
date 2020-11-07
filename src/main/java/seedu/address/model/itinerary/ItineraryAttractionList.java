@@ -25,9 +25,9 @@ public class ItineraryAttractionList implements ReadOnlyItineraryAttractionList 
     private ObservableList<ItineraryAttraction> internalList = FXCollections.observableArrayList();
     private int indexCounter = 1;
 
-    private ItineraryAttraction testingItineraryAttraction = new ItineraryAttraction(
-            new Attraction(new Name("test"), new Phone(), new Email(), new Address(), new Description(),
-                    new Location("Test"), new OpeningHours(), new PriceRange(), new Rating(), new Visited(),
+    private ItineraryAttraction dummyItineraryAttraction = new ItineraryAttraction(
+            new Attraction(new Name("nil"), new Phone(), new Email(), new Address(), new Description(),
+                    new Location("nil"), new OpeningHours(), new PriceRange(), new Rating(), new Visited(),
                     new HashSet<>()), new ItineraryTime("0000"), new ItineraryTime("0100"));
 
     public ItineraryAttractionList(Itinerary currentItinerary) {
@@ -38,7 +38,7 @@ public class ItineraryAttractionList implements ReadOnlyItineraryAttractionList 
         requireNonNull(currentItinerary);
         internalList = FXCollections.observableArrayList();
         for (Day day : currentItinerary.getDays()) {
-            internalList.add(new ItineraryAttractionDayCounter(testingItineraryAttraction,
+            internalList.add(new ItineraryAttractionDayCounter(dummyItineraryAttraction,
                     day.value));
             indexCounter = 1;
             for (ItineraryAttraction itineraryAttraction : day.getItineraryAttractions()) {
