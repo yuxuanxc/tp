@@ -562,6 +562,77 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. TrackPad shows an error.
 
       Use case ends.
+      
+**Use case: UC12 - List all itineraries**
+
+**MSS**
+
+1.  User requests to list all itineraries.
+2.  TrackPad shows a list of all itineraries.
+
+    Use case ends.
+    
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 2b. The format is invalid. 
+        
+  Use case ends.
+  
+**Use case: UC13 - Select an itinerary**
+
+**MSS**
+
+1.  User requests to list itineraries.
+2.  TrackPad shows a list of itineraries.
+3.  User requests to select a specific itinerary in the list.
+4.  TrackPad selects the itinerary.
+
+    Use case ends.
+    
+**Extensions**
+
+* 2a. The list is empty.
+      
+  Use case ends.
+      
+* 2b. The format is invalid. 
+      
+  Use case ends.
+  
+* 3a. The given index is invalid.
+
+    * 3a1. TrackPad shows an error message.
+    
+      Use case resumes at step 2.
+    
+**Use case: UC14 - Clear all itineraries**
+
+**MSS**
+
+1.  User requests to delete all itineraries in the list.
+2.  TrackPad deletes all itineraries in the list.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+  
+* 2b. The format is invalid. 
+        
+  Use case ends.
+
+* 3a. Error deleting list from storage
+
+    * 3a1. TrackPad shows an error.
+
+      Use case ends.
 
 ## **Appendix D: Non-Functional Requirements**
 
