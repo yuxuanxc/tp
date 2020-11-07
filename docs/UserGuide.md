@@ -113,7 +113,7 @@ Itinerary Features (4.3), Itinerary Attraction Features (4.4) and Miscellaneous 
 * If a field cannot be used multiple times, and you supply 2 or more of the same field, the app takes only the last specified field.<br>
   e.g. if you type `add-attraction n/USS n/Marina Bay Sands l/Singapore, Singapore`, which contains 2 names, "USS" and "Marina Bay Sands", only "Marina Bay Sands" is taken.
 
-* Parameters can be in any order.<br>
+* Fields can be in any order.<br>
   e.g. if the command specifies `n/ATTRACTION p/PHONE_NUMBER`, `p/PHONE_NUMBER n/ATTRACTION` is also acceptable.
 
 </div>
@@ -502,12 +502,12 @@ You want to delete all your itineraries, and start with an empty list of itinera
 1. Enter `clear-itinerary` into the app. 
 
     ![result_of_clearing all itineraries](images/userguideimages/clearItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 16. Before entering <code>clear-itinerary</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 16a. Before entering <code>clear-itinerary</code></i></sup></div>
 
 2. Note how all your itineraries are now deleted. 
 
     ![result_of_clearing all itineraries](images/userguideimages/clearItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 16. After entering <code>clear-itinerary</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 16b. After entering <code>clear-itinerary</code></i></sup></div>
 
 ### 4.4 Itinerary Attraction Features (Yeh Yu Chun)
 Itinerary attractions are attractions added to an itinerary, but with additional start/end time fields. These commands deal with attractions that are found in an itinerary.
@@ -663,7 +663,7 @@ Format: `exit`
 
 #### 4.5.3 Saving the data
 
-TrackPad data will be saved in the storage automatically after any command that changes the data.
+Your data in TrackPad will be saved in the storage automatically after any command that changes the data. 
 There is no need for you to save manually.
 
 --------------------------------------------------------------------------------------------------------------------
