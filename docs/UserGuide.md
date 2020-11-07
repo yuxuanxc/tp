@@ -6,6 +6,8 @@ title: User Guide
 
 <div style="page-break-after: always;"></div>
 
+<div style="page-break-after: always;"></div>
+
 * Table of Contents
 {:toc}
 
@@ -33,6 +35,7 @@ Minimal prior technical knowledge is needed in order to use TrackPad so try out 
 --------------------------------------------------------------------------------------------------------------------
 
 <div style="page-break-after: always;"></div>
+
 ## 3. Getting Started (Robin)
 
 Here are the steps to download TrackPad and start using it immediately!
@@ -57,6 +60,7 @@ Here are the steps to download TrackPad and start using it immediately!
 
 1. Oh no, you forgot to add the opening hours for Gardens by the Bay. No worries! By using the
    `edit-attraction 11 op/0500-0200` , we can edit the 11th attraction to add the opening hours from 5am to 2am.
+
 
    ![Ui](images/userguideimages/gettingStartedEditAttraction.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 3. Editing Gardens by the Bay to add Opening Hours</i></sup></div>
@@ -283,7 +287,21 @@ This action is irreversible and should be used with caution.
 
 ### 4.3 Itinerary Features
 
-Itineraries help track the details of your trip, as well as the attractions you plan on visiting.
+Itineraries help track the details of your trip, as well as the attractions you plan on visiting. 
+
+The table below shows a summary of the commands in this section.
+
+Action | Format, Examples
+--------|------------------
+**[Add itinerary](#431-adding-a-new-itinerary-add-itinerary)** | `add-itinerary n/ITINERARY sd/START_DATE ed/END_DATE [d/DESCRIPTION] [b/BUDGET]` <br> e.g. `add-itinerary n/Japan holiday sd/15-01-2019 ed/30-01-2019 d/with friends b/4000`
+**[Edit itinerary](#432-editing-an-itinerary-edit-itinerary)** | `edit-itinerary INDEX [n/NAME] [sd/START_DATE] [ed/END_DATE] [d/DESCRIPTION] [b/BUDGET]`<br> e.g. `edit-itinerary 2 n/Singapore journey sd/05-06-2019`
+**[Delete itinerary](#433-deleting-an-itinerary-delete-itinerary)** | `delete-itinerary INDEX`<br> e.g. `delete-itinerary 3`
+**[Find itinerary](#434-finding-an-itinerary-find-itinerary)** | `find-itinerary KEYWORD [MORE_KEYWORDS]`<br> e.g. `find-itinerary Korea`
+**[List itineraries](#435-listing-all-itineraries-list-itinerary)** | `list-itinerary`
+**[Select itinerary](#436-selecting-an-itinerary-select-itinerary)** | `select-itinerary INDEX`<br> e.g. `select-itinerary 3`
+**[Clear all itineraries](#437-clearing-all-itineraries--clear-itinerary)** | `clear-itinerary`
+
+Read on to find out more!
 
 #### 4.3.1 Adding a new itinerary: `add-itinerary`
 
@@ -291,32 +309,35 @@ Adds a new itinerary to the current list of itineraries.
 
 Format: `add-itinerary n/ITINERARY_NAME sd/START_DATE ed/END_DATE [d/DESCRIPTION] [b/BUDGET]`
 
-Compulsory fields:
-
-|   |   |
+| Compulsory fields | Description |
 |---|---|
-| **ITINERARY_NAME** | Contains only letters and numbers and should not be blank |
-| **START_DATE** 📆 | Takes the format `dd-mm-yyyy` and should not be after the end date |
-| **END_DATE** 📆 | Takes the format `dd-mm-yyyy` and should not be before the start date |
+| **ITINERARY_NAME** | Takes only letters and numbers and should not be blank |
+| **START_DATE** | Takes the format `dd-mm-yyyy` and should not be after the end date |
+| **END_DATE** | Takes the format `dd-mm-yyyy` and should not be before the start date |
 
-Optional fields:
-
-|   |   |
+| Optional fields | Description  |
 |---|---|
-| **DESCRIPTION** | Can take any value |
-| **BUDGET** 💵 | Can only be a non-negative number up to two decimal places |
+| **DESCRIPTION** | Takes any value |
+| **BUDGET** | Takes only a non-negative number up to two decimal places |
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
-The budget for the trip should not exceed 1 trillion.
+The budget for the trip should not be more than 15 digits, including the decimal places (if any).
 </div>
 
-Examples:
-* `add-itinerary n/Japan holiday sd/15-01-2019 ed/30-01-2019`
-* `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000`<br>
+Example:
 
-![result_of_adding an itinerary](images/userguideimages/addItinerary.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 10. The result of <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
+Let's say you want to add an itinerary for a trip to Europe with your friends. 
+ 
+1. Enter `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000` into the app. <br>
 
+   ![before_adding an itinerary](images/userguideimages/addItinerary1.png)
+   <div align="center"><sup style="font-size:100%"><i>Figure 10a. Before entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
+
+2. Note how your new itinerary appears in the `Itineraries` section of the app. 
+
+   ![after_adding an itinerary](images/userguideimages/addItinerary2.png)
+   <div align="center"><sup style="font-size:100%"><i>Figure 10b. After entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
+ 
 <div markdown="span" class="alert alert-danger">:warning: **Warning:**
 The names of itineraries are case sensitive.
 `add-itinerary n/japan trip sd/20-12-2020 ed/30-12-2020` followed by
@@ -334,14 +355,22 @@ Edits an itinerary from the current list of itineraries.
 Format: `edit-itinerary INDEX [n/NAME] [sd/START_DATE] [ed/END_DATE] [d/DESCRIPTION] [b/BUDGET]`
 
 * Edits the itinerary at the specified `INDEX` shown in the itinerary panel.
-* Field entries are the same as the `add-itinerary` command.
+* Field entries are the same as the [`add-itinerary`](#431-adding-a-new-itinerary-add-itinerary) command.
 * Any field can be changed by inputting its corresponding prefix in the command.
 
-Examples:
-* `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000` in an itinerary list followed by `edit-itinerary 1 sd/06-12-2020` changes the start date of the 1st itinerary in the list from `01-12-2020` to `06-12-2020`.<br>
+Example:
 
-![result_of_editing an itinerary](images/userguideimages/editItinerary.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 11. The result of <code>edit-itinerary 1 sd/06-12-2020</code></i></sup></div>
+Let's say after adding a second itinerary that starts on `01-12-2020`, you want to change the start date to `06-12-2020`. 
+
+1. Enter `edit-itinerary 2 sd/06-12-2020` into the app.
+
+    ![result_of_editing an itinerary](images/userguideimages/editItinerary1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 11a. Before entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div>
+
+2. Note how the start date of the second itinerary has changed from `01-12-2020` to `06-12-2020`.
+
+    ![result_of_editing an itinerary](images/userguideimages/editItinerary2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 11b. After entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 You can use `edit-itinerary INDEX prefix/ ` to remove existing optional fields.
@@ -355,11 +384,20 @@ Format: `delete-itinerary INDEX`
 
 * Deletes the itinerary at the specified `INDEX` shown in the itinerary panel.
 
-Examples:
-* `list-itinerary` followed by `delete-itinerary 1` deletes the 1st itinerary from the list.<br>
+Example:
 
-![result_of_deleting an itinerary](images/userguideimages/deleteItinerary.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 12. The result of <code>delete-itinerary 1</code></i></sup></div>
+Let's say you do not want to store the first itinerary in the app anymore, and you want to delete it.
+
+1. Enter `delete-itinerary 1` into the app. 
+
+    ![result_of_deleting an itinerary](images/userguideimages/deleteItinerary1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 12a. Before entering <code>delete-itinerary 1</code></i></sup></div>
+
+2. Note how your first itinerary has been deleted, and there is now one less itinerary. 
+
+    ![result_of_deleting an itinerary](images/userguideimages/deleteItinerary2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 12b. After entering <code>delete-itinerary 1</code></i></sup></div>
+
 
 #### 4.3.4 Finding an itinerary: `find-itinerary`
 
@@ -369,24 +407,43 @@ Format: `find-itinerary KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g `japan` will match `Japan`
 * The order of the keywords does not matter. e.g. `Okinawa Japan` will match `Japan Okinawa`
-* Only the name of the itinerary will be searched.
+* Every [itinerary field](#431-adding-a-new-itinerary-add-itinerary) will be searched, as well as the fields of all the [itinerary attractions](#44-itinerary-attraction-features) in the itinerary.
 * Only full words will be matched e.g. `Jap` will not match `Japan`
 
-Examples:
-* `find-itinerary Japan` returns `Japan Okinawa` and `Japan Tokyo`, if such itineraries exist<br>
+Example:
 
-![result_of_finding an itinerary](images/userguideimages/findItinerary.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 13. The result of <code>find-itinerary Japan</code></i></sup></div>
+Let's say you want to look for all the itineraries that contain the keyword `Europe`.
+
+1. Enter `find-itinerary Europe`
+    ![result_of_finding an itinerary](images/userguideimages/findItinerary1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 13a. Before entering <code>find-itinerary Europe</code></i></sup></div>
+
+2. Note how only the itinerary with `Europe` in its name is displayed. 
+
+    ![result_of_finding an itinerary](images/userguideimages/findItinerary2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 13b. After entering <code>find-itinerary Europe</code></i></sup></div>
+
 
 #### 4.3.5 Listing all itineraries: `list-itinerary`
 
-Shows all itineraries. Use this command to reset the view of the Itineraries panel, as
-certain commands (`find-itinerary`, `select-itinerary`) can alter the view of the Itineraries panel.
+Shows all itineraries. Use this command to reset the view of the Itineraries panel, as 
+certain commands ([`find-itinerary`](#434-finding-an-itinerary-find-itinerary), [`select-itinerary`](#436-selecting-an-itinerary-select-itinerary)) can alter the view of the Itineraries panel. 
 
 Format: `list-itinerary`<br>
 
-![result_of_listing itineraries](images/userguideimages/listItinerary.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 14. The result of <code>list-itinerary</code></i></sup></div>
+Example: 
+
+After finding an itinerary, you want to go back to seeing all your itineraries. 
+
+1. Enter `list-itinerary` into the app. 
+
+    ![result_of_listing itineraries](images/userguideimages/listItinerary1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 14a. Before entering <code>list-itinerary</code></i></sup></div>
+
+2. Note how all your itineraries are displayed again.
+
+    ![result_of_listing itineraries](images/userguideimages/listItinerary2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 14b. After entering <code>list-itinerary</code></i></sup></div>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 `list-itinerary` will work even if there are extra characters behind the command.
@@ -395,7 +452,9 @@ Eg. `list-itinerary abcd` will behave like `list-itinerary`.
 
 #### 4.3.6 Selecting an itinerary: `select-itinerary`
 
-Selects an itinerary to be shown in detail, from the current list of itineraries.
+Selects an itinerary to be shown in detail, from the current list of itineraries. 
+In detailed view, you can see a timetable of the attractions in the itinerary. 
+For more information on how to add, edit, and delete attractions in an itinerary, see [Itinerary Attraction Features](#44-itinerary-attraction-features).
 
 Format: `select-itinerary INDEX`
 
@@ -405,12 +464,20 @@ Format: `select-itinerary INDEX`
 To go back to seeing the list of itineraries, use `list-itinerary`.
 </div>
 
-Examples:
-* `select-itinerary 1` selects the 1st itinerary in the list of itineraries.<br>
+Example:
 
-![result_of_selecting itinerary](images/userguideimages/selectItinerary.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 15. The result of <code>select-itinerary 1</code></i></sup></div>
+Let's say you want to view the attractions you want to visit in your first itinerary. 
 
+1. Enter `select-itinerary 1` into the app. 
+
+    ![result_of_selecting itinerary](images/userguideimages/selectItinerary1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 15a. Before entering <code>select-itinerary 1</code></i></sup></div>
+
+2. Note how the itinerary panel has changed to show a detailed view of the attractions in the itinerary. 
+
+    ![result_of_selecting itinerary](images/userguideimages/selectItinerary2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 15b. After entering <code>select-itinerary 1</code></i></sup></div>
+    
 #### 4.3.7 Clearing all itineraries : `clear-itinerary`
 
 Clears all itineraries.
@@ -422,8 +489,19 @@ Format: `clear-itinerary`
 This action is irreversible and should be used with caution.
 </div>
 
-![result_of_clearing all itineraries](images/userguideimages/clearItinerary.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 16. The result of <code>clear-itinerary</code></i></sup></div>
+Example:
+
+You want to delete all your itineraries, and start with an empty list of itineraries. 
+
+1. Enter `clear-itinerary` into the app. 
+
+    ![result_of_clearing all itineraries](images/userguideimages/clearItinerary1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 16. Before entering <code>clear-itinerary</code></i></sup></div>
+
+2. Note how all your itineraries are now deleted. 
+
+    ![result_of_clearing all itineraries](images/userguideimages/clearItinerary2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 16. After entering <code>clear-itinerary</code></i></sup></div>
 
 ### 4.4 Itinerary Attraction Features (Yeh Yu Chun)
 Itinerary attractions are attractions added to an itinerary, but with additional start/end time fields. These commands deal with attractions that are found in an itinerary.
@@ -622,13 +700,13 @@ Action | Format, Examples
 
 Action | Format, Examples
 --------|------------------
-**Add itinerary** | `add-itinerary n/ITINERARY sd/START_DATE ed/END_DATE [d/DESCRIPTION] [b/BUDGET]` <br> e.g. `add-itinerary n/Japan holiday sd/15-01-2019 ed/30-01-2019 d/with friends b/4000`
-**Edit itinerary** | `edit-itinerary INDEX [n/NAME] [sd/START_DATE] [ed/END_DATE] [d/DESCRIPTION] [b/BUDGET]`<br> e.g. `edit-itinerary 2 n/Singapore journey sd/05-06-2019`
-**Delete itinerary** | `delete-itinerary INDEX`<br> e.g. `delete-itinerary 3`
-**Find itinerary** | `find-itinerary KEYWORD [MORE_KEYWORDS]`<br> e.g. `find-itinerary Korea`
-**List itineraries** | `list-itinerary`
-**Select itinerary** | `select-itinerary INDEX`<br> e.g. `select-itinerary 3`
-**Clear all itineraries** | `clear-itinerary`
+**[Add itinerary](#431-adding-a-new-itinerary-add-itinerary)** | `add-itinerary n/ITINERARY sd/START_DATE ed/END_DATE [d/DESCRIPTION] [b/BUDGET]` <br> e.g. `add-itinerary n/Japan holiday sd/15-01-2019 ed/30-01-2019 d/with friends b/4000`
+**[Edit itinerary](#432-editing-an-itinerary-edit-itinerary)** | `edit-itinerary INDEX [n/NAME] [sd/START_DATE] [ed/END_DATE] [d/DESCRIPTION] [b/BUDGET]`<br> e.g. `edit-itinerary 2 n/Singapore journey sd/05-06-2019`
+**[Delete itinerary](#433-deleting-an-itinerary-delete-itinerary)** | `delete-itinerary INDEX`<br> e.g. `delete-itinerary 3`
+**[Find itinerary](#434-finding-an-itinerary-find-itinerary)** | `find-itinerary KEYWORD [MORE_KEYWORDS]`<br> e.g. `find-itinerary Korea`
+**[List itineraries](#435-listing-all-itineraries-list-itinerary)** | `list-itinerary`
+**[Select itinerary](#436-selecting-an-itinerary-select-itinerary)** | `select-itinerary INDEX`<br> e.g. `select-itinerary 3`
+**[Clear all itineraries](#437-clearing-all-itineraries--clear-itinerary)** | `clear-itinerary`
 
 ### 7.3 Itinerary attraction Commands
 
