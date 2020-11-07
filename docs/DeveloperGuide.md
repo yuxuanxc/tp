@@ -663,13 +663,13 @@ testers are expected to do more *exploratory* testing.
    2. Test case: `markVisited-attraction 1`<br>
    
       1. Scenario 1: First attraction does not have the purple Visited tag.<br>
-      Expected: First attraction is marked as visited on the list. Details of the attraction shown in the status message. <br>
+      Expected: First attraction marked as visited on the list. Details of the attraction shown in the status message. <br>
       
       1. Scenario 2: First attraction already has the purple Visited tag.<br>
       Expected: First attraction remains unchanged. Error message shown in the result box.
 
-   3. Test case: `markVisited-attraction 1`<br>
-      Expected: No attraction is marked as visited. Error details shown in the result box.
+   3. Test case: `markVisited-attraction 0`<br>
+      Expected: No attraction marked as visited. Error details shown in the result box.
       
    4. Other incorrect markVisited commands to try: `markVisited-attraction`, `markVisited-attraction x` (where x is larger than the list size, or less than 0)<br>
       Expected: Similar to previous.
@@ -757,10 +757,10 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: List all itineraries using the `list-itinerary` command. Multiple itineraries in the list.
 
    2. Test case: `delete-itinerary 1`<br>
-      Expected: First itinerary is deleted from the list. Details of the deleted itinerary shown in the status message.
+      Expected: First from the list. Details of the deleted itinerary shown in the status message.
 
    3. Test case: `delete-itinerary 0`<br>
-      Expected: No itinerary is deleted. Error details shown in the status message.
+      Expected: No itinerary deleted. Error details shown in the status message.
 
    4. Other incorrect delete commands to try:
     * Missing index: `delete-itinerary`<br>
@@ -779,7 +779,83 @@ testers are expected to do more *exploratory* testing.
 
    3. Test case: `find-itinerary`<br>
       Expected: No itinerary is found. Error details shown in the status message.
-  
+
+### F16 Adding an attraction into itinerary (Yeh Yu Chun)
+
+1. Adding an attraction into an itinerary
+
+    1. Prerequisites: <br>
+        * At least 1 attraction in attractions lists.
+        * At least 1 itinerary in itineraries lists.
+        * An Itinerary must be selected using the `select-itinerary 1` command.
+    
+    2. Test case: `add-itinerary-attraction 1 day/1 st/1000 et/1400`
+        1. Scenario 1: First attraction of day 1 also happened somewhere between 1000H - 1400H. <br>
+        Expected: Error message warning of timing clash between the 2 attractions.
+        
+        2. Scenario 2: Day 1 of itinerary between 1000H - 1400H is empty. <br>
+        Expected: Adds attraction into the selected itinerary. Details of the added attraction shown in the status message.
+        
+    3. Test case: `add-itinerary-attraction` <br>
+        Expected: No attraction added. Error details shown in the status message.
+        
+    3. Other incorrect add itinerary attraction commands to try:
+        * Missing compulsory fields (e.g. missing end time): `add-itinerary-attraction 1 day/1 st/1000` <br>
+        Expected: Similar to 3.
+        * Invalid format for fields (e.g. not a valid time): `add-itinerary-attraction 1 day/1 st/1000 et/2400` <br>
+        Expected: Similar to 3.
+
+
+### F17 Editing an attraction in an itinerary (Yeh Yu Chun)
+
+1. Editing an existing attraction in an itinerary.
+
+    1. Prerequisites: Same as F16.
+    
+    2. Test case: `edit-itinerary-attraction 1 day/1 op/1000-1100` <br>
+        Expected: Change the opening time of the first attraction in the selected itinerary to `1000-1100`.
+
+    3. Test case: `edit-itinerary-attraction 2 day`
+        Expected: No attraction edited. Error details shown in the error message.
+        
+    4. Other incorrect edit itinerary attraction commands to try:
+        * Missing fields: `edit-itinerary-attraction 2 day/3 `
+        Expected: Similar to 3.
+        * Invalid format (e.g. invalid opening time format): `edit-itinerary-attraction 1 day/1 op/1200 to 1300` <br>
+        Expected: Similar to 3.
+        * No change in fields: `edit-itinerary-attraction 1 day/2 st/1000` when the start time is already `1000` <br>
+        Expected: Similar to 3.
+
+### F18 Deleting an attraction from an itinerary (Yeh Yu Chun)
+
+1. Deleting an attraction in an itinerary.
+
+    1. Prerequisites: Same as F16.
+    
+    2. Test case: `delete-itinerary-attraction 1 day/2` <br>
+        Expected: Deletes first attraction of day 1 is deleted from the itinerary.
+    
+    3. Other incorrect delete commands to try:
+    * Missing index: `delete-itinerary-attraction day/2` <br>
+    Expected: No attraction deleted. Error details shown in the error message.
+    * Invalid index: `delete-itinerary-attraction NaN day/2`
+    Expected: Similar to previous.
+    * Missing day: `delete-itinerary-attraction 1` <br>
+    Expected: Similar to previous.
+    * Invalid day: `delete-itinerary-attraction 1 day/NaN `
+    Expected: Similar to previous.
+
+### F19 Viewing help (Yeh Yu Chun)
+1. Viewing help
+
+    1. Prerequisites: NIL 
+        
+    2. Test case: `help` <br>
+        Expected: TrackPad shows a dialog box with a working url to TrackPad's online user guide.
+        
+    3. Test case: `help uselessString` <br>
+        Expected: TrackPad still shows a dialog box, ignores the extra string after help.
+
 ### F20 Exiting the program (Robin)
 
 1. Exits and shutdowns the program
