@@ -32,8 +32,13 @@ public class FindAttractionCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredAttractionList(predicate);
-        return new CommandResult(
-                String.format(Messages.MESSAGE_ATTRACTIONS_LISTED_OVERVIEW, model.getFilteredAttractionList().size()));
+        if (model.getFilteredAttractionList().size() == 1) {
+            return new CommandResult(String.format(Messages.MESSAGE_ATTRACTION_LISTED_OVERVIEW,
+                    model.getFilteredAttractionList().size()));
+        } else {
+            return new CommandResult(String.format(Messages.MESSAGE_ATTRACTIONS_LISTED_OVERVIEW,
+                    model.getFilteredAttractionList().size()));
+        }
     }
 
     @Override
