@@ -851,6 +851,48 @@ testers are expected to do more *exploratory* testing.
 
    3. Test case: `find-itinerary`<br>
       Expected: No itinerary is found. Error details shown in the status message.
+      
+### F13 Listing itineraries (York Tat)
+
+1. Listing all itineraries currently stored in TrackPad
+
+   1. Prerequisites: None.
+
+   2. Test case: `list-itinerary`<br>
+      Expected: All itineraries that are currently stored in the app will be displayed in the Itineraries panel.
+      
+   3. Test case: `list-itinerary 3`<br>
+      Expected: Everything typed after the space following the command will be ignored, and list-itinerary command will be executed successfully.
+
+### F14 Selecting an itinerary (York Tat)
+
+1. Selecting an itinerary while all itineraries are being shown
+
+   1. Prerequisites: List all itineraries using the `list-itinerary` command. Multiple itineraries in the list.
+
+   2. Test case: `select-itinerary 1`<br>
+      Expected: First itinerary is selected from the list. Details of the selected itinerary shown in the status message.
+
+   3. Test case: `select-itinerary 0`<br>
+      Expected: No itinerary is selected. Error details shown in the status message.
+
+   4. Other incorrect select commands to try:
+    * Missing index: `select-itinerary`<br>
+      Expected: Similar to 3
+    * Invalid index: `select-itinerary x`, where x is larger than the list size <br>
+      Expected: Similar to 3
+      
+### F15 Clearing itineraries (York Tat)
+
+1. Clears all itineraries currently stored in TrackPad
+
+   1. Prerequisites: None.
+
+   2. Test case: `clear-itinerary`<br>
+      Expected: All itineraries that are currently stored in the app will be deleted. An empty Itineraries panel will be shown.
+      
+   3. Test case: `clear-itinerary 2`<br>
+      Expected: Everything typed after the space following the command will be ignored, and clear-itinerary command will be executed successfully.
   
 ### F20 Exiting the program (Robin)
 
