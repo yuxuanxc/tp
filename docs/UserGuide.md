@@ -17,21 +17,35 @@ title: User Guide
 
 ## 1. Introduction (York Tat)
 TrackPad (TP) is a **desktop app for planning your trips and tracking tourist attractions, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a
-Graphical User Interface (GUI). TP is built for people who love to travel, and store all their itineraries in a structured format in one single app.
-Our commands are **intuitive** and utilise full words, making them sound more natural and verbose than short forms, so it's **easier** for you to remember.
-If you can type fast, TP can get your itinerary planned faster than traditional GUI apps.
+Graphical User Interface (GUI). TP is built for people who love to travel and want to collate all their itineraries neatly in one single app.
+Our **intuitive** commands utilise words in full, making it **easy** for you to remember.
+If you can type fast, TP can get your itinerary planned **faster** than traditional GUI apps. Minimal prior technical knowledge is needed in order to 
+use TrackPad so try out TrackPad now to make your travel planning **easier and faster**!
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## 2. About This Document (York Tat)
 Welcome to the TrackPad User Guide!
 
-We at TrackPad believe that tracking your attractions and planning your trips should be both **easy and fuss-free**.
-We understand how **messy** it can be when it comes to keeping track of your travel itineraries, which can get frustrating.
+We at TrackPad know how **difficult and messy** it can get when it comes to keeping track of your travel itineraries and TrackPad
+is a **fuss-free and easy** app that helps you keep track of all your travel related information.
 
-That's why here at TrackPad, we have come up with a **simple yet useful** guide to help you get started with using TrackPad.
-Minimal prior technical knowledge is needed in order to use TrackPad so try out TrackPad now to make your travel planning **easier and faster**!
+This simple guide provides a **comprehensive** description of the features in TrackPad and also includes a [getting started](#3-getting-started-robin) section
+that helps you get started.
 
+Here are some symbols we will be using in this guide to help you along:
+
+<div markdown="span" class="alert alert-warning">:information_source: Boxes with the :information_source: icon contain
+important information.
+</div>
+
+<div markdown="span" class="alert alert-primary">:bulb: Boxes with the :bulb: icon contain
+additional useful tips.
+</div>
+
+<div markdown="span" class="alert alert-danger">:warning: Boxes with the :warning: icon contain
+caution messages.
+</div>
 --------------------------------------------------------------------------------------------------------------------
 
 <div style="page-break-after: always;"></div>
@@ -121,7 +135,17 @@ Itinerary Features (4.3), Itinerary Attraction Features (4.4) and Miscellaneous 
 ### 4.2 Attraction Features (York Tat)
 
 Attractions are the core building blocks of TrackPad and are required to populate your itineraries!
-The following features are tailored for attractions in TrackPad.
+The table below shows a summary of the commands in this section.
+
+Action | Format, Examples
+--------|------------------
+**[Add attraction](#421-adding-a-tourist-attraction-add-attraction)** | `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​` <br> e.g. `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
+**[Edit attraction](#422-editing-a-tourist-attraction-edit-attraction)** | `edit-attraction INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g. `edit 2 n/Singapore Zoo e/zoo@example.com`
+**[Delete attraction](#423-deleting-a-tourist-attraction--delete-attraction)** | `delete-attraction INDEX`<br> e.g. `delete 3`
+**[Mark Visited attraction](#424-marking-a-tourist-attraction-as-visited-markvisited-attraction)** | `markVisited-attraction INDEX`<br> e.g. `markVisited-attraction 2`
+**[Find attraction](#425-finding-a-tourist-attraction-find-attraction)** | `find-attraction KEYWORD [MORE_KEYWORDS]`<br> e.g. `find Zoo`
+**[List attractions](#426-listing-all-tourist-attractions--list-attraction)** | `list-attraction`
+**[Clear all attractions](#427-clearing-all-attractions--clear-attraction)** | `clear-attraction`
 
 #### 4.2.1 Adding a tourist attraction: `add-attraction`
 
@@ -133,21 +157,17 @@ Format (Minimal): `add-attraction n/ATTRACTION_NAME l/LOCATION`
 Format (All fields): `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS]
 [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​`
 
-Compulsory fields:
-
-|   |   |
+| Compulsory fields | Description |
 |---|---|
 | **ATTRACTION_NAME** | Contains only letters and numbers and should not be blank |
 | **LOCATION** | Can take any value, we recommend the format: `CITY, COUNTRY` |
 
-Optional fields:
-
-|   |   |
+| Optional fields | Description |
 |---|---|
 | **DESCRIPTION** | Can take any value |
-| **PHONE_NUMBER** 📞 | Contains only numbers and be at least 3 digits long with no spaces in between |
-| **EMAIL** 📧 | Takes the format `local-part@domain` |
-| **ADDRESS** 🏠 | Postal address of the attraction, can take any value |
+| **PHONE_NUMBER** | Contains only numbers and be at least 3 digits long with no spaces in between |
+| **EMAIL** | Takes the format `local-part@domain` |
+| **ADDRESS** | Postal address of the attraction, can take any value |
 | **OPENING_HOURS** | Takes the format `opening time - closing time`, both in the 24H format `HHMM-HHMM` |
 | **PRICE_RANGE** | Takes one of the following ranges: `LOW`, `MEDIUM` or `HIGH` |
 | **RATING** | Takes a number between `0.0` to `5.0` |
@@ -163,7 +183,7 @@ which operates overnight.
 An attraction can have any number of tags.
 </div>
 
-Examples:
+For example:
 * `add-attraction n/USS a/8 Sentosa Gateway, 098269 l/Singapore, Singapore`
 * `add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com
 op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`<br><br>
@@ -282,8 +302,19 @@ Format: `clear-attraction`
 This action is irreversible and should be used with caution.
 </div><br>
 
-![result for 'clear-attraction'](images/userguideimages/clearAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 9. The result of <code>clear-attraction</code></i></sup></div>
+Example:
+
+You want to delete all your attractions and start with an empty list of attractions. 
+
+1. Enter `clear-attraction` into the app. 
+
+    ![result_of_clearing all attractions](images/userguideimages/clearItinerary1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 9a. Before entering <code>clear-attraction</code></i></sup></div>
+
+2. Note how all your attractions are now deleted. 
+
+    ![result_of_clearing all_attractions](images/userguideimages/clearItinerary2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 9b. After entering <code>clear-attraction</code></i></sup></div>
 
 ### 4.3 Itinerary Features
 
@@ -521,8 +552,12 @@ Action | Format, Examples
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/userguideimages/ItineraryAttraction.png)</span>
 <div align='center'><i><sup style="font-size:100%">Figure 17. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
 
-In Figure 17 above, Itinerary 1 has been selected with `select-itinerary 1` command, shown on the right of the image with a red border.
-Attractions inside `Selected Itinerary` is an itinerary attraction. Notice both copy of `Jurong Bird Park` has almost the same fields, but with the addition of a start/end time field.
+In Figure 17 above, 
+* The left side shows attractions you have added.
+* The right side shows the itinerary currently selected.
+* Notice the right copy of `Jurong Bird Park`'s name has the addition of a start and end time on top of it.
+
+Let's start filling up your itinerary with attractions!
 
 #### 4.4.1 Adding an attraction to the selected itinerary: `add-itinerary-attraction`
 Adds an attraction to the selected itinerary.
@@ -667,6 +702,8 @@ There is no need for you to save manually.
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous TrackPad home folder.
 
+**Q**: Where do I go to if I need help?<br>
+**A**: Simply head to TrackPad's [issue page](https://github.com/AY2021S1-CS2103T-T09-3/tp/issues) and create an issue! Kindly allow us sometime to reach back to you.
 --------------------------------------------------------------------------------------------------------------------
 
 ## 6. Glossary (Yuxuan)
@@ -688,13 +725,13 @@ about how the commands work, and you just want a quick refresher.
 
 Action | Format, Examples
 --------|------------------
-**Add attraction** | `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​` <br> e.g. `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
-**Edit attraction** | `edit-attraction INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g. `edit 2 n/Singapore Zoo e/zoo@example.com`
-**Delete attraction** | `delete-attraction INDEX`<br> e.g. `delete 3`
-**Mark Visited attraction** | `markVisited-attraction INDEX`<br> e.g. `markVisited-attraction 2`
-**Find attraction** | `find-attraction KEYWORD [MORE_KEYWORDS]`<br> e.g. `find Zoo`
-**List attractions** | `list-attraction`
-**Clear all attractions** | `clear-attraction`
+**[Add attraction](#421-adding-a-tourist-attraction-add-attraction)** | `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [op/OPENING_HOURS] [pr/PRICE_RANGE] [r/RATING] [v/VISITED] [t/TAG]…​` <br> e.g. `add n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826`
+**[Edit attraction](#422-editing-a-tourist-attraction-edit-attraction)** | `edit-attraction INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g. `edit 2 n/Singapore Zoo e/zoo@example.com`
+**[Delete attraction](#423-deleting-a-tourist-attraction--delete-attraction)** | `delete-attraction INDEX`<br> e.g. `delete 3`
+**[Mark Visited attraction](#424-marking-a-tourist-attraction-as-visited-markvisited-attraction)** | `markVisited-attraction INDEX`<br> e.g. `markVisited-attraction 2`
+**[Find attraction](#425-finding-a-tourist-attraction-find-attraction)** | `find-attraction KEYWORD [MORE_KEYWORDS]`<br> e.g. `find Zoo`
+**[List attractions](#426-listing-all-tourist-attractions--list-attraction)** | `list-attraction`
+**[Clear all attractions](#427-clearing-all-attractions--clear-attraction)** | `clear-attraction`
 
 ### 7.2 Itinerary Commands
 
