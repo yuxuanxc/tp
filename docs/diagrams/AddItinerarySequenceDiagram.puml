@@ -61,18 +61,6 @@ deactivate ItineraryList
 Model --> AddItineraryCommand
 deactivate Model
 
-AddItineraryCommand -> Model : setCurrentItinerary(null)
-activate Model
-
-Model -> ItineraryList : setCurrentItinerary(null)
-activate ItineraryList
-
-ItineraryList --> Model
-deactivate ItineraryList
-
-Model --> AddItineraryCommand
-deactivate Model
-
 create CommandResult
 AddItineraryCommand -> CommandResult
 activate CommandResult

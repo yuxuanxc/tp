@@ -8,7 +8,7 @@ We are a team based in the [School of Computing, National University of Singapor
 You can reach us at the following emails:
 
 * Yeh Yu Chun:
-* Lim Koon Kiat:
+* Lim Koon Kiat: e0389069@u.nus.edu
 * Lee York Tat:
 * Robin Ho: e0014938@u.nus.edu
 * Zhu Yuxuan: 
@@ -21,7 +21,6 @@ You can reach us at the following emails:
 
 [[github](https://github.com/peter-yeh)]
 [[portfolio](team/peter-yeh.md)]
-
 
 ### Lim Koon Kiat
 
