@@ -159,6 +159,57 @@ This section describes some noteworthy details on the implementation of core Tra
 
 *To be added*
 
+### 4.2 Itinerary Model
+
+#### 4.2.1 Current Implementation
+
+The `Itinerary` class helps users keep track of the details of their trips and the attractions they want to visit. 
+The class diagram for `Itinerary` is shown below:
+
+![Structure of the Storage Component](images/devguideimages/ItineraryClassDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The Itinerary Class Diagram</i></sup></div><br>
+
+Each `Itinerary` contains `Name`, `Description`, `Budget`, `startDate` and `endDate`. Both `startDate` and `endDate` 
+are of the `ItineraryDate` class. Additionally, to store the attractions that users want to visit, each `Itinerary` 
+contains a list of `Day`s, and each `Day` contains a list of `ItineraryAttraction`s. 
+
+#### 4.2.2 Design Considerations
+
+##### 4.2.2.1 Aspect: How the location field of `Itinerary` is derived
+
+* **Alternative 1:** Have a field for location that the user has to manually specify alongside `Name`, `startDate`, `endDate` etc.
+  * Pros: Simple and intuitive for the user to specify. 
+  * Cons: Would not update accordingly if the user adds attractions that are not in the specified location. 
+  Also, it would get complicated for the user to add and edit multiple locations in a certain order. 
+
+* **Alternative 2 (Current choice):** Get the locations from the current `ItineraryAttraction`s in the `Itinerary`. 
+  * Pros: The user does not have to worry about adding and editing locations, and making sure that they are correct order as 
+  it is done automatically. 
+  * Cons: The itinerary would not have any specified locations unless the user adds an `ItineraryAttraction`, 
+  which might not be intuitive to users. 
+  
+### 4.??? Add Itinerary Feature (Might need discuss numbering again)
+
+The add itinerary feature allows users to add itineraries with the compulsory fields `Name`, `startDate` and `endDate`, and 
+the optional fields `Description` and `Budget`. 
+
+#### 4.??? Current Implementation
+
+Step 1. The user launches the application. 
+Step 2. The user types in `add-itinerary n/Japan Trip sd/12-12-2020 ed/18-12-2020 d/fun in Japan b/1000` to add a new itinerary. This itinerary does not already exist in the app. 
+Step 3. `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `AddItineraryCommand` and passes the input to `AddItineraryCommandParser`. 
+Step 4. `AddItineraryCommandParser` parses the input and constructs a new `AddItineraryCommand` containing a new `Itinerary` with the specified fields.
+Step 5. `LogicManager` executes the new `AddItineraryCommand`. This calls `Model` to add the new `Itinerary` to its `ItineraryList`.
+Step 6. After the new `Itinerary` is successfully added, `AddItineraryCommand` returns a `CommandResult` for the Ui to display. 
+
+The following sequence diagram shows how the `add-itinerary` operation works:
+
+![AddItinerarySequenceDiagram](images/devguideimages/AddItinerarySequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `add-itinerary`</i></sup></div><br>
+
+#### 4.??? Design Considerations
+
+
 ### 3.ia Itinerary Attraction class
 This is a type of `Attraction` that goes into the `List<Day>` that resides in `Itinerary`. 
 
