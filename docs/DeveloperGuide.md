@@ -170,7 +170,7 @@ If the index is invalid or the attraction has already been visited before, an er
 
 The following activity diagram shows how `markVisited-attraction` works:
 ![MarkVisitedActivityDiagram](images/devguideimages/MarkVisitedActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `markVisited-attraction`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of <code>markVisited-attraction</code></i></sup></div><br>
 
 We will use the above activity diagram as shown in Figure X to explain how the `markVisited-attraction` command is executed in detail.
 We assume no error is encountered, and the attraction that is selected to be marked as visited is not visited yet.
@@ -192,7 +192,7 @@ Step 7. `MarkVisitedCommand` then creates a new `CommandResult`, which contains 
 The whole sequence of events is outlined in the sequence diagram shown below.
 
 ![MarkVisitedSequenceDiagram](images/devguideimages/MarkVisitedSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `markVisited-attraction 1`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>markVisited-attraction 1</code></i></sup></div><br>
 
 #### 4.X.2 Design Considerations
 
@@ -258,7 +258,7 @@ Steps:
 The following sequence diagram shows how the `add-attraction` operation works:
 
 ![Add Attraction Sequence Diagram](images/devguideimages/AddAttractionSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `add-attraction`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-attraction</code></i></sup></div><br>
 
 #### 4.?.2 Design Considerations
 
@@ -336,7 +336,7 @@ Step 6. After the new `Itinerary` is successfully added, `AddItineraryCommand` r
 The following sequence diagram shows how the `add-itinerary` operation works:
 
 ![AddItinerarySequenceDiagram](images/devguideimages/AddItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `add-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-itinerary</code></i></sup></div><br>
 
 The following activity diagram summarizes what happens when a user executes an `add-itinerary` command:
 
@@ -379,22 +379,30 @@ It is stored internally as an `List<Day>`. Additionally, it implements the follo
 ##### Aspect 1: Inheritance or composition
 
 * **Alternative 1 (current choice):** `ItineraryAttraction` inherits `Attraction`.
-  * Pros: 
-  * Cons:
+  * Pros: Allows it to be treated as an `Attraction` allowing `ItineraryAttraction` access to getters for `Attraction` without redefining it.
+  * Cons: 
 
 * **Alternative 2:** `ItineraryAttraction` would compose `Attraction`
-  * Pros: 
-  * Cons: 
+  * Pros: Easy to implement by just adding an `Attraction` field.
+  * Cons: Would require many getters to access fields inside `Attraction`.
+  
+  If composition was chose, we would need to `itineraryAttraction.getAttraction().getField()`.
+  
+  If inheritance was chose, we can just do `itineraryAttraction.getField()`.
+  
+  Inheritance is chose to allow edit itinerary attraction command access to existing fields in an `Attraction`.
 
 ##### Aspect 2: Constructor
 
 * **Alternative 1 (current choice):** constructor takes in an `Attraction`.
-  * Pros:
-  * Cons:
+  * Pros: It is neater and simpler to use attraction as parameter to create an `ItineraryAttraction` object.
+  * Cons: New methods and test cases were written to test this behaviour.
   
 * **Alternative 2:** constructor takes in all the fields of `Attraction`.
-  * Pros:
-  * Cons:
+  * Pros: Can reuse codes from attractions.
+  * Cons: Makes the codes very messy and long.
+  
+  Alternative 2 will have higher chances of bugs. Attraction objects are currently pass around instead of the individual fields, simplifying codes and chances of bugs.
 
 ##### Aspect 3: Immutability
 The fields inside `ItineraryAttraction` are private final to prevent any modifications of fields.
@@ -408,7 +416,7 @@ with a start and end time.
 
 The following activity diagram shows a simplified add-itinerary-attraction operation:
 ![AddItineraryAttractionActivityDiagram](images/devguideimages/AddItineraryAttractionActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `add-itinerary-attraction`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of <code>add-itinerary-attraction</code></i></sup></div><br>
 
 **Assumes:**
 1. The user launches the application.
@@ -429,7 +437,7 @@ itinerary and the timing does not clash with any exisiting attractions in the it
 The following sequence diagram shows how the `add-itinerary-attraction` operation works:
 
 ![AddItineraryAttractionSequenceDiagram](images/devguideimages/AddItineraryAttractionSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `add-itinerary-attraction`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-itinerary-attraction.</code></i></sup></div><br>
 
 #### 4.3.4 Design Considerations
 
@@ -581,6 +589,7 @@ _{more aspects and alternatives to be added}_
 _{Explain here how the data archiving feature will be implemented}_
 
 -->
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **5. Documentation, logging, testing, configuration, dev-ops**
