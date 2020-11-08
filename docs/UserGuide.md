@@ -98,8 +98,8 @@ Here are the steps to download TrackPad and start using it immediately!
    <div align="center"><sup style="font-size:100%"><i>Figure 6. Adding Gardens by the Bay into the itinerary</i></sup></div>
  
 1. You are done! Feel free to add more attractions into the itinerary, or read on to discover other commands that will
-   give you more control over TrackPad, such as [`find-attraction`](#425-finding-a-tourist-attraction--find-attraction)
-   and [`delete-attraction`](##423-deleting-a-tourist-attraction---delete-attraction)!
+   give you more control over TrackPad, such as [`find-attraction`](#425-finding-a-tourist-attraction-find-attraction)
+   and [`delete-attraction`](#423-deleting-a-tourist-attraction--delete-attraction)!
 
 --------------------------------------------------------------------------------------------------------------------
 
