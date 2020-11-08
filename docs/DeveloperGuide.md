@@ -81,7 +81,7 @@ The sections below give more details of each component.
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `AttractionListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `AttractionListPanel`, `ItineraryListPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
@@ -90,7 +90,7 @@ The `UI` component,
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
-This design is similar to the Architectural design of TrackPad, whereby different UiParts are encapsulated in the MainWindow java controller class. This allows the Logic to minimise interaction with the UI, since the MainWindow manages the changes to any UiPart classes that result from the execution in the Logic component.
+This design is similar to the Architectural design of TrackPad, whereby different `UiParts` are encapsulated in the `MainWindow java` controller class. This allows the `Logic` to minimise interaction with the `UI`, since the `MainWindow` manages the changes to any `UiPart` classes that result from the execution in the `Logic` component.
 
 ### 3.3 Logic
 
@@ -562,6 +562,77 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. TrackPad shows an error.
 
       Use case ends.
+      
+**Use case: UC12 - List all itineraries**
+
+**MSS**
+
+1.  User requests to list all itineraries.
+2.  TrackPad shows a list of all itineraries.
+
+    Use case ends.
+    
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 2b. The format is invalid. 
+        
+  Use case ends.
+  
+**Use case: UC13 - Select an itinerary**
+
+**MSS**
+
+1.  User requests to list itineraries.
+2.  TrackPad shows a list of itineraries.
+3.  User requests to select a specific itinerary in the list.
+4.  TrackPad selects the itinerary.
+
+    Use case ends.
+    
+**Extensions**
+
+* 2a. The list is empty.
+      
+  Use case ends.
+      
+* 2b. The format is invalid. 
+      
+  Use case ends.
+  
+* 3a. The given index is invalid.
+
+    * 3a1. TrackPad shows an error message.
+    
+      Use case resumes at step 2.
+    
+**Use case: UC14 - Clear all itineraries**
+
+**MSS**
+
+1.  User requests to delete all itineraries in the list.
+2.  TrackPad deletes all itineraries in the list.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+  
+* 2b. The format is invalid. 
+        
+  Use case ends.
+
+* 3a. Error deleting list from storage
+
+    * 3a1. TrackPad shows an error.
+
+      Use case ends.
 
 ## **Appendix D: Non-Functional Requirements**
 
@@ -780,7 +851,49 @@ testers are expected to do more *exploratory* testing.
 
    3. Test case: `find-itinerary`<br>
       Expected: No itinerary is found. Error details shown in the status message.
+      
+### F13 Listing itineraries (York Tat)
 
+1. Listing all itineraries currently stored in TrackPad
+
+   1. Prerequisites: None.
+
+   2. Test case: `list-itinerary`<br>
+      Expected: All itineraries that are currently stored in the app will be displayed in the Itineraries panel.
+      
+   3. Test case: `list-itinerary 3`<br>
+      Expected: Everything typed after the space following the command will be ignored, and list-itinerary command will be executed successfully.
+
+### F14 Selecting an itinerary (York Tat)
+
+1. Selecting an itinerary while all itineraries are being shown
+
+   1. Prerequisites: List all itineraries using the `list-itinerary` command. Multiple itineraries in the list.
+
+   2. Test case: `select-itinerary 1`<br>
+      Expected: First itinerary is selected from the list. Details of the selected itinerary shown in the status message.
+
+   3. Test case: `select-itinerary 0`<br>
+      Expected: No itinerary is selected. Error details shown in the status message.
+
+   4. Other incorrect select commands to try:
+    * Missing index: `select-itinerary`<br>
+      Expected: Similar to 3
+    * Invalid index: `select-itinerary x`, where x is larger than the list size <br>
+      Expected: Similar to 3
+      
+### F15 Clearing itineraries (York Tat)
+
+1. Clears all itineraries currently stored in TrackPad
+
+   1. Prerequisites: None.
+
+   2. Test case: `clear-itinerary`<br>
+      Expected: All itineraries that are currently stored in the app will be deleted. An empty Itineraries panel will be shown.
+      
+   3. Test case: `clear-itinerary 2`<br>
+      Expected: Everything typed after the space following the command will be ignored, and clear-itinerary command will be executed successfully.
+  
 ### F16 Adding an attraction into itinerary (Yeh Yu Chun)
 
 1. Adding an attraction into an itinerary
