@@ -40,4 +40,3 @@ Given below are my contributions to the project.
 
 * **Community**:
   * Reported bugs and suggestions for other teams in the class during PE Dry Run. (examples: [\#3](https://github.com/Robinho98/ped/issues/3), [\#5](https://github.com/Robinho98/ped/issues/5), [\#9](https://github.com/Robinho98/ped/issues/9))
-

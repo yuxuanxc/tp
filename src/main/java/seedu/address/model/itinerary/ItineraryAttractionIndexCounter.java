@@ -52,12 +52,13 @@ public class ItineraryAttractionIndexCounter extends ItineraryAttraction {
         ItineraryAttractionIndexCounter otherItineraryAttraction = (ItineraryAttractionIndexCounter) other;
         // calls equals of Attraction and checks the timing.
         return super.equals(otherItineraryAttraction)
-                && isSameTiming(otherItineraryAttraction);
+                && isSameTiming(otherItineraryAttraction)
+                && index == otherItineraryAttraction.getIndex();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this, index);
+        return Objects.hash(itineraryAttraction, index);
     }
 
     @Override
