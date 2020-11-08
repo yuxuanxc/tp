@@ -24,7 +24,7 @@ use TrackPad so try out TrackPad now to make your travel planning **easier and f
 Welcome to the TrackPad User Guide!
 
 We at TrackPad know how **difficult and messy** it can get when it comes to keeping track of your travel itineraries and TrackPad
-is a **fuss-free and easy** app that helps you keep track of all your travel related information.
+is a **fuss-free** app that helps you keep track of all your travel related information.
 
 This simple guide provides a **comprehensive** description of the features in TrackPad and also includes a [Getting Started](#3-getting-started-robin) section
 that helps you get started.
@@ -192,12 +192,12 @@ For example:
 
 You plan on visiting Gardens by the Bay over the weekends.
 
-1. Enter `add-attraction n/Gardens by the Bay a/18 Marina Gardens Dr, Singapore 018953 l/Singapore, Singapore t/sightseeing e/feedback@gardensbythebay.com.sg op/0500-0200 pr/LOW r/4.7 v/FALSE` into the app. 
+1. Enter `add-attraction n/Gardens by the Bay a/18 Marina Gardens Dr, Singapore 018953 l/Singapore, Singapore t/sightseeing e/feedback@gardensbythebay.com.sg op/0500-0200 pr/LOW r/4.7 v/FALSE` into the command box. 
 
     ![result_of_add attractions](images/userguideimages/addAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 8a. Before entering <code>add-attraction n/Gardens by the Bay a/18 Marina Gardens Dr, Singapore 018953 l/Singapore, Singapore t/sightseeing e/feedback@gardensbythebay.com.sg op/0500-0200 pr/LOW r/4.7 v/FALSE</code></i></sup></div>
 
-2. Note how `Gardens by the Bay` appears in the `Attractions` section of the app.
+2. Note how `Gardens by the Bay` appears in the `Attractions` panel.
 
     ![result_of_add_attractions](images/userguideimages/addAttraction2.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 8b. After entering <code>add-attraction n/Gardens by the Bay a/18 Marina Gardens Dr, Singapore 018953 l/Singapore, Singapore t/sightseeing e/feedback@gardensbythebay.com.sg op/0500-0200 pr/LOW r/4.7 v/FALSE</code></i></sup></div>
@@ -230,12 +230,12 @@ For example:
 
 You realise that the rating of `Gardens by the Bay` is wrongly reflected and want to add the price range for the attraction.
 
-1. Enter `edit-attraction 11 r/4.4 pr/LOW` into the app.
+1. Enter `edit-attraction 11 r/4.4 pr/LOW` into the command box.
 
     ![result_of_edit attractions](images/userguideimages/editAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 9a. Before entering <code>edit-attraction 11 r/4.4 pr/LOW</code></i></sup></div>
 
-2. Note how `Gardens by the Bay` appears in the `Attractions` section of the app.
+2. Note how `Gardens by the Bay` appears in the `Attractions` panel.
 
     ![result_of_edit_attractions](images/userguideimages/editAttraction2.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 9b. After entering <code>edit-attraction 11 r/4.4 pr/LOW</code></i></sup></div>
@@ -258,7 +258,7 @@ For example:
 
 You want to delete `Jurong Bird Park` from your list of attractions.
 
-1. Enter `delete-attraction 1` into the app. 
+1. Enter `delete-attraction 1` into the command box. 
 
     ![result_of_delete attractions](images/userguideimages/deleteAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 10a. Before entering <code>delete-attraction 1</code></i></sup></div>
@@ -279,14 +279,14 @@ Marks a tourist attraction in the current list of attractions as visited.
 Format: `markVisited-attraction INDEX`
 
 * Marks the attraction at the specified [`INDEX`](#6-glossary-yuxuan) shown in the attractions panel as visited.
-* The attraction can be marked visited, only if the attraction was not visited.
+* The attraction can only be marked visited if the attraction was not visited.
 
 For example:
 
 You have just visited `Night Safari` over the holidays. You want TrackPad to reflect that you have visited
 `Night Safari`.
 
-1. Enter `markVisited-attraction 2` into the app. 
+1. Enter `markVisited-attraction 2` into the command box. 
 
     ![result_of_markVisited attractions](images/userguideimages/markVisitedAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 11a. Before entering <code>markVisited-attraction 2</code></i></sup></div>
@@ -310,7 +310,7 @@ For example:
 
 You want to look for all the attractions that contain the keyword `jurong`.
 
-1. Enter `find-attraction jurong` into the app. 
+1. Enter `find-attraction jurong` into the command box. 
 
     ![result_of_finding attractions](images/userguideimages/findAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 12a. Before entering <code>find-attraction jurong</code></i></sup></div>
@@ -331,7 +331,7 @@ For example:
 
 After finding an attraction, you want to switch back to seeing all your attractions.
 
-1. Enter `list-attraction` into the app. 
+1. Enter `list-attraction` into the command box. 
 
     ![result_of_listing all attractions](images/userguideimages/listAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 13a. Before entering <code>list-attraction</code></i></sup></div>
@@ -362,7 +362,7 @@ For example:
 
 You want to delete all your attractions and start with an empty list of attractions. 
 
-1. Enter `clear-attraction` into the app. 
+1. Enter `clear-attraction` into the command box. 
 
     ![result_of_clearing all attractions](images/userguideimages/clearAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 14a. Before entering <code>clear-attraction</code></i></sup></div>
