@@ -159,6 +159,57 @@ This section describes some noteworthy details on the implementation of core Tra
 
 *To be added*
 
+### 4.2 Itinerary Model
+
+#### 4.2.1 Current Implementation
+
+The `Itinerary` class helps users keep track of the details of their trips and the attractions they want to visit. 
+The class diagram for `Itinerary` is shown below:
+
+![Structure of the Storage Component](images/devguideimages/ItineraryClassDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The Itinerary Class Diagram</i></sup></div><br>
+
+Each `Itinerary` contains `Name`, `Description`, `Budget`, `startDate` and `endDate`. Both `startDate` and `endDate` 
+are of the `ItineraryDate` class. Additionally, to store the attractions that users want to visit, each `Itinerary` 
+contains a list of `Day`s, and each `Day` contains a list of `ItineraryAttraction`s. 
+
+#### 4.2.2 Design Considerations
+
+##### 4.2.2.1 Aspect: How the location field of `Itinerary` is derived
+
+* **Alternative 1:** Have a field for location that the user has to manually specify alongside `Name`, `startDate`, `endDate` etc.
+  * Pros: Simple and intuitive for the user to specify. 
+  * Cons: Would not update accordingly if the user adds attractions that are not in the specified location. 
+  Also, it would get complicated for the user to add and edit multiple locations in a certain order. 
+
+* **Alternative 2 (Current choice):** Get the locations from the current `ItineraryAttraction`s in the `Itinerary`. 
+  * Pros: The user does not have to worry about adding and editing locations, and making sure that they are correct order as 
+  it is done automatically. 
+  * Cons: The itinerary would not have any specified locations unless the user adds an `ItineraryAttraction`, 
+  which might not be intuitive to users. 
+  
+### 4.??? Add Itinerary Feature (Might need discuss numbering again)
+
+The add itinerary feature allows users to add itineraries with the compulsory fields `Name`, `startDate` and `endDate`, and 
+the optional fields `Description` and `Budget`. 
+
+#### 4.??? Current Implementation
+
+Step 1. The user launches the application. 
+Step 2. The user types in `add-itinerary n/Japan Trip sd/12-12-2020 ed/18-12-2020 d/fun in Japan b/1000` to add a new itinerary. This itinerary does not already exist in the app. 
+Step 3. `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `AddItineraryCommand` and passes the input to `AddItineraryCommandParser`. 
+Step 4. `AddItineraryCommandParser` parses the input and constructs a new `AddItineraryCommand` containing a new `Itinerary` with the specified fields.
+Step 5. `LogicManager` executes the new `AddItineraryCommand`. This calls `Model` to add the new `Itinerary` to its `ItineraryList`.
+Step 6. After the new `Itinerary` is successfully added, `AddItineraryCommand` returns a `CommandResult` for the Ui to display. 
+
+The following sequence diagram shows how the `add-itinerary` operation works: (change to include less detail?))
+
+![AddItinerarySequenceDiagram](images/devguideimages/AddItinerarySequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `add-itinerary`</i></sup></div><br>
+
+#### 4.??? Design Considerations
+
+
 ### 3.ia Itinerary Attraction class
 This is a type of `Attraction` that goes into the `List<Day>` that resides in `Itinerary`. 
 
@@ -476,7 +527,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to add an itinerary.
-2.  TrackPad adds the itinerary.
+2.  User provides the fields of the itinerary to be added.
+3.  TrackPad adds the itinerary.
 
     Use case ends.
       
@@ -486,7 +538,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 2a1. TrackPad shows an error message.
     
-      Use case resumes at step 1.
+      Use case resumes at step 2.
+      
+* 2b. The itinerary already exists in the list of itineraries.
+
+    * 2b1. TrackPad shows an error message.
+    
+      Use case resumes at step 2.
 
 **Use case: UC09 - Edit an itinerary**
 
@@ -505,15 +563,23 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       
   Use case ends.
       
-* 2b. The format is invalid. 
-      
-  Use case ends.
-  
-* 3a. The given index is invalid.
+* 3a. The format is invalid. 
 
     * 3a1. TrackPad shows an error message.
+      
+      Use case resumes at step 3.
+  
+* 3b. The given index is invalid.
+
+    * 3b1. TrackPad shows an error message.
     
-      Use case resumes at step 2.
+      Use case resumes at step 3.
+      
+* 3c. The new field(s) provided for the itinerary is the same as the current one.
+
+    * 3c1. TrackPad shows an error message.
+    
+      Use case resumes at step 3.
       
 **Use case: UC10 - Delete an itinerary**
 
@@ -532,15 +598,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       
   Use case ends.
       
-* 2b. The format is invalid. 
+* 3a. The format is invalid. 
       
-  Use case ends.
+  * 3a1. TrackPad shows an error message.
+        
+        Use case resumes at step 3.
   
-* 3a. The given index is invalid.
+* 3b. The given index is invalid.
 
-    * 3a1. TrackPad shows an error message.
+    * 3b1. TrackPad shows an error message.
     
-      Use case resumes at step 2.
+      Use case resumes at step 3.
       
 **Use case: UC11 - Find an itinerary**
 
@@ -871,14 +939,14 @@ testers are expected to do more *exploratory* testing.
    3. Test case: `clear-attraction 1`<br>
       Expected: Everything typed after the space following the command will be ignored, and clear-attraction command will be executed successfully.
 
-### F9 Adding an itinerary
+### F9 Adding an itinerary (Koon Kiat)
 
 1. Adding an itinerary
 
-   1. Prerequisites: None.
+   1. Prerequisites: No itinerary in TrackPad has the name `Thailand Trip`, start date `01-08-2020` and end date `03-08-2020`.
 
    2. Test case: `add-itinerary n/Thailand Trip sd/01-08-2020 ed/03-08-2020`<br>
-      Expected: An itinerary with the specified name, start date and end date is added to the itinerary list. 
+      Expected: An itinerary with the specified name, start date and end date added to the itinerary list. 
       Details of the added itinerary shown in the status message.
 
    3. Test case: `add-itinerary `<br>
@@ -890,14 +958,14 @@ testers are expected to do more *exploratory* testing.
      * Invalid format for fields (e.g. invalid start date format): `add-itinerary n/Germany sd/03 02 2020 ed/06-02-2020`<br>
         Expected: Similar to 3.
         
-### F10 Editing an itinerary
+### F10 Editing an itinerary (Koon Kiat)
 
 1. Editing an itinerary
 
    1. Prerequisites: At least one itinerary exists for editing.
 
    2. Test case: `edit-itinerary 1 n/Japan trip`<br>
-      Expected: The name of the first itinerary is changed to `Japan trip`.
+      Expected: The name of the first itinerary changed to `Japan trip`.
       Details of the edited itinerary shown in the status message.
 
    3. Test case: `edit-itinerary 0 n/Japan trip`<br>
@@ -911,14 +979,14 @@ testers are expected to do more *exploratory* testing.
      * No change in fields: `edit-itinerary 1 n/Germany` when the name is already `Germany`<br>
         Expected: Similar to 3.
         
-### F11 Deleting an itinerary
+### F11 Deleting an itinerary (Koon Kiat)
 
-1. Deleting an itinerary while all itineraries are being shown
+1. Deleting an itinerary while all the itineraries in TrackPad are shown in the itineraries list
 
    1. Prerequisites: List all itineraries using the `list-itinerary` command. Multiple itineraries in the list.
 
    2. Test case: `delete-itinerary 1`<br>
-      Expected: First from the list. Details of the deleted itinerary shown in the status message.
+      Expected: First itinerary deleted from the list. Details of the deleted itinerary shown in the status message.
 
    3. Test case: `delete-itinerary 0`<br>
       Expected: No itinerary deleted. Error details shown in the status message.
@@ -929,17 +997,17 @@ testers are expected to do more *exploratory* testing.
     * Invalid index: `delete-itinerary x`, where x is larger than the list size <br>
       Expected: Similar to 3
       
-### F12 Finding an itinerary
+### F12 Finding an itinerary (Koon Kiat)
 
 1. Finding an itinerary
 
-   1. Prerequisites: TrackPad contains an itinerary with the name `Singapore Tour`.
+   1. Prerequisites: TrackPad contains an itinerary with the name `Singapore Tour`. No other itinerary contains `Singapore Tour`.
 
    2. Test case: `find-itinerary Singapore Tour`<br>
-      Expected: The itinerary with the name `Singapore Tour` is found. 
+      Expected: The itinerary with the name `Singapore Tour` found. 
 
    3. Test case: `find-itinerary`<br>
-      Expected: No itinerary is found. Error details shown in the status message.
+      Expected: No itinerary found. Error details shown in the status message.
       
 ### F13 Listing itineraries (York Tat)
 
@@ -1068,7 +1136,7 @@ testers are expected to do more *exploratory* testing.
    2. Test case: `exit`<br>
       Expected: TrackPad shuts down.
    
-### F21 Saving data
+### F21 Saving data (Koon Kiat)
 
 1. Dealing with missing data files
 
