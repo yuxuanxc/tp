@@ -344,7 +344,7 @@ The following activity diagram summarizes what happens when a user executes an `
 <div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `add-itinerary`</i></sup></div><br>
 
 #### 4.??? Design Considerations
-
+=======
 ##### 4.??? Aspect: Whether to make start and end date compulsory
 
 * **Alternative 1 (Current choice):** Making start and end date compulsory.
@@ -354,6 +354,91 @@ The following activity diagram summarizes what happens when a user executes an `
 * **Alternative 2:** Making start and end date optional.
   * Pros: More flexible for users who do not want to add dates or are unsure of the dates yet. 
   * Cons: Requires more functionality to handle adding and deleting the dates. For example, both dates must be either present or absent, 
+
+### 4.??? Edit Itinerary Feature (Might need discuss numbering again)
+
+TrackPad allows users to edit itineraries that have already been added.
+
+Any of the following fields of an itinerary can be edited:
+* `Name`
+* `startDate`
+* `endDate`
+* `Description`
+* `Budget`
+
+#### 4.??? Current Implementation
+
+The `EditItineraryCommand` class handles the execution of edit itinerary operations. The `EditItineraryCommandParser` class helps 
+to parse a user’s input before creating the correct `EditItineraryCommand`.
+
+TrackPad uses the `EditItineraryDescriptor` class to facilitate edit operations. 
+An `EditItineraryDescriptor` is a temporary bridge that holds the newly-edited fields of an itinerary.
+
+Step 1. The user types in `edit-itinerary 1 sd/10-11-2020` to edit the `startDate` of the first itinerary in the `Itineraries` panel.
+Step 2. This calls the `execute` method of the `LogicManager` class. The user input is passed in as a string.
+Step 3. `Logic.execute()` then calls the `parseCommand` method of the `TrackPadParser` class to parse the string input.
+Step 4. `TrackPadParser.parseCommand()` recognises it as a edit-itinerary command and passes the input to `EditItineraryCommandParser`. 
+Step 5. `EditItineraryCommandParser` parses the input and constructs a new `EditItineraryCommand`.
+Step 6. In `EditItineraryCommandParser`, the string input is first split into tokens.
+Step 7. In the same method call, an `EditItineraryDescriptor` object is created from these tokens. The object contains
+the new values to be updated to the target Itinerary.
+Step 8. An `EditCommand` is created with the populated `EditItineraryDescriptor` which is then executed by the `LogicManager` in step 2.
+Step 9. The command execution calls `getFilteredItineraryList` to get the `itineraryToEdit` using indexes provided from the user input.
+Step 10. A `editedItinerary` object using the `createEditedItinerary` method, using the fields to be updated from the `EditItineraryDescriptor`
+object and the fields of the `itineraryToEdit` object. 
+Step 11. The `Model` is then updated by replacing the `itineraryToEdit` object with the `editedItinerary` object. 
+Step 12. A `CommandResult` is created and returned to show the result of the execution.
+
+The following sequence diagram shows how the `edit-itinerary` operation works:
+
+![EditItinerarySequenceDiagram](images/devguideimages/EditItinerarySequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `edit-itinerary`</i></sup></div><br>
+
+#### 4.??? Design Considerations
+
+### 4.??? Find Itinerary Feature (Might need discuss numbering again)
+
+The find itinerary feature allows users to find itineraries using keywords.
+
+#### 4.??? Current Implementation
+
+The `FindItineraryCommand` class handles the execution of find itinerary operations. The `FindItineraryCommandParser` class helps 
+to parse a user’s input before creating the correct `FindItineraryCommand`.
+
+Step 1. The user types in `find-itinerary Korea` to find itineraries with the keyword Korea.
+Step 2. This calls the `execute` method of the `LogicManager` class. The user input is passed in as a string.
+Step 3. `Logic.execute()` then calls the `parseCommand` method of the `TrackPadParser` class to parse the string input.
+Step 4. `TrackPadParser.parseCommand()` recognises it as a find-itinerary command and passes the input to `FindItineraryCommandParser`. 
+Step 5. In `FindItineraryCommandParser`, the string input is extracted as a predicate and used to create a `FindItineraryCommand`.
+Step 6. `FindItineraryCommand.execute()` calls for `Model` to filter the itineraries list based on the given predicate.
+Step 7. A `CommandResult` is created and returned to show the result of the execution.
+
+The following sequence diagram shows how the `find-itinerary` operation works:
+
+![FindItinerarySequenceDiagram](images/devguideimages/FindItinerarySequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `find-itinerary`</i></sup></div><br>
+
+#### 4.??? Design Considerations
+
+### 4.??? Select Itinerary Feature (Might need discuss numbering again)
+
+The select itinerary feature allows users to select itineraries to perform ItineraryAttraction commands.
+
+#### 4.??? Current Implementation
+
+Step 1. The user types in `select-itinerary 2` to select the second itinerary in the `Itineraries` panel.
+Step 2. This calls the `execute` method of the `LogicManager` class. The user input is passed in as a string.
+Step 3. `Logic.execute()` then calls the `parseCommand` method of the `TrackPadParser` class to parse the string input.
+Step 4. `TrackPadParser.parseCommand()` recognises it as a select-itinerary command and passes the input to `SelectItineraryCommandParser`. 
+Step 5. In `SelectItineraryCommandParser`, the string input is parsed to return an index. and the index is used to create a `SelectItineraryCommand`.
+Step 6. A `SelectItineraryCommand` is created using the index and is passed back to the `LogicManager` in step 2.
+Step 7. `LogicManager` executes the `SelectItineraryCommand`, calling the `setCurrentItinerary` method in `Model`.
+Step 8. A `CommandResult` is created and returned to show the result of the execution.
+
+The following sequence diagram shows how the `select-itinerary` operation works: 
+
+![SelectItinerarySequenceDiagram](images/devguideimages/SelectItinerarySequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `select-itinerary`</i></sup></div><br>
 
 ### 4.3 Itinerary Attraction Model
 This is a subclass of `Attraction` that goes into the `List<Day>` that resides in `Itinerary`. 
@@ -809,12 +894,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The list is empty.
 
   Use case ends.
-
-* 3a. Error deleting list from storage.
-
-    * 3a1. TrackPad shows an error.
-
-      Use case ends.
       
 **Use case: UC08 - Add an itinerary**
 
@@ -891,16 +970,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The list is empty.
       
   Use case ends.
-      
-* 3a. The format is invalid. 
-      
-  * 3a1. TrackPad shows an error message.
-        
-      Use case resumes at step 3.
   
-* 3b. The given index is invalid.
+* 3a. The given index is invalid.
 
-    * 3b1. TrackPad shows an error message.
+    * 3b. TrackPad shows an error message.
     
       Use case resumes at step 3.
       
@@ -939,10 +1012,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The list is empty.
 
   Use case ends.
-
-* 2b. The format is invalid. 
-        
-  Use case ends.
   
 **Use case: UC13 - Select an itinerary**
 
@@ -958,10 +1027,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 2a. The list is empty.
-      
-  Use case ends.
-      
-* 2b. The format is invalid. 
       
   Use case ends.
   
@@ -986,18 +1051,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
   
-* 2b. The format is invalid. 
-        
-  Use case ends.
-
-* 3a. Error deleting list from storage
-
-    * 3a1. TrackPad shows an error.
-
-      Use case ends.
-
-
-<!-- if <u> doesn't work, try <ins>text</ins> --> 
 **Use case: UC15 - Add a tourist attraction into selected itinerary**
 
 **MSS**
@@ -1009,6 +1062,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    Use case ends.
       
 **Extensions**
+
 * 3a. A field provided for the tourist attraction is invalid.
 
     * 3a1. TrackPad shows an error message.
