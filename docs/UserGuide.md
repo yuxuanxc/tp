@@ -24,7 +24,7 @@ use TrackPad so try out TrackPad now to make your travel planning **easier and f
 Welcome to the TrackPad User Guide!
 
 We at TrackPad know how **difficult and messy** it can get when it comes to keeping track of your travel itineraries and TrackPad
-is a **fuss-free and easy** app that helps you keep track of all your travel related information.
+is a **fuss-free** app that helps you keep track of all your travel related information.
 
 This simple guide provides a **comprehensive** description of the features in TrackPad and also includes a [Getting Started](#3-getting-started-robin) section
 that helps you get started.
