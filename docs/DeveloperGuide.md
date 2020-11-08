@@ -706,90 +706,90 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <!-- if <u> doesn't work, try <ins>text</ins> --> 
 **Use case: UC15 - Add a tourist attraction into selected itinerary**
 
-    **MSS**
-    1. User <u>selects an itinerary (UC13)</u>.
-    2. User requests to add an attraction into the selected itinerary. 
-    3. User provides the fields of the attraction to be added. 
-    4. TrackPad adds the tourist attraction into the selected itinerary and shows a success message.
+**MSS**
+1. User <u>selects an itinerary (UC13)</u>.
+2. User requests to add an attraction into the selected itinerary. 
+3. User provides the fields of the attraction to be added. 
+4. TrackPad adds the tourist attraction into the selected itinerary and shows a success message.
+
+   Use case ends.
+      
+**Extensions**
+* 3a. A field provided for the tourist attraction is invalid.
+
+    * 3a1. TrackPad shows an error message.
     
-       Use case ends.
-          
-    **Extensions**
-    * 3a. A field provided for the tourist attraction is invalid.
+      Use case resumes at step 3.
+
+* 3b. The attraction added has conflicting timing in the itinerary.
+
+    * 3b1. TrackPad shows an error message.
     
-        * 3a1. TrackPad shows an error message.
-        
-          Use case resumes at step 3.
-    
-    * 3b. The attraction added has conflicting timing in the itinerary.
-    
-        * 3b1. TrackPad shows an error message.
-        
-          Use case resumes at step 3.
+      Use case resumes at step 3.
 
 **Use case: UC16 - Edit a tourist attraction in selected itinerary**
 
-    **MSS**
-    1. User <u>selects an itinerary (UC13)</u>.
-    2. User requests to edit a tourist attraction in the selected itinerary.
-    3. User provides the index and day of the tourist attraction to be edited.
-    4. User provides the fields of the tourist attraction to be edited.
-    5. TrackPad edits the fields and shows a success message.
+**MSS**
+1. User <u>selects an itinerary (UC13)</u>.
+2. User requests to edit a tourist attraction in the selected itinerary.
+3. User provides the index and day of the tourist attraction to be edited.
+4. User provides the fields of the tourist attraction to be edited.
+5. TrackPad edits the fields and shows a success message.
+
+   Use case ends.
     
-       Use case ends.
-        
-    **Extensions**
+**Extensions**
+
+* 3a. The index or day provided does not exist in the selected itinerary.
+
+    * 3a1. TrackPad shows an error message.
     
-    * 3a. The index or day provided does not exist in the selected itinerary.
+      Use case resumes at step 3.
+
+* 4a. The new field provided for the tourist attraction is not in the correct format.
+
+    * 4a1. TrackPad shows an error message.
     
-        * 3a1. TrackPad shows an error message.
-        
-          Use case resumes at step 3.
+      Use case resumes at step 4.
+      
+* 4b. The new field provided for the tourist attraction is the same as the current one.
+
+    * 4b1. TrackPad shows an error message.
     
-    * 4a. The new field provided for the tourist attraction is not in the correct format.
-    
-        * 4a1. TrackPad shows an error message.
-        
-          Use case resumes at step 4.
-          
-    * 4b. The new field provided for the tourist attraction is the same as the current one.
-    
-        * 4b1. TrackPad shows an error message.
-        
-          Use case resumes at step 4.
+      Use case resumes at step 4.
 
 **Use case: UC17 - Delete a tourist attraction in selected itinerary**
 
-    **MSS**
-    1. User <u>selects an itinerary (UC13)</u>.
-    2. User requests to delete a tourist attraction from the selected itinerary.
-    3. User provides the index and day of the tourist attraction to be deleted.
-    4. TrackPad deletes the tourist attraction and shows a success message.
+**MSS**
+1. User <u>selects an itinerary (UC13)</u>.
+2. User requests to delete a tourist attraction from the selected itinerary.
+3. User provides the index and day of the tourist attraction to be deleted.
+4. TrackPad deletes the tourist attraction and shows a success message.
+
+   Use case ends.
     
-       Use case ends.
-        
-    **Extensions**
-    * 3a. The index and day provided does not exist in the itinerary.
+**Extensions**
+* 3a. The index and day provided does not exist in the itinerary.
+
+    * 3a1. TrackPad shows an error message.
     
-        * 3a1. TrackPad shows an error message.
-        
-          Use case resumes at step 3.
+      Use case resumes at step 3.
 
 **Use case: UC18 - Viewing help**
 
-    **MSS**
-    1. User requests for help in TrackPad.
-    2. User provides the command for help
-    3. TrackPad directs the user to TrackPad user guide.
+**MSS**
+1. User requests for help in TrackPad.
+2. User provides the command for help
+3. TrackPad directs the user to TrackPad user guide.
+
+   Use case ends.
     
-       Use case ends.
-        
-    **Extensions**
-    * 2a. There is a typo in the command.
+**Extensions**
+* 2a. There is a typo in the command.
+
+    * 2a1. TrackPad shows an error message.
     
-        * 2a1. TrackPad shows an error message.
-        
-          Use case resumes at step 2.
+      Use case resumes at step 2.
       
 ## **Appendix D: Non-Functional Requirements**
 
