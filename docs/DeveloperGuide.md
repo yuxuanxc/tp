@@ -523,7 +523,7 @@ itinerary and the timing does not clash with any exisiting attractions in the it
 The following sequence diagram shows how the `add-itinerary-attraction` operation works:
 
 ![AddItineraryAttractionSequenceDiagram](images/devguideimages/AddItineraryAttractionSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-itinerary-attraction.</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-itinerary-attraction 1 day/1 st/1000 et/1200.</code></i></sup></div><br>
 
 #### 4.10.2 Design Considerations
 
