@@ -664,7 +664,7 @@ For example:
 <div align='center'><i><sup style="font-size:100%">Figure 19b. Before entering <code>add-itinerary-attraction 2 day/2 st/1000 et/1100</code></sup></i></div><br>
 
 
-3. `Night Safari` has been added into your `Selected Itineray`.
+3. `Night Safari` has been added into your `Selected Itinerary`.
 
 ![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction3.png)
 <div align='center'><i><sup style="font-size:100%">Figure 19c. After entering <code>add-itinerary-attraction 2 day/2 st/1000 et/1100</code></sup></i></div><br>
