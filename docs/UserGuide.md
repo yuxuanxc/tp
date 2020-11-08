@@ -776,6 +776,7 @@ There is no need for you to save manually.
 
 **Q**: Where do I go to if I need help?<br>
 **A**: Simply head to TrackPad's [issue page](https://github.com/AY2021S1-CS2103T-T09-3/tp/issues) and create an issue! Kindly allow us sometime to reach back to you.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## 6. Glossary (Yuxuan)

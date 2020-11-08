@@ -44,12 +44,13 @@ public class ItineraryAttractionDayCounter extends ItineraryAttraction {
         ItineraryAttractionDayCounter otherItineraryAttraction = (ItineraryAttractionDayCounter) other;
         // calls equals of Attraction and checks the timing.
         return super.equals(otherItineraryAttraction)
-                && isSameTiming(otherItineraryAttraction);
+                && isSameTiming(otherItineraryAttraction)
+                && day == otherItineraryAttraction.getDay();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this, day);
+        return Objects.hash(day);
     }
 
     @Override
