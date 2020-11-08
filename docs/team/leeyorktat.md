@@ -9,7 +9,7 @@ TrackPad is a clean and simple desktop application for tracking past itineraries
 
 Given below are my contributions to the project.
 
-* **New Feature**: Added the ability to make itineraries.
+* **New Feature**: Added the ability to select, edit, find, list itineraries.
   * What it does: allows the user to create itineraries to plan their trips.
   * Justification: This feature improves the product significantly because a user can do more than adding attractions and can now plan trips.
   * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
@@ -27,10 +27,11 @@ Given below are my contributions to the project.
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the itinerary features
+    * Added introduction and about this document section
+    * Added documentation for the attraction features
   * Developer Guide:
-    * Added details to the storage section
-    * Added implementation details of the.....
+    * Added details to the ui section
+    * Added implementation details of edit-itinerary, find-itinerary, select-itinerary
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [\#00](), [\#00](), [\#00](), [\#00]()
