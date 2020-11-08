@@ -851,16 +851,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The list is empty.
       
   Use case ends.
-      
-* 3a. The format is invalid. 
-      
-  * 3a1. TrackPad shows an error message.
-        
-      Use case resumes at step 3.
   
-* 3b. The given index is invalid.
+* 3a. The given index is invalid.
 
-    * 3b1. TrackPad shows an error message.
+    * 3b. TrackPad shows an error message.
     
       Use case resumes at step 3.
       
@@ -899,10 +893,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The list is empty.
 
   Use case ends.
-
-* 2b. The format is invalid. 
-        
-  Use case ends.
   
 **Use case: UC13 - Select an itinerary**
 
@@ -918,10 +908,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 2a. The list is empty.
-      
-  Use case ends.
-      
-* 2b. The format is invalid. 
       
   Use case ends.
   
@@ -946,10 +932,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
   
-* 2b. The format is invalid. 
-        
-  Use case ends.
-
 **Use case: UC15 - Add a tourist attraction into selected itinerary**
 
 **MSS**
