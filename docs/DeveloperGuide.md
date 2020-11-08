@@ -221,9 +221,11 @@ It is stored internally as an `List<Day>`. Additionally, it implements the follo
 ![Itinerary Attraction Implementation Class Diagram](images/devguideimages/ItineraryAttractionClassDiagram.png)
 <div><i>Figure X The ItineraryAttraction Class Diagram</i></div><br>
 
+<!--
 // Do i need to show days??????????????????
 // <div align="center"><sup style="font-size:100%"><i>Figure X The Itinerary Class Diagram</i></sup></div><br>
 // tried removing align and <sup></sup>  
+-->
 
 `ItineraryAttraction` is an `Attraction` and contains `startTime` and `endTime`.
 
@@ -257,6 +259,32 @@ Editing any fields would require a new object to be created everytime, which gua
 #### 4.3.3 Adding Itinerary Attraction Implementation
 The feature allows users to select an `Attraction` from the attraction list and add it into their selected itinerary, 
 with a start and end time.
+
+
+The following activity diagram shows a simplified add-itinerary-attraction operation:
+![AddItineraryAttractionActivityDiagram](images/devguideimages/AddItineraryAttractionActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `add-itinerary-attraction`</i></sup></div><br>
+
+Assumes:
+1. The user launches the application.
+2. Selected a valid itinerary with more than 1 day.
+3. Attractions lists has more than 1 attractions.
+
+Step 1. The user types in `add-itinerary-attraction 1 day/1 st/1000 et/1200` to add a new attraction to the selected 
+itinerary and the timing does not clash with any exisiting attractions in the itinerary. 
+
+Step 2. `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `AddItineraryattractionCommand` and passes the input to `AddItineraryAttractionCommandParser`. 
+
+Step 3. `AddItineraryAttractionCommandParser` parses the input and constructs a new `AddItineraryAttractionCommand` containing a new `ItineraryAttraction` with the specified fields.
+
+Step 4. `LogicManager` executes the new `AddItineraryAttractionCommand`. This calls `Model` to add the new `ItineraryAttraction` to the itinerary specified.
+
+Step 5. After the new `ItineraryAttraction` is successfully added, `AddItineraryAttractionCommand` returns a `CommandResult` for the Ui to display. 
+
+The following sequence diagram shows how the `add-itinerary-attraction` operation works:
+
+![AddItineraryAttractionSequenceDiagram](images/devguideimages/AddItineraryAttractionSequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `add-itinerary-attraction`</i></sup></div><br>
 
 #### 4.3.4 Design Considerations
 
