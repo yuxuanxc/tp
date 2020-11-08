@@ -1,0 +1,123 @@
+{
+  "attractions" : [ {
+    "name" : "Jurong Bird Park",
+    "phone" : "94351253",
+    "email" : "birdpark@example.com",
+    "address" : "2 Jurong Hill",
+    "description" : "The park offers a haven for close to 3500 birds across 400 species.",
+    "location" : "Singapore, Singapore",
+    "openingHours" : "1000-1800",
+    "priceRange" : "MEDIUM",
+    "rating" : "4.5",
+    "visited" : "TRUE",
+    "tagged" : [ "animals" ]
+  }, {
+    "name" : "Night Safari",
+    "phone" : "98765432",
+    "email" : "nightsafari@example.com",
+    "address" : "80 Mandai Lake Rd",
+    "description" : "The world's first nocturnal zoo.",
+    "location" : "Singapore, Singapore",
+    "openingHours" : "1900-2300",
+    "priceRange" : "MEDIUM",
+    "rating" : "4.2",
+    "visited" : "FALSE",
+    "tagged" : [ "night", "animals" ]
+  }, {
+    "name" : "River Safari",
+    "phone" : "93210283",
+    "email" : "riversafari@example.com",
+    "address" : "80 Mandai Lake Rd",
+    "description" : "A river-themed zoo and aquarium in Singapore.",
+    "location" : "Singapore, Singapore",
+    "openingHours" : "1000-1800",
+    "priceRange" : "MEDIUM",
+    "rating" : "4.4",
+    "visited" : "FALSE",
+    "tagged" : [ "panda", "animals" ]
+  }, {
+    "name" : "Universal Studios Singapore",
+    "phone" : "65482651",
+    "email" : "uss@example.com",
+    "address" : "8 Sentosa Gateway, 098269",
+    "description" : "A world-renowned theme park with thrilling rides.",
+    "location" : "Singapore, Singapore",
+    "openingHours" : "1400-2100",
+    "priceRange" : "HIGH",
+    "rating" : "4.6",
+    "visited" : "FALSE",
+    "tagged" : [ "activities" ]
+  }, {
+    "name" : "Snow City",
+    "phone" : "65602306",
+    "email" : "snowcity@example.com",
+    "address" : "21 Jurong Town Hall Rd, 609433",
+    "description" : "A winter wonderland amidst the tropical Singapore climate.",
+    "location" : "Singapore, Singapore",
+    "openingHours" : "1000-1700",
+    "priceRange" : "LOW",
+    "rating" : "3.6",
+    "visited" : "FALSE",
+    "tagged" : [ "activities" ]
+  }, {
+    "name" : "Trick Eye Museum",
+    "phone" : "67952371",
+    "email" : "trickeye@example.com",
+    "address" : "26 Sentosa Gateway, 098138",
+    "description" : "Unique museum with a large array of 3-dimensional artwork for interactive optical illusions.",
+    "location" : "Singapore, Singapore",
+    "openingHours" : "1000-1800",
+    "priceRange" : "LOW",
+    "rating" : "4.2",
+    "visited" : "FALSE",
+    "tagged" : [ "activities" ]
+  }, {
+    "name" : "Singapore Zoo",
+    "phone" : "62693411",
+    "email" : "riversafari@example.com",
+    "address" : "80 Mandai Lake Rd",
+    "description" : "Singapore Zoo's world-famous \"Open Concept” offers the opportunity to experience and be inspired by the wonders of nature.",
+    "location" : "Singapore, Singapore",
+    "openingHours" : "0830-1800",
+    "priceRange" : "MEDIUM",
+    "rating" : "4.6",
+    "visited" : "FALSE",
+    "tagged" : [ "animals", "tiger" ]
+  }, {
+    "name" : "Madame Tussauds",
+    "phone" : "67154000",
+    "email" : "madametussauds@example.com",
+    "address" : "40 Imbiah Rd, Sentosa, 099700",
+    "description" : "Skip the line and get a blast from the past as you meet athletes, movie stars and singers at Singapore's very own wax museum!",
+    "location" : "Singapore, Singapore",
+    "openingHours" : "1100-1900",
+    "priceRange" : "MEDIUM",
+    "rating" : "4.4",
+    "visited" : "FALSE",
+    "tagged" : [ "museum" ]
+  }, {
+    "name" : "Marina Bay Sands SkyPark Observation Deck",
+    "phone" : "66888826",
+    "email" : "skypark@example.com",
+    "address" : "10 Bayfront Ave, 018956",
+    "description" : "Located 57 storeys up from the heart of the Marina Bay area, the Sands SkyPark Observation Deck boasts scenic views of the panoramic vistas of Marina Bay.",
+    "location" : "Singapore, Singapore",
+    "openingHours" : "1100-2100",
+    "priceRange" : "LOW",
+    "rating" : "4.6",
+    "visited" : "FALSE",
+    "tagged" : [ "nightlife" ]
+  }, {
+    "name" : "Esplanade",
+    "phone" : "68288377",
+    "email" : "esplanade@example.com",
+    "address" : "1 Esplanade Drive, Singapore 038981",
+    "description" : "Named after the nearby Esplanade Park, it consists of a concert hall which seats about 1,600 and a theatre with a capacity of about 2,000 for the performing arts.",
+    "location" : "Singapore, Singapore",
+    "openingHours" : "1100-1900",
+    "priceRange" : "LOW",
+    "rating" : "4.6",
+    "visited" : "FALSE",
+    "tagged" : [ "culture" ]
+  } ]
+}
