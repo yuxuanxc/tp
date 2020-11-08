@@ -950,7 +950,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
         
   Use case ends.
 
-<!-- if <u> doesn't work, try <ins>text</ins> --> 
 **Use case: UC15 - Add a tourist attraction into selected itinerary**
 
 **MSS**
@@ -962,6 +961,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    Use case ends.
       
 **Extensions**
+
 * 3a. A field provided for the tourist attraction is invalid.
 
     * 3a1. TrackPad shows an error message.
