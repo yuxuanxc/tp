@@ -10,7 +10,6 @@ src/main/resources/docs/
 
 # Storage/log files
 /data/
-/docs/images/data/
 /config.json
 /preferences.json
 /*.log.*
