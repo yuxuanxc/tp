@@ -26,18 +26,6 @@ public class AttractionCard extends UiPart<Region> {
     @FXML
     // For JavaFX, rename location to locale as location is a reserved keyword in JavaFX
     private Label locale;
-
-    //optional fields
-    @FXML
-    private Label field1;
-    @FXML
-    private Label field2;
-    @FXML
-    private Label field3;
-    @FXML
-    private Label field4;
-    @FXML
-    private Label field5;
     @FXML
     private FlowPane tags;
 

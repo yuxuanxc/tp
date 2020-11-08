@@ -1,0 +1,57 @@
+{
+  "itineraries" : [ {
+    "name" : "Singapore Tour",
+    "description" : "Spend your Rediscover Singapore vouchers here!",
+    "startDate" : "01-09-2020",
+    "endDate" : "05-09-2020",
+    "budget" : "100.00",
+    "days" : [ {
+      "day" : 1,
+      "itineraryAttractions" : [ {
+        "attraction" : {
+          "name" : "Jurong Bird Park",
+          "phone" : "94351253",
+          "email" : "birdpark@example.com",
+          "address" : "2 Jurong Hill",
+          "description" : "The park offers a haven for close to 3500 birds across 400 species.",
+          "location" : "Singapore, Singapore",
+          "openingHours" : "1000-1800",
+          "priceRange" : "MEDIUM",
+          "rating" : "4.5",
+          "visited" : "FALSE",
+          "tagged" : [ "animals" ]
+        },
+        "startTime" : "1200",
+        "endTime" : "1600"
+      }, {
+        "attraction" : {
+          "name" : "Night Safari",
+          "phone" : "98765432",
+          "email" : "nightsafari@example.com",
+          "address" : "80 Mandai Lake Rd",
+          "description" : "The world's first nocturnal zoo.",
+          "location" : "Singapore, Singapore",
+          "openingHours" : "1900-2300",
+          "priceRange" : "MEDIUM",
+          "rating" : "4.2",
+          "visited" : "FALSE",
+          "tagged" : [ "night", "animals" ]
+        },
+        "startTime" : "1900",
+        "endTime" : "2200"
+      } ]
+    }, {
+      "day" : 2,
+      "itineraryAttractions" : [ ]
+    }, {
+      "day" : 3,
+      "itineraryAttractions" : [ ]
+    }, {
+      "day" : 4,
+      "itineraryAttractions" : [ ]
+    }, {
+      "day" : 5,
+      "itineraryAttractions" : [ ]
+    } ]
+  } ]
+}

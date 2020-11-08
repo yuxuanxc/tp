@@ -160,34 +160,34 @@ This section describes some noteworthy details on the implementation of core Tra
 ### 4.X Mark Visited Command
 
 The `markVisited-attraction` command allows users to quickly mark attractions as visited, without having to use the `edit-attraction` command.
-This command is implemented as it allows users to quickly and conveniently mark the attractions they have visited, so they can focus on visiting the other attractions.
+This command is implemented as it allows users to quickly and conveniently mark the attractions they have visited, so they can focus on visiting other attractions that they have not visited.
 
 #### 4.X.1 Current Implementation
 
-The current implementation allows the users to makr the attraction as visited, based on its index position in the current attractions list.
-This index could be different depending whether the whole attractions list is shown, or the filtered attractions list from the `find-attraction` command is currently shown in the GUI.
-If the index is invalid or the attraction has already been visited before, an error messgae will be displayed and there will be no changes to the attraction list.
+The current implementation allows the users to mark the attraction as visited, based on its index position in the current attraction list.
+This index could be different depending whether the whole attraction list is shown, or the filtered attraction list from the `find-attraction` command is currently shown in the GUI.
+If the index is invalid or the attraction has already been visited before, an error message will be displayed and there will be no changes to the attraction list.
 
 The following activity diagram shows how `markVisited-attraction` works:
 ![MarkVisitedActivityDiagram](images/devguideimages/MarkVisitedActivityDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `markVisited-attraction`</i></sup></div><br>
 
-We will use the above activity diagram as shown in Figure X to explain how the command is executed in detail.
-We assume no error is encountered, and the attraction that is selected to be marked as visited has not been marked as visited before.
+We will use the above activity diagram as shown in Figure X to explain how the `markVisited-attraction` command is executed in detail.
+We assume no error is encountered, and the attraction that is selected to be marked as visited is not visited yet.
 
 Step 1. The user types in `markVisited-attraction 1`.
 
 Step 2. `MarkVisitedCommand` is created.
 
-Step 3. `MarkVisitedCommand` executes the `getFilteredAttractionList` and returns `lastShownList`.
+Step 3. `MarkVisitedCommand` executes the `getFilteredAttractionList()` and returns `lastShownList`.
 
-Step 4. `Model` then executes `get(index)` which creates `Attraction`, which is the original attraction before it has been marked visited.
+Step 4. `Model` then executes `get(index)` which creates `Attraction`, which is the original selected attraction in `lastShownList`.
 
 Step 5. `MarkVisitedCommand` then executes `createMarkVisitedAttraction()`, which creates a new `Attraction` that is identical to the original attraction, except its `Visited` field is set to true.
 
 Step 6. `MarkVisitedCommand` then sets the original attraction to the updated one, via `setAttraction()`, and it also updates the state of the model with `updateFilteredAttractionList()`.
 
-Step 7. `MarkVisitedCommand` then creates a new `CommandResult`, which has the success message that is shown to the user when the command is executed successfully.
+Step 7. `MarkVisitedCommand` then creates a new `CommandResult`, which contains the success message that is shown to the user when the command is executed successfully.
 
 The whole sequence of events is outlined in the sequence diagram shown below.
 
@@ -428,6 +428,35 @@ The following sequence diagram shows how the `add-itinerary-attraction` operatio
 
 #### 4.4.1 Current Implementation
 
+THe current UI involves many inherited classes from `AttractionCard`, `ItineraryListCard` and `ItineraryAttractionCard`. 
+This is because TrackPad supports optional fields, and with the current code, the `Label` in the FXML files will be created regardless
+whether the field is filled or not. Thus, it leaves many empty spaces in the GUI if the user adds an attraction without most of the optional fields.
+
+![UiFXML](images/devguideimages/UiFXML.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The class diagram for one of the child of `AttractionCard`</i></sup></div><br>
+
+Figure X shows an example of the current implementation of the `AttractionCard`. Compulsory fields, such as `name` and `locale`
+are present in the parent class since all attractions have those fields. In `AttractionListPanel`, the number of filled fields 
+will be determined in the corresponding `Attraction`, via the `getNumOfFilledFields()` method, and the appropriate child will be used to 
+create the card. This way, we can avoid any awkward gaps due to missing fields.
+
+#### 4.4.2 Design Considerations
+
+##### Aspect: Method of Implementation
+
+* **Alternative 1:** Only one `AttractionCard` is used to create the attraction cards. 
+ * Pro: Far lesser code required, and no need for so many children classes.
+ * Con: Empty lines will be seen in the GUI.
+ 
+* **Alternative 2 (Current Choice):** Several `AttractionCard` child classes are used to create the corresponding attraction cards. 
+ * Pro: Fixes the issue of empty lines being seen, by not creating redundant labels from the different FXML files.
+ * Con: Many excessive classes are created. Some code repetition.
+ 
+Reason for choosing Alternative 2: The final app GUI should look pleasant and attractive to the users. By removing those empty lines, it makes
+the interface look more neat and organised. However, this is not yet an ideal solution and a better solution could be looked for 
+in the future versions beyond v1.4. A possible combination of the above 2 alternatives could be possible to implement this functionality
+with less repetitive code.
+ 
 <!--
 This section describes some noteworthy details on how certain features are implemented.
 
@@ -1017,7 +1046,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User wishes to exit TrackPad.
-2. User provides the command to exit.
+2. User enters the command to exit.
 3. TrackPad closes.
 
     Use case ends.
@@ -1025,6 +1054,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 2a. User clicks the exit button on the top right of the window.
+
+    Use case resumes at step 3.
+    
+* 2b. User clicks the exit button, located under the File tab.
 
     Use case resumes at step 3.
           
