@@ -140,6 +140,7 @@ The figure below shows how an attraction looks like in the attractions panel.
 
    ![result_of_clearing all_attractions](images/userguideimages/attractionCard.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 7. How an attraction looks like</i></sup></div>
+   
 The table below shows a summary of the commands in this section.
 
 Action | Format, Examples
