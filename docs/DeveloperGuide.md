@@ -209,6 +209,37 @@ The whole sequence of events is outlined in the sequence diagram shown below.
 Reason for choosing alternative 2: Easier to extend to marking several attractions in one command in a future version, by inputting several indexes at once. This would be complicated to 
 handle within `edit-attraction` since each attraction could be edited in several fields, and the user input would become unnecessarily complicated.
 
+### 4.1 Attraction Model
+
+#### 4.1.1 Current Implementation
+
+The `Attraction` class helps users to keep track of all the details of their tourist attractions added in TrackPad.
+The class diagram for `Attraction` is shown below:
+
+![Structure of Attraction Component](images/devguideimages/AttractionClassDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The Attraction Class Diagram</i></sup></div><br>
+
+Each `Attraction` contains the following fields: `Name`, `Description`, `Address`, `Email`, `Location`, `OpeningHours`,
+`Phone`, `PriceRange`, `Rating`, `Visited` and `Tag`. Only `Name` and `Location` are compulsory fields, the rest are all optional.
+An attraction can have any number of `Tag`s.
+
+#### 4.1.2 Design Considerations
+
+##### 4.1.2.1 Aspect: How attractions are determined to be the same as another
+
+* **Alternative 1:** Compare the `Name`, `Phone` and `Email` of the attractions and 2 attractions
+  are the same if all 3 fields are equal.
+  * Pros: Do not need to change the implementation which was given to us by AddressBook3.
+  * Cons: The fields `Phone` and `Email` are optional, so the basis for comparison is inconsistent as it 
+    depends on how many fields are provided for each attraction in TrackPad.
+
+* **Alternative 2 (Current Choice):** Compare the `Name` and `Location` of the attractions and 2 attractions are 
+  the same if both fields are equal.
+  * Pros: `Name` and `Location` are the only fields which are compulsory, so comparing them will provide
+    consistent results as all the attractions in TrackPad have these 2 fields filled up.
+  * Cons: `Name` and `Location` are case-sensitive, so comparing attractions with the same name/location with different
+    cases will result in the attractions to be determined as different attractions, which might not be ideal.
+    
 ### 4.2 Itinerary Model
 
 #### 4.2.1 Current Implementation
@@ -238,6 +269,38 @@ contains a list of `Day`s, and each `Day` contains a list of `ItineraryAttractio
   * Cons: The itinerary would not have any specified locations unless the user adds an `ItineraryAttraction`, 
   which might not be intuitive to users. 
   
+### 4.? Add Attraction Feature
+
+The add attraction feature allows users to add attractions with the compulsory fields `Name` and `Location`, and 
+the optional fields `Description`, `Address`, `Email`, `OpeningHours`, `Phone`, `PriceRange`, `Rating`, `Visited` and `Tag`.
+
+#### 4.?.1 Current Implementation
+
+Steps:
+1. The user launches the application. 
+2. The user types in `add-attraction n/River Safari l/Singapore a/80 Mandai Lake Rd` to add a new attraction. This attraction does not already exist in the app. 
+3. `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `AddAttractionCommand` and passes the input to `AddAttractionCommandParser`. 
+4. `AddAttractionCommandParser` parses the input and constructs a new `AddAttractionCommand` containing a new `Attraction` with the specified fields.
+5. `LogicManager` executes the new `AddAttractionCommand`. This calls `Model` to add the new `Attraction` to its `AttractionList`.
+6. After the new `Attraction` is successfully added, `AddAttractionCommand` returns a `CommandResult` for the Ui to display. 
+
+The following sequence diagram shows how the `add-attraction` operation works:
+
+![Add Attraction Sequence Diagram](images/devguideimages/AddAttractionSequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `add-attraction`</i></sup></div><br>
+
+#### 4.?.2 Design Considerations
+
+##### 4.?.2.1 Aspect: How the command word of AddAttractionCommand is derived
+
+* **Alternative 1:** add-a
+  * Pros: Simple and short. The user will spend less time typing this command into the command box.
+  * Cons: Less intuitive, and the user will have to remember this specific command everytime he wants to add an attraction.
+
+* **Alternative 2 (Current choice):** add-attraction
+  * Pros: More intuitive, so the user is more likely to get the correct command everytime when adding attractions.
+  * Cons: The user will have to spend more time typing this command.
+  
 ### 4.??? Add Itinerary Feature (Might need discuss numbering again)
 
 The add itinerary feature allows users to add itineraries with the compulsory fields `Name`, `startDate` and `endDate`, and 
@@ -259,31 +322,107 @@ The following sequence diagram shows how the `add-itinerary` operation works: (c
 
 #### 4.??? Design Considerations
 
+### 4.3 Itinerary Attraction Model
+This is a subclass of `Attraction` that goes into the `List<Day>` that resides in `Itinerary`. 
 
-### 3.ia Itinerary Attraction class
-This is a type of `Attraction` that goes into the `List<Day>` that resides in `Itinerary`. 
-
-#### 3.ia.1 Current Implementation
+#### 4.3.1 Itinerary Attraction Implementation
 
 `ItineraryAttraction` extends `Attraction`. It is a `Attraction` with 2 extra fields, `startTime` and `endTime`. 
 It is stored internally as an `List<Day>`. Additionally, it implements the following operations:
 
+![Itinerary Attraction Implementation Class Diagram](images/devguideimages/ItineraryAttractionClassDiagram.png)
+<div><i>Figure X The ItineraryAttraction Class Diagram</i></div><br>
 
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+<!--
+// Do i need to show days??????????????????
+// <div align="center"><sup style="font-size:100%"><i>Figure X The Itinerary Class Diagram</i></sup></div><br>
+// tried removing align and <sup></sup>  
+-->
+
+`ItineraryAttraction` is an `Attraction` and contains `startTime` and `endTime`.
+
+#### 4.3.2 Design consideration
+
+##### Aspect 1: Inheritance or composition
+
+* **Alternative 1 (current choice):** `ItineraryAttraction` inherits `Attraction`.
+  * Pros: 
+  * Cons:
+
+* **Alternative 2:** `ItineraryAttraction` would compose `Attraction`
+  * Pros: 
+  * Cons: 
+
+##### Aspect 2: Constructor
+
+* **Alternative 1 (current choice):** constructor takes in an `Attraction`.
+  * Pros:
+  * Cons:
+  
+* **Alternative 2:** constructor takes in all the fields of `Attraction`.
+  * Pros:
+  * Cons:
+
+##### Aspect 3: Immutability
+The fields inside `ItineraryAttraction` are private final to prevent any modifications of fields.
+Editing any fields would require a new object to be created everytime, which guarantee the immutability of `ItineraryAttraction`.    
 
 
-#### 3.1.2 Design consideration
+#### 4.3.3 Adding Itinerary Attraction Implementation
+The feature allows users to select an `Attraction` from the attraction list and add it into their selected itinerary, 
+with a start and end time.
 
-##### 3.1.2.1 Aspect: How undo & redo executes
 
-* **Alternative 1 (current choice):** Extends `Attraction`.
-  * Pros: Access to private fields in 
-  * Cons: Hard to implement and May have performance issues in terms of memory usage.
+The following activity diagram shows a simplified add-itinerary-attraction operation:
+![AddItineraryAttractionActivityDiagram](images/devguideimages/AddItineraryAttractionActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `add-itinerary-attraction`</i></sup></div><br>
 
-* **Alternative 2:** Use a wrapper class to contain `Attraction`
-`ItineraryAttraction` would contain a field `Attraction` inside.
-  * Pros: Easy to implement. No coupling with `Attraction`. 
-  * Cons: Does not have access to private fields in attraction, would require 
+Assumes:
+1. The user launches the application.
+2. Selected a valid itinerary with more than 1 day.
+3. Attractions lists has more than 1 attractions.
+
+Step 1. The user types in `add-itinerary-attraction 1 day/1 st/1000 et/1200` to add a new attraction to the selected 
+itinerary and the timing does not clash with any exisiting attractions in the itinerary. 
+
+Step 2. `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `AddItineraryattractionCommand` and passes the input to `AddItineraryAttractionCommandParser`. 
+
+Step 3. `AddItineraryAttractionCommandParser` parses the input and constructs a new `AddItineraryAttractionCommand` containing a new `ItineraryAttraction` with the specified fields.
+
+Step 4. `LogicManager` executes the new `AddItineraryAttractionCommand`. This calls `Model` to add the new `ItineraryAttraction` to the itinerary specified.
+
+Step 5. After the new `ItineraryAttraction` is successfully added, `AddItineraryAttractionCommand` returns a `CommandResult` for the Ui to display. 
+
+The following sequence diagram shows how the `add-itinerary-attraction` operation works:
+
+![AddItineraryAttractionSequenceDiagram](images/devguideimages/AddItineraryAttractionSequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `add-itinerary-attraction`</i></sup></div><br>
+
+#### 4.3.4 Design Considerations
+
+##### Aspect 1: Fit command style with 
+
+* **Alternative 1 (current choice):** 
+  * Pros:
+  * Cons:
+
+* **Alternative 2:** 
+  * Pros:
+  * Cons:
+
+##### Aspect 2: Command keyword
+
+* **Alternative 1 (current choice):** `add-itinerary-attraction` is used to execute `AddItineraryAttractionCommand`. 
+  * Pros: This command is distinct from the `add-attraction` command, `add-itinerary-attraction` would mean adding into itinerary's attraction.
+  * Cons: It is long command to type.
+  TrackPad's audience is fast typists, these few words difference makes little difference to execution speed of the commands.
+
+* **Alternative 2:**  `add-attraction` is used to execute `AddItineraryAttractionCommand`.
+  * Pros: This is short and the same as the normal command, users has fewer commands to remember.
+  * Cons: This command could be confusing to users and could cause careless users to add commands into the attraction lists instead of the itinerary.
+  Command is not used because the error messages are long and confusing. If the users types the
+  wrong format, TrackPad has no way to know if the user wants to add attraction into the attraction lists or the itinerary.
+  A long error message would be required to show the 2 variations of the command.
 
 ### 4.4 UI
 
@@ -475,7 +614,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 2b1. TrackPad shows an error message.
     
-      Use case ends.
+      Use case resumes at step 2.
 
 **Use case: UC02 - Edit a tourist attraction**
 
@@ -500,13 +639,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 3a1. TrackPad shows an error message.
     
-      Use case resumes as step 3.
+      Use case resumes at step 3.
       
 * 3b. The new field provided for the tourist attraction is the same as the current one.
 
     * 3b1. TrackPad shows an error message.
     
-      Use case ends.
+      Use case resumes at step 3.
 
 **Use case: UC03 - Delete a tourist attraction**
 
@@ -788,90 +927,90 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 <!-- if <u> doesn't work, try <ins>text</ins> --> 
 **Use case: UC15 - Add a tourist attraction into selected itinerary**
 
-    **MSS**
-    1. User <u>selects an itinerary (UC13)</u>.
-    2. User requests to add an attraction into the selected itinerary. 
-    3. User provides the fields of the attraction to be added. 
-    4. TrackPad adds the tourist attraction into the selected itinerary and shows a success message.
+**MSS**
+1. User <u>selects an itinerary (UC13)</u>.
+2. User requests to add an attraction into the selected itinerary. 
+3. User provides the fields of the attraction to be added. 
+4. TrackPad adds the tourist attraction into the selected itinerary and shows a success message.
+
+   Use case ends.
+      
+**Extensions**
+* 3a. A field provided for the tourist attraction is invalid.
+
+    * 3a1. TrackPad shows an error message.
     
-       Use case ends.
-          
-    **Extensions**
-    * 3a. A field provided for the tourist attraction is invalid.
+      Use case resumes at step 3.
+
+* 3b. The attraction added has conflicting timing in the itinerary.
+
+    * 3b1. TrackPad shows an error message.
     
-        * 3a1. TrackPad shows an error message.
-        
-          Use case resumes at step 3.
-    
-    * 3b. The attraction added has conflicting timing in the itinerary.
-    
-        * 3b1. TrackPad shows an error message.
-        
-          Use case resumes at step 3.
+      Use case resumes at step 3.
 
 **Use case: UC16 - Edit a tourist attraction in selected itinerary**
 
-    **MSS**
-    1. User <u>selects an itinerary (UC13)</u>.
-    2. User requests to edit a tourist attraction in the selected itinerary.
-    3. User provides the index and day of the tourist attraction to be edited.
-    4. User provides the fields of the tourist attraction to be edited.
-    5. TrackPad edits the fields and shows a success message.
+**MSS**
+1. User <u>selects an itinerary (UC13)</u>.
+2. User requests to edit a tourist attraction in the selected itinerary.
+3. User provides the index and day of the tourist attraction to be edited.
+4. User provides the fields of the tourist attraction to be edited.
+5. TrackPad edits the fields and shows a success message.
+
+   Use case ends.
     
-       Use case ends.
-        
-    **Extensions**
+**Extensions**
+
+* 3a. The index or day provided does not exist in the selected itinerary.
+
+    * 3a1. TrackPad shows an error message.
     
-    * 3a. The index or day provided does not exist in the selected itinerary.
+      Use case resumes at step 3.
+
+* 4a. The new field provided for the tourist attraction is not in the correct format.
+
+    * 4a1. TrackPad shows an error message.
     
-        * 3a1. TrackPad shows an error message.
-        
-          Use case resumes at step 3.
+      Use case resumes at step 4.
+      
+* 4b. The new field provided for the tourist attraction is the same as the current one.
+
+    * 4b1. TrackPad shows an error message.
     
-    * 4a. The new field provided for the tourist attraction is not in the correct format.
-    
-        * 4a1. TrackPad shows an error message.
-        
-          Use case resumes at step 4.
-          
-    * 4b. The new field provided for the tourist attraction is the same as the current one.
-    
-        * 4b1. TrackPad shows an error message.
-        
-          Use case resumes at step 4.
+      Use case resumes at step 4.
 
 **Use case: UC17 - Delete a tourist attraction in selected itinerary**
 
-    **MSS**
-    1. User <u>selects an itinerary (UC13)</u>.
-    2. User requests to delete a tourist attraction from the selected itinerary.
-    3. User provides the index and day of the tourist attraction to be deleted.
-    4. TrackPad deletes the tourist attraction and shows a success message.
+**MSS**
+1. User <u>selects an itinerary (UC13)</u>.
+2. User requests to delete a tourist attraction from the selected itinerary.
+3. User provides the index and day of the tourist attraction to be deleted.
+4. TrackPad deletes the tourist attraction and shows a success message.
+
+   Use case ends.
     
-       Use case ends.
-        
-    **Extensions**
-    * 3a. The index and day provided does not exist in the itinerary.
+**Extensions**
+* 3a. The index and day provided does not exist in the itinerary.
+
+    * 3a1. TrackPad shows an error message.
     
-        * 3a1. TrackPad shows an error message.
-        
-          Use case resumes at step 3.
+      Use case resumes at step 3.
 
 **Use case: UC18 - Viewing help**
 
-    **MSS**
-    1. User requests for help in TrackPad.
-    2. User provides the command for help
-    3. TrackPad directs the user to TrackPad user guide.
+**MSS**
+1. User requests for help in TrackPad.
+2. User provides the command for help
+3. TrackPad directs the user to TrackPad user guide.
+
+   Use case ends.
     
-       Use case ends.
+**Extensions**
+* 2a. There is a typo in the command.
+
+    * 2a1. TrackPad shows an error message.
         
-    **Extensions**
-    * 2a. There is a typo in the command.
-    
-        * 2a1. TrackPad shows an error message.
-        
-          Use case resumes at step 2.
+         Use case resumes at step 2.
               
 **Use case: UC19 - Exiting the program**
 

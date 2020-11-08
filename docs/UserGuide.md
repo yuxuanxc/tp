@@ -135,6 +135,11 @@ Itinerary Features (4.3), Itinerary Attraction Features (4.4) and Miscellaneous 
 ### 4.2 Attraction Features (York Tat)
 
 Attractions are the core building blocks of TrackPad and are required to populate your itineraries!
+
+The figure below shows how an attraction looks like in the attractions panel. 
+
+   ![result_of_clearing all_attractions](images/userguideimages/attractionCard.png)
+   <div align="center"><sup style="font-size:100%"><i>Figure 7. How an attraction looks like</i></sup></div>
 The table below shows a summary of the commands in this section.
 
 Action | Format, Examples
@@ -175,8 +180,7 @@ Format (All fields): `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION
 | **TAG** | Contains only letters and numbers |
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
-The opening time of an attraction can be more than it's the closing time, for those
-which operates overnight.
+The opening time of an attraction can be more than it's the closing time as some attractions open overnight.
 </div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
@@ -184,12 +188,22 @@ An attraction can have any number of tags.
 </div>
 
 For example:
-* `add-attraction n/USS a/8 Sentosa Gateway, 098269 l/Singapore, Singapore`
-* `add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com
-op/1000-1800 pr/MEDIUM r/4.6 v/FALSE`<br><br>
-![add_attraction_result](images/userguideimages/addAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 2. The result of <code>add-attraction n/Singapore Zoo p/62693411 t/hot a/80 Mandai Lake Rd, 729826 l/Singapore, Singapore e/singaporezoo@gmail.com
-op/1000-1800 pr/MEDIUM r/4.6 v/FALSE</code></i></sup></div>
+
+You plan on visiting Gardens by the Bay over the weekends.
+
+1. Enter `add-attraction n/Gardens by the Bay a/18 Marina Gardens Dr, Singapore 018953 l/Singapore, Singapore t/sightseeing e/feedback@gardensbythebay.com.sg op/0500-0200 pr/LOW r/4.7 v/FALSE` into the app. 
+
+    ![result_of_add attractions](images/userguideimages/addAttraction1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 8a. Before entering <code>add-attraction n/Gardens by the Bay a/18 Marina Gardens Dr, Singapore 018953 l/Singapore, Singapore t/sightseeing e/feedback@gardensbythebay.com.sg op/0500-0200 pr/LOW r/4.7 v/FALSE</code></i></sup></div>
+
+2. Note how `Gardens by the Bay` appears in the `Attractions` section of the app.
+
+    ![result_of_add_attractions](images/userguideimages/addAttraction2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 8b. After entering <code>add-attraction n/Gardens by the Bay a/18 Marina Gardens Dr, Singapore 018953 l/Singapore, Singapore t/sightseeing e/feedback@gardensbythebay.com.sg op/0500-0200 pr/LOW r/4.7 v/FALSE</code></i></sup></div>
+
+Try these other examples too!
+* `add-attraction n/Singapore Flyer a/30 Raffles Ave, Singapore 039803 l/Singapore, Singapore`
+* `add-attraction n/Clarke Quay a/3 River Valley Rd, Singapore 179024 l/Singapore, Singapore t/drinking pr/MEDIUM r/4.5`<br><br>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 Multiple attractions of the same name and location cannot be added into the current list of attractions.
@@ -211,14 +225,21 @@ Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] 
 * Edits the attraction at the specified `INDEX` shown in the attractions panel.
 * Field entries are the same as the `add-attraction` command.
 * Any field can be changed by inputting its corresponding prefix in the command.
-    * Example: `add-attraction n/MBS l/Singapore, Singapore r/4.3` in an attraction list followed by
-    `edit-attraction 1 r/4.6` changes the rating of the 1st attraction in the list from `4.3` to `4.6`.<br>
-    ![result_of_editing_existing_fields](images/userguideimages/editAttraction1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 3. The result of <code>edit-attraction 1 r/4.6</code></i></sup></div>
 * New fields can be added to current attractions.
-    * Example: `edit-attraction 1 pr/MEDIUM t/hotel` adds the price range of MBS as `MEDIUM` and adds an `hotel` tag.<br><br>
-    ![result_of_editing_new_fields](images/userguideimages/editAttraction2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 4. The result of <code>edit-attraction 1 pr/MEDIUM t/hotel</code></i></sup></div>
+
+For example:
+
+You realise that the rating of `Gardens by the Bay` is wrongly reflected and want to add the price range for the attraction.
+
+1. Enter `edit-attraction 11 r/4.4 pr/LOW` into the app.
+
+    ![result_of_edit attractions](images/userguideimages/editAttraction1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 9a. Before entering <code>edit-attraction 11 r/4.4 pr/LOW</code></i></sup></div>
+
+2. Note how `Gardens by the Bay` appears in the `Attractions` section of the app.
+
+    ![result_of_edit_attractions](images/userguideimages/editAttraction2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 9b. After entering <code>edit-attraction 11 r/4.4 pr/LOW</code></i></sup></div>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 You can use `edit-attraction INDEX prefix/ ` to remove existing optional fields.
@@ -237,12 +258,23 @@ Format: `delete-attraction INDEX`
 
 * Deletes the attraction at the specified `INDEX` shown in the attractions panel.
 
-Examples:
-* `list-attraction` followed by `delete-attraction 1` deletes the 1st attraction in the TrackPad.<br><br>
-![result for `delete-attraction`](images/userguideimages/deleteAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 5. The result of <code>delete-attraction 1</code></i></sup></div>
+For example:
 
-* `find-attraction animals` followed by `delete-attraction 2` deletes the 2nd tourist attraction in the results of the `find-attraction` command.
+You want to delete `Jurong Bird Park` from your list of attractions.
+
+1. Enter `delete-attraction 1` into the app. 
+
+    ![result_of_delete attractions](images/userguideimages/deleteAttraction1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 10a. Before entering <code>delete-attraction 1</code></i></sup></div>
+
+2. 1st attraction in the list of attractions, `Jurong Bird Park`, is deleted.
+
+    ![result_of_delete_attractions](images/userguideimages/deleteAttraction2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 10b. After entering <code>delete-attraction 1</code></i></sup></div>
+
+Try these other examples too!
+* `find-attraction animals` followed by `delete-attraction 2` deletes the 2nd attraction in the results of the [find-attraction](#425-finding-a-tourist-attraction-find-attraction)
+command.
 
 #### 4.2.4 Marking a tourist attraction as visited: `markVisited-attraction`
 
@@ -253,16 +285,24 @@ Format: `markVisited-attraction INDEX`
 * Marks the attraction at the specified `INDEX` shown in the attractions panel as visited.
 * Any attraction can be marked visited, even if the attraction was already visited.
 
-Examples:
-* `markVisited-attraction 2` marks the 2nd attraction in the TrackPad as visited.<br><br>
-![result for 'markVisited-attraction'](images/userguideimages/markVisitedAttraction.png)
-  <div align="center"><sup style="font-size:100%"><i>Figure 6. The result of <code>markVisited-attraction 2</code></i></sup></div>
+For example:
 
-* Typing `markVisited-attraction 2` again will show that the 2nd attraction in the TrackPad is visited.
+You have just visited `Night Safari` over the holidays. You want TrackPad to reflect that you have visited
+`Night Safari`.
+
+1. Enter `markVisited-attraction 2` into the app. 
+
+    ![result_of_markVisited attractions](images/userguideimages/markVisitedAttraction1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 11a. Before entering <code>markVisited-attraction 2</code></i></sup></div>
+
+2. 2nd attraction in the list of attractions, `Night Safari`, is marked as visited.
+
+    ![result_of_markVisited_attractions](images/userguideimages/markVisitedAttraction2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 11b. After entering <code>markVisited-attraction 2</code></i></sup></div>
 
 #### 4.2.5 Finding a tourist attraction: `find-attraction`
 
-Finds any tourist attraction which contains the keyword(s).
+Finds tourist attractions from the current list of attractions which contain the keyword(s).
 
 Format: `find-attraction KEYWORD [MORE_KEYWORDS]`
 
@@ -271,20 +311,41 @@ Format: `find-attraction KEYWORD [MORE_KEYWORDS]`
 * Only the attractions in the list of attractions will be searched.
 * Only full words will be matched e.g. `Sento` will not match `Sentosa`.
 
-Examples:
-* `find-attraction jurong` returns `Jurong Bird Park` and `Snow City`<br><br>
-![result for 'find-attraction'](images/userguideimages/findAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 7. The result of <code>find-attraction jurong</code></i></sup></div>
+For example:
+
+You want to look for all the attractions that contain the keyword `jurong`.
+
+1. Enter `find-attraction jurong` into the app. 
+
+    ![result_of_finding attractions](images/userguideimages/findAttraction1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 12a. Before entering <code>find-attraction jurong</code></i></sup></div>
+
+2. `Jurong Bird Park` and `Snow City` are displayed as they contain `jurong` in their fields.
+
+    ![result_of_finding_attractions](images/userguideimages/findAttraction2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 12b. After entering <code>find-attraction jurong</code></i></sup></div>
 
 #### 4.2.6 Listing all tourist attractions : `list-attraction`
 
-Shows a list of all the tourist attractions. Use this command to reset the view of the Attractions panel, as
-certain commands (`find-attraction`) can alter the view of the Attractions panel.
+Shows all tourist attractions. Use this command to reset the view of the Attractions panel, as
+certain commands ([find-attraction](#425-finding-a-tourist-attraction-find-attraction)) can alter the view of the Attractions panel.
 
 Format: `list-attraction`<br>
 
-![result for 'list-attraction'](images/userguideimages/listAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 8. The result of <code>list-attraction</code></i></sup></div>
+For example:
+
+After finding an attraction, you want to switch back to seeing all your attractions.
+
+1. Enter `list-attraction` into the app. 
+
+    ![result_of_listing all attractions](images/userguideimages/listAttraction1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 13a. Before entering <code>list-attraction</code></i></sup></div>
+
+2. Note how all your attractions are displayed again.
+
+    ![result_of_listing all_attractions](images/userguideimages/listAttraction2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 13b. After entering <code>list-attraction</code></i></sup></div>
+
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 `list-attraction` will work even if there are extra characters behind the command.
@@ -302,19 +363,19 @@ Format: `clear-attraction`
 This action is irreversible and should be used with caution.
 </div><br>
 
-Example:
+For example:
 
 You want to delete all your attractions and start with an empty list of attractions. 
 
 1. Enter `clear-attraction` into the app. 
 
-    ![result_of_clearing all attractions](images/userguideimages/clearItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 9a. Before entering <code>clear-attraction</code></i></sup></div>
+    ![result_of_clearing all attractions](images/userguideimages/clearAttraction1.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 14a. Before entering <code>clear-attraction</code></i></sup></div>
 
 2. Note how all your attractions are now deleted. 
 
-    ![result_of_clearing all_attractions](images/userguideimages/clearItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 9b. After entering <code>clear-attraction</code></i></sup></div>
+    ![result_of_clearing all_attractions](images/userguideimages/clearAttraction2.png)
+    <div align="center"><sup style="font-size:100%"><i>Figure 14b. After entering <code>clear-attraction</code></i></sup></div>
 
 ### 4.3 Itinerary Features (Koon Kiat)
 
