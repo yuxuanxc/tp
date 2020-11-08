@@ -377,21 +377,21 @@ The following activity diagram shows a simplified add-itinerary-attraction opera
 ![AddItineraryAttractionActivityDiagram](images/devguideimages/AddItineraryAttractionActivityDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `add-itinerary-attraction`</i></sup></div><br>
 
-Assumes:
+**Assumes:**
 1. The user launches the application.
 2. Selected a valid itinerary with more than 1 day.
 3. Attractions lists has more than 1 attractions.
 
-Step 1. The user types in `add-itinerary-attraction 1 day/1 st/1000 et/1200` to add a new attraction to the selected 
+**Step 1.** The user types in `add-itinerary-attraction 1 day/1 st/1000 et/1200` to add a new attraction to the selected 
 itinerary and the timing does not clash with any exisiting attractions in the itinerary. 
 
-Step 2. `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `AddItineraryattractionCommand` and passes the input to `AddItineraryAttractionCommandParser`. 
+**Step 2.** `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `AddItineraryattractionCommand` and passes the input to `AddItineraryAttractionCommandParser`. 
 
-Step 3. `AddItineraryAttractionCommandParser` parses the input and constructs a new `AddItineraryAttractionCommand` containing a new `ItineraryAttraction` with the specified fields.
+**Step 3.** `AddItineraryAttractionCommandParser` parses the input and constructs a new `AddItineraryAttractionCommand` containing a new `ItineraryAttraction` with the specified fields.
 
-Step 4. `LogicManager` executes the new `AddItineraryAttractionCommand`. This calls `Model` to add the new `ItineraryAttraction` to the itinerary specified.
+**Step 4.** `LogicManager` executes the new `AddItineraryAttractionCommand`. This calls `Model` to add the new `ItineraryAttraction` to the itinerary specified.
 
-Step 5. After the new `ItineraryAttraction` is successfully added, `AddItineraryAttractionCommand` returns a `CommandResult` for the Ui to display. 
+**Step 5.** After the new `ItineraryAttraction` is successfully added, `AddItineraryAttractionCommand` returns a `CommandResult` for the Ui to display. 
 
 The following sequence diagram shows how the `add-itinerary-attraction` operation works:
 
@@ -415,12 +415,14 @@ The following sequence diagram shows how the `add-itinerary-attraction` operatio
 * **Alternative 1 (current choice):** `add-itinerary-attraction` is used to execute `AddItineraryAttractionCommand`. 
   * Pros: This command is distinct from the `add-attraction` command, `add-itinerary-attraction` would mean adding into itinerary's attraction.
   * Cons: It is long command to type.
+  
   TrackPad's audience is fast typists, these few words difference makes little difference to execution speed of the commands.
 
 * **Alternative 2:**  `add-attraction` is used to execute `AddItineraryAttractionCommand`.
   * Pros: This is short and the same as the normal command, users has fewer commands to remember.
   * Cons: This command could be confusing to users and could cause careless users to add commands into the attraction lists instead of the itinerary.
-  Command is not used because the error messages are long and confusing. If the users types the
+  
+  This was not used because the error messages are long and confusing. If the users types the
   wrong format, TrackPad has no way to know if the user wants to add attraction into the attraction lists or the itinerary.
   A long error message would be required to show the 2 variations of the command.
 
