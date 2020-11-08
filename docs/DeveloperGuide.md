@@ -157,7 +157,57 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 ## **4. Implementation**
 This section describes some noteworthy details on the implementation of core TrackPad feature.
 
-*To be added*
+### 4.X Mark Visited Command
+
+The `markVisited-attraction` command allows users to quickly mark attractions as visited, without having to use the `edit-attraction` command.
+This command is implemented as it allows users to quickly and conveniently mark the attractions they have visited, so they can focus on visiting the other attractions.
+
+#### 4.X.1 Current Implementation
+
+The current implementation allows the users to makr the attraction as visited, based on its index position in the current attractions list.
+This index could be different depending whether the whole attractions list is shown, or the filtered attractions list from the `find-attraction` command is currently shown in the GUI.
+If the index is invalid or the attraction has already been visited before, an error messgae will be displayed and there will be no changes to the attraction list.
+
+The following activity diagram shows how `markVisited-attraction` works:
+![MarkVisitedActivityDiagram](images/devguideimages/MarkVisitedActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `markVisited-attraction`</i></sup></div><br>
+
+We will use the above activity diagram as shown in Figure X to explain how the command is executed in detail.
+We assume no error is encountered, and the attraction that is selected to be marked as visited has not been marked as visited before.
+
+Step 1. The user types in `markVisited-attraction 1`.
+
+Step 2. `MarkVisitedCommand` is created.
+
+Step 3. `MarkVisitedCommand` executes the `getFilteredAttractionList` and returns `lastShownList`.
+
+Step 4. `Model` then executes `get(index)` which creates `Attraction`, which is the original attraction before it has been marked visited.
+
+Step 5. `MarkVisitedCommand` then executes `createMarkVisitedAttraction()`, which creates a new `Attraction` that is identical to the original attraction, except its `Visited` field is set to true.
+
+Step 6. `MarkVisitedCommand` then sets the original attraction to the updated one, via `setAttraction()`, and it also updates the state of the model with `updateFilteredAttractionList()`.
+
+Step 7. `MarkVisitedCommand` then creates a new `CommandResult`, which has the success message that is shown to the user when the command is executed successfully.
+
+The whole sequence of events is outlined in the sequence diagram shown below.
+
+![MarkVisitedSequenceDiagram](images/devguideimages/MarkVisitedSequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `markVisited-attraction 1`</i></sup></div><br>
+
+#### 4.X.2 Design Considerations
+
+##### 4.X.2.1 Aspect: How the attraction is updated
+
+* **Alternative 1:** Use the `edit-attraction` command to handle marking the attraction as visited, since it can also edit the `Visited` field.
+ * Pro: Less new code will need to be written, since we can reuse most of the code from `edit-attraction`.
+ * Con: Functionality of `markVisited-attraction` could change if `edit-attraction` changes functionality in a future update. Excessive coupling.
+
+* **Alternative 2 (Current Choice):** Create a new `markVisited-attraction` command and parser to handle specifically this command.
+ * Pro: Less inputs for the user, which makes the command shorter and more convenient.
+ * Con: More lines of code. More test cases required.
+ 
+Reason for choosing alternative 2: Easier to extend to marking several attractions in one command in a future version, by inputting several indexes at once. This would be complicated to 
+handle within `edit-attraction` since each attraction could be edited in several fields, and the user input would become unnecessarily complicated.
 
 ### 4.2 Itinerary Model
 
@@ -234,6 +284,10 @@ Given below is an example usage scenario and how the undo/redo mechanism behaves
 `ItineraryAttraction` would contain a field `Attraction` inside.
   * Pros: Easy to implement. No coupling with `Attraction`. 
   * Cons: Does not have access to private fields in attraction, would require 
+
+### 4.4 UI
+
+#### 4.4.1 Current Implementation
 
 <!--
 This section describes some noteworthy details on how certain features are implemented.
@@ -360,6 +414,8 @@ This section shows the various standards TrackPad adheres to.
 * allows creating an itinerary to track future travels
 * customisable shortcuts that the user can set for frequently used commands
 
+--------------------------------------------------------------------------------------------------------------------
+
 ## **Appendix B: User Stories**
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
@@ -390,6 +446,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | person planning for my travel	| add the estimated budget to my itineraries                                         | plan how much to spend on each trip
 | `*`      | person currently traveling	    | mark tourist attractions as visited / not visited                                  | know which attractions I missed
 | `*`      | person who had already traveled | give ratings to my attractions                                                    | keep track of which tourist attractions were enjoyable
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix C: Use Cases**
 
@@ -468,6 +526,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case resumes at step 2.
       
+**Use case: UC04 - Mark a tourist attraction as visited**
+
+**MSS**
+
+1. User requests to mark a tourist attraction as visited.
+2. User provides the index of the tourist attraction to be marked as visited.
+3. TrackPad marks the tourist attraction as visited and shows a success message.
+
+   Use case ends.
+    
+**Extensions**
+  
+* 2a. The index provided does not exist in the attractions list.
+
+    * 2a1. TrackPad shows an error message.
+    
+      Use case resumes at step 2.
+
+* 2b. The attraction that corresponds to the inputted index is already visited.
+
+    * 2b1. TrackPad shows an error message.
+    
+      Use case resumes at step 2.
+      
 **Use case: UC05 - Find a tourist attraction**
 
 **MSS**
@@ -490,8 +572,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to list all tourist attractions
-2.  TrackPad shows a list of all tourist attractions
+1.  User requests to list all tourist attractions.
+2.  TrackPad shows a list of all tourist attractions.
 
     Use case ends.
 
@@ -505,8 +587,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to delete all tourist attractions in the list
-2.  TrackPad deletes all tourist attractions in the list
+1.  User requests to delete all tourist attractions in the list.
+2.  TrackPad deletes all tourist attractions in the list.
 
     Use case ends.
 
@@ -516,7 +598,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3a. Error deleting list from storage
+* 3a. Error deleting list from storage.
 
     * 3a1. TrackPad shows an error.
 
@@ -790,7 +872,45 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
         * 2a1. TrackPad shows an error message.
         
           Use case resumes at step 2.
-      
+              
+**Use case: UC19 - Exiting the program**
+
+**MSS**
+
+1. User wishes to exit TrackPad.
+2. User provides the command to exit.
+3. TrackPad closes.
+
+    Use case ends.
+    
+**Extensions**
+
+* 2a. User clicks the exit button on the top right of the window.
+
+    Use case resumes at step 3.
+          
+**Use case: UC20 - Saving the data**
+
+**MSS**
+
+1. User wishes to save current data in TrackPad.
+2. User enters any valid command.
+3. Data in TrackPad is updated and saved.
+
+    Use case ends.
+    
+**Extensions**
+
+* 2a. User enters an invalid command.
+
+    Use case ends.
+    
+* *a. At any time, user chooses to terminate and close the program.
+
+    Use case resumes at step 3.
+    
+--------------------------------------------------------------------------------------------------------------------
+
 ## **Appendix D: Non-Functional Requirements**
 
 1.  The product should be able to hold up to 1000 tourist attractions/itineraries/days without a noticeable sluggishness in performance for typical usage.
@@ -803,6 +923,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 8.  The system should respond within five seconds.
 9.  The project is expected to be a brown-field project.
 10.  The progress of the project is expected to adhere to the schedule provided on the module website.
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix E: Glossary**
 
@@ -919,7 +1041,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Listing all attractions currently stored in TrackPad
 
-   1. Prerequisites: Lists all attractions using the `list-attraction` command
+   1. Prerequisites: NIL
 
    2. Test case: `list-attraction`<br>
       Expected: All attractions that are currently stored in the app will be displayed in the Attractions panel.
@@ -931,7 +1053,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Clears all attractions currently stored in TrackPad
 
-   1. Prerequisites: Clears all attractions using the `clear-attraction` command
+   1. Prerequisites: NIL
 
    2. Test case: `clear-attraction`<br>
       Expected: All attractions that are currently stored in the app will be deleted. An empty attractions panel will be shown.
