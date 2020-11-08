@@ -775,12 +775,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The list is empty.
 
   Use case ends.
-
-* 3a. Error deleting list from storage.
-
-    * 3a1. TrackPad shows an error.
-
-      Use case ends.
       
 **Use case: UC08 - Add an itinerary**
 
@@ -955,13 +949,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2b. The format is invalid. 
         
   Use case ends.
-
-* 3a. Error deleting list from storage
-
-    * 3a1. TrackPad shows an error.
-
-      Use case ends.
-
 
 <!-- if <u> doesn't work, try <ins>text</ins> --> 
 **Use case: UC15 - Add a tourist attraction into selected itinerary**
