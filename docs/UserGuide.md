@@ -655,19 +655,19 @@ For example:
 1. Look on the left side of the image below. You want to add `Night Safari` to your `Selected Itinerary`.
 
 ![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction1.png)
-<div align='center'><i><sup style="font-size:100%">Figure 19a. Diagram showing current state of selected itinerary</sup></i></div><br>
+<div align='center'><i><sup style="font-size:100%">Figure 24a. Diagram showing current state of selected itinerary</sup></i></div><br>
 
 
 1. You type `add-itinerary-attraction 2 day/2 st/1000 et/1100`, where you want to visit it on day 2, from `1000` to `1100` and press <kbd>Enter</kbd> to add it.
 
 ![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction2.png)
-<div align='center'><i><sup style="font-size:100%">Figure 19b. Before entering <code>add-itinerary-attraction 2 day/2 st/1000 et/1100</code></sup></i></div><br>
+<div align='center'><i><sup style="font-size:100%">Figure 24b. Before entering <code>add-itinerary-attraction 2 day/2 st/1000 et/1100</code></sup></i></div><br>
 
 
 1. `Night Safari` has been added into your `Selected Itineray`.
 
 ![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction3.png)
-<div align='center'><i><sup style="font-size:100%">Figure 19c. After entering <code>add-itinerary-attraction 2 day/2 st/1000 et/1100</code></sup></i></div><br>
+<div align='center'><i><sup style="font-size:100%">Figure 24c. After entering <code>add-itinerary-attraction 2 day/2 st/1000 et/1100</code></sup></i></div><br>
 
 
 Try these other examples too!
@@ -706,19 +706,19 @@ For example:
 1. You made a mistake by adding the `START_TIME` of `Night Safari` as `1000`, but it is not open in the day.
 
 ![result of edit itinerary attraction](images/userguideimages/EditItineraryAttraction1.png)
-<div align='center'><i><sup style="font-size:100%">Figure 20a. Diagram showing current state of selected itinerary</sup></i></div><br>
+<div align='center'><i><sup style="font-size:100%">Figure 25a. Diagram showing current state of selected itinerary</sup></i></div><br>
 
 
 1. You type `edit-itinerary-attraction 1 day/2 st/1900 et/2300`, and press <kbd>Enter</kbd> to edit it.
 
 ![result of edit itinerary attraction](images/userguideimages/EditItineraryAttraction2.png)
-<div align='center'><i><sup style="font-size:100%">Figure 20b. Before entering <code>edit-itinerary-attraction 1 day/2 st/1900 et/2300</code></sup></i></div><br>
+<div align='center'><i><sup style="font-size:100%">Figure 25b. Before entering <code>edit-itinerary-attraction 1 day/2 st/1900 et/2300</code></sup></i></div><br>
 
 
 1. Scroll down the `Selected Itinerary` and notice the `START_TIME` of `Night Safari` has been changed to `1900 - 2300`.
 
 ![result of edit itinerary attraction](images/userguideimages/EditItineraryAttraction3.png)
-<div align='center'><i><sup style="font-size:100%">Figure 20c. After entering <code>edit-itinerary-attraction 1 day/2 st/1900 et/2300</code></sup></i></div><br>
+<div align='center'><i><sup style="font-size:100%">Figure 25c. After entering <code>edit-itinerary-attraction 1 day/2 st/1900 et/2300</code></sup></i></div><br>
 
 
 Try these other examples too!
@@ -748,12 +748,12 @@ For example:
 1. You type `delete-itinerary-attraction 1 day/2`, and press <kbd>Enter</kbd> to delete it.
 
 ![result of delete itinerary attraction](images/userguideimages/DeleteItineraryAttraction1.png)
-<div align='center'><i><sup style="font-size:100%">Figure 20a. Before entering <code>delete-itinerary-attraction 1 day/2</code></sup></i></div><br>
+<div align='center'><i><sup style="font-size:100%">Figure 26a. Before entering <code>delete-itinerary-attraction 1 day/2</code></sup></i></div><br>
 
 1. Scroll down the `Selected Itinerary` and notice `Day 2` is now empty.
 
 ![result of delete itinerary attraction](images/userguideimages/DeleteItineraryAttraction2.png)
-<div align='center'><i><sup style="font-size:100%">Figure 20a. After <code>delete-itinerary-attraction 1 day/2</code></sup></i></div><br>
+<div align='center'><i><sup style="font-size:100%">Figure 26a. After <code>delete-itinerary-attraction 1 day/2</code></sup></i></div><br>
 
 
 Try these other examples too!
@@ -775,7 +775,7 @@ These basic features help TrackPad to run smoothly, as well as allow you to inte
 You can use this command whenever you are unsure about any features, and the link will lead you straight to our user guide which will help to clarify your doubts.
 
 ![help message](images/userguideimages/helpMessage.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 24. The help window of TrackPad</i></sup></div>
+<div align="center"><sup style="font-size:100%"><i>Figure 27. The help window of TrackPad</i></sup></div>
 
 Format: `help`
 
