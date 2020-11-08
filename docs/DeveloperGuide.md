@@ -210,30 +210,68 @@ The following sequence diagram shows how the `add-itinerary` operation works: (c
 #### 4.??? Design Considerations
 
 
-### 3.ia Itinerary Attraction class
-This is a type of `Attraction` that goes into the `List<Day>` that resides in `Itinerary`. 
+### 4.3 Itinerary Attraction Model
+This is a subclass of `Attraction` that goes into the `List<Day>` that resides in `Itinerary`. 
 
-#### 3.ia.1 Current Implementation
+#### 4.3.1 Itinerary Attraction Implementation
 
 `ItineraryAttraction` extends `Attraction`. It is a `Attraction` with 2 extra fields, `startTime` and `endTime`. 
 It is stored internally as an `List<Day>`. Additionally, it implements the following operations:
 
 
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+
+#### 4.3.2 Design consideration
+
+##### Aspect 1: Inheritance or composition
+
+* **Alternative 1 (current choice):** `ItineraryAttraction` inherits `Attraction`.
+  * Pros: 
+  * Cons:
+
+* **Alternative 2:** `ItineraryAttraction` would compose `Attraction`
+  * Pros: 
+  * Cons: 
+
+##### Aspect 2: Constructor
+
+* **Alternative 1 (current choice):** constructor takes in an `Attraction` field
+  * Pros:
+  * Cons:
+  
+* **Alternative 2:** constructor takes in all the fields of `Attraction`.
+  * Pros:
+  * Cons:
+
+##### Aspect 3: Immutability
+The fields inside `ItineraryAttraction` are private final to prevent any modifications of fields.
+Editing any fields would require a new object to be created everytime, which guarantee the immutability of `ItineraryAttraction`.    
 
 
-#### 3.1.2 Design consideration
+#### 4.3.3 Adding Itinerary Attraction Implementation
 
-##### 3.1.2.1 Aspect: How undo & redo executes
 
-* **Alternative 1 (current choice):** Extends `Attraction`.
-  * Pros: Access to private fields in 
-  * Cons: Hard to implement and May have performance issues in terms of memory usage.
+#### 4.3.4 Design Considerations
 
-* **Alternative 2:** Use a wrapper class to contain `Attraction`
-`ItineraryAttraction` would contain a field `Attraction` inside.
-  * Pros: Easy to implement. No coupling with `Attraction`. 
-  * Cons: Does not have access to private fields in attraction, would require 
+##### Aspect 1:
+
+* **Alternative 1 (current choice):** 
+  * Pros:
+  * Cons:
+
+* **Alternative 2:** 
+  * Pros:
+  * Cons:
+
+##### Aspect 2:
+
+* **Alternative 1 (current choice):** 
+  * Pros:
+  * Cons:
+
+* **Alternative 2:** 
+  * Pros:
+  * Cons:
+
 
 <!--
 This section describes some noteworthy details on how certain features are implemented.
