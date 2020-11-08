@@ -14,14 +14,4 @@ UniqueAttractionList -right-> Attraction
 
 Attraction -up-> "*" Tag
 
-Attraction *--> Name
-Attraction *--> Location
-Attraction *--> Phone
-Attraction *--> Email
-Attraction *--> Address
-Attraction *--> Description
-Attraction *--> OpeningHours
-Attraction *--> PriceRange
-Attraction *--> Rating
-Attraction *--> Visited
 @enduml

@@ -81,7 +81,7 @@ The sections below give more details of each component.
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `AttractionListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `AttractionListPanel`, `ItineraryListPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
@@ -90,7 +90,7 @@ The `UI` component,
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
-This design is similar to the Architectural design of TrackPad, whereby different UiParts are encapsulated in the MainWindow java controller class. This allows the Logic to minimise interaction with the UI, since the MainWindow manages the changes to any UiPart classes that result from the execution in the Logic component.
+This design is similar to the Architectural design of TrackPad, whereby different `UiParts` are encapsulated in the `MainWindow java` controller class. This allows the `Logic` to minimise interaction with the `UI`, since the `MainWindow` manages the changes to any `UiPart` classes that result from the execution in the `Logic` component.
 
 ### 3.3 Logic
 
@@ -130,12 +130,11 @@ The `Model` component shown in Figure 7,
 * exposes two unmodifiable `ObservableList<Attraction>` and `ObservableList<Itinerary>` that can be 'observed' e.g. the UI can be bound to the lists so that the UI automatically updates when the data in the lists change.
 * does not depend on any of the other three components.
 
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.</div><br> 
+<div markdown="span" class="alert alert-info">:information_source: **Note:** 
+An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.</div><br>
 
 ![BetterModelClassDiagram](images/devguideimages/BetterModelClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 8 Structure of an alternative Model Component, Alternative Model Class Diagram</i></sup></div><br>
-
 
 ### 3.5 Storage
 
@@ -154,6 +153,7 @@ The `Storage` component shown in Figure 9,
 Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
+
 ## **4. Implementation**
 This section describes some noteworthy details on the implementation of core TrackPad feature.
 
@@ -275,7 +275,7 @@ _{Explain here how the data archiving feature will be implemented}_
 -->
 --------------------------------------------------------------------------------------------------------------------
 
-## **5. Documentation, logging, testing, configuration, dev-ops**\
+## **5. Documentation, logging, testing, configuration, dev-ops**
 
 This section shows the various standards TrackPad adheres to.
 
@@ -344,72 +344,98 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `TrackPad` and the **Actor** is the `user`, unless specified otherwise)
       
-**Use case: Add a tourist attraction**
+**Use case: UC01 - Add a tourist attraction**
 
 **MSS**
 
-1.  User requests to add a tourist attraction
-2.  TrackPad adds the tourist attraction
+1. User requests to add a tourist attraction.
+2. User provides the fields of the tourist attraction to be added.
+3. TrackPad adds the tourist attraction and shows a success message.
 
-    Use case ends.
+   Use case ends.
       
 **Extensions**
 
-* 2a. The given format for tourist attraction is invalid.
+* 2a. A field provided for the tourist attraction is invalid.
 
     * 2a1. TrackPad shows an error message.
     
-      Use case resumes at step 1.
+      Use case resumes at step 2.
 
-**Use case: Delete a tourist attraction**
+* 2b. The tourist attraction to be added already exists in the list of attractions.
+
+    * 2b1. TrackPad shows an error message.
+    
+      Use case ends.
+
+**Use case: UC02 - Edit a tourist attraction**
 
 **MSS**
 
-1.  User requests to list tourist attractions
-2.  TrackPad shows a list of tourist attractions
-3.  User requests to delete a specific tourist attraction in the list
-4.  TrackPad deletes the tourist attraction
+1. User requests to edit a tourist attraction.
+2. User provides the index of the tourist attraction to be edited.
+3. User provides the fields of the tourist attraction to be edited.
+4. TrackPad edits the fields and shows a success message.
 
-    Use case ends.
+   Use case ends.
     
 **Extensions**
 
-* 2a. The list is empty.
-      
-  Use case ends.
-      
-* 2b. The format is invalid. 
-      
-  Use case ends.
-  
-* 3a. The given index is invalid.
+* 2a. The index provided does not exist in the attractions list.
+
+    * 2a1. TrackPad shows an error message.
+    
+      Use case resumes at step 2.
+
+* 3a. The new field provided for the tourist attraction is invalid.
 
     * 3a1. TrackPad shows an error message.
     
-      Use case resumes at step 2.
+      Use case resumes as step 3.
       
-**Use case: Find a tourist attraction**
+* 3b. The new field provided for the tourist attraction is the same as the current one.
+
+    * 3b1. TrackPad shows an error message.
+    
+      Use case ends.
+
+**Use case: UC03 - Delete a tourist attraction**
 
 **MSS**
 
-1.  User requests to find a tourist attraction
-2.  TrackPad shows a list of tourist attractions matching the keyword entered
+1. User requests to delete a tourist attraction.
+2. User provides the index of the tourist attraction to be deleted.
+3. TrackPad deletes the tourist attraction and shows a success message.
 
-    Use case ends.
+   Use case ends.
+    
+**Extensions**
+  
+* 2a. The index provided does not exist in the attractions list.
+
+    * 2a1. TrackPad shows an error message.
+    
+      Use case resumes at step 2.
+      
+**Use case: UC05 - Find a tourist attraction**
+
+**MSS**
+
+1. User requests to find a tourist attraction.
+2. User provides the keyword he is looking for.
+3. TrackPad shows a list of all the tourist attractions that match the keyword.
+
+   Use case ends.
     
 **Extensions**
 
-* 2a. The list is empty.
+* 3a. There are no tourist attractions that matches the keyword.
 
-  Use case ends.
+    * 3a1. TrackPad shows an empty list of attractions.
     
-* 3a. The given keyword is not found.
-
-    * 3a1. TrackPad shows an error.
-
       Use case ends.
 
-**Use case: List all tourist attractions**
+**Use case: UC06 - List all tourist attractions**
 
 **MSS**
 
@@ -424,8 +450,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
  
-
-**Use case: Clear all tourist attractions**
+**Use case: UC07 - Clear all tourist attractions**
 
 **MSS**
 
@@ -445,7 +470,169 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. TrackPad shows an error.
 
       Use case ends.
+      
+**Use case: UC08 - Add an itinerary**
 
+**MSS**
+
+1.  User requests to add an itinerary.
+2.  TrackPad adds the itinerary.
+
+    Use case ends.
+      
+**Extensions**
+
+* 2a. The given format for the itinerary is invalid.
+
+    * 2a1. TrackPad shows an error message.
+    
+      Use case resumes at step 1.
+
+**Use case: UC09 - Edit an itinerary**
+
+**MSS**
+
+1.  User requests to list itineraries.
+2.  TrackPad shows a list of itineraries.
+3.  User requests to edit a specific itinerary in the list.
+4.  TrackPad edits the itinerary.
+
+    Use case ends.
+      
+**Extensions**
+
+* 2a. The list is empty.
+      
+  Use case ends.
+      
+* 2b. The format is invalid. 
+      
+  Use case ends.
+  
+* 3a. The given index is invalid.
+
+    * 3a1. TrackPad shows an error message.
+    
+      Use case resumes at step 2.
+      
+**Use case: UC10 - Delete an itinerary**
+
+**MSS**
+
+1.  User requests to list itineraries.
+2.  TrackPad shows a list of itineraries.
+3.  User requests to delete a specific itinerary in the list.
+4.  TrackPad deletes the itinerary.
+
+    Use case ends.
+    
+**Extensions**
+
+* 2a. The list is empty.
+      
+  Use case ends.
+      
+* 2b. The format is invalid. 
+      
+  Use case ends.
+  
+* 3a. The given index is invalid.
+
+    * 3a1. TrackPad shows an error message.
+    
+      Use case resumes at step 2.
+      
+**Use case: UC11 - Find an itinerary**
+
+**MSS**
+
+1.  User requests to find an itinerary.
+2.  TrackPad shows a list of itineraries matching the keyword entered.
+
+    Use case ends.
+    
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+    
+* 3a. The given keyword is not found.
+
+    * 3a1. TrackPad shows an error.
+
+      Use case ends.
+      
+**Use case: UC12 - List all itineraries**
+
+**MSS**
+
+1.  User requests to list all itineraries.
+2.  TrackPad shows a list of all itineraries.
+
+    Use case ends.
+    
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 2b. The format is invalid. 
+        
+  Use case ends.
+  
+**Use case: UC13 - Select an itinerary**
+
+**MSS**
+
+1.  User requests to list itineraries.
+2.  TrackPad shows a list of itineraries.
+3.  User requests to select a specific itinerary in the list.
+4.  TrackPad selects the itinerary.
+
+    Use case ends.
+    
+**Extensions**
+
+* 2a. The list is empty.
+      
+  Use case ends.
+      
+* 2b. The format is invalid. 
+      
+  Use case ends.
+  
+* 3a. The given index is invalid.
+
+    * 3a1. TrackPad shows an error message.
+    
+      Use case resumes at step 2.
+    
+**Use case: UC14 - Clear all itineraries**
+
+**MSS**
+
+1.  User requests to delete all itineraries in the list.
+2.  TrackPad deletes all itineraries in the list.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+  
+* 2b. The format is invalid. 
+        
+  Use case ends.
+
+* 3a. Error deleting list from storage
+
+    * 3a1. TrackPad shows an error.
+
+      Use case ends.
 
 ## **Appendix D: Non-Functional Requirements**
 
@@ -477,96 +664,342 @@ testers are expected to do more *exploratory* testing.
 
 ### F1 Launch and shutdown
 
-1. Initial launch
+1. Initial launch.
 
-   1. Download the jar file and copy into an empty folder
+   1. Download the jar file and copy into an empty folder.
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-1. Saving window preferences
+2. Saving window preferences.
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+   2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
+### F2 Adding a tourist attraction
 
-### F2 Deleting an attraction
+1. Adding a tourist attraction.
 
-1. Deleting an attraction while all attractions are being shown
+   1. Prerequisites: No attraction in TrackPad has both the name 'Zoo' and the location 'Singapore'.
+   
+   2. Test case: `add-attraction n/Zoo l/Singapore`<br>
+      Expected: New attraction added to the bottom of the attractions list. 
+      Details of the added attraction shown in the status message.
 
-   1. Prerequisites: List all attractions using the `list` command. Multiple attractions in the list.
+   3. Test case: `add-attraction n/Zoo`<br>
+      Expected: No attraction added. Error details shown in the status message.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-
-   1. Test case: `delete 0`<br>
-      Expected: No attraction is deleted. Error details shown in the status message. Status bar remains the same.
-
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   4. Other incorrect add-attraction commands to try: `add-attraction n/Zoo l/Singapore p/+6591234567`, 
+      `add-attraction n/NAME l/LOCATION` (where both the NAME and LOCATION are the same as another attraction in TrackPad)<br>
       Expected: Similar to previous.
       
-### FX Marking an attraction as Visited (Robin)
+### F3 Editing a tourist attraction
+
+1. Editing a tourist attraction while all the attractions in TrackPad are shown in the attractions list.
+
+   1. Prerequisites: List all attractions using the `list-attraction` command.
+
+   2. Test case: `edit-attraction 1 p/999`<br>
+      Expected: Phone number of first attraction edited to 999. Details of the edited attraction shown in the status message.
+
+   3. Test case: `edit-attraction 0 p/999`<br>
+      Expected: No attraction edited. Error details shown in the status message.
+
+   4. Other incorrect edit-attraction commands to try: `edit-attraction 1 r/5.1`,
+      `edit-attraction 1 n/NAME` (where NAME is the same as the current name of the first attraction)<br>
+      Expected: Similar to previous.
+      
+### F4 Deleting a tourist attraction
+
+1. Deleting a tourist attraction while all the attractions in TrackPad are shown in the attractions list.
+
+   1. Prerequisites: List all attractions using the `list-attraction` command.
+
+   2. Test case: `delete-attraction 1`<br>
+      Expected: First attraction deleted from the list. Details of the deleted attraction shown in the status message.
+
+   3. Test case: `delete-attraction 0`<br>
+      Expected: No attraction deleted. Error details shown in the status message.
+
+   4. Other incorrect delete-attraction commands to try: `delete-attraction`, 
+      `delete-attraction x` (where x is larger than the list size)<br>
+      Expected: Similar to previous.
+
+### F5 Marking an attraction as Visited (Robin)
 
 1. Marking an attraction as Visited while all attractions are being shown
 
    1. Prerequisites: There is at least one attraction present in the attraction list of TrackPad.
 
-   1. Test case: `markVisited-attraction 1`<br>
+   2. Test case: `markVisited-attraction 1`<br>
    
       1. Scenario 1: First attraction does not have the purple Visited tag.<br>
-      Expected: First attraction is marked as visited on the list. Details of the attraction shown in the status message. <br>
+      Expected: First attraction marked as visited on the list. Details of the attraction shown in the status message. <br>
       
       1. Scenario 2: First attraction already has the purple Visited tag.<br>
       Expected: First attraction remains unchanged. Error message shown in the result box.
 
-   1. Test case: `markVisited-attraction 1`<br>
-      Expected: No attraction is marked as visited. Error details shown in the result box.
+   3. Test case: `markVisited-attraction 0`<br>
+      Expected: No attraction marked as visited. Error details shown in the result box.
       
-   1. Other incorrect markVisited commands to try: `markVisited-attraction`, `markVisited-attraction x` (where x is larger than the list size, or less than 0)<br>
+   4. Other incorrect markVisited commands to try: `markVisited-attraction`, `markVisited-attraction x` (where x is larger than the list size, or less than 0)<br>
       Expected: Similar to previous.
+
+### F6 Finding a tourist attraction
+
+1. Finding a tourist attraction while all the attractions in TrackPad are shown in the attractions list.
+
+   1. Prerequisites: List all attractions using the `list-attraction` command. Attractions Jurong Bird Park and Snow City are in the attractions list.
+
+   2. Test case: `find-attraction jurong`<br>
+      Expected: Attractions Jurong Bird Park and Snow City shown in the attractions list. Number of attractions listed shown in the status message.
+
+   3. Test case: `find-attraction #$%`<br>
+      Expected: Empty attractions list shown. "0 attractions listed!" shown in the status message.
       
-      
-### FX Listing attractions (Robin)
+### F7 Listing attractions (Robin)
 
 1. Listing all attractions currently stored in TrackPad
 
    1. Prerequisites: Lists all attractions using the `list-attraction` command
 
-   1. Test case: `list-attraction`<br>
+   2. Test case: `list-attraction`<br>
       Expected: All attractions that are currently stored in the app will be displayed in the Attractions panel.
       
-   1. Test case: `list-attraction 1`<br>
+   3. Test case: `list-attraction 1`<br>
       Expected: Everything typed after the space following the command will be ignored, and list-attraction command will be executed successfully.
 
-### FX Clearing attractions (Robin)
+### F8 Clearing attractions (Robin)
 
 1. Clears all attractions currently stored in TrackPad
 
    1. Prerequisites: Clears all attractions using the `clear-attraction` command
 
-   1. Test case: `clear-attraction`<br>
+   2. Test case: `clear-attraction`<br>
       Expected: All attractions that are currently stored in the app will be deleted. An empty attractions panel will be shown.
       
-   1. Test case: `clear-attraction 1`<br>
+   3. Test case: `clear-attraction 1`<br>
       Expected: Everything typed after the space following the command will be ignored, and clear-attraction command will be executed successfully.
+
+### F9 Adding an itinerary
+
+1. Adding an itinerary
+
+   1. Prerequisites: None.
+
+   2. Test case: `add-itinerary n/Thailand Trip sd/01-08-2020 ed/03-08-2020`<br>
+      Expected: An itinerary with the specified name, start date and end date is added to the itinerary list. 
+      Details of the added itinerary shown in the status message.
+
+   3. Test case: `add-itinerary `<br>
+      Expected: No itinerary added. Error details shown in the status message.
+
+   4. Other incorrect add itinerary commands to try: 
+     * Missing compulsory fields (e.g. missing end date): `add-itinerary n/Germany sd/03-02-2020 b/100`<br>
+        Expected: Similar to 3.
+     * Invalid format for fields (e.g. invalid start date format): `add-itinerary n/Germany sd/03 02 2020 ed/06-02-2020`<br>
+        Expected: Similar to 3.
+        
+### F10 Editing an itinerary
+
+1. Editing an itinerary
+
+   1. Prerequisites: At least one itinerary exists for editing.
+
+   2. Test case: `edit-itinerary 1 n/Japan trip`<br>
+      Expected: The name of the first itinerary is changed to `Japan trip`.
+      Details of the edited itinerary shown in the status message.
+
+   3. Test case: `edit-itinerary 0 n/Japan trip`<br>
+      Expected: No itinerary edited. Error details shown in the status message.
+
+   4. Other incorrect edit itinerary commands to try: 
+     * Missing fields: `edit-itinerary 1`<br>
+        Expected: Similar to 3.
+     * Invalid format for fields (e.g. invalid start date format): `edit-itinerary 1 sd/03 02 2020`<br>
+        Expected: Similar to 3.
+     * No change in fields: `edit-itinerary 1 n/Germany` when the name is already `Germany`<br>
+        Expected: Similar to 3.
+        
+### F11 Deleting an itinerary
+
+1. Deleting an itinerary while all itineraries are being shown
+
+   1. Prerequisites: List all itineraries using the `list-itinerary` command. Multiple itineraries in the list.
+
+   2. Test case: `delete-itinerary 1`<br>
+      Expected: First from the list. Details of the deleted itinerary shown in the status message.
+
+   3. Test case: `delete-itinerary 0`<br>
+      Expected: No itinerary deleted. Error details shown in the status message.
+
+   4. Other incorrect delete commands to try:
+    * Missing index: `delete-itinerary`<br>
+      Expected: Similar to 3
+    * Invalid index: `delete-itinerary x`, where x is larger than the list size <br>
+      Expected: Similar to 3
       
-### FX Exiting the program (Robin)
+### F12 Finding an itinerary
+
+1. Finding an itinerary
+
+   1. Prerequisites: TrackPad contains an itinerary with the name `Singapore Tour`.
+
+   2. Test case: `find-itinerary Singapore Tour`<br>
+      Expected: The itinerary with the name `Singapore Tour` is found. 
+
+   3. Test case: `find-itinerary`<br>
+      Expected: No itinerary is found. Error details shown in the status message.
+      
+### F13 Listing itineraries (York Tat)
+
+1. Listing all itineraries currently stored in TrackPad
+
+   1. Prerequisites: None.
+
+   2. Test case: `list-itinerary`<br>
+      Expected: All itineraries that are currently stored in the app will be displayed in the Itineraries panel.
+      
+   3. Test case: `list-itinerary 3`<br>
+      Expected: Everything typed after the space following the command will be ignored, and list-itinerary command will be executed successfully.
+
+### F14 Selecting an itinerary (York Tat)
+
+1. Selecting an itinerary while all itineraries are being shown
+
+   1. Prerequisites: List all itineraries using the `list-itinerary` command. Multiple itineraries in the list.
+
+   2. Test case: `select-itinerary 1`<br>
+      Expected: First itinerary is selected from the list. Details of the selected itinerary shown in the status message.
+
+   3. Test case: `select-itinerary 0`<br>
+      Expected: No itinerary is selected. Error details shown in the status message.
+
+   4. Other incorrect select commands to try:
+    * Missing index: `select-itinerary`<br>
+      Expected: Similar to 3
+    * Invalid index: `select-itinerary x`, where x is larger than the list size <br>
+      Expected: Similar to 3
+      
+### F15 Clearing itineraries (York Tat)
+
+1. Clears all itineraries currently stored in TrackPad
+
+   1. Prerequisites: None.
+
+   2. Test case: `clear-itinerary`<br>
+      Expected: All itineraries that are currently stored in the app will be deleted. An empty Itineraries panel will be shown.
+      
+   3. Test case: `clear-itinerary 2`<br>
+      Expected: Everything typed after the space following the command will be ignored, and clear-itinerary command will be executed successfully.
+  
+### F16 Adding an attraction into itinerary (Yeh Yu Chun)
+
+1. Adding an attraction into an itinerary
+
+    1. Prerequisites: <br>
+        * At least 1 attraction in attractions lists.
+        * At least 1 itinerary in itineraries lists.
+        * An Itinerary must be selected using the `select-itinerary 1` command.
+    
+    2. Test case: `add-itinerary-attraction 1 day/1 st/1000 et/1400`
+        1. Scenario 1: First attraction of day 1 also happened somewhere between 1000H - 1400H. <br>
+        Expected: Error message warning of timing clash between the 2 attractions.
+        
+        2. Scenario 2: Day 1 of itinerary between 1000H - 1400H is empty. <br>
+        Expected: Adds attraction into the selected itinerary. Details of the added attraction shown in the status message.
+        
+    3. Test case: `add-itinerary-attraction` <br>
+        Expected: No attraction added. Error details shown in the status message.
+        
+    3. Other incorrect add itinerary attraction commands to try:
+        * Missing compulsory fields (e.g. missing end time): `add-itinerary-attraction 1 day/1 st/1000` <br>
+        Expected: Similar to 3.
+        * Invalid format for fields (e.g. not a valid time): `add-itinerary-attraction 1 day/1 st/1000 et/2400` <br>
+        Expected: Similar to 3.
+
+
+### F17 Editing an attraction in an itinerary (Yeh Yu Chun)
+
+1. Editing an existing attraction in an itinerary.
+
+    1. Prerequisites: Same as F16.
+    
+    2. Test case: `edit-itinerary-attraction 1 day/1 op/1000-1100` <br>
+        Expected: Change the opening time of the first attraction in the selected itinerary to `1000-1100`.
+
+    3. Test case: `edit-itinerary-attraction 2 day`
+        Expected: No attraction edited. Error details shown in the error message.
+        
+    4. Other incorrect edit itinerary attraction commands to try:
+        * Missing fields: `edit-itinerary-attraction 2 day/3 `
+        Expected: Similar to 3.
+        * Invalid format (e.g. invalid opening time format): `edit-itinerary-attraction 1 day/1 op/1200 to 1300` <br>
+        Expected: Similar to 3.
+        * No change in fields: `edit-itinerary-attraction 1 day/2 st/1000` when the start time is already `1000` <br>
+        Expected: Similar to 3.
+
+### F18 Deleting an attraction from an itinerary (Yeh Yu Chun)
+
+1. Deleting an attraction in an itinerary.
+
+    1. Prerequisites: Same as F16.
+    
+    2. Test case: `delete-itinerary-attraction 1 day/2` <br>
+        Expected: Deletes first attraction of day 1 is deleted from the itinerary.
+    
+    3. Other incorrect delete commands to try:
+    * Missing index: `delete-itinerary-attraction day/2` <br>
+    Expected: No attraction deleted. Error details shown in the error message.
+    * Invalid index: `delete-itinerary-attraction NaN day/2`
+    Expected: Similar to previous.
+    * Missing day: `delete-itinerary-attraction 1` <br>
+    Expected: Similar to previous.
+    * Invalid day: `delete-itinerary-attraction 1 day/NaN `
+    Expected: Similar to previous.
+
+### F19 Viewing help (Yeh Yu Chun)
+1. Viewing help
+
+    1. Prerequisites: NIL 
+        
+    2. Test case: `help` <br>
+        Expected: TrackPad shows a dialog box with a working url to TrackPad's online user guide.
+        
+    3. Test case: `help uselessString` <br>
+        Expected: TrackPad still shows a dialog box, ignores the extra string after help.
+
+### F20 Exiting the program (Robin)
 
 1. Exits and shutdowns the program
 
    1. Prerequisite: NIL
    
-   1. Test case: `exit`<br>
-   Expected: TrackPad shuts down.
+   2. Test case: `exit`<br>
+      Expected: TrackPad shuts down.
+   
+### F21 Saving data
+
+1. Dealing with missing data files
+
+   1. Prerequisites: Launch TrackPad, enter at least one valid command, then exit the app. 
+   
+   2. Test case: In the folder where you saved the app, go to the `data` folder. Delete `attractionlist.json`. Launch TrackPad again.<br>
+   Expected behavior: TrackPad launches with a sample list of attractions to replace the missing attractions file. After entering a valid command, a new `attractionlist.json` file with the current attractions will be created. 
+   
+   3. Test case: In the folder where you saved the app, go to the `data` folder. Delete `itinerarylist.json`. Launch TrackPad again.<br>
+   Expected behavior: TrackPad launches with a sample list of itineraries to replace the missing itineraries file. After entering a valid command, a new `itinerarylist.json` file with the current itineraries will be created. 
+   
+2. Dealing with corrupted data files
+
+   1. Prerequisites: Launch TrackPad, enter at least one valid command, then exit the app. 
       
-<!--
-### F3 Saving data
-
-1. Dealing with missing/corrupted data files
-
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
--->
+   2. Test case: In the folder where you saved the app, go to the `data` folder. Open `attractionlist.json`, delete some portions of it and save. Launch TrackPad again.<br>
+   Expected behavior: TrackPad launches with an empty list of attractions to replace the corrupted attractions file. After entering a valid command, a new `attractionlist.json` file with the current attractions will be created. 
+      
+   3. Test case: In the folder where you saved the app, go to the `data` folder. Open `itinerarylist.json`, delete some portions of it and save. Launch TrackPad again.<br>
+   Expected behavior: TrackPad launches with an empty list of itineraries to replace the corrupted itineraries file. After entering a valid command, a new `itinerarylist.json` file with the current itineraries will be created. 
 
 --------------------------------------------------------------------------------------------------------------------
 

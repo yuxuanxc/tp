@@ -33,9 +33,15 @@ public class FindItineraryCommand extends Command {
         requireNonNull(model);
         model.updateFilteredItineraryList(predicate);
         model.setCurrentItinerary(null);
-        return new CommandResult(
-            String.format(Messages.MESSAGE_ITINERARIES_LISTED_OVERVIEW, model.getFilteredItineraryList().size()),
-                CommandResult.ToSwitchItineraryPanels.NO);
+        if (model.getFilteredItineraryList().size() == 1) {
+            return new CommandResult(
+                    String.format(Messages.MESSAGE_ITINERARY_LISTED_OVERVIEW, model.getFilteredItineraryList().size()),
+                    CommandResult.ToSwitchItineraryPanels.NO);
+        } else {
+            return new CommandResult(String.format(Messages.MESSAGE_ITINERARIES_LISTED_OVERVIEW,
+                    model.getFilteredItineraryList().size()),
+                    CommandResult.ToSwitchItineraryPanels.NO);
+        }
     }
 
     @Override

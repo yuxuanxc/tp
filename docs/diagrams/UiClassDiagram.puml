@@ -15,7 +15,8 @@ Class AttractionListPanel
 Class AttractionCard
 Class ItineraryListPanel
 Class ItineraryCard
-Class StatusBarFooter
+Class ItineraryAttractionListPanel
+Class ItineraryAttractionCard
 Class CommandBox
 }
 
@@ -37,10 +38,11 @@ MainWindow *-down-> CommandBox
 MainWindow *-down-> ResultDisplay
 MainWindow *-down-> AttractionListPanel
 MainWindow *-down-> ItineraryListPanel
-MainWindow *-down-> StatusBarFooter
+MainWindow *-down-> ItineraryAttractionListPanel
 
 AttractionListPanel -down-> AttractionCard
 ItineraryListPanel -down-> ItineraryCard
+ItineraryAttractionListPanel -down-> ItineraryAttractionCard
 
 MainWindow -left-|> UiPart
 
@@ -50,19 +52,21 @@ AttractionListPanel --|> UiPart
 AttractionCard --|> UiPart
 ItineraryListPanel --|> UiPart
 ItineraryCard --|> UiPart
-StatusBarFooter --|> UiPart
+ItineraryAttractionListPanel --|> UiPart
+ItineraryAttractionCard --|> UiPart
 HelpWindow -down-|> UiPart
 
 AttractionCard ..> Model
 ItineraryCard ..> Model
+ItineraryAttractionCard ..> Model
 UiManager -right-> Logic
 MainWindow -left-> Logic
 
 ItineraryListPanel -[hidden]left- AttractionListPanel
 AttractionListPanel -[hidden]left- HelpWindow
+ItineraryAttractionListPanel -[hidden]left- ItineraryListPanel
 HelpWindow -[hidden]left- CommandBox
 CommandBox -[hidden]left- ResultDisplay
-ResultDisplay -[hidden]left- StatusBarFooter
 
 MainWindow -[hidden]-|> UiPart
 @enduml

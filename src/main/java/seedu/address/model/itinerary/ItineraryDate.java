@@ -12,8 +12,8 @@ import java.time.temporal.ChronoUnit;
 
 public class ItineraryDate {
 
-    public static final String MESSAGE_CONSTRAINTS = "Date should be of the format dd-mm-yyyy,"
-            + " and must be a valid date.";
+    public static final String MESSAGE_CONSTRAINTS = "Date must be a valid date in the format dd-mm-yyyy"
+            + " and should not be blank.";
     private static final DateTimeFormatter DTF = new DateTimeFormatterBuilder()
             .appendPattern("dd-MM-uuuu")
             .toFormatter()
