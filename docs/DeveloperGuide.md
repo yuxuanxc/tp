@@ -218,7 +218,14 @@ This is a subclass of `Attraction` that goes into the `List<Day>` that resides i
 `ItineraryAttraction` extends `Attraction`. It is a `Attraction` with 2 extra fields, `startTime` and `endTime`. 
 It is stored internally as an `List<Day>`. Additionally, it implements the following operations:
 
+![Itinerary Attraction Implementation Class Diagram](images/devguideimages/ItineraryAttractionClassDiagram.png)
+<div><i>Figure X The ItineraryAttraction Class Diagram</i></div><br>
 
+// Do i need to show days??????????????????
+// <div align="center"><sup style="font-size:100%"><i>Figure X The Itinerary Class Diagram</i></sup></div><br>
+// tried removing align and <sup></sup>  
+
+`ItineraryAttraction` is an `Attraction` and contains `startTime` and `endTime`.
 
 #### 4.3.2 Design consideration
 
@@ -234,7 +241,7 @@ It is stored internally as an `List<Day>`. Additionally, it implements the follo
 
 ##### Aspect 2: Constructor
 
-* **Alternative 1 (current choice):** constructor takes in an `Attraction` field
+* **Alternative 1 (current choice):** constructor takes in an `Attraction`.
   * Pros:
   * Cons:
   
@@ -248,11 +255,12 @@ Editing any fields would require a new object to be created everytime, which gua
 
 
 #### 4.3.3 Adding Itinerary Attraction Implementation
-
+The feature allows users to select an `Attraction` from the attraction list and add it into their selected itinerary, 
+with a start and end time.
 
 #### 4.3.4 Design Considerations
 
-##### Aspect 1:
+##### Aspect 1: Fit command style with 
 
 * **Alternative 1 (current choice):** 
   * Pros:
@@ -262,16 +270,19 @@ Editing any fields would require a new object to be created everytime, which gua
   * Pros:
   * Cons:
 
-##### Aspect 2:
+##### Aspect 2: Command keyword
 
-* **Alternative 1 (current choice):** 
-  * Pros:
-  * Cons:
+* **Alternative 1 (current choice):** `add-itinerary-attraction` is used to execute `AddItineraryAttractionCommand`. 
+  * Pros: This command is distinct from the `add-attraction` command, `add-itinerary-attraction` would mean adding into itinerary's attraction.
+  * Cons: It is long command to type.
+  TrackPad's audience is fast typists, these few words difference makes little difference to execution speed of the commands.
 
-* **Alternative 2:** 
-  * Pros:
-  * Cons:
-
+* **Alternative 2:**  `add-attraction` is used to execute `AddItineraryAttractionCommand`.
+  * Pros: This is short and the same as the normal command, users has fewer commands to remember.
+  * Cons: This command could be confusing to users and could cause careless users to add commands into the attraction lists instead of the itinerary.
+  Command is not used because the error messages are long and confusing. If the users types the
+  wrong format, TrackPad has no way to know if the user wants to add attraction into the attraction lists or the itinerary.
+  A long error message would be required to show the 2 variations of the command.
 
 <!--
 This section describes some noteworthy details on how certain features are implemented.
