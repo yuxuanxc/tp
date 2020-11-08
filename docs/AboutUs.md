@@ -22,7 +22,6 @@ You can reach us at the following emails:
 [[github](https://github.com/peter-yeh)]
 [[portfolio](team/peter-yeh.md)]
 
-
 ### Lim Koon Kiat
 
 <img src="images/limkoonkiat.png" width="200px">

@@ -155,7 +155,7 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **4. Implementation**
-This section describes some noteworthy details on the implementation of core TrackPad feature.
+This section describes some noteworthy details on the implementation of some core TrackPad features.
 
 ### 4.X Mark Visited Command
 
@@ -239,36 +239,7 @@ An attraction can have any number of `Tag`s.
     consistent results as all the attractions in TrackPad have these 2 fields filled up.
   * Cons: `Name` and `Location` are case-sensitive, so comparing attractions with the same name/location with different
     cases will result in the attractions to be determined as different attractions, which might not be ideal.
-    
-### 4.2 Itinerary Model
 
-#### 4.2.1 Current Implementation
-
-The `Itinerary` class helps users keep track of the details of their trips and the attractions they want to visit. 
-The class diagram for `Itinerary` is shown below:
-
-![Structure of the Storage Component](images/devguideimages/ItineraryClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The Itinerary Class Diagram</i></sup></div><br>
-
-Each `Itinerary` contains `Name`, `Description`, `Budget`, `startDate` and `endDate`. Both `startDate` and `endDate` 
-are of the `ItineraryDate` class. Additionally, to store the attractions that users want to visit, each `Itinerary` 
-contains a list of `Day`s, and each `Day` contains a list of `ItineraryAttraction`s. 
-
-#### 4.2.2 Design Considerations
-
-##### 4.2.2.1 Aspect: How the location field of `Itinerary` is derived
-
-* **Alternative 1:** Have a field for location that the user has to manually specify alongside `Name`, `startDate`, `endDate` etc.
-  * Pros: Simple and intuitive for the user to specify. 
-  * Cons: Would not update accordingly if the user adds attractions that are not in the specified location. 
-  Also, it would get complicated for the user to add and edit multiple locations in a certain order. 
-
-* **Alternative 2 (Current choice):** Get the locations from the current `ItineraryAttraction`s in the `Itinerary`. 
-  * Pros: The user does not have to worry about adding and editing locations, and making sure that they are correct order as 
-  it is done automatically. 
-  * Cons: The itinerary would not have any specified locations unless the user adds an `ItineraryAttraction`, 
-  which might not be intuitive to users. 
-  
 ### 4.? Add Attraction Feature
 
 The add attraction feature allows users to add attractions with the compulsory fields `Name` and `Location`, and 
@@ -300,27 +271,89 @@ The following sequence diagram shows how the `add-attraction` operation works:
 * **Alternative 2 (Current choice):** add-attraction
   * Pros: More intuitive, so the user is more likely to get the correct command everytime when adding attractions.
   * Cons: The user will have to spend more time typing this command.
+
+### 4.2 Itinerary Model
+
+#### 4.2.1 Current Implementation
+
+The `Itinerary` class helps users keep track of the details of their trips and the attractions they want to visit. 
+The class diagram for `Itinerary` is shown below:
+
+![ItineraryClassDiagram](images/devguideimages/ItineraryClassDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The Itinerary Class Diagram</i></sup></div><br>
+
+Each `Itinerary` contains `Name`, `Description`, `Budget`, `startDate` and `endDate`. Both `startDate` and `endDate` 
+are of the `ItineraryDate` class. Additionally, to store the attractions that users want to visit, each `Itinerary` 
+contains a list of `Day`s, and each `Day` contains a list of `ItineraryAttraction`s that belong to that day. 
+
+#### 4.2.2 Design Considerations
+
+##### 4.2.2.1 Aspect: How the location field of `Itinerary` is derived
+
+* **Alternative 1:** Have a field for location that the user has to manually specify alongside `Name`, `startDate`, `endDate` etc.
+  * Pros: Simple and intuitive for the user to specify. 
+  * Cons: Would not update accordingly if the user adds attractions that are not in the specified location. 
+  It would also get complicated for the user to add and edit multiple locations in a certain order. 
+
+* **Alternative 2 (Current choice):** Get the locations from the current `ItineraryAttraction`s in the `Itinerary`. 
+  * Pros: The user neither has to worry about adding, editing and deleting locations, nor making sure they are correct order as 
+  it is done automatically. 
+  * Cons: The itinerary would not have any specified locations unless the user adds an `ItineraryAttraction`, 
+  which might not be intuitive to users. 
+  
+##### 4.2.2.2 Aspect: How `ItineraryAttraction`s are stored with their visiting days
+
+* **Alternative 1:** Have `day visiting` as a field in `ItineraryAttraction`, together with its other fields like `startTime`, `endTime` etc. 
+Have `Itinerary` directly store the `ItineraryAttraction`s. 
+  * Pros: Simple to implement and specify. 
+  * Cons: Harder to separate the `ItineraryAttractions` into the different days. More checks needed to display the correct `ItineraryAttraction`s in the correct days.
+
+* **Alternative 2 (Current choice):** Store `ItineraryAttraction`s in separate `Day`s in `Itinerary`, without having a `day visiting` field in `ItineraryAttraction`.
+  * Pros: `ItineraryAttraction`s are clearly divided into the different days. Easier to get the `ItineraryAttraction`s on a specific day. 
+  * Cons: More methods and classes needed, which complicates things. 
   
 ### 4.??? Add Itinerary Feature (Might need discuss numbering again)
 
-The add itinerary feature allows users to add itineraries with the compulsory fields `Name`, `startDate` and `endDate`, and 
-the optional fields `Description` and `Budget`. 
+The `add-itinerary` command allows users to add new itineraries into TrackPad. Users must specify the compulsory fields `Name`, `startDate` and `endDate`, and 
+may specify the optional fields `Description` and `Budget`. 
 
 #### 4.??? Current Implementation
 
+The following steps illustrate the successful execution of an `add-itinerary` command: 
+
 Step 1. The user launches the application. 
+
 Step 2. The user types in `add-itinerary n/Japan Trip sd/12-12-2020 ed/18-12-2020 d/fun in Japan b/1000` to add a new itinerary. This itinerary does not already exist in the app. 
+
 Step 3. `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `AddItineraryCommand` and passes the input to `AddItineraryCommandParser`. 
+
 Step 4. `AddItineraryCommandParser` parses the input and constructs a new `AddItineraryCommand` containing a new `Itinerary` with the specified fields.
+
 Step 5. `LogicManager` executes the new `AddItineraryCommand`. This calls `Model` to add the new `Itinerary` to its `ItineraryList`.
+
 Step 6. After the new `Itinerary` is successfully added, `AddItineraryCommand` returns a `CommandResult` for the Ui to display. 
 
-The following sequence diagram shows how the `add-itinerary` operation works: (change to include less detail?))
+The following sequence diagram shows how the `add-itinerary` operation works:
 
 ![AddItinerarySequenceDiagram](images/devguideimages/AddItinerarySequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-itinerary</code></i></sup></div><br>
 
+The following activity diagram summarizes what happens when a user executes an `add-itinerary` command:
+
+![AddItineraryActivityDiagram](images/devguideimages/AddItineraryActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `add-itinerary`</i></sup></div><br>
+
 #### 4.??? Design Considerations
+
+##### 4.??? Aspect: Whether to make start and end date compulsory
+
+* **Alternative 1 (Current choice):** Making start and end date compulsory.
+  * Pros: Easier to implement, organise `ItineraryAttraction`s, and check if a day falls within the date range. 
+  * Cons: Less flexible for users who do not want to add dates or are unsure of the dates yet. 
+
+* **Alternative 2:** Making start and end date optional.
+  * Pros: More flexible for users who do not want to add dates or are unsure of the dates yet. 
+  * Cons: Requires more functionality to handle adding and deleting the dates. For example, both dates must be either present or absent, 
 
 ### 4.3 Itinerary Attraction Model
 This is a subclass of `Attraction` that goes into the `List<Day>` that resides in `Itinerary`. 
@@ -744,7 +777,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       
   * 3a1. TrackPad shows an error message.
         
-        Use case resumes at step 3.
+      Use case resumes at step 3.
   
 * 3b. The given index is invalid.
 
