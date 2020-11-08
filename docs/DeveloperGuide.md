@@ -5,7 +5,7 @@ title: Developer Guide
 * Table of Contents
 {:toc}
 
---------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **1. Introduction**
 
@@ -13,15 +13,14 @@ TrackPad is an app for users to create and store itineraries, to facilitate the 
 This document includes the various design choices, architecture and implementation features of TrackPad. This document 
 is targeted towards developers who want to contribute to and extend our TrackPad app.
 
---------------------------------------------------------------------------------------------------------------------
 
 ## **2. Setting up, getting started**
 
-Follow the [_link_](SettingUp.md) to get set up your environment and get started creating pull request for TrackPad. 
+Follow the [_link_](SettingUp.md) to set up your environment and get started in creating pull requests for TrackPad. 
 
 <!--Refer to the guide [_Setting up and getting started_](SettingUp.md).-->
 
---------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **3. Design**
 
@@ -31,7 +30,7 @@ Then, there is a more in depth explanation on the design of the Ui, model and st
 ### 3.1 Architecture
 
 <span style="display:block;align:center">![Architecture Class Diagram](images/devguideimages/ArchitectureDiagram.png)</span>
-<div align="center"><sup style="font-size:100%"><i>Figure 1 Architecture Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 1. Architecture Class Diagram</i></sup></div><br>
 
 Figure 1 explains the high-level design of the App. Given below is a quick overview of each component.
 
@@ -459,9 +458,9 @@ It is stored internally as an `List<Day>`. Additionally, it implements the follo
 
 `ItineraryAttraction` is an `Attraction` and contains `startTime` and `endTime`.
 
-#### 4.3.2 Design consideration
+#### 4.3.2 Design Considerations
 
-##### Aspect 1: Inheritance or composition
+**Aspect: Inheritance or composition**
 
 * **Alternative 1 (current choice):** `ItineraryAttraction` inherits `Attraction`.
   * Pros: Allows it to be treated as an `Attraction` allowing `ItineraryAttraction` access to getters for `Attraction` without redefining it.
@@ -477,7 +476,7 @@ It is stored internally as an `List<Day>`. Additionally, it implements the follo
   
   Inheritance is chose to allow edit itinerary attraction command access to existing fields in an `Attraction`.
 
-##### Aspect 2: Constructor
+**Aspect: Constructor**
 
 * **Alternative 1 (current choice):** constructor takes in an `Attraction`.
   * Pros: It is neater and simpler to use attraction as parameter to create an `ItineraryAttraction` object.
@@ -526,7 +525,7 @@ The following sequence diagram shows how the `add-itinerary-attraction` operatio
 
 #### 4.3.4 Design Considerations
 
-##### Aspect 1: Fit command style with 
+**Aspect: Fit command style with...** 
 
 * **Alternative 1 (current choice):** 
   * Pros:
@@ -1443,7 +1442,7 @@ testers are expected to do more *exploratory* testing.
    3. Test case: `clear-itinerary 2`<br>
       Expected: Everything typed after the space following the command will be ignored, and clear-itinerary command will be executed successfully.
   
-### F16 Adding an attraction into itinerary (Yeh Yu Chun)
+**F16 Adding an attraction into itinerary**
 
 1. Adding an attraction into an itinerary
 
@@ -1469,7 +1468,7 @@ testers are expected to do more *exploratory* testing.
         Expected: Similar to 3.
 
 
-### F17 Editing an attraction in an itinerary (Yeh Yu Chun)
+**F17 Editing an attraction in an itinerary**
 
 1. Editing an existing attraction in an itinerary.
 
@@ -1489,7 +1488,7 @@ testers are expected to do more *exploratory* testing.
         * No change in fields: `edit-itinerary-attraction 1 day/2 st/1000` when the start time is already `1000` <br>
         Expected: Similar to 3.
 
-### F18 Deleting an attraction from an itinerary (Yeh Yu Chun)
+**F18 Deleting an attraction from an itinerary**
 
 1. Deleting an attraction in an itinerary.
 
@@ -1508,10 +1507,10 @@ testers are expected to do more *exploratory* testing.
     * Invalid day: `delete-itinerary-attraction 1 day/NaN `
     Expected: Similar to previous.
 
-### F19 Viewing help (Yeh Yu Chun)
+**F19 Viewing help**
 1. Viewing help
 
-    1. Prerequisites: NIL 
+    1. Prerequisites: None. 
         
     2. Test case: `help` <br>
         Expected: TrackPad shows a dialog box with a working url to TrackPad's online user guide.
