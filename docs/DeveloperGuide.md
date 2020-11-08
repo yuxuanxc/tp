@@ -170,7 +170,7 @@ If the index is invalid or the attraction has already been visited before, an er
 
 The following activity diagram shows how `markVisited-attraction` works:
 ![MarkVisitedActivityDiagram](images/devguideimages/MarkVisitedActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `markVisited-attraction`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of <code>markVisited-attraction</code></i></sup></div><br>
 
 We will use the above activity diagram as shown in Figure X to explain how the command is executed in detail.
 We assume no error is encountered, and the attraction that is selected to be marked as visited has not been marked as visited before.
@@ -192,7 +192,7 @@ Step 7. `MarkVisitedCommand` then creates a new `CommandResult`, which has the s
 The whole sequence of events is outlined in the sequence diagram shown below.
 
 ![MarkVisitedSequenceDiagram](images/devguideimages/MarkVisitedSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `markVisited-attraction 1`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>markVisited-attraction 1</code></i></sup></div><br>
 
 #### 4.X.2 Design Considerations
 
@@ -287,7 +287,7 @@ Steps:
 The following sequence diagram shows how the `add-attraction` operation works:
 
 ![Add Attraction Sequence Diagram](images/devguideimages/AddAttractionSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `add-attraction`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-attraction</code></i></sup></div><br>
 
 #### 4.?.2 Design Considerations
 
@@ -318,7 +318,7 @@ Step 6. After the new `Itinerary` is successfully added, `AddItineraryCommand` r
 The following sequence diagram shows how the `add-itinerary` operation works: (change to include less detail?))
 
 ![AddItinerarySequenceDiagram](images/devguideimages/AddItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `add-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-itinerary</code></i></sup></div><br>
 
 #### 4.??? Design Considerations
 
@@ -375,7 +375,7 @@ with a start and end time.
 
 The following activity diagram shows a simplified add-itinerary-attraction operation:
 ![AddItineraryAttractionActivityDiagram](images/devguideimages/AddItineraryAttractionActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `add-itinerary-attraction`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of <code>add-itinerary-attraction</code></i></sup></div><br>
 
 **Assumes:**
 1. The user launches the application.
@@ -396,7 +396,7 @@ itinerary and the timing does not clash with any exisiting attractions in the it
 The following sequence diagram shows how the `add-itinerary-attraction` operation works:
 
 ![AddItineraryAttractionSequenceDiagram](images/devguideimages/AddItineraryAttractionSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `add-itinerary-attraction`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-itinerary-attraction</code></i></sup></div><br>
 
 #### 4.3.4 Design Considerations
 
