@@ -66,21 +66,21 @@ Here are the steps to download TrackPad and start using it immediately!
    <div align="center"><sup style="font-size:100%"><i>Figure 1. The Ui of TrackPad</i></sup></div>
 
 1. Type the command in the command box and press Enter to execute it. Let's try it out by adding Gardens by the Bay into the app.
-    Type in `add-attraction n/Gardens by the Bay l/Singapore, Singapore a/18 Marina Gardens Dr, 018953 r/4.7` ! Your application should
-    look like this when you scroll to the bottom of the attraction list.
+   Type in `add-attraction n/Gardens by the Bay l/Singapore, Singapore a/18 Marina Gardens Dr, 018953 r/4.7`! Your application should
+   look like this when you scroll to the bottom of the attraction list.
 
     ![Ui](images/userguideimages/gettingStartedAddAttraction.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 2. Adding Gardens by the Bay</i></sup></div>
 
 1. Oh no, you forgot to add the opening hours for Gardens by the Bay. No worries! By using the
-   `edit-attraction 11 op/0500-0200` , we can edit the 11th attraction to add the opening hours from 5am to 2am.
+   `edit-attraction 11 op/0500-0200`, we can edit the 11th attraction to add the opening hours from 5am to 2am.
 
 
    ![Ui](images/userguideimages/gettingStartedEditAttraction.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 3. Editing Gardens by the Bay to add Opening Hours</i></sup></div>
 
 1. Now, you want to create a one day itinerary to visit the Gardens by the Bay. Easy! Just type in
-   `add-itinerary n/Walk in the Park sd/01-01-2021 ed/01-01-2021 d/Appreciate Singapore's flora and fauna`
+   `add-itinerary n/Walk in the Park sd/01-01-2021 ed/01-01-2021 d/Appreciate Singapore's flora and fauna`.
 
    ![Ui](images/userguideimages/gettingStartedAddItinerary.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 4. Adding the new itinerary</i></sup></div>
@@ -268,13 +268,13 @@ You want to delete `Jurong Bird Park` from your list of attractions.
     ![result_of_delete attractions](images/userguideimages/deleteAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 10a. Before entering <code>delete-attraction 1</code></i></sup></div>
 
-2. 1st attraction in the list of attractions, `Jurong Bird Park`, is deleted.
+2. First attraction in the list of attractions, `Jurong Bird Park`, is deleted.
 
     ![result_of_delete_attractions](images/userguideimages/deleteAttraction2.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 10b. After entering <code>delete-attraction 1</code></i></sup></div>
 
 Try these other examples too!
-* `find-attraction animals` followed by `delete-attraction 2` deletes the 2nd attraction in the results of the [find-attraction](#425-finding-a-tourist-attraction-find-attraction)
+* `find-attraction animals` followed by `delete-attraction 2` deletes the second attraction in the results of the [find-attraction](#425-finding-a-tourist-attraction-find-attraction)
 command.
 
 #### 4.2.4 Marking a tourist attraction as visited: `markVisited-attraction`
@@ -296,7 +296,7 @@ You have just visited `Night Safari` over the holidays. You want TrackPad to ref
     ![result_of_markVisited attractions](images/userguideimages/markVisitedAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 11a. Before entering <code>markVisited-attraction 2</code></i></sup></div>
 
-2. 2nd attraction in the list of attractions, `Night Safari`, is marked as visited.
+2. Second attraction in the list of attractions, `Night Safari`, is marked as visited.
 
     ![result_of_markVisited_attractions](images/userguideimages/markVisitedAttraction2.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 11b. After entering <code>markVisited-attraction 2</code></i></sup></div>
@@ -384,7 +384,7 @@ Itineraries help track the details of your trip, as well as the attractions you 
 The figure below shows how an itinerary looks like in the itineraries panel. 
 
    ![result_of_clearing all_attractions](images/userguideimages/ItineraryCard.png)
-   <div align="center"><sup style="font-size:100%"><i>Figure 10. How an itinerary looks like</i></sup></div>
+   <div align="center"><sup style="font-size:100%"><i>Figure 15. How an itinerary looks like</i></sup></div>
 
 Notice that the itineraries panel only shows a simplified view of your itineraries. The attractions in each itinerary are not displayed. To view them in detail, see [selecting an itinerary](#436-selecting-an-itinerary-select-itinerary), or just read on!
 To learn how to add, edit and delete attractions in your itineraries, see [Itinerary Attraction Features](#44-itinerary-attraction-features-yeh-yu-chun).
@@ -435,12 +435,12 @@ You want to add an itinerary for a trip to Europe with your friends.
 1. Enter `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000` into the app. <br>
 
    ![before_adding an itinerary](images/userguideimages/addItinerary1.png)
-   <div align="center"><sup style="font-size:100%"><i>Figure 11a. Before entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
+   <div align="center"><sup style="font-size:100%"><i>Figure 16a. Before entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
 
 2. Note how your new itinerary appears in the `Itineraries` section of the app. <br>
 
    ![after_adding an itinerary](images/userguideimages/addItinerary2.png)
-   <div align="center"><sup style="font-size:100%"><i>Figure 11b. After entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
+   <div align="center"><sup style="font-size:100%"><i>Figure 16b. After entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
  
 <div markdown="span" class="alert alert-danger">:warning: **Warning:**
 The names of itineraries are case sensitive.
@@ -469,12 +469,12 @@ After adding a second itinerary that starts on `01-12-2020`, you want to change 
 1. Enter `edit-itinerary 2 sd/06-12-2020` into the app. <br>
 
     ![result_of_editing an itinerary](images/userguideimages/editItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 12a. Before entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 17a. Before entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div>
 
 2. Note how the start date of the second itinerary has changed from `01-12-2020` to `06-12-2020`. <br>
 
     ![result_of_editing an itinerary](images/userguideimages/editItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 12b. After entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 17b. After entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 You can use `edit-itinerary INDEX prefix/ ` to remove existing optional fields.
@@ -495,12 +495,12 @@ You do not want to store the first itinerary in the app anymore, and you want to
 1. Enter `delete-itinerary 1` into the app. 
 
     ![result_of_deleting an itinerary](images/userguideimages/deleteItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 13a. Before entering <code>delete-itinerary 1</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 18a. Before entering <code>delete-itinerary 1</code></i></sup></div>
 
 2. Note how your first itinerary has been deleted, and there is now one less itinerary. 
 
     ![result_of_deleting an itinerary](images/userguideimages/deleteItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 13b. After entering <code>delete-itinerary 1</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 18b. After entering <code>delete-itinerary 1</code></i></sup></div>
 
 
 #### 4.3.4 Finding an itinerary: `find-itinerary`
@@ -520,12 +520,12 @@ You want to look for all the itineraries that contain the keyword `Europe`.
 
 1. Enter `find-itinerary Europe`
     ![result_of_finding an itinerary](images/userguideimages/findItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 14a. Before entering <code>find-itinerary Europe</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 19a. Before entering <code>find-itinerary Europe</code></i></sup></div>
 
 2. Note how only the itinerary with `Europe` in its name is displayed. 
 
     ![result_of_finding an itinerary](images/userguideimages/findItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 14b. After entering <code>find-itinerary Europe</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 19b. After entering <code>find-itinerary Europe</code></i></sup></div>
 
 
 #### 4.3.5 Listing all itineraries: `list-itinerary`
@@ -542,12 +542,12 @@ After finding an itinerary, you want to go back to seeing all your itineraries.
 1. Enter `list-itinerary` into the app. <br>
 
     ![result_of_listing itineraries](images/userguideimages/listItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 15a. Before entering <code>list-itinerary</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 20a. Before entering <code>list-itinerary</code></i></sup></div>
 
 2. Note how all your itineraries are displayed again. <br>
 
     ![result_of_listing itineraries](images/userguideimages/listItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 15b. After entering <code>list-itinerary</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 20b. After entering <code>list-itinerary</code></i></sup></div>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 `list-itinerary` will work even if there are extra characters behind the command.
@@ -575,12 +575,12 @@ You want to view the attractions in your first itinerary.
 1. Enter `select-itinerary 1` into the app. <br>
 
     ![result_of_selecting itinerary](images/userguideimages/selectItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 16a. Before entering <code>select-itinerary 1</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 21a. Before entering <code>select-itinerary 1</code></i></sup></div>
 
 2. Note how the itinerary panel has changed to show a detailed view of the attractions in the itinerary. <br>
 
     ![result_of_selecting itinerary](images/userguideimages/selectItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 16b. After entering <code>select-itinerary 1</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 21b. After entering <code>select-itinerary 1</code></i></sup></div>
     
 #### 4.3.7 Clearing all itineraries : `clear-itinerary`
 
@@ -600,12 +600,12 @@ You want to delete all your itineraries, and start with an empty list of itinera
 1. Enter `clear-itinerary` into the app. 
 
     ![result_of_clearing all itineraries](images/userguideimages/clearItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 17a. Before entering <code>clear-itinerary</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 22a. Before entering <code>clear-itinerary</code></i></sup></div>
 
 2. Note how all your itineraries are now deleted. 
 
     ![result_of_clearing all itineraries](images/userguideimages/clearItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 17b. After entering <code>clear-itinerary</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 22b. After entering <code>clear-itinerary</code></i></sup></div>
 
 ### 4.4 Itinerary Attraction Features (Yeh Yu Chun)
 Itinerary attractions are attractions added to an itinerary, but with additional start/end time fields. These commands deal with attractions that are found in an itinerary.
@@ -623,9 +623,9 @@ Action | Format, Examples
 **Delete itinerary attraction** | `delete-itinerary-attraction INDEX`<br> e.g. `delete-itinerary-attraction 1`
 
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/userguideimages/ItineraryAttraction.png)</span>
-<div align='center'><i><sup style="font-size:100%">Figure 18. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
+<div align='center'><i><sup style="font-size:100%">Figure 23. Diagram simulating the attractions found in an itinerary</sup></i></div><br>
 
-In Figure 17 above, 
+In Figure 18 above, 
 * The left side shows attractions you have added.
 * The right side shows the itinerary currently selected.
 * Notice the right copy of `Jurong Bird Park`'s name has the addition of a start and end time on top of it.
@@ -654,13 +654,22 @@ Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITI
 For example:
 
 1. Look on the left side of the image below. You want to add `Night Safari` to your `Selected Itinerary`.
-![what is this text for?](images/userguideimages/AddItineraryAttraction1.png)
 
-1. You type `add-itinerary-attraction 2 day/2 st/1000 et/1100`, where you want to visit it on day 2, from `1000` to `1100` and press <kbd>Enter</kbd> to add it.
-![what is this text for?](images/userguideimages/AddItineraryAttraction2.png)
+![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction1.png)
+<div align='center'><i><sup style="font-size:100%">Figure 24a. Diagram showing current state of selected itinerary</sup></i></div><br>
 
-1. `Night Safari` has been added into your `Selected Itineray`.
-![what is this text for?](images/userguideimages/AddItineraryAttraction3.png)
+
+2. You type `add-itinerary-attraction 2 day/2 st/1000 et/1100`, where you want to visit it on day 2, from `1000` to `1100` and press <kbd>Enter</kbd> to add it.
+
+![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction2.png)
+<div align='center'><i><sup style="font-size:100%">Figure 24b. Before entering <code>add-itinerary-attraction 2 day/2 st/1000 et/1100</code></sup></i></div><br>
+
+
+3. `Night Safari` has been added into your `Selected Itinerary`.
+
+![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction3.png)
+<div align='center'><i><sup style="font-size:100%">Figure 24c. After entering <code>add-itinerary-attraction 2 day/2 st/1000 et/1100</code></sup></i></div><br>
+
 
 Try these other examples too!
 * `add-itinerary-attraction 3 st/1000 et/1600 day/3` Adds the third item from Attractions list into `Day 3` of the `Selected Itinerary`.
@@ -696,13 +705,22 @@ Examples:
 For example:
 
 1. You made a mistake by adding the `START_TIME` of `Night Safari` as `1000`, but it is not open in the day.
-![what is this text for?](images/userguideimages/EditItineraryAttraction1.png)
 
-1. You type `edit-itinerary-attraction 1 day/2 st/1900 et/2300`, and press <kbd>Enter</kbd> to edit it.
-![what is this text for?](images/userguideimages/EditItineraryAttraction2.png)
+![result of edit itinerary attraction](images/userguideimages/EditItineraryAttraction1.png)
+<div align='center'><i><sup style="font-size:100%">Figure 25a. Diagram showing current state of selected itinerary</sup></i></div><br>
 
-1. Scroll down the `Selected Itinerary` and notice the `START_TIME` of `Night Safari` has been changed to `1900 - 2300`.
-![what is this text for?](images/userguideimages/EditItineraryAttraction3.png)
+
+2. You type `edit-itinerary-attraction 1 day/2 st/1900 et/2300`, and press <kbd>Enter</kbd> to edit it.
+
+![result of edit itinerary attraction](images/userguideimages/EditItineraryAttraction2.png)
+<div align='center'><i><sup style="font-size:100%">Figure 25b. Before entering <code>edit-itinerary-attraction 1 day/2 st/1900 et/2300</code></sup></i></div><br>
+
+
+3. Scroll down the `Selected Itinerary` and notice the `START_TIME` of `Night Safari` has been changed to `1900 - 2300`.
+
+![result of edit itinerary attraction](images/userguideimages/EditItineraryAttraction3.png)
+<div align='center'><i><sup style="font-size:100%">Figure 25c. After entering <code>edit-itinerary-attraction 1 day/2 st/1900 et/2300</code></sup></i></div><br>
+
 
 Try these other examples too!
 * `edit-itinerary-attraction 1 day/2 et/2200` Edits the `END_TIME` of the attraction first attraction in `Day 2` to be `2200`    
@@ -729,10 +747,15 @@ For example:
 1. You want to delete it from your `Selected Itinerary`.
 
 1. You type `delete-itinerary-attraction 1 day/2`, and press <kbd>Enter</kbd> to delete it.
-![what is this text for?](images/userguideimages/DeleteItineraryAttraction1.png)
 
-1. Scroll down the `Selected Itinerary` and notice `Day 2` is now empty.
-![what is this text for?](images/userguideimages/DeleteItineraryAttraction2.png)
+![result of delete itinerary attraction](images/userguideimages/DeleteItineraryAttraction1.png)
+<div align='center'><i><sup style="font-size:100%">Figure 26a. Before entering <code>delete-itinerary-attraction 1 day/2</code></sup></i></div><br>
+
+2. Scroll down the `Selected Itinerary` and notice `Day 2` is now empty.
+
+![result of delete itinerary attraction](images/userguideimages/DeleteItineraryAttraction2.png)
+<div align='center'><i><sup style="font-size:100%">Figure 26a. After <code>delete-itinerary-attraction 1 day/2</code></sup></i></div><br>
+
 
 Try these other examples too!
 * `delete-itinerary-attraction 1 day/1` Deletes the first attraction from `Day 1` of `Selected Itinerary`.
@@ -753,7 +776,7 @@ These basic features help TrackPad to run smoothly, as well as allow you to inte
 You can use this command whenever you are unsure about any features, and the link will lead you straight to our user guide which will help to clarify your doubts.
 
 ![help message](images/userguideimages/helpMessage.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 21. The help window of TrackPad</i></sup></div>
+<div align="center"><sup style="font-size:100%"><i>Figure 27. The help window of TrackPad</i></sup></div>
 
 Format: `help`
 
