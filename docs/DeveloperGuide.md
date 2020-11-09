@@ -769,6 +769,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | person planning for my travel	| edit the information in my tourist attractions	                                 | update my attractions with new information
 | `* * *`  | person planning for my travel	| tag tourist attractions in different categories like food, sightseeing, activities | distinguish between the different kinds of tourist attractions
 | `* * *`  | person planning for my travel	| add locations / addresses to my attractions                                        | know where the attraction is located and how to get there
+
 <div style="page-break-after: always;"></div>
 
 | Priority | As a …​                     | I want to …​                                                                    | So that I can…​                                              |
@@ -782,6 +783,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | person planning for my travel  | add attractions to my itineraries                                                  | plan which attractions to visit
 | `* *`    | person planning for my travel  | delete attractions from my itineraries                                             | remove attractions I do not want to visit anymore
 | `* *`    | person planning for my travel  | edit attractions in my itineraries                                                 | update the attractions I am planning to visit in my itineraries
+
 <div style="page-break-after: always;"></div>
 
 | Priority | As a …​                     | I want to …​                                                                    | So that I can…​                                              |
