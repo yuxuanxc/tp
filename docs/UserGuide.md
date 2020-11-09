@@ -606,9 +606,9 @@ The table below shows a summary of the commands in this section.
 
 Action | Format, Examples
 --------|------------------
-**Add itinerary attraction** | `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING` <br> e.g. `add-itinerary-attraction 1 st/1400 et/1500 day/5`
-**Edit itinerary attraction** | `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/END_TIME]` <br> e.g. `edit-itinerary-attraction 1 day/2 st/0900 et/1000`
-**Delete itinerary attraction** | `delete-itinerary-attraction INDEX`<br> e.g. `delete-itinerary-attraction 1`
+[**Add itinerary attraction**](#441-adding-an-attraction-to-the-selected-itinerary-add-itinerary-attraction) | `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING` <br> e.g. `add-itinerary-attraction 1 st/1400 et/1500 day/5`
+[**Edit itinerary attraction**](#442-editing-an-attraction-from-the-selected-itinerary--edit-itinerary-attraction) | `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/END_TIME]` <br> e.g. `edit-itinerary-attraction 1 day/2 st/0900 et/1000`
+[**Delete itinerary attraction**](#443-deleting-an-attraction-from-the-selected-itinerary-delete-itinerary-attraction) | `delete-itinerary-attraction INDEX`<br> e.g. `delete-itinerary-attraction 1`
 
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/userguideimages/ItineraryAttraction.png)</span>
 <div align='center'><i><sup style="font-size:100%">Figure 23. Diagram showing the attractions found in an itinerary</sup></i></div><br>
@@ -640,11 +640,13 @@ For example:
 
     ![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction1.png)
     <div align='center'><i><sup style="font-size:100%">Figure 24a. Diagram showing current state of selected itinerary</sup></i></div><br>
+    
 2. You want to visit it on day 2, from `1000` to `1100`.
     Enter `add-itinerary-attraction 2 day/2 st/1000 et/1100` into the command box.
 
     ![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction2.png)
     <div align='center'><i><sup style="font-size:100%">Figure 24b. Before entering <code>add-itinerary-attraction 2 day/2 st/1000 et/1100</code></sup></i></div><br>
+    
 3. `Night Safari` has been added into your `Selected Itinerary`.
 
     ![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction3.png)
@@ -680,18 +682,18 @@ For example:
 
 1. You made a mistake by adding the `START_TIME` of `Night Safari` as `1000`, but it is not open in the day.
 
-![result of edit itinerary attraction](images/userguideimages/EditItineraryAttraction1.png)
-<div align='center'><i><sup style="font-size:100%">Figure 25a. Diagram showing current state of selected itinerary</sup></i></div><br>
+    ![result of edit itinerary attraction](images/userguideimages/EditItineraryAttraction1.png)
+    <div align='center'><i><sup style="font-size:100%">Figure 25a. Diagram showing current state of selected itinerary</sup></i></div><br>
 
 2. Enter `edit-itinerary-attraction 1 day/2 st/1900 et/2300` into the command box.
 
-![result of edit itinerary attraction](images/userguideimages/EditItineraryAttraction2.png)
-<div align='center'><i><sup style="font-size:100%">Figure 25b. Before entering <code>edit-itinerary-attraction 1 day/2 st/1900 et/2300</code></sup></i></div><br>
+    ![result of edit itinerary attraction](images/userguideimages/EditItineraryAttraction2.png)
+    <div align='center'><i><sup style="font-size:100%">Figure 25b. Before entering <code>edit-itinerary-attraction 1 day/2 st/1900 et/2300</code></sup></i></div><br>
 
 3. Scroll down the `Selected Itinerary` and notice the `START_TIME` of `Night Safari` has been changed to `1900 - 2300`.
 
-![result of edit itinerary attraction](images/userguideimages/EditItineraryAttraction3.png)
-<div align='center'><i><sup style="font-size:100%">Figure 25c. After entering <code>edit-itinerary-attraction 1 day/2 st/1900 et/2300</code></sup></i></div><br>
+    ![result of edit itinerary attraction](images/userguideimages/EditItineraryAttraction3.png)
+    <div align='center'><i><sup style="font-size:100%">Figure 25c. After entering <code>edit-itinerary-attraction 1 day/2 st/1900 et/2300</code></sup></i></div><br>
 
 Try these other examples too!
 * `edit-itinerary-attraction 1 day/2 et/2200` Edits the `END_TIME` of the attraction first attraction in `Day 2` to be `2200`    
@@ -717,12 +719,13 @@ For example:
 
 3. You type `delete-itinerary-attraction 1 day/2`, and press <kbd>Enter</kbd> to delete it.
 
-![result of delete itinerary attraction](images/userguideimages/DeleteItineraryAttraction1.png)
-<div align='center'><i><sup style="font-size:100%">Figure 26a. Before entering <code>delete-itinerary-attraction 1 day/2</code></sup></i></div><br>
+    ![result of delete itinerary attraction](images/userguideimages/DeleteItineraryAttraction1.png)
+    <div align='center'><i><sup style="font-size:100%">Figure 26a. Before entering <code>delete-itinerary-attraction 1 day/2</code></sup></i></div><br>
+    
 4. Scroll down the `Selected Itinerary` and notice `Day 2` is now empty.
 
-![result of delete itinerary attraction](images/userguideimages/DeleteItineraryAttraction2.png)
-<div align='center'><i><sup style="font-size:100%">Figure 26b. After <code>delete-itinerary-attraction 1 day/2</code></sup></i></div><br>
+    ![result of delete itinerary attraction](images/userguideimages/DeleteItineraryAttraction2.png)
+    <div align='center'><i><sup style="font-size:100%">Figure 26b. After <code>delete-itinerary-attraction 1 day/2</code></sup></i></div><br>
 
 Try these other examples too!
 * `delete-itinerary-attraction 1 day/1` Deletes the first attraction from `Day 1` of `Selected Itinerary`.
