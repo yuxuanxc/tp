@@ -534,17 +534,20 @@ The following activity diagram summarizes what happens when a user executes an `
 
 #### 4.8.2 Design Considerations
 
-**Aspect: **
+**Aspect: Having `select-itinerary` as a stand alone command**
 
-* **Alternative 1 (Current choice):** 
-  * Pros: 
-  * Cons: 
+* **Alternative 1 (Current choice):** Use the `select-itinerary` command to set the current itinerary to perform
+`ItineraryAttraction` commands.
+  * Pros: Shorter and simpler `ItineraryAttraction` commands.
+  * Cons: Users are unable to edit multiple itineraries at once without switching the target itinerary.
 
-* **Alternative 2:** 
-  * Pros: 
-  * Cons: 
+* **Alternative 2:** Having itinerary attraction commands to specify the target itinerary
+  * Pros: Users will be able to edit multiple itineraries at once without switching the target itinerary.
+  * Cons: More complexity of code in the `ItineraryAttraction` features having to access both the `Attraction` and
+  `Itinerary` lists to look for the target attractions and itineraries. 
 
-Reason for choosing Alternative 1:
+Reason for choosing Alternative 1: Takes into account users are more likely to use more `ItineraryAttraction` commands
+within a single itinerary. It also reduces the complexity of the code in `ItineraryAttraction` features.
 
 <div style="page-break-after: always;"></div>
 
