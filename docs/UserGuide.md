@@ -6,6 +6,8 @@ title: User Guide
 
 <div style="page-break-after: always;"></div>
 
+**Table of Contents**
+
 * Table of Contents
 {:toc}
 
@@ -59,6 +61,8 @@ Here are the steps to download TrackPad and start using it immediately!
    ![Ui](images/userguideimages/Ui-Labelled.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 1. The Ui of TrackPad</i></sup></div>
 
+<div style="page-break-after: always;"></div>
+
 1. Type the command in the command box and press Enter to execute it. Let's try it out by adding Gardens by the Bay into the app.
    Type in `add-attraction n/Gardens by the Bay l/Singapore, Singapore a/18 Marina Gardens Dr, 018953 r/4.7`! Your application should
    look like this when you scroll to the bottom of the attractions list.
@@ -69,9 +73,10 @@ Here are the steps to download TrackPad and start using it immediately!
 1. Oh no, you forgot to add the opening hours for Gardens by the Bay. No worries! By using the
    `edit-attraction 11 op/0500-0200`, we can edit the 11th attraction to add the opening hours from 5am to 2am.
 
-
    ![Ui](images/userguideimages/gettingStartedEditAttraction.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 3. Editing Gardens by the Bay to add Opening Hours</i></sup></div>
+
+<div style="page-break-after: always;"></div>
 
 1. Now, you want to create a one day itinerary to visit the Gardens by the Bay. Easy! Just type in
    `add-itinerary n/Walk in the Park sd/01-01-2021 ed/01-01-2021 d/Appreciate Singapore's flora and fauna`.
@@ -84,6 +89,7 @@ Here are the steps to download TrackPad and start using it immediately!
 
     ![Ui](images/userguideimages/gettingStartedSelectItinerary.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 5. Selecting the itinerary</i></sup></div>
+<div style="page-break-after: always;"></div>
     
 1. If you want to visit Gardens by the Bay from 10am to 2pm on the first day of your trip, type
    `add-itinerary-attraction 11 day/1 st/1000 et/1400`.
@@ -601,6 +607,8 @@ You want to delete all your itineraries, and start over with an empty list of it
     ![result_of_clearing all itineraries](images/userguideimages/clearItinerary2.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 22b. After entering <code>clear-itinerary</code></i></sup></div><br>
 
+<div style="page-break-after: always;"></div>
+
 ### 4.4 Itinerary Attraction Features (Yeh Yu Chun)
 Itinerary attractions are attractions added to an itinerary, but with additional start/end time fields. These commands deal with attractions that are found in an itinerary.
 
@@ -615,6 +623,8 @@ Action | Format, Examples
 [**Add itinerary attraction**](#441-adding-an-attraction-to-the-selected-itinerary-add-itinerary-attraction) | `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING` <br> e.g. `add-itinerary-attraction 1 st/1400 et/1500 day/5`
 [**Edit itinerary attraction**](#442-editing-an-attraction-from-the-selected-itinerary--edit-itinerary-attraction) | `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/END_TIME]` <br> e.g. `edit-itinerary-attraction 1 day/2 st/0900 et/1000`
 [**Delete itinerary attraction**](#443-deleting-an-attraction-from-the-selected-itinerary-delete-itinerary-attraction) | `delete-itinerary-attraction INDEX`<br> e.g. `delete-itinerary-attraction 1`
+
+<div style="page-break-after: always;"></div>
 
 <span style="display:block;align:center">![Diagram explaining Itinerary Attraction](images/userguideimages/ItineraryAttraction.png)</span>
 <div align='center'><i><sup style="font-size:100%">Figure 23. Diagram showing the attractions found in an itinerary</sup></i></div><br>
@@ -646,12 +656,16 @@ For example:
 
     ![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction1.png)
     <div align='center'><i><sup style="font-size:100%">Figure 24a. Diagram showing current state of selected itinerary</sup></i></div><br>
-    
+
+    <div style="page-break-after: always;"></div>
+
 2. You want to visit it on day 2, from `1000` to `1100`.
     Enter `add-itinerary-attraction 2 day/2 st/1000 et/1100` into the command box.
 
     ![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction2.png)
     <div align='center'><i><sup style="font-size:100%">Figure 24b. Before entering <code>add-itinerary-attraction 2 day/2 st/1000 et/1100</code></sup></i></div><br>
+
+    <div style="page-break-after: always;"></div>
     
 3. `Night Safari` has been added into your `Selected Itinerary`.
 
@@ -662,10 +676,8 @@ Try these other examples too!
 * `add-itinerary-attraction 3 st/1000 et/1600 day/3` Adds the third item from attractions list into `Day 3` of the `Selected Itinerary`.
 * `add-itinerary-attraction 5 st/0900 et/1200 day/4` Adds the fifth item from attractions list into `Day 4` of the `Selected Itinerary`.
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**<br>
-
+<div markdown="block" class="alert alert-primary">:bulb: **Tip:**<br>
 * The start and end time cannot overlap with other attractions on the same day of the selected itinerary.<br>
-
 * The start and end time does not need to match the opening hours of the attraction, so that you can visit closed attractions.<br>
 </div>
 
@@ -693,10 +705,14 @@ For example:
     ![result of edit itinerary attraction](images/userguideimages/EditItineraryAttraction1.png)
     <div align='center'><i><sup style="font-size:100%">Figure 25a. Diagram showing current state of selected itinerary</sup></i></div><br>
 
+    <div style="page-break-after: always;"></div>
+
 2. Enter `edit-itinerary-attraction 1 day/2 st/1900 et/2300` into the command box.
 
     ![result of edit itinerary attraction](images/userguideimages/EditItineraryAttraction2.png)
     <div align='center'><i><sup style="font-size:100%">Figure 25b. Before entering <code>edit-itinerary-attraction 1 day/2 st/1900 et/2300</code></sup></i></div><br>
+
+    <div style="page-break-after: always;"></div>
 
 3. Scroll down the `Selected Itinerary` and notice the `START_TIME` of `Night Safari` has been changed to `1900 - 2300`.
 

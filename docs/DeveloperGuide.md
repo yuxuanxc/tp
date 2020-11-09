@@ -27,12 +27,16 @@ Follow the [_link_](SettingUp.md) to set up your environment and get started in 
 This section discusses the current design pattern used by TrackPad. It explains the current architecture of TrackPad. 
 Then, there is a more in depth explanation on the design of the Ui, model and storage functionality. 
 
+<div style="page-break-after: always;"></div>
+
 ### 3.1 Architecture
 
 <span style="display:block;align:center">![Architecture Class Diagram](images/devguideimages/ArchitectureDiagram.png)</span>
 <div align="center"><sup style="font-size:100%"><i>Figure 1. Architecture Class Diagram</i></sup></div><br>
 
 Figure 1 explains the high-level design of the App. Given below is a quick overview of each component.
+
+<div style="page-break-after: always;"></div>
 
 <div markdown="span" class="alert alert-primary">
 
@@ -58,6 +62,8 @@ Each of the four components,
 * defines its *API* in an `interface` with the same name as the Component.
 * exposes its functionality using a concrete `{Component Name}Manager` class (which implements the corresponding API `interface` mentioned in the previous point.
 
+<div style="page-break-after: always;"></div>
+
 ![Class Diagram of the Logic Component](images/devguideimages/LogicClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 2 Class Diagram of the Logic Component</i></sup></div><br>
 
@@ -71,6 +77,8 @@ For example, the `Logic` component (seen from Figure 2 above) defines its API in
 Figure 3 above shows how the components interact with each other for the scenario where the user issues the command `delete-attraction 1`.
 
 The sections below give more details of each component.
+
+<div style="page-break-after: always;"></div>
 
 ### 3.2 UI component
 
@@ -151,62 +159,10 @@ The `Storage` component shown in Figure 9,
 
 Classes used by multiple components are in the `seedu.address.commons` package.
 
---------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **4. Implementation**
 This section describes some noteworthy details on the implementation of some core TrackPad features.
-
-### 4.X Mark Visited Command
-
-The `markVisited-attraction` command allows users to quickly mark attractions as visited, without having to use the `edit-attraction` command.
-This command is implemented as it allows users to quickly and conveniently mark the attractions they have visited, so they can focus on visiting other attractions that they have not visited.
-
-#### 4.X.1 Current Implementation
-
-The current implementation allows the users to mark the attraction as visited, based on its index position in the current attraction list.
-This index could be different depending whether the whole attraction list is shown, or the filtered attraction list from the `find-attraction` command is currently shown in the GUI.
-If the index is invalid or the attraction has already been visited before, an error message will be displayed and there will be no changes to the attraction list.
-
-The following activity diagram shows how `markVisited-attraction` works:
-![MarkVisitedActivityDiagram](images/devguideimages/MarkVisitedActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of <code>markVisited-attraction</code></i></sup></div><br>
-
-We will use the above activity diagram as shown in Figure X to explain how the `markVisited-attraction` command is executed in detail.
-We assume no error is encountered, and the attraction that is selected to be marked as visited is not visited yet.
-
-Step 1. The user types in `markVisited-attraction 1`.
-
-Step 2. `MarkVisitedCommand` is created.
-
-Step 3. `MarkVisitedCommand` executes the `getFilteredAttractionList()` and returns `lastShownList`.
-
-Step 4. `Model` then executes `get(index)` which creates `Attraction`, which is the original selected attraction in `lastShownList`.
-
-Step 5. `MarkVisitedCommand` then executes `createMarkVisitedAttraction()`, which creates a new `Attraction` that is identical to the original attraction, except its `Visited` field is set to true.
-
-Step 6. `MarkVisitedCommand` then sets the original attraction to the updated one, via `setAttraction()`, and it also updates the state of the model with `updateFilteredAttractionList()`.
-
-Step 7. `MarkVisitedCommand` then creates a new `CommandResult`, which contains the success message that is shown to the user when the command is executed successfully.
-
-The whole sequence of events is outlined in the sequence diagram shown below.
-
-![MarkVisitedSequenceDiagram](images/devguideimages/MarkVisitedSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>markVisited-attraction 1</code></i></sup></div><br>
-
-#### 4.X.2 Design Considerations
-
-##### 4.X.2.1 Aspect: How the attraction is updated
-
-* **Alternative 1:** Use the `edit-attraction` command to handle marking the attraction as visited, since it can also edit the `Visited` field.
- * Pro: Less new code will need to be written, since we can reuse most of the code from `edit-attraction`.
- * Con: Functionality of `markVisited-attraction` could change if `edit-attraction` changes functionality in a future update. Excessive coupling.
-
-* **Alternative 2 (Current Choice):** Create a new `markVisited-attraction` command and parser to handle specifically this command.
- * Pro: Less inputs for the user, which makes the command shorter and more convenient.
- * Con: More lines of code. More test cases required.
- 
-Reason for choosing alternative 2: Easier to extend to marking several attractions in one command in a future version, by inputting several indexes at once. This would be complicated to 
-handle within `edit-attraction` since each attraction could be edited in several fields, and the user input would become unnecessarily complicated.
 
 ### 4.1 Attraction Model
 
@@ -270,6 +226,67 @@ The following sequence diagram shows how the `add-attraction` operation works:
 * **Alternative 2 (Current choice):** add-attraction
   * Pros: More intuitive, so the user is more likely to get the correct command everytime when adding attractions.
   * Cons: The user will have to spend more time typing this command.
+
+
+### 4.3 Mark Attraction as Visited Feature
+
+The `markVisited-attraction` command allows users to quickly mark attractions as visited, without having to use the `edit-attraction` command.
+This command is implemented as it allows users to quickly and conveniently mark the attractions they have visited, so they can focus on visiting other attractions that they have not visited.
+
+#### 4.3.1 Current Implementation
+
+The current implementation allows the users to mark the attraction as visited, based on its index position in the current attraction list.
+This index could be different depending whether the whole attraction list is shown, or the filtered attraction list from the `find-attraction` command is currently shown in the GUI.
+If the index is invalid or the attraction has already been visited before, an error message will be displayed and there will be no changes to the attraction list.
+
+<div style="page-break-after: always;"></div>
+
+The following activity diagram shows how `markVisited-attraction` works:
+![MarkVisitedActivityDiagram](images/devguideimages/MarkVisitedActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of <code>markVisited-attraction</code></i></sup></div><br>
+
+We will use the above activity diagram as shown in Figure X to explain how the `markVisited-attraction` command is executed in detail.
+We assume no error is encountered, and the attraction that is selected to be marked as visited is not visited yet.
+
+**Step 1.** The user types in `markVisited-attraction 1`.
+
+**Step 2.** `MarkVisitedCommand` is created.
+
+**Step 3.** `MarkVisitedCommand` executes the `getFilteredAttractionList()` and returns `lastShownList`.
+
+**Step 4.** `Model` then executes `get(index)` which creates `Attraction`, which is the original selected attraction in `lastShownList`.
+
+<div style="page-break-after: always;"></div>
+
+**Step 5.** `MarkVisitedCommand` then executes `createMarkVisitedAttraction()`, which creates a new `Attraction` that is identical to the original attraction, except its `Visited` field is set to true.
+
+**Step 6.** `MarkVisitedCommand` then sets the original attraction to the updated one, via `setAttraction()`, and it also updates the state of the model with `updateFilteredAttractionList()`.
+
+**Step 7.** `MarkVisitedCommand` then creates a new `CommandResult`, which contains the success message that is shown to the user when the command is executed successfully.
+
+The whole sequence of events is outlined in the sequence diagram shown below.
+
+![MarkVisitedSequenceDiagram](images/devguideimages/MarkVisitedSequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>markVisited-attraction 1</code></i></sup></div><br>
+
+<div style="page-break-after: always;"></div>
+
+#### 4.3.2 Design Considerations
+
+**Aspect: How the attraction is updated**
+
+* **Alternative 1:** Use the `edit-attraction` command to handle marking the attraction as visited, since it can also edit the `Visited` field.
+ * Pro: Less new code will need to be written, since we can reuse most of the code from `edit-attraction`.
+ * Con: Functionality of `markVisited-attraction` could change if `edit-attraction` changes functionality in a future update. Excessive coupling.
+
+* **Alternative 2 (Current Choice):** Create a new `markVisited-attraction` command and parser to handle specifically this command.
+ * Pro: Less inputs for the user, which makes the command shorter and more convenient.
+ * Con: More lines of code. More test cases required.
+ 
+Reason for choosing alternative 2: Easier to extend to marking several attractions in one command in a future version, by inputting several indexes at once. This would be complicated to 
+handle within `edit-attraction` since each attraction could be edited in several fields, and the user input would become unnecessarily complicated.
+
+<div style="page-break-after: always;"></div>
 
 ### 4.4 Itinerary Model
 
@@ -475,6 +492,8 @@ The following sequence diagram shows how the `select-itinerary` operation works:
 
 #### 4.8.2 Design Considerations
 
+<div style="page-break-after: always;"></div>
+
 ### 4.9 Itinerary Attraction Model
 This is a subclass of `Attraction` that goes into the `List<Day>` that resides in `Itinerary`. 
 
@@ -484,15 +503,13 @@ This is a subclass of `Attraction` that goes into the `List<Day>` that resides i
 It is stored internally as an `List<Day>`. Additionally, it implements the following operations:
 
 ![Itinerary Attraction Implementation Class Diagram](images/devguideimages/ItineraryAttractionClassDiagram.png)
-// <div align="center"><sup style="font-size:100%"><i>Figure X The ItineraryAttraction Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The ItineraryAttraction Class Diagram</i></sup></div><br>
 
-<!--
-// Do i need to show days??????????????????
-<div><i>Figure X The ItineraryAttraction Class Diagram</i></div><br>
-// tried removing align and <sup></sup>  
--->
+<!--<div><i>Figure X The ItineraryAttraction Class Diagram</i></div><br>-->
 
 `ItineraryAttraction` is an `Attraction` and contains `startTime` and `endTime`.
+
+<div style="page-break-after: always;"></div>
 
 #### 4.9.2 Design Considerations
 
@@ -507,28 +524,28 @@ It is stored internally as an `List<Day>`. Additionally, it implements the follo
   * Cons: Would require many getters to access fields inside `Attraction`.
   
   Reasons:
-  
-  If composition was chose, we would need to `itineraryAttraction.getAttraction().getField()`.
-  
-  If inheritance was chose, we can just do `itineraryAttraction.getField()`.
-  
-  Inheritance is chose to allow edit itinerary attraction command access to existing fields in an `Attraction`.
+  * If composition was chose, we would need to `itineraryAttraction.getAttraction().getField()`.
+  * If inheritance was chose, we can just do `itineraryAttraction.getField()`.
+  * Inheritance is chose to allow easier access to fields in an `Attraction`.
 
 **Aspect: Constructor**
 
 * **Alternative 1 (current choice):** constructor takes in an `Attraction`.
   * Pros: It is neater and simpler to use attraction as parameter to create an `ItineraryAttraction` object.
-  * Cons: New methods and test cases were written to test this behaviour.
+  * Cons: New methods and test cases have to be written to test this behaviour, instead of adapting from `Attraction`.
   
 * **Alternative 2:** constructor takes in all the fields of `Attraction`.
   * Pros: Can reuse codes from attractions.
   * Cons: Makes the codes very messy and long.
   
-  Reason: Alternative 2 will have higher chances of bugs. Attraction objects are currently pass around instead of the individual fields, simplifying codes and chances of bugs.
+  Reason: Alternative 2 will have higher chances of bugs. Attraction objects are currently pass around instead of the 
+  individual fields, simplifying, shortening codes and reduces likelihood of bugs.
 
 **Aspect: Immutability**
 The fields inside `ItineraryAttraction` are private final to prevent any modifications of fields.
 Editing any fields would require a new object to be created everytime, which guarantee the immutability of `ItineraryAttraction`.    
+
+<div style="page-break-after: always;"></div>
 
 ### 4.10 Adding Itinerary Attraction
 
@@ -539,6 +556,8 @@ with a start and end time.
 The following activity diagram shows a simplified add-itinerary-attraction operation:
 ![AddItineraryAttractionActivityDiagram](images/devguideimages/AddItineraryAttractionActivityDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of <code>add-itinerary-attraction</code></i></sup></div><br>
+
+<div style="page-break-after: always;"></div>
 
 **Assumes:**
 1. The user launches the application.
@@ -561,43 +580,35 @@ The following sequence diagram shows how the `add-itinerary-attraction` operatio
 ![AddItineraryAttractionSequenceDiagram](images/devguideimages/AddItineraryAttractionSequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-itinerary-attraction 1 day/1 st/1000 et/1200.</code></i></sup></div><br>
 
+<div style="page-break-after: always;"></div>
+
 #### 4.10.2 Design Considerations
 
-**Aspect: Fit command style with...** 
-
-* **Alternative 1 (current choice):** 
-  * Pros:
-  * Cons:
-
-* **Alternative 2:** 
-  * Pros:
-  * Cons:
-
-**Aspect 2: Command keyword**
+**Aspect: Command keyword**
 
 * **Alternative 1 (current choice):** `add-itinerary-attraction` is used to execute `AddItineraryAttractionCommand`. 
-  * Pros: This command is distinct from the `add-attraction` command, `add-itinerary-attraction` would mean adding into itinerary's attraction.
-  * Cons: It is long command to type.
-  
-  TrackPad's audience is fast typists, these few words difference makes little difference to execution speed of the commands.
+  * Pros: This command is distinct from the `add-attraction` command, `add-itinerary-attraction`, reduces ambiguity.
+  * Cons: It is long command to type and users may be confused with the difference to `add-attraction`.
 
 * **Alternative 2:**  `add-attraction` is used to execute `AddItineraryAttractionCommand`.
   * Pros: This is short and the same as the normal command, users has fewer commands to remember.
   * Cons: This command could be confusing to users and could cause careless users to add commands into the attraction lists instead of the itinerary.
   
-  Reason: This was not used because the error messages are long and confusing. If the users types the
-  wrong format, TrackPad has no way to know if the user wants to add attraction into the attraction lists or the itinerary.
-  A long error message would be required to show the 2 variations of the command.
+  Reason: Alternative 2 was not used because TrackPad has no way to know which command the user wants to execute, there is
+  no way to show the command usage should the user type something wrong. As TrackPad's audience are fast typists, 
+  these few words difference makes little difference to execution speed of the commands. Hence, alternative 1 was implemented.
 
-### 4.4 UI
+<div style="page-break-after: always;"></div>
 
-#### 4.4.1 Current Implementation
+### 4.11 UI
+
+#### 4.11.1 Current Implementation
 
 THe current UI involves many inherited classes from `AttractionCard`, `ItineraryListCard` and `ItineraryAttractionCard`. 
 This is because TrackPad supports optional fields, and with the current code, the `Label` in the FXML files will be created regardless
 whether the field is filled or not. Thus, it leaves many empty spaces in the GUI if the user adds an attraction without most of the optional fields.
 
-![UiFXML](images/devguideimages/UiFXML.png)
+![UiFXML](images/devguideimages/UiFxml.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X The class diagram for one of the child of `AttractionCard`</i></sup></div><br>
 
 Figure X shows an example of the current implementation of the `AttractionCard`. Compulsory fields, such as `name` and `locale`
@@ -607,7 +618,7 @@ create the card. This way, we can avoid any awkward gaps due to missing fields.
 
 #### 4.4.2 Design Considerations
 
-##### Aspect: Method of Implementation
+**Aspect: Method of Implementation**
 
 * **Alternative 1:** Only one `AttractionCard` is used to create the attraction cards. 
  * Pro: Far lesser code required, and no need for so many children classes.
@@ -622,7 +633,7 @@ the interface look more neat and organised. However, this is not yet an ideal so
 in the future versions beyond v1.4. A possible combination of the above 2 alternatives could be possible to implement this functionality
 with less repetitive code.
  
---------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **5. Documentation, logging, testing, configuration, dev-ops**
 
@@ -634,10 +645,7 @@ This section shows the various standards TrackPad adheres to.
 * [Configuration guide](Configuration.md)
 * [DevOps guide](DevOps.md)
 
---------------------------------------------------------------------------------------------------------------------
-<!--
-## **Appendix A: Requirements**
--->
+<div style="page-break-after: always;"></div>
 
 ## **Appendix A: Product Scope**
 
@@ -658,7 +666,7 @@ This section shows the various standards TrackPad adheres to.
 * allows creating an itinerary to track future travels
 * customisable shortcuts that the user can set for frequently used commands
 
---------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **Appendix B: User Stories**
 
@@ -691,7 +699,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | person currently traveling	    | mark tourist attractions as visited / not visited                                  | know which attractions I missed
 | `*`      | person who had already traveled | give ratings to my attractions                                                    | keep track of which tourist attractions were enjoyable
 
---------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **Appendix C: Use Cases**
 
@@ -1126,7 +1134,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 3.
     
---------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **Appendix D: Non-Functional Requirements**
 
@@ -1141,22 +1149,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 9.  The project is expected to be a brown-field project.
 10.  The progress of the project is expected to adhere to the schedule provided on the module website.
 
---------------------------------------------------------------------------------------------------------------------
-
 ## **Appendix E: Glossary**
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 
---------------------------------------------------------------------------------------------------------------------
+----<div style="page-break-after: always;"></div>
 
 ## **Appendix F: Instructions for Manual Testing**
 
 Given below are instructions to test the app manually.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
-
-</div>
 
 ### F1 Launch and shutdown
 
@@ -1222,7 +1223,7 @@ testers are expected to do more *exploratory* testing.
       `delete-attraction x` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-### F5 Marking an attraction as Visited (Robin)
+**F5 Marking an attraction as Visited**
 
 1. Marking an attraction as Visited while all attractions are being shown
 
@@ -1254,11 +1255,11 @@ testers are expected to do more *exploratory* testing.
    3. Test case: `find-attraction #$%`<br>
       Expected: Empty attractions list shown. "0 attractions listed!" shown in the status message.
       
-### F7 Listing attractions (Robin)
+**F7 Listing attractions**
 
 1. Listing all attractions currently stored in TrackPad
 
-   1. Prerequisites: NIL
+   1. Prerequisites: None.
 
    2. Test case: `list-attraction`<br>
       Expected: All attractions that are currently stored in the app will be displayed in the Attractions panel.
@@ -1266,11 +1267,11 @@ testers are expected to do more *exploratory* testing.
    3. Test case: `list-attraction 1`<br>
       Expected: Everything typed after the space following the command will be ignored, and list-attraction command will be executed successfully.
 
-### F8 Clearing attractions (Robin)
+**F8 Clearing attractions**
 
 1. Clears all attractions currently stored in TrackPad
 
-   1. Prerequisites: NIL
+   1. Prerequisites: None.
 
    2. Test case: `clear-attraction`<br>
       Expected: All attractions that are currently stored in the app will be deleted. An empty attractions panel will be shown.
@@ -1456,6 +1457,7 @@ testers are expected to do more *exploratory* testing.
     Expected: Similar to previous.
 
 **F19 Viewing help**
+
 1. Viewing help
 
     1. Prerequisites: None. 
@@ -1466,11 +1468,11 @@ testers are expected to do more *exploratory* testing.
     3. Test case: `help uselessString` <br>
         Expected: TrackPad still shows a dialog box, ignores the extra string after help.
 
-### F20 Exiting the program (Robin)
+**F20 Exiting the program**
 
 1. Exits and shutdowns the program
 
-   1. Prerequisite: NIL
+   1. Prerequisite: None.
    
    2. Test case: `exit`<br>
       Expected: TrackPad shuts down.
@@ -1497,7 +1499,7 @@ testers are expected to do more *exploratory* testing.
    3. Test case: In the folder where you saved the app, go to the `data` folder. Open `itinerarylist.json`, delete some portions of it and save. Launch TrackPad again.<br>
    Expected behavior: TrackPad launches with an empty list of itineraries to replace the corrupted itineraries file. After entering a valid command, a new `itinerarylist.json` file with the current itineraries will be created. 
 
---------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **Appendix G: Effort**
 
