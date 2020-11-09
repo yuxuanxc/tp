@@ -179,7 +179,7 @@ The `Attraction` class helps users to keep track of all the details of their tou
 The class diagram for `Attraction` is shown below:
 
 ![Structure of Attraction Component](images/devguideimages/AttractionClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The Attraction Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 10 The Attraction Class Diagram</i></sup></div><br>
 
 Each `Attraction` contains the following fields: `Name`, `Description`, `Address`, `Email`, `Location`, `OpeningHours`,
 `Phone`, `PriceRange`, `Rating`, `Visited` and `Tag`. Only `Name` and `Location` are compulsory fields, the rest are all optional.
@@ -233,7 +233,7 @@ the optional fields `Description`, `Address`, `Email`, `OpeningHours`, `Phone`, 
 The following sequence diagram shows how the `add-attraction` operation works:
 
 ![Add Attraction Sequence Diagram](images/devguideimages/AddAttractionSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-attraction</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 11 The sequence diagram of <code>add-attraction</code></i></sup></div><br>
 
 #### 4.2.2 Design Considerations
 
@@ -267,9 +267,9 @@ If the index is invalid or the attraction has already been visited before, an er
 
 The following activity diagram shows how `markVisited-attraction` works:
 ![MarkVisitedActivityDiagram](images/devguideimages/MarkVisitedActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of <code>markVisited-attraction</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 12 The activity diagram of <code>markVisited-attraction</code></i></sup></div><br>
 
-We will use the above activity diagram as shown in Figure X to explain how the `markVisited-attraction` command is executed in detail.
+We will use the above activity diagram as shown in Figure 12 to explain how the `markVisited-attraction` command is executed in detail.
 We assume no error is encountered, and the attraction that is selected to be marked as visited is not visited yet.
 
 **Step 1.** The user types in `markVisited-attraction 1`.
@@ -291,7 +291,7 @@ We assume no error is encountered, and the attraction that is selected to be mar
 The whole sequence of events is outlined in the sequence diagram shown below.
 
 ![MarkVisitedSequenceDiagram](images/devguideimages/MarkVisitedSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>markVisited-attraction 1</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 13 The sequence diagram of <code>markVisited-attraction 1</code></i></sup></div><br>
 
 <div style="page-break-after: always;"></div>
 
@@ -320,7 +320,7 @@ The `Itinerary` class helps users keep track of the details of their trips and t
 The class diagram for `Itinerary` is shown below:
 
 ![ItineraryClassDiagram](images/devguideimages/ItineraryClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The Itinerary Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 14 The Itinerary Class Diagram</i></sup></div><br>
 
 Each `Itinerary` contains `Name`, `Description`, `Budget`, `startDate` and `endDate`. Both `startDate` and `endDate` 
 are of the `ItineraryDate` class. Additionally, to store the attractions that users want to visit, each `Itinerary` 
@@ -382,12 +382,12 @@ The following steps illustrate the successful execution of an `add-itinerary` co
 The following sequence diagram shows how the `add-itinerary` operation works:
 
 ![AddItinerarySequenceDiagram](images/devguideimages/AddItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-itinerary</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 15 The sequence diagram of <code>add-itinerary</code></i></sup></div><br>
 
 The following activity diagram summarizes what happens when a user executes an `add-itinerary` command:
 
 ![AddItineraryActivityDiagram](images/devguideimages/AddItineraryActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `add-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 16 The activity diagram of `add-itinerary`</i></sup></div><br>
 
 #### 4.5.2 Design Considerations
 
@@ -527,9 +527,7 @@ This is a subclass of `Attraction` that goes into the `List<Day>` that resides i
 It is stored internally as an `List<Day>`. Additionally, it implements the following operations:
 
 ![Itinerary Attraction Implementation Class Diagram](images/devguideimages/ItineraryAttractionClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The ItineraryAttraction Class Diagram</i></sup></div><br>
-
-<!--<div><i>Figure X The ItineraryAttraction Class Diagram</i></div><br>-->
+<div align="center"><sup style="font-size:100%"><i>Figure 23 The ItineraryAttraction Class Diagram</i></sup></div><br>
 
 `ItineraryAttraction` is an `Attraction` and contains `startTime` and `endTime`.
 
@@ -579,7 +577,7 @@ with a start and end time.
 
 The following activity diagram shows a simplified add-itinerary-attraction operation:
 ![AddItineraryAttractionActivityDiagram](images/devguideimages/AddItineraryAttractionActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of <code>add-itinerary-attraction</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 24 The activity diagram of <code>add-itinerary-attraction</code></i></sup></div><br>
 
 <div style="page-break-after: always;"></div>
 
@@ -602,7 +600,7 @@ itinerary and the timing does not clash with any exisiting attractions in the it
 The following sequence diagram shows how the `add-itinerary-attraction` operation works:
 
 ![AddItineraryAttractionSequenceDiagram](images/devguideimages/AddItineraryAttractionSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-itinerary-attraction 1 day/1 st/1000 et/1200.</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 25 The sequence diagram of <code>add-itinerary-attraction 1 day/1 st/1000 et/1200.</code></i></sup></div><br>
 
 <div style="page-break-after: always;"></div>
 
@@ -633,9 +631,9 @@ This is because TrackPad supports optional fields, and with the current code, th
 whether the field is filled or not. Thus, it leaves many empty spaces in the GUI if the user adds an attraction without most of the optional fields.
 
 ![UiFXML](images/devguideimages/UiFxml.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The class diagram for one of the child of `AttractionCard`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 26 The class diagram for one of the child of `AttractionCard`</i></sup></div><br>
 
-Figure X shows an example of the current implementation of the `AttractionCard`. Compulsory fields, such as `name` and `locale`
+Figure 26 shows an example of the current implementation of the `AttractionCard`. Compulsory fields, such as `name` and `locale`
 are present in the parent class since all attractions have those fields. In `AttractionListPanel`, the number of filled fields 
 will be determined in the corresponding `Attraction`, via the `getNumOfFilledFields()` method, and the appropriate child will be used to 
 create the card. This way, we can avoid any awkward gaps due to missing fields.
