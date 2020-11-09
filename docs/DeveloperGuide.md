@@ -602,16 +602,16 @@ It is stored internally as an `List<Day>`. Additionally, it implements the follo
 
 * **Alternative 1 (current choice):** `ItineraryAttraction` inherits `Attraction`.
   * Pros: Allows it to be treated as an `Attraction` allowing `ItineraryAttraction` access to getters for `Attraction` without redefining it.
-  * Cons: 
+  * Cons: Does not provide reference to original `Attraction`. Changes in original `Attraction` is not reflected in this `ItineraryAttraction`.
 
 * **Alternative 2:** `ItineraryAttraction` would compose `Attraction`
   * Pros: Easy to implement by just adding an `Attraction` field.
   * Cons: Would require many getters to access fields inside `Attraction`.
   
 Reasons:
-* If composition was chose, we would need to `itineraryAttraction.getAttraction().getField()`.
-* If inheritance was chose, we can just do `itineraryAttraction.getField()`.
-* Inheritance is chose to allow easier access to fields in an `Attraction`.
+* If we choose composition, we would need to `itineraryAttraction.getAttraction().getField()`.
+* If we choose inheritance, we can just do `itineraryAttraction.getField()`.
+* We choose inheritance to allow easier access to fields in an `Attraction`.
 
 **Aspect: Constructor**
 
@@ -623,8 +623,8 @@ Reasons:
   * Pros: Can reuse codes from attractions.
   * Cons: Makes the codes very messy and long.
   
-Reason: Alternative 2 will have higher chances of bugs. Attraction objects are currently pass around instead of the 
-individual fields, simplifying, shortening codes and reduces likelihood of bugs.
+Reason: Alternative 2 will have higher chances of bugs. Attraction objects are currently passed around instead of the 
+individual fields, so it simplifies and shortens the codes and reduces likelihood of bugs.
 
 <div style="page-break-after: always;"></div>
 
@@ -677,7 +677,7 @@ The following sequence diagram shows how the `add-itinerary-attraction` operatio
   
 Reason: Alternative 2 was not used because TrackPad has no way to know which command the user wants to execute, there is
 no way to show the command usage should the user type something wrong. As TrackPad's audience are fast typists, 
-these few words difference makes little difference to execution speed of the commands. Hence, alternative 1 was implemented.
+these few words makes little difference to execution speed of the commands. Hence, alternative 1 was implemented.
 
 <div style="page-break-after: always;"></div>
 
