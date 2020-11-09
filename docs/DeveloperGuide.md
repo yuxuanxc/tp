@@ -20,8 +20,6 @@ Follow the [_link_](SettingUp.md) to set up your environment and get started in 
 
 <!--Refer to the guide [_Setting up and getting started_](SettingUp.md).-->
 
-<div style="page-break-after: always;"></div>
-
 ## **3. Design**
 
 This section discusses the current design pattern used by TrackPad. It explains the current architecture of TrackPad. 
@@ -68,6 +66,8 @@ Each of the four components,
 <div align="center"><sup style="font-size:100%"><i>Figure 2. Class Diagram of the Logic Component</i></sup></div><br>
 
 For example, the `Logic` component (seen from Figure 2 above) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
+
+<div style="page-break-after: always;"></div>
 
 **How the architecture components interact with each other**
 
@@ -326,6 +326,8 @@ Each `Itinerary` contains `Name`, `Description`, `Budget`, `startDate` and `endD
 are of the `ItineraryDate` class. Additionally, to store the attractions that users want to visit, each `Itinerary` 
 contains a list of `Day`s, and each `Day` contains a list of `ItineraryAttraction`s that belong to that day. 
 
+<div style="page-break-after: always;"></div>
+
 #### 4.4.2 Design Considerations
 
 **Aspect: How the location field of `Itinerary` is derived**
@@ -356,7 +358,7 @@ Have `Itinerary` directly store the `ItineraryAttraction`s.
   
 Reason for choosing Alternative 2:
 
-
+<div style="page-break-after: always;"></div>
   
 ### 4.5 Add Itinerary Feature
 
@@ -389,6 +391,8 @@ The following activity diagram summarizes what happens when a user executes an `
 ![AddItineraryActivityDiagram](images/devguideimages/AddItineraryActivityDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 16. The activity diagram of `add-itinerary`</i></sup></div><br>
 
+<div style="page-break-after: always;"></div>
+
 #### 4.5.2 Design Considerations
 
 **Aspect: Whether to make start and end date compulsory**
@@ -403,7 +407,7 @@ The following activity diagram summarizes what happens when a user executes an `
 
 Reason for choosing Alternative 1:
 
-
+<div style="page-break-after: always;"></div>
 
 ### 4.6 Edit Itinerary Feature (Might need discuss numbering again)
 
@@ -454,6 +458,8 @@ The following sequence diagram shows how the `edit-itinerary` operation works:
 
 ![EditItinerarySequenceDiagram](images/devguideimages/EditItinerarySequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X. The sequence diagram of `edit-itinerary`</i></sup></div><br>
+
+<div style="page-break-after: always;"></div>
 
 #### 4.6.2 Design Considerations
 
