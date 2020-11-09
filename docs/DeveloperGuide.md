@@ -450,17 +450,20 @@ The following activity diagram summarizes what happens when a user executes an `
 
 #### 4.6.2 Design Considerations
 
-**Aspect: **
+**Aspect: Using `edit-itinerary` to edit fields of `Itinerary` only**
 
-* **Alternative 1 (Current choice):** 
-  * Pros: 
-  * Cons: 
+* **Alternative 1 (Current choice):** `edit-itinerary` is only able to edit the fields of the itinerary
+  * Pros: Shorter and simpler `ItineraryAttraction` commands, where the commands only deal with the fields of the `ItineraryAttractions`
+  and do not access the fields of `Itinerary`.
+  * Cons: Different set of commands to edit the fields of `Itinerary` and `ItineraryCommands`, may not be user friendly.
 
-* **Alternative 2:** 
-  * Pros: 
-  * Cons: 
+* **Alternative 2:** `edit-itinerary` is able to edit the fields of the `ItineraryAttractions`
+  * Pros: Lesser commands for the user to deal with.
+  * Cons: This command could be confusing to users and 
 
-Reason for choosing Alternative 1:
+Reason for choosing Alternative 1: Takes into account users are more likely to use more `ItineraryAttraction` commands compared
+to `EditItinerary` commands. It also reduces the complexity of the code in `ItineraryAttractions` by only dealing with the
+fields of `ItineraryAttractions` and do not access the fields of `Itinerary`.
 
 ### 4.7 Find Itinerary Feature (Might need discuss numbering again)
 
