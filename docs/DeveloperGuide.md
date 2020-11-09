@@ -436,16 +436,31 @@ An `EditItineraryDescriptor` is a temporary bridge that holds the newly-edited f
 
 **Step 6.** This calls `Model` to replace the target itinerary with the `editedItinerary` object.
 
-**Step 7.** After the target itinerary is replaced, `EditItineraryCommand` return a `CommandResult` for the Ui to display.
+**Step 7.** After the target itinerary is replaced, `EditItineraryCommand` returns a `CommandResult` for the Ui to display.
 
 The following sequence diagram shows how the `edit-itinerary` operation works:
 
 ![EditItinerarySequenceDiagram](images/devguideimages/EditItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `edit-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 17 The sequence diagram of `edit-itinerary`</i></sup></div><br>
 
-The following
+The following activity diagram summarizes what happens when a user executes an `edit-itinerary` command:
+
+![EditItineraryActivityDiagram](images/devguideimages/EditItineraryActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 18 The activity diagram of `edit-itinerary`</i></sup></div><br>
 
 #### 4.6.2 Design Considerations
+
+**Aspect: **
+
+* **Alternative 1 (Current choice):** 
+  * Pros: 
+  * Cons: 
+
+* **Alternative 2:** 
+  * Pros: 
+  * Cons: 
+
+Reason for choosing Alternative 1:
 
 ### 4.7 Find Itinerary Feature (Might need discuss numbering again)
 
@@ -456,55 +471,80 @@ The find itinerary feature allows users to find itineraries using keywords.
 The `FindItineraryCommand` class handles the execution of find itinerary operations. The `FindItineraryCommandParser` class helps 
 to parse a user’s input before creating the correct `FindItineraryCommand`.
 
-Step 1. The user types in `find-itinerary Korea` to find itineraries with the keyword Korea.
+**Step 1.** The user types in `find-itinerary Korea` to find itineraries with the keyword Korea.
 
-Step 2. This calls the `execute` method of the `LogicManager` class. The user input is passed in as a string.
+**Step 2.** `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `FindItineraryCommand` and passes the input to `FindItineraryCommandParser`. 
 
-Step 3. `Logic.execute()` then calls the `parseCommand` method of the `TrackPadParser` class to parse the string input.
+**Step 3.** In `FindItineraryCommandParser`, the string input is extracted as a predicate and used to create a `FindItineraryCommand`.
 
-Step 4. `TrackPadParser.parseCommand()` recognises it as a find-itinerary command and passes the input to `FindItineraryCommandParser`. 
+**Step 4.** This calls `Model` to filter the itineraries list based on the given predicate.
 
-Step 5. In `FindItineraryCommandParser`, the string input is extracted as a predicate and used to create a `FindItineraryCommand`.
-
-Step 6. `FindItineraryCommand.execute()` calls for `Model` to filter the itineraries list based on the given predicate.
-
-Step 7. A `CommandResult` is created and returned to show the result of the execution.
+**Step 5.** After the itineraries list is replaced, `FindItineraryCommand` returns a `CommandResult` for the Ui to display.
 
 The following sequence diagram shows how the `find-itinerary` operation works:
 
 ![FindItinerarySequenceDiagram](images/devguideimages/FindItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `find-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 19 The sequence diagram of `find-itinerary`</i></sup></div><br>
+
+The following activity diagram summarizes what happens when a user executes an `find-itinerary` command:
+
+![EditItineraryActivityDiagram](images/devguideimages/FindItineraryActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 20 The activity diagram of `find-itinerary`</i></sup></div><br>
 
 #### 4.7.2 Design Considerations
 
+**Aspect: **
+
+* **Alternative 1 (Current choice):** 
+  * Pros: 
+  * Cons: 
+
+* **Alternative 2:** 
+  * Pros: 
+  * Cons: 
+
+Reason for choosing Alternative 1:
+
 ### 4.8 Select Itinerary Feature (Might need discuss numbering again)
 
-The select itinerary feature allows users to select itineraries to perform ItineraryAttraction commands.
+The select itinerary feature allows users to select itineraries before using ItineraryAttraction commands.
 
 #### 4.8.1 Current Implementation
 
-Step 1. The user types in `select-itinerary 2` to select the second itinerary in the `Itineraries` panel.
+**Step 1.** The user types in `select-itinerary 2` to select the second itinerary in the `Itineraries` panel.
 
-Step 2. This calls the `execute` method of the `LogicManager` class. The user input is passed in as a string.
+**Step 2.** `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `SelectItineraryCommand` and passes the input to `SelectItineraryCommandParser`. 
 
-Step 3. `Logic.execute()` then calls the `parseCommand` method of the `TrackPadParser` class to parse the string input.
+**Step 3.** In `SelectItineraryCommandParser`, the string input parsed to an index and used to create a `SelectItineraryCommand`.
 
-Step 4. `TrackPadParser.parseCommand()` recognises it as a select-itinerary command and passes the input to `SelectItineraryCommandParser`. 
+**Step 4.** The itinerary corresponding to the index is retrieved in `SelectItineraryCommand` and this calls on `Model` to set the current itinerary 
+using the itinerary retrieved.
 
-Step 5. In `SelectItineraryCommandParser`, the string input is parsed to return an index. and the index is used to create a `SelectItineraryCommand`.
-
-Step 6. A `SelectItineraryCommand` is created using the index and is passed back to the `LogicManager` in step 2.
-
-Step 7. `LogicManager` executes the `SelectItineraryCommand`, calling the `setCurrentItinerary` method in `Model`.
-
-Step 8. A `CommandResult` is created and returned to show the result of the execution.
+**Step 5.** After the itinerary is set, `SelectItineraryCommand` returns a `CommandResult` for the Ui to display.
 
 The following sequence diagram shows how the `select-itinerary` operation works: 
 
 ![SelectItinerarySequenceDiagram](images/devguideimages/SelectItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `select-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 21 The sequence diagram of `select-itinerary`</i></sup></div><br>
+
+The following activity diagram summarizes what happens when a user executes an `select-itinerary` command:
+
+![SelectItineraryActivityDiagram](images/devguideimages/SelectItineraryActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 22 The activity diagram of `select-itinerary`</i></sup></div><br>
 
 #### 4.8.2 Design Considerations
+
+**Aspect: **
+
+* **Alternative 1 (Current choice):** 
+  * Pros: 
+  * Cons: 
+
+* **Alternative 2:** 
+  * Pros: 
+  * Cons: 
+
+Reason for choosing Alternative 1:
 
 <div style="page-break-after: always;"></div>
 

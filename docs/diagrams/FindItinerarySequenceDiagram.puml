@@ -48,7 +48,7 @@ deactivate TrackPadParser
 LogicManager -> FindItineraryCommand : execute(model)
 activate FindItineraryCommand
 
-FindItineraryCommand -> Model : updateFilteredItineraryList()
+FindItineraryCommand -> Model : updateFilteredItineraryList(f)
 activate Model
 
 Model --> FindItineraryCommand

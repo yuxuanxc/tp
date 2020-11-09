@@ -12,6 +12,7 @@ end box
 
 box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
+participant ":ItineraryList" as ItineraryList MODEL_COLOR
 end box
 
 [-> LogicManager : execute("select-itinerary 2")
@@ -43,7 +44,7 @@ activate SelectItineraryCommand
 SelectItineraryCommand --> SelectItineraryCommandParser : f
 deactivate SelectItineraryCommand
 
-SelectItineraryCommandParser --> GradPadParser : f
+SelectItineraryCommandParser --> TrackPadParser : f
 deactivate SelectItineraryCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
 SelectItineraryCommandParser -[hidden]-> TrackPadParser
@@ -55,8 +56,14 @@ deactivate TrackPadParser
 LogicManager -> SelectItineraryCommand : execute(model)
 activate SelectItineraryCommand
 
-SelectItineraryCommand -> Model : deleteModule("CS2103T")
+SelectItineraryCommand -> Model : setCurrentItinerary(f)
 activate Model
+
+Model -> ItineraryList : setCurrentItinerary(f)
+activate ItineraryList
+
+ItineraryList --> Model
+deactivate ItineraryList
 
 Model --> SelectItineraryCommand
 deactivate Model

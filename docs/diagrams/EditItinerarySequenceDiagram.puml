@@ -39,14 +39,14 @@ ParserUtil --> EditItineraryCommandParser : date
 deactivate ParserUtil
 
 create EditItineraryDescriptor
-EditItineraryCommandParser -> EditItineraryDescriptor
+EditItineraryCommandParser -> EditItineraryDescriptor 
 activate EditItineraryDescriptor
 
-EditItineraryDescriptor --> EditItineraryCommandParser
+EditItineraryDescriptor --> EditItineraryCommandParser : f
 deactivate EditItineraryDescriptor
 
 create EditItineraryCommand
-EditItineraryCommandParser -> EditItineraryCommand : EditItineraryCommand(1, desc)
+EditItineraryCommandParser -> EditItineraryCommand : 
 activate EditItineraryCommand
 
 EditItineraryCommand --> EditItineraryCommandParser : e
@@ -64,10 +64,10 @@ deactivate TrackPadParser
 LogicManager -> EditItineraryCommand : execute(model)
 activate EditItineraryCommand
 
-EditItineraryCommand -> Model : setItinerary(itineraryToEdit, editedItinerary)
+EditItineraryCommand -> Model : setItinerary(e, f)
 activate Model
 
-Model -> ItineraryList : setItinerary(target, editedItinerary)
+Model -> ItineraryList : setItinerary(e, f)
 activate ItineraryList
 
 ItineraryList --> Model
