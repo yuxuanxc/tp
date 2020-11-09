@@ -271,9 +271,9 @@ The following sequence diagram shows how the `add-attraction` operation works:
   * Pros: More intuitive, so the user is more likely to get the correct command everytime when adding attractions.
   * Cons: The user will have to spend more time typing this command.
 
-### 4.2 Itinerary Model
+### 4.4 Itinerary Model
 
-#### 4.2.1 Current Implementation
+#### 4.4.1 Current Implementation
 
 The `Itinerary` class helps users keep track of the details of their trips and the attractions they want to visit. 
 The class diagram for `Itinerary` is shown below:
@@ -285,9 +285,9 @@ Each `Itinerary` contains `Name`, `Description`, `Budget`, `startDate` and `endD
 are of the `ItineraryDate` class. Additionally, to store the attractions that users want to visit, each `Itinerary` 
 contains a list of `Day`s, and each `Day` contains a list of `ItineraryAttraction`s that belong to that day. 
 
-#### 4.2.2 Design Considerations
+#### 4.4.2 Design Considerations
 
-##### 4.2.2.1 Aspect: How the location field of `Itinerary` is derived
+**Aspect: How the location field of `Itinerary` is derived**
 
 * **Alternative 1:** Have a field for location that the user has to manually specify alongside `Name`, `startDate`, `endDate` etc.
   * Pros: Simple and intuitive for the user to specify. 
@@ -300,7 +300,9 @@ contains a list of `Day`s, and each `Day` contains a list of `ItineraryAttractio
   * Cons: The itinerary would not have any specified locations unless the user adds an `ItineraryAttraction`, 
   which might not be intuitive to users. 
   
-##### 4.2.2.2 Aspect: How `ItineraryAttraction`s are stored with their visiting days
+Reason for choosing Alternative 2: 
+  
+**Aspect: How `ItineraryAttraction`s are stored with their visiting days**
 
 * **Alternative 1:** Have `day visiting` as a field in `ItineraryAttraction`, together with its other fields like `startTime`, `endTime` etc. 
 Have `Itinerary` directly store the `ItineraryAttraction`s. 
@@ -311,26 +313,30 @@ Have `Itinerary` directly store the `ItineraryAttraction`s.
   * Pros: `ItineraryAttraction`s are clearly divided into the different days. Easier to get the `ItineraryAttraction`s on a specific day. 
   * Cons: More methods and classes needed, which complicates things. 
   
-### 4.??? Add Itinerary Feature (Might need discuss numbering again)
+Reason for choosing Alternative 2:
+
+
+  
+### 4.5 Add Itinerary Feature
 
 The `add-itinerary` command allows users to add new itineraries into TrackPad. Users must specify the compulsory fields `Name`, `startDate` and `endDate`, and 
 may specify the optional fields `Description` and `Budget`. 
 
-#### 4.??? Current Implementation
+#### 4.5.1 Current Implementation
 
 The following steps illustrate the successful execution of an `add-itinerary` command: 
 
-Step 1. The user launches the application. 
+**Step 1.** The user launches the application. 
 
-Step 2. The user types in `add-itinerary n/Japan Trip sd/12-12-2020 ed/18-12-2020 d/fun in Japan b/1000` to add a new itinerary. This itinerary does not already exist in the app. 
+**Step 2.** The user types in `add-itinerary n/Japan Trip sd/12-12-2020 ed/18-12-2020 d/fun in Japan b/1000` to add a new itinerary. This itinerary does not already exist in the app. 
 
-Step 3. `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `AddItineraryCommand` and passes the input to `AddItineraryCommandParser`. 
+**Step 3.** `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `AddItineraryCommand` and passes the input to `AddItineraryCommandParser`. 
 
-Step 4. `AddItineraryCommandParser` parses the input and constructs a new `AddItineraryCommand` containing a new `Itinerary` with the specified fields.
+**Step 4.** `AddItineraryCommandParser` parses the input and constructs a new `AddItineraryCommand` containing a new `Itinerary` with the specified fields.
 
-Step 5. `LogicManager` executes the new `AddItineraryCommand`. This calls `Model` to add the new `Itinerary` to its `ItineraryList`.
+**Step 5.** `LogicManager` executes the new `AddItineraryCommand`. This calls `Model` to add the new `Itinerary` to its `ItineraryList`.
 
-Step 6. After the new `Itinerary` is successfully added, `AddItineraryCommand` returns a `CommandResult` for the Ui to display. 
+**Step 6.** After the new `Itinerary` is successfully added, `AddItineraryCommand` returns a `CommandResult` for the Ui to display. 
 
 The following sequence diagram shows how the `add-itinerary` operation works:
 
@@ -342,9 +348,9 @@ The following activity diagram summarizes what happens when a user executes an `
 ![AddItineraryActivityDiagram](images/devguideimages/AddItineraryActivityDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `add-itinerary`</i></sup></div><br>
 
-#### 4.??? Design Considerations
-=======
-##### 4.??? Aspect: Whether to make start and end date compulsory
+#### 4.5.2 Design Considerations
+
+**Aspect: Whether to make start and end date compulsory**
 
 * **Alternative 1 (Current choice):** Making start and end date compulsory.
   * Pros: Easier to implement, organise `ItineraryAttraction`s, and check if a day falls within the date range. 
@@ -353,6 +359,10 @@ The following activity diagram summarizes what happens when a user executes an `
 * **Alternative 2:** Making start and end date optional.
   * Pros: More flexible for users who do not want to add dates or are unsure of the dates yet. 
   * Cons: Requires more functionality to handle adding and deleting the dates. For example, both dates must be either present or absent, 
+
+Reason for choosing Alternative 1:
+
+
 
 ### 4.6 Edit Itinerary Feature (Might need discuss numbering again)
 
@@ -1268,7 +1278,7 @@ testers are expected to do more *exploratory* testing.
    3. Test case: `clear-attraction 1`<br>
       Expected: Everything typed after the space following the command will be ignored, and clear-attraction command will be executed successfully.
 
-### F9 Adding an itinerary (Koon Kiat)
+**F9 Adding an itinerary**
 
 1. Adding an itinerary
 
@@ -1287,7 +1297,7 @@ testers are expected to do more *exploratory* testing.
      * Invalid format for fields (e.g. invalid start date format): `add-itinerary n/Germany sd/03 02 2020 ed/06-02-2020`<br>
         Expected: Similar to 3.
         
-### F10 Editing an itinerary (Koon Kiat)
+**F10 Editing an itinerary**
 
 1. Editing an itinerary
 
@@ -1308,7 +1318,7 @@ testers are expected to do more *exploratory* testing.
      * No change in fields: `edit-itinerary 1 n/Germany` when the name is already `Germany`<br>
         Expected: Similar to 3.
         
-### F11 Deleting an itinerary (Koon Kiat)
+**F11 Deleting an itinerary**
 
 1. Deleting an itinerary while all the itineraries in TrackPad are shown in the itineraries list
 
@@ -1326,7 +1336,7 @@ testers are expected to do more *exploratory* testing.
     * Invalid index: `delete-itinerary x`, where x is larger than the list size <br>
       Expected: Similar to 3
       
-### F12 Finding an itinerary (Koon Kiat)
+**F12 Finding an itinerary**
 
 1. Finding an itinerary
 
@@ -1465,7 +1475,7 @@ testers are expected to do more *exploratory* testing.
    2. Test case: `exit`<br>
       Expected: TrackPad shuts down.
    
-### F21 Saving data (Koon Kiat)
+**F21 Saving data**
 
 1. Dealing with missing data files
 
