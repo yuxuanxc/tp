@@ -162,6 +162,7 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 <div style="page-break-after: always;"></div>
 
 ## **4. Implementation**
+
 This section describes some noteworthy details on the implementation of some core TrackPad features.
 
 ### 4.1 Attraction Model
@@ -178,9 +179,11 @@ Each `Attraction` contains the following fields: `Name`, `Description`, `Address
 `Phone`, `PriceRange`, `Rating`, `Visited` and `Tag`. Only `Name` and `Location` are compulsory fields, the rest are all optional.
 An attraction can have any number of `Tag`s.
 
+<div style="page-break-after: always;"></div>
+
 #### 4.1.2 Design Considerations
 
-##### 4.1.2.1 Aspect: How attractions are determined to be the same as another
+**Aspect: How attractions are determined to be the same as another**
 
 * **Alternative 1:** Compare the `Name`, `Phone` and `Email` of the attractions and 2 attractions
   are the same if all 3 fields are equal.
@@ -195,29 +198,40 @@ An attraction can have any number of `Tag`s.
   * Cons: `Name` and `Location` are case-sensitive, so comparing attractions with the same name/location with different
     cases will result in the attractions to be determined as different attractions, which might not be ideal.
 
-### 4.? Add Attraction Feature
+Reason for choosing Alternative 2: Our team decided to modify the existing code to suit our current implementation
+of the fields better, rather than just leaving it as it is.
+
+<div style="page-break-after: always;"></div>
+
+### 4.2 Add Attraction Feature
 
 The add attraction feature allows users to add attractions with the compulsory fields `Name` and `Location`, and 
 the optional fields `Description`, `Address`, `Email`, `OpeningHours`, `Phone`, `PriceRange`, `Rating`, `Visited` and `Tag`.
 
-#### 4.?.1 Current Implementation
+#### 4.2.1 Current Implementation
 
-Steps:
-1. The user launches the application. 
-2. The user types in `add-attraction n/River Safari l/Singapore a/80 Mandai Lake Rd` to add a new attraction. This attraction does not already exist in the app. 
-3. `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `AddAttractionCommand` and passes the input to `AddAttractionCommandParser`. 
-4. `AddAttractionCommandParser` parses the input and constructs a new `AddAttractionCommand` containing a new `Attraction` with the specified fields.
-5. `LogicManager` executes the new `AddAttractionCommand`. This calls `Model` to add the new `Attraction` to its `AttractionList`.
-6. After the new `Attraction` is successfully added, `AddAttractionCommand` returns a `CommandResult` for the Ui to display. 
+**Step 1.** The user launches the application.
+ 
+**Step 2.** The user types in `add-attraction n/River Safari l/Singapore a/80 Mandai Lake Rd` to add a new attraction. This attraction does not already exist in the app. 
+
+**Step 3.** `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `AddAttractionCommand` and passes the input to `AddAttractionCommandParser`. 
+
+**Step 4.** `AddAttractionCommandParser` parses the input and constructs a new `AddAttractionCommand` containing a new `Attraction` with the specified fields.
+
+**Step 5.** `LogicManager` executes the new `AddAttractionCommand`. This calls `Model` to add the new `Attraction` to its `AttractionList`.
+
+**Step 6.** After the new `Attraction` is successfully added, `AddAttractionCommand` returns a `CommandResult` for the Ui to display. 
 
 The following sequence diagram shows how the `add-attraction` operation works:
 
 ![Add Attraction Sequence Diagram](images/devguideimages/AddAttractionSequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-attraction</code></i></sup></div><br>
 
-#### 4.?.2 Design Considerations
+<div style="page-break-after: always;"></div>
 
-##### 4.?.2.1 Aspect: How the command word of AddAttractionCommand is derived
+#### 4.2.2 Design Considerations
+
+**Aspect: How the command word of AddAttractionCommand is derived**
 
 * **Alternative 1:** add-a
   * Pros: Simple and short. The user will spend less time typing this command into the command box.
@@ -227,6 +241,10 @@ The following sequence diagram shows how the `add-attraction` operation works:
   * Pros: More intuitive, so the user is more likely to get the correct command everytime when adding attractions.
   * Cons: The user will have to spend more time typing this command.
 
+Reason for choosing Alternative 2: Given that our target audience are fast typists, a slightly longer word may not
+require a longer typing time after the users are used to typing this command in the long run.
+
+<div style="page-break-after: always;"></div>
 
 ### 4.3 Mark Attraction as Visited Feature
 
@@ -1167,7 +1185,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 Given below are instructions to test the app manually.
 
-### F1 Launch and shutdown
+**F1 Launch and shutdown**
 
 1. Initial launch.
 
@@ -1182,7 +1200,7 @@ Given below are instructions to test the app manually.
    2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-### F2 Adding a tourist attraction
+**F2 Adding a tourist attraction**
 
 1. Adding a tourist attraction.
 
@@ -1199,7 +1217,7 @@ Given below are instructions to test the app manually.
       `add-attraction n/NAME l/LOCATION` (where both the NAME and LOCATION are the same as another attraction in TrackPad)<br>
       Expected: Similar to previous.
       
-### F3 Editing a tourist attraction
+**F3 Editing a tourist attraction**
 
 1. Editing a tourist attraction while all the attractions in TrackPad are shown in the attractions list.
 
@@ -1215,7 +1233,7 @@ Given below are instructions to test the app manually.
       `edit-attraction 1 n/NAME` (where NAME is the same as the current name of the first attraction)<br>
       Expected: Similar to previous.
       
-### F4 Deleting a tourist attraction
+**F4 Deleting a tourist attraction**
 
 1. Deleting a tourist attraction while all the attractions in TrackPad are shown in the attractions list.
 
@@ -1251,7 +1269,7 @@ Given below are instructions to test the app manually.
    4. Other incorrect markVisited commands to try: `markVisited-attraction`, `markVisited-attraction x` (where x is larger than the list size, or less than 0)<br>
       Expected: Similar to previous.
 
-### F6 Finding a tourist attraction
+**F6 Finding a tourist attraction**
 
 1. Finding a tourist attraction while all the attractions in TrackPad are shown in the attractions list.
 
