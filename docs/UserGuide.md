@@ -92,7 +92,7 @@ Here are the steps to download TrackPad and start using it immediately!
    by `select-itinerary 2`.
 
    ![Ui](images/userguideimages/gettingStartedSelectItinerary.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 5. Selecting the itinerary</i></sup></div>
+   <div align="center"><sup style="font-size:100%"><i>Figure 5. Selecting the itinerary</i></sup></div>
     
 <div style="page-break-after: always;"></div>
     
