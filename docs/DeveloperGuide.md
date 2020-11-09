@@ -1283,6 +1283,8 @@ Given below are instructions to test the app manually.
    4. Other incorrect add-attraction commands to try: `add-attraction n/Zoo l/Singapore p/+6591234567`, 
       `add-attraction n/NAME l/LOCATION` (where both the NAME and LOCATION are the same as another attraction in TrackPad)<br>
       Expected: Similar to previous.
+
+<div style="page-break-after: always;"></div>
       
 **F3 Editing a tourist attraction**
 
@@ -1316,6 +1318,8 @@ Given below are instructions to test the app manually.
       `delete-attraction x` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
+<div style="page-break-after: always;"></div>
+
 **F5 Marking an attraction as Visited**
 
 1. Marking an attraction as Visited while all attractions are being shown
@@ -1347,7 +1351,9 @@ Given below are instructions to test the app manually.
 
    3. Test case: `find-attraction #$%`<br>
       Expected: Empty attractions list shown. "0 attractions listed!" shown in the status message.
-      
+ 
+<div style="page-break-after: always;"></div>
+     
 **F7 Listing attractions**
 
 1. Listing all attractions currently stored in TrackPad
@@ -1371,6 +1377,8 @@ Given below are instructions to test the app manually.
       
    3. Test case: `clear-attraction 1`<br>
       Expected: Everything typed after the space following the command will be ignored, and clear-attraction command will be executed successfully.
+
+<div style="page-break-after: always;"></div>
 
 **F9 Adding an itinerary**
 
@@ -1411,6 +1419,8 @@ Given below are instructions to test the app manually.
         Expected: Similar to 3.
      * No change in fields: `edit-itinerary 1 n/Germany` when the name is already `Germany`<br>
         Expected: Similar to 3.
+
+<div style="page-break-after: always;"></div>
         
 **F11 Deleting an itinerary**
 
@@ -1441,7 +1451,9 @@ Given below are instructions to test the app manually.
 
    3. Test case: `find-itinerary`<br>
       Expected: No itinerary found. Error details shown in the status message.
-      
+  
+<div style="page-break-after: always;"></div>
+    
 **F13 Listing itineraries**
 
 1. Listing all itineraries currently stored in TrackPad
@@ -1471,6 +1483,8 @@ Given below are instructions to test the app manually.
       Expected: Similar to 3
     * Invalid index: `select-itinerary x`, where x is larger than the list size <br>
       Expected: Similar to 3
+
+<div style="page-break-after: always;"></div>
       
 **F15 Clearing itineraries**
 
@@ -1509,6 +1523,7 @@ Given below are instructions to test the app manually.
         * Invalid format for fields (e.g. not a valid time): `add-itinerary-attraction 1 day/1 st/1000 et/2400` <br>
         Expected: Similar to 3.
 
+<div style="page-break-after: always;"></div>
 
 **F17 Editing an attraction in an itinerary**
 
@@ -1548,6 +1563,8 @@ Given below are instructions to test the app manually.
     Expected: Similar to previous.
     * Invalid day: `delete-itinerary-attraction 1 day/NaN `
     Expected: Similar to previous.
+
+<div style="page-break-after: always;"></div>
 
 **F19 Viewing help**
 
