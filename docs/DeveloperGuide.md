@@ -479,7 +479,7 @@ The following activity diagram summarizes what happens when a user executes an `
 
 * **Alternative 2:** `edit-itinerary` is able to edit the fields of the `ItineraryAttractions`
   * Pros: Lesser commands for the user to deal with.
-  * Cons: This command could be confusing to users and 
+  * Cons: This command could be confusing to users.
 
 Reason for choosing Alternative 1: Takes into account users are more likely to use more `ItineraryAttraction` commands compared
 to `EditItinerary` commands. It also reduces the complexity of the code in `ItineraryAttractions` by only dealing with the
