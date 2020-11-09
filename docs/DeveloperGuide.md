@@ -1540,19 +1540,24 @@ Given below are instructions to test the app manually.
 ## **Appendix G: Effort**
 
 Our project was harder than Address Book Level 3(AB3) because while AB3 deals with one entity, TrackPad deals with several
-entities, including Attractions, Itineraries as well as Itinerary Attraction. Initially, we had to refactor most of the code, 
-to change all instance of Person to Attraction and AddressBook to TrackPad. We also had to change the test cases, and figure out
-why some of them failed.
+entities, including Attractions, Itineraries as well as Itinerary Attractions. 
 
-After which, we had to implement itinerary into the app, and make it work similarly to Attraction, but taking in different
-fields from Attraction. We also had to create new parsers for Itinerary, so that it can read the itinerary commands. Quite
-some time was spent on deciding on what command words we want to use for each command, as there were many new commands which 
-sounded similar to existing ones.
+Initially, we had to refactor most of the code to change all instances of Person to Attraction and AddressBook to TrackPad. 
+We also had to change the test cases, and since we were still unfamiliar with the many lines of code AB3 has, we had a 
+hard time figuring out why some of them failed.
+
+After which, we had to implement Itinerary into the app and make it work similarly enough to Attraction, but still function 
+differently from it. We spent much time and effort deciding on how itineraries, and the attractions they contain are supposed 
+to work and the fields they should have, which resulted in our current implementations of Itinerary and ItineraryAttraction. 
+With the new additions, quite some time was spent on deciding which command words we want to use for each new command, since 
+the new commands can sound similar to existing ones. Afterwards, we had to more than double the number of Command classes 
+and their parsers to support the new commands, and also add many test cases to ensure their correctness. All of these took out 
+a lot of our time and effort in implementing. 
 
 In addition, we had to implement an adaptable UI, so that the attraction and itinerary box displays will vary in height, 
-since we have optional fields for our entities. We had to create different FXML files, to be compatible with our AttractionCard
+since we have optional fields for our entities. We had to create different FXML files to be compatible with our AttractionCard
 and ItineraryCard having multiple Labels. 
 
-Also, since we stored attractions as a List of Days in itineraries, it proved a further challenge in reading the itinerary
-attractions since we had to go through several layers to reach the list of itinerary attractions. Our UI also contains of 
-boxes for the Day, to distinguish between different days of the same itinerary.
+Also, although we decided to store itinerary attractions in a List of Days in itineraries, it proved a further challenge 
+in reading the itinerary attractions since we had to go through several layers to reach the list of itinerary attractions. 
+Our UI also contains boxes for the Day, to distinguish between different days of the same itinerary.
