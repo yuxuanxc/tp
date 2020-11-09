@@ -419,7 +419,7 @@ to handle how to add attractions with and without dates. For example, we would p
 attractions with specified days to itineraries without a date range, and determine different ways to store and display 
 itinerary attractions for itineraries without dates. Therefore, we decided to go with the first alternative for a simplified process. 
 
-### 4.6 Edit Itinerary Feature (Might need discuss numbering again)
+### 4.6 Edit Itinerary Feature
 
 TrackPad allows users to edit itineraries that have already been added.
 
@@ -479,7 +479,7 @@ Reason for choosing Alternative 1: Takes into account users are more likely to u
 to `EditItinerary` commands. It also reduces the complexity of the code in `ItineraryAttractions` by only dealing with the
 fields of `ItineraryAttractions` and do not access the fields of `Itinerary`.
 
-### 4.7 Find Itinerary Feature (Might need discuss numbering again)
+### 4.7 Find Itinerary Feature
 
 The find itinerary feature allows users to find itineraries using keywords.
 
@@ -523,7 +523,7 @@ The following activity diagram summarizes what happens when a user executes an `
 Reason for choosing Alternative 1: Given that the find command for attractions is `find-attraction`, 
 `find-itinerary` ensures that the command format is consistent and more intuitive to the users.
 
-### 4.8 Select Itinerary Feature (Might need discuss numbering again)
+### 4.8 Select Itinerary Feature
 
 The select itinerary feature allows users to select itineraries before using ItineraryAttraction commands.
 
@@ -1422,7 +1422,7 @@ Given below are instructions to test the app manually.
    3. Test case: `find-itinerary`<br>
       Expected: No itinerary found. Error details shown in the status message.
       
-### F13 Listing itineraries (York Tat)
+**F13 Listing itineraries**
 
 1. Listing all itineraries currently stored in TrackPad
 
@@ -1434,7 +1434,7 @@ Given below are instructions to test the app manually.
    3. Test case: `list-itinerary 3`<br>
       Expected: Everything typed after the space following the command will be ignored, and list-itinerary command will be executed successfully.
 
-### F14 Selecting an itinerary (York Tat)
+**F14 Selecting an itinerary**
 
 1. Selecting an itinerary while all itineraries are being shown
 
@@ -1452,7 +1452,7 @@ Given below are instructions to test the app manually.
     * Invalid index: `select-itinerary x`, where x is larger than the list size <br>
       Expected: Similar to 3
       
-### F15 Clearing itineraries (York Tat)
+**F15 Clearing itineraries**
 
 1. Clears all itineraries currently stored in TrackPad
 
