@@ -11,7 +11,6 @@ end box
 
 box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
-participant ":ItineraryList" as ItineraryList MODEL_COLOR
 end box
 
 [-> LogicManager : execute("find-itinerary Korea")
@@ -49,20 +48,8 @@ deactivate TrackPadParser
 LogicManager -> FindItineraryCommand : execute(model)
 activate FindItineraryCommand
 
-FindItineraryCommand -> Model : updateFilteredItineraryList()
+FindItineraryCommand -> Model : updateFilteredItineraryList(f)
 activate Model
-
-Model --> FindItineraryCommand
-deactivate Model
-
-FindItineraryCommand -> Model : setCurrentItinerary(null)
-activate Model
-
-Model -> ItineraryList : setCurrentItinerary(null)
-activate ItineraryList
-
-ItineraryList --> Model
-deactivate ItineraryList
 
 Model --> FindItineraryCommand
 deactivate Model
