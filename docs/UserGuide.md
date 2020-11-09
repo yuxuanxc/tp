@@ -657,7 +657,7 @@ For example:
     ![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction1.png)
     <div align='center'><i><sup style="font-size:100%">Figure 24a. Diagram showing current state of selected itinerary</sup></i></div><br>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 2. You want to visit it on day 2, from `1000` to `1100`.
     Enter `add-itinerary-attraction 2 day/2 st/1000 et/1100` into the command box.
@@ -665,7 +665,7 @@ For example:
     ![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction2.png)
     <div align='center'><i><sup style="font-size:100%">Figure 24b. Before entering <code>add-itinerary-attraction 2 day/2 st/1000 et/1100</code></sup></i></div><br>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
     
 3. `Night Safari` has been added into your `Selected Itinerary`.
 
@@ -705,14 +705,14 @@ For example:
     ![result of edit itinerary attraction](images/userguideimages/EditItineraryAttraction1.png)
     <div align='center'><i><sup style="font-size:100%">Figure 25a. Diagram showing current state of selected itinerary</sup></i></div><br>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 2. Enter `edit-itinerary-attraction 1 day/2 st/1900 et/2300` into the command box.
 
     ![result of edit itinerary attraction](images/userguideimages/EditItineraryAttraction2.png)
     <div align='center'><i><sup style="font-size:100%">Figure 25b. Before entering <code>edit-itinerary-attraction 1 day/2 st/1900 et/2300</code></sup></i></div><br>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 3. Scroll down the `Selected Itinerary` and notice the `START_TIME` of `Night Safari` has been changed to `1900 - 2300`.
 
