@@ -214,7 +214,7 @@ You plan on visiting Gardens by the Bay over the weekends.
     ![result_of_add attractions](images/userguideimages/addAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 8a. Before entering <code>add-attraction n/Gardens by the Bay a/18 Marina Gardens Dr, Singapore 018953 l/Singapore, Singapore t/sightseeing e/feedback@gardensbythebay.com.sg op/0500-0200 pr/LOW r/4.7 v/FALSE</code></i></sup></div>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 2. Note how `Gardens by the Bay` appears in the `Attractions` panel.
 
@@ -258,7 +258,7 @@ You realise that the rating of `Gardens by the Bay` is wrongly reflected and wan
     ![result_of_edit attractions](images/userguideimages/editAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 9a. Before entering <code>edit-attraction 11 r/4.4 pr/LOW</code></i></sup></div>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 2. Note how `Gardens by the Bay` appears in the `Attractions` panel.
 
@@ -290,7 +290,7 @@ You want to delete `Jurong Bird Park` from your list of attractions.
     ![result_of_delete attractions](images/userguideimages/deleteAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 10a. Before entering <code>delete-attraction 1</code></i></sup></div>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 2. First attraction in the list of attractions, `Jurong Bird Park`, is deleted.
 
@@ -322,7 +322,7 @@ You have just visited `Night Safari` over the holidays. You want TrackPad to ref
     ![result_of_markVisited attractions](images/userguideimages/markVisitedAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 11a. Before entering <code>markVisited-attraction 2</code></i></sup></div>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 2. Second attraction in the list of attractions, `Night Safari`, is marked as visited.
 
@@ -350,7 +350,7 @@ You want to look for all the attractions that contain the keyword `jurong`.
     ![result_of_finding attractions](images/userguideimages/findAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 12a. Before entering <code>find-attraction jurong</code></i></sup></div>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 2. `Jurong Bird Park` and `Snow City` are displayed as they contain `jurong` in their fields.
 
@@ -375,7 +375,7 @@ After finding an attraction, you want to switch back to seeing all your attracti
     ![result_of_listing all attractions](images/userguideimages/listAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 13a. Before entering <code>list-attraction</code></i></sup></div>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 2. Note how all your attractions are displayed again.
 
@@ -410,7 +410,7 @@ You want to delete all your attractions and start with an empty list of attracti
     ![result_of_clearing all attractions](images/userguideimages/clearAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 14a. Before entering <code>clear-attraction</code></i></sup></div>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 2. Note how all your attractions are now deleted. 
 
@@ -478,7 +478,7 @@ You want to add an itinerary for a trip to Europe with your friends.
    ![before_adding an itinerary](images/userguideimages/addItinerary1.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 16a. Before entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div><br>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 2. Note how your new itinerary appears in the itineraries panel.
 
@@ -520,7 +520,7 @@ After adding an itinerary for a trip to Europe that starts on `01-12-2020`, you 
     ![result_of_editing an itinerary](images/userguideimages/editItinerary1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 17a. Before entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div><br>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 2. Note how the start date of the second itinerary has changed from `01-12-2020` to `06-12-2020`.
 
@@ -550,7 +550,7 @@ You do not want to store your first itinerary in the app anymore, and you want t
     ![result_of_deleting an itinerary](images/userguideimages/deleteItinerary1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 18a. Before entering <code>delete-itinerary 1</code></i></sup></div><br>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 2. Note how your first itinerary has been deleted, and there is now one less itinerary. 
 
@@ -570,6 +570,8 @@ Format: `find-itinerary KEYWORD [MORE_KEYWORDS]`
 * Every [itinerary field](#431-adding-a-new-itinerary-add-itinerary) will be searched, as well as the fields of all the [itinerary attractions](#44-itinerary-attraction-features-yeh-yu-chun) in the itinerary.
 * Only full words will be matched e.g. `Jap` will not match `Japan`
 
+<div style="page-break-after: always;"></div>
+
 For example:
 
 You want to look for all the itineraries that contain the keyword `Europe`.
@@ -579,7 +581,7 @@ You want to look for all the itineraries that contain the keyword `Europe`.
     ![result_of_finding an itinerary](images/userguideimages/findItinerary1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 19a. Before entering <code>find-itinerary Europe</code></i></sup></div><br>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 2. Note how only the itinerary containing the word `Europe` is displayed. 
 
@@ -608,7 +610,7 @@ After finding an itinerary, you want to go back to seeing all your itineraries.
     ![result_of_listing itineraries](images/userguideimages/listItinerary1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 20a. Before entering <code>list-itinerary</code></i></sup></div><br>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 2. Note how all your itineraries are displayed again.
 
@@ -647,7 +649,7 @@ You want to view in detail the attractions in your first itinerary.
     ![result_of_selecting itinerary](images/userguideimages/selectItinerary1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 21a. Before entering <code>select-itinerary 1</code></i></sup></div><br>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 2. Note how the itineraries panel has changed to show a detailed view of the attractions in the itinerary.
 
@@ -676,7 +678,7 @@ You want to delete all your itineraries, and start over with an empty list of it
     ![result_of_clearing all itineraries](images/userguideimages/clearItinerary1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 22a. Before entering <code>clear-itinerary</code></i></sup></div><br>
 
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 2. Note how all your itineraries are now deleted. 
 
