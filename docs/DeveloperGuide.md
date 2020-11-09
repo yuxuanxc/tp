@@ -122,12 +122,16 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
 
+<div style="page-break-after: always;"></div>
+
 ### 3.4 Model
 
 ![Structure of the Model Component](images/devguideimages/ModelClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 7 Structure of the Model Component, Model Class Diagram</i></sup></div><br>
 
 **API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
+
+<div style="page-break-after: always;"></div>
 
 The `Model` component shown in Figure 7,
 * stores a `UserPref` object that represents the user’s preferences.
@@ -142,6 +146,8 @@ An alternative (arguably, a more OOP) model is given below. It has a `Tag` list 
 
 ![BetterModelClassDiagram](images/devguideimages/BetterModelClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 8 Structure of an alternative Model Component, Alternative Model Class Diagram</i></sup></div><br>
+
+<div style="page-break-after: always;"></div>
 
 ### 3.5 Storage
 
@@ -221,6 +227,8 @@ the optional fields `Description`, `Address`, `Email`, `OpeningHours`, `Phone`, 
 **Step 5.** `LogicManager` executes the new `AddAttractionCommand`. This calls `Model` to add the new `Attraction` to its `AttractionList`.
 
 **Step 6.** After the new `Attraction` is successfully added, `AddAttractionCommand` returns a `CommandResult` for the Ui to display. 
+
+<div style="page-break-after: always;"></div>
 
 The following sequence diagram shows how the `add-attraction` operation works:
 
