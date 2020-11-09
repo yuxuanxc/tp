@@ -122,12 +122,16 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
 
+<div style="page-break-after: always;"></div>
+
 ### 3.4 Model
 
 ![Structure of the Model Component](images/devguideimages/ModelClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 7 Structure of the Model Component, Model Class Diagram</i></sup></div><br>
 
 **API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
+
+<div style="page-break-after: always;"></div>
 
 The `Model` component shown in Figure 7,
 * stores a `UserPref` object that represents the user’s preferences.
@@ -142,6 +146,8 @@ An alternative (arguably, a more OOP) model is given below. It has a `Tag` list 
 
 ![BetterModelClassDiagram](images/devguideimages/BetterModelClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 8 Structure of an alternative Model Component, Alternative Model Class Diagram</i></sup></div><br>
+
+<div style="page-break-after: always;"></div>
 
 ### 3.5 Storage
 
@@ -222,12 +228,12 @@ the optional fields `Description`, `Address`, `Email`, `OpeningHours`, `Phone`, 
 
 **Step 6.** After the new `Attraction` is successfully added, `AddAttractionCommand` returns a `CommandResult` for the Ui to display. 
 
+<div style="page-break-after: always;"></div>
+
 The following sequence diagram shows how the `add-attraction` operation works:
 
 ![Add Attraction Sequence Diagram](images/devguideimages/AddAttractionSequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-attraction</code></i></sup></div><br>
-
-<div style="page-break-after: always;"></div>
 
 #### 4.2.2 Design Considerations
 
@@ -1527,11 +1533,13 @@ to change all instance of Person to Attraction and AddressBook to TrackPad. We a
 why some of them failed.
 
 After which, we had to implement itinerary into the app, and make it work similarly to Attraction, but taking in different
-fields from Attraction. We also had to create new parsers for Itinerary, so that it can read the itinerary commands. 
+fields from Attraction. We also had to create new parsers for Itinerary, so that it can read the itinerary commands. Quite
+some time was spent on deciding on what command words we want to use for each command, as there were many new commands which 
+sounded similar to existing ones.
 
 In addition, we had to implement an adaptable UI, so that the attraction and itinerary box displays will vary in height, 
 since we have optional fields for our entities. We had to create different FXML files, to be compatible with our AttractionCard
-and ItineraryCard having multiple Labels.
+and ItineraryCard having multiple Labels. 
 
 Also, since we stored attractions as a List of Days in itineraries, it proved a further challenge in reading the itinerary
 attractions since we had to go through several layers to reach the list of itinerary attractions. Our UI also contains of 
