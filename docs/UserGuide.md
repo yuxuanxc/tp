@@ -20,8 +20,6 @@ Our **intuitive** commands utilise words in full, making it **easy** for you to 
 If you can type fast, TrackPad can get your itinerary planned **faster** than traditional GUI apps. Minimal prior technical knowledge is needed in order to 
 use TrackPad so try out TrackPad now to make your travel planning **easier and faster**!
 
-<div style="page-break-after: always;"></div>
-
 ## 2. About This Document (York Tat)
 Welcome to the TrackPad User Guide!
 
