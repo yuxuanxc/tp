@@ -32,9 +32,9 @@ Then, there is a more in depth explanation on the design of the Ui, model and st
 <span style="display:block;align:center">![Architecture Class Diagram](images/devguideimages/ArchitectureDiagram.png)</span>
 <div align="center"><sup style="font-size:100%"><i>Figure 1. Architecture Class Diagram</i></sup></div><br>
 
-Figure 1 explains the high-level design of the App. Given below is a quick overview of each component.
-
 <div style="page-break-after: always;"></div>
+
+Figure 1 explains the high-level design of the App. Given below is a quick overview of each component.
 
 <div markdown="span" class="alert alert-primary">
 
@@ -300,12 +300,12 @@ The whole sequence of events is outlined in the sequence diagram shown below.
 **Aspect: How the attraction is updated**
 
 * **Alternative 1:** Use the `edit-attraction` command to handle marking the attraction as visited, since it can also edit the `Visited` field.
- * Pro: Less new code will need to be written, since we can reuse most of the code from `edit-attraction`.
- * Con: Functionality of `markVisited-attraction` could change if `edit-attraction` changes functionality in a future update. Excessive coupling.
+ * Pros: Less new code will need to be written, since we can reuse most of the code from `edit-attraction`.
+ * Cons: Functionality of `markVisited-attraction` could change if `edit-attraction` changes functionality in a future update. Excessive coupling.
 
 * **Alternative 2 (Current Choice):** Create a new `markVisited-attraction` command and parser to handle specifically this command.
- * Pro: Less inputs for the user, which makes the command shorter and more convenient.
- * Con: More lines of code. More test cases required.
+ * Pros: Less inputs for the user, which makes the command shorter and more convenient.
+ * Cons: More lines of code. More test cases required.
  
 Reason for choosing alternative 2: Easier to extend to marking several attractions in one command in a future version, by inputting several indexes at once. This would be complicated to 
 handle within `edit-attraction` since each attraction could be edited in several fields, and the user input would become unnecessarily complicated.
@@ -608,10 +608,10 @@ It is stored internally as an `List<Day>`. Additionally, it implements the follo
   * Pros: Easy to implement by just adding an `Attraction` field.
   * Cons: Would require many getters to access fields inside `Attraction`.
   
-  Reasons:
-  * If composition was chose, we would need to `itineraryAttraction.getAttraction().getField()`.
-  * If inheritance was chose, we can just do `itineraryAttraction.getField()`.
-  * Inheritance is chose to allow easier access to fields in an `Attraction`.
+Reasons:
+* If composition was chose, we would need to `itineraryAttraction.getAttraction().getField()`.
+* If inheritance was chose, we can just do `itineraryAttraction.getField()`.
+* Inheritance is chose to allow easier access to fields in an `Attraction`.
 
 **Aspect: Constructor**
 
@@ -623,12 +623,8 @@ It is stored internally as an `List<Day>`. Additionally, it implements the follo
   * Pros: Can reuse codes from attractions.
   * Cons: Makes the codes very messy and long.
   
-  Reason: Alternative 2 will have higher chances of bugs. Attraction objects are currently pass around instead of the 
-  individual fields, simplifying, shortening codes and reduces likelihood of bugs.
-
-**Aspect: Immutability**
-The fields inside `ItineraryAttraction` are private final to prevent any modifications of fields.
-Editing any fields would require a new object to be created everytime, which guarantee the immutability of `ItineraryAttraction`.    
+Reason: Alternative 2 will have higher chances of bugs. Attraction objects are currently pass around instead of the 
+individual fields, simplifying, shortening codes and reduces likelihood of bugs.
 
 <div style="page-break-after: always;"></div>
 
@@ -679,9 +675,9 @@ The following sequence diagram shows how the `add-itinerary-attraction` operatio
   * Pros: This is short and the same as the normal command, users has fewer commands to remember.
   * Cons: This command could be confusing to users and could cause careless users to add commands into the attraction lists instead of the itinerary.
   
-  Reason: Alternative 2 was not used because TrackPad has no way to know which command the user wants to execute, there is
-  no way to show the command usage should the user type something wrong. As TrackPad's audience are fast typists, 
-  these few words difference makes little difference to execution speed of the commands. Hence, alternative 1 was implemented.
+Reason: Alternative 2 was not used because TrackPad has no way to know which command the user wants to execute, there is
+no way to show the command usage should the user type something wrong. As TrackPad's audience are fast typists, 
+these few words difference makes little difference to execution speed of the commands. Hence, alternative 1 was implemented.
 
 <div style="page-break-after: always;"></div>
 
@@ -689,7 +685,7 @@ The following sequence diagram shows how the `add-itinerary-attraction` operatio
 
 #### 4.11.1 Current Implementation
 
-THe current UI involves many inherited classes from `AttractionCard`, `ItineraryListCard` and `ItineraryAttractionCard`. 
+The current UI involves many inherited classes from `AttractionCard`, `ItineraryListCard` and `ItineraryAttractionCard`. 
 This is because TrackPad supports optional fields, and with the current code, the `Label` in the FXML files will be created regardless
 whether the field is filled or not. Thus, it leaves many empty spaces in the GUI if the user adds an attraction without most of the optional fields.
 
@@ -703,17 +699,17 @@ are present in the parent class since all attractions have those fields. In `Att
 will be determined in the corresponding `Attraction`, via the `getNumOfFilledFields()` method, and the appropriate child will be used to 
 create the card. This way, we can avoid any awkward gaps due to missing fields.
 
-#### 4.4.2 Design Considerations
+#### 4.11.2 Design Considerations
 
 **Aspect: Method of Implementation**
 
 * **Alternative 1:** Only one `AttractionCard` is used to create the attraction cards. 
- * Pro: Far lesser code required, and no need for so many children classes.
- * Con: Empty lines will be seen in the GUI.
+ * Pros: Far lesser code required, and no need for so many children classes.
+ * Cons: Empty lines will be seen in the GUI.
  
 * **Alternative 2 (Current Choice):** Several `AttractionCard` child classes are used to create the corresponding attraction cards. 
- * Pro: Fixes the issue of empty lines being seen, by not creating redundant labels from the different FXML files.
- * Con: Many excessive classes are created. Some code repetition.
+ * Pros: Fixes the issue of empty lines being seen, by not creating redundant labels from the different FXML files.
+ * Cons: Many excessive classes are created. Some code repetition.
  
 Reason for choosing Alternative 2: The final app GUI should look pleasant and attractive to the users. By removing those empty lines, it makes
 the interface look more neat and organised. However, this is not yet an ideal solution and a better solution could be looked for 
