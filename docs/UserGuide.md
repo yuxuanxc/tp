@@ -127,7 +127,6 @@ and [Miscellaneous Features](#45-miscellaneous-features-yuxuan).
   e.g. `add-attraction n/Singapore Zoo l/Singapore` followed by `add-attraction n/singapore zoo l/singapore` will 
   create two different attractions in the same list.
 
-
 <div style="page-break-after: always;"></div>
 
 ### 4.2 Attraction Features (York Tat)
@@ -448,7 +447,7 @@ Format: `edit-itinerary INDEX [n/NAME] [sd/START_DATE] [ed/END_DATE] [d/DESCRIPT
 
 * Edits the itinerary at the specified [`INDEX`](#6-glossary-yuxuan) shown in the itinerary panel.
 * Field entries are the same as the [`add-itinerary`](#431-adding-a-new-itinerary-add-itinerary) command.
-* Any field can be changed by inputting its corresponding PREFIX in the command.
+* Any field can be changed by inputting its corresponding [PREFIX](#6-glossary-yuxuan) in the command.
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 You can use `edit-itinerary INDEX PREFIX/ ` to remove existing optional fields.
@@ -774,10 +773,10 @@ There is no need for you to save manually.
 
 * **Command Line Interface (CLI):** An interface that processes commands to a computer program in the form of lines of text.
 * **Graphical User Interface (GUI):** An interface that allows users to interact with through visual indicator representations.
+* **Fields:** The details of an attraction/itinerary/itinerary attraction which you can add into TrackPad (`Address` is a field for Attraction, `Budget` is a field for Itinerary).
 * **PREFIX:** The letter(s) and '/' placed before the corresponding fields when typing the commands ('n/' for Name, 'op/' for Opening Hours etc).
-* **INDEX:** The number shown in the displayed attractions/itineraries panel. Must be a positive number (1, 2, 3, ...)
-* **DAY_VISITING:** The day in a selected itinerary which contains the attraction(s) planned to visit. Must be a positive number (1, 2, 3, ...)
-* **Fields:** Address, phone number are fields //TODO
+* **INDEX:** The number shown in the displayed attractions/itineraries panel. Must be a positive number (1, 2, 3, ...).
+* **DAY_VISITING:** The day in a selected itinerary which contains the attraction(s) planned to visit. Must be a positive number (1, 2, 3, ...).
 
 <div style="page-break-after: always;"></div>
 
