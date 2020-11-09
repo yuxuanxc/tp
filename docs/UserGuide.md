@@ -59,6 +59,8 @@ Here are the steps to download TrackPad and start using it immediately!
    ![Ui](images/userguideimages/Ui-Labelled.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 1. The Ui of TrackPad</i></sup></div>
 
+<div style="page-break-after: always;"></div>
+
 1. Type the command in the command box and press Enter to execute it. Let's try it out by adding Gardens by the Bay into the app.
    Type in `add-attraction n/Gardens by the Bay l/Singapore, Singapore a/18 Marina Gardens Dr, 018953 r/4.7`! Your application should
    look like this when you scroll to the bottom of the attractions list.
@@ -69,9 +71,10 @@ Here are the steps to download TrackPad and start using it immediately!
 1. Oh no, you forgot to add the opening hours for Gardens by the Bay. No worries! By using the
    `edit-attraction 11 op/0500-0200`, we can edit the 11th attraction to add the opening hours from 5am to 2am.
 
-
    ![Ui](images/userguideimages/gettingStartedEditAttraction.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 3. Editing Gardens by the Bay to add Opening Hours</i></sup></div>
+
+<div style="page-break-after: always;"></div>
 
 1. Now, you want to create a one day itinerary to visit the Gardens by the Bay. Easy! Just type in
    `add-itinerary n/Walk in the Park sd/01-01-2021 ed/01-01-2021 d/Appreciate Singapore's flora and fauna`.
@@ -84,6 +87,7 @@ Here are the steps to download TrackPad and start using it immediately!
 
     ![Ui](images/userguideimages/gettingStartedSelectItinerary.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 5. Selecting the itinerary</i></sup></div>
+<div style="page-break-after: always;"></div>
     
 1. If you want to visit Gardens by the Bay from 10am to 2pm on the first day of your trip, type
    `add-itinerary-attraction 11 day/1 st/1000 et/1400`.

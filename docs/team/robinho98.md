@@ -36,7 +36,7 @@ Given below are my contributions to the project.
     * Added documentation for the features `markVisited-attraction`[\#178](https://github.com/AY2021S1-CS2103T-T09-3/tp/pull/178/files) and `Getting Started` [\#317](https://github.com/AY2021S1-CS2103T-T09-3/tp/pull/317/files)
   * Developer Guide:
     * Numbered all the section headers [\#173](https://github.com/AY2021S1-CS2103T-T09-3/tp/pull/173/files)
-    * Added implementation details of the `markVisited-attraction` feature. [\#...]()
+    * Added implementation details of the `markVisited-attraction` feature [\#343](https://github.com/AY2021S1-CS2103T-T09-3/tp/pull/343) and `UI` model. [\#349](https://github.com/AY2021S1-CS2103T-T09-3/tp/pull/349)
 
 * **Community**:
   * Reported bugs and suggestions for other teams in the class during PE Dry Run. (examples: [\#3](https://github.com/Robinho98/ped/issues/3), [\#5](https://github.com/Robinho98/ped/issues/5), [\#9](https://github.com/Robinho98/ped/issues/9))
