@@ -50,27 +50,29 @@ caution messages.
 
 Here are the steps to download TrackPad and start using it immediately!
 
-1. Ensure you have Java `11` or above installed in your Computer.
+**Step 1.** Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `trackpad.jar` from [here](https://github.com/AY2021S1-CS2103T-T09-3/tp/releases).
+**Step 2.** Download the latest `trackpad.jar` from [here](https://github.com/AY2021S1-CS2103T-T09-3/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your TrackPad.
+**Step 3.** Copy the file to the folder you want to use as the _home folder_ for your TrackPad.
 
-1. Double-click the file to start the app. An application similar to Figure 1 should appear in a few seconds. Here's how your app should look like!
+**Step 4.** Double-click the file to start the app. An application similar to Figure 1 should appear in a few seconds. Here's how your app should look like!
     Note how the app contains data on Rediscover Singapore attractions. <br><br>
    ![Ui](images/userguideimages/Ui-Labelled.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 1. The Ui of TrackPad</i></sup></div>
 
 <div style="page-break-after: always;"></div>
 
-1. Type the command in the command box and press Enter to execute it. Let's try it out by adding Gardens by the Bay into the app.
+**Step 5.** Type the command in the command box and press Enter to execute it. Let's try it out by adding Gardens by the Bay into the app.
    Type in `add-attraction n/Gardens by the Bay l/Singapore, Singapore a/18 Marina Gardens Dr, 018953 r/4.7`! Your application should
    look like this when you scroll to the bottom of the attractions list.
+   
+   ![Ui](images/userguideimages/gettingStartedAddAttraction.png)
+   <div align="center"><sup style="font-size:100%"><i>Figure 2. Adding Gardens by the Bay</i></sup></div>
 
-    ![Ui](images/userguideimages/gettingStartedAddAttraction.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 2. Adding Gardens by the Bay</i></sup></div>
+<div style="page-break-after: always;"></div>
 
-1. Oh no, you forgot to add the opening hours for Gardens by the Bay. No worries! By using the
+**Step 6.** Oh no, you forgot to add the opening hours for Gardens by the Bay. No worries! By using the
    `edit-attraction 11 op/0500-0200`, we can edit the 11th attraction to add the opening hours from 5am to 2am.
 
    ![Ui](images/userguideimages/gettingStartedEditAttraction.png)
@@ -78,26 +80,29 @@ Here are the steps to download TrackPad and start using it immediately!
 
 <div style="page-break-after: always;"></div>
 
-1. Now, you want to create a one day itinerary to visit the Gardens by the Bay. Easy! Just type in
+**Step 7.** Now, you want to create a one day itinerary to visit the Gardens by the Bay. Easy! Just type in
    `add-itinerary n/Walk in the Park sd/01-01-2021 ed/01-01-2021 d/Appreciate Singapore's flora and fauna`.
 
    ![Ui](images/userguideimages/gettingStartedAddItinerary.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 4. Adding the new itinerary</i></sup></div>
 
-1. To add Gardens by the Bay into the itinerary you just created, select the itinerary you want to add the attraction into,
+<div style="page-break-after: always;"></div>
+
+**Step 8.** To add Gardens by the Bay into the itinerary you just created, select the itinerary you want to add the attraction into,
    by `select-itinerary 2`.
 
-    ![Ui](images/userguideimages/gettingStartedSelectItinerary.png)
+   ![Ui](images/userguideimages/gettingStartedSelectItinerary.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 5. Selecting the itinerary</i></sup></div>
 <div style="page-break-after: always;"></div>
     
-1. If you want to visit Gardens by the Bay from 10am to 2pm on the first day of your trip, type
+**Step 9.** If you want to visit Gardens by the Bay from 10am to 2pm on the first day of your trip, type
    `add-itinerary-attraction 11 day/1 st/1000 et/1400`.
 
    ![Ui](images/userguideimages/gettingStartedAddItineraryAttraction.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 6. Adding Gardens by the Bay into the itinerary</i></sup></div>
+ <br>
  
-1. You are done! Feel free to add more attractions into the itinerary, or read on to discover other commands that will
+**Step 10.** You are done! Feel free to add more attractions into the itinerary, or read on to discover other commands that will
    give you more control over TrackPad, such as [`find-attraction`](#425-finding-a-tourist-attraction-find-attraction)
    and [`delete-attraction`](#423-deleting-a-tourist-attraction--delete-attraction)!
 
