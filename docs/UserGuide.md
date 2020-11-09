@@ -297,7 +297,7 @@ You want to delete `Jurong Bird Park` from your list of attractions.
 
 Try these other examples too!
 * `find-attraction animals` followed by `delete-attraction 2` deletes the second attraction in the results of the [find-attraction](#425-finding-a-tourist-attraction-find-attraction)
-command.
+command
 
 <div style="page-break-after: always;"></div>
 
@@ -751,8 +751,8 @@ For example:
     <div align='center'><i><sup style="font-size:100%">Figure 24c. After entering <code>add-itinerary-attraction 2 day/2 st/1000 et/1100</code></sup></i></div><br>
 
 Try these other examples too!
-* `add-itinerary-attraction 3 st/1000 et/1600 day/3` Adds the third item from attractions list into `Day 3` of the `Selected Itinerary`.
-* `add-itinerary-attraction 5 st/0900 et/1200 day/4` Adds the fifth item from attractions list into `Day 4` of the `Selected Itinerary`.
+* `add-itinerary-attraction 3 st/1000 et/1600 day/3` Adds the third item from attractions list into `Day 3` of the `Selected Itinerary`
+* `add-itinerary-attraction 5 st/0900 et/1200 day/4` Adds the fifth item from attractions list into `Day 4` of the `Selected Itinerary`
 
 <div markdown="block" class="alert alert-primary">:bulb: **Tip:**<br>
 * The start and end time cannot overlap with other attractions on the same day of the selected itinerary.<br>
@@ -798,7 +798,7 @@ For example:
     <div align='center'><i><sup style="font-size:100%">Figure 25c. After entering <code>edit-itinerary-attraction 1 day/2 st/1900 et/2300</code></sup></i></div><br>
 
 Try these other examples too!
-* `edit-itinerary-attraction 1 day/2 et/2200` Edits the `END_TIME` of the attraction first attraction in `Day 2` to be `2200`    
+* `edit-itinerary-attraction 1 day/2 et/2200` Edits the `END_TIME` of the first attraction in `Day 2` to `2200`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 Only the INDEX and day/DAY_VISITING is required to identify the field to edit.
@@ -832,7 +832,7 @@ For example:
     <div align='center'><i><sup style="font-size:100%">Figure 26b. After <code>delete-itinerary-attraction 1 day/2</code></sup></i></div><br>
 
 Try these other examples too!
-* `delete-itinerary-attraction 1 day/1` Deletes the first attraction from `Day 1` of `Selected Itinerary`.
+* `delete-itinerary-attraction 1 day/1` Deletes the first attraction from `Day 1` of `Selected Itinerary`
 
 <div style="page-break-after: always;"></div>
 
