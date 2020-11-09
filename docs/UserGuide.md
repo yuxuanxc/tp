@@ -50,27 +50,29 @@ caution messages.
 
 Here are the steps to download TrackPad and start using it immediately!
 
-1. Ensure you have Java `11` or above installed in your Computer.
+**Step 1.** Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `trackpad.jar` from [here](https://github.com/AY2021S1-CS2103T-T09-3/tp/releases).
+**Step 2.** Download the latest `trackpad.jar` from [here](https://github.com/AY2021S1-CS2103T-T09-3/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your TrackPad.
+**Step 3.** Copy the file to the folder you want to use as the _home folder_ for your TrackPad.
 
-1. Double-click the file to start the app. An application similar to Figure 1 should appear in a few seconds. Here's how your app should look like!
+**Step 4.** Double-click the file to start the app. An application similar to Figure 1 should appear in a few seconds. Here's how your app should look like!
     Note how the app contains data on Rediscover Singapore attractions. <br><br>
    ![Ui](images/userguideimages/Ui-Labelled.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 1. The Ui of TrackPad</i></sup></div>
 
 <div style="page-break-after: always;"></div>
 
-1. Type the command in the command box and press Enter to execute it. Let's try it out by adding Gardens by the Bay into the app.
+**Step 5.** Type the command in the command box and press Enter to execute it. Let's try it out by adding Gardens by the Bay into the app.
    Type in `add-attraction n/Gardens by the Bay l/Singapore, Singapore a/18 Marina Gardens Dr, 018953 r/4.7`! Your application should
    look like this when you scroll to the bottom of the attractions list.
+   
+   ![Ui](images/userguideimages/gettingStartedAddAttraction.png)
+   <div align="center"><sup style="font-size:100%"><i>Figure 2. Adding Gardens by the Bay</i></sup></div>
 
-    ![Ui](images/userguideimages/gettingStartedAddAttraction.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 2. Adding Gardens by the Bay</i></sup></div>
+<div style="page-break-after: always;"></div>
 
-1. Oh no, you forgot to add the opening hours for Gardens by the Bay. No worries! By using the
+**Step 6.** Oh no, you forgot to add the opening hours for Gardens by the Bay. No worries! By using the
    `edit-attraction 11 op/0500-0200`, we can edit the 11th attraction to add the opening hours from 5am to 2am.
 
    ![Ui](images/userguideimages/gettingStartedEditAttraction.png)
@@ -78,26 +80,29 @@ Here are the steps to download TrackPad and start using it immediately!
 
 <div style="page-break-after: always;"></div>
 
-1. Now, you want to create a one day itinerary to visit the Gardens by the Bay. Easy! Just type in
+**Step 7.** Now, you want to create a one day itinerary to visit the Gardens by the Bay. Easy! Just type in
    `add-itinerary n/Walk in the Park sd/01-01-2021 ed/01-01-2021 d/Appreciate Singapore's flora and fauna`.
 
    ![Ui](images/userguideimages/gettingStartedAddItinerary.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 4. Adding the new itinerary</i></sup></div>
 
-1. To add Gardens by the Bay into the itinerary you just created, select the itinerary you want to add the attraction into,
+<div style="page-break-after: always;"></div>
+
+**Step 8.** To add Gardens by the Bay into the itinerary you just created, select the itinerary you want to add the attraction into,
    by `select-itinerary 2`.
 
-    ![Ui](images/userguideimages/gettingStartedSelectItinerary.png)
+   ![Ui](images/userguideimages/gettingStartedSelectItinerary.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 5. Selecting the itinerary</i></sup></div>
 <div style="page-break-after: always;"></div>
     
-1. If you want to visit Gardens by the Bay from 10am to 2pm on the first day of your trip, type
+**Step 9.** If you want to visit Gardens by the Bay from 10am to 2pm on the first day of your trip, type
    `add-itinerary-attraction 11 day/1 st/1000 et/1400`.
 
    ![Ui](images/userguideimages/gettingStartedAddItineraryAttraction.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 6. Adding Gardens by the Bay into the itinerary</i></sup></div>
+ <br>
  
-1. You are done! Feel free to add more attractions into the itinerary, or read on to discover other commands that will
+**Step 10.** You are done! Feel free to add more attractions into the itinerary, or read on to discover other commands that will
    give you more control over TrackPad, such as [`find-attraction`](#425-finding-a-tourist-attraction-find-attraction)
    and [`delete-attraction`](#423-deleting-a-tourist-attraction--delete-attraction)!
 
@@ -436,8 +441,6 @@ Action | Format, Examples
 **[Select itinerary](#436-selecting-an-itinerary-select-itinerary)** | `select-itinerary INDEX`<br> e.g. `select-itinerary 3`
 **[Clear all itineraries](#437-clearing-all-itineraries--clear-itinerary)** | `clear-itinerary`
 
-Read on to find out more!
-
 #### 4.3.1 Adding a new itinerary: `add-itinerary`
 
 Adds a new itinerary to the current list of itineraries.
@@ -463,15 +466,15 @@ For example:
 
 You want to add an itinerary for a trip to Europe with your friends. 
  
-1. Enter `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000` into the command box. <br>
+1. Enter `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000` into the command box.
 
    ![before_adding an itinerary](images/userguideimages/addItinerary1.png)
-   <div align="center"><sup style="font-size:100%"><i>Figure 16a. Before entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
+   <div align="center"><sup style="font-size:100%"><i>Figure 16a. Before entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div><br>
 
-2. Note how your new itinerary appears in the itineraries panel. <br>
+2. Note how your new itinerary appears in the itineraries panel.
 
    ![after_adding an itinerary](images/userguideimages/addItinerary2.png)
-   <div align="center"><sup style="font-size:100%"><i>Figure 16b. After entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
+   <div align="center"><sup style="font-size:100%"><i>Figure 16b. After entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div><br>
  
 Try these other examples too!
 * `add-itinerary n/Japan holiday sd/15-01-2019 ed/30-01-2019`
@@ -499,15 +502,15 @@ For example:
 
 After adding an itinerary for a trip to Europe that starts on `01-12-2020`, you want to change the start date to `06-12-2020`. 
 
-1. Enter `edit-itinerary 2 sd/06-12-2020` into the command box. <br>
+1. Enter `edit-itinerary 2 sd/06-12-2020` into the command box.
 
     ![result_of_editing an itinerary](images/userguideimages/editItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 17a. Before entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 17a. Before entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div><br>
 
-2. Note how the start date of the second itinerary has changed from `01-12-2020` to `06-12-2020`. <br>
+2. Note how the start date of the second itinerary has changed from `01-12-2020` to `06-12-2020`.
 
     ![result_of_editing an itinerary](images/userguideimages/editItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 17b. After entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 17b. After entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div><br>
 
 Try these other examples too!
 * `edit-itinerary 1 d/` to remove the description of your first itinerary
@@ -528,12 +531,12 @@ You do not want to store your first itinerary in the app anymore, and you want t
 1. Enter `delete-itinerary 1` into the command box. 
 
     ![result_of_deleting an itinerary](images/userguideimages/deleteItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 18a. Before entering <code>delete-itinerary 1</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 18a. Before entering <code>delete-itinerary 1</code></i></sup></div><br>
 
 2. Note how your first itinerary has been deleted, and there is now one less itinerary. 
 
     ![result_of_deleting an itinerary](images/userguideimages/deleteItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 18b. After entering <code>delete-itinerary 1</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 18b. After entering <code>delete-itinerary 1</code></i></sup></div><br>
 
 
 #### 4.3.4 Finding an itinerary: `find-itinerary`
@@ -554,16 +557,16 @@ You want to look for all the itineraries that contain the keyword `Europe`.
 1. Enter `find-itinerary Europe` into the command box.
 
     ![result_of_finding an itinerary](images/userguideimages/findItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 19a. Before entering <code>find-itinerary Europe</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 19a. Before entering <code>find-itinerary Europe</code></i></sup></div><br>
 
 2. Note how only the itinerary containing the word `Europe` is displayed. 
 
     ![result_of_finding an itinerary](images/userguideimages/findItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 19b. After entering <code>find-itinerary Europe</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 19b. After entering <code>find-itinerary Europe</code></i></sup></div><br>
 
 Try these other examples too!
 * `find-itinerary 01-09-2020` to find itineraries that have `01-09-2020` as their start or end date
-* `find-itinerary Singapore` to find itineraries that place in Singapore
+* `find-itinerary Singapore` to find itineraries that take place in Singapore
 
 #### 4.3.5 Listing all itineraries: `list-itinerary`
 
@@ -576,15 +579,15 @@ For example:
 
 After finding an itinerary, you want to go back to seeing all your itineraries. 
 
-1. Enter `list-itinerary` into the command box. <br>
+1. Enter `list-itinerary` into the command box.
 
     ![result_of_listing itineraries](images/userguideimages/listItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 20a. Before entering <code>list-itinerary</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 20a. Before entering <code>list-itinerary</code></i></sup></div><br>
 
-2. Note how all your itineraries are displayed again. <br>
+2. Note how all your itineraries are displayed again.
 
     ![result_of_listing itineraries](images/userguideimages/listItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 20b. After entering <code>list-itinerary</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 20b. After entering <code>list-itinerary</code></i></sup></div><br>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 `list-itinerary` will work even if there are extra characters after the command.
@@ -609,15 +612,15 @@ For example:
 
 You want to view in detail the attractions in your first itinerary. 
 
-1. Enter `select-itinerary 1` into the command box. <br>
+1. Enter `select-itinerary 1` into the command box.
 
     ![result_of_selecting itinerary](images/userguideimages/selectItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 21a. Before entering <code>select-itinerary 1</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 21a. Before entering <code>select-itinerary 1</code></i></sup></div><br>
 
-2. Note how the itineraries panel has changed to show a detailed view of the attractions in the itinerary. <br>
+2. Note how the itineraries panel has changed to show a detailed view of the attractions in the itinerary.
 
     ![result_of_selecting itinerary](images/userguideimages/selectItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 21b. After entering <code>select-itinerary 1</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 21b. After entering <code>select-itinerary 1</code></i></sup></div><br>
     
 #### 4.3.7 Clearing all itineraries : `clear-itinerary`
 
@@ -637,12 +640,12 @@ You want to delete all your itineraries, and start over with an empty list of it
 1. Enter `clear-itinerary` into the command box. 
 
     ![result_of_clearing all itineraries](images/userguideimages/clearItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 22a. Before entering <code>clear-itinerary</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 22a. Before entering <code>clear-itinerary</code></i></sup></div><br>
 
 2. Note how all your itineraries are now deleted. 
 
     ![result_of_clearing all itineraries](images/userguideimages/clearItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 22b. After entering <code>clear-itinerary</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 22b. After entering <code>clear-itinerary</code></i></sup></div><br>
 
 <div style="page-break-after: always;"></div>
 
