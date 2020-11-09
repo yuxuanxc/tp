@@ -13,10 +13,10 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("add-itinerary-attraction 1 day/1")
+[-> LogicManager : execute("add... 1 day/1")
 activate LogicManager
 
-LogicManager -> TrackPadParser : parseCommand("add-itinerary-attraction 1 day/1...")
+LogicManager -> TrackPadParser : parseCommand("add... 1 day/1...")
 activate TrackPadParser
 
 create AddItineraryAttractionCommandParser
@@ -45,7 +45,7 @@ destroy AddItineraryAttractionCommandParser
 TrackPadParser --> LogicManager : a
 deactivate TrackPadParser
 
-LogicManager -> AddItineraryAttractionCommand : execute(model)
+LogicManager -> AddItineraryAttractionCommand : execute()
 activate AddItineraryAttractionCommand
 
 AddItineraryAttractionCommand -> Model : getFilteredAttractionList()

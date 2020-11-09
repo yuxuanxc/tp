@@ -5,7 +5,7 @@ title: Developer Guide
 * Table of Contents
 {:toc}
 
---------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **1. Introduction**
 
@@ -13,15 +13,14 @@ TrackPad is an app for users to create and store itineraries, to facilitate the 
 This document includes the various design choices, architecture and implementation features of TrackPad. This document 
 is targeted towards developers who want to contribute to and extend our TrackPad app.
 
---------------------------------------------------------------------------------------------------------------------
 
 ## **2. Setting up, getting started**
 
-Follow the [_link_](SettingUp.md) to get set up your environment and get started creating pull request for TrackPad. 
+Follow the [_link_](SettingUp.md) to set up your environment and get started in creating pull requests for TrackPad. 
 
 <!--Refer to the guide [_Setting up and getting started_](SettingUp.md).-->
 
---------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **3. Design**
 
@@ -31,7 +30,7 @@ Then, there is a more in depth explanation on the design of the Ui, model and st
 ### 3.1 Architecture
 
 <span style="display:block;align:center">![Architecture Class Diagram](images/devguideimages/ArchitectureDiagram.png)</span>
-<div align="center"><sup style="font-size:100%"><i>Figure 1 Architecture Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 1. Architecture Class Diagram</i></sup></div><br>
 
 Figure 1 explains the high-level design of the App. Given below is a quick overview of each component.
 
@@ -109,8 +108,8 @@ This design is similar to the Architectural design of TrackPad, whereby differen
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete-attraction 1")` API call.
 
-![Interactions Inside the Logic Component for the `delete-attraction 1` Command](images/devguideimages/DeleteSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 6 Interactions inside the Logic Component for the <code>`delete-attraction 1`</code> Command</i></sup></div><br>
+![Interactions Inside the Logic Component for the `delete-attraction 1` Command](images/devguideimages/DeleteAttractionSequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 6 Interactions inside the Logic Component for the <code>delete-attraction 1</code> Command</i></sup></div><br>
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
@@ -160,39 +159,39 @@ This section describes some noteworthy details on the implementation of some cor
 ### 4.X Mark Visited Command
 
 The `markVisited-attraction` command allows users to quickly mark attractions as visited, without having to use the `edit-attraction` command.
-This command is implemented as it allows users to quickly and conveniently mark the attractions they have visited, so they can focus on visiting the other attractions.
+This command is implemented as it allows users to quickly and conveniently mark the attractions they have visited, so they can focus on visiting other attractions that they have not visited.
 
 #### 4.X.1 Current Implementation
 
-The current implementation allows the users to makr the attraction as visited, based on its index position in the current attractions list.
-This index could be different depending whether the whole attractions list is shown, or the filtered attractions list from the `find-attraction` command is currently shown in the GUI.
-If the index is invalid or the attraction has already been visited before, an error messgae will be displayed and there will be no changes to the attraction list.
+The current implementation allows the users to mark the attraction as visited, based on its index position in the current attraction list.
+This index could be different depending whether the whole attraction list is shown, or the filtered attraction list from the `find-attraction` command is currently shown in the GUI.
+If the index is invalid or the attraction has already been visited before, an error message will be displayed and there will be no changes to the attraction list.
 
 The following activity diagram shows how `markVisited-attraction` works:
 ![MarkVisitedActivityDiagram](images/devguideimages/MarkVisitedActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `markVisited-attraction`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of <code>markVisited-attraction</code></i></sup></div><br>
 
-We will use the above activity diagram as shown in Figure X to explain how the command is executed in detail.
-We assume no error is encountered, and the attraction that is selected to be marked as visited has not been marked as visited before.
+We will use the above activity diagram as shown in Figure X to explain how the `markVisited-attraction` command is executed in detail.
+We assume no error is encountered, and the attraction that is selected to be marked as visited is not visited yet.
 
 Step 1. The user types in `markVisited-attraction 1`.
 
 Step 2. `MarkVisitedCommand` is created.
 
-Step 3. `MarkVisitedCommand` executes the `getFilteredAttractionList` and returns `lastShownList`.
+Step 3. `MarkVisitedCommand` executes the `getFilteredAttractionList()` and returns `lastShownList`.
 
-Step 4. `Model` then executes `get(index)` which creates `Attraction`, which is the original attraction before it has been marked visited.
+Step 4. `Model` then executes `get(index)` which creates `Attraction`, which is the original selected attraction in `lastShownList`.
 
 Step 5. `MarkVisitedCommand` then executes `createMarkVisitedAttraction()`, which creates a new `Attraction` that is identical to the original attraction, except its `Visited` field is set to true.
 
 Step 6. `MarkVisitedCommand` then sets the original attraction to the updated one, via `setAttraction()`, and it also updates the state of the model with `updateFilteredAttractionList()`.
 
-Step 7. `MarkVisitedCommand` then creates a new `CommandResult`, which has the success message that is shown to the user when the command is executed successfully.
+Step 7. `MarkVisitedCommand` then creates a new `CommandResult`, which contains the success message that is shown to the user when the command is executed successfully.
 
 The whole sequence of events is outlined in the sequence diagram shown below.
 
 ![MarkVisitedSequenceDiagram](images/devguideimages/MarkVisitedSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `markVisited-attraction 1`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>markVisited-attraction 1</code></i></sup></div><br>
 
 #### 4.X.2 Design Considerations
 
@@ -258,7 +257,7 @@ Steps:
 The following sequence diagram shows how the `add-attraction` operation works:
 
 ![Add Attraction Sequence Diagram](images/devguideimages/AddAttractionSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `add-attraction`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-attraction</code></i></sup></div><br>
 
 #### 4.?.2 Design Considerations
 
@@ -336,7 +335,7 @@ Step 6. After the new `Itinerary` is successfully added, `AddItineraryCommand` r
 The following sequence diagram shows how the `add-itinerary` operation works:
 
 ![AddItinerarySequenceDiagram](images/devguideimages/AddItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `add-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-itinerary</code></i></sup></div><br>
 
 The following activity diagram summarizes what happens when a user executes an `add-itinerary` command:
 
@@ -344,7 +343,7 @@ The following activity diagram summarizes what happens when a user executes an `
 <div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `add-itinerary`</i></sup></div><br>
 
 #### 4.??? Design Considerations
-
+=======
 ##### 4.??? Aspect: Whether to make start and end date compulsory
 
 * **Alternative 1 (Current choice):** Making start and end date compulsory.
@@ -355,60 +354,181 @@ The following activity diagram summarizes what happens when a user executes an `
   * Pros: More flexible for users who do not want to add dates or are unsure of the dates yet. 
   * Cons: Requires more functionality to handle adding and deleting the dates. For example, both dates must be either present or absent, 
 
-### 4.3 Itinerary Attraction Model
+### 4.6 Edit Itinerary Feature (Might need discuss numbering again)
+
+TrackPad allows users to edit itineraries that have already been added.
+
+Any of the following fields of an itinerary can be edited:
+* `Name`
+* `startDate`
+* `endDate`
+* `Description`
+* `Budget`
+
+#### 4.6.1 Current Implementation
+
+The `EditItineraryCommand` class handles the execution of edit itinerary operations. The `EditItineraryCommandParser` class helps 
+to parse a user’s input before creating the correct `EditItineraryCommand`.
+
+TrackPad uses the `EditItineraryDescriptor` class to facilitate edit operations. 
+An `EditItineraryDescriptor` is a temporary bridge that holds the newly-edited fields of an itinerary.
+
+Step 1. The user types in `edit-itinerary 1 sd/10-11-2020` to edit the `startDate` of the first itinerary in the `Itineraries` panel.
+
+Step 2. This calls the `execute` method of the `LogicManager` class. The user input is passed in as a string.
+
+Step 3. `Logic.execute()` then calls the `parseCommand` method of the `TrackPadParser` class to parse the string input.
+
+Step 4. `TrackPadParser.parseCommand()` recognises it as a edit-itinerary command and passes the input to `EditItineraryCommandParser`. 
+
+Step 5. `EditItineraryCommandParser` parses the input and constructs a new `EditItineraryCommand`.
+
+Step 6. In `EditItineraryCommandParser`, the string input is first split into tokens.
+
+Step 7. In the same method call, an `EditItineraryDescriptor` object is created from these tokens. The object contains
+the new values to be updated to the target Itinerary.
+
+Step 8. An `EditCommand` is created with the populated `EditItineraryDescriptor` which is then executed by the `LogicManager` in step 2.
+
+Step 9. The command execution calls `getFilteredItineraryList` to get the `itineraryToEdit` using indexes provided from the user input.
+
+Step 10. A `editedItinerary` object using the `createEditedItinerary` method, using the fields to be updated from the `EditItineraryDescriptor`
+object and the fields of the `itineraryToEdit` object. 
+
+Step 11. The `Model` is then updated by replacing the `itineraryToEdit` object with the `editedItinerary` object. 
+
+Step 12. A `CommandResult` is created and returned to show the result of the execution.
+
+The following sequence diagram shows how the `edit-itinerary` operation works:
+
+![EditItinerarySequenceDiagram](images/devguideimages/EditItinerarySequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `edit-itinerary`</i></sup></div><br>
+
+#### 4.6.2 Design Considerations
+
+### 4.7 Find Itinerary Feature (Might need discuss numbering again)
+
+The find itinerary feature allows users to find itineraries using keywords.
+
+#### 4.7.1 Current Implementation
+
+The `FindItineraryCommand` class handles the execution of find itinerary operations. The `FindItineraryCommandParser` class helps 
+to parse a user’s input before creating the correct `FindItineraryCommand`.
+
+Step 1. The user types in `find-itinerary Korea` to find itineraries with the keyword Korea.
+
+Step 2. This calls the `execute` method of the `LogicManager` class. The user input is passed in as a string.
+
+Step 3. `Logic.execute()` then calls the `parseCommand` method of the `TrackPadParser` class to parse the string input.
+
+Step 4. `TrackPadParser.parseCommand()` recognises it as a find-itinerary command and passes the input to `FindItineraryCommandParser`. 
+
+Step 5. In `FindItineraryCommandParser`, the string input is extracted as a predicate and used to create a `FindItineraryCommand`.
+
+Step 6. `FindItineraryCommand.execute()` calls for `Model` to filter the itineraries list based on the given predicate.
+
+Step 7. A `CommandResult` is created and returned to show the result of the execution.
+
+The following sequence diagram shows how the `find-itinerary` operation works:
+
+![FindItinerarySequenceDiagram](images/devguideimages/FindItinerarySequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `find-itinerary`</i></sup></div><br>
+
+#### 4.7.2 Design Considerations
+
+### 4.8 Select Itinerary Feature (Might need discuss numbering again)
+
+The select itinerary feature allows users to select itineraries to perform ItineraryAttraction commands.
+
+#### 4.8.1 Current Implementation
+
+Step 1. The user types in `select-itinerary 2` to select the second itinerary in the `Itineraries` panel.
+
+Step 2. This calls the `execute` method of the `LogicManager` class. The user input is passed in as a string.
+
+Step 3. `Logic.execute()` then calls the `parseCommand` method of the `TrackPadParser` class to parse the string input.
+
+Step 4. `TrackPadParser.parseCommand()` recognises it as a select-itinerary command and passes the input to `SelectItineraryCommandParser`. 
+
+Step 5. In `SelectItineraryCommandParser`, the string input is parsed to return an index. and the index is used to create a `SelectItineraryCommand`.
+
+Step 6. A `SelectItineraryCommand` is created using the index and is passed back to the `LogicManager` in step 2.
+
+Step 7. `LogicManager` executes the `SelectItineraryCommand`, calling the `setCurrentItinerary` method in `Model`.
+
+Step 8. A `CommandResult` is created and returned to show the result of the execution.
+
+The following sequence diagram shows how the `select-itinerary` operation works: 
+
+![SelectItinerarySequenceDiagram](images/devguideimages/SelectItinerarySequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `select-itinerary`</i></sup></div><br>
+
+#### 4.8.2 Design Considerations
+
+### 4.9 Itinerary Attraction Model
 This is a subclass of `Attraction` that goes into the `List<Day>` that resides in `Itinerary`. 
 
-#### 4.3.1 Itinerary Attraction Implementation
+#### 4.9.1 Itinerary Attraction Implementation
 
 `ItineraryAttraction` extends `Attraction`. It is a `Attraction` with 2 extra fields, `startTime` and `endTime`. 
 It is stored internally as an `List<Day>`. Additionally, it implements the following operations:
 
 ![Itinerary Attraction Implementation Class Diagram](images/devguideimages/ItineraryAttractionClassDiagram.png)
-<div><i>Figure X The ItineraryAttraction Class Diagram</i></div><br>
+// <div align="center"><sup style="font-size:100%"><i>Figure X The ItineraryAttraction Class Diagram</i></sup></div><br>
 
 <!--
 // Do i need to show days??????????????????
-// <div align="center"><sup style="font-size:100%"><i>Figure X The Itinerary Class Diagram</i></sup></div><br>
+<div><i>Figure X The ItineraryAttraction Class Diagram</i></div><br>
 // tried removing align and <sup></sup>  
 -->
 
 `ItineraryAttraction` is an `Attraction` and contains `startTime` and `endTime`.
 
-#### 4.3.2 Design consideration
+#### 4.9.2 Design Considerations
 
-##### Aspect 1: Inheritance or composition
+**Aspect: Inheritance or composition**
 
 * **Alternative 1 (current choice):** `ItineraryAttraction` inherits `Attraction`.
-  * Pros: 
-  * Cons:
-
-* **Alternative 2:** `ItineraryAttraction` would compose `Attraction`
-  * Pros: 
+  * Pros: Allows it to be treated as an `Attraction` allowing `ItineraryAttraction` access to getters for `Attraction` without redefining it.
   * Cons: 
 
-##### Aspect 2: Constructor
+* **Alternative 2:** `ItineraryAttraction` would compose `Attraction`
+  * Pros: Easy to implement by just adding an `Attraction` field.
+  * Cons: Would require many getters to access fields inside `Attraction`.
+  
+  Reasons:
+  
+  If composition was chose, we would need to `itineraryAttraction.getAttraction().getField()`.
+  
+  If inheritance was chose, we can just do `itineraryAttraction.getField()`.
+  
+  Inheritance is chose to allow edit itinerary attraction command access to existing fields in an `Attraction`.
+
+**Aspect: Constructor**
 
 * **Alternative 1 (current choice):** constructor takes in an `Attraction`.
-  * Pros:
-  * Cons:
+  * Pros: It is neater and simpler to use attraction as parameter to create an `ItineraryAttraction` object.
+  * Cons: New methods and test cases were written to test this behaviour.
   
 * **Alternative 2:** constructor takes in all the fields of `Attraction`.
-  * Pros:
-  * Cons:
+  * Pros: Can reuse codes from attractions.
+  * Cons: Makes the codes very messy and long.
+  
+  Reason: Alternative 2 will have higher chances of bugs. Attraction objects are currently pass around instead of the individual fields, simplifying codes and chances of bugs.
 
-##### Aspect 3: Immutability
+**Aspect: Immutability**
 The fields inside `ItineraryAttraction` are private final to prevent any modifications of fields.
 Editing any fields would require a new object to be created everytime, which guarantee the immutability of `ItineraryAttraction`.    
 
+### 4.10 Adding Itinerary Attraction
 
-#### 4.3.3 Adding Itinerary Attraction Implementation
+#### 4.10.1 Adding Itinerary Attraction Implementation
 The feature allows users to select an `Attraction` from the attraction list and add it into their selected itinerary, 
 with a start and end time.
 
-
 The following activity diagram shows a simplified add-itinerary-attraction operation:
 ![AddItineraryAttractionActivityDiagram](images/devguideimages/AddItineraryAttractionActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `add-itinerary-attraction`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of <code>add-itinerary-attraction</code></i></sup></div><br>
 
 **Assumes:**
 1. The user launches the application.
@@ -429,11 +549,11 @@ itinerary and the timing does not clash with any exisiting attractions in the it
 The following sequence diagram shows how the `add-itinerary-attraction` operation works:
 
 ![AddItineraryAttractionSequenceDiagram](images/devguideimages/AddItineraryAttractionSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `add-itinerary-attraction`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-itinerary-attraction 1 day/1 st/1000 et/1200.</code></i></sup></div><br>
 
-#### 4.3.4 Design Considerations
+#### 4.10.2 Design Considerations
 
-##### Aspect 1: Fit command style with 
+**Aspect: Fit command style with...** 
 
 * **Alternative 1 (current choice):** 
   * Pros:
@@ -443,7 +563,7 @@ The following sequence diagram shows how the `add-itinerary-attraction` operatio
   * Pros:
   * Cons:
 
-##### Aspect 2: Command keyword
+**Aspect 2: Command keyword**
 
 * **Alternative 1 (current choice):** `add-itinerary-attraction` is used to execute `AddItineraryAttractionCommand`. 
   * Pros: This command is distinct from the `add-attraction` command, `add-itinerary-attraction` would mean adding into itinerary's attraction.
@@ -455,7 +575,7 @@ The following sequence diagram shows how the `add-itinerary-attraction` operatio
   * Pros: This is short and the same as the normal command, users has fewer commands to remember.
   * Cons: This command could be confusing to users and could cause careless users to add commands into the attraction lists instead of the itinerary.
   
-  This was not used because the error messages are long and confusing. If the users types the
+  Reason: This was not used because the error messages are long and confusing. If the users types the
   wrong format, TrackPad has no way to know if the user wants to add attraction into the attraction lists or the itinerary.
   A long error message would be required to show the 2 variations of the command.
 
@@ -463,95 +583,35 @@ The following sequence diagram shows how the `add-itinerary-attraction` operatio
 
 #### 4.4.1 Current Implementation
 
-<!--
-This section describes some noteworthy details on how certain features are implemented.
+THe current UI involves many inherited classes from `AttractionCard`, `ItineraryListCard` and `ItineraryAttractionCard`. 
+This is because TrackPad supports optional fields, and with the current code, the `Label` in the FXML files will be created regardless
+whether the field is filled or not. Thus, it leaves many empty spaces in the GUI if the user adds an attraction without most of the optional fields.
 
-### 3.1 \[Proposed\] Undo/redo feature
+![UiFXML](images/devguideimages/UiFXML.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X The class diagram for one of the child of `AttractionCard`</i></sup></div><br>
 
+Figure X shows an example of the current implementation of the `AttractionCard`. Compulsory fields, such as `name` and `locale`
+are present in the parent class since all attractions have those fields. In `AttractionListPanel`, the number of filled fields 
+will be determined in the corresponding `Attraction`, via the `getNumOfFilledFields()` method, and the appropriate child will be used to 
+create the card. This way, we can avoid any awkward gaps due to missing fields.
 
-#### 3.1.1 Proposed Implementation
+#### 4.4.2 Design Considerations
 
-The proposed undo/redo mechanism is facilitated by `VersionedTrackPad`. It extends `TrackPad` with an undo/redo history, stored internally as an `trackPadStateList` and `currentStatePointer`. Additionally, it implements the following operations:
+##### Aspect: Method of Implementation
 
-* `VersionedTrackPad#commit()` — Saves the current TrackPad state in its history.
-* `VersionedTrackPad#undo()` — Restores the previous TrackPad state from its history.
-* `VersionedTrackPad#redo()` — Restores a previously undone TrackPad state from its history.
-
-These operations are exposed in the `Model` interface as `Model#commitTrackPad()`, `Model#undoTrackPad()` and `Model#redoTrackPad()` respectively.
-
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
-
-Step 1. The user launches the application for the first time. The `VersionedTrackPad` will be initialized with the initial TrackPad state, and the `currentStatePointer` pointing to that single TrackPad state.
-
-![UndoRedoState0](images/UndoRedoState0.png)
-
-Step 2. The user executes `delete 5` command to delete the 5th attraction in the TrackPad. The `delete` command calls `Model#commitTrackPad()`, causing the modified state of the TrackPad after the `delete 5` command executes to be saved in the `trackPadStateList`, and the `currentStatePointer` is shifted to the newly inserted TrackPad state.
-
-![UndoRedoState1](images/UndoRedoState1.png)
-
-Step 3. The user executes `add n/David …​` to add a new attraction. The `add` command also calls `Model#commitTrackPad()`, causing another modified TrackPad state to be saved into the `trackPadStateList`.
-
-![UndoRedoState2](images/UndoRedoState2.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitTrackPad()`, so the TrackPad state will not be saved into the `trackPadStateList`.
-
-</div>
-
-Step 4. The user now decides that adding the attraction was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoTrackPad()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous TrackPad state, and restores the TrackPad to that state.
-
-![UndoRedoState3](images/UndoRedoState3.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial TrackPad state, then there are no previous TrackPad states to restore. The `undo` command uses `Model#canUndoTrackPad()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</div>
-
-The following sequence diagram shows how the undo operation works:
-
-![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-The `redo` command does the opposite — it calls `Model#redoTrackPad()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the TrackPad to that state.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `trackPadStateList.size() - 1`, pointing to the latest TrackPad state, then there are no undone TrackPad states to restore. The `redo` command uses `Model#canRedoTrackPad()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</div>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the TrackPad, such as `list`, will usually not call `Model#commitTrackPad()`, `Model#undoTrackPad()` or `Model#redoTrackPad()`. Thus, the `trackPadStateList` remains unchanged.
-
-![UndoRedoState4](images/UndoRedoState4.png)
-
-Step 6. The user executes `clear`, which calls `Model#commitTrackPad()`. Since the `currentStatePointer` is not pointing at the end of the `trackPadStateList`, all TrackPad states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-![UndoRedoState5](images/UndoRedoState5.png)
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-![CommitActivityDiagram](images/CommitActivityDiagram.png)
-
-#### 3.1.2 Design consideration
-
-##### 3.1.2.1 Aspect: How undo & redo executes
-
-* **Alternative 1 (current choice):** Saves the entire TrackPad.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the attraction being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### 3.2 \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
--->
+* **Alternative 1:** Only one `AttractionCard` is used to create the attraction cards. 
+ * Pro: Far lesser code required, and no need for so many children classes.
+ * Con: Empty lines will be seen in the GUI.
+ 
+* **Alternative 2 (Current Choice):** Several `AttractionCard` child classes are used to create the corresponding attraction cards. 
+ * Pro: Fixes the issue of empty lines being seen, by not creating redundant labels from the different FXML files.
+ * Con: Many excessive classes are created. Some code repetition.
+ 
+Reason for choosing Alternative 2: The final app GUI should look pleasant and attractive to the users. By removing those empty lines, it makes
+the interface look more neat and organised. However, this is not yet an ideal solution and a better solution could be looked for 
+in the future versions beyond v1.4. A possible combination of the above 2 alternatives could be possible to implement this functionality
+with less repetitive code.
+ 
 --------------------------------------------------------------------------------------------------------------------
 
 ## **5. Documentation, logging, testing, configuration, dev-ops**
@@ -771,12 +831,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The list is empty.
 
   Use case ends.
-
-* 3a. Error deleting list from storage.
-
-    * 3a1. TrackPad shows an error.
-
-      Use case ends.
       
 **Use case: UC08 - Add an itinerary**
 
@@ -853,16 +907,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The list is empty.
       
   Use case ends.
-      
-* 3a. The format is invalid. 
-      
-  * 3a1. TrackPad shows an error message.
-        
-      Use case resumes at step 3.
   
-* 3b. The given index is invalid.
+* 3a. The given index is invalid.
 
-    * 3b1. TrackPad shows an error message.
+    * 3b. TrackPad shows an error message.
     
       Use case resumes at step 3.
       
@@ -901,10 +949,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The list is empty.
 
   Use case ends.
-
-* 2b. The format is invalid. 
-        
-  Use case ends.
   
 **Use case: UC13 - Select an itinerary**
 
@@ -920,10 +964,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 2a. The list is empty.
-      
-  Use case ends.
-      
-* 2b. The format is invalid. 
       
   Use case ends.
   
@@ -948,18 +988,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
   
-* 2b. The format is invalid. 
-        
-  Use case ends.
-
-* 3a. Error deleting list from storage
-
-    * 3a1. TrackPad shows an error.
-
-      Use case ends.
-
-
-<!-- if <u> doesn't work, try <ins>text</ins> --> 
 **Use case: UC15 - Add a tourist attraction into selected itinerary**
 
 **MSS**
@@ -971,6 +999,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    Use case ends.
       
 **Extensions**
+
 * 3a. A field provided for the tourist attraction is invalid.
 
     * 3a1. TrackPad shows an error message.
@@ -1052,7 +1081,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User wishes to exit TrackPad.
-2. User provides the command to exit.
+2. User enters the command to exit.
 3. TrackPad closes.
 
     Use case ends.
@@ -1060,6 +1089,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 2a. User clicks the exit button on the top right of the window.
+
+    Use case resumes at step 3.
+    
+* 2b. User clicks the exit button, located under the File tab.
 
     Use case resumes at step 3.
           
@@ -1347,7 +1380,7 @@ testers are expected to do more *exploratory* testing.
    3. Test case: `clear-itinerary 2`<br>
       Expected: Everything typed after the space following the command will be ignored, and clear-itinerary command will be executed successfully.
   
-### F16 Adding an attraction into itinerary (Yeh Yu Chun)
+**F16 Adding an attraction into itinerary**
 
 1. Adding an attraction into an itinerary
 
@@ -1373,7 +1406,7 @@ testers are expected to do more *exploratory* testing.
         Expected: Similar to 3.
 
 
-### F17 Editing an attraction in an itinerary (Yeh Yu Chun)
+**F17 Editing an attraction in an itinerary**
 
 1. Editing an existing attraction in an itinerary.
 
@@ -1393,7 +1426,7 @@ testers are expected to do more *exploratory* testing.
         * No change in fields: `edit-itinerary-attraction 1 day/2 st/1000` when the start time is already `1000` <br>
         Expected: Similar to 3.
 
-### F18 Deleting an attraction from an itinerary (Yeh Yu Chun)
+**F18 Deleting an attraction from an itinerary**
 
 1. Deleting an attraction in an itinerary.
 
@@ -1412,10 +1445,10 @@ testers are expected to do more *exploratory* testing.
     * Invalid day: `delete-itinerary-attraction 1 day/NaN `
     Expected: Similar to previous.
 
-### F19 Viewing help (Yeh Yu Chun)
+**F19 Viewing help**
 1. Viewing help
 
-    1. Prerequisites: NIL 
+    1. Prerequisites: None. 
         
     2. Test case: `help` <br>
         Expected: TrackPad shows a dialog box with a working url to TrackPad's online user guide.
