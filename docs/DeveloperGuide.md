@@ -763,32 +763,37 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | person planning for my travel	| see a list of all the tourist attractions	                                         | get a look at all my tourist attractions at one go
 | `* * *`  | person planning for my travel  | clear all tourist attractions from my plan                                         | reset the list of attractions
 | `* * *`  | person planning for my travel	| edit the information in my tourist attractions	                                 | update my attractions with new information
-| `* * *`  | person planning for my travel	| tag tourist attractions in different categories like food, sightseeing, activities | distinguish between the different kinds of tourist attractions
-| `* * *`  | person planning for my travel	| add locations / addresses to my attractions                                        | know where the attraction is located and how to get there
 
 <div style="page-break-after: always;"></div>
 
 | Priority | As a …​                     | I want to …​                                                                    | So that I can…​                                              |
 | -------- | ------------------------------ | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `* * *`  | person planning for my travel	| tag tourist attractions in different categories like food, sightseeing, activities | distinguish between the different kinds of tourist attractions
+| `* * *`  | person planning for my travel	| add locations / addresses to my attractions                                        | know where the attraction is located and how to get there
 | `* * *`  | person planning for my travel	| add descriptions to my attractions                                                 | know roughly what the attraction is about when viewing them
 | `* * *`  | person planning for my travel	| add contact details such as email and phone number to my attractions               | know how to contact them if I need
 | `* * *`  | new user	                    | find the user guide easily	                                                     | know what I can do with the app
 | `* *`    | person planning for my travel  | create multiple itineraries for different trips	                                 | plan for all my different travelling trips
 | `* *`    | person planning for my travel  | add descriptions to my itineraries such as trip details                            | ensure I have all the correct trip information in one place
 | `* *`    | person planning for my travel  | add dates to my itineraries                                                        | plan when the trip will take place
-| `* *`    | person planning for my travel  | add attractions to my itineraries                                                  | plan which attractions to visit
-| `* *`    | person planning for my travel  | delete attractions from my itineraries                                             | remove attractions I do not want to visit anymore
-| `* *`    | person planning for my travel  | edit attractions in my itineraries                                                 | update the attractions I am planning to visit in my itineraries
 
 <div style="page-break-after: always;"></div>
 
 | Priority | As a …​                     | I want to …​                                                                    | So that I can…​                                              |
 | -------- | ------------------------------ | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `* *`    | person planning for my travel  | add attractions to my itineraries                                                  | plan which attractions to visit
+| `* *`    | person planning for my travel  | delete attractions from my itineraries                                             | remove attractions I do not want to visit anymore
+| `* *`    | person planning for my travel  | edit attractions in my itineraries                                                 | update the attractions I am planning to visit in my itineraries
 | `* *`    | person planning for my travel  | specify the times at which I visit an attraction within an itinerary               | plan when to visit the attractions
 | `* *`    | new user	                    | see the app with sample data	                                                     | see what kind of data the app can store
 | `*`      | person planning for my travel	| add opening hours to my attractions                                                | know when to visit
 | `*`      | person planning for my travel	| add the estimated price range to my attractions                                    | know which attractions to choose to match my budget
 | `*`      | person planning for my travel	| add the estimated budget to my itineraries                                         | plan how much to spend on each trip
+
+<div style="page-break-after: always;"></div>
+
+| Priority | As a …​                     | I want to …​                                                                    | So that I can…​                                              |
+| -------- | ------------------------------ | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | `*`      | person currently traveling	    | mark tourist attractions as visited / not visited                                  | know which attractions I missed
 | `*`      | person who had already traveled | give ratings to my attractions                                                    | keep track of which tourist attractions were enjoyable
 
