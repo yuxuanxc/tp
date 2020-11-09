@@ -1622,7 +1622,7 @@ Our project was harder than Address Book Level 3(AB3) because while AB3 deals wi
 entities, including Attractions, Itineraries as well as Itinerary Attractions. 
 
 Initially, we had to refactor most of the code to change all instances of Person to Attraction and AddressBook to TrackPad. 
-We also had to change the test cases, and since we were still unfamiliar with the many lines of code AB3 has, we had a 
+We also had to change the test cases, and since we were still unfamiliar with the many lines of code AB3 had, we had a 
 hard time figuring out why some of them failed.
 
 After which, we had to implement Itinerary into the app and make it work similarly enough to Attraction, but still function 
@@ -1633,10 +1633,8 @@ the new commands can sound similar to existing ones. Afterwards, we had to more 
 and their parsers to support the new commands, and also add many test cases to ensure their correctness. All of these took out 
 a lot of our time and effort in implementing. 
 
-In addition, we had to implement an adaptable UI, so that the attraction and itinerary box displays will vary in height, 
-since we have optional fields for our entities. We had to create different FXML files to be compatible with our AttractionCard
-and ItineraryCard having multiple Labels. 
-
-Also, although we decided to store itinerary attractions in a List of Days in itineraries, it proved a further challenge 
-in reading the itinerary attractions since we had to go through several layers to reach the list of itinerary attractions. 
-Our UI also contains boxes for the Day, to distinguish between different days of the same itinerary.
+In addition, the Ui had to be able to retrieve itinerary attractions. And this has to be done in a different way from attractions and itineraries,
+since there is one global list for attractions and itineraries, but there are multiple lists of itinerary attractions. This mean
+time and effort had to be spent in figuring out a new way of sending this information to the UI panels. The itinerary panel also had to 
+be able to switch to itinerary attractions panel, and switch back whenever the appropriate command was called, so this was not 
+easy to implement too.
