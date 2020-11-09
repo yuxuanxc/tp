@@ -149,7 +149,9 @@ The figure below shows how an attraction looks like in the attractions panel.
 
    ![result_of_clearing all_attractions](images/userguideimages/attractionCard.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 7. Breakdown of an attraction</i></sup></div>
-   
+ 
+<div style="page-break-after: always;"></div>
+
 The table below shows a summary of the commands in this section.
 
 Action | Format, Examples
@@ -179,6 +181,8 @@ Format (All fields): `add-attraction n/ATTRACTION_NAME l/LOCATION [d/DESCRIPTION
 | **ATTRACTION_NAME** | Takes only letters and numbers and should not be blank |
 | **LOCATION** | Takes any value, we recommend the format: `CITY, COUNTRY` |
 
+<div style="page-break-after: always;"></div>
+
 | Optional fields | Description |
 |---|---|
 | **DESCRIPTION** | Takes any value |
@@ -199,6 +203,8 @@ The opening time of an attraction can be later than it's the closing time as som
 An attraction can have any number of tags.
 </div>
 
+<div style="page-break-after: always;"></div>
+
 For example:
 
 You plan on visiting Gardens by the Bay over the weekends.
@@ -208,6 +214,8 @@ You plan on visiting Gardens by the Bay over the weekends.
     ![result_of_add attractions](images/userguideimages/addAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 8a. Before entering <code>add-attraction n/Gardens by the Bay a/18 Marina Gardens Dr, Singapore 018953 l/Singapore, Singapore t/sightseeing e/feedback@gardensbythebay.com.sg op/0500-0200 pr/LOW r/4.7 v/FALSE</code></i></sup></div>
 
+<div style="page-break-after: always;"></div>
+
 2. Note how `Gardens by the Bay` appears in the `Attractions` panel.
 
     ![result_of_add_attractions](images/userguideimages/addAttraction2.png)
@@ -215,11 +223,13 @@ You plan on visiting Gardens by the Bay over the weekends.
 
 Try these other examples too!
 * `add-attraction n/Singapore Flyer a/30 Raffles Ave, Singapore 039803 l/Singapore, Singapore`
-* `add-attraction n/Clarke Quay a/3 River Valley Rd, Singapore 179024 l/Singapore, Singapore t/drinking pr/MEDIUM r/4.5`<br><br>
+* `add-attraction n/Clarke Quay a/3 River Valley Rd, Singapore 179024 l/Singapore, Singapore t/drinking pr/MEDIUM r/4.5`<br>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 Multiple attractions of the same name and location cannot be added into the current list of attractions.
 </div>
+
+<div style="page-break-after: always;"></div>
 
 #### 4.2.2 Editing a tourist attraction: `edit-attraction`
 
@@ -237,6 +247,8 @@ Format: `edit-attraction INDEX [n/ATTRACTION_NAME] [l/LOCATION] [d/DESCRIPTION] 
 You can use `edit-attraction INDEX PREFIX/ ` to remove existing optional fields.
 </div>
 
+<div style="page-break-after: always;"></div>
+
 For example:
 
 You realise that the rating of `Gardens by the Bay` is wrongly reflected and want to add the price range for the attraction.
@@ -245,6 +257,8 @@ You realise that the rating of `Gardens by the Bay` is wrongly reflected and wan
 
     ![result_of_edit attractions](images/userguideimages/editAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 9a. Before entering <code>edit-attraction 11 r/4.4 pr/LOW</code></i></sup></div>
+
+<div style="page-break-after: always;"></div>
 
 2. Note how `Gardens by the Bay` appears in the `Attractions` panel.
 
@@ -256,6 +270,8 @@ You realise that the rating of `Gardens by the Bay` is wrongly reflected and wan
 Editing the tag of an attraction does not add on to its existing tags. Rather, it replaces all existing tags with the
 new tags you’re specifying.
 </div>
+
+<div style="page-break-after: always;"></div>
 
 #### 4.2.3 Deleting a tourist attraction : `delete-attraction`
 
@@ -274,6 +290,8 @@ You want to delete `Jurong Bird Park` from your list of attractions.
     ![result_of_delete attractions](images/userguideimages/deleteAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 10a. Before entering <code>delete-attraction 1</code></i></sup></div>
 
+<div style="page-break-after: always;"></div>
+
 2. First attraction in the list of attractions, `Jurong Bird Park`, is deleted.
 
     ![result_of_delete_attractions](images/userguideimages/deleteAttraction2.png)
@@ -282,6 +300,8 @@ You want to delete `Jurong Bird Park` from your list of attractions.
 Try these other examples too!
 * `find-attraction animals` followed by `delete-attraction 2` deletes the second attraction in the results of the [find-attraction](#425-finding-a-tourist-attraction-find-attraction)
 command.
+
+<div style="page-break-after: always;"></div>
 
 #### 4.2.4 Marking a tourist attraction as visited: `markVisited-attraction`
 
@@ -302,10 +322,14 @@ You have just visited `Night Safari` over the holidays. You want TrackPad to ref
     ![result_of_markVisited attractions](images/userguideimages/markVisitedAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 11a. Before entering <code>markVisited-attraction 2</code></i></sup></div>
 
+<div style="page-break-after: always;"></div>
+
 2. Second attraction in the list of attractions, `Night Safari`, is marked as visited.
 
     ![result_of_markVisited_attractions](images/userguideimages/markVisitedAttraction2.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 11b. After entering <code>markVisited-attraction 2</code></i></sup></div>
+
+<div style="page-break-after: always;"></div>
 
 #### 4.2.5 Finding a tourist attraction: `find-attraction`
 
@@ -326,10 +350,14 @@ You want to look for all the attractions that contain the keyword `jurong`.
     ![result_of_finding attractions](images/userguideimages/findAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 12a. Before entering <code>find-attraction jurong</code></i></sup></div>
 
+<div style="page-break-after: always;"></div>
+
 2. `Jurong Bird Park` and `Snow City` are displayed as they contain `jurong` in their fields.
 
     ![result_of_finding_attractions](images/userguideimages/findAttraction2.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 12b. After entering <code>find-attraction jurong</code></i></sup></div>
+
+<div style="page-break-after: always;"></div>
 
 #### 4.2.6 Listing all tourist attractions : `list-attraction`
 
@@ -347,6 +375,8 @@ After finding an attraction, you want to switch back to seeing all your attracti
     ![result_of_listing all attractions](images/userguideimages/listAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 13a. Before entering <code>list-attraction</code></i></sup></div>
 
+<div style="page-break-after: always;"></div>
+
 2. Note how all your attractions are displayed again.
 
     ![result_of_listing all_attractions](images/userguideimages/listAttraction2.png)
@@ -357,6 +387,8 @@ After finding an attraction, you want to switch back to seeing all your attracti
 `list-attraction` will work even if there are extra characters after the command.
 Eg. `list-attraction abcd` will behave like `list-attraction`.
 </div>
+
+<div style="page-break-after: always;"></div>
 
 #### 4.2.7 Clearing all attractions : `clear-attraction`
 
@@ -378,10 +410,14 @@ You want to delete all your attractions and start with an empty list of attracti
     ![result_of_clearing all attractions](images/userguideimages/clearAttraction1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 14a. Before entering <code>clear-attraction</code></i></sup></div>
 
+<div style="page-break-after: always;"></div>
+
 2. Note how all your attractions are now deleted. 
 
     ![result_of_clearing all_attractions](images/userguideimages/clearAttraction2.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 14b. After entering <code>clear-attraction</code></i></sup></div>
+
+<div style="page-break-after: always;"></div>
 
 ### 4.3 Itinerary Features (Koon Kiat)
 
@@ -394,6 +430,8 @@ The figure below shows how an itinerary looks like in the itineraries panel.
 Notice that the itineraries panel only shows a simplified view of your itineraries. The attractions in each itinerary are not displayed. To view them in detail, see [selecting an itinerary](#436-selecting-an-itinerary-select-itinerary), or just read on!
 To learn how to add, edit and delete attractions in your itineraries, see [Itinerary Attraction Features](#44-itinerary-attraction-features-yeh-yu-chun).
 
+<div style="page-break-after: always;"></div>
+
 The table below shows a summary of the commands in this section.
 
 Action | Format, Examples
@@ -405,6 +443,8 @@ Action | Format, Examples
 **[List itineraries](#435-listing-all-itineraries-list-itinerary)** | `list-itinerary`
 **[Select itinerary](#436-selecting-an-itinerary-select-itinerary)** | `select-itinerary INDEX`<br> e.g. `select-itinerary 3`
 **[Clear all itineraries](#437-clearing-all-itineraries--clear-itinerary)** | `clear-itinerary`
+
+<div style="page-break-after: always;"></div>
 
 #### 4.3.1 Adding a new itinerary: `add-itinerary`
 
@@ -427,6 +467,8 @@ Format: `add-itinerary n/ITINERARY_NAME sd/START_DATE ed/END_DATE [d/DESCRIPTION
 You do not have to specify itinerary locations as they are generated automatically from the itinerary attractions you have in your itineraries.
 </div>
 
+<div style="page-break-after: always;"></div>
+
 For example:
 
 You want to add an itinerary for a trip to Europe with your friends. 
@@ -435,6 +477,8 @@ You want to add an itinerary for a trip to Europe with your friends.
 
    ![before_adding an itinerary](images/userguideimages/addItinerary1.png)
    <div align="center"><sup style="font-size:100%"><i>Figure 16a. Before entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div><br>
+
+<div style="page-break-after: always;"></div>
 
 2. Note how your new itinerary appears in the itineraries panel.
 
@@ -448,6 +492,8 @@ Try these other examples too!
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 Multiple itineraries of the same name, start date and end date cannot be added into the list of itineraries.
 </div>
+
+<div style="page-break-after: always;"></div>
 
 #### 4.3.2 Editing an itinerary: `edit-itinerary`
 
@@ -463,6 +509,8 @@ Format: `edit-itinerary INDEX [n/NAME] [sd/START_DATE] [ed/END_DATE] [d/DESCRIPT
 You can use `edit-itinerary INDEX PREFIX/ ` to remove existing optional fields.
 </div>
 
+<div style="page-break-after: always;"></div>
+
 For example:
 
 After adding an itinerary for a trip to Europe that starts on `01-12-2020`, you want to change the start date to `06-12-2020`. 
@@ -472,6 +520,8 @@ After adding an itinerary for a trip to Europe that starts on `01-12-2020`, you 
     ![result_of_editing an itinerary](images/userguideimages/editItinerary1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 17a. Before entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div><br>
 
+<div style="page-break-after: always;"></div>
+
 2. Note how the start date of the second itinerary has changed from `01-12-2020` to `06-12-2020`.
 
     ![result_of_editing an itinerary](images/userguideimages/editItinerary2.png)
@@ -480,6 +530,8 @@ After adding an itinerary for a trip to Europe that starts on `01-12-2020`, you 
 Try these other examples too!
 * `edit-itinerary 1 d/` to remove the description of your first itinerary
 * `edit-itinerary 2 ed/15-12-2020 b/1000` to change the end date and budget of your second itinerary
+
+<div style="page-break-after: always;"></div>
 
 #### 4.3.3 Deleting an itinerary: `delete-itinerary`
 
@@ -498,11 +550,14 @@ You do not want to store your first itinerary in the app anymore, and you want t
     ![result_of_deleting an itinerary](images/userguideimages/deleteItinerary1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 18a. Before entering <code>delete-itinerary 1</code></i></sup></div><br>
 
+<div style="page-break-after: always;"></div>
+
 2. Note how your first itinerary has been deleted, and there is now one less itinerary. 
 
     ![result_of_deleting an itinerary](images/userguideimages/deleteItinerary2.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 18b. After entering <code>delete-itinerary 1</code></i></sup></div><br>
 
+<div style="page-break-after: always;"></div>
 
 #### 4.3.4 Finding an itinerary: `find-itinerary`
 
@@ -524,6 +579,8 @@ You want to look for all the itineraries that contain the keyword `Europe`.
     ![result_of_finding an itinerary](images/userguideimages/findItinerary1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 19a. Before entering <code>find-itinerary Europe</code></i></sup></div><br>
 
+<div style="page-break-after: always;"></div>
+
 2. Note how only the itinerary containing the word `Europe` is displayed. 
 
     ![result_of_finding an itinerary](images/userguideimages/findItinerary2.png)
@@ -532,6 +589,8 @@ You want to look for all the itineraries that contain the keyword `Europe`.
 Try these other examples too!
 * `find-itinerary 01-09-2020` to find itineraries that have `01-09-2020` as their start or end date
 * `find-itinerary Singapore` to find itineraries that take place in Singapore
+
+<div style="page-break-after: always;"></div>
 
 #### 4.3.5 Listing all itineraries: `list-itinerary`
 
@@ -549,6 +608,8 @@ After finding an itinerary, you want to go back to seeing all your itineraries.
     ![result_of_listing itineraries](images/userguideimages/listItinerary1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 20a. Before entering <code>list-itinerary</code></i></sup></div><br>
 
+<div style="page-break-after: always;"></div>
+
 2. Note how all your itineraries are displayed again.
 
     ![result_of_listing itineraries](images/userguideimages/listItinerary2.png)
@@ -558,6 +619,8 @@ After finding an itinerary, you want to go back to seeing all your itineraries.
 `list-itinerary` will work even if there are extra characters after the command.
 Eg. `list-itinerary abcd` will behave like `list-itinerary`.
 </div>
+
+<div style="page-break-after: always;"></div>
 
 #### 4.3.6 Selecting an itinerary: `select-itinerary`
 
@@ -573,6 +636,8 @@ Format: `select-itinerary INDEX`
 To go back to seeing the list of itineraries, use `list-itinerary`.
 </div>
 
+<div style="page-break-after: always;"></div>
+
 For example:
 
 You want to view in detail the attractions in your first itinerary. 
@@ -582,11 +647,15 @@ You want to view in detail the attractions in your first itinerary.
     ![result_of_selecting itinerary](images/userguideimages/selectItinerary1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 21a. Before entering <code>select-itinerary 1</code></i></sup></div><br>
 
+<div style="page-break-after: always;"></div>
+
 2. Note how the itineraries panel has changed to show a detailed view of the attractions in the itinerary.
 
     ![result_of_selecting itinerary](images/userguideimages/selectItinerary2.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 21b. After entering <code>select-itinerary 1</code></i></sup></div><br>
     
+<div style="page-break-after: always;"></div>
+
 #### 4.3.7 Clearing all itineraries : `clear-itinerary`
 
 Clears all itineraries.
@@ -606,6 +675,8 @@ You want to delete all your itineraries, and start over with an empty list of it
 
     ![result_of_clearing all itineraries](images/userguideimages/clearItinerary1.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 22a. Before entering <code>clear-itinerary</code></i></sup></div><br>
+
+<div style="page-break-after: always;"></div>
 
 2. Note how all your itineraries are now deleted. 
 
