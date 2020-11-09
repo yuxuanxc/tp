@@ -45,12 +45,6 @@ activate EditItineraryDescriptor
 EditItineraryDescriptor --> EditItineraryCommandParser
 deactivate EditItineraryDescriptor
 
-EditItineraryCommandParser -> EditItineraryDescriptor : setStartDate(date)
-activate EditItineraryDescriptor
-
-EditItineraryDescriptor --> EditItineraryCommandParser : desc
-deactivate EditItineraryDescriptor
-
 create EditItineraryCommand
 EditItineraryCommandParser -> EditItineraryCommand : EditItineraryCommand(1, desc)
 activate EditItineraryCommand
@@ -74,18 +68,6 @@ EditItineraryCommand -> Model : setItinerary(itineraryToEdit, editedItinerary)
 activate Model
 
 Model -> ItineraryList : setItinerary(target, editedItinerary)
-activate ItineraryList
-
-ItineraryList --> Model
-deactivate ItineraryList
-
-Model --> EditItineraryCommand
-deactivate Model
-
-EditItineraryCommand -> Model : setCurrentItinerary(null)
-activate Model
-
-Model -> ItineraryList : setCurrentItinerary(null)
 activate ItineraryList
 
 ItineraryList --> Model

@@ -424,36 +424,26 @@ to parse a user’s input before creating the correct `EditItineraryCommand`.
 TrackPad uses the `EditItineraryDescriptor` class to facilitate edit operations. 
 An `EditItineraryDescriptor` is a temporary bridge that holds the newly-edited fields of an itinerary.
 
-Step 1. The user types in `edit-itinerary 1 sd/10-11-2020` to edit the `startDate` of the first itinerary in the `Itineraries` panel.
+**Step 1.** The user types in `edit-itinerary 1 sd/10-11-2020` to edit the `startDate` of the first itinerary in the `Itineraries` panel.
 
-Step 2. This calls the `execute` method of the `LogicManager` class. The user input is passed in as a string.
+**Step 2.** `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `EditItineraryCommand` and passes the input to `EditItineraryCommandParser`. 
 
-Step 3. `Logic.execute()` then calls the `parseCommand` method of the `TrackPadParser` class to parse the string input.
+**Step 3.** `EditItineraryCommandParser` parses the input, constructing a new `EditItineraryDescriptor` object from the input, containing the updated fields of the itinerary.
 
-Step 4. `TrackPadParser.parseCommand()` recognises it as a edit-itinerary command and passes the input to `EditItineraryCommandParser`. 
+**Step 4.** `EditItineraryCommandParser` constructs a new `EditCommand` with the `EditItineraryDescriptor` object.
 
-Step 5. `EditItineraryCommandParser` parses the input and constructs a new `EditItineraryCommand`.
+**Step 5.** `LogicManager` executes the `EditItineraryCommand`, creating a new `editedItinerary` object from the fields of the `EditItineraryDescriptor` object and the target itinerary.
 
-Step 6. In `EditItineraryCommandParser`, the string input is first split into tokens.
+**Step 6.** This calls `Model` to replace the target itinerary with the `editedItinerary` object.
 
-Step 7. In the same method call, an `EditItineraryDescriptor` object is created from these tokens. The object contains
-the new values to be updated to the target Itinerary.
-
-Step 8. An `EditCommand` is created with the populated `EditItineraryDescriptor` which is then executed by the `LogicManager` in step 2.
-
-Step 9. The command execution calls `getFilteredItineraryList` to get the `itineraryToEdit` using indexes provided from the user input.
-
-Step 10. A `editedItinerary` object using the `createEditedItinerary` method, using the fields to be updated from the `EditItineraryDescriptor`
-object and the fields of the `itineraryToEdit` object. 
-
-Step 11. The `Model` is then updated by replacing the `itineraryToEdit` object with the `editedItinerary` object. 
-
-Step 12. A `CommandResult` is created and returned to show the result of the execution.
+**Step 7.** After the target itinerary is replaced, `EditItineraryCommand` return a `CommandResult` for the Ui to display.
 
 The following sequence diagram shows how the `edit-itinerary` operation works:
 
 ![EditItinerarySequenceDiagram](images/devguideimages/EditItinerarySequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `edit-itinerary`</i></sup></div><br>
+
+The following
 
 #### 4.6.2 Design Considerations
 
