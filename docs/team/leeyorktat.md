@@ -10,12 +10,16 @@ It is written and compiled in java, hence it's available on all platforms. The u
 
 Given below are my contributions to the project.
 
-* **New Feature**: Added SelectItinerary, EditItinerary, FindItinerary, ListItinerary command
-  * What it does: Allows the user to select an itinerary to perform ItineraryAttraction commands as well as edit, find and list their itineraries.
-  * Justification: The SelectItinerary feature is important and expected to be used a lot as it has to be used before any ItineraryAttraction command. The rest of the commands also allow
-  the user to perform edit, find and list commands for their itineraries.
-  * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of how `Itinerary` and `ItineraryList` classes work.
+* **New Feature**: Added SelectItinerary command
+  * What it does: Allows the user to select an itinerary to perform ItineraryAttraction commands.
+  * Justification: The SelectItinerary feature is important and expected to be used a lot as it has to be used before any ItineraryAttraction command.
+  * Highlights: It required an in-depth analysis of how `Itinerary` and `ItineraryList` classes work. I also added testcases for this command to make
+  sure it fits well with the existing implementation of TrackPad.
   
+* **New Feature**: Added EditItinerary, FindItinerary, ListItinerary command
+  * What it does: Allows the user to select an itinerary to perform ItineraryAttraction commands as well as edit, find and list their itineraries.
+  * Justification: These commands allow the user to perform edit, find and list commands for their itineraries.
+  * Highlights: It required an in-depth analysis of how `Itinerary` and `ItineraryList` classes work.
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=leeyorktat&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=false)
 
