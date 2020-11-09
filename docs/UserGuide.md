@@ -728,6 +728,8 @@ Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITI
 | **END_TIME** | End time to visit the attraction in the 24H format `HHMM` |
 | [**DAY_VISITING**](#6-glossary-yuxuan) | Day in your itinerary when you plan to visit the attraction |
 
+<div style="page-break-after: always;"></div>
+
 For example:
 
 1. Look on the left side of the image below. You want to add `Night Safari` to your `Selected Itinerary`.
@@ -824,6 +826,8 @@ For example:
     ![result of delete itinerary attraction](images/userguideimages/DeleteItineraryAttraction1.png)
     <div align='center'><i><sup style="font-size:100%">Figure 26a. Before entering <code>delete-itinerary-attraction 1 day/2</code></sup></i></div><br>
     
+    <div style="page-break-after: always;"></div>
+
 4. Scroll down the `Selected Itinerary` and notice `Day 2` is now empty.
 
     ![result of delete itinerary attraction](images/userguideimages/DeleteItineraryAttraction2.png)
