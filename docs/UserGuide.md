@@ -785,10 +785,11 @@ There is no need for you to save manually.
 ## 5. FAQ
 
 **Q**: How do I transfer my data to another computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous TrackPad home folder.
+**A**: After installing the app in the other computer, overwrite the empty `data` folder it creates in the home folder 
+with the `data` folder of your previous TrackPad home folder.
 
 **Q**: Where do I go to if I need help?<br>
-**A**: Simply head to TrackPad's [issue page](https://github.com/AY2021S1-CS2103T-T09-3/tp/issues) and create an issue! Kindly allow us sometime to reach back to you.
+**A**: Simply head to TrackPad's [issue page](https://github.com/AY2021S1-CS2103T-T09-3/tp/issues) and create an issue! Kindly allow us some time to reach back to you.
 
 <div style="page-break-after: always;"></div>
 
