@@ -6,6 +6,8 @@ title: User Guide
 
 <div style="page-break-after: always;"></div>
 
+**Table of Contents**
+
 * Table of Contents
 {:toc}
 
