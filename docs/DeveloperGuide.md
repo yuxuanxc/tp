@@ -520,11 +520,11 @@ The following activity diagram summarizes what happens when a user executes an `
 
 **Aspect: How the command word of `find-itinerary` is derived**
 
-* **Alternative 1 (Current choice): `find-itinerary** 
+* **Alternative 1 (Current choice): `find-itinerary`** 
   * Pros: More intuitive, follows the format of the `find-attraction` command.
   * Cons: More time spent typing the command.
 
-* **Alternative 2: findi** 
+* **Alternative 2: `find-i`** 
   * Pros: Simple and faster to type.
   * Cons: Less intuitive, users might have to remember the correct command when finding their itineraries.
 
