@@ -827,6 +827,8 @@ Action | Format, Examples
 **[List attractions](#426-listing-all-tourist-attractions--list-attraction)** | `list-attraction`
 **[Clear all attractions](#427-clearing-all-attractions--clear-attraction)** | `clear-attraction`
 
+<div style="page-break-after: always;"></div>
+
 ### 7.2 Itinerary Commands
 
 Action | Format, Examples
@@ -838,6 +840,8 @@ Action | Format, Examples
 **[List itineraries](#435-listing-all-itineraries-list-itinerary)** | `list-itinerary`
 **[Select itinerary](#436-selecting-an-itinerary-select-itinerary)** | `select-itinerary INDEX`<br> e.g. `select-itinerary 3`
 **[Clear all itineraries](#437-clearing-all-itineraries--clear-itinerary)** | `clear-itinerary`
+
+<div style="page-break-after: always;"></div>
 
 ### 7.3 Itinerary attraction Commands
 
