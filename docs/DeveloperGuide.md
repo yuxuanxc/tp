@@ -50,10 +50,10 @@ Figure 1 explains the high-level design of the App. Given below is a quick overv
 
 The rest of the App consists of four components.
 
-* [**`UI`**](#32-ui-component): The UI of the App.
-* [**`Logic`**](#33-logic-component): The command executor.
-* [**`Model`**](#34-model-component): Holds the data of the App in memory.
-* [**`Storage`**](#35-storage-component): Reads data from, and writes data to, the hard disk.
+* [**`UI`**](#32-ui): The UI of the App.
+* [**`Logic`**](#33-logic): The command executor.
+* [**`Model`**](#34-model): Holds the data of the App in memory.
+* [**`Storage`**](#35-storage): Reads data from, and writes data to, the hard disk.
 
 Each of the four components,
 
@@ -80,7 +80,7 @@ The sections below give more details of each component.
 
 <div style="page-break-after: always;"></div>
 
-### 3.2 UI component
+### 3.2 UI
 
 ![Structure of the UI Component](images/devguideimages/UiClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 4. Structure of the Ui Component, Ui Class Diagram</i></sup></div><br>
@@ -360,15 +360,9 @@ Then, have `Itinerary` directly store the `ItineraryAttraction`s.
   * Pros: `ItineraryAttraction`s are clearly divided into the different days. Easier to get the `ItineraryAttraction`s on a specific day. 
   * Cons: More methods and classes needed, which complicates things. 
   
-<<<<<<< HEAD
-Reason for choosing Alternative 2:
-
-<div style="page-break-after: always;"></div>
-=======
 Reason for choosing Alternative 2: Since we are creating itineraries that have their contained itinerary attractions 
 separated by day, we think that it will be easier to do so if the itinerary attractions are in their respective days. If 
 not, any time we need to get itinerary attractions by days, some sorting or checking would be needed. 
->>>>>>> 920534cdc17bee23207850eea32e773184bef0c3
   
 ### 4.5 Add Itinerary Feature
 
@@ -429,13 +423,9 @@ to handle how to add attractions with and without dates. For example, we would p
 attractions with specified days to itineraries without a date range, and determine different ways to store and display 
 itinerary attractions for itineraries without dates. Therefore, we decided to go with the first alternative for a simplified process. 
 
-<<<<<<< HEAD
 <div style="page-break-after: always;"></div>
 
-### 4.6 Edit Itinerary Feature (Might need discuss numbering again)
-=======
 ### 4.6 Edit Itinerary Feature
->>>>>>> 920534cdc17bee23207850eea32e773184bef0c3
 
 TrackPad allows users to edit itineraries that have already been added.
 
