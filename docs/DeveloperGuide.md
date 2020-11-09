@@ -697,19 +697,19 @@ whether the field is filled or not. Thus, it leaves many empty spaces in the GUI
 Figure 26 shows an example of the current implementation of the `AttractionCard`. Compulsory fields, such as `name` and `locale`
 are present in the parent class since all attractions have those fields. In `AttractionListPanel`, the number of filled fields 
 will be determined in the corresponding `Attraction`, via the `getNumOfFilledFields()` method, and the appropriate child will be used to 
-create the card. This way, we can avoid any awkward gaps due to missing fields.
+create the card. This way, we can avoid any unnecessary gaps found in the boxes due to missing fields.
 
 #### 4.11.2 Design Considerations
 
 **Aspect: Method of Implementation**
 
 * **Alternative 1:** Only one `AttractionCard` is used to create the attraction cards. 
- * Pros: Far lesser code required, and no need for so many children classes.
+ * Pros: Lesser code required, and no need for so many children classes.
  * Cons: Empty lines will be seen in the GUI.
  
 * **Alternative 2 (Current Choice):** Several `AttractionCard` child classes are used to create the corresponding attraction cards. 
  * Pros: Fixes the issue of empty lines being seen, by not creating redundant labels from the different FXML files.
- * Cons: Many excessive classes are created. Some code repetition.
+ * Cons: Many classes are created. Some code repetition.
  
 Reason for choosing Alternative 2: The final app GUI should look pleasant and attractive to the users. By removing those empty lines, it makes
 the interface look more neat and organised. However, this is not yet an ideal solution and a better solution could be looked for 
