@@ -405,8 +405,6 @@ Action | Format, Examples
 **[Select itinerary](#436-selecting-an-itinerary-select-itinerary)** | `select-itinerary INDEX`<br> e.g. `select-itinerary 3`
 **[Clear all itineraries](#437-clearing-all-itineraries--clear-itinerary)** | `clear-itinerary`
 
-Read on to find out more!
-
 #### 4.3.1 Adding a new itinerary: `add-itinerary`
 
 Adds a new itinerary to the current list of itineraries.
@@ -432,15 +430,15 @@ For example:
 
 You want to add an itinerary for a trip to Europe with your friends. 
  
-1. Enter `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000` into the command box. <br>
+1. Enter `add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000` into the command box.
 
    ![before_adding an itinerary](images/userguideimages/addItinerary1.png)
-   <div align="center"><sup style="font-size:100%"><i>Figure 16a. Before entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
+   <div align="center"><sup style="font-size:100%"><i>Figure 16a. Before entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div><br>
 
-2. Note how your new itinerary appears in the itineraries panel. <br>
+2. Note how your new itinerary appears in the itineraries panel.
 
    ![after_adding an itinerary](images/userguideimages/addItinerary2.png)
-   <div align="center"><sup style="font-size:100%"><i>Figure 16b. After entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div>
+   <div align="center"><sup style="font-size:100%"><i>Figure 16b. After entering <code>add-itinerary n/Europe Trip sd/01-12-2020 ed/20-12-2020 d/with friends b/4000</code></i></sup></div><br>
  
 Try these other examples too!
 * `add-itinerary n/Japan holiday sd/15-01-2019 ed/30-01-2019`
@@ -468,15 +466,15 @@ For example:
 
 After adding an itinerary for a trip to Europe that starts on `01-12-2020`, you want to change the start date to `06-12-2020`. 
 
-1. Enter `edit-itinerary 2 sd/06-12-2020` into the command box. <br>
+1. Enter `edit-itinerary 2 sd/06-12-2020` into the command box.
 
     ![result_of_editing an itinerary](images/userguideimages/editItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 17a. Before entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 17a. Before entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div><br>
 
-2. Note how the start date of the second itinerary has changed from `01-12-2020` to `06-12-2020`. <br>
+2. Note how the start date of the second itinerary has changed from `01-12-2020` to `06-12-2020`.
 
     ![result_of_editing an itinerary](images/userguideimages/editItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 17b. After entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 17b. After entering <code>edit-itinerary 2 sd/06-12-2020</code></i></sup></div><br>
 
 Try these other examples too!
 * `edit-itinerary 1 d/` to remove the description of your first itinerary
@@ -497,12 +495,12 @@ You do not want to store your first itinerary in the app anymore, and you want t
 1. Enter `delete-itinerary 1` into the command box. 
 
     ![result_of_deleting an itinerary](images/userguideimages/deleteItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 18a. Before entering <code>delete-itinerary 1</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 18a. Before entering <code>delete-itinerary 1</code></i></sup></div><br>
 
 2. Note how your first itinerary has been deleted, and there is now one less itinerary. 
 
     ![result_of_deleting an itinerary](images/userguideimages/deleteItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 18b. After entering <code>delete-itinerary 1</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 18b. After entering <code>delete-itinerary 1</code></i></sup></div><br>
 
 
 #### 4.3.4 Finding an itinerary: `find-itinerary`
@@ -523,16 +521,16 @@ You want to look for all the itineraries that contain the keyword `Europe`.
 1. Enter `find-itinerary Europe` into the command box.
 
     ![result_of_finding an itinerary](images/userguideimages/findItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 19a. Before entering <code>find-itinerary Europe</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 19a. Before entering <code>find-itinerary Europe</code></i></sup></div><br>
 
 2. Note how only the itinerary containing the word `Europe` is displayed. 
 
     ![result_of_finding an itinerary](images/userguideimages/findItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 19b. After entering <code>find-itinerary Europe</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 19b. After entering <code>find-itinerary Europe</code></i></sup></div><br>
 
 Try these other examples too!
 * `find-itinerary 01-09-2020` to find itineraries that have `01-09-2020` as their start or end date
-* `find-itinerary Singapore` to find itineraries that place in Singapore
+* `find-itinerary Singapore` to find itineraries that take place in Singapore
 
 #### 4.3.5 Listing all itineraries: `list-itinerary`
 
@@ -545,15 +543,15 @@ For example:
 
 After finding an itinerary, you want to go back to seeing all your itineraries. 
 
-1. Enter `list-itinerary` into the command box. <br>
+1. Enter `list-itinerary` into the command box.
 
     ![result_of_listing itineraries](images/userguideimages/listItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 20a. Before entering <code>list-itinerary</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 20a. Before entering <code>list-itinerary</code></i></sup></div><br>
 
-2. Note how all your itineraries are displayed again. <br>
+2. Note how all your itineraries are displayed again.
 
     ![result_of_listing itineraries](images/userguideimages/listItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 20b. After entering <code>list-itinerary</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 20b. After entering <code>list-itinerary</code></i></sup></div><br>
 
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 `list-itinerary` will work even if there are extra characters after the command.
@@ -578,15 +576,15 @@ For example:
 
 You want to view in detail the attractions in your first itinerary. 
 
-1. Enter `select-itinerary 1` into the command box. <br>
+1. Enter `select-itinerary 1` into the command box.
 
     ![result_of_selecting itinerary](images/userguideimages/selectItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 21a. Before entering <code>select-itinerary 1</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 21a. Before entering <code>select-itinerary 1</code></i></sup></div><br>
 
-2. Note how the itineraries panel has changed to show a detailed view of the attractions in the itinerary. <br>
+2. Note how the itineraries panel has changed to show a detailed view of the attractions in the itinerary.
 
     ![result_of_selecting itinerary](images/userguideimages/selectItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 21b. After entering <code>select-itinerary 1</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 21b. After entering <code>select-itinerary 1</code></i></sup></div><br>
     
 #### 4.3.7 Clearing all itineraries : `clear-itinerary`
 
@@ -606,12 +604,12 @@ You want to delete all your itineraries, and start over with an empty list of it
 1. Enter `clear-itinerary` into the command box. 
 
     ![result_of_clearing all itineraries](images/userguideimages/clearItinerary1.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 22a. Before entering <code>clear-itinerary</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 22a. Before entering <code>clear-itinerary</code></i></sup></div><br>
 
 2. Note how all your itineraries are now deleted. 
 
     ![result_of_clearing all itineraries](images/userguideimages/clearItinerary2.png)
-    <div align="center"><sup style="font-size:100%"><i>Figure 22b. After entering <code>clear-itinerary</code></i></sup></div>
+    <div align="center"><sup style="font-size:100%"><i>Figure 22b. After entering <code>clear-itinerary</code></i></sup></div><br>
 
 <div style="page-break-after: always;"></div>
 
