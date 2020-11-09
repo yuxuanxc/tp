@@ -65,14 +65,14 @@ Each of the four components,
 <div style="page-break-after: always;"></div>
 
 ![Class Diagram of the Logic Component](images/devguideimages/LogicClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 2 Class Diagram of the Logic Component</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 2. Class Diagram of the Logic Component</i></sup></div><br>
 
 For example, the `Logic` component (seen from Figure 2 above) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
 
 **How the architecture components interact with each other**
 
 ![Sequence Diagram of the Various Components](images/devguideimages/ArchitectureSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 3 Sequence Diagram of the various components</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 3. Sequence Diagram of the various components</i></sup></div><br>
 
 Figure 3 above shows how the components interact with each other for the scenario where the user issues the command `delete-attraction 1`.
 
@@ -83,7 +83,7 @@ The sections below give more details of each component.
 ### 3.2 UI component
 
 ![Structure of the UI Component](images/devguideimages/UiClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 4 Structure of the Ui Component, Ui Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 4. Structure of the Ui Component, Ui Class Diagram</i></sup></div><br>
 
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
@@ -102,7 +102,7 @@ This design is similar to the Architectural design of TrackPad, whereby differen
 ### 3.3 Logic
 
 ![Structure of the Logic Component](images/devguideimages/LogicClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 5 Structure of the Logic Component, Logic Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 5. Structure of the Logic Component, Logic Class Diagram</i></sup></div><br>
 
 **API** :
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
@@ -117,7 +117,7 @@ This design is similar to the Architectural design of TrackPad, whereby differen
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete-attraction 1")` API call.
 
 ![Interactions Inside the Logic Component for the `delete-attraction 1` Command](images/devguideimages/DeleteAttractionSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 6 Interactions inside the Logic Component for the <code>delete-attraction 1</code> Command</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 6. Interactions inside the Logic Component for the <code>delete-attraction 1</code> Command</i></sup></div><br>
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
@@ -127,7 +127,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 ### 3.4 Model
 
 ![Structure of the Model Component](images/devguideimages/ModelClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 7 Structure of the Model Component, Model Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 7. Structure of the Model Component, Model Class Diagram</i></sup></div><br>
 
 **API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
@@ -145,14 +145,14 @@ The `Model` component shown in Figure 7,
 An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.</div><br>
 
 ![BetterModelClassDiagram](images/devguideimages/BetterModelClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 8 Structure of an alternative Model Component, Alternative Model Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 8. Structure of an alternative Model Component, Alternative Model Class Diagram</i></sup></div><br>
 
 <div style="page-break-after: always;"></div>
 
 ### 3.5 Storage
 
 ![Structure of the Storage Component](images/devguideimages/StorageClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 9 Structure of the Storage Component, Storage Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 9. Structure of the Storage Component, Storage Class Diagram</i></sup></div><br>
 
 **API** : [`Storage.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
@@ -179,7 +179,7 @@ The `Attraction` class helps users to keep track of all the details of their tou
 The class diagram for `Attraction` is shown below:
 
 ![Structure of Attraction Component](images/devguideimages/AttractionClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 10 The Attraction Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 10. The Attraction Class Diagram</i></sup></div><br>
 
 Each `Attraction` contains the following fields: `Name`, `Description`, `Address`, `Email`, `Location`, `OpeningHours`,
 `Phone`, `PriceRange`, `Rating`, `Visited` and `Tag`. Only `Name` and `Location` are compulsory fields, the rest are all optional.
@@ -233,7 +233,7 @@ the optional fields `Description`, `Address`, `Email`, `OpeningHours`, `Phone`, 
 The following sequence diagram shows how the `add-attraction` operation works:
 
 ![Add Attraction Sequence Diagram](images/devguideimages/AddAttractionSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 11 The sequence diagram of <code>add-attraction</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 11. The sequence diagram of <code>add-attraction</code></i></sup></div><br>
 
 #### 4.2.2 Design Considerations
 
@@ -267,7 +267,7 @@ If the index is invalid or the attraction has already been visited before, an er
 
 The following activity diagram shows how `markVisited-attraction` works:
 ![MarkVisitedActivityDiagram](images/devguideimages/MarkVisitedActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 12 The activity diagram of <code>markVisited-attraction</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 12. The activity diagram of <code>markVisited-attraction</code></i></sup></div><br>
 
 We will use the above activity diagram as shown in Figure 12 to explain how the `markVisited-attraction` command is executed in detail.
 We assume no error is encountered, and the attraction that is selected to be marked as visited is not visited yet.
@@ -291,7 +291,7 @@ We assume no error is encountered, and the attraction that is selected to be mar
 The whole sequence of events is outlined in the sequence diagram shown below.
 
 ![MarkVisitedSequenceDiagram](images/devguideimages/MarkVisitedSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 13 The sequence diagram of <code>markVisited-attraction 1</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 13. The sequence diagram of <code>markVisited-attraction 1</code></i></sup></div><br>
 
 <div style="page-break-after: always;"></div>
 
@@ -320,7 +320,7 @@ The `Itinerary` class helps users keep track of the details of their trips and t
 The class diagram for `Itinerary` is shown below:
 
 ![ItineraryClassDiagram](images/devguideimages/ItineraryClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 14 The Itinerary Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 14. The Itinerary Class Diagram</i></sup></div><br>
 
 Each `Itinerary` contains `Name`, `Description`, `Budget`, `startDate` and `endDate`. Both `startDate` and `endDate` 
 are of the `ItineraryDate` class. Additionally, to store the attractions that users want to visit, each `Itinerary` 
@@ -382,12 +382,12 @@ The following steps illustrate the successful execution of an `add-itinerary` co
 The following sequence diagram shows how the `add-itinerary` operation works:
 
 ![AddItinerarySequenceDiagram](images/devguideimages/AddItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 15 The sequence diagram of <code>add-itinerary</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 15. The sequence diagram of <code>add-itinerary</code></i></sup></div><br>
 
 The following activity diagram summarizes what happens when a user executes an `add-itinerary` command:
 
 ![AddItineraryActivityDiagram](images/devguideimages/AddItineraryActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 16 The activity diagram of `add-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 16. The activity diagram of `add-itinerary`</i></sup></div><br>
 
 #### 4.5.2 Design Considerations
 
@@ -453,7 +453,7 @@ Step 12. A `CommandResult` is created and returned to show the result of the exe
 The following sequence diagram shows how the `edit-itinerary` operation works:
 
 ![EditItinerarySequenceDiagram](images/devguideimages/EditItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `edit-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X. The sequence diagram of `edit-itinerary`</i></sup></div><br>
 
 #### 4.6.2 Design Considerations
 
@@ -483,7 +483,7 @@ Step 7. A `CommandResult` is created and returned to show the result of the exec
 The following sequence diagram shows how the `find-itinerary` operation works:
 
 ![FindItinerarySequenceDiagram](images/devguideimages/FindItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `find-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X. The sequence diagram of `find-itinerary`</i></sup></div><br>
 
 #### 4.7.2 Design Considerations
 
@@ -512,7 +512,7 @@ Step 8. A `CommandResult` is created and returned to show the result of the exec
 The following sequence diagram shows how the `select-itinerary` operation works: 
 
 ![SelectItinerarySequenceDiagram](images/devguideimages/SelectItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of `select-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X. The sequence diagram of `select-itinerary`</i></sup></div><br>
 
 #### 4.8.2 Design Considerations
 
@@ -527,7 +527,7 @@ This is a subclass of `Attraction` that goes into the `List<Day>` that resides i
 It is stored internally as an `List<Day>`. Additionally, it implements the following operations:
 
 ![Itinerary Attraction Implementation Class Diagram](images/devguideimages/ItineraryAttractionClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 23 The ItineraryAttraction Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 23. The ItineraryAttraction Class Diagram</i></sup></div><br>
 
 `ItineraryAttraction` is an `Attraction` and contains `startTime` and `endTime`.
 
@@ -577,7 +577,7 @@ with a start and end time.
 
 The following activity diagram shows a simplified add-itinerary-attraction operation:
 ![AddItineraryAttractionActivityDiagram](images/devguideimages/AddItineraryAttractionActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 24 The activity diagram of <code>add-itinerary-attraction</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 24. The activity diagram of <code>add-itinerary-attraction</code></i></sup></div><br>
 
 <div style="page-break-after: always;"></div>
 
@@ -600,7 +600,7 @@ itinerary and the timing does not clash with any exisiting attractions in the it
 The following sequence diagram shows how the `add-itinerary-attraction` operation works:
 
 ![AddItineraryAttractionSequenceDiagram](images/devguideimages/AddItineraryAttractionSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 25 The sequence diagram of <code>add-itinerary-attraction 1 day/1 st/1000 et/1200.</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 25. The sequence diagram of <code>add-itinerary-attraction 1 day/1 st/1000 et/1200.</code></i></sup></div><br>
 
 <div style="page-break-after: always;"></div>
 
@@ -631,7 +631,7 @@ This is because TrackPad supports optional fields, and with the current code, th
 whether the field is filled or not. Thus, it leaves many empty spaces in the GUI if the user adds an attraction without most of the optional fields.
 
 ![UiFXML](images/devguideimages/UiFxml.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 26 The class diagram for one of the child of `AttractionCard`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 26. The class diagram for one of the child of `AttractionCard`</i></sup></div><br>
 
 Figure 26 shows an example of the current implementation of the `AttractionCard`. Compulsory fields, such as `name` and `locale`
 are present in the parent class since all attractions have those fields. In `AttractionListPanel`, the number of filled fields 
