@@ -624,7 +624,7 @@ The following sequence diagram shows how the `add-itinerary-attraction` operatio
 
 <div style="page-break-after: always;"></div>
 
-### 4.11 UI
+### 4.11 UI Model
 
 #### 4.11.1 Current Implementation
 
