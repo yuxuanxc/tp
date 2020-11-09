@@ -41,25 +41,25 @@ create SelectItineraryCommand
 SelectItineraryCommandParser -> SelectItineraryCommand
 activate SelectItineraryCommand
 
-SelectItineraryCommand --> SelectItineraryCommandParser : f
+SelectItineraryCommand --> SelectItineraryCommandParser : s
 deactivate SelectItineraryCommand
 
-SelectItineraryCommandParser --> TrackPadParser : f
+SelectItineraryCommandParser --> TrackPadParser : s
 deactivate SelectItineraryCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
 SelectItineraryCommandParser -[hidden]-> TrackPadParser
 destroy SelectItineraryCommandParser
 
-TrackPadParser --> LogicManager : f
+TrackPadParser --> LogicManager : s
 deactivate TrackPadParser
 
 LogicManager -> SelectItineraryCommand : execute(model)
 activate SelectItineraryCommand
 
-SelectItineraryCommand -> Model : setCurrentItinerary(f)
+SelectItineraryCommand -> Model : setCurrentItinerary(s)
 activate Model
 
-Model -> ItineraryList : setCurrentItinerary(f)
+Model -> ItineraryList : setCurrentItinerary(s)
 activate ItineraryList
 
 ItineraryList --> Model
