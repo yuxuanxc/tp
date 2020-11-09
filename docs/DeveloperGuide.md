@@ -510,6 +510,8 @@ The following sequence diagram shows how the `select-itinerary` operation works:
 
 #### 4.8.2 Design Considerations
 
+<div style="page-break-after: always;"></div>
+
 ### 4.9 Itinerary Attraction Model
 This is a subclass of `Attraction` that goes into the `List<Day>` that resides in `Itinerary`. 
 
@@ -519,15 +521,13 @@ This is a subclass of `Attraction` that goes into the `List<Day>` that resides i
 It is stored internally as an `List<Day>`. Additionally, it implements the following operations:
 
 ![Itinerary Attraction Implementation Class Diagram](images/devguideimages/ItineraryAttractionClassDiagram.png)
-// <div align="center"><sup style="font-size:100%"><i>Figure X The ItineraryAttraction Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure X The ItineraryAttraction Class Diagram</i></sup></div><br>
 
-<!--
-// Do i need to show days??????????????????
-<div><i>Figure X The ItineraryAttraction Class Diagram</i></div><br>
-// tried removing align and <sup></sup>  
--->
+<!--<div><i>Figure X The ItineraryAttraction Class Diagram</i></div><br>-->
 
 `ItineraryAttraction` is an `Attraction` and contains `startTime` and `endTime`.
+
+<div style="page-break-after: always;"></div>
 
 #### 4.9.2 Design Considerations
 
@@ -542,28 +542,28 @@ It is stored internally as an `List<Day>`. Additionally, it implements the follo
   * Cons: Would require many getters to access fields inside `Attraction`.
   
   Reasons:
-  
-  If composition was chose, we would need to `itineraryAttraction.getAttraction().getField()`.
-  
-  If inheritance was chose, we can just do `itineraryAttraction.getField()`.
-  
-  Inheritance is chose to allow edit itinerary attraction command access to existing fields in an `Attraction`.
+  * If composition was chose, we would need to `itineraryAttraction.getAttraction().getField()`.
+  * If inheritance was chose, we can just do `itineraryAttraction.getField()`.
+  * Inheritance is chose to allow easier access to fields in an `Attraction`.
 
 **Aspect: Constructor**
 
 * **Alternative 1 (current choice):** constructor takes in an `Attraction`.
   * Pros: It is neater and simpler to use attraction as parameter to create an `ItineraryAttraction` object.
-  * Cons: New methods and test cases were written to test this behaviour.
+  * Cons: New methods and test cases have to be written to test this behaviour, instead of adapting from `Attraction`.
   
 * **Alternative 2:** constructor takes in all the fields of `Attraction`.
   * Pros: Can reuse codes from attractions.
   * Cons: Makes the codes very messy and long.
   
-  Reason: Alternative 2 will have higher chances of bugs. Attraction objects are currently pass around instead of the individual fields, simplifying codes and chances of bugs.
+  Reason: Alternative 2 will have higher chances of bugs. Attraction objects are currently pass around instead of the 
+  individual fields, simplifying, shortening codes and reduces likelihood of bugs.
 
 **Aspect: Immutability**
 The fields inside `ItineraryAttraction` are private final to prevent any modifications of fields.
 Editing any fields would require a new object to be created everytime, which guarantee the immutability of `ItineraryAttraction`.    
+
+<div style="page-break-after: always;"></div>
 
 ### 4.10 Adding Itinerary Attraction
 
@@ -574,6 +574,8 @@ with a start and end time.
 The following activity diagram shows a simplified add-itinerary-attraction operation:
 ![AddItineraryAttractionActivityDiagram](images/devguideimages/AddItineraryAttractionActivityDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of <code>add-itinerary-attraction</code></i></sup></div><br>
+
+<div style="page-break-after: always;"></div>
 
 **Assumes:**
 1. The user launches the application.
@@ -596,33 +598,23 @@ The following sequence diagram shows how the `add-itinerary-attraction` operatio
 ![AddItineraryAttractionSequenceDiagram](images/devguideimages/AddItineraryAttractionSequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-itinerary-attraction 1 day/1 st/1000 et/1200.</code></i></sup></div><br>
 
+<div style="page-break-after: always;"></div>
+
 #### 4.10.2 Design Considerations
 
-**Aspect: Fit command style with...** 
-
-* **Alternative 1 (current choice):** 
-  * Pros:
-  * Cons:
-
-* **Alternative 2:** 
-  * Pros:
-  * Cons:
-
-**Aspect 2: Command keyword**
+**Aspect: Command keyword**
 
 * **Alternative 1 (current choice):** `add-itinerary-attraction` is used to execute `AddItineraryAttractionCommand`. 
-  * Pros: This command is distinct from the `add-attraction` command, `add-itinerary-attraction` would mean adding into itinerary's attraction.
-  * Cons: It is long command to type.
-  
-  TrackPad's audience is fast typists, these few words difference makes little difference to execution speed of the commands.
+  * Pros: This command is distinct from the `add-attraction` command, `add-itinerary-attraction`, reduces ambiguity.
+  * Cons: It is long command to type and users may be confused with the difference to `add-attraction`.
 
 * **Alternative 2:**  `add-attraction` is used to execute `AddItineraryAttractionCommand`.
   * Pros: This is short and the same as the normal command, users has fewer commands to remember.
   * Cons: This command could be confusing to users and could cause careless users to add commands into the attraction lists instead of the itinerary.
   
-  Reason: This was not used because the error messages are long and confusing. If the users types the
-  wrong format, TrackPad has no way to know if the user wants to add attraction into the attraction lists or the itinerary.
-  A long error message would be required to show the 2 variations of the command.
+  Reason: Alternative 2 was not used because TrackPad has no way to know which command the user wants to execute, there is
+  no way to show the command usage should the user type something wrong. As TrackPad's audience are fast typists, 
+  these few words difference makes little difference to execution speed of the commands. Hence, alternative 1 was implemented.
 
 <div style="page-break-after: always;"></div>
 
