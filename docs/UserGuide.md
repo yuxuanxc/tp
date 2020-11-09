@@ -620,6 +620,8 @@ In Figure 23 above,
 
 Let's start filling up your itinerary with attractions!
 
+<div style="page-break-after: always;"></div>
+
 #### 4.4.1 Adding an attraction to the selected itinerary: `add-itinerary-attraction`
 Adds an attraction to the selected itinerary.
 
@@ -632,26 +634,17 @@ Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITI
 | **END_TIME** | End time to visit the attraction in the 24H format `HHMM` |
 | **DAY_VISITING** | Day in your itinerary when you plan to visit the attraction |
 
-<!--
-//Examples:
-// * `add-itinerary-attraction 2 st/1000 et/1600 day/3`
-// * `add-itinerary-attraction 1 st/0900 et/1200 day/1` adds `Jurong Bird Park` into day 1 of selected itinerary<br><br>
-// ![result for 'find-attraction'](images/addItineraryAttraction.png)
-// <div align="center"><sup style="font-size:100%"><i>Figure 18. The result of <code>add-itinerary-attraction 1 st/0900 et/1200 day/1</code></i></sup></div><br>
--->
 For example:
 
 1. Look on the left side of the image below. You want to add `Night Safari` to your `Selected Itinerary`.
 
     ![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction1.png)
     <div align='center'><i><sup style="font-size:100%">Figure 24a. Diagram showing current state of selected itinerary</sup></i></div><br>
-
 2. You want to visit it on day 2, from `1000` to `1100`.
     Enter `add-itinerary-attraction 2 day/2 st/1000 et/1100` into the command box.
 
     ![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction2.png)
     <div align='center'><i><sup style="font-size:100%">Figure 24b. Before entering <code>add-itinerary-attraction 2 day/2 st/1000 et/1100</code></sup></i></div><br>
-
 3. `Night Safari` has been added into your `Selected Itinerary`.
 
     ![result of add itinerary attraction](images/userguideimages/AddItineraryAttraction3.png)
@@ -666,6 +659,8 @@ Try these other examples too!
 * The start and end time does not need to match the opening hours of the attraction, so that you can visit closed attractions.
 </div>
 
+<div style="page-break-after: always;"></div>
+
 #### 4.4.2 Editing an attraction from the selected itinerary : `edit-itinerary-attraction`
 Edits an existing attraction in the selected itinerary.
 
@@ -678,6 +673,8 @@ Format: `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/EN
 <div markdown="span" class="alert alert-warning">:information_source: **Note:**
 Some fields can be left empty to remove it. Example, <code>edit-itinerary-attraction 1 day/1 t/ </code> would remove the tag from the attraction.
 </div>
+
+<div style="page-break-after: always;"></div>
 
 For example:
 
@@ -703,6 +700,8 @@ Try these other examples too!
 Only the INDEX and day/DAY_VISITING is required to identify the field to edit.
 </div>
 
+<div style="page-break-after: always;"></div>
+
 #### 4.4.3 Deleting an attraction from the selected itinerary: `delete-itinerary-attraction`
 Deletes an attraction from the selected itinerary.
 
@@ -720,22 +719,15 @@ For example:
 
 ![result of delete itinerary attraction](images/userguideimages/DeleteItineraryAttraction1.png)
 <div align='center'><i><sup style="font-size:100%">Figure 26a. Before entering <code>delete-itinerary-attraction 1 day/2</code></sup></i></div><br>
-
 4. Scroll down the `Selected Itinerary` and notice `Day 2` is now empty.
 
 ![result of delete itinerary attraction](images/userguideimages/DeleteItineraryAttraction2.png)
 <div align='center'><i><sup style="font-size:100%">Figure 26b. After <code>delete-itinerary-attraction 1 day/2</code></sup></i></div><br>
 
-
 Try these other examples too!
 * `delete-itinerary-attraction 1 day/1` Deletes the first attraction from `Day 1` of `Selected Itinerary`.
 
-<!--
-Examples:
-* `delete-itinerary-attraction 1 day/1` removes `Jurong Bird Park from the itinerary`<br><br>
-![result for 'find-attraction'](images/deleteItineraryAttraction.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 20. The result of <code>delete-itinerary-attraction 1 day/1</code></i></sup></div>
--->
+<div style="page-break-after: always;"></div>
 
 ### 4.5 Miscellaneous Features (Yuxuan)
 
@@ -816,34 +808,13 @@ Action | Format, Examples
 
 Action | Format, Examples
 --------|------------------
-[Add itinerary attraction](#441-adding-an-attraction-to-the-selected-itinerary-add-itinerary-attraction) | `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING` <br> e.g. `add-itinerary-attraction 1 st/1400 et/1500 day/5`
-[Edit itinerary attraction](#442-editing-an-attraction-from-the-selected-itinerary--edit-itinerary-attraction) | `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/END_TIME]` <br> e.g. `edit-itinerary-attraction 1 day/2 st/0900 et/1000`
-[Delete itinerary attraction](#443-deleting-an-attraction-from-the-selected-itinerary-delete-itinerary-attraction) | `delete-itinerary-attraction INDEX`<br> e.g. `delete-itinerary-attraction 1`
+[**Add itinerary attraction**](#441-adding-an-attraction-to-the-selected-itinerary-add-itinerary-attraction) | `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITING` <br> e.g. `add-itinerary-attraction 1 st/1400 et/1500 day/5`
+[**Edit itinerary attraction**](#442-editing-an-attraction-from-the-selected-itinerary--edit-itinerary-attraction) | `edit-itinerary-attraction INDEX day/DAY_VISITING [st/START_TIME] [et/END_TIME]` <br> e.g. `edit-itinerary-attraction 1 day/2 st/0900 et/1000`
+[**Delete itinerary attraction**](#443-deleting-an-attraction-from-the-selected-itinerary-delete-itinerary-attraction) | `delete-itinerary-attraction INDEX`<br> e.g. `delete-itinerary-attraction 1`
 
 ### 7.4 Miscellaneous Commands
 
 Action | Format, Examples
 --------|------------------
-[Help](#451-viewing-help--help) | `help`
-[Exit](#452-exiting-the-program--exit) | `exit`
-
-
-
-
-
-<!--how to comment in markdown-->
-
-<!--
-// to link to a section header,
-// all caps -> lower case
-// spaces -> -
-// __ -> __ (no change)
-// !, [], (), :, //, ., -> ignored
-
-Example:
-## [![Alt Text][badge__example]](https://example.com) To Somewhere
-[Imaged](#alt-textbadge__examplehttpsexamplecom-to-somewhere)
-
-// damn cancer ^^^^ alternatively,
-just type [name you want to call](#NoSpaceHeader'sNumber) // intellij will suggest for you lmao
--->
+[**Help**](#451-viewing-help--help) | `help`
+[**Exit**](#452-exiting-the-program--exit) | `exit`
