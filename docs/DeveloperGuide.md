@@ -401,7 +401,7 @@ The following sequence diagram shows how the `add-itinerary` operation above wor
 To summarise, the following activity diagram shows what happens when a user executes an `add-itinerary` command, including errors:
 
 ![AddItineraryActivityDiagram](images/devguideimages/AddItineraryActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 16. The activity diagram of `add-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 16. The activity diagram of <code>add-itinerary</code></i></sup></div><br>
 
 <div style="page-break-after: always;"></div>
 
@@ -461,12 +461,12 @@ An `EditItineraryDescriptor` is a temporary bridge that holds the newly-edited f
 The following sequence diagram shows how the `edit-itinerary` operation works:
 
 ![EditItinerarySequenceDiagram](images/devguideimages/EditItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 17 The sequence diagram of `edit-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 17 The sequence diagram of <code>edit-itinerary</code></i></sup></div><br>
 
 The following activity diagram summarizes what happens when a user executes an `edit-itinerary` command:
 
 ![EditItineraryActivityDiagram](images/devguideimages/EditItineraryActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 18 The activity diagram of `edit-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 18 The activity diagram of <code>edit-itinerary</code></i></sup></div><br>
 
 #### 4.6.2 Design Considerations
 
@@ -509,12 +509,12 @@ to parse a user’s input before creating the correct `FindItineraryCommand`.
 The following sequence diagram shows how the `find-itinerary` operation works:
 
 ![FindItinerarySequenceDiagram](images/devguideimages/FindItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 19 The sequence diagram of `find-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 19 The sequence diagram of <code>find-itinerary</code></i></sup></div><br>
 
 The following activity diagram summarizes what happens when a user executes an `find-itinerary` command:
 
 ![EditItineraryActivityDiagram](images/devguideimages/FindItineraryActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 20 The activity diagram of `find-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 20 The activity diagram of <code>find-itinerary</code></i></sup></div><br>
 
 #### 4.7.2 Design Considerations
 
@@ -553,12 +553,12 @@ using the itinerary retrieved.
 The following sequence diagram shows how the `select-itinerary` operation works: 
 
 ![SelectItinerarySequenceDiagram](images/devguideimages/SelectItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 21 The sequence diagram of `select-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 21 The sequence diagram of <code>select-itinerary</code></i></sup></div><br>
 
 The following activity diagram summarizes what happens when a user executes an `select-itinerary` command:
 
 ![SelectItineraryActivityDiagram](images/devguideimages/SelectItineraryActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 22 The activity diagram of `select-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 22 The activity diagram of <code>select-itinerary</code></i></sup></div><br>
 
 <div style="page-break-after: always;"></div>
 
