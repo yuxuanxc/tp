@@ -91,6 +91,7 @@ Here are the steps to download TrackPad and start using it immediately!
 
    ![Ui](images/userguideimages/gettingStartedSelectItinerary.png)
     <div align="center"><sup style="font-size:100%"><i>Figure 5. Selecting the itinerary</i></sup></div>
+    
 <div style="page-break-after: always;"></div>
     
 **Step 9.** If you want to visit Gardens by the Bay from 10am to 2pm on the first day of your trip, type
