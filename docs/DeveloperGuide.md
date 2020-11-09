@@ -32,9 +32,9 @@ Then, there is a more in depth explanation on the design of the Ui, model and st
 <span style="display:block;align:center">![Architecture Class Diagram](images/devguideimages/ArchitectureDiagram.png)</span>
 <div align="center"><sup style="font-size:100%"><i>Figure 1. Architecture Class Diagram</i></sup></div><br>
 
-Figure 1 explains the high-level design of the App. Given below is a quick overview of each component.
-
 <div style="page-break-after: always;"></div>
+
+Figure 1 explains the high-level design of the App. Given below is a quick overview of each component.
 
 <div markdown="span" class="alert alert-primary">
 
@@ -300,12 +300,12 @@ The whole sequence of events is outlined in the sequence diagram shown below.
 **Aspect: How the attraction is updated**
 
 * **Alternative 1:** Use the `edit-attraction` command to handle marking the attraction as visited, since it can also edit the `Visited` field.
- * Pro: Less new code will need to be written, since we can reuse most of the code from `edit-attraction`.
- * Con: Functionality of `markVisited-attraction` could change if `edit-attraction` changes functionality in a future update. Excessive coupling.
+ * Pros: Less new code will need to be written, since we can reuse most of the code from `edit-attraction`.
+ * Cons: Functionality of `markVisited-attraction` could change if `edit-attraction` changes functionality in a future update. Excessive coupling.
 
 * **Alternative 2 (Current Choice):** Create a new `markVisited-attraction` command and parser to handle specifically this command.
- * Pro: Less inputs for the user, which makes the command shorter and more convenient.
- * Con: More lines of code. More test cases required.
+ * Pros: Less inputs for the user, which makes the command shorter and more convenient.
+ * Cons: More lines of code. More test cases required.
  
 Reason for choosing alternative 2: Easier to extend to marking several attractions in one command in a future version, by inputting several indexes at once. This would be complicated to 
 handle within `edit-attraction` since each attraction could be edited in several fields, and the user input would become unnecessarily complicated.
@@ -401,7 +401,7 @@ The following sequence diagram shows how the `add-itinerary` operation above wor
 To summarise, the following activity diagram shows what happens when a user executes an `add-itinerary` command, including errors:
 
 ![AddItineraryActivityDiagram](images/devguideimages/AddItineraryActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 16. The activity diagram of `add-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 16. The activity diagram of <code>add-itinerary</code></i></sup></div><br>
 
 <div style="page-break-after: always;"></div>
 
@@ -461,12 +461,12 @@ An `EditItineraryDescriptor` is a temporary bridge that holds the newly-edited f
 The following sequence diagram shows how the `edit-itinerary` operation works:
 
 ![EditItinerarySequenceDiagram](images/devguideimages/EditItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 17 The sequence diagram of `edit-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 17 The sequence diagram of <code>edit-itinerary</code></i></sup></div><br>
 
 The following activity diagram summarizes what happens when a user executes an `edit-itinerary` command:
 
 ![EditItineraryActivityDiagram](images/devguideimages/EditItineraryActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 18 The activity diagram of `edit-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 18 The activity diagram of <code>edit-itinerary</code></i></sup></div><br>
 
 #### 4.6.2 Design Considerations
 
@@ -509,22 +509,22 @@ to parse a user’s input before creating the correct `FindItineraryCommand`.
 The following sequence diagram shows how the `find-itinerary` operation works:
 
 ![FindItinerarySequenceDiagram](images/devguideimages/FindItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 19 The sequence diagram of `find-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 19 The sequence diagram of <code>find-itinerary</code></i></sup></div><br>
 
 The following activity diagram summarizes what happens when a user executes an `find-itinerary` command:
 
 ![EditItineraryActivityDiagram](images/devguideimages/FindItineraryActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 20 The activity diagram of `find-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 20 The activity diagram of <code>find-itinerary</code></i></sup></div><br>
 
 #### 4.7.2 Design Considerations
 
 **Aspect: How the command word of `find-itinerary` is derived**
 
-* **Alternative 1 (Current choice): `find-itinerary** 
+* **Alternative 1 (Current choice): `find-itinerary`** 
   * Pros: More intuitive, follows the format of the `find-attraction` command.
   * Cons: More time spent typing the command.
 
-* **Alternative 2: findi** 
+* **Alternative 2: `find-i`** 
   * Pros: Simple and faster to type.
   * Cons: Less intuitive, users might have to remember the correct command when finding their itineraries.
 
@@ -553,12 +553,12 @@ using the itinerary retrieved.
 The following sequence diagram shows how the `select-itinerary` operation works: 
 
 ![SelectItinerarySequenceDiagram](images/devguideimages/SelectItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 21 The sequence diagram of `select-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 21 The sequence diagram of <code>select-itinerary</code></i></sup></div><br>
 
 The following activity diagram summarizes what happens when a user executes an `select-itinerary` command:
 
 ![SelectItineraryActivityDiagram](images/devguideimages/SelectItineraryActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 22 The activity diagram of `select-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 22 The activity diagram of <code>select-itinerary</code></i></sup></div><br>
 
 <div style="page-break-after: always;"></div>
 
@@ -602,16 +602,16 @@ It is stored internally as an `List<Day>`. Additionally, it implements the follo
 
 * **Alternative 1 (current choice):** `ItineraryAttraction` inherits `Attraction`.
   * Pros: Allows it to be treated as an `Attraction` allowing `ItineraryAttraction` access to getters for `Attraction` without redefining it.
-  * Cons: 
+  * Cons: Does not provide reference to original `Attraction`. Changes in original `Attraction` is not reflected in this `ItineraryAttraction`.
 
 * **Alternative 2:** `ItineraryAttraction` would compose `Attraction`
   * Pros: Easy to implement by just adding an `Attraction` field.
   * Cons: Would require many getters to access fields inside `Attraction`.
   
-  Reasons:
-  * If composition was chose, we would need to `itineraryAttraction.getAttraction().getField()`.
-  * If inheritance was chose, we can just do `itineraryAttraction.getField()`.
-  * Inheritance is chose to allow easier access to fields in an `Attraction`.
+Reasons:
+* If we choose composition, we would need to `itineraryAttraction.getAttraction().getField()`.
+* If we choose inheritance, we can just do `itineraryAttraction.getField()`.
+* We choose inheritance to allow easier access to fields in an `Attraction`.
 
 **Aspect: Constructor**
 
@@ -623,12 +623,8 @@ It is stored internally as an `List<Day>`. Additionally, it implements the follo
   * Pros: Can reuse codes from attractions.
   * Cons: Makes the codes very messy and long.
   
-  Reason: Alternative 2 will have higher chances of bugs. Attraction objects are currently pass around instead of the 
-  individual fields, simplifying, shortening codes and reduces likelihood of bugs.
-
-**Aspect: Immutability**
-The fields inside `ItineraryAttraction` are private final to prevent any modifications of fields.
-Editing any fields would require a new object to be created everytime, which guarantee the immutability of `ItineraryAttraction`.    
+Reason: Alternative 2 will have higher chances of bugs. Attraction objects are currently passed around instead of the 
+individual fields, so it simplifies and shortens the codes and reduces likelihood of bugs.
 
 <div style="page-break-after: always;"></div>
 
@@ -679,9 +675,9 @@ The following sequence diagram shows how the `add-itinerary-attraction` operatio
   * Pros: This is short and the same as the normal command, users has fewer commands to remember.
   * Cons: This command could be confusing to users and could cause careless users to add commands into the attraction lists instead of the itinerary.
   
-  Reason: Alternative 2 was not used because TrackPad has no way to know which command the user wants to execute, there is
-  no way to show the command usage should the user type something wrong. As TrackPad's audience are fast typists, 
-  these few words difference makes little difference to execution speed of the commands. Hence, alternative 1 was implemented.
+Reason: Alternative 2 was not used because TrackPad has no way to know which command the user wants to execute, there is
+no way to show the command usage should the user type something wrong. As TrackPad's audience are fast typists, 
+these few words makes little difference to execution speed of the commands. Hence, alternative 1 was implemented.
 
 <div style="page-break-after: always;"></div>
 
@@ -689,7 +685,7 @@ The following sequence diagram shows how the `add-itinerary-attraction` operatio
 
 #### 4.11.1 Current Implementation
 
-THe current UI involves many inherited classes from `AttractionCard`, `ItineraryListCard` and `ItineraryAttractionCard`. 
+The current UI involves many inherited classes from `AttractionCard`, `ItineraryListCard` and `ItineraryAttractionCard`. 
 This is because TrackPad supports optional fields, and with the current code, the `Label` in the FXML files will be created regardless
 whether the field is filled or not. Thus, it leaves many empty spaces in the GUI if the user adds an attraction without most of the optional fields.
 
@@ -701,19 +697,19 @@ whether the field is filled or not. Thus, it leaves many empty spaces in the GUI
 Figure 26 shows an example of the current implementation of the `AttractionCard`. Compulsory fields, such as `name` and `locale`
 are present in the parent class since all attractions have those fields. In `AttractionListPanel`, the number of filled fields 
 will be determined in the corresponding `Attraction`, via the `getNumOfFilledFields()` method, and the appropriate child will be used to 
-create the card. This way, we can avoid any awkward gaps due to missing fields.
+create the card. This way, we can avoid any unnecessary gaps found in the boxes due to missing fields.
 
-#### 4.4.2 Design Considerations
+#### 4.11.2 Design Considerations
 
 **Aspect: Method of Implementation**
 
 * **Alternative 1:** Only one `AttractionCard` is used to create the attraction cards. 
- * Pro: Far lesser code required, and no need for so many children classes.
- * Con: Empty lines will be seen in the GUI.
+ * Pros: Lesser code required, and no need for so many children classes.
+ * Cons: Empty lines will be seen in the GUI.
  
 * **Alternative 2 (Current Choice):** Several `AttractionCard` child classes are used to create the corresponding attraction cards. 
- * Pro: Fixes the issue of empty lines being seen, by not creating redundant labels from the different FXML files.
- * Con: Many excessive classes are created. Some code repetition.
+ * Pros: Fixes the issue of empty lines being seen, by not creating redundant labels from the different FXML files.
+ * Cons: Many classes are created. Some code repetition.
  
 Reason for choosing Alternative 2: The final app GUI should look pleasant and attractive to the users. By removing those empty lines, it makes
 the interface look more neat and organised. However, this is not yet an ideal solution and a better solution could be looked for 
@@ -767,32 +763,37 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | person planning for my travel	| see a list of all the tourist attractions	                                         | get a look at all my tourist attractions at one go
 | `* * *`  | person planning for my travel  | clear all tourist attractions from my plan                                         | reset the list of attractions
 | `* * *`  | person planning for my travel	| edit the information in my tourist attractions	                                 | update my attractions with new information
-| `* * *`  | person planning for my travel	| tag tourist attractions in different categories like food, sightseeing, activities | distinguish between the different kinds of tourist attractions
-| `* * *`  | person planning for my travel	| add locations / addresses to my attractions                                        | know where the attraction is located and how to get there
 
 <div style="page-break-after: always;"></div>
 
 | Priority | As a …​                     | I want to …​                                                                    | So that I can…​                                              |
 | -------- | ------------------------------ | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `* * *`  | person planning for my travel	| tag tourist attractions in different categories like food, sightseeing, activities | distinguish between the different kinds of tourist attractions
+| `* * *`  | person planning for my travel	| add locations / addresses to my attractions                                        | know where the attraction is located and how to get there
 | `* * *`  | person planning for my travel	| add descriptions to my attractions                                                 | know roughly what the attraction is about when viewing them
 | `* * *`  | person planning for my travel	| add contact details such as email and phone number to my attractions               | know how to contact them if I need
 | `* * *`  | new user	                    | find the user guide easily	                                                     | know what I can do with the app
 | `* *`    | person planning for my travel  | create multiple itineraries for different trips	                                 | plan for all my different travelling trips
 | `* *`    | person planning for my travel  | add descriptions to my itineraries such as trip details                            | ensure I have all the correct trip information in one place
 | `* *`    | person planning for my travel  | add dates to my itineraries                                                        | plan when the trip will take place
-| `* *`    | person planning for my travel  | add attractions to my itineraries                                                  | plan which attractions to visit
-| `* *`    | person planning for my travel  | delete attractions from my itineraries                                             | remove attractions I do not want to visit anymore
-| `* *`    | person planning for my travel  | edit attractions in my itineraries                                                 | update the attractions I am planning to visit in my itineraries
 
 <div style="page-break-after: always;"></div>
 
 | Priority | As a …​                     | I want to …​                                                                    | So that I can…​                                              |
 | -------- | ------------------------------ | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `* *`    | person planning for my travel  | add attractions to my itineraries                                                  | plan which attractions to visit
+| `* *`    | person planning for my travel  | delete attractions from my itineraries                                             | remove attractions I do not want to visit anymore
+| `* *`    | person planning for my travel  | edit attractions in my itineraries                                                 | update the attractions I am planning to visit in my itineraries
 | `* *`    | person planning for my travel  | specify the times at which I visit an attraction within an itinerary               | plan when to visit the attractions
 | `* *`    | new user	                    | see the app with sample data	                                                     | see what kind of data the app can store
 | `*`      | person planning for my travel	| add opening hours to my attractions                                                | know when to visit
 | `*`      | person planning for my travel	| add the estimated price range to my attractions                                    | know which attractions to choose to match my budget
 | `*`      | person planning for my travel	| add the estimated budget to my itineraries                                         | plan how much to spend on each trip
+
+<div style="page-break-after: always;"></div>
+
+| Priority | As a …​                     | I want to …​                                                                    | So that I can…​                                              |
+| -------- | ------------------------------ | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | `*`      | person currently traveling	    | mark tourist attractions as visited / not visited                                  | know which attractions I missed
 | `*`      | person who had already traveled | give ratings to my attractions                                                    | keep track of which tourist attractions were enjoyable
 
@@ -1287,6 +1288,8 @@ Given below are instructions to test the app manually.
    4. Other incorrect add-attraction commands to try: `add-attraction n/Zoo l/Singapore p/+6591234567`, 
       `add-attraction n/NAME l/LOCATION` (where both the NAME and LOCATION are the same as another attraction in TrackPad)<br>
       Expected: Similar to previous.
+
+<div style="page-break-after: always;"></div>
       
 **F3 Editing a tourist attraction**
 
@@ -1320,6 +1323,8 @@ Given below are instructions to test the app manually.
       `delete-attraction x` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
+<div style="page-break-after: always;"></div>
+
 **F5 Marking an attraction as Visited**
 
 1. Marking an attraction as Visited while all attractions are being shown
@@ -1351,7 +1356,9 @@ Given below are instructions to test the app manually.
 
    3. Test case: `find-attraction #$%`<br>
       Expected: Empty attractions list shown. "0 attractions listed!" shown in the status message.
-      
+ 
+<div style="page-break-after: always;"></div>
+     
 **F7 Listing attractions**
 
 1. Listing all attractions currently stored in TrackPad
@@ -1375,6 +1382,8 @@ Given below are instructions to test the app manually.
       
    3. Test case: `clear-attraction 1`<br>
       Expected: Everything typed after the space following the command will be ignored, and clear-attraction command will be executed successfully.
+
+<div style="page-break-after: always;"></div>
 
 **F9 Adding an itinerary**
 
@@ -1415,6 +1424,8 @@ Given below are instructions to test the app manually.
         Expected: Similar to 3.
      * No change in fields: `edit-itinerary 1 n/Germany` when the name is already `Germany`<br>
         Expected: Similar to 3.
+
+<div style="page-break-after: always;"></div>
         
 **F11 Deleting an itinerary**
 
@@ -1445,7 +1456,9 @@ Given below are instructions to test the app manually.
 
    3. Test case: `find-itinerary`<br>
       Expected: No itinerary found. Error details shown in the status message.
-      
+  
+<div style="page-break-after: always;"></div>
+    
 **F13 Listing itineraries**
 
 1. Listing all itineraries currently stored in TrackPad
@@ -1475,6 +1488,8 @@ Given below are instructions to test the app manually.
       Expected: Similar to 3
     * Invalid index: `select-itinerary x`, where x is larger than the list size <br>
       Expected: Similar to 3
+
+<div style="page-break-after: always;"></div>
       
 **F15 Clearing itineraries**
 
@@ -1513,6 +1528,7 @@ Given below are instructions to test the app manually.
         * Invalid format for fields (e.g. not a valid time): `add-itinerary-attraction 1 day/1 st/1000 et/2400` <br>
         Expected: Similar to 3.
 
+<div style="page-break-after: always;"></div>
 
 **F17 Editing an attraction in an itinerary**
 
@@ -1552,6 +1568,8 @@ Given below are instructions to test the app manually.
     Expected: Similar to previous.
     * Invalid day: `delete-itinerary-attraction 1 day/NaN `
     Expected: Similar to previous.
+
+<div style="page-break-after: always;"></div>
 
 **F19 Viewing help**
 
@@ -1604,7 +1622,7 @@ Our project was harder than Address Book Level 3(AB3) because while AB3 deals wi
 entities, including Attractions, Itineraries as well as Itinerary Attractions. 
 
 Initially, we had to refactor most of the code to change all instances of Person to Attraction and AddressBook to TrackPad. 
-We also had to change the test cases, and since we were still unfamiliar with the many lines of code AB3 has, we had a 
+We also had to change the test cases, and since we were still unfamiliar with the many lines of code AB3 had, we had a 
 hard time figuring out why some of them failed.
 
 After which, we had to implement Itinerary into the app and make it work similarly enough to Attraction, but still function 
@@ -1615,10 +1633,8 @@ the new commands can sound similar to existing ones. Afterwards, we had to more 
 and their parsers to support the new commands, and also add many test cases to ensure their correctness. All of these took out 
 a lot of our time and effort in implementing. 
 
-In addition, we had to implement an adaptable UI, so that the attraction and itinerary box displays will vary in height, 
-since we have optional fields for our entities. We had to create different FXML files to be compatible with our AttractionCard
-and ItineraryCard having multiple Labels. 
-
-Also, although we decided to store itinerary attractions in a List of Days in itineraries, it proved a further challenge 
-in reading the itinerary attractions since we had to go through several layers to reach the list of itinerary attractions. 
-Our UI also contains boxes for the Day, to distinguish between different days of the same itinerary.
+In addition, the Ui had to be able to retrieve itinerary attractions. And this has to be done in a different way from attractions and itineraries,
+since there is one global list for attractions and itineraries, but there are multiple lists of itinerary attractions. This mean
+time and effort had to be spent in figuring out a new way of sending this information to the UI panels. The itinerary panel also had to 
+be able to switch to itinerary attractions panel, and switch back whenever the appropriate command was called, so this was not 
+easy to implement too.
