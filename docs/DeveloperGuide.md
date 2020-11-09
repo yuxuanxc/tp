@@ -122,12 +122,16 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
 
+<div style="page-break-after: always;"></div>
+
 ### 3.4 Model
 
 ![Structure of the Model Component](images/devguideimages/ModelClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 7 Structure of the Model Component, Model Class Diagram</i></sup></div><br>
 
 **API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
+
+<div style="page-break-after: always;"></div>
 
 The `Model` component shown in Figure 7,
 * stores a `UserPref` object that represents the user’s preferences.
@@ -142,6 +146,8 @@ An alternative (arguably, a more OOP) model is given below. It has a `Tag` list 
 
 ![BetterModelClassDiagram](images/devguideimages/BetterModelClassDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 8 Structure of an alternative Model Component, Alternative Model Class Diagram</i></sup></div><br>
+
+<div style="page-break-after: always;"></div>
 
 ### 3.5 Storage
 
@@ -162,6 +168,7 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 <div style="page-break-after: always;"></div>
 
 ## **4. Implementation**
+
 This section describes some noteworthy details on the implementation of some core TrackPad features.
 
 ### 4.1 Attraction Model
@@ -172,15 +179,17 @@ The `Attraction` class helps users to keep track of all the details of their tou
 The class diagram for `Attraction` is shown below:
 
 ![Structure of Attraction Component](images/devguideimages/AttractionClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The Attraction Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 10 The Attraction Class Diagram</i></sup></div><br>
 
 Each `Attraction` contains the following fields: `Name`, `Description`, `Address`, `Email`, `Location`, `OpeningHours`,
 `Phone`, `PriceRange`, `Rating`, `Visited` and `Tag`. Only `Name` and `Location` are compulsory fields, the rest are all optional.
 An attraction can have any number of `Tag`s.
 
+<div style="page-break-after: always;"></div>
+
 #### 4.1.2 Design Considerations
 
-##### 4.1.2.1 Aspect: How attractions are determined to be the same as another
+**Aspect: How attractions are determined to be the same as another**
 
 * **Alternative 1:** Compare the `Name`, `Phone` and `Email` of the attractions and 2 attractions
   are the same if all 3 fields are equal.
@@ -195,29 +204,40 @@ An attraction can have any number of `Tag`s.
   * Cons: `Name` and `Location` are case-sensitive, so comparing attractions with the same name/location with different
     cases will result in the attractions to be determined as different attractions, which might not be ideal.
 
-### 4.? Add Attraction Feature
+Reason for choosing Alternative 2: Our team decided to modify the existing code to suit our current implementation
+of the fields better, rather than just leaving it as it is.
+
+<div style="page-break-after: always;"></div>
+
+### 4.2 Add Attraction Feature
 
 The add attraction feature allows users to add attractions with the compulsory fields `Name` and `Location`, and 
 the optional fields `Description`, `Address`, `Email`, `OpeningHours`, `Phone`, `PriceRange`, `Rating`, `Visited` and `Tag`.
 
-#### 4.?.1 Current Implementation
+#### 4.2.1 Current Implementation
 
-Steps:
-1. The user launches the application. 
-2. The user types in `add-attraction n/River Safari l/Singapore a/80 Mandai Lake Rd` to add a new attraction. This attraction does not already exist in the app. 
-3. `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `AddAttractionCommand` and passes the input to `AddAttractionCommandParser`. 
-4. `AddAttractionCommandParser` parses the input and constructs a new `AddAttractionCommand` containing a new `Attraction` with the specified fields.
-5. `LogicManager` executes the new `AddAttractionCommand`. This calls `Model` to add the new `Attraction` to its `AttractionList`.
-6. After the new `Attraction` is successfully added, `AddAttractionCommand` returns a `CommandResult` for the Ui to display. 
+**Step 1.** The user launches the application.
+ 
+**Step 2.** The user types in `add-attraction n/River Safari l/Singapore a/80 Mandai Lake Rd` to add a new attraction. This attraction does not already exist in the app. 
+
+**Step 3.** `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `AddAttractionCommand` and passes the input to `AddAttractionCommandParser`. 
+
+**Step 4.** `AddAttractionCommandParser` parses the input and constructs a new `AddAttractionCommand` containing a new `Attraction` with the specified fields.
+
+**Step 5.** `LogicManager` executes the new `AddAttractionCommand`. This calls `Model` to add the new `Attraction` to its `AttractionList`.
+
+**Step 6.** After the new `Attraction` is successfully added, `AddAttractionCommand` returns a `CommandResult` for the Ui to display. 
+
+<div style="page-break-after: always;"></div>
 
 The following sequence diagram shows how the `add-attraction` operation works:
 
 ![Add Attraction Sequence Diagram](images/devguideimages/AddAttractionSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-attraction</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 11 The sequence diagram of <code>add-attraction</code></i></sup></div><br>
 
-#### 4.?.2 Design Considerations
+#### 4.2.2 Design Considerations
 
-##### 4.?.2.1 Aspect: How the command word of AddAttractionCommand is derived
+**Aspect: How the command word of AddAttractionCommand is derived**
 
 * **Alternative 1:** add-a
   * Pros: Simple and short. The user will spend less time typing this command into the command box.
@@ -227,6 +247,10 @@ The following sequence diagram shows how the `add-attraction` operation works:
   * Pros: More intuitive, so the user is more likely to get the correct command everytime when adding attractions.
   * Cons: The user will have to spend more time typing this command.
 
+Reason for choosing Alternative 2: Given that our target audience are fast typists, a slightly longer word may not
+require a longer typing time after the users are used to typing this command in the long run.
+
+<div style="page-break-after: always;"></div>
 
 ### 4.3 Mark Attraction as Visited Feature
 
@@ -243,9 +267,9 @@ If the index is invalid or the attraction has already been visited before, an er
 
 The following activity diagram shows how `markVisited-attraction` works:
 ![MarkVisitedActivityDiagram](images/devguideimages/MarkVisitedActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of <code>markVisited-attraction</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 12 The activity diagram of <code>markVisited-attraction</code></i></sup></div><br>
 
-We will use the above activity diagram as shown in Figure X to explain how the `markVisited-attraction` command is executed in detail.
+We will use the above activity diagram as shown in Figure 12 to explain how the `markVisited-attraction` command is executed in detail.
 We assume no error is encountered, and the attraction that is selected to be marked as visited is not visited yet.
 
 **Step 1.** The user types in `markVisited-attraction 1`.
@@ -267,7 +291,7 @@ We assume no error is encountered, and the attraction that is selected to be mar
 The whole sequence of events is outlined in the sequence diagram shown below.
 
 ![MarkVisitedSequenceDiagram](images/devguideimages/MarkVisitedSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>markVisited-attraction 1</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 13 The sequence diagram of <code>markVisited-attraction 1</code></i></sup></div><br>
 
 <div style="page-break-after: always;"></div>
 
@@ -296,7 +320,7 @@ The `Itinerary` class helps users keep track of the details of their trips and t
 The class diagram for `Itinerary` is shown below:
 
 ![ItineraryClassDiagram](images/devguideimages/ItineraryClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The Itinerary Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 14 The Itinerary Class Diagram</i></sup></div><br>
 
 Each `Itinerary` contains `Name`, `Description`, `Budget`, `startDate` and `endDate`. Both `startDate` and `endDate` 
 are of the `ItineraryDate` class. Additionally, to store the attractions that users want to visit, each `Itinerary` 
@@ -370,12 +394,12 @@ The following steps illustrate the successful execution of an `add-itinerary` co
 The following sequence diagram shows how the `add-itinerary` operation above works:
 
 ![AddItinerarySequenceDiagram](images/devguideimages/AddItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-itinerary</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 15 The sequence diagram of <code>add-itinerary</code></i></sup></div><br>
 
 To summarise, the following activity diagram shows what happens when a user executes an `add-itinerary` command, including errors:
 
 ![AddItineraryActivityDiagram](images/devguideimages/AddItineraryActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of `add-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 16 The activity diagram of `add-itinerary`</i></sup></div><br>
 
 #### 4.5.2 Design Considerations
 
@@ -517,9 +541,7 @@ This is a subclass of `Attraction` that goes into the `List<Day>` that resides i
 It is stored internally as an `List<Day>`. Additionally, it implements the following operations:
 
 ![Itinerary Attraction Implementation Class Diagram](images/devguideimages/ItineraryAttractionClassDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The ItineraryAttraction Class Diagram</i></sup></div><br>
-
-<!--<div><i>Figure X The ItineraryAttraction Class Diagram</i></div><br>-->
+<div align="center"><sup style="font-size:100%"><i>Figure 23 The ItineraryAttraction Class Diagram</i></sup></div><br>
 
 `ItineraryAttraction` is an `Attraction` and contains `startTime` and `endTime`.
 
@@ -569,7 +591,7 @@ with a start and end time.
 
 The following activity diagram shows a simplified add-itinerary-attraction operation:
 ![AddItineraryAttractionActivityDiagram](images/devguideimages/AddItineraryAttractionActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The activity diagram of <code>add-itinerary-attraction</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 24 The activity diagram of <code>add-itinerary-attraction</code></i></sup></div><br>
 
 <div style="page-break-after: always;"></div>
 
@@ -592,7 +614,7 @@ itinerary and the timing does not clash with any exisiting attractions in the it
 The following sequence diagram shows how the `add-itinerary-attraction` operation works:
 
 ![AddItineraryAttractionSequenceDiagram](images/devguideimages/AddItineraryAttractionSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-itinerary-attraction 1 day/1 st/1000 et/1200.</code></i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 25 The sequence diagram of <code>add-itinerary-attraction 1 day/1 st/1000 et/1200.</code></i></sup></div><br>
 
 <div style="page-break-after: always;"></div>
 
@@ -614,7 +636,7 @@ The following sequence diagram shows how the `add-itinerary-attraction` operatio
 
 <div style="page-break-after: always;"></div>
 
-### 4.11 UI
+### 4.11 UI Model
 
 #### 4.11.1 Current Implementation
 
@@ -623,9 +645,9 @@ This is because TrackPad supports optional fields, and with the current code, th
 whether the field is filled or not. Thus, it leaves many empty spaces in the GUI if the user adds an attraction without most of the optional fields.
 
 ![UiFXML](images/devguideimages/UiFxml.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X The class diagram for one of the child of `AttractionCard`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 26 The class diagram for one of the child of `AttractionCard`</i></sup></div><br>
 
-Figure X shows an example of the current implementation of the `AttractionCard`. Compulsory fields, such as `name` and `locale`
+Figure 26 shows an example of the current implementation of the `AttractionCard`. Compulsory fields, such as `name` and `locale`
 are present in the parent class since all attractions have those fields. In `AttractionListPanel`, the number of filled fields 
 will be determined in the corresponding `Attraction`, via the `getNumOfFilledFields()` method, and the appropriate child will be used to 
 create the card. This way, we can avoid any awkward gaps due to missing fields.
@@ -1173,7 +1195,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 Given below are instructions to test the app manually.
 
-### F1 Launch and shutdown
+**F1 Launch and shutdown**
 
 1. Initial launch.
 
@@ -1188,7 +1210,7 @@ Given below are instructions to test the app manually.
    2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-### F2 Adding a tourist attraction
+**F2 Adding a tourist attraction**
 
 1. Adding a tourist attraction.
 
@@ -1205,7 +1227,7 @@ Given below are instructions to test the app manually.
       `add-attraction n/NAME l/LOCATION` (where both the NAME and LOCATION are the same as another attraction in TrackPad)<br>
       Expected: Similar to previous.
       
-### F3 Editing a tourist attraction
+**F3 Editing a tourist attraction**
 
 1. Editing a tourist attraction while all the attractions in TrackPad are shown in the attractions list.
 
@@ -1221,7 +1243,7 @@ Given below are instructions to test the app manually.
       `edit-attraction 1 n/NAME` (where NAME is the same as the current name of the first attraction)<br>
       Expected: Similar to previous.
       
-### F4 Deleting a tourist attraction
+**F4 Deleting a tourist attraction**
 
 1. Deleting a tourist attraction while all the attractions in TrackPad are shown in the attractions list.
 
@@ -1257,7 +1279,7 @@ Given below are instructions to test the app manually.
    4. Other incorrect markVisited commands to try: `markVisited-attraction`, `markVisited-attraction x` (where x is larger than the list size, or less than 0)<br>
       Expected: Similar to previous.
 
-### F6 Finding a tourist attraction
+**F6 Finding a tourist attraction**
 
 1. Finding a tourist attraction while all the attractions in TrackPad are shown in the attractions list.
 
@@ -1523,11 +1545,13 @@ to change all instance of Person to Attraction and AddressBook to TrackPad. We a
 why some of them failed.
 
 After which, we had to implement itinerary into the app, and make it work similarly to Attraction, but taking in different
-fields from Attraction. We also had to create new parsers for Itinerary, so that it can read the itinerary commands. 
+fields from Attraction. We also had to create new parsers for Itinerary, so that it can read the itinerary commands. Quite
+some time was spent on deciding on what command words we want to use for each command, as there were many new commands which 
+sounded similar to existing ones.
 
 In addition, we had to implement an adaptable UI, so that the attraction and itinerary box displays will vary in height, 
 since we have optional fields for our entities. We had to create different FXML files, to be compatible with our AttractionCard
-and ItineraryCard having multiple Labels.
+and ItineraryCard having multiple Labels. 
 
 Also, since we stored attractions as a List of Days in itineraries, it proved a further challenge in reading the itinerary
 attractions since we had to go through several layers to reach the list of itinerary attractions. Our UI also contains of 
