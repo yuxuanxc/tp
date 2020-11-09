@@ -343,29 +343,47 @@ contains a list of `Day`s, and each `Day` contains a list of `ItineraryAttractio
   * Cons: The itinerary would not have any specified locations unless the user adds an `ItineraryAttraction`, 
   which might not be intuitive to users. 
   
-Reason for choosing Alternative 2: 
+Reason for choosing Alternative 2: If we were to go with Alternative 1, we would have to provide additional ways for 
+users visiting multiple locations to change the order of the locations they are visiting, and possibly provide checks 
+to ensure that the locations of attractions that users want to add into an itinerary matches the locations of the itinerary. 
+We believe that this would be a more frustrating experience for users. Therefore, we decided on generating locations 
+automatically from the itinerary attractions that the users have added to their itineraries instead. 
   
 **Aspect: How `ItineraryAttraction`s are stored with their visiting days**
 
 * **Alternative 1:** Have `day visiting` as a field in `ItineraryAttraction`, together with its other fields like `startTime`, `endTime` etc. 
-Have `Itinerary` directly store the `ItineraryAttraction`s. 
+Then, have `Itinerary` directly store the `ItineraryAttraction`s. 
   * Pros: Simple to implement and specify. 
-  * Cons: Harder to separate the `ItineraryAttractions` into the different days. More checks needed to display the correct `ItineraryAttraction`s in the correct days.
+  * Cons: Harder to separate the `ItineraryAttraction`s into the different days. More checks needed to display the correct `ItineraryAttraction`s in the correct days.
 
-* **Alternative 2 (Current choice):** Store `ItineraryAttraction`s in separate `Day`s in `Itinerary`, without having a `day visiting` field in `ItineraryAttraction`.
+* **Alternative 2 (Current choice):** Store `ItineraryAttraction`s in separate `Day`s in `Itinerary`, without having a `day visiting` field for `ItineraryAttraction`.
   * Pros: `ItineraryAttraction`s are clearly divided into the different days. Easier to get the `ItineraryAttraction`s on a specific day. 
   * Cons: More methods and classes needed, which complicates things. 
   
+<<<<<<< HEAD
 Reason for choosing Alternative 2:
 
 <div style="page-break-after: always;"></div>
+=======
+Reason for choosing Alternative 2: Since we are creating itineraries that have their contained itinerary attractions 
+separated by day, we think that it will be easier to do so if the itinerary attractions are in their respective days. If 
+not, any time we need to get itinerary attractions by days, some sorting or checking would be needed. 
+>>>>>>> 920534cdc17bee23207850eea32e773184bef0c3
   
 ### 4.5 Add Itinerary Feature
 
-The `add-itinerary` command allows users to add new itineraries into TrackPad. Users must specify the compulsory fields `Name`, `startDate` and `endDate`, and 
-may specify the optional fields `Description` and `Budget`. 
+The `add-itinerary` command allows users to add new itineraries into TrackPad. 
+To add an `Itinerary`, users must specify the compulsory fields `Name`, `startDate` and `endDate`, and may specify the optional fields `Description` and `Budget`. 
 
 #### 4.5.1 Current Implementation
+
+The `AddItineraryCommand` class handles the execution of `add-itinerary` operations. The `AddItineraryCommandParser` class helps to parse user inputs 
+into new `AddItineraryCommand`s for execution.
+
+Itineraries with the same `Name`, `startDate` and `endDate` are considered duplicates, and cannot be added if a duplicate already exists in the app. 
+If the user tries to add a duplicate itinerary, a `CommandException` will be thrown, and the user will be reminded that the itinerary already exists in the app. 
+Additionally, the `startDate` cannot be after the `endDate`. If the user attempts to add an itinerary with `startDate` after the `endDate`, 
+a `ParseException` will be thrown to remind the user of the date constraints. 
 
 The following steps illustrate the successful execution of an `add-itinerary` command: 
 
@@ -381,12 +399,12 @@ The following steps illustrate the successful execution of an `add-itinerary` co
 
 **Step 6.** After the new `Itinerary` is successfully added, `AddItineraryCommand` returns a `CommandResult` for the Ui to display. 
 
-The following sequence diagram shows how the `add-itinerary` operation works:
+The following sequence diagram shows how the `add-itinerary` operation above works:
 
 ![AddItinerarySequenceDiagram](images/devguideimages/AddItinerarySequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 15. The sequence diagram of <code>add-itinerary</code></i></sup></div><br>
 
-The following activity diagram summarizes what happens when a user executes an `add-itinerary` command:
+To summarise, the following activity diagram shows what happens when a user executes an `add-itinerary` command, including errors:
 
 ![AddItineraryActivityDiagram](images/devguideimages/AddItineraryActivityDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 16. The activity diagram of `add-itinerary`</i></sup></div><br>
@@ -397,19 +415,27 @@ The following activity diagram summarizes what happens when a user executes an `
 
 **Aspect: Whether to make start and end date compulsory**
 
-* **Alternative 1 (Current choice):** Making start and end date compulsory.
-  * Pros: Easier to implement, organise `ItineraryAttraction`s, and check if a day falls within the date range. 
+* **Alternative 1 (Current choice):** Making start and end dates compulsory.
+  * Pros: Easier to implement and organise `ItineraryAttraction`s. 
   * Cons: Less flexible for users who do not want to add dates or are unsure of the dates yet. 
 
-* **Alternative 2:** Making start and end date optional.
+* **Alternative 2:** Making start and end dates optional.
   * Pros: More flexible for users who do not want to add dates or are unsure of the dates yet. 
   * Cons: Requires more functionality to handle adding and deleting the dates. For example, both dates must be either present or absent, 
 
-Reason for choosing Alternative 1:
+Reason for choosing Alternative 1: Start date and end date must come in pairs. Users accidentally adding or deleting only 
+one of the dates might be frustrated by repeated error messages. Also, we would need to implement additional functionalities 
+to handle how to add attractions with and without dates. For example, we would probably have to handle users adding itinerary 
+attractions with specified days to itineraries without a date range, and determine different ways to store and display 
+itinerary attractions for itineraries without dates. Therefore, we decided to go with the first alternative for a simplified process. 
 
+<<<<<<< HEAD
 <div style="page-break-after: always;"></div>
 
 ### 4.6 Edit Itinerary Feature (Might need discuss numbering again)
+=======
+### 4.6 Edit Itinerary Feature
+>>>>>>> 920534cdc17bee23207850eea32e773184bef0c3
 
 TrackPad allows users to edit itineraries that have already been added.
 
@@ -428,42 +454,50 @@ to parse a user’s input before creating the correct `EditItineraryCommand`.
 TrackPad uses the `EditItineraryDescriptor` class to facilitate edit operations. 
 An `EditItineraryDescriptor` is a temporary bridge that holds the newly-edited fields of an itinerary.
 
-Step 1. The user types in `edit-itinerary 1 sd/10-11-2020` to edit the `startDate` of the first itinerary in the `Itineraries` panel.
+**Step 1.** The user types in `edit-itinerary 1 sd/10-11-2020` to edit the `startDate` of the first itinerary in the `Itineraries` panel.
 
-Step 2. This calls the `execute` method of the `LogicManager` class. The user input is passed in as a string.
+**Step 2.** `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `EditItineraryCommand` and passes the input to `EditItineraryCommandParser`. 
 
-Step 3. `Logic.execute()` then calls the `parseCommand` method of the `TrackPadParser` class to parse the string input.
+**Step 3.** `EditItineraryCommandParser` parses the input, constructing a new `EditItineraryDescriptor` object from the input, containing the updated fields of the itinerary.
 
-Step 4. `TrackPadParser.parseCommand()` recognises it as a edit-itinerary command and passes the input to `EditItineraryCommandParser`. 
+**Step 4.** `EditItineraryCommandParser` constructs a new `EditCommand` with the `EditItineraryDescriptor` object.
 
-Step 5. `EditItineraryCommandParser` parses the input and constructs a new `EditItineraryCommand`.
+**Step 5.** `LogicManager` executes the `EditItineraryCommand`, creating a new `editedItinerary` object from the fields of the `EditItineraryDescriptor` object and the target itinerary.
 
-Step 6. In `EditItineraryCommandParser`, the string input is first split into tokens.
+**Step 6.** This calls `Model` to replace the target itinerary with the `editedItinerary` object.
 
-Step 7. In the same method call, an `EditItineraryDescriptor` object is created from these tokens. The object contains
-the new values to be updated to the target Itinerary.
-
-Step 8. An `EditCommand` is created with the populated `EditItineraryDescriptor` which is then executed by the `LogicManager` in step 2.
-
-Step 9. The command execution calls `getFilteredItineraryList` to get the `itineraryToEdit` using indexes provided from the user input.
-
-Step 10. A `editedItinerary` object using the `createEditedItinerary` method, using the fields to be updated from the `EditItineraryDescriptor`
-object and the fields of the `itineraryToEdit` object. 
-
-Step 11. The `Model` is then updated by replacing the `itineraryToEdit` object with the `editedItinerary` object. 
-
-Step 12. A `CommandResult` is created and returned to show the result of the execution.
+**Step 7.** After the target itinerary is replaced, `EditItineraryCommand` returns a `CommandResult` for the Ui to display.
 
 The following sequence diagram shows how the `edit-itinerary` operation works:
 
 ![EditItinerarySequenceDiagram](images/devguideimages/EditItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X. The sequence diagram of `edit-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 17 The sequence diagram of `edit-itinerary`</i></sup></div><br>
 
-<div style="page-break-after: always;"></div>
+The following activity diagram summarizes what happens when a user executes an `edit-itinerary` command:
+
+![EditItineraryActivityDiagram](images/devguideimages/EditItineraryActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 18 The activity diagram of `edit-itinerary`</i></sup></div><br>
 
 #### 4.6.2 Design Considerations
 
-### 4.7 Find Itinerary Feature (Might need discuss numbering again)
+**Aspect: Using `edit-itinerary` to edit fields of `Itinerary` only**
+
+* **Alternative 1 (Current choice):** `edit-itinerary` is only able to edit the fields of the itinerary
+  * Pros: Shorter and simpler `ItineraryAttraction` commands, where the commands only deal with the fields of the `ItineraryAttractions`
+  and do not access the fields of `Itinerary`.
+  * Cons: Different set of commands to edit the fields of `Itinerary` and `ItineraryCommands`, may not be user friendly.
+
+* **Alternative 2:** `edit-itinerary` is able to edit the fields of the `ItineraryAttractions`
+  * Pros: Lesser commands for the user to deal with.
+  * Cons: This command could be confusing to users and 
+
+Reason for choosing Alternative 1: Takes into account users are more likely to use more `ItineraryAttraction` commands compared
+to `EditItinerary` commands. It also reduces the complexity of the code in `ItineraryAttractions` by only dealing with the
+fields of `ItineraryAttractions` and do not access the fields of `Itinerary`.
+
+<div style="page-break-after: always;"></div>
+
+### 4.7 Find Itinerary Feature
 
 The find itinerary feature allows users to find itineraries using keywords.
 
@@ -472,55 +506,88 @@ The find itinerary feature allows users to find itineraries using keywords.
 The `FindItineraryCommand` class handles the execution of find itinerary operations. The `FindItineraryCommandParser` class helps 
 to parse a user’s input before creating the correct `FindItineraryCommand`.
 
-Step 1. The user types in `find-itinerary Korea` to find itineraries with the keyword Korea.
+**Step 1.** The user types in `find-itinerary Korea` to find itineraries with the keyword Korea.
 
-Step 2. This calls the `execute` method of the `LogicManager` class. The user input is passed in as a string.
+**Step 2.** `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `FindItineraryCommand` and passes the input to `FindItineraryCommandParser`. 
 
-Step 3. `Logic.execute()` then calls the `parseCommand` method of the `TrackPadParser` class to parse the string input.
+**Step 3.** In `FindItineraryCommandParser`, the string input is extracted as a predicate and used to create a `FindItineraryCommand`.
 
-Step 4. `TrackPadParser.parseCommand()` recognises it as a find-itinerary command and passes the input to `FindItineraryCommandParser`. 
+**Step 4.** This calls `Model` to filter the itineraries list based on the given predicate.
 
-Step 5. In `FindItineraryCommandParser`, the string input is extracted as a predicate and used to create a `FindItineraryCommand`.
-
-Step 6. `FindItineraryCommand.execute()` calls for `Model` to filter the itineraries list based on the given predicate.
-
-Step 7. A `CommandResult` is created and returned to show the result of the execution.
+**Step 5.** After the itineraries list is replaced, `FindItineraryCommand` returns a `CommandResult` for the Ui to display.
 
 The following sequence diagram shows how the `find-itinerary` operation works:
 
 ![FindItinerarySequenceDiagram](images/devguideimages/FindItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X. The sequence diagram of `find-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 19 The sequence diagram of `find-itinerary`</i></sup></div><br>
+
+The following activity diagram summarizes what happens when a user executes an `find-itinerary` command:
+
+![EditItineraryActivityDiagram](images/devguideimages/FindItineraryActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 20 The activity diagram of `find-itinerary`</i></sup></div><br>
 
 #### 4.7.2 Design Considerations
 
-### 4.8 Select Itinerary Feature (Might need discuss numbering again)
+**Aspect: How the command word of `find-itinerary` is derived**
 
-The select itinerary feature allows users to select itineraries to perform ItineraryAttraction commands.
+* **Alternative 1 (Current choice): `find-itinerary** 
+  * Pros: More intuitive, follows the format of the `find-attraction` command.
+  * Cons: More time spent typing the command.
+
+* **Alternative 2: findi** 
+  * Pros: Simple and faster to type.
+  * Cons: Less intuitive, users might have to remember the correct command when finding their itineraries.
+
+Reason for choosing Alternative 1: Given that the find command for attractions is `find-attraction`, 
+`find-itinerary` ensures that the command format is consistent and more intuitive to the users.
+
+<div style="page-break-after: always;"></div>
+
+### 4.8 Select Itinerary Feature
+
+The select itinerary feature allows users to select itineraries before using ItineraryAttraction commands.
 
 #### 4.8.1 Current Implementation
 
-Step 1. The user types in `select-itinerary 2` to select the second itinerary in the `Itineraries` panel.
+**Step 1.** The user types in `select-itinerary 2` to select the second itinerary in the `Itineraries` panel.
 
-Step 2. This calls the `execute` method of the `LogicManager` class. The user input is passed in as a string.
+**Step 2.** `LogicManager` passes the input to `TrackPadParser`, which in turn recognises the input as an `SelectItineraryCommand` and passes the input to `SelectItineraryCommandParser`. 
 
-Step 3. `Logic.execute()` then calls the `parseCommand` method of the `TrackPadParser` class to parse the string input.
+**Step 3.** In `SelectItineraryCommandParser`, the string input parsed to an index and used to create a `SelectItineraryCommand`.
 
-Step 4. `TrackPadParser.parseCommand()` recognises it as a select-itinerary command and passes the input to `SelectItineraryCommandParser`. 
+**Step 4.** The itinerary corresponding to the index is retrieved in `SelectItineraryCommand` and this calls on `Model` to set the current itinerary 
+using the itinerary retrieved.
 
-Step 5. In `SelectItineraryCommandParser`, the string input is parsed to return an index. and the index is used to create a `SelectItineraryCommand`.
-
-Step 6. A `SelectItineraryCommand` is created using the index and is passed back to the `LogicManager` in step 2.
-
-Step 7. `LogicManager` executes the `SelectItineraryCommand`, calling the `setCurrentItinerary` method in `Model`.
-
-Step 8. A `CommandResult` is created and returned to show the result of the execution.
+**Step 5.** After the itinerary is set, `SelectItineraryCommand` returns a `CommandResult` for the Ui to display.
 
 The following sequence diagram shows how the `select-itinerary` operation works: 
 
 ![SelectItinerarySequenceDiagram](images/devguideimages/SelectItinerarySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X. The sequence diagram of `select-itinerary`</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 21 The sequence diagram of `select-itinerary`</i></sup></div><br>
+
+The following activity diagram summarizes what happens when a user executes an `select-itinerary` command:
+
+![SelectItineraryActivityDiagram](images/devguideimages/SelectItineraryActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 22 The activity diagram of `select-itinerary`</i></sup></div><br>
+
+<div style="page-break-after: always;"></div>
 
 #### 4.8.2 Design Considerations
+
+**Aspect: Having `select-itinerary` as a stand alone command**
+
+* **Alternative 1 (Current choice):** Use the `select-itinerary` command to set the current itinerary to perform
+`ItineraryAttraction` commands.
+  * Pros: Shorter and simpler `ItineraryAttraction` commands.
+  * Cons: Users are unable to edit multiple itineraries at once without switching the target itinerary.
+
+* **Alternative 2:** Having itinerary attraction commands to specify the target itinerary
+  * Pros: Users will be able to edit multiple itineraries at once without switching the target itinerary.
+  * Cons: More complexity of code in the `ItineraryAttraction` features having to access both the `Attraction` and
+  `Itinerary` lists to look for the target attractions and itineraries. 
+
+Reason for choosing Alternative 1: Takes into account users are more likely to use more `ItineraryAttraction` commands
+within a single itinerary. It also reduces the complexity of the code in `ItineraryAttraction` features.
 
 <div style="page-break-after: always;"></div>
 
@@ -639,6 +706,8 @@ whether the field is filled or not. Thus, it leaves many empty spaces in the GUI
 ![UiFXML](images/devguideimages/UiFxml.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 26. The class diagram for one of the child of `AttractionCard`</i></sup></div><br>
 
+<div style="page-break-after: always;"></div>
+
 Figure 26 shows an example of the current implementation of the `AttractionCard`. Compulsory fields, such as `name` and `locale`
 are present in the parent class since all attractions have those fields. In `AttractionListPanel`, the number of filled fields 
 will be determined in the corresponding `Attraction`, via the `getNumOfFilledFields()` method, and the appropriate child will be used to 
@@ -691,7 +760,7 @@ This section shows the various standards TrackPad adheres to.
 **Value proposition**: 
 * manage information for trips and tourist attractions faster than a typical mouse/GUI driven app
 * keeps track of different tourist attractions visited by the user
-* allows creating an itinerary to track future travels
+* allows creation of itineraries to track future travels
 * customisable shortcuts that the user can set for frequently used commands
 
 <div style="page-break-after: always;"></div>
@@ -1181,7 +1250,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 
-----<div style="page-break-after: always;"></div>
+<div style="page-break-after: always;"></div>
 
 ## **Appendix F: Instructions for Manual Testing**
 
@@ -1377,7 +1446,7 @@ Given below are instructions to test the app manually.
    3. Test case: `find-itinerary`<br>
       Expected: No itinerary found. Error details shown in the status message.
       
-### F13 Listing itineraries (York Tat)
+**F13 Listing itineraries**
 
 1. Listing all itineraries currently stored in TrackPad
 
@@ -1389,7 +1458,7 @@ Given below are instructions to test the app manually.
    3. Test case: `list-itinerary 3`<br>
       Expected: Everything typed after the space following the command will be ignored, and list-itinerary command will be executed successfully.
 
-### F14 Selecting an itinerary (York Tat)
+**F14 Selecting an itinerary**
 
 1. Selecting an itinerary while all itineraries are being shown
 
@@ -1407,7 +1476,7 @@ Given below are instructions to test the app manually.
     * Invalid index: `select-itinerary x`, where x is larger than the list size <br>
       Expected: Similar to 3
       
-### F15 Clearing itineraries (York Tat)
+**F15 Clearing itineraries**
 
 1. Clears all itineraries currently stored in TrackPad
 
@@ -1532,19 +1601,24 @@ Given below are instructions to test the app manually.
 ## **Appendix G: Effort**
 
 Our project was harder than Address Book Level 3(AB3) because while AB3 deals with one entity, TrackPad deals with several
-entities, including Attractions, Itineraries as well as Itinerary Attraction. Initially, we had to refactor most of the code, 
-to change all instance of Person to Attraction and AddressBook to TrackPad. We also had to change the test cases, and figure out
-why some of them failed.
+entities, including Attractions, Itineraries as well as Itinerary Attractions. 
 
-After which, we had to implement itinerary into the app, and make it work similarly to Attraction, but taking in different
-fields from Attraction. We also had to create new parsers for Itinerary, so that it can read the itinerary commands. Quite
-some time was spent on deciding on what command words we want to use for each command, as there were many new commands which 
-sounded similar to existing ones.
+Initially, we had to refactor most of the code to change all instances of Person to Attraction and AddressBook to TrackPad. 
+We also had to change the test cases, and since we were still unfamiliar with the many lines of code AB3 has, we had a 
+hard time figuring out why some of them failed.
+
+After which, we had to implement Itinerary into the app and make it work similarly enough to Attraction, but still function 
+differently from it. We spent much time and effort deciding on how itineraries, and the attractions they contain are supposed 
+to work and the fields they should have, which resulted in our current implementations of Itinerary and ItineraryAttraction. 
+With the new additions, quite some time was spent on deciding which command words we want to use for each new command, since 
+the new commands can sound similar to existing ones. Afterwards, we had to more than double the number of Command classes 
+and their parsers to support the new commands, and also add many test cases to ensure their correctness. All of these took out 
+a lot of our time and effort in implementing. 
 
 In addition, we had to implement an adaptable UI, so that the attraction and itinerary box displays will vary in height, 
-since we have optional fields for our entities. We had to create different FXML files, to be compatible with our AttractionCard
+since we have optional fields for our entities. We had to create different FXML files to be compatible with our AttractionCard
 and ItineraryCard having multiple Labels. 
 
-Also, since we stored attractions as a List of Days in itineraries, it proved a further challenge in reading the itinerary
-attractions since we had to go through several layers to reach the list of itinerary attractions. Our UI also contains of 
-boxes for the Day, to distinguish between different days of the same itinerary.
+Also, although we decided to store itinerary attractions in a List of Days in itineraries, it proved a further challenge 
+in reading the itinerary attractions since we had to go through several layers to reach the list of itinerary attractions. 
+Our UI also contains boxes for the Day, to distinguish between different days of the same itinerary.

@@ -12,7 +12,9 @@ if () then ([valid command format])
     if () then ([start date <= end date])
     :Create a new itinerary with the specified fields;
         if () then ([itinerary does not already exist])
-        :Add the new itinerary;
+        :Add the new itinerary to model;
+        :Save the new state to storage;
+        :Show success message;
         else ([else])
         :Throw CommandException on duplicates;
         endif

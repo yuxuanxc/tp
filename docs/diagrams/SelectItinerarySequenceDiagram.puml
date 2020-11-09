@@ -6,13 +6,13 @@ participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":TrackPadParser" as TrackPadParser LOGIC_COLOR
 participant ":SelectItineraryCommandParser" as SelectItineraryCommandParser LOGIC_COLOR
 participant ":ParserUtil" as ParserUtil LOGIC_COLOR
-participant "d:SelectItineraryCommand" as SelectItineraryCommand LOGIC_COLOR
+participant "s:SelectItineraryCommand" as SelectItineraryCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
-participant ":ItineraryList" as Model MODEL_COLOR
+participant ":ItineraryList" as ItineraryList MODEL_COLOR
 end box
 
 [-> LogicManager : execute("select-itinerary 2")
@@ -23,15 +23,15 @@ activate TrackPadParser
 
 create SelectItineraryCommandParser
 TrackPadParser -> SelectItineraryCommandParser
-activate SelectCommandParser
+activate SelectItineraryCommandParser
 
 SelectItineraryCommandParser --> TrackPadParser
 deactivate SelectItineraryCommandParser
 
 TrackPadParser -> SelectItineraryCommandParser : parse("2")
-activate DeleteCommandParser
+activate SelectItineraryCommandParser
 
-DeleteCommandParser -> ParserUtil : parseIndex("2")
+SelectItineraryCommandParser -> ParserUtil : parseIndex("2")
 activate ParserUtil
 
 ParserUtil --> SelectItineraryCommandParser : index
@@ -41,24 +41,29 @@ create SelectItineraryCommand
 SelectItineraryCommandParser -> SelectItineraryCommand
 activate SelectItineraryCommand
 
-SelectItineraryCommand --> SelectItineraryCommandParser : s
+SelectItineraryCommand --> SelectItineraryCommandParser : f
 deactivate SelectItineraryCommand
 
-SelectItineraryCommandParser --> TrackPadParser : d
+SelectItineraryCommandParser --> TrackPadParser : f
 deactivate SelectItineraryCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
-
 SelectItineraryCommandParser -[hidden]-> TrackPadParser
 destroy SelectItineraryCommandParser
 
-TrackPadParser --> LogicManager : d
+TrackPadParser --> LogicManager : f
 deactivate TrackPadParser
 
-LogicManager -> SelectItineraryCommand : execute()
+LogicManager -> SelectItineraryCommand : execute(model)
 activate SelectItineraryCommand
 
-SelectItineraryCommand -> Model : setCurrentItinerary("CS2103T")
+SelectItineraryCommand -> Model : setCurrentItinerary(f)
 activate Model
+
+Model -> ItineraryList : setCurrentItinerary(f)
+activate ItineraryList
+
+ItineraryList --> Model
+deactivate ItineraryList
 
 Model --> SelectItineraryCommand
 deactivate Model

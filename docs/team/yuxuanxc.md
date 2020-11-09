@@ -5,7 +5,8 @@ title: Zhu Yuxuan's Project Portfolio Page
 
 ## Project: TrackPad
 
-TrackPad is a desktop application for planning trips and tracking tourist attractions. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+TrackPad is a desktop application for planning trips and tracking tourist attractions. The user interacts with it using 
+a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 20 kLoC.
 
 Given below are my contributions to the project.
 
