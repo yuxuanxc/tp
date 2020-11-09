@@ -39,14 +39,14 @@ ParserUtil --> EditItineraryCommandParser : date
 deactivate ParserUtil
 
 create EditItineraryDescriptor
-EditItineraryCommandParser -> EditItineraryDescriptor 
+EditItineraryCommandParser -> EditItineraryDescriptor
 activate EditItineraryDescriptor
 
 EditItineraryDescriptor --> EditItineraryCommandParser : f
 deactivate EditItineraryDescriptor
 
 create EditItineraryCommand
-EditItineraryCommandParser -> EditItineraryCommand : 
+EditItineraryCommandParser -> EditItineraryCommand :
 activate EditItineraryCommand
 
 EditItineraryCommand --> EditItineraryCommandParser : e
