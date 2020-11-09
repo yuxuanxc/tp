@@ -791,6 +791,9 @@ There is no need for you to save manually.
 **Q**: Where do I go to if I need help?<br>
 **A**: Simply head to TrackPad's [issue page](https://github.com/AY2021S1-CS2103T-T09-3/tp/issues) and create an issue! Kindly allow us sometime to reach back to you.
 
+**Q**: What should I do if I want to recover the attractions after clearing them?<br>
+**A**: Unfortunately, there is no way to recover the attractions you have added into TrackPad. However, you can delete the attractionlist.json file found in your data folder to get back those original attractions which are added into TrackPad beforehand.
+
 <div style="page-break-after: always;"></div>
 
 ## 6. Glossary (Yuxuan)

@@ -1527,11 +1527,13 @@ to change all instance of Person to Attraction and AddressBook to TrackPad. We a
 why some of them failed.
 
 After which, we had to implement itinerary into the app, and make it work similarly to Attraction, but taking in different
-fields from Attraction. We also had to create new parsers for Itinerary, so that it can read the itinerary commands. 
+fields from Attraction. We also had to create new parsers for Itinerary, so that it can read the itinerary commands. Quite
+some time was spent on deciding on what command words we want to use for each command, as there were many new commands which 
+sounded similar to existing ones.
 
 In addition, we had to implement an adaptable UI, so that the attraction and itinerary box displays will vary in height, 
 since we have optional fields for our entities. We had to create different FXML files, to be compatible with our AttractionCard
-and ItineraryCard having multiple Labels.
+and ItineraryCard having multiple Labels. 
 
 Also, since we stored attractions as a List of Days in itineraries, it proved a further challenge in reading the itinerary
 attractions since we had to go through several layers to reach the list of itinerary attractions. Our UI also contains of 
