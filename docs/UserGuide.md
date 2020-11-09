@@ -629,10 +629,10 @@ Format: `add-itinerary-attraction INDEX st/START_TIME et/END_TIME day/DAY_VISITI
 
 | Compulsory fields | Description |
 |---|---|
-| **INDEX** | Index of attraction in the current list of attractions |
+| [**INDEX**](#6-glossary-yuxuan) | Index of attraction in the current list of attractions |
 | **START_TIME** | Start time to visit the attraction in the 24H format `HHMM` |
 | **END_TIME** | End time to visit the attraction in the 24H format `HHMM` |
-| **DAY_VISITING** | Day in your itinerary when you plan to visit the attraction |
+| [**DAY_VISITING**](#6-glossary-yuxuan) | Day in your itinerary when you plan to visit the attraction |
 
 For example:
 
@@ -717,7 +717,7 @@ For example:
 
 2. You want to delete it from your `Selected Itinerary`.
 
-3. You type `delete-itinerary-attraction 1 day/2`, and press <kbd>Enter</kbd> to delete it.
+3. Enter `delete-itinerary-attraction 1 day/2`, into the command box.
 
     ![result of delete itinerary attraction](images/userguideimages/DeleteItineraryAttraction1.png)
     <div align='center'><i><sup style="font-size:100%">Figure 26a. Before entering <code>delete-itinerary-attraction 1 day/2</code></sup></i></div><br>
