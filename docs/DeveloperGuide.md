@@ -496,17 +496,18 @@ The following activity diagram summarizes what happens when a user executes an `
 
 #### 4.7.2 Design Considerations
 
-**Aspect: **
+**Aspect: How the command word of `find-itinerary` is derived**
 
-* **Alternative 1 (Current choice):** 
-  * Pros: 
-  * Cons: 
+* **Alternative 1 (Current choice): `find-itinerary** 
+  * Pros: More intuitive, follows the format of the `find-attraction` command.
+  * Cons: More time spent typing the command.
 
-* **Alternative 2:** 
-  * Pros: 
-  * Cons: 
+* **Alternative 2: findi** 
+  * Pros: Simple and faster to type.
+  * Cons: Less intuitive, users might have to remember the correct command when finding their itineraries.
 
-Reason for choosing Alternative 1:
+Reason for choosing Alternative 1: Given that the find command for attractions is `find-attraction`, 
+`find-itinerary` ensures that the command format is consistent and more intuitive to the users.
 
 ### 4.8 Select Itinerary Feature (Might need discuss numbering again)
 
