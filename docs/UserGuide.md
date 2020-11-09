@@ -656,10 +656,8 @@ Try these other examples too!
 * `add-itinerary-attraction 3 st/1000 et/1600 day/3` Adds the third item from attractions list into `Day 3` of the `Selected Itinerary`.
 * `add-itinerary-attraction 5 st/0900 et/1200 day/4` Adds the fifth item from attractions list into `Day 4` of the `Selected Itinerary`.
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**<br>
-
+<div markdown="block" class="alert alert-primary">:bulb: **Tip:**<br>
 * The start and end time cannot overlap with other attractions on the same day of the selected itinerary.<br>
-
 * The start and end time does not need to match the opening hours of the attraction, so that you can visit closed attractions.<br>
 </div>
 
