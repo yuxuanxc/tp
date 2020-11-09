@@ -235,8 +235,6 @@ The following sequence diagram shows how the `add-attraction` operation works:
 ![Add Attraction Sequence Diagram](images/devguideimages/AddAttractionSequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X The sequence diagram of <code>add-attraction</code></i></sup></div><br>
 
-<div style="page-break-after: always;"></div>
-
 #### 4.2.2 Design Considerations
 
 **Aspect: How the command word of AddAttractionCommand is derived**
